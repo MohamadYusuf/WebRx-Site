@@ -1,6 +1,6 @@
 #logo span {
-	color: #303030;
-    text-shadow: 0 0 3px #a0a0a0;
+	color: #505050;
+    text-shadow: 0 0 6px #505050;
 }
 
 #logo .highlight {
@@ -14,6 +14,24 @@
 
 html, body {
   height: 100%;
+  background: #f8f8f8;
+  background:
+	linear-gradient(
+		#f0f0f0,
+		transparent
+	),
+	linear-gradient(
+		90deg,
+		#e8e8e8,
+		transparent
+	),
+	linear-gradient(
+		-90deg,
+		#f8f8f8,
+		transparent
+	);
+	
+	background-blend-mode: screen;
 }
 
 /* Wrapper for page content to push down footer */
