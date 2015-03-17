@@ -1,0 +1,35 @@
+#logo span {
+	color: #303030;
+    text-shadow: 0 0 3px #a0a0a0;
+}
+
+#logo .highlight {
+	color: #b7178c;
+    text-shadow: 0 0 6px #b7178c;
+}
+
+#footer-info {
+	font-size: small;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -30px;
+  /* Pad bottom by footer height */
+  padding: 0 0 30px;
+}
+
+/* Set the fixed height of the footer here */
+#main-footer {
+	text-align: center;
+    height: 30px;
+    color: #a0a0a0;
+    line-height: 30px;
+}
