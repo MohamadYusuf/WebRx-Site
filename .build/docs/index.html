@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - Documentation</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - Documentation" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Bootstrap core CSS -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css"/>
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css"/>
+    </head>
+    <body>
+        <div id="main-container" class="container">
+            <div id="intro" class="content-panel">
+                <div class="row">
+                    <div id="logo" class="col-xs-3 text-left">
+                        <a href='/'><h1 id="logoh1">WebRx - Documentation</h1><img src='/images/logo.png'/></a>
+                    </div>
+
+                    <div id="navbar" class="col-xs-9 text-right">
+                        <a href='/docs'>Documentation</a>
+                        <a href='https://github.com/oliverw/WebRx'>Source</a>
+                    </div>
+                </div>
+            </div>
+
+          <div class="content-panel docs">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="index">
+			Getting started
+			</div>
+		</div>
+
+		<div class="col-md-9">
+			<div class="body"><h2>Introduction</h2>
+
+<p>WebRx is a JavaScript library that helps you to create rich, responsive display and editor user interfaces with a clean underlying data model. Any time you have sections of UI that update dynamically (e.g., changing depending on the user’s actions or when an external data source changes), WebRx can help you implement it more simply and maintainably.</p>
+
+<h3>Is WebRx intended to compete with jQuery or work with it?</h3>
+
+<p>Everyone loves jQuery! It’s an outstanding replacement for the clunky, inconsistent DOM API we had to put up with in the past. jQuery is an excellent low-level way to manipulate elements and event handlers in a web page. WebRx solves a different problem.</p>
+
+<p>As soon as your UI gets nontrivial and has a few overlapping behaviors, things can get tricky and expensive to maintain if you only use jQuery. Consider an example: you’re displaying a list of items, stating the number of items in that list, and want to enable an ‘Add’ button only when there are fewer than 5 items. jQuery doesn’t have a concept of an underlying data model, so to get the number of items you have to infer it from the number of TRs in a table or the number of DIVs with a certain CSS class. Maybe the number of items is displayed in some SPAN, and you have to remember to update that SPAN’s text when the user adds an item. You also must remember to disable the ‘Add’ button when the number of TRs is 5. Later, you’re asked also to implement a ‘Delete’ button and you have to figure out which DOM elements to change whenever it’s clicked.</p>
+
+<h3>How is WebRx different?</h3>
+
+<p>It’s much easier with WebRx. It lets you scale up in complexity without fear of introducing inconsistencies. Just represent your items as a JavaScript array, and then use a foreach binding to transform this array into a TABLE or set of DIVs. Whenever the array changes, the UI changes to match (you don’t have to figure out how to inject new TRs or where to inject them). The rest of the UI stays in sync. For example, you can declaratively bind a SPAN to display the number of items as follows:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html">There are <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myItems.length&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> items</code></pre></div>
+ 
+
+<p>That’s it! You don’t have to write code to update it; it updates on its own when the myItems array changes. Similarly, to make the ‘Add’ button enable or disable depending on the number of items, just write:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enable: myItems.length &lt; 5&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span></code></pre></div>
+ 
+</div>
+		</div>
+	</div>
+</div>
+
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-3">
+                    Copyright (c) 2015 Oliver Weichhold
+                  </div>
+
+                  <div class="copyright col-md-3 text-center">
+                  </div>
+                </div>
+
+                  <ul class="col-md-3 list-unstyled">
+                    <li><a id="impressum" href="/impressum.html">Impressum</a></li>
+                  </ul>
+
+            </div>
+        </div>
+
+        <script src="/js/default.js"></script>    
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-60860613-1', 'auto');
+		  ga('send', 'pageview');
+		</script>
+    </body>
+</html>

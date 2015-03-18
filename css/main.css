@@ -291,6 +291,23 @@ pre {
   background-blend-mode: screen;
 }
 
+.docs .body h2:first-child,
+.docs .body h3:first-child {
+  margin-top: 0;
+}
+
+.docs .body h3 {
+  margin-top: 1em;
+}
+
+.docs .body p {
+  line-height: 1.4em;
+}
+
+.docs .body pre {
+  margin: 0 0 20px;
+}
+
 @media only screen and (max-width: 992px) {
   /* Add a margin between vertically stacked cells on mobile */
   #content1 .row > div  {
