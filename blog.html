@@ -1,0 +1,17 @@
+---
+layout: default
+title: WebRx Blog
+---
+<div class="content-panel">
+	<div class="row">
+		<div class="posts col-md-12">
+		  {% for post in site.posts %}
+			<div class="post">
+				<h4 class="date">{{ post.date | date_to_long_string }}</h4> 
+			    <a href="{{ post.url }}"><h2 class="title">{{ post.title }}</h2></a>
+   		      	<p>{{ post.excerpt }}</p>
+			</div>
+		  {% endfor %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+---
+layout: default
+title: Impressum
+---
+
+<div class="content-panel">
+	<div class="row">
+		<div class="col-md-12">
+		{% capture impressum %}{% include impressum.md %}{% endcapture %}{{ impressum | markdownify }}
+		</div>
+	</div>
+</div>
