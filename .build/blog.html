@@ -3,13 +3,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>{{ page.title }}</title>
+        <title>WebRx Blog</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="{{ page.title }}" /> 
+        <meta property="og:title" content="WebRx Blog" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
-        {% if page.meta_description %}<meta name="description" content="{{ page.meta_description }}">{% endif %}
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!-- Bootstrap core CSS -->
@@ -26,12 +26,19 @@
             <div id="intro" class="content-panel">
                 <div class="row">
                     <div id="logo" class="col-md-3 text-left">
-                        <a href='/'><h1 id="logoh1">{{ page.title }}</h1><img src='/images/logo.png'/></a>
+                        <a href='/'><h1 id="logoh1">WebRx Blog</h1><img src='/images/logo.png'/></a>
                     </div>
                 </div>
             </div>
 
-          {{ content }}
+          <div class="content-panel">
+	<div class="row">
+		<div class="posts col-md-12">
+		  
+		</div>
+	</div>
+</div>
+
 
 
             <div id="footer" class="content-panel">

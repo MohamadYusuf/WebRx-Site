@@ -3,13 +3,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>{{ page.title }}</title>
+        <title>WebRx - Dynamic JavaScript UIs using ReactiveX</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="{{ page.title }}" /> 
+        <meta property="og:title" content="WebRx - Dynamic JavaScript UIs using ReactiveX" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
-        {% if page.meta_description %}<meta name="description" content="{{ page.meta_description }}">{% endif %}
+        <meta name="description" content="WebRx - Dynamic JavaScript UIs using ReactiveX">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!-- Bootstrap core CSS -->
@@ -26,12 +26,56 @@
             <div id="intro" class="content-panel">
                 <div class="row">
                     <div id="logo" class="col-md-3 text-left">
-                        <a href='/'><h1 id="logoh1">{{ page.title }}</h1><img src='/images/logo.png'/></a>
+                        <a href='/'><h1 id="logoh1">WebRx - Dynamic JavaScript UIs using ReactiveX</h1><img src='/images/logo.png'/></a>
                     </div>
                 </div>
             </div>
 
-          {{ content }}
+          <div id="header" class="content-panel">
+	<div class="row">
+		<div class="col-md-8">
+			<h2>Dynamic JavaScript UIs using ReactiveX</h2><p>WebRx integrates concepts of KnockoutJS and AngularJS with ReactiveX for Javascript (rxjs) into a MVC framework that enables developers to create responsive, structured and testable Web-Applications that run in any modern browser.</p>
+
+		</div>
+		<div class="col-md-4 get-it text-center">
+		</div>
+	</div>
+</div>
+
+<div id="content1" class="content-panel">
+	<div class="row">
+		<div class="col-md-3">
+			<div>
+				<img src="/images/checkmark17.png"/>
+				<h3>Declarative Bindings</h3>
+			</div>
+			Easily associate DOM elements with model data using a concise, readable syntax
+		</div>
+		<div class="col-md-3">
+			<div>
+				<img src="/images/checkmark17.png"/>
+				<h3>Automatic UI Refresh</h3>
+			</div>
+			When your data model's state changes, your UI updates automatically
+		</div>
+		<div class="col-md-3">
+			<div>
+				<img src="/images/checkmark17.png"/>
+				<h3>Templating</h3>
+			</div>
+		Quickly generate sophisticated, nested UIs as a function of your model data
+		</div>
+		<div class="col-md-3">
+			<div>
+				<img src="/images/checkmark17.png"/>
+				<h3>Routing</h3>
+			</div>
+			 Organize the parts of your interface into a state machine using multiple optionally nested views.
+		</div>
+	</div>
+</div>
+
+
 
 
             <div id="footer" class="content-panel">
