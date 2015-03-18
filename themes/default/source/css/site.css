@@ -100,11 +100,3 @@ html, body {
     color: #707070;
     line-height: 30px;
 }
-
-.main-info-box {
-	padding-right: 1em;
-}
-
-.main-info-box:last-child {
-	padding-right: 0em;
-}
