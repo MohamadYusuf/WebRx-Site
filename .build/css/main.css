@@ -1,6 +1,13 @@
 body {
   background-color: #b1b7bd;
   font-family: Arial;
+  font-size: 16px;
+}
+
+a {
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 
 #main-container {
@@ -8,6 +15,32 @@ body {
   -moz-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.75);
   padding: 0;
+}
+
+#navbar {
+  font-size: 18px;
+  line-height: 40px;
+}
+
+#navbar a {
+  color: #e0e0e0;
+  text-decoration: none;
+  background-color: #0074c4;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+  border-radius: 0.2em;
+  margin-right: 0.5em;
+}
+
+#navbar a:last-child {
+  margin-right: 0em;
+}
+
+#navbar a:hover {
+  color: #ffffff;
+  background-color: #007ed4;
 }
 
 #logoh1 {
@@ -20,6 +53,17 @@ body {
     background-color: #f8f8f8;
 }
 
+.content-panel ul {
+    padding-left: 1em;
+}
+
+.content-panel ul li {
+    line-height: 1.8em;
+}
+
+.content-panel h3 {
+    margin-top: 0.5em;
+}
 #intro {
     text-align: center;
     background-color: #0063A7;
@@ -93,9 +137,25 @@ body {
 
 
 #content1 {
-  background-color: #e8e8e8;
+  background: #f8f8f8;
+  background:
+  linear-gradient(
+    #f0f0f0,
+    transparent
+  ),
+  linear-gradient(
+    90deg,
+    #e8e8e8,
+    transparent
+  ),
+  linear-gradient(
+    -90deg,
+    #f8f8f8,
+    transparent
+  );
+  
+  background-blend-mode: screen;
   padding: 30px 20px;
-  font-size: 1.2em;
 }
 
 #footer {
@@ -160,20 +220,6 @@ body {
   color: #808080;
 }
 
-#platforms {
-  margin-top: 30px;
-}
-
-#platforms > div {
-  display: inline-block;
-  text-align: center;
-  margin-right: 20px;
-}
-
-#platforms > div > img {
-  height: 40px;
-}
-
 div.post {
   border-bottom: 1px dashed #a8a8a8;
   margin-bottom: 30px;
@@ -223,6 +269,27 @@ pre {
     text-shadow: 0 0 3px #ffffff;
 }
 
+#content2 {
+  border-top: 1px solid #e0e0e0;
+  background: #f8f8f8;
+  background:
+  linear-gradient(
+    #f0f0f0,
+    transparent
+  ),
+  linear-gradient(
+    90deg,
+    #e8e8e8,
+    transparent
+  ),
+  linear-gradient(
+    -90deg,
+    #f8f8f8,
+    transparent
+  );
+  
+  background-blend-mode: screen;
+}
 
 @media only screen and (max-width: 992px) {
   /* Add a margin between vertically stacked cells on mobile */
@@ -245,5 +312,9 @@ pre {
   /* Hide share buttons */
   #share {
     display: none;
+  }
+
+  #navbar {
+    line-height: 30px;
   }
 }
