@@ -32,8 +32,7 @@
   <% if (theme.favicon){ %>
   <link rel="icon" href="<%- theme.favicon %>">
   <% } %>
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/normalize.min.css" rel="stylesheet" type="text/css">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/foundation.min.css" rel="stylesheet" type="text/css">
+  <%- css('css/normalize.css') %>
+  <%- css('css/foundation.min.css') %>
   <%- css('css/site') %>
 </head>
