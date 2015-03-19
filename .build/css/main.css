@@ -279,6 +279,11 @@ pre {
 #live-demo select,
 #live-demo button {
   height: 1.8em;
+  vertical-align: middle;
+}
+
+#live-demo select {
+  width: 8em;
 }
 
 @media only screen and (max-width: 992px) {
