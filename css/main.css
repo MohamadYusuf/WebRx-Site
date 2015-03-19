@@ -255,6 +255,15 @@ pre {
   margin: 0 0 20px;
 }
 
+.navbar-inverse .navbar-toggle:hover, 
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #007ed4;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: transparent;
+}
+
 @media only screen and (max-width: 992px) {
   /* Add a margin between vertically stacked cells on mobile */
   #content1 .row > div  {
@@ -275,5 +284,17 @@ pre {
 
   #main-container > .navbar .navbar-nav {
     padding-top: 0.75em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #main-container > .navbar .navbar-nav a {
+    background-color: transparent;
+    padding-top: 0;
+  }
+
+  #main-container > .navbar .navbar-nav a:hover {
+    color: #ffffff;
+    background-color: transparent;
   }
 }

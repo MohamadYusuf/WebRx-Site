@@ -4,7 +4,9 @@ title: WebRx - Documentation
 ---
 ## Introduction
 
-WebRx is a JavaScript library that helps you to create rich, responsive display and editor user interfaces with a clean underlying data model. Any time you have sections of UI that update dynamically (e.g., changing depending on the user’s actions or when an external data source changes), WebRx can help you implement it more simply and maintainably.
+### The documentation
+
+If you are familiar with [Knockout](http://knockoutjs.org), parts of WebRx's documentation (escpecially about the bindings) will sound familiar to you. We took the liberty to copy Knockout's - and for some areas, Angular's - documentation instead of re-inventing the wheel.
 
 ### Is WebRx intended to compete with jQuery or work with it?
 
@@ -25,3 +27,10 @@ That’s it! You don’t have to write code to update it; it updates on its own 
 {% highlight html %}
 <button data-bind="enable: myItems.length < 5">Add</button>
 {% endhighlight %} 
+
+### WebRx vs KnockoutJS
+
+Even though WebRx shares many similarities with KnockoutJS, the project is not meant to be a drop-in replacement.
+
+- The most prominent difference is WebRx using [Rx Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md) for change tracking, whereas Knockout uses uses it's own [custom observables](http://knockoutjs.com/documentation/observables.html). 
+- Whan evaluating binding-expressions WebRx utilizes [Angular expressions](https://docs.angularjs.org/guide/expression), Knockout in contrast uses Javascript's [eval()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval). As an additional detail, Knockout supports function invocations in [binding expressions](http://knockoutjs.com/documentation/binding-syntax.html), WebRx does not.
