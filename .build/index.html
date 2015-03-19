@@ -108,17 +108,50 @@
 		<div class="col-md-6">
 			<h3>Live Demo</h3>
 			<div id="live-demo">
-			    <p>
-				    Choose a ticket class:
-				    <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
-				                       
-				    <button data-bind="enabled: chosenTicket, event: { click: resetTicket }">Clear</button>
-			    </p>                   
-			    
-			    <p data-bind="with: chosenTicket">
-				    You have chosen <b data-bind="text: name"></b> for $<span data-bind="text: price"></span>
-			    </p>
+			  <p>
+				  Choose a ticket class:
+				  <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
+				             
+				  <button data-bind="enabled: chosenTicket, event: { click: resetTicket }">Clear</button>
+			  </p>           
+			  
+			  <p data-bind="with: chosenTicket">
+				  You have chosen <b data-bind="text: name"></b> for $<span data-bind="text: price"></span>
+			  </p>
 			</div>
+
+			<br/>
+			<h4>HTML Source</h4>
+			<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;live-demo&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>Choose a ticket class:
+    <span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets, </span>
+<span class="s">      selectedValue: @chosenTicket, itemText: &#39;name&#39;&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/wx-select&gt;</span>
+    
+    <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enabled: chosenTicket, </span>
+<span class="s">      event: { click: resetTicket }&quot;</span><span class="nt">&gt;</span>Clear<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>           
+  
+  <span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">&quot;with: chosenTicket&quot;</span><span class="nt">&gt;</span>
+    You have chosen <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/b&gt;</span> 
+    for $<span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: price&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>  
+
+			<h4>Script Source</h4>
+			<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">TicketsViewModel</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">tickets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Economy&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">199.95</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Business&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">449.22</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;First Class&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">1199.99</span> <span class="p">}</span>
+  <span class="p">];</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">resetTicket</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+      <span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;live-demo&quot;</span><span class="p">));</span></code></pre></div>  
 		</div>
 	</div>
 </div>

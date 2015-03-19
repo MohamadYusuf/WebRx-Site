@@ -67,17 +67,54 @@ meta_description: WebRx - Dynamic JavaScript UIs using ReactiveX
 		<div class="col-md-6">
 			<h3>Live Demo</h3>
 			<div id="live-demo">
-			    <p>
-				    Choose a ticket class:
-				    <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
-				                       
-				    <button data-bind="enabled: chosenTicket, event: { click: resetTicket }">Clear</button>
-			    </p>                   
-			    
-			    <p data-bind="with: chosenTicket">
-				    You have chosen <b data-bind="text: name"></b> for $<span data-bind="text: price"></span>
-			    </p>
+			  <p>
+				  Choose a ticket class:
+				  <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
+				             
+				  <button data-bind="enabled: chosenTicket, event: { click: resetTicket }">Clear</button>
+			  </p>           
+			  
+			  <p data-bind="with: chosenTicket">
+				  You have chosen <b data-bind="text: name"></b> for $<span data-bind="text: price"></span>
+			  </p>
 			</div>
+
+			<br/>
+			<h4>HTML Source</h4>
+			{% highlight html %}
+<div id="live-demo">
+  <p>Choose a ticket class:
+    <wx-select params="items: tickets, 
+      selectedValue: @chosenTicket, itemText: 'name'">
+    </wx-select>
+    
+    <button data-bind="enabled: chosenTicket, 
+      event: { click: resetTicket }">Clear</button>
+  </p>           
+  
+  <p data-bind="with: chosenTicket">
+    You have chosen <b data-bind="text: name"></b> 
+    for $<span data-bind="text: price"></span>
+  </p>
+</div>
+			{% endhighlight %}  
+
+			<h4>Script Source</h4>
+			{% highlight javascript %}
+function TicketsViewModel() {
+  this.tickets = [
+    { name: "Economy", price: 199.95 },
+    { name: "Business", price: 449.22 },
+    { name: "First Class", price: 1199.99 }
+  ];
+  this.chosenTicket = wx.property();
+  this.resetTicket = function() { 
+      this.chosenTicket(null);
+    }
+  }
+
+wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
+			{% endhighlight %}  
 		</div>
 	</div>
 </div>
