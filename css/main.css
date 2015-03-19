@@ -118,24 +118,7 @@ a {
 
 
 #content1 {
-  background: #f8f8f8;
-  background:
-  linear-gradient(
-    #f0f0f0,
-    transparent
-  ),
-  linear-gradient(
-    90deg,
-    #e8e8e8,
-    transparent
-  ),
-  linear-gradient(
-    -90deg,
-    #f8f8f8,
-    transparent
-  );
-  
-  background-blend-mode: screen;
+  background: #f0f0f0;
   padding: 30px 20px;
 }
 
@@ -251,25 +234,8 @@ pre {
 }
 
 #content2 {
-  border-top: 1px solid #e0e0e0;
-  background: #f8f8f8;
-  background:
-  linear-gradient(
-    #f0f0f0,
-    transparent
-  ),
-  linear-gradient(
-    90deg,
-    #e8e8e8,
-    transparent
-  ),
-  linear-gradient(
-    -90deg,
-    #f8f8f8,
-    transparent
-  );
-  
-  background-blend-mode: screen;
+  border-top: 1px solid #d8d8d8;
+  background-color: #e0e0e0;
 }
 
 .docs .body h2:first-child,
