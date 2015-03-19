@@ -61,6 +61,26 @@ a {
     line-height: 1.8em;
 }
 
+.docs .index ol {
+    padding-left: 1.6em;
+}
+
+.docs .index ol li {
+    line-height: 1.5em;
+}
+
+.docs .index h3 {
+    margin-top: 0;
+}
+
+.docs .index h3:not(:first-child) {
+    margin-top: 0.75em;
+}
+
+.docs .index h4 {
+    margin-top: 1em;
+}
+
 .content-panel h3 {
     margin-top: 0.5em;
 }
