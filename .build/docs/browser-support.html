@@ -1,7 +1,50 @@
----
-layout: default
----
-<div class="content-panel docs">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - Browser Support</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - Browser Support" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Bootstrap core CSS -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css"/>
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css"/>
+    </head>
+    <body>
+        <h1 id="logoh1">WebRx - Browser Support</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs">Documentation</a></li>
+                    <li><a href="https://github.com/oliverw/WebRx"><img height="16" style="margin-top: -3px; margin-right: 6px" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
+                </ul>
+              </div>
+            </nav>
+
+          <div class="content-panel docs">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="index">
@@ -90,7 +133,54 @@ layout: default
 		</div>
 
 		<div class="col-md-9">
-			<div class="body">{{ content }}</div>
+			<div class="body"><h2>Browser Support</h2>
+
+<p>WebRx is tested on the following browsers:</p>
+
+<ul>
+<li>Mozilla Firefox: 5 - current</li>
+<li>Google Chrome: 5 - current</li>
+<li>Microsoft Internet Explorer: <strong>9</strong> - current</li>
+<li>Apple Safari for Mac OS: 5 - current</li>
+<li>Apple Safari for iOS: 6 - current</li>
+<li>Opera: current</li>
+</ul>
+</div>
 		</div>
 	</div>
 </div>
+
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-3">
+                    Copyright (c) 2015 Oliver Weichhold
+                  </div>
+
+                  <div class="copyright col-md-3 text-center">
+                  </div>
+                </div>
+
+                  <ul class="col-md-3 list-unstyled">
+                    <li><a id="impressum" href="/impressum.html">Impressum</a></li>
+                  </ul>
+
+            </div>
+        </div>
+
+        <script src="/js/jquery.js"></script>    
+        <script src="/js/bootstrap.min.js"></script>    
+        <script src="/js/default.js"></script>    
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-60860613-1', 'auto');
+		  ga('send', 'pageview');
+		</script>
+    </body>
+</html>
