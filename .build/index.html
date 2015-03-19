@@ -40,7 +40,8 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href="/docs">Documentation</a></li>
                     <li><a href="https://github.com/oliverw/WebRx"><img height="16" style="margin-top: -3px; margin-right: 6px" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
-                </ul>
+                  </ul>
+                </div>
               </div>
             </nav>
 
@@ -91,7 +92,7 @@
 <div id="content2" class="content-panel">
 	<div class="row">
 		<div class="col-md-6">
-		<h3>Feature Summary</h3>
+			<h3>Feature Summary</h3>
 			<ul>
 				<li>Compatible with IE9+, Firefox 5+, Chrome 5+, Safari 5+</li>
 				<li>Comprehensive online documentation</li>
@@ -105,7 +106,19 @@
 		</div>
 
 		<div class="col-md-6">
-		<h3>Live Demo</h3>
+			<h3>Live Demo</h3>
+			<div id="live-demo">
+			    <p>
+				    Choose a ticket class:
+				    <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
+				                       
+				    <button data-bind="enabled: chosenTicket, event: { click: resetTicket }">Clear</button>
+			    </p>                   
+			    
+			    <p data-bind="with: chosenTicket">
+				    You have chosen <b data-bind="text: name"></b> for $<span data-bind="text: price"></span>
+			    </p>
+			</div>
 		</div>
 	</div>
 </div>
@@ -130,7 +143,12 @@
         </div>
 
         <script src="/js/jquery.js"></script>    
-        <script src="/js/bootstrap.min.js"></script>    
+        <script src="/js/bootstrap.min.js"></script>
+
+        <script src="/js/rx.lite.min.js"></script>    
+        <script src="/js/rx.lite.extras.min.js"></script>    
+        <script src="/js/web.rx.min.js"></script>    
+
         <script src="/js/default.js"></script>    
 
 		<script>

@@ -268,6 +268,17 @@ pre {
   border-color: transparent;
 }
 
+#live-demo {
+  background-color: #f0f0f0;
+  border: 1px solid #d8d8d8;
+  padding: 0.75em 0.75em;
+}
+
+#live-demo select,
+#live-demo button {
+  height: 1.8em;
+}
+
 @media only screen and (max-width: 992px) {
   /* Add a margin between vertically stacked cells on mobile */
   #content1 .row > div  {
