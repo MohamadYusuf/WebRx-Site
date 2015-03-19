@@ -6,7 +6,7 @@ title: WebRx - Documentation
 
 ### The documentation
 
-If you are familiar with [Knockout](http://knockoutjs.org), parts of WebRx's documentation (especially when we talk about the bindings) will sound familiar to you. We took the liberty to copy Knockout's - and for some areas, Angular's - documentation instead of re-inventing the wheel.
+If you are familiar with [Knockout](http://knockoutjs.com), parts of WebRx's documentation (especially when we talk about the bindings) will sound familiar to you. We took the liberty to copy and adapt Knockout's - and for some areas, Angular's - documentation instead of re-inventing the wheel.
 
 ### Is WebRx intended to compete with jQuery or work with it?
 
