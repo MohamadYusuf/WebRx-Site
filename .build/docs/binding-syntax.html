@@ -176,23 +176,27 @@
 <li><p><strong>Filters</strong>: You can use filters within expressions to format data before displaying it.</p></li>
 </ul>
 
-<h4>Context</h4>
+<h3>Context</h3>
 
 <p>WebRx does not use JavaScript&#39;s eval() to evaluate expressions. Instead WebRx&#39;s ExpressionCompiler processes these expressions.</p>
 
 <p>Expressions do not have access to global variables like window, document or location. This restriction is intentional. It prevents accidental access to the global state – a common source of subtle bugs.</p>
 
-<h4>Forgiving</h4>
+<h3>Forgiving</h3>
 
 <p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding where it makes more sense to show nothing than to throw an exception if a is undefined (perhaps we are waiting for the server response, and it will become defined soon).</p>
 
-<h4>No Control Flow Statements</h4>
+<h3>No Control Flow Statements</h3>
 
 <p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
 
-<h4>No function declarations or RegExp creation with literal notation</h4>
+<h3>No function declarations or RegExp creation with literal notation</h3>
 
 <p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly.</p>
+
+<h3>Expression Filters</h3>
+
+<p>A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at app- or module-level.</p>
 </div>
 		</div>
 	</div>
