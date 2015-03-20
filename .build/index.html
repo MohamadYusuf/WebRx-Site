@@ -112,7 +112,7 @@
 				  Choose a ticket class:
 				  <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
 				             
-				  <button data-bind="enabled: chosenTicket, event: { click: resetTicket }">Clear</button>
+				  <button data-bind="command: resetTicketCommand">Clear</button>
 			  </p>           
 			  
 			  <p data-bind="with: chosenTicket">
@@ -128,8 +128,7 @@
 <span class="s">      selectedValue: @chosenTicket, itemText: &#39;name&#39;&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/wx-select&gt;</span>
     
-    <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enabled: chosenTicket, </span>
-<span class="s">      event: { click: resetTicket }&quot;</span><span class="nt">&gt;</span>Clear<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: resetTicketCommand&quot;</span><span class="nt">&gt;</span>Clear<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/p&gt;</span>           
   
   <span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">&quot;with: chosenTicket&quot;</span><span class="nt">&gt;</span>
@@ -140,18 +139,26 @@
 
 			<h4>Script Source</h4>
 			<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">TicketsViewModel</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;live-demo&quot;</span><span class="p">);</span>
+  
   <span class="k">this</span><span class="p">.</span><span class="nx">tickets</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Economy&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">199.95</span> <span class="p">},</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Business&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">449.22</span> <span class="p">},</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;First Class&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">1199.99</span> <span class="p">}</span>
   <span class="p">];</span>
+
   <span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">resetTicket</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
-      <span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+      <span class="nx">self</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
     <span class="p">}</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">resetTicketCommand</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="nx">self</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="k">return</span> <span class="o">!!</span><span class="nx">x</span><span class="p">;</span> <span class="p">}));</span>
   <span class="p">}</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;live-demo&quot;</span><span class="p">));</span></code></pre></div>  
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nx">node</span><span class="p">);</span></code></pre></div>  
 		</div>
 	</div>
 </div>
@@ -179,7 +186,7 @@
 
         <script src="/js/rx.lite.min.js"></script>    
         <script src="/js/rx.lite.extras.min.js"></script>    
-        <script src="/js/web.rx.min.js"></script>    
+        <script src="/js/web.rx.js"></script>    
 
         <script src="/js/default.js"></script>    
 

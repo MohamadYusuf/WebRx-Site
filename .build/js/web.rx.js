@@ -345,9 +345,9 @@ var wx;
     wx.observeObject = observeObject;
     function whenAny() {
         if (arguments.length === 2) {
-            return arguments[0].changed.select(arguments[1]);
+            return arguments[0].changed.startWith(arguments[0]()).select(arguments[1]);
         }
-        var args = Array.prototype.slice.call(arguments);
+        var args = args2Array(arguments);
         var selector = args.pop();
         args = args.map(function (x) { return x.changed.startWith(x()); });
         args.push(selector);

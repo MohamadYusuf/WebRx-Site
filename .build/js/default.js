@@ -8,15 +8,17 @@ if(navigator.language != 'de' && navigator.language.indexOf('de-') != 0) {
 
 if(document.location.pathname === '/') {
     function TicketsViewModel() {
+    	var self = this;
+
         this.tickets = [
             { name: "Economy", price: 199.95 },
             { name: "Business", price: 449.22 },
             { name: "First Class", price: 1199.99 }
         ];
         this.chosenTicket = wx.property();
-        this.resetTicket = function() { 
-        	this.chosenTicket(null);
-        }
+        this.resetTicketCommand = wx.command(function() { 
+        	self.chosenTicket(null);
+        }, wx.whenAny(this.chosenTicket, function(x) { return !!x; }));
     }
 
 	wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));

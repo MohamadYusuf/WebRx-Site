@@ -71,7 +71,7 @@ meta_description: WebRx - Dynamic JavaScript UIs using ReactiveX
 				  Choose a ticket class:
 				  <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
 				             
-				  <button data-bind="enabled: chosenTicket, event: { click: resetTicket }">Clear</button>
+				  <button data-bind="command: resetTicketCommand">Clear</button>
 			  </p>           
 			  
 			  <p data-bind="with: chosenTicket">
@@ -88,8 +88,7 @@ meta_description: WebRx - Dynamic JavaScript UIs using ReactiveX
       selectedValue: @chosenTicket, itemText: 'name'">
     </wx-select>
     
-    <button data-bind="enabled: chosenTicket, 
-      event: { click: resetTicket }">Clear</button>
+    <button data-bind="command: resetTicketCommand">Clear</button>
   </p>           
   
   <p data-bind="with: chosenTicket">
@@ -102,18 +101,26 @@ meta_description: WebRx - Dynamic JavaScript UIs using ReactiveX
 			<h4>Script Source</h4>
 			{% highlight javascript %}
 function TicketsViewModel() {
+  var self = this;
+  var node = document.getElementById("live-demo");
+  
   this.tickets = [
     { name: "Economy", price: 199.95 },
     { name: "Business", price: 449.22 },
     { name: "First Class", price: 1199.99 }
   ];
+
   this.chosenTicket = wx.property();
   this.resetTicket = function() { 
-      this.chosenTicket(null);
+      self.chosenTicket(null);
     }
+  this.resetTicketCommand = wx.command(function() { 
+    self.chosenTicket(null);
+    }, wx.whenAny(this.chosenTicket, function(x) { 
+      return !!x; }));
   }
 
-wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
+wx.applyBindings(new TicketsViewModel(), node);
 			{% endhighlight %}  
 		</div>
 	</div>
