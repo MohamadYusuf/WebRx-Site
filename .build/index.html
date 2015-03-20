@@ -3,13 +3,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Dynamic JavaScript UIs using ReactiveX</title>
+        <title>WebRx - Dynamic JavaScript UIs with ReactiveX</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Dynamic JavaScript UIs using ReactiveX" /> 
+        <meta property="og:title" content="WebRx - Dynamic JavaScript UIs with ReactiveX" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
-        <meta name="description" content="WebRx - Dynamic JavaScript UIs using ReactiveX">
+        <meta name="description" content="WebRx - Dynamic JavaScript UIs with ReactiveX">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!-- Bootstrap core CSS -->
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/css/main.css"/>
     </head>
     <body>
-        <h1 id="logoh1">WebRx - Dynamic JavaScript UIs using ReactiveX</h1>
+        <h1 id="logoh1">WebRx - Dynamic JavaScript UIs with ReactiveX</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -47,11 +47,10 @@
 
           <div id="header" class="content-panel">
 	<div class="row">
-		<div class="col-md-8">
-			<h2>Dynamic JavaScript UIs using ReactiveX</h2><p>WebRx integrates concepts of KnockoutJS and AngularJS with ReactiveX for Javascript (rxjs) into a MVC framework that enables developers to create responsive, structured and testable Web-Applications that run in any modern browser.</p>
+		<div class="col-md-12">
+			<a id="rx-link" href="http://reactivex.io/" alt="ReactiveX" title="ReactiveX" class="pull-right"><img src="/images/Rx_Logo_S.png"/></a>
+			<h2>Dynamic JavaScript UIs with <a href="http://reactivex.io/">ReactiveX</a></h2><p>WebRx integrates concepts of KnockoutJS and AngularJS with ReactiveX for Javascript (rxjs) into a MVC framework that enables developers to create responsive, structured and testable Web-Applications that run in any modern browser.</p>
 
-		</div>
-		<div class="col-md-4 get-it text-center">
 		</div>
 	</div>
 </div>
@@ -92,7 +91,7 @@
 <div id="content2" class="content-panel">
 	<div class="row">
 		<div class="col-md-6">
-			<h3>Feature Summary</h3>
+			<h3>Features</h3>
 			<ul>
 				<li>Compatible with IE9+, Firefox 5+, Chrome 5+, Safari 5+</li>
 				<li>Comprehensive online documentation</li>
@@ -103,6 +102,18 @@
 				<li>No dependencies besides RxJS-Lite</li>
 				<li>Compact (~20Kb minified &amp; compressed)</li>
 			</ul>
+			<br/>
+			<h3>Installation</h3>
+			<ul id="install">
+				<li>Install via NuGet
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>  					
+				</li>
+				<li>or <form id="download-form" method="get" action="/downloads/web.rx.zip">
+					<button type="submit" class="btn btn-primary">Download latest version as zip</button>
+					</form>
+				</li>
+			</ul>
+			<br/>
 		</div>
 
 		<div class="col-md-6">
@@ -121,7 +132,7 @@
 			</div>
 
 			<br/>
-			<h4>HTML Source</h4>
+			<h4>HTML</h4>
 			<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;live-demo&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;p&gt;</span>Choose a ticket class:
     <span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets, </span>
@@ -137,7 +148,7 @@
   <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>  
 
-			<h4>Script Source</h4>
+			<h4>Javascript</h4>
 			<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">TicketsViewModel</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;live-demo&quot;</span><span class="p">);</span>
