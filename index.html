@@ -111,13 +111,10 @@ function TicketsViewModel() {
   ];
 
   this.chosenTicket = wx.property();
-  this.resetTicket = function() { 
-      self.chosenTicket(null);
-    }
   this.resetTicketCommand = wx.command(function() { 
     self.chosenTicket(null);
-    }, wx.whenAny(this.chosenTicket, function(x) { 
-      return !!x; }));
+    }, wx.whenAny(this.chosenTicket, function(ticket) { 
+      return !!ticket; }));
   }
 
 wx.applyBindings(new TicketsViewModel(), node);
