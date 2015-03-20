@@ -607,6 +607,7 @@ var wx;
         function Module(name) {
             this.bindings = {};
             this.components = {};
+            this.expressionFilters = {};
             this.name = name;
         }
         Module.prototype.registerComponent = function () {
@@ -650,6 +651,12 @@ var wx;
                 return directive;
             }
             return this.bindings[name];
+        };
+        Module.prototype.registerExpressionFilter = function (name, filter) {
+            this.expressionFilters[name] = filter;
+        };
+        Module.prototype.getExpressionFilters = function () {
+            return this.expressionFilters;
         };
         return Module;
     })();
@@ -803,7 +810,7 @@ var wx;
             }
             return [];
         };
-        DomManager.prototype.compileBindingOptions = function (value) {
+        DomManager.prototype.compileBindingOptions = function (value, module) {
             value = wx.trimString(value);
             if (value === '') {
                 return null;
@@ -814,12 +821,18 @@ var wx;
                 var token;
                 for (var i = 0; i < tokens.length; i++) {
                     token = tokens[i];
-                    result[token.key] = this.compileBindingOptions(token.value);
+                    result[token.key] = this.compileBindingOptions(token.value, module);
                 }
                 return result;
             }
             else {
-                return this.compiler.compileExpression(value, this.parserOptions, this.expressionCache);
+                var options = wx.extend(this.parserOptions, {});
+                options.filters = {};
+                wx.extend(wx.app.getExpressionFilters(), options.filters);
+                if (module) {
+                    wx.extend(module.getExpressionFilters(), options.filters);
+                }
+                return this.compiler.compileExpression(value, options, this.expressionCache);
             }
         };
         DomManager.prototype.getModuleContext = function (node) {
@@ -999,7 +1012,9 @@ var wx;
                 for (i = 0; i < bindings.length; i++) {
                     var binding = bindings[i];
                     var handler = binding.handler;
-                    handler.applyBinding(el, binding.value, ctx, state);
+                    handler.applyBinding(el, binding.value, ctx, state, module);
+                    if (state.module !== module)
+                        module = state.module;
                 }
             }
             state.isBound = true;
@@ -1164,7 +1179,7 @@ var wx;
             this.priority = 0;
             this.domManager = domManager;
         }
-        CheckedBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        CheckedBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1)
                 internal.throwError("checked-binding only operates on elements!");
@@ -1176,13 +1191,13 @@ var wx;
             var isRadioButton = el.type === 'radio';
             if (tag !== 'input' || (!isCheckBox && !isRadioButton))
                 internal.throwError("checked-binding only operates on checkboxes and radio-buttons");
-            var exp = this.domManager.compileBindingOptions(options);
+            var exp = this.domManager.compileBindingOptions(options, module);
             var prop;
-            var locals;
-            function cleanup() {
-                if (locals) {
-                    locals.dispose();
-                    locals = null;
+            var cleanup;
+            function doCleanup() {
+                if (cleanup) {
+                    cleanup.dispose();
+                    cleanup = null;
                 }
             }
             function updateElement(value) {
@@ -1193,23 +1208,20 @@ var wx;
                     updateElement(model);
                 }
                 else {
-                    cleanup();
-                    locals = new Rx.CompositeDisposable();
+                    doCleanup();
+                    cleanup = new Rx.CompositeDisposable();
                     prop = model;
-                    locals.add(prop.changed.subscribe(function (x) {
+                    cleanup.add(prop.changed.subscribe(function (x) {
                         updateElement(x);
                     }));
                     updateElement(prop());
                     if (!prop.source) {
                         var events = _this.getCheckedEventObservables(el);
-                        locals.add(Rx.Observable.merge(events).subscribe(function (e) {
+                        cleanup.add(Rx.Observable.merge(events).subscribe(function (e) {
                             prop(el.checked);
                         }));
                     }
                 }
-            }));
-            state.cleanup.add(Rx.Disposable.create(function () {
-                cleanup();
             }));
             state.cleanup.add(Rx.Disposable.create(function () {
                 node = null;
@@ -1217,6 +1229,7 @@ var wx;
                 ctx = null;
                 state = null;
                 el = null;
+                doCleanup();
             }));
         };
         CheckedBinding.prototype.configure = function (options) {
@@ -1241,56 +1254,64 @@ var wx;
             this.priority = 0;
             this.domManager = domManager;
         }
-        CommandBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        CommandBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("command-binding only operates on elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
-            var compiled = this.domManager.compileBindingOptions(options);
+            var compiled = this.domManager.compileBindingOptions(options, module);
             var el = node;
-            var cmd;
-            var parameter;
             var exp;
+            var cmdObservable;
+            var paramObservable;
+            var cleanup;
+            function doCleanup() {
+                if (cleanup) {
+                    cleanup.dispose();
+                    cleanup = null;
+                }
+            }
             if (typeof compiled === "function") {
                 exp = compiled;
-                wx.using(this.domManager.expressionToObservable(exp, ctx).toProperty(), function (prop) {
-                    cmd = prop();
-                    parameter = null;
-                });
+                cmdObservable = this.domManager.expressionToObservable(exp, ctx);
             }
             else {
                 var opt = compiled;
                 exp = opt.command;
-                wx.using(this.domManager.expressionToObservable(exp, ctx).toProperty(), function (prop) {
-                    cmd = prop();
-                });
+                cmdObservable = this.domManager.expressionToObservable(exp, ctx);
                 if (opt.parameter) {
                     exp = opt.parameter;
-                    wx.using(this.domManager.expressionToObservable(exp, ctx).toProperty(), function (prop) {
-                        parameter = prop();
-                    });
+                    paramObservable = this.domManager.expressionToObservable(exp, ctx);
                 }
             }
-            if (!wx.isCommand(cmd)) {
-                internal.throwError("Command-Binding only works when bound to a Reactive Command!");
+            if (paramObservable == null) {
+                paramObservable = Rx.Observable.return(undefined);
             }
-            else {
-                el.disabled = !cmd.canExecute(parameter);
-                state.cleanup.add(cmd.canExecuteObservable.subscribe(function (canExecute) {
-                    el.disabled = !canExecute;
-                }));
-                state.cleanup.add(Rx.Observable.fromEvent(el, "click").subscribe(function (e) {
-                    cmd.execute(parameter);
-                }));
-            }
+            state.cleanup.add(Rx.Observable.combineLatest(cmdObservable, paramObservable, function (cmd, param) { return ({ cmd: cmd, param: param }); }).subscribe(function (x) {
+                doCleanup();
+                cleanup = new Rx.CompositeDisposable();
+                if (x.cmd != null) {
+                    if (!wx.isCommand(x.cmd)) {
+                        internal.throwError("Command-Binding only supports binding to a command!");
+                    }
+                    else {
+                        el.disabled = !x.cmd.canExecute(x.param);
+                        cleanup.add(x.cmd.canExecuteObservable.subscribe(function (canExecute) {
+                            el.disabled = !canExecute;
+                        }));
+                        cleanup.add(Rx.Observable.fromEvent(el, "click").subscribe(function (e) {
+                            x.cmd.execute(x.param);
+                        }));
+                    }
+                }
+            }));
             state.cleanup.add(Rx.Disposable.create(function () {
                 node = null;
                 options = null;
                 ctx = null;
                 state = null;
                 el = null;
-                cmd = null;
-                parameter = null;
+                doCleanup();
             }));
         };
         CommandBinding.prototype.configure = function (options) {
@@ -1309,12 +1330,12 @@ var wx;
             this.priority = 100;
             this.domManager = domManager;
         }
-        ModuleBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        ModuleBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("module-binding only operates on elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
-            var exp = this.domManager.compileBindingOptions(options);
+            var exp = this.domManager.compileBindingOptions(options, module);
             var obs = this.domManager.expressionToObservable(exp, ctx);
             state.cleanup.add(obs.subscribe(function (x) {
                 if (typeof x === "string")
@@ -1347,36 +1368,31 @@ var wx;
             this.controlsDescendants = true;
             this.domManager = domManager;
         }
-        ComponentBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        ComponentBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1)
                 internal.throwError("component-binding only operates on elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
             var el = node;
-            var compiled = this.domManager.compileBindingOptions(options);
+            var compiled = this.domManager.compileBindingOptions(options, module);
             var opt = compiled;
             var exp;
-            var observables = [];
-            var paramsKeys = [];
-            var componentName;
-            var componentParams;
-            var keepComponentParams = false;
+            var componentObservable;
+            var componentParams = {};
             if (typeof compiled === "function") {
                 exp = compiled;
-                observables.push(this.domManager.expressionToObservable(exp, ctx));
+                componentObservable = this.domManager.expressionToObservable(exp, ctx);
             }
             else {
-                observables.push(this.domManager.expressionToObservable(opt.name, ctx));
+                componentObservable = this.domManager.expressionToObservable(opt.name, ctx);
                 if (opt.params) {
                     if (typeof opt.params === "function") {
                         componentParams = this.domManager.evaluateExpression(opt.params, ctx);
-                        keepComponentParams = true;
                     }
                     else if (typeof opt.params === "object") {
                         Object.keys(opt.params).forEach(function (x) {
-                            paramsKeys.push(x);
-                            observables.push(_this.domManager.expressionToObservable(opt.params[x], ctx));
+                            componentParams[x] = _this.domManager.evaluateExpression(opt.params[x], ctx);
                         });
                     }
                     else {
@@ -1388,21 +1404,14 @@ var wx;
             while (el.firstChild) {
                 oldContents.push(el.removeChild(el.firstChild));
             }
-            state.cleanup.add(Rx.Observable.combineLatest(observables, function (_) { return wx.args2Array(arguments); }).subscribe(function (latest) {
-                componentName = latest.shift();
-                if (!keepComponentParams) {
-                    componentParams = {};
-                    for (var i = 0; i < paramsKeys.length; i++) {
-                        componentParams[paramsKeys[i]] = latest[i];
-                    }
-                }
+            state.cleanup.add(componentObservable.subscribe(function (componentName) {
                 var component = undefined;
-                if (state.module)
-                    component = state.module.getComponent(componentName);
+                if (module)
+                    component = module.getComponent(componentName);
                 if (!component)
                     component = wx.app.getComponent(componentName);
                 if (component == null)
-                    internal.throwError("component '{0}' has not been registered.", componentName);
+                    internal.throwError("component '{0}' is not registered.", componentName);
                 if (component.viewModel) {
                     state.cleanup.add(Rx.Observable.combineLatest(_this.loadTemplate(component.template, componentParams), _this.loadViewModel(component.viewModel, componentParams), function (t, vm) {
                         if (typeof vm === "function") {
@@ -1531,7 +1540,7 @@ var wx;
             this.priority = 0;
             this.domManager = domManager;
         }
-        EventBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        EventBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1)
                 internal.throwError("event-binding only operates on elements!");
@@ -1541,7 +1550,7 @@ var wx;
             var tokens = this.domManager.getObjectLiteralTokens(options);
             var eventDisposables = {};
             var eventHandlers = tokens.map(function (token) {
-                var exp = _this.domManager.compileBindingOptions(token.value);
+                var exp = _this.domManager.compileBindingOptions(token.value, module);
                 return _this.domManager.expressionToObservable(exp, ctx);
             });
             for (var i = 0; i < tokens.length; i++) {
@@ -1682,12 +1691,12 @@ var wx;
                 ctx.$index = state.index;
             });
         }
-        ForEachBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        ForEachBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("forEach binding only operates on elements!");
             if (options == null)
                 internal.throwError("** invalid binding options!");
-            var compiled = this.domManager.compileBindingOptions(options);
+            var compiled = this.domManager.compileBindingOptions(options, module);
             var el = node;
             var self = this;
             var initialApply = true;
@@ -1945,7 +1954,7 @@ var wx;
             this.priority = 0;
             this.domManager = domManager;
         }
-        HasFocusBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        HasFocusBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1)
                 internal.throwError("hasFocus-binding only operates on elements!");
@@ -1953,12 +1962,12 @@ var wx;
                 internal.throwError("invalid binding-options!");
             var el = node;
             var prop;
-            var locals;
-            var exp = this.domManager.compileBindingOptions(options);
-            function cleanup() {
-                if (locals) {
-                    locals.dispose();
-                    locals = null;
+            var cleanup;
+            var exp = this.domManager.compileBindingOptions(options, module);
+            function doCleanup() {
+                if (cleanup) {
+                    cleanup.dispose();
+                    cleanup = null;
                 }
             }
             function handleElementFocusChange(isFocused) {
@@ -1988,22 +1997,19 @@ var wx;
                     updateElement(model);
                 }
                 else {
-                    cleanup();
-                    locals = new Rx.CompositeDisposable();
+                    doCleanup();
+                    cleanup = new Rx.CompositeDisposable();
                     prop = model;
-                    locals.add(prop.changed.subscribe(function (x) {
+                    cleanup.add(prop.changed.subscribe(function (x) {
                         updateElement(x);
                     }));
                     updateElement(prop());
                     if (!prop.source) {
-                        locals.add(Rx.Observable.merge(_this.getFocusEventObservables(el)).subscribe(function (hasFocus) {
+                        cleanup.add(Rx.Observable.merge(_this.getFocusEventObservables(el)).subscribe(function (hasFocus) {
                             handleElementFocusChange(hasFocus);
                         }));
                     }
                 }
-            }));
-            state.cleanup.add(Rx.Disposable.create(function () {
-                cleanup();
             }));
             state.cleanup.add(Rx.Disposable.create(function () {
                 node = null;
@@ -2011,6 +2017,7 @@ var wx;
                 ctx = null;
                 state = null;
                 el = null;
+                doCleanup();
             }));
         };
         HasFocusBinding.prototype.configure = function (options) {
@@ -2039,7 +2046,7 @@ var wx;
             this.inverse = false;
             this.domManager = domManager;
         }
-        IfBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        IfBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("if-binding only operates on elements!");
             if (options == null)
@@ -2047,7 +2054,7 @@ var wx;
             var el = node;
             var self = this;
             var initialApply = true;
-            var exp = this.domManager.compileBindingOptions(options);
+            var exp = this.domManager.compileBindingOptions(options, module);
             var obs = this.domManager.expressionToObservable(exp, ctx);
             var template = new Array();
             state.cleanup.add(obs.subscribe(function (x) {
@@ -2115,10 +2122,10 @@ var wx;
             this.priority = 0;
             this.domManager = domManager;
         }
-        MultiOneWayChangeBindingBase.prototype.applyBinding = function (node, options, ctx, state) {
+        MultiOneWayChangeBindingBase.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("binding only operates on elements!");
-            var compiled = this.domManager.compileBindingOptions(options);
+            var compiled = this.domManager.compileBindingOptions(options, module);
             if (compiled == null || typeof compiled !== "object")
                 internal.throwError("invalid binding-options!");
             var el = node;
@@ -2288,7 +2295,7 @@ var wx;
             impls.push(new RadioSingleSelectionImpl(domManager));
             impls.push(new OptionSingleSelectionImpl(domManager));
         }
-        SelectedValueBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        SelectedValueBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("selectedValue-binding only operates on elements!");
             if (options == null)
@@ -2296,7 +2303,7 @@ var wx;
             var el = node;
             var impl;
             var implCleanup;
-            var exp = this.domManager.compileBindingOptions(options);
+            var exp = this.domManager.compileBindingOptions(options, module);
             function cleanupImpl() {
                 if (implCleanup) {
                     implCleanup.dispose();
@@ -2350,14 +2357,14 @@ var wx;
             this.priority = 0;
             this.domManager = domManager;
         }
-        SingleOneWayChangeBindingBase.prototype.applyBinding = function (node, options, ctx, state) {
+        SingleOneWayChangeBindingBase.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("binding only operates on elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
             var el = node;
             var self = this;
-            var exp = this.domManager.compileBindingOptions(options);
+            var exp = this.domManager.compileBindingOptions(options, module);
             var obs = this.domManager.expressionToObservable(exp, ctx);
             state.cleanup.add(obs.subscribe(function (x) {
                 self.applyValue(el, x);
@@ -2477,7 +2484,7 @@ var wx;
             this.priority = 0;
             this.domManager = domManager;
         }
-        TextInputBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        TextInputBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1)
                 internal.throwError("textInput-binding only operates on elements!");
@@ -2488,7 +2495,7 @@ var wx;
             var isTextArea = tag === "textarea";
             if (tag !== 'input' && tag !== 'textarea')
                 internal.throwError("textInput-binding can only be applied to input or textarea elements");
-            var exp = this.domManager.compileBindingOptions(options);
+            var exp = this.domManager.compileBindingOptions(options, module);
             var prop;
             var propertySubscription;
             var eventSubscription;
@@ -2502,7 +2509,7 @@ var wx;
                     el.value = value;
                 }
             }
-            function cleanup() {
+            function doCleanup() {
                 if (propertySubscription) {
                     propertySubscription.dispose();
                     propertySubscription = null;
@@ -2517,7 +2524,7 @@ var wx;
                     updateElement(src);
                 }
                 else {
-                    cleanup();
+                    doCleanup();
                     prop = src;
                     propertySubscription = prop.changed.subscribe(function (x) {
                         updateElement(x);
@@ -2532,14 +2539,12 @@ var wx;
                 }
             }));
             state.cleanup.add(Rx.Disposable.create(function () {
-                cleanup();
-            }));
-            state.cleanup.add(Rx.Disposable.create(function () {
                 node = null;
                 options = null;
                 ctx = null;
                 state = null;
                 el = null;
+                doCleanup();
             }));
         };
         TextInputBinding.prototype.configure = function (options) {
@@ -2587,7 +2592,7 @@ var wx;
             this.priority = 5;
             this.domManager = domManager;
         }
-        ValueBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        ValueBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1)
                 internal.throwError("value-binding only operates on elements!");
@@ -2599,12 +2604,12 @@ var wx;
                 internal.throwError("value-binding only operates on checkboxes and radio-buttons");
             var useDomManagerForValueUpdates = (tag === 'input' && el.type === 'radio') || tag === 'option';
             var prop;
-            var locals;
-            var exp = this.domManager.compileBindingOptions(options);
-            function cleanup() {
-                if (locals) {
-                    locals.dispose();
-                    locals = null;
+            var cleanup;
+            var exp = this.domManager.compileBindingOptions(options, module);
+            function doCleanup() {
+                if (cleanup) {
+                    cleanup.dispose();
+                    cleanup = null;
                 }
             }
             function updateElement(domManager, value) {
@@ -2621,15 +2626,15 @@ var wx;
                     updateElement(_this.domManager, model);
                 }
                 else {
-                    cleanup();
-                    locals = new Rx.CompositeDisposable();
+                    doCleanup();
+                    cleanup = new Rx.CompositeDisposable();
                     prop = model;
-                    locals.add(prop.changed.subscribe(function (x) {
+                    cleanup.add(prop.changed.subscribe(function (x) {
                         updateElement(_this.domManager, x);
                     }));
                     updateElement(_this.domManager, prop());
                     if (!prop.source) {
-                        locals.add(Rx.Observable.fromEvent(el, 'change').subscribe(function (e) {
+                        cleanup.add(Rx.Observable.fromEvent(el, 'change').subscribe(function (e) {
                             if (useDomManagerForValueUpdates)
                                 prop(internal.getNodeValue(el, _this.domManager));
                             else
@@ -2639,14 +2644,12 @@ var wx;
                 }
             }));
             state.cleanup.add(Rx.Disposable.create(function () {
-                cleanup();
-            }));
-            state.cleanup.add(Rx.Disposable.create(function () {
                 node = null;
                 options = null;
                 ctx = null;
                 state = null;
                 el = null;
+                doCleanup();
             }));
         };
         ValueBinding.prototype.configure = function (options) {
@@ -2700,14 +2703,14 @@ var wx;
             this.controlsDescendants = true;
             this.domManager = domManager;
         }
-        WithBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        WithBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             if (node.nodeType !== 1)
                 internal.throwError("with-binding only operates on elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
             var el = node;
             var self = this;
-            var exp = this.domManager.compileBindingOptions(options);
+            var exp = this.domManager.compileBindingOptions(options, module);
             var obs = this.domManager.expressionToObservable(exp, ctx);
             state.cleanup.add(obs.subscribe(function (x) {
                 self.applyValue(el, x, state);
@@ -4845,14 +4848,14 @@ var wx;
             this.domManager = domManager;
             this.router = router;
         }
-        StateRefBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        StateRefBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1 || node.tagName.toLowerCase() !== 'a')
                 internal.throwError("stateRef-binding only operates on anchor-elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
             var el = node;
-            var compiled = this.domManager.compileBindingOptions(options);
+            var compiled = this.domManager.compileBindingOptions(options, module);
             var exp;
             var observables = [];
             var opt = compiled;
@@ -4915,14 +4918,14 @@ var wx;
             this.domManager = domManager;
             this.router = router;
         }
-        ViewBinding.prototype.applyBinding = function (node, options, ctx, state) {
+        ViewBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
             var _this = this;
             if (node.nodeType !== 1)
                 internal.throwError("view-binding only operates on elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
             var el = node;
-            var compiled = this.domManager.compileBindingOptions(options);
+            var compiled = this.domManager.compileBindingOptions(options, module);
             var viewName = this.domManager.evaluateExpression(compiled, ctx);
             var componentName = null;
             var componentParams;
