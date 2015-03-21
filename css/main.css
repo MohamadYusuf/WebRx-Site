@@ -192,6 +192,7 @@ pre code {
 #content1 .row > div > div > img {
   display: table-cell;
   vertical-align: top;
+  width: 32px;
 }
 
 #content1 .row > div > div > div {
