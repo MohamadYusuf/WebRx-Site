@@ -83,7 +83,7 @@ You can't declare functions or create regular expressions from within expression
 
 ### Expression Filters
 
-A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at app- or module-level.
+A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at application- or module-level.
 
 #### Using filters in templates
 

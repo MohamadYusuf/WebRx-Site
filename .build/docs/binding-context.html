@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Binding Syntax</title>
+        <title>WebRx - The Binding-Context</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Binding Syntax" /> 
+        <meta property="og:title" content="WebRx - The Binding-Context" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/assets/main-2be49f7c29b74884717e1034773fcc28.css">
     </head>
     <body>
-        <h1 id="logoh1">WebRx - Binding Syntax</h1>
+        <h1 id="logoh1">WebRx - The Binding-Context</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -133,101 +133,63 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>The data-bind syntax</h2>
+			<div class="body"><h2>Binding context</h2>
 
-<p>WebRx’s declarative binding system provides a concise and powerful way to link data to the UI. It’s generally easy and obvious to bind to simple data properties or to use a single binding. For more complex bindings, it helps to better understand the behavior and syntax of WebRx’s binding system.</p>
+<p>A binding context is an object that holds data that you can reference from your bindings. While applying bindings, WebRx automatically creates and manages a hierarchy of binding contexts. The root level of the hierarchy refers to the viewModel parameter you supplied to wx.applyBindings(viewModel). Then, each time you use a control flow binding such as with or foreach, that creates a child binding context that refers to the nested view model data.</p>
 
-<h3>Binding syntax</h3>
+<p>Bindings contexts offer the following special properties that you can reference in any binding:</p>
 
-<p>A binding consists of two items, the binding name and expression, separated by a colon. Here is an example of a single, simple binding:</p>
+<h3>$parent</h3>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">Today&#39;s message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myMessage&quot;</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
+<p>This is the view model object in the parent context, the one immeditely outside the current context. In the root context, this is undefined. Example:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+ 
+<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;with: manager&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Now we&#39;re inside a nested binding context --&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> is the
+    manager of <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: $parent.name&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
  
 
-<p>An element can include multiple bindings (related or unrelated), with each binding separated by a comma. Here are some examples:</p>
+<h3>$parents</h3>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">Cellphone: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;value: cellphoneNumber, enabled: hasCellphone&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+<p>This is an array representing all of the parent view models:</p>
+
+<p>$parents[0] is the view model from the parent context (i.e., it’s the same as $parent)</p>
+
+<p>$parents[1] is the view model from the grandparent context</p>
+
+<p>$parents[2] is the view model from the great-grandparent context</p>
+
+<p>… and so on.</p>
+
+<h3>$root</h3>
+
+<p>This is the main view model object in the root context, i.e., the topmost parent context. It’s usually the object that was passed to wx.applyBindings. It is equivalent to $parents[$parents.length - 1].</p>
+
+<h3>$component</h3>
+
+<p>If you’re within the context of a particular component template, then $component refers to the viewmodel for that component. It’s the component-specific equivalent to $root. In the case of nested components, $component refers to the viewmodel for the closest component.</p>
+
+<p>This is useful, for example, if a component’s template includes one or more foreach blocks in which you wish to refer to some property or function on the component viewmodel rather than on the current data item.</p>
+
+<h3>$data</h3>
+
+<p>This is the view model object in the current context. In the root context, <strong>$data</strong> and <strong>$root</strong> are equivalent. Inside a nested binding context, this parameter will be set to the current data item (e.g., inside a with: person binding, $data will be set to person). <strong>$data</strong> is useful when you want to reference the viewmodel itself, rather than a property on the viewmodel. Example:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: [&#39;cats&#39;, &#39;dogs&#39;, &#39;fish&#39;]&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>The value is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
  
 
-<p>The binding name should generally match a registered binding handler (either built-in or custom) or be a parameter for another binding. If the name matches neither of those, WebRx will throw an error.</p>
+<h3>$index (only available within foreach bindings)</h3>
 
-<h2>Binding Expressions</h2>
+<p>This is the zero-based index of the current array entry being rendered by a foreach binding. Unlike the other binding context properties, $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).</p>
 
-<p>Binding expressions are JavaScript-like code snippets. For example, these are valid expressions in WebRx:</p>
+<h3>Controlling or modifying the binding context in custom bindings</h3>
 
-<ul>
-<li>1+2</li>
-<li>a+b</li>
-<li>user.name</li>
-<li>items[index]</li>
-<li>foo.@bar</li>
-</ul>
-
-<h3>Binding Expressions vs. JavaScript Expressions</h3>
-
-<p>WebRx expressions are like JavaScript expressions with the following differences:</p>
-
-<ul>
-<li><p><strong>Context</strong>: JavaScript expressions are evaluated against the global window. In WebRx, expressions are evaluated against the binding-context object.</p></li>
-<li><p><strong>Forgiving</strong>: In JavaScript, trying to evaluate undefined properties generates ReferenceError or TypeError. In WebRx, expression evaluation is forgiving to undefined and null.</p></li>
-<li><p><strong>No Control Flow Statements</strong>: You cannot use the following in an expression: conditionals, loops, or exceptions.</p></li>
-<li><p><strong>No Function Declarations</strong>: You cannot declare functions in an expression.</p></li>
-<li><p><strong>No Function Invocations</strong>: You cannot invoke functions in an expression.</p></li>
-<li><p><strong>No RegExp Creation With Literal Notation</strong>: You cannot create regular expressions in an expression.</p></li>
-<li><p><strong>No Comma And Void Operators</strong>: You cannot use , or void in an expression.</p></li>
-<li><p><strong>Filters</strong>: You can use filters within expressions to format data before displaying it.</p></li>
-</ul>
-
-<h4>Context</h4>
-
-<p>WebRx does not use JavaScript&#39;s eval() to evaluate expressions. Instead WebRx&#39;s ExpressionCompiler processes these expressions.</p>
-
-<p>Expressions do not have access to global variables like window, document or location. This restriction is intentional. It prevents accidental access to the global state – a common source of subtle bugs.</p>
-
-<h4>Forgiving</h4>
-
-<p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding, which often look like this:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span></code></pre></div>
- 
-
-<p>It makes more sense to show nothing than to throw an exception if &quot;a&quot; is undefined (perhaps we are waiting for the server response, and it will become defined soon). If expression evaluation wasn&#39;t forgiving we&#39;d have to write bindings that clutter the code, for example:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="o">||</span><span class="p">{}).</span><span class="nx">b</span><span class="o">||</span><span class="p">{}).</span><span class="nx">c</span></code></pre></div>
- 
-
-<h4>No Control Flow Statements</h4>
-
-<p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
-
-<h4>No function declarations or RegExp creation with literal notation</h4>
-
-<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly.  </p>
-
-<h3>Expression Filters</h3>
-
-<p>A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at application- or module-level.</p>
-
-<h4>Using filters in templates</h4>
-
-<p>Filters can be applied to expressions in templates using the following syntax:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span></code></pre></div>
- 
-
-<p>E.g. the markup <strong>&quot;12 | currency&quot;</strong> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
-
-<p>Filters can be applied to the result of another filter. This is called &quot;chaining&quot; and uses the following syntax:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span></code></pre></div>
- 
-
-<p>Filters may have arguments. The syntax for this is</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span></code></pre></div>
- 
-
-<p>E.g. the markup <strong>&quot;1234 | number:2&quot;</strong> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
+<p>Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.</p>
 </div>
 		</div>
 	</div>
