@@ -8,6 +8,7 @@ encoding: utf-8
 excerpt_separator: <!--more-->
 assets:
   debug: false
+  version: 1
   cachebust: hard
   sources:
     - js
