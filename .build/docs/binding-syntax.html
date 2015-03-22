@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="/assets/syntax-f61aeb2ae597ff94fa8f31ce7ca5ceef.css">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/assets/main-5a7c0ebe6aee38fe516298646d78f3ac.css">
+        <link rel="stylesheet" href="/assets/main-2be49f7c29b74884717e1034773fcc28.css">
     </head>
     <body>
         <h1 id="logoh1">WebRx - Binding Syntax</h1>
@@ -160,6 +160,7 @@
 <li>a+b</li>
 <li>user.name</li>
 <li>items[index]</li>
+<li>foo.@bar</li>
 </ul>
 
 <h3>Binding Expressions vs. JavaScript Expressions</h3>
@@ -177,27 +178,56 @@
 <li><p><strong>Filters</strong>: You can use filters within expressions to format data before displaying it.</p></li>
 </ul>
 
-<h3>Context</h3>
+<h4>Context</h4>
 
 <p>WebRx does not use JavaScript&#39;s eval() to evaluate expressions. Instead WebRx&#39;s ExpressionCompiler processes these expressions.</p>
 
 <p>Expressions do not have access to global variables like window, document or location. This restriction is intentional. It prevents accidental access to the global state – a common source of subtle bugs.</p>
 
-<h3>Forgiving</h3>
+<h4>Forgiving</h4>
 
-<p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding where it makes more sense to show nothing than to throw an exception if a is undefined (perhaps we are waiting for the server response, and it will become defined soon).</p>
+<p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding, which often look like this:</p>
 
-<h3>No Control Flow Statements</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span></code></pre></div>
+ 
+
+<p>It makes more sense to show nothing than to throw an exception if &quot;a&quot; is undefined (perhaps we are waiting for the server response, and it will become defined soon). If expression evaluation wasn&#39;t forgiving we&#39;d have to write bindings that clutter the code, for example:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="o">||</span><span class="p">{}).</span><span class="nx">b</span><span class="o">||</span><span class="p">{}).</span><span class="nx">c</span></code></pre></div>
+ 
+
+<h4>No Control Flow Statements</h4>
 
 <p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
 
-<h3>No function declarations or RegExp creation with literal notation</h3>
+<h4>No function declarations or RegExp creation with literal notation</h4>
 
-<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly.</p>
+<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly.  </p>
 
 <h3>Expression Filters</h3>
 
 <p>A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at app- or module-level.</p>
+
+<h4>Using filters in templates</h4>
+
+<p>Filters can be applied to expressions in templates using the following syntax:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span></code></pre></div>
+ 
+
+<p>E.g. the markup <strong>&quot;12 | currency&quot;</strong> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
+
+<p>Filters can be applied to the result of another filter. This is called &quot;chaining&quot; and uses the following syntax:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span></code></pre></div>
+ 
+
+<p>Filters may have arguments. The syntax for this is</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span></code></pre></div>
+ 
+
+<p>E.g. the markup <strong>&quot;1234 | number:2&quot;</strong> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
 </div>
 		</div>
 	</div>

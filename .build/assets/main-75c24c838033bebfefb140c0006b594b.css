@@ -266,14 +266,12 @@ pre {
   margin-top: 0;
 }
 
-.docs .body h3,
-.docs .body h4 {
+.docs .body h3 {
   margin-top: 1em;
 }
 
-.docs .body h3,
 .docs .body h4 {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .docs .body p {

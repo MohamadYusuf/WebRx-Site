@@ -30,6 +30,7 @@ Binding expressions are JavaScript-like code snippets. For example, these are va
 - a+b
 - user.name
 - items[index]
+- foo.@bar
 
 ### Binding Expressions vs. JavaScript Expressions
 
@@ -52,25 +53,58 @@ WebRx expressions are like JavaScript expressions with the following differences
 - **Filters**: You can use filters within expressions to format data before displaying it.
 
 
-### Context
+#### Context
 
 WebRx does not use JavaScript's eval() to evaluate expressions. Instead WebRx's ExpressionCompiler processes these expressions.
 
 Expressions do not have access to global variables like window, document or location. This restriction is intentional. It prevents accidental access to the global state – a common source of subtle bugs.
 
-### Forgiving
+#### Forgiving
 
-Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding where it makes more sense to show nothing than to throw an exception if a is undefined (perhaps we are waiting for the server response, and it will become defined soon).
+Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding, which often look like this:
 
-### No Control Flow Statements
+{% highlight javascript %}
+a.b.c
+{% endhighlight %} 
+
+It makes more sense to show nothing than to throw an exception if "a" is undefined (perhaps we are waiting for the server response, and it will become defined soon). If expression evaluation wasn't forgiving we'd have to write bindings that clutter the code, for example:
+
+{% highlight javascript %}
+a||{}).b||{}).c
+{% endhighlight %} 
+
+#### No Control Flow Statements
 
 Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.
 
-### No function declarations or RegExp creation with literal notation
+#### No function declarations or RegExp creation with literal notation
 
-You can't declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly.
+You can't declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly.  
 
 ### Expression Filters
 
 A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at app- or module-level.
 
+#### Using filters in templates
+
+Filters can be applied to expressions in templates using the following syntax:
+
+{% highlight javascript %}
+expression | filter
+{% endhighlight %} 
+
+E.g. the markup **"12 | currency"** formats the number 12 as a currency using the currency filter. The resulting value is $12.00.
+
+Filters can be applied to the result of another filter. This is called "chaining" and uses the following syntax:
+
+{% highlight javascript %}
+expression | filter1 | filter2 | ...
+{% endhighlight %} 
+
+Filters may have arguments. The syntax for this is
+
+{% highlight javascript %}
+expression | filter:argument1:argument2:...
+{% endhighlight %} 
+
+E.g. the markup **"1234 | number:2"** formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.
