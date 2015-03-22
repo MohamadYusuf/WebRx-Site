@@ -6,3 +6,10 @@ destination: .build
 exclude: ['assets']
 encoding: utf-8
 excerpt_separator: <!--more-->
+assets:
+  debug: false
+  cachebust: hard
+  sources:
+    - js
+    - css
+    - images
