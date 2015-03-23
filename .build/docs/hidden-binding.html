@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The Html-Binding</title>
+        <title>WebRx - The Hidden-Binding</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The Html-Binding" /> 
+        <meta property="og:title" content="WebRx - The Hidden-Binding" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/assets/main-a0a862d6b3cfd0ff9c10e4b4564ca851.css">
     </head>
     <body>
-        <h1 id="logoh1">WebRx - The Html-Binding</h1>
+        <h1 id="logoh1">WebRx - The Hidden-Binding</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -134,24 +134,25 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>The Html-Binding</h2>
+			<div class="body"><h2>The Hidden-Binding</h2>
 
 <h3>Purpose</h3>
 
-<p>The html binding causes the associated DOM element to display the HTML specified by your parameter.</p>
-
-<p>Typically this is useful when values in your view model are actually strings of HTML markup that you want to render.</p>
+<p>The hidden binding causes the associated DOM element to become hidden or visible according to the value you pass to the binding.</p>
 
 <h3>Example</h3>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;html: details&quot;</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;hidden: shouldShowMessage&quot;</span><span class="nt">&gt;</span>
+    You will see this message only when &quot;shouldShowMessage&quot; holds a false value.
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
  
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">details</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
+        <span class="nx">shouldShowMessage</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// Message initially hidden</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="s2">&quot;&lt;em&gt;For further details, view the report &lt;a href=&#39;report.html&#39;&gt;here&lt;/a&gt;.&lt;/em&gt;&quot;</span><span class="p">);</span> <span class="c1">// HTML content appears</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">shouldShowMessage</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// ... now it&#39;s visible</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">shouldShowMessage</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// ... now it&#39;s hidden again</span>
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
  
 
@@ -159,15 +160,13 @@
 
 <h4>Main parameter</h4>
 
-<p>The binding clears the previous content and then sets the element’s content to your parameter value by parsing the string into HTML nodes and appending each node as a child of the element.</p>
+<p>When the parameter resolves to a true-like value (e.g., the boolean value true, or a non-null object or array), the binding sets yourElement.style.display to none, causing it to be hidden. This takes priority over any display style you’ve defined using CSS.</p>
 
-<p>If this parameter is an observable value, the binding will update the element’s content whenever the value changes. If the parameter isn’t observable, it will only set the element’s content once and will not update it again later.</p>
+<p>When the parameter resolves to a false-like value (e.g., the boolean value false, or the numeric value 0, or null, or undefined), the binding removes the yourElement.style.display value, causing it to become visible.</p>
 
-<p>If you supply something other than a number or a string (e.g., you pass an object or an array), the innerHTML will be equivalent to yourParameter.toString()</p>
+<p>Note that any display style you’ve configured using CSS will then apply (so CSS rules like display:table-row work fine in conjunction with this binding).</p>
 
-<h4>Note: About HTML encoding</h4>
-
-<p>Since this binding sets your element’s content using innerHTML, you should be careful not to use it with untrusted model values, because that might open the possibility of a script injection attack. If you cannot guarantee that the content is safe to display (for example, if it is based on a different user’s input that was stored in your database), then you can use the text binding, which will set the element’s text value using innerText or textContent instead.</p>
+<p>If this parameter is an observable value, the binding will update the element’s visibility whenever the value changes. If the parameter isn’t observable, it will only set the element’s visibility once and will not update it again later.</p>
 </div>
 		</div>
 	</div>
