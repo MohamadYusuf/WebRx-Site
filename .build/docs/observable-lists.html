@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - Observable Properties</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - Observable Properties" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="/assets/bootstrap.min-3520b776381e47b725a3a6351274dc3d.css">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/assets/syntax-f61aeb2ae597ff94fa8f31ce7ca5ceef.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/assets/main-2be49f7c29b74884717e1034773fcc28.css">
+    </head>
+    <body>
+        <h1 id="logoh1">WebRx - Observable Properties</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs">Documentation</a></li>
+                    <li><a href="https://github.com/oliverw/WebRx"><img width="16" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
+                    <li><a href="http://twitter.com/intent/tweet?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript UIs with ReactiveX&via=oliverweichhold" target="_blank"><img width="16" src="/images/Twitter_logo_white.png"/>Tweet</a></li>
+                   </ul>
+                </div>
+              </div>
+            </nav>
+
+          <div class="content-panel docs">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="index">
+				<h3>Getting started</h3>
+				<ul>
+				    <li><a href="../docs/index.html#start">How WebRx works and what benefits it brings</a></li>
+				</ul>
+
+				<h3>Binding syntax</h3>
+				<ul>
+				    <li><a href="../docs/binding-syntax.html#start">The <code>data-bind</code> syntax</a></li>
+				    <li><a href="../docs/binding-context.html#start">The binding context</a></li>
+				</ul>
+
+				<h3>Observables</h3>
+				<ul>
+				    <li><a href="../docs/observable-properties.html#start">Creating view models with observable properties</a></li>
+				    <li><a href="../docs/computed-observable-properties.html#start">Computed observable properties</a></li>
+				    <li><a href="../docs/observable-lists.html#start">Working with observable lists</a></li>	
+				</ul>
+
+				<h3>Bindings</h3>
+
+				<h4>Controlling text and appearance</h4>
+				<ul>
+				    <li><a href="../docs/visible-binding.html#start">The <code>visible</code> binding</a></li>
+				    <li><a href="../docs/text-binding.html#start">The <code>text</code> binding</a></li>
+				    <li><a href="../docs/html-binding.html#start">The <code>html</code> binding</a></li>
+				    <li><a href="../docs/css-binding.html#start">The <code>css</code> binding</a></li>
+				    <li><a href="../docs/style-binding.html#start">The <code>style</code> binding</a></li>
+				    <li><a href="../docs/attr-binding.html#start">The <code>attr</code> binding</a></li>
+				</ul>
+
+				<h4>Control flow</h4>
+				<ul>
+				    <li><a href="../docs/foreach-binding.html#start">The <code>foreach</code> binding</a></li>
+				    <li><a href="../docs/if-binding.html#start">The <code>if</code> binding</a></li>
+				    <li><a href="../docs/ifnot-binding.html#start">The <code>ifnot</code> binding</a></li>
+				    <li><a href="../docs/with-binding.html#start">The <code>with</code> binding</a></li>
+				    <li><a href="../docs/component-binding.html#start">The <code>component</code> binding</a></li>
+				</ul>
+
+				<h4>Working with form fields</h4>
+				<ul>
+				    <li><a href="../docs/click-binding.html#start">The <code>click</code> binding</a></li>
+				    <li><a href="../docs/event-binding.html#start">The <code>event</code> binding</a></li>
+				    <li><a href="../docs/submit-binding.html#start">The <code>submit</code> binding</a></li>
+				    <li><a href="../docs/enable-binding.html#start">The <code>enable</code> binding</a></li>
+				    <li><a href="../docs/disable-binding.html#start">The <code>disable</code> binding</a></li>
+				    <li><a href="../docs/value-binding.html#start">The <code>value</code> binding</a></li>
+				    <li><a href="../docs/textinput-binding.html#start">The <code>textInput</code> binding</a></li>
+				    <li><a href="../docs/hasfocus-binding.html#start">The <code>hasFocus</code> binding</a></li>
+				    <li><a href="../docs/checked-binding.html#start">The <code>checked</code> binding</a></li>
+				    <li><a href="../docs/selectedValue-binding.html#start">The <code>selectedValue</code> binding</a></li>    
+				</ul>
+
+				<h3>Creating custom bindings</h3>
+				<ul>
+				    <li><a href="../docs/custom-bindings.html#start">Creating custom bindings</a></li>
+				    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html#start">Controlling descendant bindings</a></li>
+				    <li><a href="../docs/custom-bindings-disposal.html#start">Custom disposal logic</a></li>
+				</ul>
+
+				<h3>Components</h3>
+				<ul>
+				    <li><a href="../docs/component-overview.html#start">Overview: What <em>components</em> and <em>custom elements</em> offer</a></li>
+				    <li><a href="../docs/component-registration.html#start">Defining and registering components</a></li>
+				    <li><a href="../docs/component-binding.html#start">The <code>component</code> binding</a></li>
+				    <li><a href="../docs/component-custom-elements.html#start">Using custom elements</a></li>
+				    <li><a href="../docs/component-built-in.html#start">Built-in components</a></li>
+				</ul>
+
+				<h3>Further techniques</h3>
+				<ul>
+				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
+				    <li><a href="../docs/binding-preprocessing.html#start">Extending Webrx's binding syntax</a></li>
+				</ul>
+
+				<h3>More information</h3>
+				<ul>
+				    <li><a href="../docs/browser-support.html#start">Browser support</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="start" class="col-md-9">
+			<div class="body"><h2>Observable Lists</h2>
+
+<p>If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
+
+<h4>Example</h4>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    <span class="c1">// Initially an empty array</span>
+<span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span></code></pre></div>
+
+<h4>Prepopulating a list</h4>
+
+<p>If you want your list not to start empty, but to contain some initial items, pass those items as an array to the constructor. For example,</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// This observable list initially contains three objects</span>
+<span class="kd">var</span> <span class="nx">anotherObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Bungle&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Bear&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Hippo&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Zippy&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Unknown&quot;</span> <span class="p">}</span>
+<span class="p">]);</span></code></pre></div>
+
+<h3>Manipulating an observable-list</h3>
+
+<p>WebRx&#39;s observable list exposes a familiar set of functions for modifying the contents of the list and notifying listeners.</p>
+
+<ul>
+<li>length</li>
+<li>get(index)</li>
+<li>set(index, item)</li>
+<li>add(item)</li>
+<li>clear()</li>
+<li>contains(item)</li>
+<li>remove(item)</li>
+<li>indexOf(item)</li>
+<li>insert(index, item)</li>
+<li>removeAt(index)</li>
+<li>isEmpty</li>
+<li>addRange(collection)</li>
+<li>insertRange(index, collection)</li>
+<li>move(oldIndex, newIndex)</li>
+<li>removeAll(items)</li>
+<li>removeRange(index, count)</li>
+<li>sort(comparison: (a, b) =&gt; number)</li>
+<li>forEach(callbackfn: (value, index, array) =&gt; void, thisArg?)</li>
+<li>map(callbackfn: (value, index, array) =&gt; U, thisArg?)</li>
+<li>filter(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</li>
+<li>every(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</li>
+<li>some(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</li>
+<li>reset()</li>
+<li>toArray()</li>
+</ul>
+
+<h3>Subscribing to Changes</h3>
+
+<p><strong>Note:</strong> To display the contents of an observable-list in your UI you don&#39;t have to subscribe to any observables exposed by a list because the <a href="/docs/forEach-binding.html#start">forEach-Binding</a> takes care of that for you. </p>
+
+<p>WebRx&#39;s observable-list provides several useful Observables that can be subscribed to in order to inform you about changes in the list, as well as providing you with notifications that happen before a list is about to change:</p>
+
+<ul>
+<li><strong>itemsAdded</strong> - signals when items are added</li>
+<li><strong>itemsRemoved</strong> - signals when items are removed</li>
+<li><strong>itemsMoved</strong> - signals when items are moved</li>
+<li><strong>beforeItemsAdded</strong> - signals when items are about to be added</li>
+<li><strong>beforeItemsRemoved</strong> - signals when items are about to be removed</li>
+<li><strong>beforeItemsMoved</strong> - signals when items are about to be moved</li>
+<li><strong>countChanged</strong> - signals when the number of items in the list changes for any reason</li>
+<li><strong>countChanging</strong> - signals when the number of items in the list is about to change for any reason</li>
+<li><strong>listChanged</strong> - signals all changes</li>
+<li><strong>listChanging</strong> - signals all changes before they happen.</li>
+<li><strong>shouldReset</strong> - signals that the observer should reread the entire list, as it has changed significantly</li>
+</ul>
+
+<h4>Semantics of Reset</h4>
+
+<p>One thing that is particularly important to understand is the meaning of the <em>shouldReset</em> Observable. The meaning of this event is, <em>&quot;This list has changed drastically, you should reread the contents&quot;</em>. Many people conflate <em>reset</em> and <em>clear</em>, thinking that this means the list is now empty.</p>
+
+<p>This is important, because if you only subscribe to <em>itemsAdded</em> and <em>itemsRemoved</em>, you will not be correctly tracking every item in the list. Lists will detect this scenario and attempt to warn you about it.</p>
+
+<h3>Delaying and/or suppressing change notifications</h3>
+
+<p>Normally, an observable-list notifies its subscribers immediately, as soon as it’s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. </p>
+
+<p>This is accomplished calling the list&#39;s <em>suppressChangeNotifications</em> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>                         <span class="c1">// Initially an empty array</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span>                       <span class="c1">// Adds the value and notifies observers</span>
+<span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">suppressChangeNotifications</span><span class="p">();</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some other value&#39;</span><span class="p">);</span>                 <span class="c1">// no notifications get send now</span>
+<span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>                               <span class="c1">// list resumes sending change notifications</span></code></pre></div>
+</div>
+		</div>
+	</div>
+</div>
+
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-4">
+                    Copyright (c) 2015 Oliver Weichhold
+                  </div>
+
+                  <div class="copyright col-md-4">
+                  </div>
+
+                  <div class="copyright col-md-4 text-right">
+                    <a id="impressum" href="/impressum.html">Impressum</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/assets/jquery-41f60d5fa84e6e8d7b40f632e0568b79.js"></script>
+        <script src="/assets/bootstrap.min-26a3cccafd748b47ae34e937d84db91b.js"></script>
+        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
+        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
+        <script src="/assets/web.rx-7f72b77e005947ec47947ae755824c19.js"></script>
+        <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>
