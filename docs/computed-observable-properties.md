@@ -44,7 +44,8 @@ The *whenAny* function takes any number of properties as input, subscribes to th
 
 {% highlight javascript %}
 var observable = wx.whenAny(this.firstName, this.lastName, function(firstName, lastName) { 
-	return firstName + " " + lastName; })
+  return firstName + " " + lastName; 
+});
 {% endhighlight %}
 
 So, now that we've got an observable representing *fullName* we can simply invoke the aforementioned *toProperty* function and voila, we've turned the observable into a read-only property that can be bound to a view like any other property.

@@ -77,6 +77,10 @@ pre code {
     line-height: 1.8em;
 }
 
+.docs #start {
+  padding-top: 1em;
+}
+
 .docs .index ol {
     padding-left: 1.6em;
 }
@@ -343,9 +347,5 @@ pre {
   #main-container > .navbar .navbar-nav a:hover {
     color: #ffffff;
     background-color: transparent;
-  }
-
-  .docs #start {
-    padding-top: 1em;
   }
 }

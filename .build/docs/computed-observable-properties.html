@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="/assets/syntax-f61aeb2ae597ff94fa8f31ce7ca5ceef.css">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/assets/main-2be49f7c29b74884717e1034773fcc28.css">
+        <link rel="stylesheet" href="/assets/main-a0a862d6b3cfd0ff9c10e4b4564ca851.css">
     </head>
     <body>
         <h1 id="logoh1">WebRx - Observable Properties</h1>
@@ -168,7 +168,8 @@
 <p>The <em>whenAny</em> function takes any number of properties as input, subscribes to their <em>changed</em> observables, and invokes a user supplied selector function when any (hence the name) of its inputs changes. The selector function receives the latest value of all inputs as arguments. The result of <em>whenAny</em> is always an Rx Observable.</p>
 
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">observable</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span> 
-    <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> <span class="p">})</span></code></pre></div>
+  <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> 
+<span class="p">});</span></code></pre></div>
 
 <p>So, now that we&#39;ve got an observable representing <em>fullName</em> we can simply invoke the aforementioned <em>toProperty</em> function and voila, we&#39;ve turned the observable into a read-only property that can be bound to a view like any other property.</p>
 

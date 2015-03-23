@@ -344,4 +344,8 @@ pre {
     color: #ffffff;
     background-color: transparent;
   }
+
+  .docs #start {
+    padding-top: 1em;
+  }
 }
