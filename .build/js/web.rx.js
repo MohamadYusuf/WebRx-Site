@@ -1132,7 +1132,7 @@ var wx;
                         target = list.get(index);
                         if (captured)
                             captured.add(list.listChanged);
-                        if (wx.queryInterface(target, wx.IID.IObservableProperty)) {
+                        if (wx.isProperty(target)) {
                             prop = target;
                             if (captured)
                                 captured.add(prop.changed);
@@ -1143,7 +1143,7 @@ var wx;
                         }
                     }
                     else {
-                        if (wx.queryInterface(o[index], wx.IID.IObservableProperty)) {
+                        if (wx.isProperty(o[index])) {
                             prop = target[index];
                             if (captured)
                                 captured.add(prop.changed);
@@ -2755,6 +2755,7 @@ var wx;
     var ObservableList = (function () {
         function ObservableList(initialContents, resetChangeThreshold) {
             if (resetChangeThreshold === void 0) { resetChangeThreshold = 0.3; }
+            this.push = this.add;
             this.changeNotificationsSuppressed = 0;
             this.propertyChangeWatchers = null;
             this.resetChangeThreshold = 0;
