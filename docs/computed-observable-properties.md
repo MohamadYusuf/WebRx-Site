@@ -65,10 +65,9 @@ View-Model:
 
 {% highlight javascript %}
 function AppViewModel() {
-    this.countDown = Rx.Observable
-      .timer(1000, 1000)
-      .take(10)
+    this.countDown = Rx.Observable.range(0, 10)
       .select(function(x) { return 10 - x; })
+      .zip(Rx.Observable.timer(0, 1000), function(lhs, rhs) { return lhs; })
       .toProperty();
 }
 {% endhighlight %}
@@ -79,3 +78,6 @@ View-Template:
 Seconds until auto-logout: <span data-bind="text: countDown"></span>
 {% endhighlight %}
 
+#### Live Example
+
+<iframe width="100%" height="300" src="//jsfiddle.net/oliverw/1nwsased/4/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
