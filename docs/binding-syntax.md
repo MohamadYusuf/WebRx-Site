@@ -22,7 +22,7 @@ Cellphone: <input data-bind="value: cellphoneNumber, enabled: hasCellphone" />
 
 The binding name should generally match a registered binding handler (either built-in or custom) or be a parameter for another binding. If the name matches neither of those, WebRx will throw an error.
 
-## Binding Expressions
+## <a id="topic-binding-expressions"></a>Binding Expressions
 
 Binding expressions are JavaScript-like code snippets. For example, these are valid expressions in WebRx:
 

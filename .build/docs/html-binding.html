@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Binding Syntax</title>
+        <title>WebRx - The Html-Binding</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Binding Syntax" /> 
+        <meta property="og:title" content="WebRx - The Html-Binding" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/assets/main-a0a862d6b3cfd0ff9c10e4b4564ca851.css">
     </head>
     <body>
-        <h1 id="logoh1">WebRx - Binding Syntax</h1>
+        <h1 id="logoh1">WebRx - The Html-Binding</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -133,101 +133,40 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>The data-bind syntax</h2>
+			<div class="body"><h2>The Html-Binding</h2>
 
-<p>WebRx’s declarative binding system provides a concise and powerful way to link data to the UI. It’s generally easy and obvious to bind to simple data properties or to use a single binding. For more complex bindings, it helps to better understand the behavior and syntax of WebRx’s binding system.</p>
+<h3>Purpose</h3>
 
-<h3>Binding syntax</h3>
+<p>The html binding causes the associated DOM element to display the HTML specified by your parameter.</p>
 
-<p>A binding consists of two items, the binding name and expression, separated by a colon. Here is an example of a single, simple binding:</p>
+<p>Typically this is useful when values in your view model are actually strings of HTML markup that you want to render.</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html">Today&#39;s message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myMessage&quot;</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
+<h3>Example</h3>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;html: details&quot;</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></div>
  
 
-<p>An element can include multiple bindings (related or unrelated), with each binding separated by a comma. Here are some examples:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html">Cellphone: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;value: cellphoneNumber, enabled: hasCellphone&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">details</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
+    <span class="p">};</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="s2">&quot;&lt;em&gt;For further details, view the report &lt;a href=&#39;report.html&#39;&gt;here&lt;/a&gt;.&lt;/em&gt;&quot;</span><span class="p">);</span> <span class="c1">// HTML content appears</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
  
 
-<p>The binding name should generally match a registered binding handler (either built-in or custom) or be a parameter for another binding. If the name matches neither of those, WebRx will throw an error.</p>
+<h3>Parameters</h3>
 
-<h2><a id="topic-binding-expressions"></a>Binding Expressions</h2>
+<h4>Main parameter</h4>
 
-<p>Binding expressions are JavaScript-like code snippets. For example, these are valid expressions in WebRx:</p>
+<p>The binding clears the previous content and then sets the element’s content to your parameter value by parsing the string into HTML nodes and appending each node as a child of the element.</p>
 
-<ul>
-<li>1+2</li>
-<li>a+b</li>
-<li>user.name</li>
-<li>items[index]</li>
-<li>foo.@bar</li>
-</ul>
+<p>If this parameter is an observable value, the binding will update the element’s content whenever the value changes. If the parameter isn’t observable, it will only set the element’s content once and will not update it again later.</p>
 
-<h3>Binding Expressions vs. JavaScript Expressions</h3>
+<p>If you supply something other than a number or a string (e.g., you pass an object or an array), the innerHTML will be equivalent to yourParameter.toString()</p>
 
-<p>WebRx expressions are like JavaScript expressions with the following differences:</p>
+<h4>Note: About HTML encoding</h4>
 
-<ul>
-<li><p><strong>Context</strong>: JavaScript expressions are evaluated against the global window. In WebRx, expressions are evaluated against the binding-context object.</p></li>
-<li><p><strong>Forgiving</strong>: In JavaScript, trying to evaluate undefined properties generates ReferenceError or TypeError. In WebRx, expression evaluation is forgiving to undefined and null.</p></li>
-<li><p><strong>No Control Flow Statements</strong>: You cannot use the following in an expression: conditionals, loops, or exceptions.</p></li>
-<li><p><strong>No Function Declarations</strong>: You cannot declare functions in an expression.</p></li>
-<li><p><strong>No Function Invocations</strong>: You cannot invoke functions in an expression.</p></li>
-<li><p><strong>No RegExp Creation With Literal Notation</strong>: You cannot create regular expressions in an expression.</p></li>
-<li><p><strong>No Comma And Void Operators</strong>: You cannot use , or void in an expression.</p></li>
-<li><p><strong>Filters</strong>: You can use filters within expressions to format data before displaying it.</p></li>
-</ul>
-
-<h4>Context</h4>
-
-<p>WebRx does not use JavaScript&#39;s eval() to evaluate expressions. Instead WebRx&#39;s ExpressionCompiler processes these expressions.</p>
-
-<p>Expressions do not have access to global variables like window, document or location. This restriction is intentional. It prevents accidental access to the global state – a common source of subtle bugs.</p>
-
-<h4>Forgiving</h4>
-
-<p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding, which often look like this:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span></code></pre></div>
- 
-
-<p>It makes more sense to show nothing than to throw an exception if &quot;a&quot; is undefined (perhaps we are waiting for the server response, and it will become defined soon). If expression evaluation wasn&#39;t forgiving we&#39;d have to write bindings that clutter the code, for example:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="o">||</span><span class="p">{}).</span><span class="nx">b</span><span class="o">||</span><span class="p">{}).</span><span class="nx">c</span></code></pre></div>
- 
-
-<h4>No Control Flow Statements</h4>
-
-<p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
-
-<h4>No function declarations or RegExp creation with literal notation</h4>
-
-<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly.  </p>
-
-<h3>Expression Filters</h3>
-
-<p>A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at application- or module-level.</p>
-
-<h4>Using filters in templates</h4>
-
-<p>Filters can be applied to expressions in templates using the following syntax:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span></code></pre></div>
- 
-
-<p>E.g. the markup <strong>&quot;12 | currency&quot;</strong> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
-
-<p>Filters can be applied to the result of another filter. This is called &quot;chaining&quot; and uses the following syntax:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span></code></pre></div>
- 
-
-<p>Filters may have arguments. The syntax for this is</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span></code></pre></div>
- 
-
-<p>E.g. the markup <strong>&quot;1234 | number:2&quot;</strong> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
+<p>Since this binding sets your element’s content using innerHTML, you should be careful not to use it with untrusted model values, because that might open the possibility of a script injection attack. If you cannot guarantee that the content is safe to display (for example, if it is based on a different user’s input that was stored in your database), then you can use the text binding, which will set the element’s text value using innerText or textContent instead.</p>
 </div>
 		</div>
 	</div>

@@ -61,7 +61,7 @@ Remember when we've utilized *toProperty* to turn the result of *whenAny* into a
 
 #### Example
 
-Imagine you wanted to display a countdown-timer in your UI. The timer would count down from 10 to 1 at a one second interval. Implementing that would be as easy as this:
+Imagine you want to display a countdown-timer in your UI. The timer would count down from 10 to 1 at a one second interval. Implementing that would be as easy as this:
 
 View-Model:
 
