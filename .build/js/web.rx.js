@@ -3322,26 +3322,32 @@ var wx;
                     return nodes;
                 }
             }
-            result = '<div class="wx-radiogroup" data-bind="foreach: { data: items, hooks: hooks }"><input type="radio" data-bind="{0}">{1}</div>';
-            var perItemExtraMarkup = "";
+            result = '<div class="wx-radiogroup" data-bind="{0}"><input type="radio" data-bind="{1}">{2}</div>';
             var bindings = [];
             var attrs = [];
-            bindings.push({ key: "value", value: params.itemValue || "$data" });
-            attrs.push({ key: 'name', value: "$parent.groupName" });
+            var itemBindings = [];
+            var itemAttrs = [];
+            var perItemExtraMarkup = "";
+            bindings.push({ key: "foreach", value: "{ data: items, hooks: hooks }" });
+            if (attrs.length)
+                bindings.push({ key: "attr", value: "{ " + attrs.map(function (x) { return x.key + ": " + x.value; }).join(", ") + " }" });
+            itemBindings.push({ key: "value", value: params.itemValue || "$data" });
+            itemAttrs.push({ key: 'name', value: "$parent.groupName" });
             if (params.selectedValue) {
-                bindings.push({ key: "selectedValue", value: "$parent.@selectedValue" });
+                itemBindings.push({ key: "selectedValue", value: "$parent.@selectedValue" });
             }
             if (params.itemText) {
                 perItemExtraMarkup += wx.formatString('<label data-bind="text: {0}, attr: { for: {1} }"></label>', params.itemText, "$parent.groupName + '-' + $index");
-                attrs.push({ key: 'id', value: "$parent.groupName + '-' + $index" });
+                itemAttrs.push({ key: 'id', value: "$parent.groupName + '-' + $index" });
             }
             if (params.itemClass) {
-                attrs.push({ key: 'class', value: "'" + params.itemClass + "'" });
+                itemAttrs.push({ key: 'class', value: "'" + params.itemClass + "'" });
             }
-            if (attrs.length)
-                bindings.push({ key: "attr", value: "{ " + attrs.map(function (x) { return x.key + ": " + x.value; }).join(", ") + " }" });
+            if (itemAttrs.length)
+                itemBindings.push({ key: "attr", value: "{ " + itemAttrs.map(function (x) { return x.key + ": " + x.value; }).join(", ") + " }" });
             var bindingString = bindings.map(function (x) { return x.key + ": " + x.value; }).join(", ");
-            result = wx.formatString(result, bindingString, perItemExtraMarkup);
+            var itemBindingString = itemBindings.map(function (x) { return x.key + ": " + x.value; }).join(", ");
+            result = wx.formatString(result, bindingString, itemBindingString, perItemExtraMarkup);
             if (!params.noCache) {
                 templateCache[key] = result;
             }
@@ -3385,17 +3391,14 @@ var wx;
                     return nodes;
                 }
             }
-            if (params.selectedValue)
-                result = '<select class="wx-select" data-bind="foreach: { data: items, hooks: hooks }, selectedValue: @selectedValue"><option data-bind="{0}"></option></select>';
-            else
-                result = '<select class="wx-select" data-bind="foreach: { data: items, hooks: hooks }"><option data-bind="{0}"></option></select>';
+            result = '<select class="wx-select" data-bind="{0}"><option data-bind="{1}"></option></select>';
             var bindings = [];
             var attrs = [];
-            bindings.push({ key: "value", value: params.itemValue || "$data" });
-            bindings.push({ key: 'text', value: params.itemText || "$data" });
-            if (params.itemClass) {
-                attrs.push({ key: 'class', value: "'" + params.itemClass + "'" });
-            }
+            var itemBindings = [];
+            var itemAttrs = [];
+            bindings.push({ key: "foreach", value: "{ data: items, hooks: hooks }" });
+            if (params.selectedValue)
+                bindings.push({ key: "selectedValue", value: "@selectedValue" });
             if (params.name) {
                 attrs.push({ key: 'name', value: params.name });
             }
@@ -3413,8 +3416,16 @@ var wx;
             }
             if (attrs.length)
                 bindings.push({ key: "attr", value: "{ " + attrs.map(function (x) { return x.key + ": " + x.value; }).join(", ") + " }" });
+            itemBindings.push({ key: "value", value: params.itemValue || "$data" });
+            itemBindings.push({ key: 'text', value: params.itemText || "$data" });
+            if (params.itemClass) {
+                itemAttrs.push({ key: 'class', value: "'" + params.itemClass + "'" });
+            }
+            if (itemAttrs.length)
+                itemBindings.push({ key: "attr", value: "{ " + itemAttrs.map(function (x) { return x.key + ": " + x.value; }).join(", ") + " }" });
             var bindingString = bindings.map(function (x) { return x.key + ": " + x.value; }).join(", ");
-            result = wx.formatString(result, bindingString);
+            var itemBindingString = itemBindings.map(function (x) { return x.key + ": " + x.value; }).join(", ");
+            result = wx.formatString(result, bindingString, itemBindingString);
             if (!params.noCache) {
                 templateCache[key] = result;
             }
