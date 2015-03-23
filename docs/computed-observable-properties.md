@@ -57,6 +57,7 @@ this.lastName = observable.toProperty();
 ### Digging deeper
 
 Remember when we've utilized *toProperty* to turn the result of *whenAny* into a property? An important detail about toProperty is that it is in no way limited to observables returned by whenAny. In fact *toProperty* is implemented as a custom Rx-Operator that extends all Rx-Observables. This fact opens up a whole array of possibilities because it enables you to leverage the full spectrum of [Rx's operators](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/which-instance.md) in your UI.
+  
 
 #### Example
 
@@ -81,4 +82,4 @@ Seconds until auto-logout: <span data-bind="text: countDown"></span>
 
 #### Live Example
 
-<iframe width="100%" height="300" src="//jsfiddle.net/oliverw/1nwsased/4/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsfiddle.net/oliverw/1nwsased/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>

@@ -532,10 +532,15 @@ declare module wx {
 }
 declare module wx {
     interface ISelectComponentParams {
+        name?: string;
         items: any;
         itemText?: string;
         itemValue?: string;
         itemClass?: string;
+        multiple?: boolean;
+        required?: boolean;
+        autofocus?: boolean;
+        size?: number;
         selectedValue?: any;
         afterRender?(nodes: Node[], data: any): void;
         noCache?: boolean;

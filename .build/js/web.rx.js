@@ -3379,7 +3379,7 @@ var wx;
             var key = undefined;
             var nodes;
             if (!params.noCache) {
-                key = (params.itemText != null ? params.itemText : "") + "-" + (params.itemValue != null ? params.itemValue : "") + "-" + (params.itemClass != null ? params.itemClass : "") + "-" + (params.selectedValue != null ? "true" : "false");
+                key = (params.name != null ? params.name : "") + "-" + (params.itemText != null ? params.itemText : "") + "-" + (params.itemValue != null ? params.itemValue : "") + "-" + (params.itemClass != null ? params.itemClass : "") + "-" + (params.selectedValue != null ? "true" : "false") + "-" + (params.multiple ? "true" : "false") + "-" + (params.required ? "true" : "false") + "-" + (params.autofocus ? "true" : "false") + "-" + (params.size ? params.size.toString() : "0");
                 nodes = templateCache[key];
                 if (nodes != null) {
                     return nodes;
@@ -3395,6 +3395,21 @@ var wx;
             bindings.push({ key: 'text', value: params.itemText || "$data" });
             if (params.itemClass) {
                 attrs.push({ key: 'class', value: "'" + params.itemClass + "'" });
+            }
+            if (params.multiple) {
+                attrs.push({ key: 'name', value: params.name });
+            }
+            if (params.multiple) {
+                attrs.push({ key: 'multiple', value: "true" });
+            }
+            if (params.multiple !== undefined) {
+                attrs.push({ key: 'size', value: params.size.toString() });
+            }
+            if (params.required) {
+                attrs.push({ key: 'required', value: "true" });
+            }
+            if (params.autofocus) {
+                attrs.push({ key: 'autofocus', value: "true" });
             }
             if (attrs.length)
                 bindings.push({ key: "attr", value: "{ " + attrs.map(function (x) { return x.key + ": " + x.value; }).join(", ") + " }" });

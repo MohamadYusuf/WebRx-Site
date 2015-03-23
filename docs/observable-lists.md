@@ -95,3 +95,8 @@ var disp = list.suppressChangeNotifications();
 list.push('Some other value');					// no notifications get send now
 disp.dispose();								// list resumes sending change notifications
 {% endhighlight %}
+
+
+#### Live Example
+
+<iframe width="100%" height="300" src="//jsfiddle.net/oliverw/z51a6bsg/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
