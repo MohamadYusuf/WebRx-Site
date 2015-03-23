@@ -3396,13 +3396,13 @@ var wx;
             if (params.itemClass) {
                 attrs.push({ key: 'class', value: "'" + params.itemClass + "'" });
             }
-            if (params.multiple) {
+            if (params.name) {
                 attrs.push({ key: 'name', value: params.name });
             }
             if (params.multiple) {
                 attrs.push({ key: 'multiple', value: "true" });
             }
-            if (params.multiple !== undefined) {
+            if (params.size !== undefined) {
                 attrs.push({ key: 'size', value: params.size.toString() });
             }
             if (params.required) {
