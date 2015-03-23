@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The Binding-Context</title>
+        <title>WebRx - Observable Properties</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The Binding-Context" /> 
+        <meta property="og:title" content="WebRx - Observable Properties" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/assets/main-2be49f7c29b74884717e1034773fcc28.css">
     </head>
     <body>
-        <h1 id="logoh1">WebRx - The Binding-Context</h1>
+        <h1 id="logoh1">WebRx - Observable Properties</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -133,63 +133,68 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>Binding context</h2>
+			<div class="body"><h2>Computed Observable Properties</h2>
 
-<p>A binding context is an object that holds data that you can reference from your bindings. While applying bindings, WebRx automatically creates and manages a hierarchy of binding contexts. The root level of the hierarchy refers to the viewModel parameter you supplied to wx.applyBindings(viewModel). Then, each time you use a control flow binding such as with or foreach, that creates a child binding context that refers to the nested view model data.</p>
+<p>What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where computed observable properties come in. </p>
 
-<p>Bindings contexts offer the following special properties that you can reference in any binding:</p>
+<p>For example, given the following view model class ...</p>
 
-<h3>$parent</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Smith&#39;</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
 
-<p>This is the view model object in the parent context, the one immeditely outside the current context. In the root context, this is undefined. Example:</p>
+<p>… you could add a computed observable to return the full name:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ... leave firstName and lastName unchanged ...</span>
  
-<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;with: manager&quot;</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Now we&#39;re inside a nested binding context --&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> is the
-    manager of <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: $parent.name&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
- 
+    <span class="k">this</span><span class="p">.</span><span class="nx">fullName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> <span class="p">}).</span><span class="nx">toProperty</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
 
-<h3>$parents</h3>
+<p>... now you could bind UI elements to it, e.g.:</p>
 
-<p>This is an array representing all of the parent view models:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: fullName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
 
-<p>$parents[0] is the view model from the parent context (i.e., it’s the same as $parent)</p>
+<p>… and they will be updated whenever <em>firstName</em> or <em>lastName</em> changes (your evaluator function will be called once each time any of its dependencies change, and whatever value you return will be passed on to the observers such as UI elements or other computed observables).</p>
 
-<p>$parents[1] is the view model from the grandparent context</p>
+<h3>How it works</h3>
 
-<p>$parents[2] is the view model from the great-grandparent context</p>
+<p>So how did the sample above work?</p>
 
-<p>… and so on.</p>
+<p>One of the core features of WebRx is to be able to convert properties to <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a>, via <em>whenAny</em>, and to convert <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a> into properties, via a method called <em>toProperty</em>. </p>
 
-<h3>$root</h3>
+<p>The <em>whenAny</em> function takes any number of properties as input, subscribes to their <em>changed</em> observables, and invokes a user supplied selector function when any (hence the name) of its inputs changes. The selector function receives the latest value of all inputs as arguments. The result of <em>whenAny</em> is always an Rx Observable.</p>
 
-<p>This is the main view model object in the root context, i.e., the topmost parent context. It’s usually the object that was passed to wx.applyBindings. It is equivalent to $parents[$parents.length - 1].</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">observable</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> <span class="p">})</span></code></pre></div>
 
-<h3>$component</h3>
+<p>So, now that we&#39;ve got an observable representing <em>fullName</em> we can simply invoke the aforementioned <em>toProperty</em> function and voila, we&#39;ve turned the observable into a read-only property that can be bound to a view like any other property.</p>
 
-<p>If you’re within the context of a particular component template, then $component refers to the viewmodel for that component. It’s the component-specific equivalent to $root. In the case of nested components, $component refers to the viewmodel for the closest component.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">observable</span><span class="p">.</span><span class="nx">toProperty</span><span class="p">();</span></code></pre></div>
 
-<p>This is useful, for example, if a component’s template includes one or more foreach blocks in which you wish to refer to some property or function on the component viewmodel rather than on the current data item.</p>
+<h3>Digging deeper</h3>
 
-<h3>$data</h3>
+<p>Remember when we&#39;ve utilized <em>toProperty</em> to turn the result of <em>whenAny</em> into a property? An important detail about toProperty is that it is in no way limited to observables returned by whenAny. In fact <em>toProperty</em> is implemented as a custom Rx-Operator that extends all Rx-Observables. This fact opens up a whole array of possibilities because it enables you to leverage the full spectrum of <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/which-instance.md">Rx&#39;s operators</a> in your UI.</p>
 
-<p>This is the view model object in the current context. In the root context, <strong>$data</strong> and <strong>$root</strong> are equivalent. Inside a nested binding context, this parameter will be set to the current data item (e.g., inside a with: person binding, $data will be set to person). <strong>$data</strong> is useful when you want to reference the viewmodel itself, rather than a property on the viewmodel. Example:</p>
+<h4>Example</h4>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: [&#39;cats&#39;, &#39;dogs&#39;, &#39;fish&#39;]&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li&gt;</span>The value is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/li&gt;</span>
-<span class="nt">&lt;/ul&gt;</span></code></pre></div>
- 
+<p>Imagine you wanted to display a countdown-timer in your UI. The timer would count down from 10 to 1 at a one second interval. Implementing that would be as easy as this:</p>
 
-<h3>$index (only available within foreach bindings)</h3>
+<p>View-Model:</p>
 
-<p>This is the zero-based index of the current array entry being rendered by a foreach binding. Unlike the other binding context properties, $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">countDown</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span>
+      <span class="p">.</span><span class="nx">timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span> <span class="o">-</span> <span class="nx">x</span><span class="p">;</span> <span class="p">})</span>
+      <span class="p">.</span><span class="nx">toProperty</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
 
-<h3>Controlling or modifying the binding context in custom bindings</h3>
+<p>View-Template:</p>
 
-<p>Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">Seconds until auto-logout: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: countDown&quot;</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
 </div>
 		</div>
 	</div>

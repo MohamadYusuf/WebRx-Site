@@ -116,8 +116,7 @@
 					</form>
 				</li>
 			</ul>
-			<h4>Integrating WebRx into your project</h4>
-			<p>Make sure to add script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i></p>
+			<p>Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.</p>
 			<br/>
 		</div>
 
@@ -168,7 +167,7 @@
   <span class="k">this</span><span class="p">.</span><span class="nx">resetTicketCommand</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
     <span class="nx">self</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
     <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="k">return</span> <span class="o">!!</span><span class="nx">ticket</span><span class="p">;</span> <span class="p">}));</span>
+      <span class="k">return</span> <span class="nx">ticket</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}));</span>
   <span class="p">}</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nx">node</span><span class="p">);</span></code></pre></div>  
@@ -199,7 +198,7 @@
         <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
         <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
         <script src="/assets/web.rx-7f72b77e005947ec47947ae755824c19.js"></script>
-        <script src="/assets/default-4bf0f88bf4f7cde57867a13e5984e13f.js"></script>
+        <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

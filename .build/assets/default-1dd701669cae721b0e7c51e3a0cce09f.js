@@ -18,8 +18,9 @@ if(document.location.pathname === '/') {
         this.chosenTicket = wx.property();
         this.resetTicketCommand = wx.command(function() { 
         	self.chosenTicket(null);
-        }, wx.whenAny(this.chosenTicket, function(ticket) { return ticket != null; }));
+        }, wx.whenAny(this.chosenTicket, function(ticket) { return != null; }));
     }
 
 	wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
 }
+;

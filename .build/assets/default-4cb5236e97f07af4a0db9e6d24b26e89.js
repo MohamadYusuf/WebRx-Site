@@ -23,3 +23,4 @@ if(document.location.pathname === '/') {
 
 	wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
 }
+;

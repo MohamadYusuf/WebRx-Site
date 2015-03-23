@@ -76,8 +76,7 @@ PM> Install-Package WebRx
 					</form>
 				</li>
 			</ul>
-			<h4>Integrating WebRx into your project</h4>
-			<p>Make sure to add script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i></p>
+			<p>Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.</p>
 			<br/>
 		</div>
 
@@ -131,7 +130,7 @@ function TicketsViewModel() {
   this.resetTicketCommand = wx.command(function() { 
     self.chosenTicket(null);
     }, wx.whenAny(this.chosenTicket, function(ticket) { 
-      return !!ticket; }));
+      return ticket != null; }));
   }
 
 wx.applyBindings(new TicketsViewModel(), node);
