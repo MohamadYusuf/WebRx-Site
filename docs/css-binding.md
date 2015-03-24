@@ -12,20 +12,20 @@ The css binding adds or removes one or more named CSS classes to the associated 
 
 ### Example
 
-{% highlight html %}
+```html
 <div data-bind="css: { profitWarning: currentProfit < 0 }">
    Profit Information
 </div>
-{% endhighlight %}
+```
  
-{% highlight html %}
+```html
 <script type="text/javascript">
     var viewModel = {
         currentProfit: wx.property(150000) // Positive value, so initially we don't apply the "profitWarning" class
     };
     viewModel.currentProfit(-50); // Causes the "profitWarning" class to be applied
 </script>
-{% endhighlight %}
+```
 
 This will apply the CSS class *profitWarning* whenever the currentProfit value dips below zero, and remove that class whenever it goes above zero.
 
@@ -37,15 +37,15 @@ You should pass a JavaScript object in which the property names are your CSS cla
 
 You can set multiple CSS classes at once. For example, if your view model has a property called isSevere,
 
-{% highlight html %}
+```html
 <div data-bind="css: { profitWarning: currentProfit < 0, majorHighlight: isSevere }">
-{% endhighlight %}
+```
 
 You can even set multiple CSS classes based on the same condition by wrapping the names in quotes like:
 
-{% highlight html %}
+```html
 <div data-bind="css: { profitWarning: currentProfit < 0, 'major highlight': isSevere }">
-{% endhighlight %}
+```
 
 Non-boolean values are interpreted loosely as boolean. For example, 0 and null are treated as false, whereas 21 and non-null objects are treated as true.
 
@@ -57,12 +57,12 @@ As usual, you can use [arbitrary expressions](/docs/binding-syntax.html#topic-bi
 
 If you want to apply the CSS class my-class, you can’t write this:
 
-{% highlight html %}
+```html
 <div data-bind="css: { my-class: someValue }">...</div>
-{% endhighlight %}
+```
 
 … because my-class isn’t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,
 
-{% highlight html %}
+```html
 <div data-bind="css: { 'my-class': someValue }">...</div>
-{% endhighlight %}
+```

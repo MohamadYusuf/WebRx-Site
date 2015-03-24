@@ -8,29 +8,29 @@ What if you’ve got a property for firstName, and another for lastName, and you
 
 For example, given the following view model class ...
 
-{% highlight javascript %}
+```javascript
 function AppViewModel() {
     this.firstName = wx.property('Bob');
     this.lastName = wx.property('Smith');
 }
-{% endhighlight %}
+```
 
 … you could add a computed observable to return the full name:
 
-{% highlight javascript %}
+```javascript
 function AppViewModel() {
     // ... leave firstName and lastName unchanged ...
  
     this.fullName = wx.whenAny(this.firstName, this.lastName, function(firstName, lastName) { 
       return firstName + " " + lastName; }).toProperty();
 }
-{% endhighlight %}
+```
 
 ... now you could bind UI elements to it, e.g.:
 
-{% highlight html %}
+```html
 The name is <span data-bind="text: fullName"></span>
-{% endhighlight %}
+```
 
 … and they will be updated whenever *firstName* or *lastName* changes (your evaluator function will be called once each time any of its dependencies change, and whatever value you return will be passed on to the observers such as UI elements or other computed observables).
 
@@ -42,17 +42,17 @@ One of the core features of WebRx is to be able to convert properties to [Rx-Obs
 
 The *whenAny* function takes any number of properties as input, subscribes to their *changed* observables, and invokes a user supplied selector function when any (hence the name) of its inputs changes. The selector function receives the latest value of all inputs as arguments. The result of *whenAny* is always an Rx Observable.
 
-{% highlight javascript %}
+```javascript
 var observable = wx.whenAny(this.firstName, this.lastName, function(firstName, lastName) { 
   return firstName + " " + lastName; 
 });
-{% endhighlight %}
+```
 
 So, now that we've got an observable representing *fullName* we can simply invoke the aforementioned *toProperty* function and voila, we've turned the observable into a read-only property that can be bound to a view like any other property.
 
-{% highlight javascript %}
+```javascript
 this.lastName = observable.toProperty();
-{% endhighlight %}
+```
 
 ### Digging deeper
 
@@ -65,20 +65,20 @@ Imagine you want to display a countdown-timer in your UI. The timer would count 
 
 View-Model:
 
-{% highlight javascript %}
+```javascript
 function AppViewModel() {
     this.countDown = Rx.Observable.timer(0, 1000)
       .select(function(x) { return 10 - x; })
       .take(11)
       .toProperty();
 }
-{% endhighlight %}
+```
 
 View-Template:
 
-{% highlight html %}
+```html
 Seconds until auto-logout: <span data-bind="text: countDown"></span>
-{% endhighlight %}
+```
 
 #### Live Example
 

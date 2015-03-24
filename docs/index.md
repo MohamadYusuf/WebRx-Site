@@ -18,15 +18,15 @@ As soon as your UI gets nontrivial and has a few overlapping behaviors, things c
 
 It’s much easier with WebRx. It lets you scale up in complexity without fear of introducing inconsistencies. Just represent your items as a JavaScript array, and then use a foreach binding to transform this array into a TABLE or set of DIVs. Whenever the array changes, the UI changes to match (you don’t have to figure out how to inject new TRs or where to inject them). The rest of the UI stays in sync. For example, you can declaratively bind a SPAN to display the number of items as follows:
 
-{% highlight html %}
+```html
 There are <span data-bind="text: myItems.length"></span> items
-{% endhighlight %} 
+```
 
 That’s it! You don’t have to write code to update it; it updates on its own when the myItems array changes. Similarly, to make the ‘Add’ button enable or disable depending on the number of items, just write:
 
-{% highlight html %}
+```html
 <button data-bind="enable: myItems.length < 5">Add</button>
-{% endhighlight %} 
+```
 
 ### WebRx vs Knockout
 

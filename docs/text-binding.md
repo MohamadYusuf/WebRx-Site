@@ -12,18 +12,18 @@ Typically this is useful with elements like *span* or *em* that traditionally di
 
 ### Example
 
-{% highlight html %}
+```html
 Today's message is: <span data-bind="text: myMessage"></span>
-{% endhighlight %} 
+```
  
-{% highlight html %}
+```html
 <script type="text/javascript">
     var viewModel = {
         myMessage: wx.property() // Initially blank
     };
     viewModel.myMessage("Hello, world!"); // Text appears
 </script>
-{% endhighlight %} 
+```
 
 ### Parameters
 

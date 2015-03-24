@@ -10,15 +10,15 @@ WebRx’s declarative binding system provides a concise and powerful way to link
 
 A binding consists of two items, the binding name and expression, separated by a colon. Here is an example of a single, simple binding:
 
-{% highlight html %}
+```html
 Today's message is: <span data-bind="text: myMessage"></span>
-{% endhighlight %} 
+```
 
 An element can include multiple bindings (related or unrelated), with each binding separated by a comma. Here are some examples:
  
-{% highlight html %}
+```html
 Cellphone: <input data-bind="value: cellphoneNumber, enabled: hasCellphone" />
-{% endhighlight %} 
+```
 
 The binding name should generally match a registered binding handler (either built-in or custom) or be a parameter for another binding. If the name matches neither of those, WebRx will throw an error.
 
@@ -63,15 +63,15 @@ Expressions do not have access to global variables like window, document or loca
 
 Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding, which often look like this:
 
-{% highlight javascript %}
+```javascript
 a.b.c
-{% endhighlight %} 
+```
 
 It makes more sense to show nothing than to throw an exception if "a" is undefined (perhaps we are waiting for the server response, and it will become defined soon). If expression evaluation wasn't forgiving we'd have to write bindings that clutter the code, for example:
 
-{% highlight javascript %}
+```javascript
 a||{}).b||{}).c
-{% endhighlight %} 
+```
 
 #### No Control Flow Statements
 
@@ -89,22 +89,22 @@ A filter formats the value of an expression for display to the user. They can be
 
 Filters can be applied to expressions in templates using the following syntax:
 
-{% highlight javascript %}
+```javascript
 expression | filter
-{% endhighlight %} 
+```
 
 E.g. the markup **"12 | currency"** formats the number 12 as a currency using the currency filter. The resulting value is $12.00.
 
 Filters can be applied to the result of another filter. This is called "chaining" and uses the following syntax:
 
-{% highlight javascript %}
+```javascript
 expression | filter1 | filter2 | ...
-{% endhighlight %} 
+```
 
 Filters may have arguments. The syntax for this is
 
-{% highlight javascript %}
+```javascript
 expression | filter:argument1:argument2:...
-{% endhighlight %} 
+```
 
 E.g. the markup **"1234 | number:2"** formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.

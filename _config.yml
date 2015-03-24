@@ -3,7 +3,7 @@ markdown: redcarpet
 highliter: rouge
 permalinks: pretty
 destination: .build
-exclude: ['assets']
+exclude: ['assets', 'vs']
 encoding: utf-8
 excerpt_separator: <!--more-->
 assets:

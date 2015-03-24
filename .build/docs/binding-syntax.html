@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -20,7 +20,12 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/assets/main-729ea601c0ed3d72a8e267e6a16ed68d.css">
-    </head>
+
+
+        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
+        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
+        <script src="/assets/web.rx-c34b5ae7069e7a8b70fec7b9c89a954d.js"></script>
+      </head>
     <body>
         <h1 id="logoh1">WebRx - Binding Syntax</h1>
         <div id="main-container" class="container">
@@ -141,15 +146,11 @@
 <h3>Binding syntax</h3>
 
 <p>A binding consists of two items, the binding name and expression, separated by a colon. Here is an example of a single, simple binding:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html">Today&#39;s message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myMessage&quot;</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-html" data-lang="html">Today&#39;s message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myMessage&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div>
 <p>An element can include multiple bindings (related or unrelated), with each binding separated by a comma. Here are some examples:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html">Cellphone: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;value: cellphoneNumber, enabled: hasCellphone&quot;</span> <span class="nt">/&gt;</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-html" data-lang="html">Cellphone: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;value: cellphoneNumber, enabled: hasCellphone&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
 <p>The binding name should generally match a registered binding handler (either built-in or custom) or be a parameter for another binding. If the name matches neither of those, WebRx will throw an error.</p>
 
 <h2><a id="topic-binding-expressions"></a>Binding Expressions</h2>
@@ -188,15 +189,11 @@
 <h4>Forgiving</h4>
 
 <p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating a.b.c throws an exception if a is not an object. While this makes sense for a general purpose language, the expression evaluations are primarily used for data binding, which often look like this:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span>
+</code></pre></div>
 <p>It makes more sense to show nothing than to throw an exception if &quot;a&quot; is undefined (perhaps we are waiting for the server response, and it will become defined soon). If expression evaluation wasn&#39;t forgiving we&#39;d have to write bindings that clutter the code, for example:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="o">||</span><span class="p">{}).</span><span class="nx">b</span><span class="o">||</span><span class="p">{}).</span><span class="nx">c</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">a</span><span class="o">||</span><span class="p">{}).</span><span class="nx">b</span><span class="o">||</span><span class="p">{}).</span><span class="nx">c</span>
+</code></pre></div>
 <h4>No Control Flow Statements</h4>
 
 <p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
@@ -212,28 +209,21 @@
 <h4>Using filters in templates</h4>
 
 <p>Filters can be applied to expressions in templates using the following syntax:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span>
+</code></pre></div>
 <p>E.g. the markup <strong>&quot;12 | currency&quot;</strong> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
 
 <p>Filters can be applied to the result of another filter. This is called &quot;chaining&quot; and uses the following syntax:</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span>
+</code></pre></div>
 <p>Filters may have arguments. The syntax for this is</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span>
+</code></pre></div>
 <p>E.g. the markup <strong>&quot;1234 | number:2&quot;</strong> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
 </div>
 		</div>
 	</div>
 </div>
-
 
 
             <div id="footer" class="content-panel">
@@ -254,9 +244,6 @@
 
         <script src="/assets/jquery-41f60d5fa84e6e8d7b40f632e0568b79.js"></script>
         <script src="/assets/bootstrap.min-26a3cccafd748b47ae34e937d84db91b.js"></script>
-        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
-        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
-        <script src="/assets/web.rx-ceae86f24e1fdb3e5e845a4da66da514.js"></script>
         <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
 
         <script>

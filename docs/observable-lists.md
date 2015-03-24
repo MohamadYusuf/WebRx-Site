@@ -8,24 +8,24 @@ If you want to detect and respond to changes on one object, you’d use observab
 
 #### Example
 
-{% highlight javascript %}
+```javascript
 var myObservableList = wx.list();    // Initially an empty array
 myObservableList.push('Some value'); // Adds the value and notifies observers
-{% endhighlight %}
+```
 
 
 #### Prepopulating a list
 
 If you want your list not to start empty, but to contain some initial items, pass those items as an array to the constructor. For example,
 
-{% highlight javascript %}
+```javascript
 // This observable list initially contains three objects
 var anotherObservableList = wx.list([
     { name: "Bungle", type: "Bear" },
     { name: "George", type: "Hippo" },
     { name: "Zippy", type: "Unknown" }
 ]);
-{% endhighlight %}
+```
 
 
 ### Manipulating an observable-list
@@ -88,13 +88,13 @@ Normally, an observable-list notifies its subscribers immediately, as soon as it
 
 This is accomplished calling the list's *suppressChangeNotifications* method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.
 
-{% highlight javascript %}
+```javascript
 var list = wx.list();    						// Initially an empty array
 list.push('Some value'); 						// Adds the value and notifies observers
 var disp = list.suppressChangeNotifications();
 list.push('Some other value');					// no notifications get send now
 disp.dispose();								// list resumes sending change notifications
-{% endhighlight %}
+```
 
 
 #### Live Example

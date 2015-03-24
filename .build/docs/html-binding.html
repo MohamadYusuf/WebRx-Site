@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -20,7 +20,12 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/assets/main-729ea601c0ed3d72a8e267e6a16ed68d.css">
-    </head>
+
+
+        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
+        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
+        <script src="/assets/web.rx-c34b5ae7069e7a8b70fec7b9c89a954d.js"></script>
+      </head>
     <body>
         <h1 id="logoh1">WebRx - The Html-Binding</h1>
         <div id="main-container" class="container">
@@ -143,18 +148,14 @@
 <p>Typically this is useful when values in your view model are actually strings of HTML markup that you want to render.</p>
 
 <h3>Example</h3>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;html: details&quot;</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></div>
- 
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;html: details&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
         <span class="nx">details</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
     <span class="p">};</span>
     <span class="nx">viewModel</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="s2">&quot;&lt;em&gt;For further details, view the report &lt;a href=&#39;report.html&#39;&gt;here&lt;/a&gt;.&lt;/em&gt;&quot;</span><span class="p">);</span> <span class="c1">// HTML content appears</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
- 
-
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
 <h3>Parameters</h3>
 
 <h4>Main parameter</h4>
@@ -172,7 +173,6 @@
 		</div>
 	</div>
 </div>
-
 
 
             <div id="footer" class="content-panel">
@@ -193,9 +193,6 @@
 
         <script src="/assets/jquery-41f60d5fa84e6e8d7b40f632e0568b79.js"></script>
         <script src="/assets/bootstrap.min-26a3cccafd748b47ae34e937d84db91b.js"></script>
-        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
-        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
-        <script src="/assets/web.rx-ceae86f24e1fdb3e5e845a4da66da514.js"></script>
         <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
 
         <script>

@@ -10,13 +10,13 @@ The visible binding causes the associated DOM element to become hidden or visibl
 
 ### Example
 
-{% highlight html %}
+```html
 <div data-bind="visible: shouldShowMessage">
     You will see this message only when "shouldShowMessage" holds a true value.
 </div>
-{% endhighlight %} 
+```
  
-{% highlight html %}
+```html
 <script type="text/javascript">
     var viewModel = {
         shouldShowMessage: wx.property(true) // Message initially visible
@@ -24,7 +24,7 @@ The visible binding causes the associated DOM element to become hidden or visibl
     viewModel.shouldShowMessage(false); // ... now it's hidden
     viewModel.shouldShowMessage(true); // ... now it's visible again
 </script>
-{% endhighlight %} 
+```
 
 ### Parameters
 

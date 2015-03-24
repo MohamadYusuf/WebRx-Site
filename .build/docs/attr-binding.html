@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -20,7 +20,12 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/assets/main-729ea601c0ed3d72a8e267e6a16ed68d.css">
-    </head>
+
+
+        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
+        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
+        <script src="/assets/web.rx-c34b5ae7069e7a8b70fec7b9c89a954d.js"></script>
+      </head>
     <body>
         <h1 id="logoh1">WebRx - The Attr-Binding</h1>
         <div id="main-container" class="container">
@@ -141,20 +146,16 @@
 <p>The attr binding provides a generic way to set the value of any attribute for the associated DOM element. This is useful, for example, when you need to set the title attribute of an element, the src of an img tag, or the href of a link based on values in your view model, with the attribute value being updated automatically whenever the corresponding model property changes.</p>
 
 <h3>Example</h3>
-
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { href: url, title: details }&quot;</span><span class="nt">&gt;</span>
     Report
-<span class="nt">&lt;/a&gt;</span></code></pre></div>
- 
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
         <span class="nx">url</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;year-end.html&quot;</span><span class="p">),</span>
         <span class="nx">details</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;Report including final year-end statistics&quot;</span><span class="p">)</span>
     <span class="p">};</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
- 
-
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
 <p>This will set the element’s href attribute to year-end.html and the element’s title attribute to Report including final year-end statistics.</p>
 
 <h3>Parameters</h3>
@@ -168,19 +169,14 @@
 <h4>Note: Applying attributes whose names aren’t legal JavaScript variable names</h4>
 
 <p>If you want to apply the attribute data-something, you can’t write this:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { data-something: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { data-something: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
 <p>… because data-something isn’t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { &#39;data-something&#39;: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
- 
-</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { &#39;data-something&#39;: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
 		</div>
 	</div>
 </div>
-
 
 
             <div id="footer" class="content-panel">
@@ -201,9 +197,6 @@
 
         <script src="/assets/jquery-41f60d5fa84e6e8d7b40f632e0568b79.js"></script>
         <script src="/assets/bootstrap.min-26a3cccafd748b47ae34e937d84db91b.js"></script>
-        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
-        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
-        <script src="/assets/web.rx-ceae86f24e1fdb3e5e845a4da66da514.js"></script>
         <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
 
         <script>

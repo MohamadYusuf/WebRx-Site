@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -20,7 +20,12 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/assets/main-729ea601c0ed3d72a8e267e6a16ed68d.css">
-    </head>
+
+
+        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
+        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
+        <script src="/assets/web.rx-c34b5ae7069e7a8b70fec7b9c89a954d.js"></script>
+      </head>
     <body>
         <h1 id="logoh1">WebRx - Documentation</h1>
         <div id="main-container" class="container">
@@ -149,15 +154,11 @@
 <h3>How is WebRx different?</h3>
 
 <p>It’s much easier with WebRx. It lets you scale up in complexity without fear of introducing inconsistencies. Just represent your items as a JavaScript array, and then use a foreach binding to transform this array into a TABLE or set of DIVs. Whenever the array changes, the UI changes to match (you don’t have to figure out how to inject new TRs or where to inject them). The rest of the UI stays in sync. For example, you can declaratively bind a SPAN to display the number of items as follows:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html">There are <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myItems.length&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> items</code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-html" data-lang="html">There are <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myItems.length&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> items
+</code></pre></div>
 <p>That’s it! You don’t have to write code to update it; it updates on its own when the myItems array changes. Similarly, to make the ‘Add’ button enable or disable depending on the number of items, just write:</p>
-
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enable: myItems.length &lt; 5&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span></code></pre></div>
- 
-
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enable: myItems.length &lt; 5&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
+</code></pre></div>
 <h3>WebRx vs Knockout</h3>
 
 <p>Even though WebRx shares many similarities with Knockout, the project is not meant to be a drop-in replacement.</p>
@@ -170,7 +171,6 @@
 		</div>
 	</div>
 </div>
-
 
 
             <div id="footer" class="content-panel">
@@ -191,9 +191,6 @@
 
         <script src="/assets/jquery-41f60d5fa84e6e8d7b40f632e0568b79.js"></script>
         <script src="/assets/bootstrap.min-26a3cccafd748b47ae34e937d84db91b.js"></script>
-        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
-        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
-        <script src="/assets/web.rx-ceae86f24e1fdb3e5e845a4da66da514.js"></script>
         <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
 
         <script>

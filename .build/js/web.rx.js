@@ -288,6 +288,14 @@ var wx;
         return result;
     }
     wx.cloneNodeArray = cloneNodeArray;
+    function nodeListToArray(nodes) {
+        return Array.prototype.slice.call(nodes);
+    }
+    wx.nodeListToArray = nodeListToArray;
+    function nodeChildrenToArray(node) {
+        return nodeListToArray(node.childNodes);
+    }
+    wx.nodeChildrenToArray = nodeChildrenToArray;
     function using(disp, action) {
         if (!disp)
             throw new Error("disp");
@@ -1174,7 +1182,7 @@ var wx;
         internal.domManagerConstructor = DomManager;
     })(internal = wx.internal || (wx.internal = {}));
     function applyBindings(model, node) {
-        wx.injector.resolve(wx.res.domManager).applyBindings(model, node);
+        wx.injector.resolve(wx.res.domManager).applyBindings(model, node || window.document.body);
     }
     wx.applyBindings = applyBindings;
     function cleanNode(node) {
@@ -1275,6 +1283,7 @@ var wx;
             var cmdObservable;
             var paramObservable;
             var cleanup;
+            var isAnchor = el.tagName.toLowerCase() === "a";
             function doCleanup() {
                 if (cleanup) {
                     cleanup.dispose();
@@ -1311,6 +1320,9 @@ var wx;
                         }));
                         cleanup.add(Rx.Observable.fromEvent(el, "click").subscribe(function (e) {
                             x.cmd.execute(x.param);
+                            if (isAnchor) {
+                                e.preventDefault();
+                            }
                         }));
                     }
                 }

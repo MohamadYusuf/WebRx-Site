@@ -12,18 +12,18 @@ Typically this is useful when values in your view model are actually strings of 
 
 ### Example
 
-{% highlight html %}
+```html
 <div data-bind="html: details"></div>
-{% endhighlight %} 
+```
  
-{% highlight html %}
+```html
 <script type="text/javascript">
     var viewModel = {
         details: wx.property() // Initially blank
     };
     viewModel.details("<em>For further details, view the report <a href='report.html'>here</a>.</em>"); // HTML content appears
 </script>
-{% endhighlight %} 
+```
 
 ### Parameters
 

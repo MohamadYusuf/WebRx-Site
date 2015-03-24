@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -20,7 +20,12 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/assets/main-729ea601c0ed3d72a8e267e6a16ed68d.css">
-    </head>
+
+
+        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
+        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
+        <script src="/assets/web.rx-c34b5ae7069e7a8b70fec7b9c89a954d.js"></script>
+      </head>
     <body>
         <h1 id="logoh1">WebRx - Dynamic JavaScript UIs with ReactiveX</h1>
         <div id="main-container" class="container">
@@ -108,7 +113,9 @@
 			<h3>Installation</h3>
 			<ul id="install">
 				<li>Install via NuGet
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>  					
+```bash
+PM> Install-Package WebRx
+```					
 				</li>
 				<li>or download
 					<form id="download-form" method="get" action="/downloads/web.rx.zip">
@@ -137,44 +144,47 @@
 
 			<br/>
 			<h4>HTML</h4>
-			<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;live-demo&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p&gt;</span>Choose a ticket class:
-    <span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets, </span>
-<span class="s">      selectedValue: @chosenTicket, itemText: &#39;name&#39;&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/wx-select&gt;</span>
+			```html
+<div id="live-demo">
+  <p>Choose a ticket class:
+    <wx-select params="items: tickets, 
+      selectedValue: @chosenTicket, itemText: 'name'">
+    </wx-select>
     
-    <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: resetTicketCommand&quot;</span><span class="nt">&gt;</span>Clear<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/p&gt;</span>           
+    <button data-bind="command: resetTicketCommand">Clear</button>
+  </p>           
   
-  <span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">&quot;with: chosenTicket&quot;</span><span class="nt">&gt;</span>
-    You have chosen <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/b&gt;</span> 
-    for $<span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: price&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-  <span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>  
+  <p data-bind="with: chosenTicket">
+    You have chosen <b data-bind="text: name"></b> 
+    for $<span data-bind="text: price"></span>
+  </p>
+</div>
+			```
 
 			<h4>Javascript</h4>
-			<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">TicketsViewModel</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;live-demo&quot;</span><span class="p">);</span>
+			```javascript
+function TicketsViewModel() {
+  var self = this;
+  var node = document.getElementById("live-demo");
   
-  <span class="k">this</span><span class="p">.</span><span class="nx">tickets</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Economy&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">199.95</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Business&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">449.22</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;First Class&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">1199.99</span> <span class="p">}</span>
-  <span class="p">];</span>
+  this.tickets = [
+    { name: "Economy", price: 199.95 },
+    { name: "Business", price: 449.22 },
+    { name: "First Class", price: 1199.99 }
+  ];
 
-  <span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">resetTicketCommand</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
-    <span class="nx">self</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-    <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="k">return</span> <span class="nx">ticket</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}));</span>
-  <span class="p">}</span>
+  this.chosenTicket = wx.property();
+  this.resetTicketCommand = wx.command(function() { 
+    self.chosenTicket(null);
+    }, wx.whenAny(this.chosenTicket, function(ticket) { 
+      return ticket != null; }));
+  }
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nx">node</span><span class="p">);</span></code></pre></div>  
+wx.applyBindings(new TicketsViewModel(), node);
+			```
 		</div>
 	</div>
 </div>
-
 
 
             <div id="footer" class="content-panel">
@@ -195,9 +205,6 @@
 
         <script src="/assets/jquery-41f60d5fa84e6e8d7b40f632e0568b79.js"></script>
         <script src="/assets/bootstrap.min-26a3cccafd748b47ae34e937d84db91b.js"></script>
-        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
-        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
-        <script src="/assets/web.rx-ceae86f24e1fdb3e5e845a4da66da514.js"></script>
         <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
 
         <script>

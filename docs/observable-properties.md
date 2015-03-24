@@ -25,18 +25,18 @@ When using WebRx, your view is simply your HTML document with declarative bindin
 
 To create a view model with WebRx, just declare any JavaScript object. For example,
 
-{% highlight javascript %}
+```javascript
 var myViewModel = {
     personName: 'Bob',
     personAge: 123
 };
-{% endhighlight %}
+```
 
 You can then create a very simple view of this view model using a declarative binding. For example, the following markup displays the personName value:
 
-{% highlight html %}
+```html
 The name is <span data-bind="text: personName"></span>
-{% endhighlight %}
+```
 
 ### Activating WebRx
 
@@ -44,23 +44,22 @@ The data-bind attribute isn’t native to HTML, though it is perfectly OK (it’
 
 To activate WebRx, add the following line to a script block:
 
-{% highlight javascript %}
-wx.applyBindings(myViewModel, element);
-{% endhighlight %}
+```javascript
+wx.applyBindings(myViewModel);
+```
 
 You can either put the script block at the bottom of your HTML document, or you can put it at the top and wrap the contents in a DOM-ready handler such as jQuery’s $ function.
 
 That does it! Now, your view will display as if you’d written the following HTML:
 
-{% highlight html %}
+```html
 The name is <span>Bob</span>
-{% endhighlight %}
+```
 
 In case you’re wondering what the parameters to wx.applyBindings do,
 
-The **first parameter** says what view model object you want to use with the declarative bindings it activates.
-
-The **second parameter** defines which part of the document you want to search for data-bind attributes. For example, wx.applyBindings(myViewModel, document.getElementById('someElementId')). This restricts the activation to the element with ID someElementId and its descendants, which is useful if you want to have multiple view models and associate each with a different region of the page.
+- The first parameter says what view model object you want to use with the declarative bindings it activates.
+- Optionally, you can pass a second parameter which defines which part of the document you want to search for data-bind attributes. For example, wx.applyBindings(myViewModel, document.getElementById('someElementId')). This restricts the activation to the element with ID someElementId and its descendants, which is useful if you want to have multiple view models and associate each with a different region of the page.
 
 Pretty simple, really.
 
@@ -70,12 +69,12 @@ OK, you’ve seen how to create a basic view model and how to display one of its
 
 For example, rewrite the preceding view model object as follows:
 
-{% highlight javascript %}
+```javascript
 var myViewModel = {
     personName: wx.property('Bob'),
     personAge: wx.property(123)
 };
-{% endhighlight %}
+```
 
 You don’t have to change the view at all - the same data-bind syntax will keep working. The difference is that it’s now capable of detecting changes, and when it does, it will update the view automatically.
 
@@ -98,16 +97,16 @@ If you want to register your own subscriptions to be notified of changes to prop
 
 If for example you would want to monitor changes to the *personName* property, you would do it like this: 
 
-{% highlight javascript %}
+```javascript
 myViewModel.personName.changed.subscribe(function(newValue) {
     alert("The person's new name is " + newValue);
 });
-{% endhighlight %}
+```
 
 You can also terminate a subscription if you wish: first capture the return value as a variable, then you can call its dispose function, e.g.:
 
-{% highlight javascript %}
+```javascript
 var subscription = myViewModel.personName.changed.subscribe(function(newValue) { /* do stuff */ });
 // ...then later...
 subscription.dispose(); // I no longer want notifications
-{% endhighlight %}
+```

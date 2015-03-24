@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -20,7 +20,12 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/assets/main-729ea601c0ed3d72a8e267e6a16ed68d.css">
-    </head>
+
+
+        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
+        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
+        <script src="/assets/web.rx-c34b5ae7069e7a8b70fec7b9c89a954d.js"></script>
+      </head>
     <body>
         <h1 id="logoh1">WebRx - Observable Properties</h1>
         <div id="main-container" class="container">
@@ -139,21 +144,19 @@
 <p>If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
 
 <h4>Example</h4>
-
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    <span class="c1">// Initially an empty array</span>
-<span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span></code></pre></div>
-
+<span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span>
+</code></pre></div>
 <h4>Prepopulating a list</h4>
 
 <p>If you want your list not to start empty, but to contain some initial items, pass those items as an array to the constructor. For example,</p>
-
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// This observable list initially contains three objects</span>
 <span class="kd">var</span> <span class="nx">anotherObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Bungle&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Bear&quot;</span> <span class="p">},</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Hippo&quot;</span> <span class="p">},</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Zippy&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Unknown&quot;</span> <span class="p">}</span>
-<span class="p">]);</span></code></pre></div>
-
+<span class="p">]);</span>
+</code></pre></div>
 <h3>Manipulating an observable-list</h3>
 
 <p>WebRx&#39;s observable list exposes a familiar set of functions for modifying the contents of the list and notifying listeners.</p>
@@ -216,13 +219,12 @@
 <p>Normally, an observable-list notifies its subscribers immediately, as soon as it’s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. </p>
 
 <p>This is accomplished calling the list&#39;s <em>suppressChangeNotifications</em> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
-
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>                         <span class="c1">// Initially an empty array</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span>                       <span class="c1">// Adds the value and notifies observers</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>                           <span class="c1">// Initially an empty array</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span>                        <span class="c1">// Adds the value and notifies observers</span>
 <span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">suppressChangeNotifications</span><span class="p">();</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some other value&#39;</span><span class="p">);</span>                 <span class="c1">// no notifications get send now</span>
-<span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>                               <span class="c1">// list resumes sending change notifications</span></code></pre></div>
-
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some other value&#39;</span><span class="p">);</span>                  <span class="c1">// no notifications get send now</span>
+<span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>                             <span class="c1">// list resumes sending change notifications</span>
+</code></pre></div>
 <h4>Live Example</h4>
 
 <iframe class="hidden-xs" width="100%" height="300" src="//jsfiddle.net/oliverw/z51a6bsg/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
@@ -230,7 +232,6 @@
 		</div>
 	</div>
 </div>
-
 
 
             <div id="footer" class="content-panel">
@@ -251,9 +252,6 @@
 
         <script src="/assets/jquery-41f60d5fa84e6e8d7b40f632e0568b79.js"></script>
         <script src="/assets/bootstrap.min-26a3cccafd748b47ae34e937d84db91b.js"></script>
-        <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
-        <script src="/assets/rx.lite.extras.min-9dc421df46cc2751004ed5d6686e321c.js"></script>
-        <script src="/assets/web.rx-ceae86f24e1fdb3e5e845a4da66da514.js"></script>
         <script src="/assets/default-4cb5236e97f07af4a0db9e6d24b26e89.js"></script>
 
         <script>

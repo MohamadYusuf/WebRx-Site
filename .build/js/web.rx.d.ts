@@ -336,6 +336,8 @@ declare module wx {
     function isFunction(obj: any): boolean;
     function isEqual(a: any, b: any, aStack?: any, bStack?: any): boolean;
     function cloneNodeArray(nodes: Array<Node>): Array<Node>;
+    function nodeListToArray(nodes: NodeList): Node[];
+    function nodeChildrenToArray<T>(node: Node): T[];
     function using<T extends Rx.Disposable>(disp: T, action: (disp?: T) => void): void;
     function observableRequire(module: string): Rx.Observable<any>;
     function observeObject(target: any, onChanging?: boolean): Rx.Observable<IPropertyChangedEventArgs>;
@@ -379,7 +381,7 @@ declare module wx {
     module internal {
         var domManagerConstructor: any;
     }
-    function applyBindings(model: any, node: Node): void;
+    function applyBindings(model: any, node?: Node): void;
     function cleanNode(node: Node): void;
 }
 declare module wx {

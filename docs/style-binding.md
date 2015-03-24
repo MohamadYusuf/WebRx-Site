@@ -12,20 +12,20 @@ The style binding adds or removes one or more style values to the associated DOM
 
 ### Example
 
-{% highlight html %}
+```html
 <div data-bind="style: { color: currentProfit < 0 ? 'red' : 'black' }">
    Profit Information
 </div>
-{% endhighlight %}
+```
  
-{% highlight html %}
+```html
 <script type="text/javascript">
     var viewModel = {
         currentProfit: wx.property(150000) // Positive value, so initially black
     };
     viewModel.currentProfit(-50); // Causes the DIV's contents to go red
 </script>
-{% endhighlight %}
+```
 
 This will set the element’s style.color property to red whenever the currentProfit value dips below zero, and to black whenever it goes above zero.
 
@@ -37,9 +37,9 @@ You should pass a JavaScript object in which the property names correspond to st
 
 You can set multiple style values at once. For example, if your view model has a property called isSevere,
 
-{% highlight html %}
+```html
 <div data-bind="style: { color: currentProfit < 0 ? 'red' : 'black', fontWeight: isSevere ? 'bold' : '' }">...</div>
-{% endhighlight %}
+```
 
 If your parameter references an observable value, the binding will update the styles whenever the observable value changes. If the parameter doesn’t reference an observable value, it will only set the styles once and will not update them later.
 

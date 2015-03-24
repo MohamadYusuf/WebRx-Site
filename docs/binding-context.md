@@ -12,7 +12,7 @@ Bindings contexts offer the following special properties that you can reference 
 
 This is the view model object in the parent context, the one immeditely outside the current context. In the root context, this is undefined. Example:
 
-{% highlight html %}
+```html
 <h1 data-bind="text: name"></h1>
  
 <div data-bind="with: manager">
@@ -20,7 +20,7 @@ This is the view model object in the parent context, the one immeditely outside 
     <span data-bind="text: name"></span> is the
     manager of <span data-bind="text: $parent.name"></span>
 </div>
-{% endhighlight %} 
+```
 
 ### $parents
 
@@ -48,11 +48,11 @@ This is useful, for example, if a component’s template includes one or more fo
 
 This is the view model object in the current context. In the root context, **$data** and **$root** are equivalent. Inside a nested binding context, this parameter will be set to the current data item (e.g., inside a with: person binding, $data will be set to person). **$data** is useful when you want to reference the viewmodel itself, rather than a property on the viewmodel. Example:
 
-{% highlight html %}
+```html
 <ul data-bind="foreach: ['cats', 'dogs', 'fish']">
     <li>The value is <span data-bind="text: $data"></span></li>
 </ul>
-{% endhighlight %} 
+```
 
 ### $index (only available within foreach bindings)
 

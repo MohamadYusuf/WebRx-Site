@@ -66,9 +66,9 @@ meta_description: WebRx - Dynamic JavaScript UIs with ReactiveX
 			<h3>Installation</h3>
 			<ul id="install">
 				<li>Install via NuGet
-{% highlight bash %}
+```bash
 PM> Install-Package WebRx
-{% endhighlight %}  					
+```					
 				</li>
 				<li>or download
 					<form id="download-form" method="get" action="/downloads/web.rx.zip">
@@ -97,7 +97,7 @@ PM> Install-Package WebRx
 
 			<br/>
 			<h4>HTML</h4>
-			{% highlight html %}
+			```html
 <div id="live-demo">
   <p>Choose a ticket class:
     <wx-select params="items: tickets, 
@@ -112,10 +112,10 @@ PM> Install-Package WebRx
     for $<span data-bind="text: price"></span>
   </p>
 </div>
-			{% endhighlight %}  
+			```
 
 			<h4>Javascript</h4>
-			{% highlight javascript %}
+			```javascript
 function TicketsViewModel() {
   var self = this;
   var node = document.getElementById("live-demo");
@@ -134,7 +134,7 @@ function TicketsViewModel() {
   }
 
 wx.applyBindings(new TicketsViewModel(), node);
-			{% endhighlight %}  
+			```
 		</div>
 	</div>
 </div>
