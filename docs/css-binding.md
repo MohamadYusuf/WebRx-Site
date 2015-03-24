@@ -10,7 +10,7 @@ The css binding adds or removes one or more named CSS classes to the associated 
 
 (Note: If you don’t want to apply a CSS class but instead want to assign a style attribute value directly, see the style binding.)
 
-### Example with static classes
+### Example
 
 {% highlight html %}
 <div data-bind="css: { profitWarning: currentProfit < 0 }">
@@ -29,37 +29,11 @@ The css binding adds or removes one or more named CSS classes to the associated 
 
 This will apply the CSS class *profitWarning* whenever the currentProfit value dips below zero, and remove that class whenever it goes above zero.
 
-### Example with dynamic classes
-
-{% highlight html %}
-<div data-bind="css: profitStatus">
-   Profit Information
-</div>
-{% endhighlight %}
- 
-{% highlight html %}
-<script type="text/javascript">
-    var viewModel = {
-        currentProfit: wx.property(150000)
-    };
- 
-    // Evalutes to a positive value, so initially we apply the "profitPositive" class
-    viewModel.profitStatus = wx.whenAny(this.currentProfit, function(currentProfit) { 
-    	currentProfit < 0 ? "profitWarning" : "profitPositive";
-    }).toProperty();
- 
-    // Causes the "profitPositive" class to be removed and "profitWarning" class to be added
-    viewModel.currentProfit(-50);
-</script>
-{% endhighlight %}
-
-This will apply the CSS class *profitPositive* when the *currentProfit* value is positive, otherwise it will apply the *profitWarning* CSS class.
-
 ### Parameters
 
 #### Main parameter
 
-If you are using static CSS class names, then you can pass a JavaScript object in which the property names are your CSS classes, and their values evaluate to true or false according to whether the class should currently be applied.
+You should pass a JavaScript object in which the property names are your CSS classes, and their values evaluate to true or false according to whether the class should currently be applied.
 
 You can set multiple CSS classes at once. For example, if your view model has a property called isSevere,
 
@@ -76,8 +50,6 @@ You can even set multiple CSS classes based on the same condition by wrapping th
 Non-boolean values are interpreted loosely as boolean. For example, 0 and null are treated as false, whereas 21 and non-null objects are treated as true.
 
 If your parameter references an observable value, the binding will add or remove the CSS class whenever the observable value changes. If the parameter doesn’t reference an observable value, it will only add or remove the class once and will not do so again later.
-
-If you want to use dynamic CSS class names, then you can pass a string that corresponds to the CSS class or classes that you want to add to the element. If the parameter references an observable value, then the binding will remove any previously added classes and add the class or classes corresponding to the observable’s new value.
 
 As usual, you can use [arbitrary expressions](/docs/binding-syntax.html#topic-binding-expressions) as parameter values. WebRx will evaluate them and use the resulting values to determine the appropriate CSS classes to add or remove.
 
