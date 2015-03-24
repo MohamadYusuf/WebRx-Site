@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: WebRx - The Hidden-Binding
+title: WebRx - The ForEach-Binding
 ---
 ## The Foreach-Binding
 
