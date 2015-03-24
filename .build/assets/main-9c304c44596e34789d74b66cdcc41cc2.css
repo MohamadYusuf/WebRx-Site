@@ -77,6 +77,10 @@ pre code {
     line-height: 1.8em;
 }
 
+.docs #start {
+  padding-top: 1em;
+}
+
 .docs .index ol {
     padding-left: 1.6em;
 }
@@ -262,15 +266,18 @@ pre {
 }
 
 .docs .body h2:first-child,
-.docs .body h3:first-child,
-.docs .body h4:first-child {
+.docs .body h3:first-child {
   margin-top: 0;
 }
 
 .docs .body h3,
 .docs .body h4 {
-  margin-top: 1.25em;
-  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+.docs .body h3,
+.docs .body h4 {
+  margin-top: 1em;
 }
 
 .docs .body p {
@@ -340,9 +347,5 @@ pre {
   #main-container > .navbar .navbar-nav a:hover {
     color: #ffffff;
     background-color: transparent;
-  }
-
-  .docs #start {
-    padding-top: 1em;
   }
 }

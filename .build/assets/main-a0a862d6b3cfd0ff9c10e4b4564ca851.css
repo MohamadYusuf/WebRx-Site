@@ -262,23 +262,22 @@ pre {
 }
 
 .docs .body h2:first-child,
-.docs .body h3:first-child,
-.docs .body h4:first-child {
+.docs .body h3:first-child {
   margin-top: 0;
 }
 
 .docs .body h3,
 .docs .body h4 {
-  margin-top: 1.25em;
-  line-height: 1.3em;
+  margin-top: 1em;
+}
+
+.docs .body h3,
+.docs .body h4 {
+  margin-top: 1em;
 }
 
 .docs .body p {
   line-height: 1.6em;
-}
-
-.docs .body ul li {
-  margin-bottom: 0.25em;
 }
 
 .docs .body pre {

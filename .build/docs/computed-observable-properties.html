@@ -187,9 +187,9 @@
 <p>View-Model:</p>
 
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">countDown</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">countDown</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">timer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
       <span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">10</span> <span class="o">-</span> <span class="nx">x</span><span class="p">;</span> <span class="p">})</span>
-      <span class="p">.</span><span class="nx">zip</span><span class="p">(</span><span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">timer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">lhs</span><span class="p">,</span> <span class="nx">rhs</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">lhs</span><span class="p">;</span> <span class="p">})</span>
+      <span class="p">.</span><span class="nx">take</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
       <span class="p">.</span><span class="nx">toProperty</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
 

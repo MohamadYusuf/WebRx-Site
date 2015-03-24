@@ -67,9 +67,9 @@ View-Model:
 
 {% highlight javascript %}
 function AppViewModel() {
-    this.countDown = Rx.Observable.range(0, 10)
+    this.countDown = Rx.Observable.timer(0, 1000)
       .select(function(x) { return 10 - x; })
-      .zip(Rx.Observable.timer(0, 1000), function(lhs, rhs) { return lhs; })
+      .take(11)
       .toProperty();
 }
 {% endhighlight %}
