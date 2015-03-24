@@ -277,6 +277,10 @@ pre {
   line-height: 1.6em;
 }
 
+.docs .body ul li {
+  margin-bottom: 0.5em;
+}
+
 .docs .body pre {
   margin: 0 0 20px;
 }

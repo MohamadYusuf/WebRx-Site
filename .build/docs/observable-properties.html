@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="/assets/syntax-f61aeb2ae597ff94fa8f31ce7ca5ceef.css">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/assets/main-5b87e2c51080b25f26815fe7b30c8d1c.css">
+        <link rel="stylesheet" href="/assets/main-729ea601c0ed3d72a8e267e6a16ed68d.css">
     </head>
     <body>
         <h1 id="logoh1">WebRx - Observable Properties</h1>
@@ -151,10 +151,10 @@
 <p>Model-View-View Model (MVVM) is a design pattern for building user interfaces. It describes how you can keep a potentially sophisticated UI simple by splitting it into three parts:</p>
 
 <ul>
-<li><em>A model:</em> your application’s stored data. This data represents objects and operations in your business domain (e.g., bank accounts that can perform money transfers) and is independent of any UI. When using WebRx, you will usually make Ajax calls to some server-side code to read and write this stored model data.</li>
-<li><em>A view model:</em> a pure-code representation of the data and operations on a UI. For example, if you’re implementing a list editor, your view model would be an object holding a list of items, and exposing methods to add and remove items.
+<li><strong>A model:</strong> your application’s stored data. This data represents objects and operations in your business domain (e.g., bank accounts that can perform money transfers) and is independent of any UI. When using WebRx, you will usually make Ajax calls to some server-side code to read and write this stored model data.</li>
+<li><strong>A view model:</strong> a pure-code representation of the data and operations on a UI. For example, if you’re implementing a list editor, your view model would be an object holding a list of items, and exposing methods to add and remove items.
 Note that this is not the UI itself: it doesn’t have any concept of buttons or display styles. It’s not the persisted data model either - it holds the unsaved data the user is working with. When using WebRx, your view models are pure JavaScript objects that hold no knowledge of HTML. Keeping the view model abstract in this way lets it stay simple, so you can manage more sophisticated behaviors without getting lost.</li>
-<li><em>A view:</em> a visible, interactive UI representing the state of the view model. It displays information from the view model, sends commands to the view model (e.g., when the user clicks buttons), and updates whenever the state of the view model changes.</li>
+<li><strong>A view:</strong> a visible, interactive UI representing the state of the view model. It displays information from the view model, sends commands to the view model (e.g., when the user clicks buttons), and updates whenever the state of the view model changes.</li>
 </ul>
 
 <p>When using WebRx, your view is simply your HTML document with declarative bindings to link it to the view model. Alternatively, you can use templates that generate HTML using data from your view model.</p>
