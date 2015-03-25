@@ -591,7 +591,8 @@ var wx;
         if (version) {
             env.firefox = { version: version };
         }
-        env.isSupported = (!env.ie || env.ie.version >= 9) || (!env.safari || env.safari.version >= 5) || (!env.firefox || env.firefox.version >= 5);
+        var hasES5 = typeof Array.isArray === "function" && typeof [].forEach === "function" && typeof [].map === "function" && typeof [].some === "function" && typeof [].indexOf === "function" && typeof Object.keys === "function" && typeof Object.defineProperty === "function";
+        env.isSupported = (!env.ie || env.ie.version >= 9) || (!env.safari || env.safari.version >= 5) || (!env.firefox || env.firefox.version >= 5) && hasES5;
         env.jQueryInstance = window["jQuery"];
         if (env.jQueryInstance && (typeof env.jQueryInstance['cleanData'] === "function")) {
             env.cleanExternalData = function (node) {
