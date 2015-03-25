@@ -2,6 +2,7 @@
 layout: docs
 title: WebRx - The ForEach-Binding
 ---
+{% include sample-warning.html %}
 ## The Foreach-Binding
 
 ### Purpose
@@ -12,7 +13,7 @@ Assuming your collection is an [observable list](/docs/observable-lists.html#sta
 
 Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow bindings such as if and with.
 
-#### Example 1: Iterating over an array
+### Example 1: Iterating over an array
 
 This example uses foreach to produce a read-only table with a row for each array entry.
 
@@ -42,7 +43,7 @@ This example uses foreach to produce a read-only table with a row for each array
 </script>
 ```
 
-#### Example 2: Live example with add/remove
+### Example 2: Live example with add/remove
 
 The following example shows that, if your array is observable, then the UI will be kept in sync with changes to that array.
 

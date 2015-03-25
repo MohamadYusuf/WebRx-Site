@@ -4,6 +4,14 @@ body {
   font-size: 16px;
 }
 
+.sample-warning {
+  display: none;
+}
+
+body.wx-unsupported .sample-warning {
+  display: block;
+}
+
 a {
     -webkit-transition: all .1s ease-in-out;
     -moz-transition: all .1s ease-in-out;

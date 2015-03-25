@@ -2,6 +2,7 @@
 layout: docs
 title: WebRx - The If-Binding
 ---
+{% include sample-warning.html %}
 ## The If-Binding
 
 ### Purpose
@@ -10,7 +11,7 @@ The if binding causes a section of markup to appear in your document (and to hav
 
 if plays a similar role to the visible binding. The difference is that, with visible, the contained markup always remains in the DOM and always has its data-bind attributes applied - the visible binding just uses CSS to toggle the container element’s visiblity. The if binding, however, physically adds or removes the contained markup in your DOM, and only applies bindings to descendants if the expression is true.
 
-#### Example 1
+### Example 1
 
 This example shows that the if binding can dynamically add and remove sections of markup as observable values change.
 
@@ -44,7 +45,7 @@ wx.applyBindings({
 });
 ```
 
-#### Example 2
+### Example 2
 
 In the following example, the *div* element will be empty for “Mercury”, but populated for “Earth”. That’s because Earth has a non-null capital property, whereas “Mercury” has null for that property.
 

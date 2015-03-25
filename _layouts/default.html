@@ -69,6 +69,11 @@
             </div>
         </div>
 
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
         {% bundle %}
         - /js/jquery.js
         - /js/bootstrap.min.js

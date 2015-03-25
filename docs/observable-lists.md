@@ -2,6 +2,7 @@
 layout: docs
 title: WebRx - Observable Properties
 ---
+{% include sample-warning.html %}
 ## Observable Lists
 
 If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.

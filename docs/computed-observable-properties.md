@@ -2,6 +2,7 @@
 layout: docs
 title: WebRx - Observable Properties
 ---
+{% include sample-warning.html %}
 ## Computed Observable Properties
 
 What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where computed observable properties come in. 

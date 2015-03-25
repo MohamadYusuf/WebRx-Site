@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/4966c37c55e451aab40c792cd2a9ab78.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -147,7 +147,11 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>The Foreach-Binding</h2>
+			<div class="body"><div class="alert alert-danger sample-warning" role="alert">
+<b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
+</div>
+
+<h2>The Foreach-Binding</h2>
 
 <h3>Purpose</h3>
 
@@ -157,7 +161,7 @@
 
 <p>Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow bindings such as if and with.</p>
 
-<h4>Example 1: Iterating over an array</h4>
+<h3>Example 1: Iterating over an array</h3>
 
 <p>This example uses foreach to produce a read-only table with a row for each array entry.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
@@ -181,7 +185,7 @@
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
-<h4>Example 2: Live example with add/remove</h4>
+<h3>Example 2: Live example with add/remove</h3>
 
 <p>The following example shows that, if your array is observable, then the UI will be kept in sync with changes to that array.</p>
 
@@ -392,6 +396,11 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
                 </div>
             </div>
         </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
 
         <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
 
