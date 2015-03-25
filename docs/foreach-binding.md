@@ -61,7 +61,6 @@ The following example shows that, if your array is observable, then the UI will 
 		<button data-bind="command: addPersonCmd">Add</button>
 	</div>
 </div>
-
   
 <script type="text/javascript">
 function AppViewModel() {

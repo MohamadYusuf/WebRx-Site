@@ -294,10 +294,6 @@ pre {
   border-color: transparent;
 }
 
-#live-demo {
-  background-color: #f0f0f0;
-}
-
 #live-demo select,
 #live-demo button {
   height: 1.8em;
