@@ -12,10 +12,13 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/4966c37c55e451aab40c792cd2a9ab78.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+        <script type='text/javascript' src='/js/rx.lite.min.js'></script>
+<script type='text/javascript' src='/js/rx.lite.extras.min.js'></script>
 
 
         <script type='text/javascript' src='/js/web.rx.js'></script>
@@ -87,8 +90,6 @@
 				    <li><a href="../docs/if-binding.html#start">The <code>if</code> binding</a></li>
 				    <li><a href="../docs/ifnot-binding.html#start">The <code>ifnot</code> binding</a></li>
 				    <li><a href="../docs/with-binding.html#start">The <code>with</code> binding</a></li>
-				    <li><a href="../docs/module-binding.html#start">The <code>module</code> binding</a></li>
-				    <li><a href="../docs/component-binding.html#start">The <code>component</code> binding</a></li>
 				</ul>
 
 				<h4>Working with form fields</h4>
@@ -153,31 +154,17 @@
 
 <h3>Purpose</h3>
 
-<p>The hidden binding causes the associated DOM element to become hidden or visible according to the value you pass to the binding.</p>
+<p>The hidden binding is exactly the same as the <a href="/docs/visible-binding.html#start">visible binding</a>, except that it inverts the result of whatever expression you pass to it. For more details, see documentation for the <a href="/docs/visible-binding.html#start">visible binding</a>.</p>
 
-<h3>Example</h3>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;hidden: shouldShowMessage&quot;</span><span class="nt">&gt;</span>
-    You will see this message only when &quot;shouldShowMessage&quot; holds a false value.
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-    <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">shouldShowMessage</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// Message initially hidden</span>
-    <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">shouldShowMessage</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// ... now it&#39;s visible</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">shouldShowMessage</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// ... now it&#39;s hidden again</span>
-<span class="nt">&lt;/script&gt;</span>
+<p>The following markup:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;hidden: someProperty&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
-<h3>Parameters</h3>
+<p>… is equivalent to the following:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;visible: !someProperty()&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<p>… assuming that someProperty is observable and hence you need to invoke it as a function to obtain the current value.</p>
 
-<h4>Main parameter</h4>
-
-<p>When the parameter resolves to a true-like value (e.g., the boolean value true, or a non-null object or array), the binding sets yourElement.style.display to none, causing it to be hidden. This takes priority over any display style you’ve defined using CSS.</p>
-
-<p>When the parameter resolves to a false-like value (e.g., the boolean value false, or the numeric value 0, or null, or undefined), the binding removes the yourElement.style.display value, causing it to become visible.</p>
-
-<p>Note that any display style you’ve configured using CSS will then apply (so CSS rules like display:table-row work fine in conjunction with this binding).</p>
-
-<p>If this parameter is an observable value, the binding will update the element’s visibility whenever the value changes. If the parameter isn’t observable, it will only set the element’s visibility once and will not update it again later.</p>
+<p>The only reason to use <em>hidden</em> instead of a negated <em>visible</em> is just as a matter of taste: many developers feel that it looks tidier.</p>
 </div>
 		</div>
 	</div>
@@ -200,7 +187,9 @@
             </div>
         </div>
 
-        <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>
