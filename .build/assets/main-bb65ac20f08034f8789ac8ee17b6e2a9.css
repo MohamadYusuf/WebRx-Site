@@ -303,23 +303,6 @@ pre {
   width: 8em;
 }
 
-.panel-body .highlight pre {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-}
-
-.panel-default .panel-body,
-.panel-default .panel-body .highlight pre {
-  background-color: #f8f8f8;
-}
-
-#features {
-  margin-top: 0;
-}
-
 @media only screen and (max-width: 992px) {
   /* Add a margin between vertically stacked cells on mobile */
   #content1 .row > div  {
@@ -341,6 +324,14 @@ pre {
   #main-container > .navbar .navbar-nav {
     padding-top: 0.75em;
   }
+}
+
+.panel-body .highlight pre {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
 }
 
 @media only screen and (max-width: 768px) {

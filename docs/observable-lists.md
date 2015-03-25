@@ -99,4 +99,4 @@ disp.dispose();								// list resumes sending change notifications
 
 #### Live Example
 
-<iframe class="hidden-xs" width="100%" height="300" src="//jsfiddle.net/oliverw/z51a6bsg/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/z51a6bsg/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>

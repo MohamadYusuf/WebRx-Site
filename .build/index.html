@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="/assets/syntax-f61aeb2ae597ff94fa8f31ce7ca5ceef.css">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/assets/main-fb601f384a3a41acb24c31bc3e246f72.css">
+        <link rel="stylesheet" href="/assets/main-d0b396f12dfdfd4d8fee1c074e6c6752.css">
 
 
         <script src="/assets/rx.lite.min-056ca58d2385c8db19b643e4dd92b1f2.js"></script>
@@ -44,6 +44,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href="/docs">Documentation</a></li>
+                    <li><a href="/examples">Examples</a></li>
                     <li><a href="https://github.com/oliverw/WebRx"><img width="16" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
                     <li><a href="http://twitter.com/intent/tweet?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript UIs with ReactiveX&via=oliverweichhold" target="_blank"><img width="16" src="/images/Twitter_logo_white.png"/>Tweet</a></li>
                    </ul>
@@ -97,7 +98,7 @@
 <div id="content2" class="content-panel">
 	<div class="row">
 		<div class="col-md-6">
-			<h3>Features</h3>
+			<h3 id="features">Features</h3>
 			<ul>
 				<li>Compatible with IE9+, Firefox 5+, Chrome 5+, Safari 5+</li>
 				<li>Comprehensive online documentation</li>
@@ -109,26 +110,31 @@
 				<li>Compact (~20Kb minified &amp; compressed)</li>
 				<li>First class <a href="http://www.typescriptlang.org/">TypeScript</a> support</li>
 			</ul>
-			<br/>
-			<h3>Installation</h3>
-			<ul id="install">
-				<li>Install via NuGet
+<br/>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title"><b>Installation</b></h3>
+			  	</div>
+				<div class="panel-body">
+					<ul id="install">
+						<li>Installation via NuGet
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>  					
-				</li>
-				<li>or download
-					<form id="download-form" method="get" action="/downloads/web.rx.zip">
-					<button type="submit" class="btn btn-primary">Latest version as zip</button>
-					</form>
-				</li>
-			</ul>
-			<p>Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.</p>
-			<br/>
+						</li>
+						<li>or download
+							<form id="download-form" method="get" action="/downloads/web.rx.zip">
+							<button type="submit" class="btn btn-primary">Latest version as zip</button>
+							</form>
+						</li>
+					</ul>
+					<p>Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.</p>
+			  	</div>
+		  	</div>
 		</div>
 
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			    	<h3 class="panel-title">Live Example</h3>
+			    	<h3 class="panel-title"><b>Live Example</b></h3>
 			  	</div>
 				<div class="panel-body" id="live-demo">
 				  <p>
@@ -144,7 +150,11 @@
 				</div>
 			</div>
 
-			<h4>HTML</h4>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">HTML</h3>
+			  	</div>
+				<div class="panel-body">
 			<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;live-demo&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;p&gt;</span>Choose a ticket class:
     <span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets, </span>
@@ -159,8 +169,14 @@
     for $<span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: price&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>  
+			</div>
+		</div>
 
-			<h4>Javascript</h4>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Javascript</h3>
+			  	</div>
+				<div class="panel-body">
 			<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">TicketsViewModel</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;live-demo&quot;</span><span class="p">);</span>
@@ -179,6 +195,8 @@
   <span class="p">}</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nx">node</span><span class="p">);</span></code></pre></div>  
+			</div>
+		</div>
 		</div>
 	</div>
 </div>

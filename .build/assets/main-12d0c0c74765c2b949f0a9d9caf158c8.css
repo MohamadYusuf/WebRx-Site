@@ -316,10 +316,6 @@ pre {
   background-color: #f8f8f8;
 }
 
-#features {
-  margin-top: 0;
-}
-
 @media only screen and (max-width: 992px) {
   /* Add a margin between vertically stacked cells on mobile */
   #content1 .row > div  {

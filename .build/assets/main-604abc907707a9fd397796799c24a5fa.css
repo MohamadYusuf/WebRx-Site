@@ -316,8 +316,8 @@ pre {
   background-color: #f8f8f8;
 }
 
-#features {
-  margin-top: 0;
+.panel-heading h3 {
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 992px) {

@@ -50,7 +50,7 @@ meta_description: WebRx - Dynamic JavaScript UIs with ReactiveX
 <div id="content2" class="content-panel">
 	<div class="row">
 		<div class="col-md-6">
-			<h3>Features</h3>
+			<h3 id="features">Features</h3>
 			<ul>
 				<li>Compatible with IE9+, Firefox 5+, Chrome 5+, Safari 5+</li>
 				<li>Comprehensive online documentation</li>
@@ -62,28 +62,33 @@ meta_description: WebRx - Dynamic JavaScript UIs with ReactiveX
 				<li>Compact (~20Kb minified &amp; compressed)</li>
 				<li>First class <a href="http://www.typescriptlang.org/">TypeScript</a> support</li>
 			</ul>
-			<br/>
-			<h3>Installation</h3>
-			<ul id="install">
-				<li>Install via NuGet
+<br/>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title"><b>Installation</b></h3>
+			  	</div>
+				<div class="panel-body">
+					<ul id="install">
+						<li>Installation via NuGet
 {% highlight bash %}
 PM> Install-Package WebRx
 {% endhighlight %}  					
-				</li>
-				<li>or download
-					<form id="download-form" method="get" action="/downloads/web.rx.zip">
-					<button type="submit" class="btn btn-primary">Latest version as zip</button>
-					</form>
-				</li>
-			</ul>
-			<p>Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.</p>
-			<br/>
+						</li>
+						<li>or download
+							<form id="download-form" method="get" action="/downloads/web.rx.zip">
+							<button type="submit" class="btn btn-primary">Latest version as zip</button>
+							</form>
+						</li>
+					</ul>
+					<p>Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.</p>
+			  	</div>
+		  	</div>
 		</div>
 
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			    	<h3 class="panel-title">Live Example</h3>
+			    	<h3 class="panel-title"><b>Live Example</b></h3>
 			  	</div>
 				<div class="panel-body" id="live-demo">
 				  <p>
@@ -99,7 +104,11 @@ PM> Install-Package WebRx
 				</div>
 			</div>
 
-			<h4>HTML</h4>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">HTML</h3>
+			  	</div>
+				<div class="panel-body">
 			{% highlight html %}
 <div id="live-demo">
   <p>Choose a ticket class:
@@ -116,8 +125,14 @@ PM> Install-Package WebRx
   </p>
 </div>
 			{% endhighlight %}  
+			</div>
+		</div>
 
-			<h4>Javascript</h4>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Javascript</h3>
+			  	</div>
+				<div class="panel-body">
 			{% highlight javascript %}
 function TicketsViewModel() {
   var self = this;
@@ -138,6 +153,8 @@ function TicketsViewModel() {
 
 wx.applyBindings(new TicketsViewModel(), node);
 			{% endhighlight %}  
+			</div>
+		</div>
 		</div>
 	</div>
 </div>

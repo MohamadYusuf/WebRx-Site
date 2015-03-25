@@ -97,10 +97,6 @@ pre code {
     margin-top: 1em;
 }
 
-.content-panel h3 {
-    margin-top: 0.5em;
-}
-
 #install li {
   margin-bottom: 1.5em;
 }
@@ -295,7 +291,6 @@ pre {
 }
 
 #live-demo {
-  background-color: #f0f0f0;
 }
 
 #live-demo select,
@@ -306,6 +301,23 @@ pre {
 
 #live-demo select {
   width: 8em;
+}
+
+.panel-body .highlight pre {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.panel-default .panel-body,
+.panel-default .panel-body .highlight pre {
+  background-color: #f8f8f8;
+}
+
+#features {
+  margin-top: 0;
 }
 
 @media only screen and (max-width: 992px) {
