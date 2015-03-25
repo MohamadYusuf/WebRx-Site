@@ -12,19 +12,18 @@
         {% if page.meta_description %}<meta name="description" content="{{ page.meta_description }}">{% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <!-- Bootstrap core CSS -->
-        {% stylesheet bootstrap.min %}
+        {% bundle %}
+        - /css/bootstrap.min.css
+        - /css/syntax.css
+        - /css/main.css
+        {% endbundle %}
 
-        <!-- syntax highlighting CSS -->
-        {% stylesheet syntax %}
+        {% bundle %}
+        - /js/rx.lite.min.js
+        - /js/rx.lite.extras.min.js
+        {% endbundle %}
 
-        <!-- Custom CSS -->
-        {% stylesheet main %}
-
-
-        {% javascript rx.lite.min %}
-        {% javascript rx.lite.extras.min %}
-        {% javascript web.rx %}
+        <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
         <h1 id="logoh1">{{ page.title }}</h1>
@@ -70,9 +69,11 @@
             </div>
         </div>
 
-        {% javascript jquery %}
-        {% javascript bootstrap.min %}
-        {% javascript default %}
+        {% bundle %}
+        - /js/jquery.js
+        - /js/bootstrap.min.js
+        - /js/default.js
+        {% endbundle %}
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

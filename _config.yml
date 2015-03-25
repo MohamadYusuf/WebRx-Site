@@ -6,11 +6,12 @@ destination: .build
 exclude: ['assets', 'vs']
 encoding: utf-8
 excerpt_separator: <!--more-->
-assets:
-  debug: false
-  version: 1
-  cachebust: hard
-  sources:
-    - js
-    - css
-    - images
+asset_bundler:
+  compress:
+    js: false
+    css: false
+  base_path: /bundles/
+  server_url:
+  remove_bundled: false
+  dev: false
+  bundle_name: false
