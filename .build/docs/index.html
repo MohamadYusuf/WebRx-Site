@@ -167,7 +167,17 @@
 <p>That’s it! You don’t have to write code to update it; it updates on its own when the myItems array changes. Similarly, to make the ‘Add’ button enable or disable depending on the number of items, just write:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enable: myItems.length &lt; 5&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
 </code></pre></div>
-<h2>MVVM and View Models</h2>
+<h2><a id="topic-mvvm-intro"></a>MVVM and View Models</h2>
+
+<p>WebRx is built around three core features:</p>
+
+<ul>
+<li>View-Models using <a href="/docs/observable-properties.html#start">Observable Properties</a></li>
+<li>Declarative bindings</li>
+<li>Templating</li>
+</ul>
+
+<p>Let’s examine the MVVM pattern and the concept of a view model.</p>
 
 <p>Model-View-View Model (MVVM) is a design pattern for building user interfaces. It describes how you can keep a potentially sophisticated UI simple by splitting it into three parts:</p>
 

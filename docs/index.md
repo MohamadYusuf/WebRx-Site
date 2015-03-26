@@ -28,7 +28,15 @@ That’s it! You don’t have to write code to update it; it updates on its own 
 <button data-bind="enable: myItems.length < 5">Add</button>
 ```
 
-## MVVM and View Models
+## <a id="topic-mvvm-intro"></a>MVVM and View Models
+
+WebRx is built around three core features:
+
+- View-Models using [Observable Properties](/docs/observable-properties.html#start)
+- Declarative bindings
+- Templating
+
+Let’s examine the MVVM pattern and the concept of a view model.
 
 Model-View-View Model (MVVM) is a design pattern for building user interfaces. It describes how you can keep a potentially sophisticated UI simple by splitting it into three parts:
 

@@ -4,17 +4,7 @@ title: WebRx - Observable Properties
 ---
 # Observable Properties
 
-WebRx is built around three core features:
-
-- Rx Observables and Observable Properties
-- Declarative bindings
-- Templating
-
-On this page, you’ll learn about the first of these three. But before that, let’s examine the MVVM pattern and the concept of a view model.
-
-## Observable Properties
-
-OK, you’ve seen how to create a basic view model and how to display one of its properties using a binding. But one of the key benefits of WebRx is that it updates your UI automatically when the view model changes. How can WebRx know when parts of your view model change? Answer: you need to declare your model properties as observable-properties, because these are special JavaScript objects that can notify subscribers about changes.
+You’ve seen how to [create a basic view model](/docs/index.html#topic-mvvm-intro) and how to display one of its properties using a binding. But one of the key benefits of WebRx is that it updates your UI automatically when the view model changes. How can WebRx know when parts of your view model change? Answer: you need to declare your model properties as observable-properties, because these are special JavaScript objects that can notify subscribers about changes.
 
 For example, rewrite the preceding view model object as follows:
 
