@@ -5337,6 +5337,9 @@ var wx;
             if (arguments.length > 0) {
                 wx.internal.throwError("attempt to write to a read-only observable property");
             }
+            if (accessor.sub == null) {
+                accessor.sub = accessor._source.connect();
+            }
             return accessor.value;
         };
         accessor.queryInterface = function (iid) {
@@ -5356,22 +5359,27 @@ var wx;
         accessor.changingSubject = new Rx.Subject();
         accessor.changing = accessor.changingSubject.publish().refCount();
         accessor.source = this;
-        var firedInitial = false;
         accessor.thrownExceptions = Rx.Subject.create(wx.app.defaultExceptionHandler);
-        accessor.sub = this.distinctUntilChanged().subscribe(function (x) {
-            if (firedInitial && x === accessor.value) {
+        var firedInitial = false;
+        var subj = new Rx.Subject();
+        subj.subscribe(function (x) {
+            if (firedInitial && x === accessor.value)
                 return;
-            }
-            firedInitial = true;
             accessor.changingSubject.onNext(x);
             accessor.value = x;
             accessor.changedSubject.onNext(x);
-        }, accessor.thrownExceptions.onNext);
+            firedInitial = true;
+        }, function (ex) { return accessor.thrownExceptions.onNext(ex); });
+        subj.onNext(initialValue);
+        accessor._source = this.distinctUntilChanged().multicast(subj);
+        if (wx.isInUnitTest()) {
+            accessor.sub = accessor._source.connect();
+        }
         return accessor;
     };
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.2';
+    wx.version = '0.9.2.5';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
