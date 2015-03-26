@@ -2,7 +2,7 @@
 layout: docs
 title: WebRx - The Binding-Context
 ---
-## Binding context
+# The Binding-Context
 
 A binding context is an object that holds data that you can reference from your bindings. While applying bindings, WebRx automatically creates and manages a hierarchy of binding contexts. The root level of the hierarchy refers to the viewModel parameter you supplied to wx.applyBindings(viewModel). Then, each time you use a control flow binding such as with or foreach, that creates a child binding context that refers to the nested view model data.
 
@@ -58,6 +58,6 @@ This is the view model object in the current context. In the root context, **$da
 
 This is the zero-based index of the current array entry being rendered by a foreach binding. Unlike the other binding context properties, $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).
 
-### Controlling or modifying the binding context in custom bindings
+## Controlling or modifying the binding context in custom bindings
 
 Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.

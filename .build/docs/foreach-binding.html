@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -151,9 +151,7 @@
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
 
-<h2>The Foreach-Binding</h2>
-
-<h3>Purpose</h3>
+<h1>The Foreach-Binding</h1>
 
 <p>The foreach binding duplicates a section of markup for each entry in a collection, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.</p>
 
@@ -161,7 +159,7 @@
 
 <p>Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow bindings such as if and with.</p>
 
-<h3>Example 1: Iterating over an array</h3>
+<h2>Example 1: Iterating over an array</h2>
 
 <p>This example uses foreach to produce a read-only table with a row for each array entry.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
@@ -185,7 +183,7 @@
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
-<h3>Example 2: Live example with add/remove</h3>
+<h2>Example 2: Live example with add/remove</h2>
 
 <p>The following example shows that, if your array is observable, then the UI will be kept in sync with changes to that array.</p>
 
@@ -260,9 +258,9 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">AppViewModel</span><span class="p">());</span>
 </code></pre></div>
-<h3>Parameters</h3>
+<h2>Parameters</h2>
 
-<h4>Main parameter</h4>
+<h3>Main parameter</h3>
 
 <p>Pass the collection that you wish to iterate over. The binding will output a section of markup for each entry.</p>
 
@@ -270,7 +268,7 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 
 <p>If the collection you supply is an <a href="/docs/observable-lists.html#start">observable list</a>, the foreach binding will respond to any future changes in the lists’s contents by adding or removing corresponding sections of markup in the DOM.</p>
 
-<h3>Referring to each array entry using $data</h3>
+<h2>Referring to each array entry using $data</h2>
 
 <p>As shown in the above examples, bindings within the foreach block can refer to properties on the array entries. For example, Example 1 referenced the firstName and lastName properties on each array entry.</p>
 
@@ -291,7 +289,7 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 </code></pre></div>
 <p>… but you don’t have to, because firstName will be evaluated within the context of $data by default anyway.</p>
 
-<h3>Using $index, $parent, and other context properties</h3>
+<h2>Using $index, $parent, and other context properties</h2>
 
 <p>As you can see from Example 2 above, it’s possible to use $index to refer to the zero-based index of the current array item. $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).</p>
 
@@ -305,7 +303,7 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 </code></pre></div>
 <p>For more information about $index and other context properties such as $parent, see documentation for binding context properties.</p>
 
-<h3>How array changes are detected and handled</h3>
+<h2>How array changes are detected and handled</h2>
 
 <ul>
 <li>When you add array entries, foreach will render new copies of your template and insert them into the existing DOM</li>
@@ -313,7 +311,7 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 <li>When you reorder array entries (retaining the same object instances), foreach will just move the corresponding DOM elements into their new position</li>
 </ul>
 
-<h3>Post-processing or animating the generated DOM elements</h3>
+<h2>Post-processing or animating the generated DOM elements</h2>
 
 <p>If you need to run some further custom logic on the generated DOM elements, you can use any of the afterRender/afterAdd/beforeRemove/beforeMove/afterMove callbacks described below.</p>
 
@@ -337,7 +335,7 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
-<h4>Full details:</h4>
+<h3>Full details</h3>
 
 <ul>
 <li><p><strong>afterRender</strong> — is invoked each time the foreach block is duplicated and inserted into the document, both when foreach first initializes, and when new entries are added to the associated array later. The binding will supply the following parameters to your callback:</p>

@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -151,7 +151,7 @@
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
 
-<h2>Observable Lists</h2>
+<h1>Observable Lists</h1>
 
 <p>If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
 
@@ -159,7 +159,7 @@
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    <span class="c1">// Initially an empty array</span>
 <span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span>
 </code></pre></div>
-<h4>Prepopulating a list</h4>
+<h3>Prepopulating a list</h3>
 
 <p>If you want your list not to start empty, but to contain some initial items, pass those items as an array to the constructor. For example,</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// This observable list initially contains three objects</span>
@@ -169,7 +169,7 @@
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Zippy&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Unknown&quot;</span> <span class="p">}</span>
 <span class="p">]);</span>
 </code></pre></div>
-<h3>Manipulating an observable-list</h3>
+<h2>Manipulating an observable-list</h2>
 
 <p>WebRx&#39;s observable list exposes a familiar set of functions for modifying the contents of the list and notifying listeners.</p>
 
@@ -200,7 +200,7 @@
 <li>toArray()</li>
 </ul>
 
-<h3>Subscribing to Changes</h3>
+<h2>Subscribing to Changes</h2>
 
 <p><strong>Note:</strong> To display the contents of an observable-list in your UI you don&#39;t have to subscribe to any observables exposed by a list because the <a href="/docs/forEach-binding.html#start">forEach-Binding</a> takes care of that for you. </p>
 
@@ -220,13 +220,13 @@
 <li><strong>shouldReset</strong> - signals that the observer should reread the entire list, as it has changed significantly</li>
 </ul>
 
-<h4>Semantics of Reset</h4>
+<h3>Semantics of Reset</h3>
 
 <p>One thing that is particularly important to understand is the meaning of the <em>shouldReset</em> Observable. The meaning of this event is, <em>&quot;This list has changed drastically, you should reread the contents&quot;</em>. Many people conflate <em>reset</em> and <em>clear</em>, thinking that this means the list is now empty.</p>
 
 <p>This is important, because if you only subscribe to <em>itemsAdded</em> and <em>itemsRemoved</em>, you will not be correctly tracking every item in the list. Lists will detect this scenario and attempt to warn you about it.</p>
 
-<h3>Delaying and/or suppressing change notifications</h3>
+<h2>Delaying and/or suppressing change notifications</h2>
 
 <p>Normally, an observable-list notifies its subscribers immediately, as soon as it’s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. </p>
 
@@ -237,7 +237,7 @@
 <span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some other value&#39;</span><span class="p">);</span>                  <span class="c1">// no notifications get send now</span>
 <span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>                             <span class="c1">// list resumes sending change notifications</span>
 </code></pre></div>
-<h4>Live Example</h4>
+<h2>Live Example</h2>
 
 <iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/z51a6bsg/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 </div>

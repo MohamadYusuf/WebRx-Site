@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -147,19 +147,19 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>Introduction</h2>
+			<div class="body"><h1>Introduction</h1>
 
-<h3>The documentation</h3>
+<h2>The documentation</h2>
 
 <p>If you are familiar with <a href="http://knockoutjs.com">Knockout</a>, parts of WebRx&#39;s documentation (especially when we talk about bindings) will sound familiar to you. We took the liberty to copy and adapt Knockout&#39;s - and for some areas, Angular&#39;s - documentation instead of re-inventing the wheel.</p>
 
-<h3>Is WebRx intended to compete with jQuery or work with it?</h3>
+<h2>Is WebRx intended to compete with jQuery or work with it?</h2>
 
 <p>Everyone loves jQuery! It’s an outstanding replacement for the clunky, inconsistent DOM API we had to put up with in the past. jQuery is an excellent low-level way to manipulate elements and event handlers in a web page. WebRx solves a different problem.</p>
 
 <p>As soon as your UI gets nontrivial and has a few overlapping behaviors, things can get tricky and expensive to maintain if you only use jQuery. Consider an example: you’re displaying a list of items, stating the number of items in that list, and want to enable an ‘Add’ button only when there are fewer than 5 items. jQuery doesn’t have a concept of an underlying data model, so to get the number of items you have to infer it from the number of TRs in a table or the number of DIVs with a certain CSS class. Maybe the number of items is displayed in some SPAN, and you have to remember to update that SPAN’s text when the user adds an item. You also must remember to disable the ‘Add’ button when the number of TRs is 5. Later, you’re asked also to implement a ‘Delete’ button and you have to figure out which DOM elements to change whenever it’s clicked.</p>
 
-<h3>How is WebRx different?</h3>
+<h2>How is WebRx different?</h2>
 
 <p>It’s much easier with WebRx. It lets you scale up in complexity without fear of introducing inconsistencies. Just represent your items as a JavaScript array, and then use a foreach binding to transform this array into a TABLE or set of DIVs. Whenever the array changes, the UI changes to match (you don’t have to figure out how to inject new TRs or where to inject them). The rest of the UI stays in sync. For example, you can declaratively bind a SPAN to display the number of items as follows:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html">There are <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myItems.length&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> items
@@ -167,7 +167,50 @@
 <p>That’s it! You don’t have to write code to update it; it updates on its own when the myItems array changes. Similarly, to make the ‘Add’ button enable or disable depending on the number of items, just write:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enable: myItems.length &lt; 5&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
 </code></pre></div>
-<h3>WebRx vs Knockout</h3>
+<h2>MVVM and View Models</h2>
+
+<p>Model-View-View Model (MVVM) is a design pattern for building user interfaces. It describes how you can keep a potentially sophisticated UI simple by splitting it into three parts:</p>
+
+<ul>
+<li><strong>A model:</strong> your application’s stored data. This data represents objects and operations in your business domain (e.g., bank accounts that can perform money transfers) and is independent of any UI. When using WebRx, you will usually make Ajax calls to some server-side code to read and write this stored model data.</li>
+<li><strong>A view model:</strong> a pure-code representation of the data and operations on a UI. For example, if you’re implementing a list editor, your view model would be an object holding a list of items, and exposing methods to add and remove items.
+Note that this is not the UI itself: it doesn’t have any concept of buttons or display styles. It’s not the persisted data model either - it holds the unsaved data the user is working with. When using WebRx, your view models are pure JavaScript objects that hold no knowledge of HTML. Keeping the view model abstract in this way lets it stay simple, so you can manage more sophisticated behaviors without getting lost.</li>
+<li><strong>A view:</strong> a visible, interactive UI representing the state of the view model. It displays information from the view model, sends commands to the view model (e.g., when the user clicks buttons), and updates whenever the state of the view model changes.</li>
+</ul>
+
+<p>When using WebRx, your view is simply your HTML document with declarative bindings to link it to the view model. Alternatively, you can use templates that generate HTML using data from your view model.</p>
+
+<p>To create a view model with WebRx, just declare any JavaScript object. For example,</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">personName</span><span class="o">:</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span>
+    <span class="nx">personAge</span><span class="o">:</span> <span class="mi">123</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>You can then create a very simple view of this view model using a declarative binding. For example, the following markup displays the personName value:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div>
+<h2>Activating WebRx</h2>
+
+<p>The data-bind attribute isn’t native to HTML, though it is perfectly OK (it’s strictly compliant in HTML 5, and causes no problems with HTML 4 even though a validator will point out that it’s an unrecognized attribute). But since the browser doesn’t know what it means, you need to activate WebRx to make it take effect.</p>
+
+<p>To activate WebRx, add the following line to a script block:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="nx">myViewModel</span><span class="p">);</span>
+</code></pre></div>
+<p>You can either put the script block at the bottom of your HTML document, or you can put it at the top and wrap the contents in a DOM-ready handler such as jQuery’s $ function.</p>
+
+<p>That does it! Now, your view will display as if you’d written the following HTML:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span&gt;</span>Bob<span class="nt">&lt;/span&gt;</span>
+</code></pre></div>
+<p>In case you’re wondering what the parameters to wx.applyBindings do,</p>
+
+<ul>
+<li>The first parameter says what view model object you want to use with the declarative bindings it activates.</li>
+<li>Optionally, you can pass a second parameter which defines which part of the document you want to search for data-bind attributes. For example, wx.applyBindings(myViewModel, document.getElementById(&#39;someElementId&#39;)). This restricts the activation to the element with ID someElementId and its descendants, which is useful if you want to have multiple view models and associate each with a different region of the page.</li>
+</ul>
+
+<p>Pretty simple, really.</p>
+
+<h2>WebRx vs Knockout</h2>
 
 <p>Even though WebRx shares many similarities with Knockout, the project is not meant to be a drop-in replacement.</p>
 

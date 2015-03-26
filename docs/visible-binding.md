@@ -2,13 +2,12 @@
 layout: docs
 title: WebRx - The Visible-Binding
 ---
-## The Visible-Binding
+# The Visible-Binding
 
-### Purpose
 
 The visible binding causes the associated DOM element to become hidden or visible according to the value you pass to the binding.
 
-### Example
+## Example
 
 ```html
 <div data-bind="visible: shouldShowMessage">
@@ -26,9 +25,9 @@ The visible binding causes the associated DOM element to become hidden or visibl
 </script>
 ```
 
-### Parameters
+## Parameters
 
-#### Main parameter
+### Main parameter
 
 When the parameter resolves to a false-like value (e.g., the boolean value false, or the numeric value 0, or null, or undefined), the binding sets yourElement.style.display to none, causing it to be hidden. This takes priority over any display style you’ve defined using CSS.
 

@@ -2,9 +2,8 @@
 layout: docs
 title: WebRx - The Hidden-Binding
 ---
-## The Hidden-Binding
+# The Hidden-Binding
 
-### Purpose
 
 The hidden binding is exactly the same as the [visible binding](/docs/visible-binding.html#start), except that it inverts the result of whatever expression you pass to it. For more details, see documentation for the [visible binding](/docs/visible-binding.html#start).
 

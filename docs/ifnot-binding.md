@@ -2,9 +2,7 @@
 layout: docs
 title: WebRx - The IfNot-Binding
 ---
-## The IfNot-Binding
-
-### Purpose
+# The IfNot-Binding
 
 The ifnot binding is exactly the same as the [if binding](/docs/if-binding.html#start), except that it inverts the result of whatever expression you pass to it. For more details, see documentation for the [if binding](/docs/if-binding.html#start).
 

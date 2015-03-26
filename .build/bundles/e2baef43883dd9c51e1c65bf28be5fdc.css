@@ -175,6 +175,40 @@ pre code {
     margin-top: 1em;
 }
 
+.docs .body h1:first-of-type,
+.docs .body h2:first-of-type,
+.docs .body h3:first-of-type,
+.docs .body h4:first-of-type {
+  margin-top: 0;
+}
+
+.docs .body h2:first-of-type {
+  margin-top: 1em;
+}
+
+.docs .body h2 {
+  margin-top: 1.25em;
+  line-height: 1.3em;
+}
+
+.docs .body h3,
+.docs .body h4 {
+  margin-top: 1.25em;
+  line-height: 1.3em;
+}
+
+.docs .body p {
+  line-height: 1.6em;
+}
+
+.docs .body ul li {
+  margin-bottom: 0.5em;
+}
+
+.docs .body pre {
+  margin: 0 0 20px;
+}
+
 #install li {
   margin-bottom: 1.5em;
 }
@@ -333,30 +367,6 @@ pre {
 #content2 {
   border-top: 1px solid #d8d8d8;
   background-color: #e0e0e0;
-}
-
-.docs .body h2:first-child,
-.docs .body h3:first-child,
-.docs .body h4:first-child {
-  margin-top: 0;
-}
-
-.docs .body h3,
-.docs .body h4 {
-  margin-top: 1.25em;
-  line-height: 1.3em;
-}
-
-.docs .body p {
-  line-height: 1.6em;
-}
-
-.docs .body ul li {
-  margin-bottom: 0.5em;
-}
-
-.docs .body pre {
-  margin: 0 0 20px;
 }
 
 .navbar-inverse .navbar-toggle:hover, 

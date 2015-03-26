@@ -2,15 +2,13 @@
 layout: docs
 title: WebRx - The Text-Binding
 ---
-## The Text-Binding
-
-### Purpose
+# The Text-Binding
 
 The text binding causes the associated DOM element to display the text value of your parameter.
 
 Typically this is useful with elements like *span* or *em* that traditionally display text, but technically you can use it with any element.
 
-### Example
+## Example
 
 ```html
 Today's message is: <span data-bind="text: myMessage"></span>
@@ -25,9 +23,9 @@ Today's message is: <span data-bind="text: myMessage"></span>
 </script>
 ```
 
-### Parameters
+## Parameters
 
-#### Main parameter
+### Main parameter
 
 The binding sets the element’s content to a text node with your parameter value. Any previous content will be overwritten.
 

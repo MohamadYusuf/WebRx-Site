@@ -3,7 +3,7 @@ layout: docs
 title: WebRx - Observable Properties
 ---
 {% include sample-warning.html %}
-## Computed Observable Properties
+# Computed Observable Properties
 
 What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where computed observable properties come in. 
 
@@ -35,7 +35,7 @@ The name is <span data-bind="text: fullName"></span>
 
 … and they will be updated whenever *firstName* or *lastName* changes (your evaluator function will be called once each time any of its dependencies change, and whatever value you return will be passed on to the observers such as UI elements or other computed observables).
 
-### How it works
+## How it works
 
 So how did the sample above work?
 
@@ -55,12 +55,12 @@ So, now that we've got an observable representing *fullName* we can simply invok
 this.lastName = observable.toProperty();
 ```
 
-### Digging deeper
+## Digging deeper
 
 Remember when we've utilized *toProperty* to turn the result of *whenAny* into a property? An important detail about toProperty is that it is in no way limited to observables returned by whenAny. In fact *toProperty* is implemented as a custom Rx-Operator that extends all Rx-Observables. This fact opens up a whole array of possibilities because it enables you to leverage the full spectrum of [Rx's operators](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/which-instance.md) in your UI.
   
 
-#### Example
+### Example
 
 Imagine you want to display a countdown-timer in your UI. The timer would count down from 10 to 1 at a one second interval. Implementing that would be as easy as this:
 
@@ -81,6 +81,6 @@ View-Template:
 Seconds until auto-logout: <span data-bind="text: countDown"></span>
 ```
 
-#### Live Example
+## Live Example
 
 <iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/1nwsased/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>

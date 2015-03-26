@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -147,15 +147,13 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>The Html-Binding</h2>
-
-<h3>Purpose</h3>
+			<div class="body"><h1>The Html-Binding</h1>
 
 <p>The html binding causes the associated DOM element to display the HTML specified by your parameter.</p>
 
 <p>Typically this is useful when values in your view model are actually strings of HTML markup that you want to render.</p>
 
-<h3>Example</h3>
+<h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;html: details&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
@@ -164,9 +162,9 @@
     <span class="nx">viewModel</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="s2">&quot;&lt;em&gt;For further details, view the report &lt;a href=&#39;report.html&#39;&gt;here&lt;/a&gt;.&lt;/em&gt;&quot;</span><span class="p">);</span> <span class="c1">// HTML content appears</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
-<h3>Parameters</h3>
+<h2>Parameters</h2>
 
-<h4>Main parameter</h4>
+<h3>Main parameter</h3>
 
 <p>The binding clears the previous content and then sets the element’s content to your parameter value by parsing the string into HTML nodes and appending each node as a child of the element.</p>
 
@@ -174,7 +172,7 @@
 
 <p>If you supply something other than a number or a string (e.g., you pass an object or an array), the innerHTML will be equivalent to yourParameter.toString()</p>
 
-<h4>Note: About HTML encoding</h4>
+<h3>Note: About HTML encoding</h3>
 
 <p>Since this binding sets your element’s content using innerHTML, you should be careful not to use it with untrusted model values, because that might open the possibility of a script injection attack. If you cannot guarantee that the content is safe to display (for example, if it is based on a different user’s input that was stored in your database), then you can use the text binding, which will set the element’s text value using innerText or textContent instead.</p>
 </div>

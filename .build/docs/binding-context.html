@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -147,7 +147,7 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>Binding context</h2>
+			<div class="body"><h1>The Binding-Context</h1>
 
 <p>A binding context is an object that holds data that you can reference from your bindings. While applying bindings, WebRx automatically creates and manages a hierarchy of binding contexts. The root level of the hierarchy refers to the viewModel parameter you supplied to wx.applyBindings(viewModel). Then, each time you use a control flow binding such as with or foreach, that creates a child binding context that refers to the nested view model data.</p>
 
@@ -197,7 +197,7 @@
 
 <p>This is the zero-based index of the current array entry being rendered by a foreach binding. Unlike the other binding context properties, $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).</p>
 
-<h3>Controlling or modifying the binding context in custom bindings</h3>
+<h2>Controlling or modifying the binding context in custom bindings</h2>
 
 <p>Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.</p>
 </div>

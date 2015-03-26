@@ -1,16 +1,15 @@
 ---
 layout: docs
-title: WebRx - The Css-Binding
+title: WebRx - The CSS-Binding
 ---
-## The Css-Binding
+# The CSS-Binding
 
-### Purpose
 
-The css binding adds or removes one or more named CSS classes to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative.
+The CSS-binding adds or removes one or more named CSS classes to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative.
 
 (Note: If you don’t want to apply a CSS class but instead want to assign a style attribute value directly, see the style binding.)
 
-### Example
+## Example
 
 ```html
 <div data-bind="css: { profitWarning: currentProfit < 0 }">
@@ -29,9 +28,9 @@ The css binding adds or removes one or more named CSS classes to the associated 
 
 This will apply the CSS class *profitWarning* whenever the currentProfit value dips below zero, and remove that class whenever it goes above zero.
 
-### Parameters
+## Parameters
 
-#### Main parameter
+### Main parameter
 
 You should pass a JavaScript object in which the property names are your CSS classes, and their values evaluate to true or false according to whether the class should currently be applied.
 
@@ -53,7 +52,7 @@ If your parameter references an observable value, the binding will add or remove
 
 As usual, you can use [arbitrary expressions](/docs/binding-syntax.html#topic-binding-expressions) as parameter values. WebRx will evaluate them and use the resulting values to determine the appropriate CSS classes to add or remove.
 
-#### Note: Applying CSS classes whose names aren’t legal JavaScript variable names
+### Note: Applying CSS classes whose names aren’t legal JavaScript variable names
 
 If you want to apply the CSS class my-class, you can’t write this:
 

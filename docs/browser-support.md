@@ -2,7 +2,7 @@
 layout: docs
 title: WebRx - Browser Support
 ---
-## Browser Support
+# Browser Support
 
 WebRx is tested on the following browsers:
 

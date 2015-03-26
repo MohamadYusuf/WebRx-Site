@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -151,7 +151,7 @@
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
 
-<h2>Computed Observable Properties</h2>
+<h1>Computed Observable Properties</h1>
 
 <p>What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where computed observable properties come in. </p>
 
@@ -174,7 +174,7 @@
 </code></pre></div>
 <p>… and they will be updated whenever <em>firstName</em> or <em>lastName</em> changes (your evaluator function will be called once each time any of its dependencies change, and whatever value you return will be passed on to the observers such as UI elements or other computed observables).</p>
 
-<h3>How it works</h3>
+<h2>How it works</h2>
 
 <p>So how did the sample above work?</p>
 
@@ -188,11 +188,11 @@
 <p>So, now that we&#39;ve got an observable representing <em>fullName</em> we can simply invoke the aforementioned <em>toProperty</em> function and voila, we&#39;ve turned the observable into a read-only property that can be bound to a view like any other property.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">observable</span><span class="p">.</span><span class="nx">toProperty</span><span class="p">();</span>
 </code></pre></div>
-<h3>Digging deeper</h3>
+<h2>Digging deeper</h2>
 
 <p>Remember when we&#39;ve utilized <em>toProperty</em> to turn the result of <em>whenAny</em> into a property? An important detail about toProperty is that it is in no way limited to observables returned by whenAny. In fact <em>toProperty</em> is implemented as a custom Rx-Operator that extends all Rx-Observables. This fact opens up a whole array of possibilities because it enables you to leverage the full spectrum of <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/which-instance.md">Rx&#39;s operators</a> in your UI.</p>
 
-<h4>Example</h4>
+<h3>Example</h3>
 
 <p>Imagine you want to display a countdown-timer in your UI. The timer would count down from 10 to 1 at a one second interval. Implementing that would be as easy as this:</p>
 
@@ -207,7 +207,7 @@
 <p>View-Template:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html">Seconds until auto-logout: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: countDown&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
-<h4>Live Example</h4>
+<h2>Live Example</h2>
 
 <iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/1nwsased/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 </div>

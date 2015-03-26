@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -147,13 +147,11 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h2>The Visible-Binding</h2>
-
-<h3>Purpose</h3>
+			<div class="body"><h1>The Visible-Binding</h1>
 
 <p>The visible binding causes the associated DOM element to become hidden or visible according to the value you pass to the binding.</p>
 
-<h3>Example</h3>
+<h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;visible: shouldShowMessage&quot;</span><span class="nt">&gt;</span>
     You will see this message only when &quot;shouldShowMessage&quot; holds a true value.
 <span class="nt">&lt;/div&gt;</span>
@@ -165,9 +163,9 @@
     <span class="nx">viewModel</span><span class="p">.</span><span class="nx">shouldShowMessage</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// ... now it&#39;s visible again</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
-<h3>Parameters</h3>
+<h2>Parameters</h2>
 
-<h4>Main parameter</h4>
+<h3>Main parameter</h3>
 
 <p>When the parameter resolves to a false-like value (e.g., the boolean value false, or the numeric value 0, or null, or undefined), the binding sets yourElement.style.display to none, causing it to be hidden. This takes priority over any display style you’ve defined using CSS.</p>
 

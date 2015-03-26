@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/df6d2195c16a4ec7b333e95b39578b64.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -151,15 +151,13 @@
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
 
-<h2>The If-Binding</h2>
-
-<h3>Purpose</h3>
+<h1>The If-Binding</h1>
 
 <p>The if binding causes a section of markup to appear in your document (and to have its data-bind attributes applied), only if a specified expression evaluates to true (or a true-ish value such as a non-null object or nonempty string).</p>
 
 <p>if plays a similar role to the visible binding. The difference is that, with visible, the contained markup always remains in the DOM and always has its data-bind attributes applied - the visible binding just uses CSS to toggle the container element’s visiblity. The if binding, however, physically adds or removes the contained markup in your DOM, and only applies bindings to descendants if the expression is true.</p>
 
-<h3>Example 1</h3>
+<h2>Example 1</h2>
 
 <p>This example shows that the if binding can dynamically add and remove sections of markup as observable values change.</p>
 
@@ -187,7 +185,7 @@
     <span class="nx">displayMessage</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3>Example 2</h3>
+<h2>Example 2</h2>
 
 <p>In the following example, the <em>div</em> element will be empty for “Mercury”, but populated for “Earth”. That’s because Earth has a non-null capital property, whereas “Mercury” has null for that property.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: planets&quot;</span><span class="nt">&gt;</span>
@@ -209,8 +207,9 @@
 </code></pre></div>
 <p>It’s important to understand that the if binding really is vital to make this code work properly. Without it, there would be an error when trying to evaluate capital.cityName in the context of “Mercury” where capital is null. In JavaScript, you’re not allowed to evaluate subproperties of null or undefined values.</p>
 
-<h3>Parameters
-<h4>Main parameter</h4>
+<h2>Parameters</h2>
+
+<h3>Main parameter</h3>
 
 <p>The expression you wish to evaluate. If it evaluates to true (or a true-ish value), the contained markup will be present in the document, and any data-bind attributes on it will be applied. If your expression evaluates to false, the contained markup will be removed from your document without first applying any bindings to it.</p>
 

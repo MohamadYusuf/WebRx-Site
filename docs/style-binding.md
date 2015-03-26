@@ -2,15 +2,13 @@
 layout: docs
 title: WebRx - The Style-Binding
 ---
-## The Style-Binding
-
-### Purpose
+# The Style-Binding
 
 The style binding adds or removes one or more style values to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative, or to set the width of a bar to match a numerical value that changes.
 
 (Note: If you don’t want to apply an explicit style value but instead want to assign a CSS class, see the css binding.)
 
-### Example
+## Example
 
 ```html
 <div data-bind="style: { color: currentProfit < 0 ? 'red' : 'black' }">
@@ -29,9 +27,9 @@ The style binding adds or removes one or more style values to the associated DOM
 
 This will set the element’s style.color property to red whenever the currentProfit value dips below zero, and to black whenever it goes above zero.
 
-### Parameters
+## Parameters
 
-#### Main parameter
+### Main parameter
 
 You should pass a JavaScript object in which the property names correspond to style names, and the values correspond to the style values you wish to apply.
 

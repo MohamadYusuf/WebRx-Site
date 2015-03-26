@@ -2,15 +2,13 @@
 layout: docs
 title: WebRx - The With-Binding
 ---
-## The With-Binding
-
-### Purpose
+# The With-Binding
 
 The with binding creates a new binding context, so that descendant elements are bound in the context of a specified object.
 
 Of course, you can arbitrarily nest with bindings along with the other control-flow bindings such as if and foreach.
 
-### Example
+## Example
 
 Here is a very basic example of switching the binding context to a child object. Notice that in the data-bind attributes, it is not necessary to prefix latitude or longitude with coords., because the binding context is switched to coords.
 
@@ -34,9 +32,9 @@ Here is a very basic example of switching the binding context to a child object.
 </script>
 ```
 
-### Parameters
+## Parameters
 
-#### Main parameter
+### Main parameter
 
 The object that you want to use as the context for binding descendant elements.
 

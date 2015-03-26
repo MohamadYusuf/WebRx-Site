@@ -3,9 +3,7 @@ layout: docs
 title: WebRx - The ForEach-Binding
 ---
 {% include sample-warning.html %}
-## The Foreach-Binding
-
-### Purpose
+# The Foreach-Binding
 
 The foreach binding duplicates a section of markup for each entry in a collection, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.
 
@@ -13,7 +11,7 @@ Assuming your collection is an [observable list](/docs/observable-lists.html#sta
 
 Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow bindings such as if and with.
 
-### Example 1: Iterating over an array
+## Example 1: Iterating over an array
 
 This example uses foreach to produce a read-only table with a row for each array entry.
 
@@ -43,7 +41,7 @@ This example uses foreach to produce a read-only table with a row for each array
 </script>
 ```
 
-### Example 2: Live example with add/remove
+## Example 2: Live example with add/remove
 
 The following example shows that, if your array is observable, then the UI will be kept in sync with changes to that array.
 
@@ -124,9 +122,9 @@ function AppViewModel() {
 wx.applyBindings(new AppViewModel());
 ```
 
-### Parameters
+## Parameters
 
-#### Main parameter
+### Main parameter
 
 Pass the collection that you wish to iterate over. The binding will output a section of markup for each entry.
 
@@ -134,7 +132,7 @@ Alternatively, pass a JavaScript object literal with a property called data whic
 
 If the collection you supply is an [observable list](/docs/observable-lists.html#start), the foreach binding will respond to any future changes in the lists’s contents by adding or removing corresponding sections of markup in the DOM.
 
-### Referring to each array entry using $data
+## Referring to each array entry using $data
 
 As shown in the above examples, bindings within the foreach block can refer to properties on the array entries. For example, Example 1 referenced the firstName and lastName properties on each array entry.
 
@@ -164,7 +162,7 @@ If you wanted, you could use $data as a prefix when referencing properties on ea
 
 … but you don’t have to, because firstName will be evaluated within the context of $data by default anyway.
 
-### Using $index, $parent, and other context properties
+## Using $index, $parent, and other context properties
 
 As you can see from Example 2 above, it’s possible to use $index to refer to the zero-based index of the current array item. $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).
 
@@ -181,13 +179,13 @@ Similarly, you can use $parent to refer to data from outside the foreach, e.g.:
 
 For more information about $index and other context properties such as $parent, see documentation for binding context properties.
 
-### How array changes are detected and handled
+## How array changes are detected and handled
 
 - When you add array entries, foreach will render new copies of your template and insert them into the existing DOM
 - When you delete array entries, foreach will simply remove the corresponding DOM elements
 - When you reorder array entries (retaining the same object instances), foreach will just move the corresponding DOM elements into their new position
 
-### Post-processing or animating the generated DOM elements
+## Post-processing or animating the generated DOM elements
 
 If you need to run some further custom logic on the generated DOM elements, you can use any of the afterRender/afterAdd/beforeRemove/beforeMove/afterMove callbacks described below.
 
@@ -217,7 +215,7 @@ Here’s a trivial example that uses *afterAdd* to apply the classic “yellow f
 </script>
 ```
 
-#### Full details:
+### Full details
 
 - **afterRender** — is invoked each time the foreach block is duplicated and inserted into the document, both when foreach first initializes, and when new entries are added to the associated array later. The binding will supply the following parameters to your callback:
 	- An array of the inserted DOM elements
