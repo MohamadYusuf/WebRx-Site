@@ -52,9 +52,14 @@ var myViewModel = {
 
 ### Working with observable-property values
 
-Unlike when accessing the value of an observable property in code, with binding-expressions there's **no need to invoke it as a function** 
-because behind the scenes, WebRx's expression compiler will **detect** that use-case and will conveniently **dereference the property's value for you**. 
-In fact you are not even allowed to the dereferencing yourself, because invoking functions is not allowed by WebRx's [binding syntax](/docs/binding-syntax.html#start).
+As outlined above, you invoke an observable property as a function with no arguments to read its current value. 
+
+This is **unnecessary** within binding-expressions, because behind the scenes, WebRx's expression compiler 
+will **detect** that use-case and will conveniently **dereference the property's value for you**. 
+
+In fact you are not even allowed to explicitely dereference a property in a binding expression, 
+because this would involve a function invocation which is prohibited by WebRx's 
+[binding syntax](/docs/binding-syntax.html#start) specification. A rule that gets enforced by the expression compiler.
 
 #### Good
 

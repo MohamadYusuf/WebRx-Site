@@ -67,11 +67,11 @@ a||{}).b||{}).c
 
 ### No Control Flow Statements
 
-Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.
+Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in view-models, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.
 
 ### No function declarations or RegExp creation with literal notation
 
-You can't declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly. 
+You can't declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a view-model or in a dedicated filter where it can be tested properly. 
 
 ## Expression Filters
 
@@ -100,3 +100,8 @@ expression | filter:argument1:argument2:...
 ```
 
 E.g. the markup **"1234 | number:2"** formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.
+
+<!-- ### Built-in filters
+
+- **currency**: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
+-->

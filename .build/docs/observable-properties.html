@@ -184,9 +184,14 @@
 </code></pre></div>
 <h3>Working with observable-property values</h3>
 
-<p>Unlike when accessing the value of an observable property in code, with binding-expressions there&#39;s <strong>no need to invoke it as a function</strong> 
-because behind the scenes, WebRx&#39;s expression compiler will <strong>detect</strong> that use-case and will conveniently <strong>dereference the property&#39;s value for you</strong>. 
-In fact you are not even allowed to the dereferencing yourself, because invoking functions is not allowed by WebRx&#39;s <a href="/docs/binding-syntax.html#start">binding syntax</a>.</p>
+<p>As outlined above, you invoke an observable property as a function with no arguments to read its current value. </p>
+
+<p>This is <strong>unnecessary</strong> within binding-expressions, because behind the scenes, WebRx&#39;s expression compiler 
+will <strong>detect</strong> that use-case and will conveniently <strong>dereference the property&#39;s value for you</strong>. </p>
+
+<p>In fact you are not even allowed to explicitely dereference a property in a binding expression, 
+because this would involve a function invocation which is prohibited by WebRx&#39;s 
+<a href="/docs/binding-syntax.html#start">binding syntax</a> specification. A rule that gets enforced by the expression compiler.</p>
 
 <h4>Good</h4>
 <div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName + &#39;foo&#39;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>

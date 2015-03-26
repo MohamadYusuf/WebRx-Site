@@ -204,11 +204,11 @@
 </code></pre></div>
 <h3>No Control Flow Statements</h3>
 
-<p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in controllers, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
+<p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in view-models, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
 
 <h3>No function declarations or RegExp creation with literal notation</h3>
 
-<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a controller or in a dedicated filter where it can be tested properly. </p>
+<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a view-model or in a dedicated filter where it can be tested properly. </p>
 
 <h2>Expression Filters</h2>
 
@@ -228,6 +228,11 @@
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span>
 </code></pre></div>
 <p>E.g. the markup <strong>&quot;1234 | number:2&quot;</strong> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
+
+<!-- ### Built-in filters
+
+- **currency**: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
+-->
 </div>
 		</div>
 	</div>
