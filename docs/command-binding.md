@@ -2,6 +2,7 @@
 layout: docs
 title: WebRx - The Command-Binding
 ---
+{% include sample-warning.html %}
 # The Command-Binding
 
 The command-binding adds an event handler so that a [command](/docs/commands.html#start) will be invoked when the 

@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The Command-Binding</title>
+        <title>WebRx - The hasFocus-Binding</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The Command-Binding" /> 
+        <meta property="og:title" content="WebRx - The hasFocus-Binding" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - The Command-Binding</h1>
+        <h1 id="logoh1">WebRx - The hasFocus-Binding</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -152,139 +152,122 @@
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
 
-<h1>The Command-Binding</h1>
+<h1>The hasFocus-Binding</h1>
 
-<p>The command-binding adds an event handler so that a <a href="/docs/commands.html#start">command</a> will be invoked when the 
-associated DOM element is clicked and additionally takes care of enabling and disabling the element
-depending on wether the command can currently execute or not.</p>
+<p>The hasFocus binding links a DOM element&#39;s focus state with a viewmodel property. It is a two-way binding, so:</p>
 
-<p>This binding is most commonly used with elements like button and anchors, but actually works with any visible DOM element.</p>
+<p>If you set the viewmodel property to true or false, the associated element will become focused or unfocused.
+If the user manually focuses or unfocuses the associated element, the viewmodel property will be set to true or false accordingly.
+This is useful if you&#39;re building sophisticated forms in which editable elements appear dynamically, 
+and you would like to control where the user should start typing, or respond to the location of the caret.</p>
 
-<p><strong>Note</strong>: When the command-binding is applied to an anchor (<em>a</em>) element, it will prevent the anchor&#39;s default action when clicked.</p>
+<h2>Example 1: The basics</h2>
 
-<h2>Example 1</h2>
+<p>This example simply displays a message if the textbox currently has focus, and uses a button to show that you can trigger focus programmatically.</p>
 
-<p>Each time you click the button, this will invoke incrementClickCounterCmd on the view model, which in turn changes the view model state, which causes the UI to update.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">You&#39;ve clicked <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: numberOfClicks&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> times
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: incrementClickCounterCmd&quot;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/button&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-    <span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
-        <span class="k">this</span><span class="p">.</span><span class="nx">incrementClickCounterCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
-    <span class="p">}</span>
-
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">ViewModel</span><span class="p">());</span>
-<span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
-<div class="panel panel-default" id="command-example1">
-    <div class="panel-heading">
-        <h3 class="panel-title">Try it</h3>
-    </div>
+<div class="panel panel-default" id="hasfocus-example1">
     <div class="panel-body">
-        <div>
-            You've clicked <span data-bind="text: numberOfClicks"></span> times
-            <button data-bind="command: incrementClickCounterCmd">Click me</button>
-        </div>
+        <input data-bind="hasFocus: @isSelected" />
+        <button data-bind="command: setIsSelectedCmd">Focus programmatically</button>
+        <span data-bind="visible: isSelected">The textbox has focus</span>
     </div>
 </div>
   
 
 <script type="text/javascript">
 function ViewModel() {
-    this.numberOfClicks = wx.property(0);
+    this.isSelected = wx.property(false);
 
-    this.incrementClickCounterCmd = wx.command(function() {
-        this.numberOfClicks(this.numberOfClicks() + 1);
+    this.setIsSelectedCmd = wx.command(function() { 
+        this.isSelected(true);
     }, this);
 }
 
-wx.applyBindings(new ViewModel(), document.getElementById('command-example1'));
+wx.applyBindings(new ViewModel(), document.getElementById('hasfocus-example1'));
 </script>
 
-<h2>Example 2</h2>
+<p><strong>Source code: View</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;hasFocus: @isSelected&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;click: setIsSelected&quot;</span><span class="nt">&gt;</span>Focus programmatically<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;visible: isSelected&quot;</span><span class="nt">&gt;</span>The textbox has focus<span class="nt">&lt;/span&gt;</span>
+Source code: View model
+</code></pre></div>
+<p><strong>Source code: View model</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isSelected</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 
-<p>Okay, this was not really a compelling example for using the command-binding because
-it could have been implemented using a simple click-event handler. Let&#39;s make things a bit more interesting.</p>
-
-<p>In this example the second button will only unlock after the first button has been clicked
-at least three times.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">You&#39;ve clicked <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: numberOfClicks&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> times
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: incrementClickCounterCmd&quot;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: secretCmd, text: !secretCmdCanExecute ? &#39;Locked&#39; : &#39;Unlocked&#39;&quot;</span><span class="nt">&gt;&lt;/button&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">incrementClickCounterCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setIsSelectedCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">isSelected</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
     <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">secretCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You did it!&quot;</span><span class="p">);</span>
-        <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">numberOfClicks</span><span class="p">)</span> <span class="p">{</span> 
-            <span class="k">return</span> <span class="nx">numberOfClicks</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="p">}),</span> <span class="k">this</span><span class="p">);</span>
-
-    <span class="k">this</span><span class="p">.</span><span class="nx">secretCmdCanExecute</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">secretCmd</span><span class="p">.</span><span class="nx">canExecuteObservable</span><span class="p">.</span><span class="nx">toProperty</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">ViewModel</span><span class="p">());</span>
 </code></pre></div>
-<div class="panel panel-default" id="command-example2">
-    <div class="panel-heading">
-        <h3 class="panel-title">Try it</h3>
-    </div>
+<h2>Example 2: Click-to-edit</h2>
+
+<p>Because the hasFocus binding works in both directions (setting the associated value focuses or unfocuses the element;
+focusing or unfocusing the element sets the associated value), it&#39;s a convenient way to toggle an &quot;edit&quot; mode.
+In this example, the UI displays either a <em>span</em> or an <em>input</em> element depending on the model&#39;s editing property.
+Unfocusing the <em>input</em> element sets editing to false, so the UI switches out of &quot;edit&quot; mode.</p>
+
+<div class="panel panel-default" id="hasfocus-example2">
     <div class="panel-body">
-        <div>
-            You've clicked <span data-bind="text: numberOfClicks"></span> times
-            <button data-bind="command: incrementClickCounterCmd">Click me</button>
-            <button data-bind="command: secretCmd, text: !secretCmdCanExecute ? 'Locked' : 'Unlocked'"></button>
-        </div>
+        <p>
+            Name: 
+            <b data-bind="visible: !editing, text: name, command: editCmd">&nbsp;</b>
+            <input data-bind="visible: editing, value: @name, hasFocus: @editing" />
+        </p>
+        <p><em>Click the name to edit it; click elsewhere to apply changes.</em></p>
     </div>
 </div>
   
 
 <script type="text/javascript">
-function ViewModel() {
-    this.numberOfClicks = wx.property(0);
-
-    this.incrementClickCounterCmd = wx.command(function() {
-        this.numberOfClicks(this.numberOfClicks() + 1);
+function PersonViewModel(name) {
+    // Data
+    this.name = wx.property(name);
+    this.editing = wx.property(false);
+         
+    // Behaviors
+    this.editCmd = wx.command(function() { 
+        this.editing(true) 
     }, this);
-
-    this.secretCmd = wx.command(function() {
-        alert("You did it!");
-        }, wx.whenAny(this.numberOfClicks, function(numberOfClicks) { 
-            return numberOfClicks >= 3;
-    }), this);
-
-    this.secretCmdCanExecute = this.secretCmd.canExecuteObservable.toProperty();
 }
-
-wx.applyBindings(new ViewModel(), document.getElementById('command-example2'));
+ 
+wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById('hasfocus-example2'));
 </script>
 
-<p><strong>Note</strong>: You may have noticed that the second button once initially unlocked, will become locked again when clicked,
-and unlock again after the alert gets dismissed. This is because by default commands
-disable themselves while executing.</p>
+<p><strong>Source code: View</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
+    Name: 
+    <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;visible: !editing, text: name, command: editCmd&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/b&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;visible: editing, value: @name, hasFocus: @editing&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;&lt;em&gt;</span>Click the name to edit it; click elsewhere to apply changes.<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
+</code></pre></div>
+<p><strong>Source code: View model</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Data</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">editing</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 
-Parameters</h2>
+    <span class="c1">// Behaviors</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">edit</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">editing</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="s2">&quot;Bert Bertington&quot;</span><span class="p">));</span>
+</code></pre></div>
+<h2>Parameters</h2>
 
 <h3>Main parameter</h3>
 
-<p>The <a href="/docs/commands.html#start">command</a> you want to bind to the element. 
-Depending on wether the command can currently execute or not, the element will be enabled or disabled.
-Clicking on the element will execute the command.</p>
+<p>Pass true (or some value that evaluates as true) to focus the associated element. 
+Otherwise, the associated element will be unfocused.</p>
 
-<p>To supply parameters to the command, pass an object with the following properties:</p>
+<p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the @-operator),
+the binding will update the element&#39;s focus state whenever the value changes. </p>
 
-<ul>
-<li><strong>command</strong>: The <a href="/docs/commands.html#start">command</a> you want to bind to the element</li>
-<li><strong>parameter</strong>: An optional parameter that will be passed as first argument to the command&#39;s execute handler.
-The parameter can also be an observable.</li>
-</ul>
+<p>If the parameter something else, it will only set the element&#39;s focus state once and will not update it again later.</p>
 </div>
 		</div>
 	</div>
