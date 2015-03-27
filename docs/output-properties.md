@@ -1,11 +1,16 @@
 ---
 layout: docs
-title: WebRx - Observable Properties
+title: WebRx - Observable Output Properties
 ---
 {% include sample-warning.html %}
-# Computed Observable Properties
+# Observable Output Properties
 
-What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where computed observable properties come in. 
+*Output properties* are observable properties that are backed by an Observable. Output properties are **read-only**, but will still fire change notifications 
+and are created by calling the ***toProperty()*** operator on **any Rx Observable instance**.
+
+## Example
+
+What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where output properties come in. 
 
 For example, given the following view model class ...
 
@@ -16,7 +21,7 @@ function AppViewModel() {
 }
 ```
 
-… you could add a computed observable to return the full name:
+… you could add an output property to return the full name:
 
 ```javascript
 function AppViewModel() {
@@ -33,15 +38,19 @@ function AppViewModel() {
 The name is <span data-bind="text: fullName"></span>
 ```
 
-… and they will be updated whenever *firstName* or *lastName* changes (your evaluator function will be called once each time any of its dependencies change, and whatever value you return will be passed on to the observers such as UI elements or other computed observables).
+… and they will be updated whenever *firstName* or *lastName* changes (your evaluator function will be called once each time any of its dependencies change, 
+and whatever value you return will be passed on to the observers such as UI elements or other output properties).
 
 ## How it works
 
-So how did the sample above work?
+So how did the example work?
 
 One of the core features of WebRx is to be able to convert properties to [Rx-Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md), via *whenAny*, and to convert [Rx-Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) into properties, via a method called *toProperty*. 
 
-The *whenAny* function takes any number of properties as input, subscribes to their *changed* observables, and invokes a user supplied selector function when any (hence the name) of its inputs changes. The selector function receives the latest value of all inputs as arguments. The result of *whenAny* is always an Rx Observable.
+The *whenAny* function takes any number of observable properties as input, subscribes to their *changed* observables, 
+and invokes a user supplied selector function when any (hence the name) of its inputs changes. 
+The selector function receives the latest value of all inputs as arguments. 
+The result of *whenAny* is an Rx-Observable providing the results of the selector.
 
 ```javascript
 var observable = wx.whenAny(this.firstName, this.lastName, function(firstName, lastName) { 

@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The Html-Binding</title>
+        <title>WebRx - Commands</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The Html-Binding" /> 
+        <meta property="og:title" content="WebRx - Commands" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - The Html-Binding</h1>
+        <h1 id="logoh1">WebRx - Commands</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -148,34 +148,69 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>The Html-Binding</h1>
+			<div class="body"><h1>Commands</h1>
 
-<p>The html binding causes the associated DOM element to display the HTML specified by your parameter.</p>
+<p>Commands represent discrete actions that are taken in the UI - <em>Copy</em>, <em>Open</em>, and <em>Ok</em> are good examples of Commands. 
+Usually these Commands are bound to an element that is built to handle Commands, like a Button or an Anchor.</p>
 
-<p>Typically this is useful when values in your view model are actually strings of HTML markup that you want to render.</p>
+<p>Many Commands are invoked directly by the user, but some operations are also useful to model via Commands 
+despite being primarily invoked progmatically. For example, many code paths involving periodically loading 
+or refreshing resources (i.e. &quot;LoadTweets&quot;) can be modeled well using Commands.</p>
 
-<h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;html: details&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-    <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">details</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
-    <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="s2">&quot;&lt;em&gt;For further details, view the report &lt;a href=&#39;report.html&#39;&gt;here&lt;/a&gt;.&lt;/em&gt;&quot;</span><span class="p">);</span> <span class="c1">// HTML content appears</span>
-<span class="nt">&lt;/script&gt;</span>
+<p><strong>Note:</strong> For information on how to utilize commands in your views and bindings refer to the <a href="/docs/command-binding.html#start">command-binding</a> documentation.</p>
+
+<h2>Creating commands</h2>
+
+<p>The simplest form of a command is one that can always execute:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div>
-<h2>Parameters</h2>
+<p>To manually execute a command, invoke its <em>execute</em> method:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">cmd</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
+</code></pre></div>
+<h3>Commands that can only execute when certain conditions are met</h3>
 
-<h3>Main parameter</h3>
+<p>Except for very simple cases, commands should not be allowed to execute in all situtations.
+For example, an imaginary <em>copy</em> command would require an existing selection and a <em>paste</em> command
+would require a non-empty clipboard.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
-<p>The binding clears the previous content and then sets the element’s content to your parameter value by parsing the string into HTML nodes and appending each node as a child of the element.</p>
+    <span class="k">this</span><span class="p">.</span><span class="nx">fooCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You did it!&quot;</span><span class="p">);</span>
+        <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">numberOfClicks</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="k">return</span> <span class="nx">numberOfClicks</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="p">}),</span> <span class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In this example we have setup <em>fooCmd</em> to only be executable once the view-model&#39;s
+<em>numberOfClicks</em> property reaches a value of 3 or higher. </p>
 
-<p>If this parameter is an observable value, the binding will update the element’s content whenever the value changes. If the parameter isn’t observable, it will only set the element’s content once and will not update it again later.</p>
+<p>Once again we take advantage of WebRx&#39;s <em>whenAny</em> helper to implement this. <em>whenAny</em> takes 
+any number of observable properties as input, subscribes to their <em>changed</em> observables
+and returns an observable that can be directly passed as argument to <em>wx.command</em>.</p>
 
-<p>If you supply something other than a number or a string (e.g., you pass an object or an array), the innerHTML will be equivalent to yourParameter.toString()</p>
+<p>The command will monitor the observable and adjust the command&#39;s <em>canExecute</em> status
+depending on wether the latest value from the observable evaluates falsy or truthy.</p>
 
-<h3>Note: About HTML encoding</h3>
+<h2>Commands and the <em>this</em> keyword</h2>
 
-<p>Since this binding sets your element’s content using innerHTML, you should be careful not to use it with untrusted model values, because that might open the possibility of a script injection attack. If you cannot guarantee that the content is safe to display (for example, if it is based on a different user’s input that was stored in your database), then you can use the text binding, which will set the element’s text value using innerText or textContent instead.</p>
+<p>Javascript developers often have to deal with the problem of <em>this</em> being redefined by event-handlers or Ajax-Request Callbacks.
+This becomes a problem when commands need to interact with or modify their enclosing view-model.
+To avoid this, you can pass an additional argument to <em>wx.command</em> that will ensure that the command
+will always execute with <em>this</em> being set to the specified value.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">fooCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">);</span>
+    <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If <em>fooCmd</em> would be triggered by a button-click and we hadn&#39;t passed <em>this</em> to <em>wx.command</em>,
+the alert would display &quot;undefined&quot;, because <em>this</em> would point to the windows object instead
+our view-model.</p>
 </div>
 		</div>
 	</div>

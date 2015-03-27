@@ -7,7 +7,7 @@ title: WebRx - The ForEach-Binding
 
 The foreach binding duplicates a section of markup for each entry in a collection, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.
 
-Assuming your collection is an [observable list](/docs/observable-lists.html#start), whenever you later add, remove, or re-order array entries, the binding will efficiently update the UI to match - inserting or removing more copies of the markup, or re-ordering existing DOM elements, without affecting any other DOM elements. This is far faster than regenerating the entire foreach output after each array change.
+Assuming your collection is an [Observable List](/docs/observable-lists.html#start), whenever you later add, remove, or re-order array entries, the binding will efficiently update the UI to match - inserting or removing more copies of the markup, or re-ordering existing DOM elements, without affecting any other DOM elements. This is far faster than regenerating the entire foreach output after each array change.
 
 Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow bindings such as if and with.
 

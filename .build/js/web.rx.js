@@ -215,6 +215,10 @@ var wx;
         return typeof obj == 'function' || false;
     }
     wx.isFunction = isFunction;
+    function isDisposable(obj) {
+        return isFunction(obj["dispose"]);
+    }
+    wx.isDisposable = isDisposable;
     function isEqual(a, b, aStack, bStack) {
         var toString = ({}).toString;
         if (a === b)
@@ -310,7 +314,7 @@ var wx;
     }
     wx.using = using;
     function observableRequire(module) {
-        if (typeof require === "undefined")
+        if (!isFunction(require))
             internal.throwError("there's no AMD-module loader available (Hint: did you forget to include RequireJS in your project?)");
         return Rx.Observable.create(function (observer) {
             try {
@@ -337,7 +341,7 @@ var wx;
             observableProperties.forEach(function (x) {
                 var prop = x.property;
                 var obs = onChanging ? prop.changing : prop.changed;
-                result.add(obs.subscribe(function (newVal) {
+                result.add(obs.subscribe(function (_) {
                     var e = new internal.PropertyChangedEventArgs(self, x.propertyName);
                     try {
                         observer.onNext(e);
@@ -1403,6 +1407,13 @@ var wx;
             var exp;
             var componentObservable;
             var componentParams = {};
+            var cleanup;
+            function doCleanup() {
+                if (cleanup) {
+                    cleanup.dispose();
+                    cleanup = null;
+                }
+            }
             if (typeof compiled === "function") {
                 exp = compiled;
                 componentObservable = this.domManager.expressionToObservable(exp, ctx);
@@ -1410,7 +1421,7 @@ var wx;
             else {
                 componentObservable = this.domManager.expressionToObservable(opt.name, ctx);
                 if (opt.params) {
-                    if (typeof opt.params === "function") {
+                    if (wx.isFunction(opt.params)) {
                         componentParams = this.domManager.evaluateExpression(opt.params, ctx);
                     }
                     else if (typeof opt.params === "object") {
@@ -1428,6 +1439,8 @@ var wx;
                 oldContents.push(el.removeChild(el.firstChild));
             }
             state.cleanup.add(componentObservable.subscribe(function (componentName) {
+                doCleanup();
+                cleanup = new Rx.CompositeDisposable();
                 var component = undefined;
                 if (module)
                     component = module.component(componentName);
@@ -1437,11 +1450,14 @@ var wx;
                     internal.throwError("component '{0}' is not registered.", componentName);
                 if (component.viewModel) {
                     state.cleanup.add(Rx.Observable.combineLatest(_this.loadTemplate(component.template, componentParams), _this.loadViewModel(component.viewModel, componentParams), function (t, vm) {
-                        if (typeof vm === "function") {
+                        if (wx.isFunction(vm)) {
                             vm = vm(componentParams);
                         }
                         return { template: t, viewModel: vm };
                     }).subscribe(function (x) {
+                        if (wx.isDisposable(x.viewModel)) {
+                            cleanup.add(x.viewModel);
+                        }
                         _this.applyTemplate(component, el, ctx, state, x.template, x.viewModel);
                     }, function (err) { return wx.app.defaultExceptionHandler.onNext(err); }));
                 }
@@ -1458,13 +1474,14 @@ var wx;
                 state = null;
                 oldContents = null;
                 compiled = null;
+                doCleanup();
             }));
         };
         ComponentBinding.prototype.configure = function (options) {
         };
         ComponentBinding.prototype.loadTemplate = function (template, params) {
             var syncResult;
-            if (typeof template === "function") {
+            if (wx.isFunction(template)) {
                 syncResult = template(params);
                 if (typeof syncResult === "string") {
                     syncResult = wx.app.templateEngine.parse(template(params));
@@ -1506,7 +1523,7 @@ var wx;
         };
         ComponentBinding.prototype.loadViewModel = function (vm, componentParams) {
             var syncResult;
-            if (typeof vm === "function") {
+            if (wx.isFunction(vm)) {
                 return Rx.Observable.return(vm);
             }
             else if (typeof vm === "object") {
@@ -3480,7 +3497,6 @@ var wx;
     var Command = (function () {
         function Command(canExecute, executeAsync, scheduler) {
             var _this = this;
-            if (scheduler === void 0) { scheduler = null; }
             this.resultsSubject = new Rx.Subject();
             this.isExecutingSubject = new Rx.Subject();
             this.inflightCount = 0;
@@ -3573,13 +3589,18 @@ var wx;
         internal.commandConstructor = Command;
     })(internal = wx.internal || (wx.internal = {}));
     function command() {
+        var args = wx.args2Array(arguments);
         var canExecute;
         var execute;
         var scheduler;
-        if (Rx.helpers.isFunction(arguments[0])) {
-            execute = arguments[0];
-            canExecute = arguments[1] || Rx.Observable.return(true);
-            scheduler = arguments[2];
+        var thisArg;
+        if (wx.isFunction(args[0])) {
+            execute = args.shift();
+            canExecute = wx.isRxObservable(args[0]) ? args.shift() : Rx.Observable.return(true);
+            scheduler = wx.isRxScheduler(args[0]) ? args.shift() : undefined;
+            thisArg = args.shift();
+            if (thisArg != null)
+                execute = execute.bind(thisArg);
             return asyncCommand(canExecute, function (parameter) { return Rx.Observable.create(function (obs) {
                 try {
                     execute(parameter);
@@ -3592,23 +3613,28 @@ var wx;
                 return Rx.Disposable.empty;
             }); }, scheduler);
         }
-        canExecute = arguments[0] || Rx.Observable.return(true);
-        scheduler = arguments[1];
+        canExecute = args.shift() || Rx.Observable.return(true);
+        scheduler = wx.isRxScheduler(args[0]) ? args.shift() : undefined;
         return new Command(canExecute, function (x) { return Rx.Observable.return(x); }, scheduler);
     }
     wx.command = command;
     function asyncCommand() {
+        var args = wx.args2Array(arguments);
         var canExecute;
         var executeAsync;
         var scheduler;
-        if (Rx.helpers.isFunction(arguments[0])) {
-            executeAsync = arguments[0];
-            scheduler = arguments[1];
+        var thisArg;
+        if (wx.isFunction(args[0])) {
+            executeAsync = args.shift();
+            scheduler = wx.isRxScheduler(args[0]) ? args.shift() : undefined;
+            thisArg = args.shift();
+            if (thisArg != null)
+                executeAsync = executeAsync.bind(thisArg);
             return new Command(Rx.Observable.return(true), executeAsync, scheduler);
         }
-        canExecute = arguments[0];
-        executeAsync = arguments[1];
-        scheduler = arguments[2];
+        canExecute = args.shift();
+        executeAsync = args.shift();
+        scheduler = wx.isRxScheduler(args[0]) ? args.shift() : undefined;
         return new Command(canExecute, executeAsync, scheduler);
     }
     wx.asyncCommand = asyncCommand;
@@ -5380,6 +5406,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.2.5';
+    wx.version = '0.9.3';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map

@@ -61,11 +61,12 @@
 				    <li><a href="../docs/binding-context.html#start">The binding context</a></li>
 				</ul>
 
-				<h3>Observables</h3>
+				<h3>Core Components</h3>
 				<ul>
-				    <li><a href="../docs/observable-properties.html#start">Creating view models with observable properties</a></li>
-				    <li><a href="../docs/computed-observable-properties.html#start">Computed observable properties</a></li>
-				    <li><a href="../docs/observable-lists.html#start">Working with observable lists</a></li>	
+				    <li><a href="../docs/observable-properties.html#start">Observable Properties</a></li>
+				    <li><a href="../docs/output-properties.html#start">Observable Output Properties</a></li>
+				    <li><a href="../docs/observable-lists.html#start">Observable Lists</a></li>	
+                    <li><a href="../docs/commands.html#start">Commands</a></li>
 				</ul>
 
 				<h3>Bindings</h3>
@@ -151,7 +152,7 @@
 
 <p>The style binding adds or removes one or more style values to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative, or to set the width of a bar to match a numerical value that changes.</p>
 
-<p>(Note: If you don’t want to apply an explicit style value but instead want to assign a CSS class, see the css binding.)</p>
+<p><strong>Note</strong>: If you don’t want to apply an explicit style value but instead want to assign a CSS class, see the css binding.</p>
 
 <h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;style: { color: currentProfit &lt; 0 ? &#39;red&#39; : &#39;black&#39; }&quot;</span><span class="nt">&gt;</span>

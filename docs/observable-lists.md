@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: WebRx - Observable Properties
+title: WebRx - Observable Lists
 ---
 {% include sample-warning.html %}
 # Observable Lists

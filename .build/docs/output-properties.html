@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Observable Properties</title>
+        <title>WebRx - Observable Output Properties</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Observable Properties" /> 
+        <meta property="og:title" content="WebRx - Observable Output Properties" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - Observable Properties</h1>
+        <h1 id="logoh1">WebRx - Observable Output Properties</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -61,11 +61,12 @@
 				    <li><a href="../docs/binding-context.html#start">The binding context</a></li>
 				</ul>
 
-				<h3>Observables</h3>
+				<h3>Core Components</h3>
 				<ul>
-				    <li><a href="../docs/observable-properties.html#start">Creating view models with observable properties</a></li>
-				    <li><a href="../docs/computed-observable-properties.html#start">Computed observable properties</a></li>
-				    <li><a href="../docs/observable-lists.html#start">Working with observable lists</a></li>	
+				    <li><a href="../docs/observable-properties.html#start">Observable Properties</a></li>
+				    <li><a href="../docs/output-properties.html#start">Observable Output Properties</a></li>
+				    <li><a href="../docs/observable-lists.html#start">Observable Lists</a></li>	
+                    <li><a href="../docs/commands.html#start">Commands</a></li>
 				</ul>
 
 				<h3>Bindings</h3>
@@ -151,9 +152,14 @@
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
 
-<h1>Computed Observable Properties</h1>
+<h1>Observable Output Properties</h1>
 
-<p>What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where computed observable properties come in. </p>
+<p><em>Output properties</em> are observable properties that are backed by an Observable. Output properties are <strong>read-only</strong>, but will still fire change notifications 
+and are created by calling the <strong><em>toProperty()</em></strong> operator on <strong>any Rx Observable instance</strong>.</p>
+
+<h2>Example</h2>
+
+<p>What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where output properties come in. </p>
 
 <p>For example, given the following view model class ...</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
@@ -161,7 +167,7 @@
     <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Smith&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>… you could add a computed observable to return the full name:</p>
+<p>… you could add an output property to return the full name:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// ... leave firstName and lastName unchanged ...</span>
 
@@ -172,15 +178,19 @@
 <p>... now you could bind UI elements to it, e.g.:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: fullName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
-<p>… and they will be updated whenever <em>firstName</em> or <em>lastName</em> changes (your evaluator function will be called once each time any of its dependencies change, and whatever value you return will be passed on to the observers such as UI elements or other computed observables).</p>
+<p>… and they will be updated whenever <em>firstName</em> or <em>lastName</em> changes (your evaluator function will be called once each time any of its dependencies change, 
+and whatever value you return will be passed on to the observers such as UI elements or other output properties).</p>
 
 <h2>How it works</h2>
 
-<p>So how did the sample above work?</p>
+<p>So how did the example work?</p>
 
 <p>One of the core features of WebRx is to be able to convert properties to <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a>, via <em>whenAny</em>, and to convert <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a> into properties, via a method called <em>toProperty</em>. </p>
 
-<p>The <em>whenAny</em> function takes any number of properties as input, subscribes to their <em>changed</em> observables, and invokes a user supplied selector function when any (hence the name) of its inputs changes. The selector function receives the latest value of all inputs as arguments. The result of <em>whenAny</em> is always an Rx Observable.</p>
+<p>The <em>whenAny</em> function takes any number of observable properties as input, subscribes to their <em>changed</em> observables, 
+and invokes a user supplied selector function when any (hence the name) of its inputs changes. 
+The selector function receives the latest value of all inputs as arguments. 
+The result of <em>whenAny</em> is an Rx-Observable providing the results of the selector.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">observable</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span> 
   <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> 
 <span class="p">});</span>

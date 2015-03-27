@@ -334,6 +334,7 @@ declare module wx {
     function getOid(o: any): string;
     function toggleCssClass(node: HTMLElement, shouldHaveClass: boolean, ...classNames: string[]): void;
     function isFunction(obj: any): boolean;
+    function isDisposable(obj: any): boolean;
     function isEqual(a: any, b: any, aStack?: any, bStack?: any): boolean;
     function cloneNodeArray(nodes: Array<Node>): Array<Node>;
     function nodeListToArray(nodes: NodeList): Node[];
@@ -573,10 +574,14 @@ declare module wx {
     module internal {
         var commandConstructor: any;
     }
-    function command(execute: (any) => void, canExecute?: Rx.Observable<boolean>, scheduler?: Rx.IScheduler): ICommand<any>;
+    function command(execute: (any) => void, canExecute?: Rx.Observable<boolean>, scheduler?: Rx.IScheduler, thisArg?: any): ICommand<any>;
+    function command(execute: (any) => void, canExecute?: Rx.Observable<boolean>, thisArg?: any): ICommand<any>;
+    function command(execute: (any) => void, thisArg?: any): ICommand<any>;
     function command(canExecute?: Rx.Observable<boolean>, scheduler?: Rx.IScheduler): ICommand<any>;
-    function asyncCommand<T>(canExecute: Rx.Observable<boolean>, executeAsync: (any) => Rx.Observable<T>, scheduler?: Rx.IScheduler): ICommand<T>;
-    function asyncCommand<T>(executeAsync: (any) => Rx.Observable<T>, scheduler?: Rx.IScheduler): ICommand<T>;
+    function asyncCommand<T>(canExecute: Rx.Observable<boolean>, executeAsync: (any) => Rx.Observable<T>, scheduler?: Rx.IScheduler, thisArg?: any): ICommand<T>;
+    function asyncCommand<T>(canExecute: Rx.Observable<boolean>, executeAsync: (any) => Rx.Observable<T>, thisArg?: any): ICommand<T>;
+    function asyncCommand<T>(executeAsync: (any) => Rx.Observable<T>, scheduler?: Rx.IScheduler, thisArg?: any): ICommand<T>;
+    function asyncCommand<T>(executeAsync: (any) => Rx.Observable<T>, thisArg?: any): ICommand<T>;
     function combinedCommand(canExecute: Rx.Observable<boolean>, ...commands: ICommand<any>[]): ICommand<any>;
     function combinedCommand(...commands: ICommand<any>[]): ICommand<any>;
 }
