@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - The Value-Binding</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - The Value-Binding" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+
+
+        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+
+
+        <script type='text/javascript' src='/js/web.rx.js'></script>
+      </head>
+    <body>
+        <h1 id="logoh1">WebRx - The Value-Binding</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs">Documentation</a></li>
+                    <li><a href="/examples">Examples</a></li>
+                    <li><a href="https://github.com/oliverw/WebRx"><img width="16" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
+                    <li><a href="http://twitter.com/intent/tweet?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript UIs with ReactiveX&via=oliverweichhold" target="_blank"><img width="16" src="/images/Twitter_logo_white.png"/>Tweet</a></li>
+                   </ul>
+                </div>
+              </div>
+            </nav>
+
+          <div class="content-panel docs">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="index">
+				<h3>Getting started</h3>
+				<ul>
+				    <li><a href="../docs/index.html#start">How WebRx works and what benefits it brings</a></li>
+				</ul>
+
+				<h3>Binding syntax</h3>
+				<ul>
+				    <li><a href="../docs/binding-syntax.html#start">The <code>data-bind</code> syntax</a></li>
+				    <li><a href="../docs/binding-context.html#start">The binding context</a></li>
+				</ul>
+
+				<h3>Core Components</h3>
+				<ul>
+				    <li><a href="../docs/observable-properties.html#start">Observable Properties</a></li>
+				    <li><a href="../docs/output-properties.html#start">Observable Output Properties</a></li>
+				    <li><a href="../docs/observable-lists.html#start">Observable Lists</a></li>	
+                    <li><a href="../docs/commands.html#start">Commands</a></li>
+				</ul>
+
+				<h3>Bindings</h3>
+
+				<h4>Controlling text and appearance</h4>
+				<ul>
+				    <li><a href="../docs/visible-binding.html#start">The <code>visible</code> binding</a></li>
+				    <li><a href="../docs/hidden-binding.html#start">The <code>hidden</code> binding</a></li>
+				    <li><a href="../docs/text-binding.html#start">The <code>text</code> binding</a></li>
+				    <li><a href="../docs/html-binding.html#start">The <code>html</code> binding</a></li>
+				    <li><a href="../docs/css-binding.html#start">The <code>css</code> binding</a></li>
+				    <li><a href="../docs/style-binding.html#start">The <code>style</code> binding</a></li>
+				    <li><a href="../docs/attr-binding.html#start">The <code>attr</code> binding</a></li>
+				</ul>
+
+				<h4>Control flow</h4>
+				<ul>
+				    <li><a href="../docs/foreach-binding.html#start">The <code>foreach</code> binding</a></li>
+				    <li><a href="../docs/if-binding.html#start">The <code>if</code> binding</a></li>
+				    <li><a href="../docs/ifnot-binding.html#start">The <code>ifnot</code> binding</a></li>
+				    <li><a href="../docs/with-binding.html#start">The <code>with</code> binding</a></li>
+				</ul>
+
+				<h4>Working with form fields</h4>
+				<ul>
+				    <li><a href="../docs/command-binding.html#start">The <code>command</code> binding</a></li>
+				    <li><a href="../docs/event-binding.html#start">The <code>event</code> binding</a></li>
+				    <li><a href="../docs/enabled-binding.html#start">The <code>enabled</code> binding</a></li>
+				    <li><a href="../docs/disabled-binding.html#start">The <code>disabled</code> binding</a></li>
+				    <li><a href="../docs/value-binding.html#start">The <code>value</code> binding</a></li>
+				    <li><a href="../docs/textinput-binding.html#start">The <code>textInput</code> binding</a></li>
+				    <li><a href="../docs/hasfocus-binding.html#start">The <code>hasFocus</code> binding</a></li>
+				    <li><a href="../docs/checked-binding.html#start">The <code>checked</code> binding</a></li>
+				    <li><a href="../docs/selectedValue-binding.html#start">The <code>selectedValue</code> binding</a></li>    
+				</ul>
+
+				<h3>Creating custom bindings</h3>
+				<ul>
+				    <li><a href="../docs/custom-bindings.html#start">Creating custom bindings</a></li>
+				    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html#start">Controlling descendant bindings</a></li>
+				    <li><a href="../docs/custom-bindings-disposal.html#start">Custom disposal logic</a></li>
+				</ul>
+
+				<h3>Components</h3>
+				<ul>
+				    <li><a href="../docs/component-overview.html#start">Overview: What <em>components</em> and <em>custom elements</em> offer</a></li>
+				    <li><a href="../docs/component-registration.html#start">Defining and registering components</a></li>
+				    <li><a href="../docs/component-binding.html#start">The <code>component</code> binding</a></li>
+				    <li><a href="../docs/component-custom-elements.html#start">Using custom elements</a></li>
+				    <li><a href="../docs/component-built-in.html#start">Built-in components</a></li>
+				</ul>
+
+				<h3>Modules</h3>
+				<ul>
+				    <li><a href="../docs/module-overview.html#start">Overview: What <em>modules</em> offer</a></li>
+				    <li><a href="../docs/module-registration.html#start">Defining and registering modules</a></li>
+				    <li><a href="../docs/module-binding.html#start">The <code>module</code> binding</a></li>
+				</ul>
+
+				<h3>Routing</h3>
+				<ul>
+				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
+				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
+				</ul>
+
+				<h3>Further techniques</h3>
+				<ul>
+				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
+				    <li><a href="../docs/binding-preprocessing.html#start">Extending Webrx's binding syntax</a></li>
+				</ul>
+
+				<h3>More information</h3>
+				<ul>
+				    <li><a href="../docs/browser-support.html#start">Browser support</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="start" class="col-md-9">
+			<div class="body"><h1>The Value-Binding</h1>
+
+<p>The value binding links the associated DOM element&#39;s value with a property on your view model. 
+This is typically useful with form elements such as <em>input</em>, <em>select</em> and <em>textarea</em>.</p>
+
+<p>When the user edits the value in the associated form control, it updates the value on your view model. 
+Likewise, when you update the value in your view model, this updates the value of the form control on screen.</p>
+
+<p>Note: If you&#39;re working with checkboxes or radio buttons, use the <a href="/docs/checked-binding.html#start">checked binding</a> to read and 
+write your element&#39;s checked state, not the value binding.</p>
+
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Login name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;value: @userName&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Password: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;value: @userPassword&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">userName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>        <span class="c1">// Initially blank</span>
+        <span class="nx">userPassword</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">),</span> <span class="c1">// Prepopulate</span>
+    <span class="p">};</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<h2>Parameters</h2>
+
+<h3>Main parameter</h3>
+
+<p>The binding sets the element&#39;s <em>value</em> property to your parameter value. Any previous value will be overwritten.</p>
+
+<p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the @-operator),
+the binding will update the element&#39;s value whenever the value changes. 
+If the parameter something else, it will only set the element&#39;s value once and will not update it again later.</p>
+
+<p>If you supply something other than a number or a string (e.g., you pass an object or an array), 
+the displayed text will be equivalent to yourParameter.toString() (that&#39;s usually not very useful, 
+so it&#39;s best to supply string or numeric values).</p>
+
+<p>Whenever the user edits the value in the associated form control, the binding will update the property 
+on your view model. The binding will always attempt to update your view model when the value has been 
+modified and a user transfers focus to another DOM node.</p>
+
+<h2>Getting value updates instantly from inputs</h2>
+
+<p>If you are trying to bind an <em>input type=&quot;text&quot;</em> or <em>textarea</em> to get instant updates to your viewmodel, 
+use the the <a href="/docs/textinput-binding.html#start">textInput binding</a>.</p>
+
+<h2>Working with drop-down lists (i.e., <em>select</em> elements)</h2>
+
+<p>WebRx has special support for drop-down lists (i.e., <em>select</em> elements) in form of the <a href="/docs/wx-select.html#start">wx-select component</a>.</p>
+</div>
+		</div>
+	</div>
+</div>
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-4">
+                    Copyright (c) 2015 Oliver Weichhold
+                  </div>
+
+                  <div class="copyright col-md-4">
+                  </div>
+
+                  <div class="copyright col-md-4 text-right">
+                    <a id="impressum" href="/impressum.html">Impressum</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
+        <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

@@ -73,7 +73,7 @@ The name is <span data-bind="text: personName + 'foo'"></span>
 The name is <span data-bind="text: personName() + 'foo'"></span>
 ```
 
-### Property-Object-References or @proprefs
+### <a id="topic-propref"></a>Property-Object-References or @proprefs
 
 Sometimes when working with certain bindings you don't want the aforementioned automatic deferencing to happen, because 
 the binding requires a reference to the property object itself instead of its current value. 
