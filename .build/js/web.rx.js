@@ -1991,7 +1991,7 @@ var wx;
 (function (wx) {
     var HasFocusBinding = (function () {
         function HasFocusBinding(domManager) {
-            this.priority = 0;
+            this.priority = -1;
             this.domManager = domManager;
         }
         HasFocusBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
@@ -2026,7 +2026,14 @@ var wx;
             }
             function updateElement(value) {
                 if (value) {
-                    el.focus();
+                    if (el.style.display !== 'none') {
+                        el.focus();
+                    }
+                    else {
+                        Rx.Scheduler.currentThread.schedule(function () {
+                            el.focus();
+                        });
+                    }
                 }
                 else {
                     el.blur();
@@ -2444,6 +2451,7 @@ var wx;
             _super.call(this, domManager);
             this.inverse = false;
             this.inverse = false;
+            this.priority = 10;
         }
         VisibleBinding.prototype.configure = function (_options) {
             var options = _options;
@@ -5406,6 +5414,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.3';
+    wx.version = '0.9.32';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map

@@ -230,7 +230,7 @@ function PersonViewModel(name) {
          
     // Behaviors
     this.editCmd = wx.command(function() { 
-        this.editing(true) 
+        this.editing(true);
     }, this);
 }
  
@@ -252,7 +252,9 @@ wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById
     <span class="k">this</span><span class="p">.</span><span class="nx">editing</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 
     <span class="c1">// Behaviors</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">edit</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">editing</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">editCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">editing</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="s2">&quot;Bert Bertington&quot;</span><span class="p">));</span>

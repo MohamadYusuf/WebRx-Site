@@ -85,7 +85,7 @@ function PersonViewModel(name) {
          
     // Behaviors
     this.editCmd = wx.command(function() { 
-		this.editing(true) 
+		this.editing(true);
 	}, this);
 }
  
@@ -112,7 +112,9 @@ function PersonViewModel(name) {
     this.editing = wx.property(false);
          
     // Behaviors
-    this.edit = function() { this.editing(true) }
+    this.editCmd = wx.command(function() { 
+		this.editing(true);
+	}, this);
 }
  
 wx.applyBindings(new PersonViewModel("Bert Bertington"));
