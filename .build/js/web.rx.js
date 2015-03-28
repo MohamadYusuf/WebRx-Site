@@ -782,7 +782,7 @@ var wx;
             this.parserOptions = {
                 disallowFunctionCalls: true
             };
-            this.elementState = wx.createWeakMap();
+            this.nodeState = wx.createWeakMap();
             this.compiler = compiler;
         }
         DomManager.prototype.applyBindings = function (model, rootNode) {
@@ -822,7 +822,7 @@ var wx;
                     var child = node.childNodes[i];
                     if (node.nodeType !== 1)
                         continue;
-                    this.clearElementState(child);
+                    this.clearNodeState(child);
                 }
             }
         };
@@ -917,17 +917,17 @@ var wx;
             };
         };
         DomManager.prototype.isNodeBound = function (node) {
-            var state = this.elementState.get(node);
+            var state = this.nodeState.get(node);
             return state && state.isBound;
         };
         DomManager.prototype.setNodeState = function (node, state) {
-            this.elementState.set(node, state);
+            this.nodeState.set(node, state);
         };
         DomManager.prototype.getNodeState = function (node) {
-            return this.elementState.get(node);
+            return this.nodeState.get(node);
         };
-        DomManager.prototype.clearElementState = function (node) {
-            var state = this.elementState.get(node);
+        DomManager.prototype.clearNodeState = function (node) {
+            var state = this.nodeState.get(node);
             if (state) {
                 if (state.cleanup != null) {
                     state.cleanup.dispose();
@@ -940,7 +940,7 @@ var wx;
                     state.module = undefined;
                 }
             }
-            this.elementState.delete(node);
+            this.nodeState.delete(node);
             wx.env.cleanExternalData(node);
         };
         DomManager.prototype.evaluateExpression = function (exp, ctx) {
@@ -1085,7 +1085,7 @@ var wx;
                     this.cleanNodeRecursive(child);
                 }
             }
-            this.clearElementState(node);
+            this.clearNodeState(node);
         };
         DomManager.prototype.createLocals = function (captured, ctx) {
             var locals = {};
@@ -1109,6 +1109,9 @@ var wx;
                     return result;
                 },
                 writeFieldHook: function (o, field, newValue) {
+                    if (field[0] === '@') {
+                        field = field.substring(1);
+                    }
                     target = o[field];
                     if (wx.isProperty(target)) {
                         var prop = target;

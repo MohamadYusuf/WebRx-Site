@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The Value-Binding</title>
+        <title>WebRx - The Checked-Binding</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The Value-Binding" /> 
+        <meta property="og:title" content="WebRx - The Checked-Binding" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - The Value-Binding</h1>
+        <h1 id="logoh1">WebRx - The Checked-Binding</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -148,54 +148,80 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>The Value-Binding</h1>
+			<div class="body"><h1>The Checked-Binding</h1>
 
-<p>The value binding links the associated DOM element&#39;s value with a property on your view model. 
-This is typically useful with form elements such as <em>input</em>, <em>select</em> and <em>textarea</em>.</p>
+<p>The checked binding links a checkable form control i.e., a checkbox or a radio button with a property on your view model.</p>
 
-<p>When the user edits the value in the associated form control, it updates the value on your view model. 
-Likewise, when you update the value in your view model, this updates the value of the form control on screen.</p>
+<p>When the user checks the associated form control, this updates the value on your view model. 
+Likewise, when you update the value in your view model, this checks or unchecks the form control on screen.</p>
 
-<p>Note: If you&#39;re working with checkboxes or radio buttons, use the <a href="/docs/checked-binding.html#start">checked binding</a> to read and 
-write your element&#39;s checked state, not the value binding.</p>
+<p><strong>Note:</strong> For text boxes, drop-down lists, and all non-checkable form controls, use the value 
+binding to read and write the element&#39;s value, not the checked binding.</p>
 
-<h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Login name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;value: @userName&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;p&gt;</span>Password: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;value: @userPassword&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
-
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<h2>Example with checkbox</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Send me spam: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: @wantsSpam&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">userName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>        <span class="c1">// Initially blank</span>
-        <span class="nx">userPassword</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">),</span> <span class="c1">// Prepopulate</span>
+        <span class="nx">wantsSpam</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// Initially checked</span>
     <span class="p">};</span>
+
+    <span class="c1">// ... then later ...</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">wantsSpam</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// The checkbox becomes unchecked</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<h2>Example adding radio buttons</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Send me spam: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: @wantsSpam&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;visible: wantsSpam&quot;</span><span class="nt">&gt;</span>
+    Preferred flavor of spam:
+    <span class="nt">&lt;div&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;flavorGroup&quot;</span> <span class="na">value=</span><span class="s">&quot;cherry&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: spamFlavor&quot;</span> <span class="nt">/&gt;</span> Cherry<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;flavorGroup&quot;</span> <span class="na">value=</span><span class="s">&quot;almond&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: spamFlavor&quot;</span> <span class="nt">/&gt;</span> Almond<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;flavorGroup&quot;</span> <span class="na">value=</span><span class="s">&quot;msg&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: spamFlavor&quot;</span> <span class="nt">/&gt;</span> Monosodium Glutamate<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">wantsSpam</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
+        <span class="nx">spamFlavor</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;almond&quot;</span><span class="p">)</span> <span class="c1">// Initially selects only the Almond radio button</span>
+    <span class="p">};</span>
+
+    <span class="c1">// ... then later ...</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">spamFlavor</span><span class="p">(</span><span class="s2">&quot;msg&quot;</span><span class="p">);</span> <span class="c1">// Now only Monosodium Glutamate is checked</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
 <h2>Parameters</h2>
 
 <h3>Main parameter</h3>
 
-<p>The binding sets the element&#39;s <em>value</em> property to your parameter value. Any previous value will be overwritten.</p>
+<p>The binding sets the element&#39;s checked state to match your parameter value. Any previous checked state will be overwritten. </p>
 
 <p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the @-operator),
-the binding will update the element&#39;s value whenever the value changes and vice-versa.
+the binding will update the element&#39;s checked-state whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element&#39;s value once and will not update it again later.</p>
 
-<p>If you supply something other than a number or a string (e.g., you pass an object or an array), 
-the displayed text will be equivalent to yourParameter.toString() (that&#39;s usually not very useful, 
-so it&#39;s best to supply string or numeric values).</p>
+<p>The way your parameter is interpreted depends on what type of element you&#39;re binding to ...</p>
 
-<p>Whenever the user edits the value in the associated form control, the binding will update the property 
-on your view model. The binding will always attempt to update your view model when the value has been 
-modified and a user transfers focus to another DOM node.</p>
+<h4>Checkboxes</h4>
 
-<h2>Getting value updates instantly from inputs</h2>
+<p>For checkboxes, the binding will set the element to be checked when the parameter value is true, 
+and unchecked when it is false. If you give a value that isn&#39;t actually boolean, it will be interpreted loosely. 
+This means that nonzero numbers and non-null objects and non-empty strings will all be interpreted as true, 
+whereas zero, null, undefined, and empty strings will be interpreted as false.</p>
 
-<p>If you are trying to bind an <em>input type=&quot;text&quot;</em> or <em>textarea</em> to get instant updates to your viewmodel, 
-use the the <a href="/docs/textinput-binding.html#start">textInput binding</a>.</p>
+<p>When the user checks or unchecks the checkbox, the binding will set your model property to true or false accordingly.</p>
 
-<h2>Working with drop-down lists (i.e., <em>select</em> elements)</h2>
+<h4>Radio-Buttons</h4>
 
-<p>WebRx has special support for drop-down lists (i.e., <em>select</em> elements) in form of the <a href="/docs/wx-select.html#start">wx-select component</a>.</p>
+<p>For radio buttons, the binding will set the element to be checked if and only if the parameter 
+value equals the radio button node&#39;s value attribute. In the previous example, the radio button with 
+value=&quot;almond&quot; was checked only when the view model&#39;s spamFlavor property was equal to <em>&quot;almond&quot;</em>.</p>
+
+<p>When the user changes which radio button is selected, the binding will set your model property to equal 
+the value of the selected radio button. In the preceding example, clicking on the radio button 
+with value=&quot;cherry&quot; would set viewModel.spamFlavor to be <em>&quot;cherry&quot;</em>.</p>
+
+<p>Of course, this is most useful when you have multiple radio button elements bound to a single model property.
+To ensure that only one of those radio buttons can be checked at any one time, you should set all of 
+their name attributes to an arbitrary common value (e.g., the value flavorGroup in the preceding example) - 
+doing this puts them into a group where only one can be selected.</p>
 </div>
 		</div>
 	</div>

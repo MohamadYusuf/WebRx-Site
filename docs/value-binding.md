@@ -34,7 +34,7 @@ write your element's checked state, not the value binding.
 The binding sets the element's *value* property to your parameter value. Any previous value will be overwritten.
 
 If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
-the binding will update the element's value whenever the value changes. 
+the binding will update the element's value whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element's value once and will not update it again later.
 
 If you supply something other than a number or a string (e.g., you pass an object or an array), 

@@ -71,7 +71,7 @@ Unfocusing the *input* element sets editing to false, so the UI switches out of 
 		<p>
 			Name: 
 			<b data-bind="visible: !editing, text: name, command: editCmd">&nbsp;</b>
-			<input data-bind="visible: editing, value: @name, hasFocus: @editing" />
+			<input data-bind="visible: editing, value: @name, hasFocus: @editing" style="display: none;" />
 		</p>
 		<p><em>Click the name to edit it; click elsewhere to apply changes.</em></p>
 	</div>
@@ -98,7 +98,7 @@ wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById
 <p>
 	Name: 
 	<b data-bind="visible: !editing, text: name, command: editCmd">&nbsp;</b>
-	<input data-bind="visible: editing, value: @name, hasFocus: @editing" />
+	<input data-bind="visible: editing, value: @name, hasFocus: @editing" style="display: none;" />
 </p>
 <p><em>Click the name to edit it; click elsewhere to apply changes.</em></p>
 ```
@@ -128,6 +128,5 @@ Pass true (or some value that evaluates as true) to focus the associated element
 Otherwise, the associated element will be unfocused.
 
 If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
-the binding will update the element's focus state whenever the value changes. 
-
+the binding will update the element's focus state whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element's focus state once and will not update it again later.

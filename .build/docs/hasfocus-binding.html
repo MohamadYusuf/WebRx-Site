@@ -215,7 +215,7 @@ Unfocusing the <em>input</em> element sets editing to false, so the UI switches 
         <p>
             Name: 
             <b data-bind="visible: !editing, text: name, command: editCmd">&nbsp;</b>
-            <input data-bind="visible: editing, value: @name, hasFocus: @editing" />
+            <input data-bind="visible: editing, value: @name, hasFocus: @editing" style="display: none;" />
         </p>
         <p><em>Click the name to edit it; click elsewhere to apply changes.</em></p>
     </div>
@@ -241,7 +241,7 @@ wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
     Name: 
     <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;visible: !editing, text: name, command: editCmd&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/b&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;visible: editing, value: @name, hasFocus: @editing&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;visible: editing, value: @name, hasFocus: @editing&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p&gt;&lt;em&gt;</span>Click the name to edit it; click elsewhere to apply changes.<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
 </code></pre></div>
@@ -267,9 +267,8 @@ wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById
 Otherwise, the associated element will be unfocused.</p>
 
 <p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the @-operator),
-the binding will update the element&#39;s focus state whenever the value changes. </p>
-
-<p>If the parameter something else, it will only set the element&#39;s focus state once and will not update it again later.</p>
+the binding will update the element&#39;s focus state whenever the value changes and vice-versa.
+If the parameter something else, it will only set the element&#39;s focus state once and will not update it again later.</p>
 </div>
 		</div>
 	</div>

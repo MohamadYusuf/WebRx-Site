@@ -170,11 +170,11 @@ declare module wx {
         cleanNode(rootNode: Node): void;
         cleanDescendants(rootNode: Node): void;
         setNodeState(node: Node, state: INodeState): void;
+        getDataContext(node: Node): IDataContext;
         getNodeState(node: Node): INodeState;
         createNodeState(model?: any): INodeState;
-        getDataContext(node: Node): IDataContext;
         isNodeBound(node: Node): boolean;
-        clearElementState(node: Node): any;
+        clearNodeState(node: Node): any;
         compileBindingOptions(value: string, module: IModule): any;
         getObjectLiteralTokens(value: string): Array<IObjectLiteralToken>;
         getBindingDefinitions(node: Node): Array<{
