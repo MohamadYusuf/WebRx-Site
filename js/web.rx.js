@@ -1453,10 +1453,6 @@ var wx;
                     internal.throwError("component '{0}' is not registered.", componentName);
                 if (component.viewModel) {
                     state.cleanup.add(Rx.Observable.combineLatest(_this.loadTemplate(component.template, componentParams), _this.loadViewModel(component.viewModel, componentParams), function (t, vm) {
-                        if (wx.isFunction(vm)) {
-                            var vmProps = {};
-                            vm = vm.call(vmProps, componentParams) || vmProps;
-                        }
                         return { template: t, viewModel: vm };
                     }).subscribe(function (x) {
                         if (wx.isDisposable(x.viewModel)) {
@@ -1528,7 +1524,7 @@ var wx;
         ComponentBinding.prototype.loadViewModel = function (vm, componentParams) {
             var syncResult;
             if (wx.isFunction(vm)) {
-                return Rx.Observable.return(vm);
+                return Rx.Observable.return(new vm(componentParams));
             }
             else if (typeof vm === "object") {
                 var options = vm;
@@ -5418,6 +5414,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.32';
+    wx.version = '0.9.33';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
