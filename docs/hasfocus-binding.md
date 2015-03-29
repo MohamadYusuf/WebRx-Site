@@ -5,10 +5,11 @@ title: WebRx - The hasFocus-Binding
 {% include sample-warning.html %}
 # The hasFocus-Binding
 
-The hasFocus binding links a DOM element's focus state with a viewmodel property. It is a two-way binding, so:
+The hasFocus binding links a DOM element's focus state with a viewmodel property. 
 
-If you set the viewmodel property to true or false, the associated element will become focused or unfocused.
-If the user manually focuses or unfocuses the associated element, the viewmodel property will be set to true or false accordingly.
+It is a two-way binding, so if you set the viewmodel property to true or false, the associated element will become focused or unfocused.
+If the user manually focuses or unfocuses the associated element, the view-model property will be set to true or false accordingly.
+
 This is useful if you're building sophisticated forms in which editable elements appear dynamically, 
 and you would like to control where the user should start typing, or respond to the location of the caret.
 
@@ -42,7 +43,6 @@ wx.applyBindings(new ViewModel(), document.getElementById('hasfocus-example1'));
 <input data-bind="hasFocus: @isSelected" />
 <button data-bind="click: setIsSelected">Focus programmatically</button>
 <span data-bind="visible: isSelected">The textbox has focus</span>
-Source code: View model
 ```
 
 **Source code: View model**
@@ -89,7 +89,7 @@ function PersonViewModel(name) {
 	}, this);
 }
  
-wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById('hasfocus-example2'));
+wx.applyBindings(new PersonViewModel("Bart Simpson"), document.getElementById('hasfocus-example2'));
 </script>
 
 **Source code: View**
@@ -117,7 +117,7 @@ function PersonViewModel(name) {
 	}, this);
 }
  
-wx.applyBindings(new PersonViewModel("Bert Bertington"));
+wx.applyBindings(new PersonViewModel("Bart Simpson"));
 ```
 
 ## Parameters

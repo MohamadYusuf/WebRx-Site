@@ -64,7 +64,7 @@
 				<h3>Core Components</h3>
 				<ul>
 				    <li><a href="../docs/observable-properties.html#start">Observable Properties</a></li>
-				    <li><a href="../docs/output-properties.html#start">Observable Output Properties</a></li>
+				    <li><a href="../docs/output-properties.html#start">Output Properties</a></li>
 				    <li><a href="../docs/observable-lists.html#start">Observable Lists</a></li>	
                     <li><a href="../docs/commands.html#start">Commands</a></li>
 				</ul>
@@ -100,17 +100,19 @@
 				    <li><a href="../docs/textinput-binding.html#start">The <code>textInput</code> binding</a></li>
 				    <li><a href="../docs/hasfocus-binding.html#start">The <code>hasFocus</code> binding</a></li>
 				    <li><a href="../docs/checked-binding.html#start">The <code>checked</code> binding</a></li>
-				    <li><a href="../docs/selectedValue-binding.html#start">The <code>selectedValue</code> binding</a></li>    
+				    <li><a href="../docs/selected-value-binding.html#start">The <code>selectedValue</code> binding</a></li>    
 				</ul>
-
+			
+                <!--
 				<h3>Creating custom bindings</h3>
 				<ul>
 				    <li><a href="../docs/custom-bindings.html#start">Creating custom bindings</a></li>
 				    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html#start">Controlling descendant bindings</a></li>
 				    <li><a href="../docs/custom-bindings-disposal.html#start">Custom disposal logic</a></li>
 				</ul>
-
-				<h3>Components</h3>
+                -->
+			    
+                <h3>Components</h3>
 				<ul>
 				    <li><a href="../docs/component-overview.html#start">Overview: What <em>components</em> and <em>custom elements</em> offer</a></li>
 				    <li><a href="../docs/component-registration.html#start">Defining and registering components</a></li>
@@ -154,11 +156,12 @@
 
 <h1>The hasFocus-Binding</h1>
 
-<p>The hasFocus binding links a DOM element&#39;s focus state with a viewmodel property. It is a two-way binding, so:</p>
+<p>The hasFocus binding links a DOM element&#39;s focus state with a viewmodel property. </p>
 
-<p>If you set the viewmodel property to true or false, the associated element will become focused or unfocused.
-If the user manually focuses or unfocuses the associated element, the viewmodel property will be set to true or false accordingly.
-This is useful if you&#39;re building sophisticated forms in which editable elements appear dynamically, 
+<p>It is a two-way binding, so if you set the viewmodel property to true or false, the associated element will become focused or unfocused.
+If the user manually focuses or unfocuses the associated element, the view-model property will be set to true or false accordingly.</p>
+
+<p>This is useful if you&#39;re building sophisticated forms in which editable elements appear dynamically, 
 and you would like to control where the user should start typing, or respond to the location of the caret.</p>
 
 <h2>Example 1: The basics</h2>
@@ -190,7 +193,6 @@ wx.applyBindings(new ViewModel(), document.getElementById('hasfocus-example1'));
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;hasFocus: @isSelected&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;click: setIsSelected&quot;</span><span class="nt">&gt;</span>Focus programmatically<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;visible: isSelected&quot;</span><span class="nt">&gt;</span>The textbox has focus<span class="nt">&lt;/span&gt;</span>
-Source code: View model
 </code></pre></div>
 <p><strong>Source code: View model</strong></p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
@@ -234,7 +236,7 @@ function PersonViewModel(name) {
     }, this);
 }
  
-wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById('hasfocus-example2'));
+wx.applyBindings(new PersonViewModel("Bart Simpson"), document.getElementById('hasfocus-example2'));
 </script>
 
 <p><strong>Source code: View</strong></p>
@@ -257,7 +259,7 @@ wx.applyBindings(new PersonViewModel("Bert Bertington"), document.getElementById
     <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="s2">&quot;Bert Bertington&quot;</span><span class="p">));</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="s2">&quot;Bart Simpson&quot;</span><span class="p">));</span>
 </code></pre></div>
 <h2>Parameters</h2>
 

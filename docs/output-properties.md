@@ -1,12 +1,13 @@
 ---
 layout: docs
-title: WebRx - Observable Output Properties
+title: WebRx - Output Properties
 ---
 {% include sample-warning.html %}
-# Observable Output Properties
+# Output Properties
 
-*Output properties* are observable properties that are backed by an Observable. Output properties are **read-only**, but will still fire change notifications 
-and are created by calling the ***toProperty()*** operator on **any Rx Observable instance**.
+*Output properties* are observable properties that are backed by an Rx-Observable. Output properties are **read-only**, but will still fire change notifications.
+
+Output properties are created by calling the ***toProperty()*** operator on **any Rx-Observable** instance.
 
 ## Example
 
