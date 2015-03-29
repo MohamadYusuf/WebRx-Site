@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - The Component-Binding</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - The Component-Binding" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+
+
+        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+
+
+        <script type='text/javascript' src='/js/web.rx.js'></script>
+      </head>
+    <body>
+        <h1 id="logoh1">WebRx - The Component-Binding</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs">Documentation</a></li>
+                    <li><a href="/examples">Examples</a></li>
+                    <li><a href="https://github.com/oliverw/WebRx"><img width="16" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
+                    <li><a href="http://twitter.com/intent/tweet?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript UIs with ReactiveX&via=oliverweichhold" target="_blank"><img width="16" src="/images/Twitter_logo_white.png"/>Tweet</a></li>
+                   </ul>
+                </div>
+              </div>
+            </nav>
+
+          <div class="content-panel docs">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="index">
+				<h3>Getting started</h3>
+				<ul>
+				    <li><a href="../docs/index.html#start">How WebRx works and what benefits it brings</a></li>
+				</ul>
+
+				<h3>Binding syntax</h3>
+				<ul>
+				    <li><a href="../docs/binding-syntax.html#start">The <code>data-bind</code> syntax</a></li>
+				    <li><a href="../docs/binding-context.html#start">The binding context</a></li>
+				</ul>
+
+				<h3>Core Components</h3>
+				<ul>
+				    <li><a href="../docs/observable-properties.html#start">Observable Properties</a></li>
+				    <li><a href="../docs/output-properties.html#start">Output Properties</a></li>
+				    <li><a href="../docs/observable-lists.html#start">Observable Lists</a></li>	
+                    <li><a href="../docs/commands.html#start">Commands</a></li>
+				</ul>
+
+				<h3>Bindings</h3>
+
+				<h4>Controlling text and appearance</h4>
+				<ul>
+				    <li><a href="../docs/visible-binding.html#start">The <code>visible</code> binding</a></li>
+				    <li><a href="../docs/hidden-binding.html#start">The <code>hidden</code> binding</a></li>
+				    <li><a href="../docs/text-binding.html#start">The <code>text</code> binding</a></li>
+				    <li><a href="../docs/html-binding.html#start">The <code>html</code> binding</a></li>
+				    <li><a href="../docs/css-binding.html#start">The <code>css</code> binding</a></li>
+				    <li><a href="../docs/style-binding.html#start">The <code>style</code> binding</a></li>
+				    <li><a href="../docs/attr-binding.html#start">The <code>attr</code> binding</a></li>
+				</ul>
+
+				<h4>Control flow</h4>
+				<ul>
+				    <li><a href="../docs/foreach-binding.html#start">The <code>foreach</code> binding</a></li>
+				    <li><a href="../docs/if-binding.html#start">The <code>if</code> binding</a></li>
+				    <li><a href="../docs/ifnot-binding.html#start">The <code>ifnot</code> binding</a></li>
+				    <li><a href="../docs/with-binding.html#start">The <code>with</code> binding</a></li>
+				</ul>
+
+				<h4>Working with form fields</h4>
+				<ul>
+				    <li><a href="../docs/command-binding.html#start">The <code>command</code> binding</a></li>
+				    <li><a href="../docs/event-binding.html#start">The <code>event</code> binding</a></li>
+				    <li><a href="../docs/enabled-binding.html#start">The <code>enabled</code> binding</a></li>
+				    <li><a href="../docs/disabled-binding.html#start">The <code>disabled</code> binding</a></li>
+				    <li><a href="../docs/value-binding.html#start">The <code>value</code> binding</a></li>
+				    <li><a href="../docs/textinput-binding.html#start">The <code>textInput</code> binding</a></li>
+				    <li><a href="../docs/hasfocus-binding.html#start">The <code>hasFocus</code> binding</a></li>
+				    <li><a href="../docs/checked-binding.html#start">The <code>checked</code> binding</a></li>
+				    <li><a href="../docs/selected-value-binding.html#start">The <code>selectedValue</code> binding</a></li>    
+				</ul>
+			
+                <!--
+				<h3>Creating custom bindings</h3>
+				<ul>
+				    <li><a href="../docs/custom-bindings.html#start">Creating custom bindings</a></li>
+				    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html#start">Controlling descendant bindings</a></li>
+				    <li><a href="../docs/custom-bindings-disposal.html#start">Custom disposal logic</a></li>
+				</ul>
+                -->
+			    
+                <h3>Components</h3>
+				<ul>
+				    <li><a href="../docs/component-overview.html#start">Overview: What <em>components</em> and <em>custom elements</em> offer</a></li>
+				    <li><a href="../docs/component-registration.html#start">Defining and registering components</a></li>
+				    <li><a href="../docs/component-binding.html#start">The <code>component</code> binding</a></li>
+				    <!-- <li><a href="../docs/component-custom-elements.html#start">Using custom elements</a></li> 
+				    <li><a href="../docs/component-built-in.html#start">Built-in components</a></li> -->
+				</ul>
+
+				<h3>Modules</h3>
+				<ul>
+				    <li><a href="../docs/module-overview.html#start">Overview: What <em>modules</em> offer</a></li>
+				    <li><a href="../docs/module-registration.html#start">Defining and registering modules</a></li>
+				    <li><a href="../docs/module-binding.html#start">The <code>module</code> binding</a></li>
+				</ul>
+
+				<h3>Routing</h3>
+				<ul>
+				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
+				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
+				</ul>
+
+				<h3>Further techniques</h3>
+				<ul>
+				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
+				    <li><a href="../docs/binding-preprocessing.html#start">Extending Webrx's binding syntax</a></li>
+				</ul>
+
+				<h3>More information</h3>
+				<ul>
+				    <li><a href="../docs/browser-support.html#start">Browser support</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="start" class="col-md-9">
+			<div class="body"><h1>The Component-Binding</h1>
+
+<p>The component binding injects a specified component into an element, and optionally passes parameters to it.</p>
+
+<div class="panel panel-default" id="component-binding-example1">
+    <div class="panel-heading">
+        <h3 class="panel-title">Live example</h3>
+    </div>
+    <div class="panel-body">
+        <h4>First instance, without parameters</h4>
+            <div data-bind='component: "message-editor"'></div>
+ 
+            <h4>Second instance, passing parameters</h4>
+            <div data-bind='component: {
+                name: "message-editor",
+                params: { initialText: "Hello, world!" } }'>
+            </div>
+    </div>
+</div>
+  
+
+<script type="text/javascript">
+wx.app.component('message-editor', {
+    viewModel: function(params) {
+        this.text = wx.property(params && params.initialText || '');
+    },
+    template: 'Message: <input data-bind="value: text" /> '
+            + '(length: <span data-bind="text: text.length"></span>)'
+});
+ 
+wx.applyBindings(undefined, document.getElementById('component-binding-example1'));
+</script>
+
+<p><strong>Source code: View</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h4&gt;</span>First instance, without parameters<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&#39;component: &quot;message-editor&quot;&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;h4&gt;</span>Second instance, passing parameters<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&#39;component: {</span>
+<span class="s">    name: &quot;message-editor&quot;,</span>
+<span class="s">    params: { initialText: &quot;Hello, world!&quot; } </span>
+<span class="s">}&#39;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<p><strong>Source code: View model</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;message-editor&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="nx">params</span> <span class="o">&amp;&amp;</span> <span class="nx">params</span><span class="p">.</span><span class="nx">initialText</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;Message: &lt;input data-bind=&quot;value: text&quot; /&gt; &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;(length: &lt;span data-bind=&quot;text: text.length&quot;&gt;&lt;/span&gt;)&#39;</span>
+<span class="p">});</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>Note:</strong> In more realistic cases, you would typically load component view-models and templates from external files, 
+instead of hardcoding them into the registration. See an example and registration documentation.</p>
+
+<h2>API</h2>
+
+<p>There are two ways to use the component binding:</p>
+
+<h3>Shorthand syntax</h3>
+
+<p>If you pass just a string, it is interpreted as a component name. The named component is then injected without supplying any parameters to it. Example:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&#39;component: &quot;my-component&quot;&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<p>The shorthand value can also be observable. In this case, if it changes, the component binding will dispose the old 
+component instance, and inject the newly-referenced component. Example:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&#39;component: observableWhoseValueIsAComponentName&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<h3>Full syntax</h3>
+
+<p>To supply parameters to the component, pass an object with the following properties:</p>
+
+<ul>
+<li><strong>name</strong> — the name of the component to inject. Again, this can be observable.</li>
+<li><strong>params</strong> — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component’s view-model constructor.</li>
+</ul>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&#39;component: {</span>
+<span class="s">    name: &quot;shopping-cart&quot;,</span>
+<span class="s">    params: { mode: &quot;detailed-list&quot;, items: productsList }</span>
+<span class="s">}&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<p><strong>Note:</strong> that whenever a component is removed (either because the name observable changed, or because an 
+enclosing control-flow binding removed the entire element), the removed component is disposed.</p>
+
+<h2>Component lifecycle</h2>
+
+<p>When a component binding injects a component,</p>
+
+<ol>
+<li><p><strong>The component template is cloned and injected into the container element</strong></p>
+
+<p>Any existing content is removed and discarded.</p></li>
+<li><p><strong>If the component has a viewmodel, it is instantiated</strong></p>
+
+<p>If the view-model is given as a constructor function, this means WebRx calls <em>new YourViewModel(params)</em>.</p>
+
+<p>This phase always completes synchronously (constructors and factory functions are not allowed to be asynchronous), 
+since it occurs every time a component is instantiated and performance would be unacceptable if it involved waiting 
+for network requests.</p></li>
+<li><p><strong>The view-model is bound to the view</strong></p>
+
+<p>Or, if the component has no view-model, then the view is bound to any params you’ve supplied to the component binding.</p></li>
+<li><p><strong>The component is active</strong></p>
+
+<p>Now the component is operating, and can remain on-screen for as long as needed.</p>
+
+<p>If any of the parameters passed to the component is observable, then the component can of course observe any changes, 
+or even write back modified values. This is how it can communicate cleanly with its parent, without tightly coupling the 
+component code to any parent that uses it.</p></li>
+<li><p><strong>The component is torn down, and the view-model is disposed</strong></p>
+
+<p>If the component binding’s name value changes observably, or if an enclosing control-flow binding causes the container 
+element to be removed, then any dispose function on the view-model is called just before the container element is removed 
+from the DOM. See also: disposal and memory management.</p></li>
+</ol>
+
+<h2>Template-only components</h2>
+
+<p>Components usually have view-models, but they don’t necessarily have to. A component can specify just a template.</p>
+
+<p>In this case, the object to which the component’s view is bound is the params object that you passed to the component binding. Example:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;special-offer&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;div class=&quot;offer-box&quot; data-bind=&quot;text: productName&quot;&gt;&lt;/div&gt;&#39;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>… can be injected with:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&#39;component: {</span>
+<span class="s">     name: &quot;special-offer-callout&quot;,</span>
+<span class="s">     params: { productName: someProduct.name }</span>
+<span class="s">}&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<p>… or, more conveniently, as a custom element:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;special-offer</span> <span class="na">params=</span><span class="s">&#39;productName: someProduct.name&#39;</span><span class="nt">&gt;&lt;/special-offer&gt;</span>
+</code></pre></div>
+<h2>Disposal and memory management</h2>
+
+<p>You <strong>must</strong> implement a <em>dispose</em> method on your view-model if your view-model holds references to any resources 
+that aren’t inherently garbage-collectable, or run the risk of producing memory-leaks:</p>
+
+<ul>
+<li><em>setInterval</em> callbacks will continue to fire until explicitly cleared.
+Use <em>clearInterval(handle)</em> to stop them, otherwise your view-model might be held in memory.</li>
+<li><a href="/docs/output-properties.html#start">output properties</a> continue to receive notifications from their dependencies until explicitly disposed.</li>
+<li>Subscriptions to Rx-Observables continue to fire until explicitly disposed.</li>
+<li>Manually-created event handlers on external DOM elements (you shouldn&#39;t do that anyway to fit the MVVM pattern)</li>
+</ul>
+
+<p><strong>Note:</strong> Of course, you don’t have to worry about releasing any event handlers created by standard WebRx bindings in your view, 
+as WebRx automatically unregisters them when the elements are removed.</p>
+
+<h3>Improving resource management</h3>
+
+<p>Fortunately <a href="https://github.com/Reactive-Extensions/RxJS/tree/master/doc">ReactiveX for Javascript</a> provides us with 
+means to make it easier to follow the rules outlined above.</p>
+
+<p><strong>Centralized resource disposal</strong></p>
+
+<p><a href="https://github.com/Reactive-Extensions/RxJS/tree/master/doc">ReactiveX for Javascript</a> includes the extremly useful
+<a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/compositedisposable.md">CompositeDisposable</a> 
+class which can be utilized to implement your view-model&#39;s <em>dispose</em> method like this:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">CompositeDisposable</span><span class="p">();</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">dispose</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let&#39;s combine our view-model with some best-practices for consuming resources using ReactiveX:</p>
+
+<ul>
+<li><strong>Timers</strong>: Instead of Javascript&#39;s built-in <em>setInterval</em>/<em>clearInterval</em> functions use <em>Rx.Observable.interval</em> or <em>Rx.Observable.timer</em></li>
+<li><strong>Events</strong>: Instead of Javascript&#39;s built-in <em>addEventListener</em> function use <em>Rx.Observable.fromEvent</em></li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">CompositeDisposable</span><span class="p">();</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">dispose</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+    <span class="p">};</span>
+
+    <span class="c1">// consume a timer</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}));</span>
+
+    <span class="c1">// consume a DOM event</span>
+    <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="nx">el</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}));</span>
+
+    <span class="c1">// consume an output property which must be disposed to unsubscribe from its source-observable</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">someProp</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">timer</span><span class="p">(</span><span class="mi">5000</span><span class="p">).</span><span class="nx">toProperty</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">someProp</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now when our view-model is disposed it will stop both timers and stop listening to <em>&quot;change&quot;</em> events from element <em>&#39;foo&#39;</em>
+with the single invocation of its <em>cleanup</em> member&#39;s <em>dispose</em> method.</p>
+
+<p>WebRx&#39;s built-in bindings make extensive use of this approach.</p>
+</div>
+		</div>
+	</div>
+</div>
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-4">
+                    Copyright (c) 2015 Oliver Weichhold
+                  </div>
+
+                  <div class="copyright col-md-4">
+                  </div>
+
+                  <div class="copyright col-md-4 text-right">
+                    <a id="impressum" href="/impressum.html">Impressum</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
+        <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

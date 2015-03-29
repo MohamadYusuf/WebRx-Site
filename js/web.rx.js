@@ -1454,7 +1454,8 @@ var wx;
                 if (component.viewModel) {
                     state.cleanup.add(Rx.Observable.combineLatest(_this.loadTemplate(component.template, componentParams), _this.loadViewModel(component.viewModel, componentParams), function (t, vm) {
                         if (wx.isFunction(vm)) {
-                            vm = vm(componentParams);
+                            var vmProps = {};
+                            vm = vm.call(vmProps, componentParams) || vmProps;
                         }
                         return { template: t, viewModel: vm };
                     }).subscribe(function (x) {
@@ -3363,7 +3364,7 @@ var wx;
                     return nodes;
                 }
             }
-            result = '<div class="wx-radiogroup" data-bind="{0}"><input type="radio" data-bind="{1}">{2}</div>';
+            result = '<div class="wx-radiogroup" data-bind="{0}"><input type="radio" data-bind="{1}"/>{2}</div>';
             var bindings = [];
             var attrs = [];
             var itemBindings = [];

@@ -1,0 +1,470 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - Component-Registration</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - Component-Registration" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+
+
+        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+
+
+        <script type='text/javascript' src='/js/web.rx.js'></script>
+      </head>
+    <body>
+        <h1 id="logoh1">WebRx - Component-Registration</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs">Documentation</a></li>
+                    <li><a href="/examples">Examples</a></li>
+                    <li><a href="https://github.com/oliverw/WebRx"><img width="16" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
+                    <li><a href="http://twitter.com/intent/tweet?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript UIs with ReactiveX&via=oliverweichhold" target="_blank"><img width="16" src="/images/Twitter_logo_white.png"/>Tweet</a></li>
+                   </ul>
+                </div>
+              </div>
+            </nav>
+
+          <div class="content-panel docs">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="index">
+				<h3>Getting started</h3>
+				<ul>
+				    <li><a href="../docs/index.html#start">How WebRx works and what benefits it brings</a></li>
+				</ul>
+
+				<h3>Binding syntax</h3>
+				<ul>
+				    <li><a href="../docs/binding-syntax.html#start">The <code>data-bind</code> syntax</a></li>
+				    <li><a href="../docs/binding-context.html#start">The binding context</a></li>
+				</ul>
+
+				<h3>Core Components</h3>
+				<ul>
+				    <li><a href="../docs/observable-properties.html#start">Observable Properties</a></li>
+				    <li><a href="../docs/output-properties.html#start">Output Properties</a></li>
+				    <li><a href="../docs/observable-lists.html#start">Observable Lists</a></li>	
+                    <li><a href="../docs/commands.html#start">Commands</a></li>
+				</ul>
+
+				<h3>Bindings</h3>
+
+				<h4>Controlling text and appearance</h4>
+				<ul>
+				    <li><a href="../docs/visible-binding.html#start">The <code>visible</code> binding</a></li>
+				    <li><a href="../docs/hidden-binding.html#start">The <code>hidden</code> binding</a></li>
+				    <li><a href="../docs/text-binding.html#start">The <code>text</code> binding</a></li>
+				    <li><a href="../docs/html-binding.html#start">The <code>html</code> binding</a></li>
+				    <li><a href="../docs/css-binding.html#start">The <code>css</code> binding</a></li>
+				    <li><a href="../docs/style-binding.html#start">The <code>style</code> binding</a></li>
+				    <li><a href="../docs/attr-binding.html#start">The <code>attr</code> binding</a></li>
+				</ul>
+
+				<h4>Control flow</h4>
+				<ul>
+				    <li><a href="../docs/foreach-binding.html#start">The <code>foreach</code> binding</a></li>
+				    <li><a href="../docs/if-binding.html#start">The <code>if</code> binding</a></li>
+				    <li><a href="../docs/ifnot-binding.html#start">The <code>ifnot</code> binding</a></li>
+				    <li><a href="../docs/with-binding.html#start">The <code>with</code> binding</a></li>
+				</ul>
+
+				<h4>Working with form fields</h4>
+				<ul>
+				    <li><a href="../docs/command-binding.html#start">The <code>command</code> binding</a></li>
+				    <li><a href="../docs/event-binding.html#start">The <code>event</code> binding</a></li>
+				    <li><a href="../docs/enabled-binding.html#start">The <code>enabled</code> binding</a></li>
+				    <li><a href="../docs/disabled-binding.html#start">The <code>disabled</code> binding</a></li>
+				    <li><a href="../docs/value-binding.html#start">The <code>value</code> binding</a></li>
+				    <li><a href="../docs/textinput-binding.html#start">The <code>textInput</code> binding</a></li>
+				    <li><a href="../docs/hasfocus-binding.html#start">The <code>hasFocus</code> binding</a></li>
+				    <li><a href="../docs/checked-binding.html#start">The <code>checked</code> binding</a></li>
+				    <li><a href="../docs/selected-value-binding.html#start">The <code>selectedValue</code> binding</a></li>    
+				</ul>
+			
+                <!--
+				<h3>Creating custom bindings</h3>
+				<ul>
+				    <li><a href="../docs/custom-bindings.html#start">Creating custom bindings</a></li>
+				    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html#start">Controlling descendant bindings</a></li>
+				    <li><a href="../docs/custom-bindings-disposal.html#start">Custom disposal logic</a></li>
+				</ul>
+                -->
+			    
+                <h3>Components</h3>
+				<ul>
+				    <li><a href="../docs/component-overview.html#start">Overview: What <em>components</em> and <em>custom elements</em> offer</a></li>
+				    <li><a href="../docs/component-registration.html#start">Defining and registering components</a></li>
+				    <li><a href="../docs/component-binding.html#start">The <code>component</code> binding</a></li>
+				    <!-- <li><a href="../docs/component-custom-elements.html#start">Using custom elements</a></li> 
+				    <li><a href="../docs/component-built-in.html#start">Built-in components</a></li> -->
+				</ul>
+
+				<h3>Modules</h3>
+				<ul>
+				    <li><a href="../docs/module-overview.html#start">Overview: What <em>modules</em> offer</a></li>
+				    <li><a href="../docs/module-registration.html#start">Defining and registering modules</a></li>
+				    <li><a href="../docs/module-binding.html#start">The <code>module</code> binding</a></li>
+				</ul>
+
+				<h3>Routing</h3>
+				<ul>
+				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
+				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
+				</ul>
+
+				<h3>Further techniques</h3>
+				<ul>
+				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
+				    <li><a href="../docs/binding-preprocessing.html#start">Extending Webrx's binding syntax</a></li>
+				</ul>
+
+				<h3>More information</h3>
+				<ul>
+				    <li><a href="../docs/browser-support.html#start">Browser support</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="start" class="col-md-9">
+			<div class="body"><h1>Component-Registration</h1>
+
+<p>Just like binding-handlers, and expresion-filters, components are <a href="/docs/module-overview.html#start">module-scoped-resources</a>
+that can either be registered with the global application-module (<em>wx.app</em>) or a custom-module.</p>
+
+<p>For WebRx to be able to load and instantiate your components, you must register them using <em>wx.app.component()</em>,
+providing a configuration as described here.</p>
+
+<p>You can register a component as follows:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;some-component-name&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>or to register the component with a specific <a href="/docs/module-overview.html#start">module</a>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;my-module&quot;</span><span class="p">).</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;some-component-name&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The component name can be any nonempty string. It’s recommended, but not mandatory, to use 
+lowercase dash-separated strings (such as your-component-name) so that the component name is 
+valid to use as a custom element.</p>
+
+<p>viewModel is optional, and can take any of the viewModel formats described below.
+template is required, and can take any of the template formats described below.
+If no viewmodel is given, the component is treated as a simple block of HTML that will be bound 
+to any parameters passed to the component.</p>
+
+<h2>Specifying a viewmodel</h2>
+
+<p>Viewmodels can be specified in any of the following forms:</p>
+
+<h3>A constructor function</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">SomeComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// &#39;params&#39; is an object whose key/value pairs are the parameters</span>
+    <span class="c1">// passed from the component binding or custom element.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">someProperty</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">something</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">SomeComponentViewModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="nx">SomeComponentViewModel</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>WebRx will invoke your constructor once for each instance of the component, producing a separate viewmodel object for each. 
+Properties on the resulting object or its prototype chain (e.g., someProperty and doSomething in the example above) 
+are available for binding in the component’s view.</p>
+
+<p>If your constructor function return a value, the value will be used at the resulting view-model. </p>
+
+<h3>A shared object instance</h3>
+
+<p>If you want all instances of your component to share the same viewmodel object instance (which is not usually desirable):</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">sharedViewModelInstance</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">instance</span><span class="o">:</span> <span class="nx">sharedViewModelInstance</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Note that it’s necessary to specify viewModel: { instance: object }, and not just viewModel: object. 
+This differentiates from the other cases below.</p>
+
+<h3>An AMD module whose value describes a viewmodel</h3>
+
+<p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a viewmodel. 
+For more details about how this works, see how WebRx loads components via AMD below. Example:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a constructor function, e.g.:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a component viewmodel constructor</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">MyViewModel</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>… or a shared object instance, e.g.:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a shared component viewmodel instance</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">instance</span><span class="o">:</span> <span class="k">new</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>… or a createViewModel function, e.g.:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a &#39;createViewModel&#39; function</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">myViewModelFactory</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">componentInfo</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// return something</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">createViewModel</span><span class="o">:</span> <span class="nx">myViewModelFactory</span> <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>… or even, though it’s unlikely you’d want to do this, a reference to a different AMD module, e.g.:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a reference to a different AMD module,</span>
+<span class="c1">// which in turn can be in any of these formats</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">module</span><span class="o">:</span> <span class="s1">&#39;some/other/module&#39;</span> <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2>Specifying a template</h2>
+
+<p>Templates can be specified in any of the following forms. The most commonly useful are existing element IDs and AMD modules.</p>
+
+<h3>An existing element ID</h3>
+
+<p>For example, the following element:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">&#39;my-component-template&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">&#39;text: title&#39;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&#39;click: doSomething&#39;</span><span class="nt">&gt;</span>Click me right now<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div>
+<p>… can be used as the template for a component by specifying its ID:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;my-component-template&#39;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Note that only the nodes inside the specified element will be cloned into each instance of the component. 
+The container element will not be treated as part of the component template.</p>
+
+<p>You’re not limited to using template elements, but these are convenient (on browsers that support them) 
+since they don’t get rendered on their own. Any other element type works too.</p>
+
+<h3>An existing element instance</h3>
+
+<p>If you have a reference to a DOM element in your code, you can use it as a container for template markup:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">elemInstance</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;my-component-template&#39;</span><span class="p">);</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">element</span><span class="o">:</span> <span class="nx">elemInstance</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Again, only the nodes inside the specified element will be cloned for use as the component’s template.</p>
+
+<h3>A string of markup</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h1 data-bind=&quot;text: title&quot;&gt;&lt;/h1&gt;\</span>
+<span class="s1">               &lt;button data-bind=&quot;click: doSomething&quot;&gt;Clickety&lt;/button&gt;&#39;</span><span class="p">,</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>This is mainly useful when you’re fetching the markup from somewhere programmatically (e.g., AMD - see below), 
+or as a build system output that packages components for distribution, since it’s not very convenient to 
+manually edit HTML as a JavaScript string literal.</p>
+
+<h3>An array of DOM nodes</h3>
+
+<p>If you’re building configurations programmatically and you have an array of DOM nodes, you can use them as a component template:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myNodes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;first-node&#39;</span><span class="p">),</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;second-node&#39;</span><span class="p">),</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;third-node&#39;</span><span class="p">)</span>
+<span class="p">];</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="nx">myNodes</span><span class="p">,</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In this case, all the specified nodes (and their descendants) will be cloned and concatenated into each copy of the component that gets instantiated.</p>
+
+<h3>A document fragment</h3>
+
+<p>If you’re building configurations programmatically and you have a DocumentFragment object, you can use it as a component template:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="nx">someDocumentFragmentInstance</span><span class="p">,</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Since document fragments can have multiple top-level nodes, the entire document fragment (not just descendants of top-level nodes) 
+is treated as the component template.</p>
+
+<h3>An AMD module whose value describes a template</h3>
+
+<p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a template. 
+For more details about how this works, see how WebRx loads components via AMD below. Example:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/template&#39;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a string of markup, e.g. fetched using require.js’s text plugin:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!path/my-html-file.html&#39;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>… or any of the other forms described here, though it would be unusual for the others to be useful when fetching templates via AMD.</p>
+
+<h2>How WebRx loads components via AMD</h2>
+
+<p>When you load a viewmodel or template via require declarations ...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!some-template.html&#39;</span> <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>all WebRx does is call require([&#39;some/module/name&#39;], callback) and require([&#39;text!some-template.html&#39;], callback), 
+and uses the asynchronously-returned objects as the viewmodel and template definitions. So,</p>
+
+<p>This does not take a strict dependency on require.js or any other particular module loader. Any module loader that provides an 
+AMD-style require API will do. </p>
+
+<p>WebRx does not interpret the module name in any way - it merely passes it through to require(). So of course WebRx does not 
+know or care about where your module files are loaded from. That’s up to your AMD loader and how you’ve configured it.
+WebRx doesn’t know or care whether your AMD modules are anonymous or not. Typically we find it’s most convenient for 
+components to be defined as anonymous modules, but that concern is entirely separate from WebRx. AMD modules are loaded only on demand.</p>
+
+<p>WebRx does not call require([moduleName], ...) until your component is being instantiated. This is how components get loaded on demand, not up front.</p>
+
+<p>For example, if your component is inside some other element with an if binding (or another control flow binding), 
+then it will not cause the AMD module to be loaded until the if condition is true. Of course, if the AMD module was 
+already loaded (e.g., in a preloaded bundle) then the require call will not trigger any additional HTTP requests, 
+so you can control what is preloaded and what is loaded on demand.</p>
+
+<h2>Registering components as a single AMD module</h2>
+
+<p>For even better encapsulation, you can package a component into a single self-describing AMD module. Then you can reference a component as simply as:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module&#39;</span> <span class="p">});</span>
+</code></pre></div>
+<p>Notice that no viewmodel/template pair is specified. The AMD module itself can provide a viewmodel/template pair, 
+using any of the definition formats listed above. For example, the file some/module.js could be declared as:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module &#39;some/module.js&#39; encapsulating the configuration for a component</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">MyComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">personName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">viewModel</span><span class="o">:</span> <span class="nx">MyComponentViewModel</span><span class="p">,</span>
+        <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;The name is &lt;strong data-bind=&quot;text: personName&quot;&gt;&lt;/strong&gt;&#39;</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2>A recommended AMD module pattern</h2>
+
+<p>What tends to be most useful in practice is creating AMD modules that have inline viewmodel classes, 
+and explicitly take AMD dependencies on external template files.</p>
+
+<p>For example, if the following is in a file at path/my-component.js,</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Recommended AMD module pattern for a WebRx component that:</span>
+<span class="c1">//  - Can be referenced with just a single &#39;require&#39; declaration</span>
+<span class="c1">//  - Can be included in a bundle using the r.js optimizer</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">,</span> <span class="s1">&#39;text!./my-component.html&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">,</span> <span class="nx">htmlString</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">MyComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Set up properties, etc.</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Use prototype to declare any public methods</span>
+    <span class="nx">MyComponentViewModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+
+    <span class="c1">// Return component definition</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">viewModel</span><span class="o">:</span> <span class="nx">MyComponentViewModel</span><span class="p">,</span> <span class="nx">template</span><span class="o">:</span> <span class="nx">htmlString</span> <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>… and the template markup is in the file path/my-component.html, then you have these benefits:</p>
+
+<p>Applications can reference this trivially, i.e., <em>wx.app.component(&#39;my-component&#39;, { require: &#39;path/my-component&#39; });</em></p>
+
+<p>You only need two files for the component - a viewmodel (<em>path/my-component.js</em>) and a template (<em>path/my-component.html</em>) - 
+which is a very natural arrangement during development. Since the dependency on the template is explicitly stated in the define call, 
+this automatically works with the r.js optimizer or similar bundling tools. The entire component - viewmodel plus template - 
+can therefore trivially be included in a bundle file during a build step.</p>
+</div>
+		</div>
+	</div>
+</div>
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-4">
+                    Copyright (c) 2015 Oliver Weichhold
+                  </div>
+
+                  <div class="copyright col-md-4">
+                  </div>
+
+                  <div class="copyright col-md-4 text-right">
+                    <a id="impressum" href="/impressum.html">Impressum</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
+        <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

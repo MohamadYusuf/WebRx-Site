@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The textInput-Binding</title>
+        <title>WebRx - Built-in components</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The textInput-Binding" /> 
+        <meta property="og:title" content="WebRx - Built-in components" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - The textInput-Binding</h1>
+        <h1 id="logoh1">WebRx - Built-in components</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -150,55 +150,7 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>The textInput-Binding</h1>
-
-<p>The textInput binding links a text box (<em>input</em>) or <em>textarea</em> with a view-model property, providing two-way updates between 
-the view-model property and the element&#39;s value. Unlike the value binding, textInput provides instant updates from the DOM 
-for all types of user input, including autocomplete, drag-and-drop, and clipboard events.</p>
-
-<h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Login name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;textInput: @userName&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;p&gt;</span>Password: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;textInput: @userPassword&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
-    <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="nx">userName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>        <span class="c1">// Initially blank</span>
-        <span class="nx">userPassword</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>  <span class="c1">// Prepopulate</span>
-    <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
-<h2>Parameters</h2>
-
-<h3>Main Parameter</h3>
-
-<p>The binding sets the element&#39;s text content to your parameter value. Any previous value will be overwritten.</p>
-
-<p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the @-operator),
-the binding will update the element&#39;s value whenever the value changes and vice-versa.
-If the parameter something else, it will only set the element&#39;s value once and will not update it again later.</p>
-
-<h2>textInput vs. value binding</h2>
-
-<p>Although the value binding can also perform two-way binding between text boxes and view-model properties, 
-you should prefer textInput whenever you want immediate live updates. The main differences are:</p>
-
-<h3>Immediate updates</h3>
-
-<p>value, by default, only updates your model when the user moves focus out of the text box. 
-textInput updates your model immediately on each keystroke or other text entry mechanism 
-(such as cutting or dragging text, which don&#39;t necessarily raise any focus change events).</p>
-
-<h3>Browser event quirks handling</h3>
-
-<p>Browsers are highly inconsistent in the events that fire in response to unusual text entry mechanisms 
-such as cutting, dragging, or accepting autocomplete suggestions. The value binding, even with extra 
-options such as valueUpdate: afterkeydown to get updates on particular events, does not cover 
-all text entry scenarios on all browsers.</p>
-
-<p>The textInput binding is specifically designed to handle a wide range of browser quirks, 
-to provide consistent and immediate model updates even in response to unusual text entry methods.</p>
-
-<p>Don&#39;t try to use the value and textInput bindings together on the same element, 
-as that won&#39;t achieve anything useful.</p>
+			<div class="body"><h1>Built-in components</h1>
 </div>
 		</div>
 	</div>
