@@ -112,10 +112,7 @@ pre code {
     margin-top: 1em;
 }
 
-.docs .body h1:first-of-type,
-.docs .body h2:first-of-type,
-.docs .body h3:first-of-type,
-.docs .body h4:first-of-type {
+.docs .body h1:first-of-type {
   margin-top: 0;
 }
 
@@ -124,14 +121,25 @@ pre code {
 }
 
 .docs .body h2 {
-  margin-top: 1.25em;
+  margin-top: 1em;
   line-height: 1.3em;
 }
 
 .docs .body h3,
 .docs .body h4 {
-  margin-top: 1.25em;
+  margin-top: 1em;
   line-height: 1.3em;
+}
+
+.docs .body .panel-heading h3,
+.docs .body .panel-heading h4 {
+  margin-top: 0;
+}
+
+.docs .body .panel-body h1:first-of-type,
+.docs .body .panel-body h2:first-of-type,
+.docs .body .panel-body h3:first-of-type {
+  margin-top: 0;
 }
 
 .docs .body p {

@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - Defining and registering routing states</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - Defining and registering routing states" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel='stylesheet' type='text/css' href='/bundles/0a9d2526abeebf78650de61e31ed2fa0.css' />
+
+
+        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+
+
+        <script type='text/javascript' src='/js/web.rx.js'></script>
+      </head>
+    <body>
+        <h1 id="logoh1">WebRx - Defining and registering routing states</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs">Documentation</a></li>
+                    <!-- <li><a href="/examples">Examples</a></li> -->
+
+                    <li><a href="https://github.com/oliverw/WebRx"><img width="16" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
+                    <li><a href="http://twitter.com/intent/tweet?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript UIs with ReactiveX&via=oliverweichhold" target="_blank"><img width="16" src="/images/Twitter_logo_white.png"/>Tweet</a></li>
+                   </ul>
+                </div>
+              </div>
+            </nav>
+
+          <div class="content-panel docs">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="index">
+				<h3>Getting started</h3>
+				<ul>
+				    <li><a href="../docs/index.html#start">How WebRx works and what benefits it brings</a></li>
+				</ul>
+
+				<h3>Binding syntax</h3>
+				<ul>
+				    <li><a href="../docs/binding-syntax.html#start">The <i>data-bind</i> syntax</a></li>
+				    <li><a href="../docs/binding-context.html#start">The binding context</a></li>
+				</ul>
+
+				<h3>Core Components</h3>
+				<ul>
+				    <li><a href="../docs/observable-properties.html#start">Observable Properties</a></li>
+				    <li><a href="../docs/output-properties.html#start">Output Properties</a></li>
+				    <li><a href="../docs/observable-lists.html#start">Observable Lists</a></li>	
+                    <li><a href="../docs/commands.html#start">Commands</a></li>
+				</ul>
+
+				<h3>Bindings</h3>
+
+				<h4>Controlling text and appearance</h4>
+				<ul>
+				    <li><a href="../docs/visible-binding.html#start">The <i>visible</i> binding</a></li>
+				    <li><a href="../docs/hidden-binding.html#start">The <i>hidden</i> binding</a></li>
+				    <li><a href="../docs/text-binding.html#start">The <i>text</i> binding</a></li>
+				    <li><a href="../docs/html-binding.html#start">The <i>html</i> binding</a></li>
+				    <li><a href="../docs/css-binding.html#start">The <i>css</i> binding</a></li>
+				    <li><a href="../docs/style-binding.html#start">The <i>style</i> binding</a></li>
+				    <li><a href="../docs/attr-binding.html#start">The <i>attr</i> binding</a></li>
+				</ul>
+
+				<h4>Control flow</h4>
+				<ul>
+				    <li><a href="../docs/foreach-binding.html#start">The <i>foreach</i> binding</a></li>
+				    <li><a href="../docs/if-binding.html#start">The <i>if</i> binding</a></li>
+				    <li><a href="../docs/ifnot-binding.html#start">The <i>ifnot</i> binding</a></li>
+				    <li><a href="../docs/with-binding.html#start">The <i>with</i> binding</a></li>
+				</ul>
+
+				<h4>Working with form fields</h4>
+				<ul>
+				    <li><a href="../docs/command-binding.html#start">The <i>command</i> binding</a></li>
+				    <li><a href="../docs/event-binding.html#start">The <i>event</i> binding</a></li>
+				    <li><a href="../docs/enabled-binding.html#start">The <i>enabled</i> binding</a></li>
+				    <li><a href="../docs/disabled-binding.html#start">The <i>disabled</i> binding</a></li>
+				    <li><a href="../docs/value-binding.html#start">The <i>value</i> binding</a></li>
+				    <li><a href="../docs/textinput-binding.html#start">The <i>textInput</i> binding</a></li>
+				    <li><a href="../docs/hasfocus-binding.html#start">The <i>hasFocus</i> binding</a></li>
+				    <li><a href="../docs/checked-binding.html#start">The <i>checked</i> binding</a></li>
+				    <li><a href="../docs/selected-value-binding.html#start">The <i>selectedValue</i> binding</a></li>    
+				</ul>
+			
+                <!--
+				<h3>Creating custom bindings</h3>
+				<ul>
+				    <li><a href="../docs/custom-bindings.html#start">Creating custom bindings</a></li>
+				    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html#start">Controlling descendant bindings</a></li>
+				    <li><a href="../docs/custom-bindings-disposal.html#start">Custom disposal logic</a></li>
+				</ul>
+                -->
+			    
+                <h3>Components</h3>
+				<ul>
+				    <li><a href="../docs/component-overview.html#start">Overview: What components and custom elements offer</a></li>
+				    <li><a href="../docs/component-registration.html#start">Defining and registering components</a></li>
+				    <li><a href="../docs/component-binding.html#start">The <i>component</i> binding</a></li>
+				    <!-- <li><a href="../docs/component-custom-elements.html#start">Using custom elements</a></li> 
+				    <li><a href="../docs/component-built-in.html#start">Built-in components</a></li> -->
+				</ul>
+
+				<h3>Modules</h3>
+				<ul>
+				    <li><a href="../docs/module-overview.html#start">Overview: What modules offer</a></li>
+				    <li><a href="../docs/module-registration.html#start">Defining and registering modules</a></li>
+				    <li><a href="../docs/module-binding.html#start">The <i>module</i> binding</a></li>
+				</ul>
+
+				<h3>Routing</h3>
+				<ul>
+				    <li><a href="../docs/routing-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/routing-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/view-binding.html#start">The <i>view</i> binding</a></li>
+				    <li><a href="../docs/sref-binding.html#start">The <i>sref</i> binding</a></li>
+				</ul>
+
+                <!--
+				<h3>Further techniques</h3>
+				<ul>
+				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
+				    <li><a href="../docs/binding-preprocessing.html#start">Extending Webrx's binding syntax</a></li>
+				</ul>
+                -->
+
+				<h3>More information</h3>
+				<ul>
+				    <li><a href="../docs/browser-support.html#start">Browser support</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="start" class="col-md-9">
+			<div class="body"><h1>Defining and registering routing states</h1>
+
+<p>So far we&#39;ve only briefly touched the subject of state-registration. That is about to change.</p>
+
+<h2>State Params</h2>
+
+<p>Routing-States can optionally configured to carry state-parameters that will be used to configure
+components referenced by it:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span>
+    <span class="p">},</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In this example the <a href="/docs/component-binding.html#start">component-binding</a> will receive following object as <em>params</em> argument when
+instantiating the <em>&quot;contact-list-component&quot;</em>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
+</code></pre></div>
+<h3>State-Params inheritance</h3>
+
+<p>Just like the parent&#39;s view configuration is inherited by child-states, so are state-params:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;companyId&#39;</span><span class="o">:</span> <span class="mi">3</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span>
+    <span class="p">},</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In this example the <a href="/docs/component-binding.html#start">component-binding</a> will receive following object as <em>params</em> argument when
+instantiating the <em>&quot;contact-list-component&quot;</em>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;companyId&#39;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
+</code></pre></div>
+<h2>State Routes</h2>
+
+<p>Most states in your application will probably have a route associated with them. State-Routing was not an afterthought 
+to the state mechanics, but was figured into the design from the beginning (all while keeping states separate from url routing)</p>
+
+<p>Here&#39;s how you configure a state with a basic route:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">route</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Now when the user accesses <em>/contacts</em> then the <em>&#39;contacts&#39;</em> state would become active and the <em>main</em> view will be populated with 
+the <em>&#39;contact-list-component&#39;</em> component. Alternatively, if the user were to transition to the <em>&#39;contacts&#39;</em> state via 
+<em>wx.router.go(&#39;contacts&#39;)</em> then the browser&#39;s location would be updated to <em>/contacts</em>.</p>
+
+<h3>Implicit routes</h3>
+
+<p>Specifying a route when configuring a state is optional. If you omit the route, WebRx will will automatically assign it a route
+that mirrors the state hierarchy.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo.bar.baz&quot;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The implicit route for state <em>foo.bar.baz</em> state will be <em>/foo/bar/baz</em>.</p>
+
+<h3>Relative- vs. Absolute-Routes</h3>
+
+<p>In all of the previous examples we&#39;ve used relative routes. It is also possible to prepend a route with a &#39;/&#39; to turn it into
+an absolute route.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo.bar.baz&quot;</span><span class="p">,</span>
+    <span class="nx">route</span><span class="o">:</span> <span class="s2">&quot;/bar/foo&quot;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Now, the route for state <em>foo.bar.baz</em> will be <em>/bar/foo</em>, completely ignoring the state-hierarchy.</p>
+
+<h3>Route Parameters</h3>
+
+<p>Often, URLs have dynamic parts to them which are called parameters. There are several options for specifying parameters. 
+A basic parameter looks like this:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">route</span><span class="o">:</span> <span class="s2">&quot;contacts/:contactId&quot;</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4>Examples:</h4>
+
+<ul>
+<li>&#39;/hello/&#39; - Matches only if the path is exactly &#39;/hello/&#39;. There is no special treatment for trailing slashes, 
+and patterns have to match the entire path, not just a prefix.</li>
+<li>&#39;/user/:id&#39; - Matches &#39;/user/bob&#39; or &#39;/user/1234!!!&#39; or even &#39;/user/&#39; but not &#39;/user&#39; or &#39;/user/bob/details&#39;. 
+The second path segment will be captured as the parameter &#39;id&#39;.</li>
+</ul>
+
+<p><strong>Note:</strong> Parameter names may contain only word characters (latin letters, digits, and underscore) and must be unique within the 
+pattern (across both path and search parameters).</p>
+
+<h3>Defining routes as regular expression</h3>
+
+<p>Alternatively you can pass in a RegExp for the route parameter:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">route</span><span class="o">:</span> <span class="sr">/^(contacts?)(?:\/(\d+)(?:\.\.(\d+))?)?/</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3>What happens to route parameters</h3>
+
+<p>When a state is activated, any parameters captured from the current route will be merged with 
+state parameters specified during state registration. </p>
+
+<p>Once again the state-params merging will follow the state-hierarchy, with route-parameters applied
+as the final step to allow for overriding state-params when navigating.</p>
+
+<p>The result of merging all parent states with their child-states and applying the route-parameters
+on top will be directly passed to all <a href="/docs/component-overview.html#start">components</a> instantiated for the current state
+via the <a href="/docs/component-binding.html#start">component-binding&#39;s</a> <em>params</em> property.</p>
+
+<h2>onEnter and onExit callbacks</h2>
+
+<p>There are also optional &#39;onEnter&#39; and &#39;onExit&#39; callbacks that get called when a state becomes active and inactive respectively.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="p">},</span>
+    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">},</span>
+    <span class="nx">onLeave</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><a class="next-topic" href="/docs/view-binding.html#start">Next: The View-Binding</a></p>
+</div>
+		</div>
+	</div>
+</div>
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-4">
+                    Copyright (c) 2015 Oliver Weichhold
+                  </div>
+
+                  <div class="copyright col-md-4">
+                  </div>
+
+                  <div class="copyright col-md-4 text-right">
+                    <a id="impressum" href="/impressum.html">Impressum</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
+        <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

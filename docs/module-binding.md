@@ -19,11 +19,16 @@ the application-module will be consulted.
 		</div>
 		<div data-bind="module: 'module2'">
 			<hello></hello>
+			<app-hello></app-hello>
 		</div>
 	</div>
 </div>
   
 <script type="text/javascript">
+wx.app.component('app-hello', {
+    template: '<h3>Hello from Application Module</h3>'
+});
+
 wx.module("module1").component('hello', {
     template: '<h3>Hello from Module 1</h3>'
 });
@@ -45,12 +50,19 @@ wx.applyBindings(undefined, document.getElementById('module-example1'));
 
 <div data-bind="module: 'module2'">
 	<hello></hello>
+
+	<!-- demonstrates fall-back to app-module -->
+	<app-hello></app-hello>
 </div>
 ```
 
 **Source code: View model**
 
 ```javascript
+wx.app.component('app-hello', {
+    template: '<h3>Hello from Application Module</h3>'
+});
+
 wx.module("module1").component('hello', {
     template: '<h3>Hello from Module 1</h3>'
 });
