@@ -41,3 +41,5 @@ The object that you want to use as the context for binding descendant elements.
 If the expression you supply evaluates to null or undefined, descendant elements will not be bound at all, but will instead be removed from the document.
 
 If the expression you supply involves any observable values, the expression will be re-evaluated whenever any of those observables change. Then, descendant elements will be cleared out, and a new copy of the markup will be added to your document and bound in the context of the new evaluation result.
+
+<a class="next-topic" href="/docs/command-binding.html#start">Next: The Command-Binding</a>

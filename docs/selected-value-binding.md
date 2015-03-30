@@ -107,3 +107,5 @@ Pass the value that should be selected.
 If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
 the binding will update the selection whenever the value changes and vice-versa.
 If the parameter something else, it will only set the selection once and will not update it again later.
+
+<a class="next-topic" href="/docs/component-overview.html#start">Next: What components and custom elements offer</a>

@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/94efd15131e074429de9ca5fa19b99d7.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -130,8 +130,8 @@
 
 				<h3>Routing</h3>
 				<ul>
-				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
-				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/routing-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/routing-registration.html#start">Defining and registering routing states</a></li>
 				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
 				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
 				</ul>
@@ -159,28 +159,28 @@ documentation may sound familiar to you. We took the liberty to copy and adapt d
 
 <h2>Is WebRx intended to compete with jQuery or work with it?</h2>
 
-<p>Everyone loves jQuery! It’s an outstanding replacement for the clunky, inconsistent DOM API we had to put up with in the past. 
+<p>Everyone loves jQuery! It&#39;s an outstanding replacement for the clunky, inconsistent DOM API we had to put up with in the past. 
 jQuery is an excellent low-level way to manipulate elements and event handlers in a web page. WebRx solves a different problem.</p>
 
 <p>As soon as your UI gets nontrivial and has a few overlapping behaviors, things can get tricky and expensive to maintain 
-if you only use jQuery. Consider an example: you’re displaying a list of items, stating the number of items in that list, 
-and want to enable an ‘Add’ button only when there are fewer than 5 items. jQuery doesn’t have a concept of an underlying 
+if you only use jQuery. Consider an example: you&#39;re displaying a list of items, stating the number of items in that list, 
+and want to enable an ‘Add&#39; button only when there are fewer than 5 items. jQuery doesn&#39;t have a concept of an underlying 
 data model, so to get the number of items you have to infer it from the number of TRs in a table or the number of DIVs 
 with a certain CSS class. Maybe the number of items is displayed in some SPAN, and you have to remember to update that 
-SPAN’s text when the user adds an item. You also must remember to disable the ‘Add’ button when the number of TRs is 5. 
-Later, you’re asked also to implement a ‘Delete’ button and you have to figure out which DOM elements to change whenever it’s clicked.</p>
+SPAN&#39;s text when the user adds an item. You also must remember to disable the ‘Add&#39; button when the number of TRs is 5. 
+Later, you&#39;re asked also to implement a ‘Delete&#39; button and you have to figure out which DOM elements to change whenever it&#39;s clicked.</p>
 
 <h2>How is WebRx different?</h2>
 
-<p>It’s much easier with WebRx. It lets you scale up in complexity without fear of introducing inconsistencies. 
+<p>It&#39;s much easier with WebRx. It lets you scale up in complexity without fear of introducing inconsistencies. 
 Just represent your items as a JavaScript array, and then use a foreach binding to transform this array into a 
-TABLE or set of DIVs. Whenever the array changes, the UI changes to match (you don’t have to figure out how to 
+TABLE or set of DIVs. Whenever the array changes, the UI changes to match (you don&#39;t have to figure out how to 
 inject new TRs or where to inject them). The rest of the UI stays in sync. For example, you can declaratively 
 bind a SPAN to display the number of items as follows:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html">There are <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myItems.length&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> items
 </code></pre></div>
-<p>That’s it! You don’t have to write code to update it; it updates on its own when the myItems array changes. 
-Similarly, to make the ‘Add’ button enable or disable depending on the number of items, just write:</p>
+<p>That&#39;s it! You don&#39;t have to write code to update it; it updates on its own when the myItems array changes. 
+Similarly, to make the ‘Add&#39; button enable or disable depending on the number of items, just write:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enable: myItems.length &lt; 5&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
 </code></pre></div>
 <h2><a id="topic-mvvm-intro"></a>MVVM and View Models</h2>
@@ -193,20 +193,20 @@ Similarly, to make the ‘Add’ button enable or disable depending on the numbe
 <li>Templating</li>
 </ul>
 
-<p>Let’s examine the MVVM pattern and the concept of a view model.</p>
+<p>Let&#39;s examine the MVVM pattern and the concept of a view model.</p>
 
 <p>Model-View-View Model (MVVM) is a design pattern for building user interfaces. It describes how you can keep a 
 potentially sophisticated UI simple by splitting it into three parts:</p>
 
 <ul>
-<li><strong>A model:</strong> your application’s stored data. This data represents objects and operations in your business domain 
+<li><strong>A model:</strong> your application&#39;s stored data. This data represents objects and operations in your business domain 
 (e.g., bank accounts that can perform money transfers) and is independent of any UI. When using WebRx, 
 you will usually make Ajax calls to some server-side code to read and write this stored model data.</li>
 <li><strong>A view model:</strong> a pure-code representation of the data and operations on a UI. For example, 
-if you’re implementing a list editor, your view model would be an object holding a list of items, 
+if you&#39;re implementing a list editor, your view model would be an object holding a list of items, 
 and exposing methods to add and remove items.
-Note that this is not the UI itself: it doesn’t have any concept of buttons or display styles. 
-It’s not the persisted data model either - it holds the unsaved data the user is working with. 
+Note that this is not the UI itself: it doesn&#39;t have any concept of buttons or display styles. 
+It&#39;s not the persisted data model either - it holds the unsaved data the user is working with. 
 When using WebRx, your view models are pure JavaScript objects that hold no knowledge of HTML. 
 Keeping the view model abstract in this way lets it stay simple, so you can manage more 
 sophisticated behaviors without getting lost.</li>
@@ -230,20 +230,20 @@ the following markup displays the personName value:</p>
 </code></pre></div>
 <h2>Activating WebRx</h2>
 
-<p>The data-bind attribute isn’t native to HTML, though it is perfectly OK (it’s strictly compliant in HTML 5, 
-and causes no problems with HTML 4 even though a validator will point out that it’s an unrecognized attribute). 
-But since the browser doesn’t know what it means, you need to activate WebRx to make it take effect.</p>
+<p>The data-bind attribute isn&#39;t native to HTML, though it is perfectly OK (it&#39;s strictly compliant in HTML 5, 
+and causes no problems with HTML 4 even though a validator will point out that it&#39;s an unrecognized attribute). 
+But since the browser doesn&#39;t know what it means, you need to activate WebRx to make it take effect.</p>
 
 <p>To activate WebRx, add the following line to a script block:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="nx">myViewModel</span><span class="p">);</span>
 </code></pre></div>
 <p>You can either put the script block at the bottom of your HTML document, or you can put it at the top and wrap the 
-contents in a DOM-ready handler such as jQuery’s $ function.</p>
+contents in a DOM-ready handler such as jQuery&#39;s $ function.</p>
 
-<p>That does it! Now, your view will display as if you’d written the following HTML:</p>
+<p>That does it! Now, your view will display as if you&#39;d written the following HTML:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span&gt;</span>Bob<span class="nt">&lt;/span&gt;</span>
 </code></pre></div>
-<p>In case you’re wondering what the parameters to wx.applyBindings do,</p>
+<p>In case you&#39;re wondering what the parameters to wx.applyBindings do,</p>
 
 <ul>
 <li>The first parameter says what view model object you want to use with the declarative bindings it activates.</li>
@@ -267,6 +267,8 @@ Knockout in contrast uses Javascript&#39;s <a href="https://developer.mozilla.or
 As an additional detail, Knockout supports function invocations in <a href="http://knockoutjs.com/documentation/binding-syntax.html">binding expressions</a>, 
 WebRx does not.</li>
 </ul>
+
+<p><a class="next-topic" href="/docs/binding-syntax.html#start">Next: The Binding-Syntax</a></p>
 </div>
 		</div>
 	</div>

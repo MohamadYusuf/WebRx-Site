@@ -27,8 +27,10 @@ Today's message is: <span data-bind="text: myMessage"></span>
 
 ### Main parameter
 
-The binding sets the element’s content to a text node with your parameter value. Any previous content will be overwritten.
+The binding sets the element's content to a text node with your parameter value. Any previous content will be overwritten.
 
-If this parameter is an observable value, the binding will update the element’s text whenever the value changes. If the parameter isn’t observable, it will only set the element’s text once and will not update it again later.
+If this parameter is an observable value, the binding will update the element's text whenever the value changes. If the parameter isn't observable, it will only set the element's text once and will not update it again later.
 
 If you supply something other than a number or a string (e.g., you pass an object or an array), the displayed text will be equivalent to yourParameter.toString()
+
+<a class="next-topic" href="/docs/html-binding.html#start">Next: The Html-Binding</a>

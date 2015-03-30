@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The Disabled-Binding</title>
+        <title>WebRx - Module Overview</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The Disabled-Binding" /> 
+        <meta property="og:title" content="WebRx - Module Overview" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - The Disabled-Binding</h1>
+        <h1 id="logoh1">WebRx - Module Overview</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -150,15 +150,36 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>The Disabled-Binding</h1>
+			<div class="body"><h1>Module Overview</h1>
 
-<p>The disable binding causes the associated DOM element to be disabled only when the parameter value is true. 
-This is useful with form elements like input, select, and textarea.</p>
+<p>Modules in WebRx allow for partitioning your projects into managable units. 
+You can think of a module as a container for the different parts of your app.</p>
 
-<p>This is the mirror image of the enable binding. For more information, see documentation for the 
-enable binding, because disable works in exactly the same way except that it negates whatever parameter you pass to it.</p>
+<p>There are three types of module-scoped-resources in WebRx:</p>
 
-<p><a class="next-topic" href="/docs/value-binding.html#start">Next: The Value-Binding</a></p>
+<ul>
+<li><a href="/docs/component-overview.html#start">Components</a></li>
+<li>Binding-handlers</li>
+<li><a href="/docs/binding-syntax.html#topic-expression-filters">Expression-filters</a></li>
+</ul>
+
+<p>Modules implement methods for registration and lookup of these types of resources.</p>
+
+<h2>Why modules?</h2>
+
+<p>Most applications have a main method that instantiates and wires together the different parts of the application.</p>
+
+<p>WebRx apps don&#39;t have a main method. Instead modules declaratively specify how an application should be bootstrapped. There are several advantages to this approach:</p>
+
+<ul>
+<li>The declarative process is easier to understand.</li>
+<li>You can package code as reusable modules.</li>
+<li>The modules can be loaded in any order (or even in parallel) because modules delay execution.</li>
+<li>Unit tests only have to load relevant modules, which keeps them fast.</li>
+<li>End-to-end tests can use modules to override configuration.</li>
+</ul>
+
+<p><a class="next-topic" href="/docs/module-registration.html#start">Next: Defining and registering modules</a></p>
 </div>
 		</div>
 	</div>

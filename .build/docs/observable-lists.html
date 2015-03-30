@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/94efd15131e074429de9ca5fa19b99d7.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -130,8 +130,8 @@
 
 				<h3>Routing</h3>
 				<ul>
-				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
-				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/routing-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/routing-registration.html#start">Defining and registering routing states</a></li>
 				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
 				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
 				</ul>
@@ -156,7 +156,7 @@
 
 <h1>Observable Lists</h1>
 
-<p>If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
+<p>If you want to detect and respond to changes on one object, you&#39;d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you&#39;re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
 
 <h4>Example</h4>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    <span class="c1">// Initially an empty array</span>
@@ -231,7 +231,7 @@
 
 <h2>Delaying and/or suppressing change notifications</h2>
 
-<p>Normally, an observable-list notifies its subscribers immediately, as soon as it’s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. </p>
+<p>Normally, an observable-list notifies its subscribers immediately, as soon as it&#39;s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. </p>
 
 <p>This is accomplished calling the list&#39;s <em>suppressChangeNotifications</em> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>                           <span class="c1">// Initially an empty array</span>
@@ -243,6 +243,8 @@
 <h2>Live Example</h2>
 
 <iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/z51a6bsg/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a class="next-topic" href="/docs/commands.html#start">Next: Commands</a></p>
 </div>
 		</div>
 	</div>

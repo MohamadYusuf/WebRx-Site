@@ -49,3 +49,5 @@ the values correspond to the function of your view-model that you want to bind t
 
 When invoking an event-handler the binding will adjust *this* to point to your view-model and 
 pass the event object as first argument.
+
+<a class="next-topic" href="/docs/enabled-binding.html#start">Next: The Enabled-Binding</a>

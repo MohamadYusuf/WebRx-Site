@@ -25,7 +25,7 @@ markup with custom element names.
 ## Example: A like/dislike widget
 
 To get started, you can register a component using wx.components.register (technically, registration is optional, 
-but it’s the easiest way to get started). A component definition specifies a view-model and template. For example:
+but it's the easiest way to get started). A component definition specifies a view-model and template. For example:
 
 ```javascript
 wx.app.component('like-widget', {
@@ -49,10 +49,10 @@ wx.app.component('like-widget', {
 
 ```
 
-Normally, you’d load the view model and template from external files instead of declaring them inline like this. We’ll get to that later.
+Normally, you'd load the view model and template from external files instead of declaring them inline like this. We'll get to that later.
 
 Now, to use this component, you can reference it from any other view in your application, either using the 
-component binding or using a custom element. Here’s a live example that uses it as a custom element:
+component binding or using a custom element. Here's a live example that uses it as a custom element:
 
 <div class="panel panel-default" id="component-example1">
 	<div class="panel-body">
@@ -136,11 +136,11 @@ In this example, the component both displays and edits an property property call
 
 ## Example: Loading the like/dislike widget from external files, on demand
 
-In most applications, you’ll want to keep component view models and templates in external files. 
+In most applications, you'll want to keep component view models and templates in external files. 
 If you configure WebRx to fetch them via an AMD module loader such as [require.js](http://requirejs.org/), then they 
 can either be preloaded (possibly bundled/minified), or incrementally loaded as needed.
 
-Here’s an example configuration:
+Here's an example configuration:
 
 ```javascript
 wx.app.component('like-or-dislike', {
@@ -152,7 +152,7 @@ wx.app.component('like-or-dislike', {
 ### Requirements
 
 For this to work, the files files/component-like-widget.js and files/component-like-widget.html 
-need to exist. Check them out (and view source on the .html one) - as you’ll see, this is 
+need to exist. Check them out (and view source on the .html one) - as you'll see, this is 
 cleaner and more convenient that including the code inline in the definition.
 
 Also, you need to have referenced a suitable module loader library (such as require.js) or 
@@ -194,5 +194,7 @@ MyViewModel.prototype.addProduct = function() {
 wx.applyBindings(new MyViewModel());
 ```
 
-If you open your browser developer tools’ Network inspector before your first click on Add product, 
-you’ll see that the component’s .js/.html files are fetched on demand when first required, and thereafter retained for reuse.
+If you open your browser developer tools' Network inspector before your first click on Add product, 
+you'll see that the component's .js/.html files are fetched on demand when first required, and thereafter retained for reuse.
+
+<a class="next-topic" href="/docs/component-registration.html#start">Next: Defining and registering components</a>

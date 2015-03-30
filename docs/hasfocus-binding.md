@@ -1,9 +1,9 @@
 ---
 layout: docs
-title: WebRx - The hasFocus-Binding
+title: WebRx - The HasFocus-Binding
 ---
 {% include sample-warning.html %}
-# The hasFocus-Binding
+# The HasFocus-Binding
 
 The hasFocus binding links a DOM element's focus state with a viewmodel property. 
 
@@ -130,3 +130,5 @@ Otherwise, the associated element will be unfocused.
 If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
 the binding will update the element's focus state whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element's focus state once and will not update it again later.
+
+<a class="next-topic" href="/docs/checked-binding.html#start">Next: The Checked-Binding</a>

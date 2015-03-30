@@ -11,7 +11,7 @@ Output properties are created by calling the ***toProperty()*** operator on **an
 
 ## Example
 
-What if you’ve got a property for firstName, and another for lastName, and you want to display the full name? That’s where output properties come in. 
+What if you've got a property for firstName, and another for lastName, and you want to display the full name? That's where output properties come in. 
 
 For example, given the following view model class ...
 
@@ -94,3 +94,5 @@ Seconds until auto-logout: <span data-bind="text: countDown"></span>
 ## Live Example
 
 <iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/1nwsased/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<a class="next-topic" href="/docs/observable-lists.html#start">Next: Observable-Lists</a>

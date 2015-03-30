@@ -144,3 +144,5 @@ To supply parameters to the command, pass an object with the following propertie
 - **command**: The [command](/docs/commands.html#start) you want to bind to the element
 - **parameter**: An optional parameter that will be passed as first argument to the command's execute handler.
 The parameter can also be an observable.
+
+<a class="next-topic" href="/docs/event-binding.html#start">Next: The Event-Binding</a>

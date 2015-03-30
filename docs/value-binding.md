@@ -53,3 +53,5 @@ use the the [textInput binding](/docs/textinput-binding.html#start).
 ## Working with drop-down lists (i.e., *select* elements)
 
 WebRx has special support for drop-down lists (i.e., *select* elements) in form of the [wx-select component](/docs/wx-select.html#start).
+
+<a class="next-topic" href="/docs/textinput-binding.html#start">Next: The TextInput-Binding</a>

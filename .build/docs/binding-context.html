@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/94efd15131e074429de9ca5fa19b99d7.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -130,8 +130,8 @@
 
 				<h3>Routing</h3>
 				<ul>
-				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
-				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/routing-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/routing-registration.html#start">Defining and registering routing states</a></li>
 				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
 				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
 				</ul>
@@ -171,7 +171,7 @@
 
 <p>This is an array representing all of the parent view models:</p>
 
-<p>$parents[0] is the view model from the parent context (i.e., it’s the same as $parent)</p>
+<p>$parents[0] is the view model from the parent context (i.e., it&#39;s the same as $parent)</p>
 
 <p>$parents[1] is the view model from the grandparent context</p>
 
@@ -181,13 +181,13 @@
 
 <h3>$root</h3>
 
-<p>This is the main view model object in the root context, i.e., the topmost parent context. It’s usually the object that was passed to wx.applyBindings. It is equivalent to $parents[$parents.length - 1].</p>
+<p>This is the main view model object in the root context, i.e., the topmost parent context. It&#39;s usually the object that was passed to wx.applyBindings. It is equivalent to $parents[$parents.length - 1].</p>
 
 <h3>$component</h3>
 
-<p>If you’re within the context of a particular component template, then $component refers to the viewmodel for that component. It’s the component-specific equivalent to $root. In the case of nested components, $component refers to the viewmodel for the closest component.</p>
+<p>If you&#39;re within the context of a particular component template, then $component refers to the viewmodel for that component. It&#39;s the component-specific equivalent to $root. In the case of nested components, $component refers to the viewmodel for the closest component.</p>
 
-<p>This is useful, for example, if a component’s template includes one or more foreach blocks in which you wish to refer to some property or function on the component viewmodel rather than on the current data item.</p>
+<p>This is useful, for example, if a component&#39;s template includes one or more foreach blocks in which you wish to refer to some property or function on the component viewmodel rather than on the current data item.</p>
 
 <h3>$data</h3>
 
@@ -203,6 +203,8 @@
 <h2>Controlling or modifying the binding context in custom bindings</h2>
 
 <p>Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.</p>
+
+<p><a class="next-topic" href="/docs/observable-properties.html#start">Next: Observable-Properties</a></p>
 </div>
 		</div>
 	</div>

@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/94efd15131e074429de9ca5fa19b99d7.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -130,8 +130,8 @@
 
 				<h3>Routing</h3>
 				<ul>
-				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
-				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/routing-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/routing-registration.html#start">Defining and registering routing states</a></li>
 				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
 				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
 				</ul>
@@ -227,7 +227,7 @@ component instance, and inject the newly-referenced component. Example:</p>
 
 <ul>
 <li><strong>name</strong> — the name of the component to inject. Again, this can be observable.</li>
-<li><strong>params</strong> — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component’s view-model constructor.</li>
+<li><strong>params</strong> — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component&#39;s view-model constructor.</li>
 </ul>
 
 <p>Example:</p>
@@ -256,7 +256,7 @@ since it occurs every time a component is instantiated and performance would be 
 for network requests.</p></li>
 <li><p><strong>The view-model is bound to the view</strong></p>
 
-<p>Or, if the component has no view-model, then the view is bound to any params you’ve supplied to the component binding.</p></li>
+<p>Or, if the component has no view-model, then the view is bound to any params you&#39;ve supplied to the component binding.</p></li>
 <li><p><strong>The component is active</strong></p>
 
 <p>Now the component is operating, and can remain on-screen for as long as needed.</p>
@@ -266,16 +266,16 @@ or even write back modified values. This is how it can communicate cleanly with 
 component code to any parent that uses it.</p></li>
 <li><p><strong>The component is torn down, and the view-model is disposed</strong></p>
 
-<p>If the component binding’s name value changes observably, or if an enclosing control-flow binding causes the container 
+<p>If the component binding&#39;s name value changes observably, or if an enclosing control-flow binding causes the container 
 element to be removed, then any dispose function on the view-model is called just before the container element is removed 
 from the DOM. See also: disposal and memory management.</p></li>
 </ol>
 
 <h2>Template-only components</h2>
 
-<p>Components usually have view-models, but they don’t necessarily have to. A component can specify just a template.</p>
+<p>Components usually have view-models, but they don&#39;t necessarily have to. A component can specify just a template.</p>
 
-<p>In this case, the object to which the component’s view is bound is the params object that you passed to the component binding. Example:</p>
+<p>In this case, the object to which the component&#39;s view is bound is the params object that you passed to the component binding. Example:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;special-offer&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;div class=&quot;offer-box&quot; data-bind=&quot;text: productName&quot;&gt;&lt;/div&gt;&#39;</span>
 <span class="p">});</span>
@@ -292,7 +292,7 @@ from the DOM. See also: disposal and memory management.</p></li>
 <h2>Disposal and memory management</h2>
 
 <p>You <strong>must</strong> implement a <em>dispose</em> method on your view-model if your view-model holds references to any resources 
-that aren’t inherently garbage-collectable, or run the risk of producing memory-leaks:</p>
+that aren&#39;t inherently garbage-collectable, or run the risk of producing memory-leaks:</p>
 
 <ul>
 <li><em>setInterval</em> callbacks will continue to fire until explicitly cleared.
@@ -302,7 +302,7 @@ Use <em>clearInterval(handle)</em> to stop them, otherwise your view-model might
 <li>Manually-created event handlers on external DOM elements (you shouldn&#39;t do that anyway to fit the MVVM pattern)</li>
 </ul>
 
-<p><strong>Note:</strong> Of course, you don’t have to worry about releasing any event handlers created by standard WebRx bindings in your view, 
+<p><strong>Note:</strong> Of course, you don&#39;t have to worry about releasing any event handlers created by standard WebRx bindings in your view, 
 as WebRx automatically unregisters them when the elements are removed.</p>
 
 <h3>Improving resource management</h3>
@@ -356,6 +356,8 @@ class which can be utilized to implement your view-model&#39;s <em>dispose</em> 
 with the single invocation of its <em>cleanup</em> member&#39;s <em>dispose</em> method.</p>
 
 <p>WebRx&#39;s built-in bindings make extensive use of this approach.</p>
+
+<p><a class="next-topic" href="/docs/module-overview.html#start">Next: What modules offer</a></p>
 </div>
 		</div>
 	</div>

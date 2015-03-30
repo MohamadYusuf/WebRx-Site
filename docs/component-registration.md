@@ -28,7 +28,7 @@ wx.module("my-module").component('some-component-name', {
 });
 ```
 
-The component name can be any nonempty string. It’s recommended, but not mandatory, to use 
+The component name can be any non-empty string. It's recommended, but not mandatory, to use 
 lowercase dash-separated strings (such as your-component-name) so that the component name is 
 valid to use as a custom element.
 
@@ -60,7 +60,7 @@ wx.app.component('my-component', {
 
 WebRx will invoke your constructor once for each instance of the component, producing a separate viewmodel object for each. 
 Properties on the resulting object or its prototype chain (e.g., someProperty and doSomething in the example above) 
-are available for binding in the component’s view.
+are available for binding in the component's view.
 
 If your constructor function return a value, the value will be used at the resulting view-model. 
 
@@ -77,7 +77,7 @@ wx.app.component('my-component', {
 });
 ```
 
-Note that it’s necessary to specify viewModel: { instance: object }, and not just viewModel: object. 
+Note that it's necessary to specify viewModel: { instance: object }, and not just viewModel: object. 
 This differentiates from the other cases below.
 
 ### An AMD module whose value describes a viewmodel
@@ -131,7 +131,7 @@ define(['WebRx'], function(ko) {
 });
 ```
 
-… or even, though it’s unlikely you’d want to do this, a reference to a different AMD module, e.g.:
+… or even, though it's unlikely you'd want to do this, a reference to a different AMD module, e.g.:
 
 ```javascript
 // AMD module whose value is a reference to a different AMD module,
@@ -168,8 +168,8 @@ wx.app.component('my-component', {
 Note that only the nodes inside the specified element will be cloned into each instance of the component. 
 The container element will not be treated as part of the component template.
 
-You’re not limited to using template elements, but these are convenient (on browsers that support them) 
-since they don’t get rendered on their own. Any other element type works too.
+You're not limited to using template elements, but these are convenient (on browsers that support them) 
+since they don't get rendered on their own. Any other element type works too.
 
 ### An existing element instance
 
@@ -184,7 +184,7 @@ wx.app.component('my-component', {
 });
 ```
 
-Again, only the nodes inside the specified element will be cloned for use as the component’s template.
+Again, only the nodes inside the specified element will be cloned for use as the component's template.
 
 ### A string of markup
 
@@ -196,13 +196,13 @@ wx.app.component('my-component', {
 });
 ```
 
-This is mainly useful when you’re fetching the markup from somewhere programmatically (e.g., AMD - see below), 
-or as a build system output that packages components for distribution, since it’s not very convenient to 
+This is mainly useful when you're fetching the markup from somewhere programmatically (e.g., AMD - see below), 
+or as a build system output that packages components for distribution, since it's not very convenient to 
 manually edit HTML as a JavaScript string literal.
 
 ### An array of DOM nodes
 
-If you’re building configurations programmatically and you have an array of DOM nodes, you can use them as a component template:
+If you're building configurations programmatically and you have an array of DOM nodes, you can use them as a component template:
 
 ```javascript
 var myNodes = [
@@ -221,7 +221,7 @@ In this case, all the specified nodes (and their descendants) will be cloned and
 
 ### A document fragment
 
-If you’re building configurations programmatically and you have a DocumentFragment object, you can use it as a component template:
+If you're building configurations programmatically and you have a DocumentFragment object, you can use it as a component template:
 
 ```javascript
 wx.app.component('my-component', {
@@ -245,7 +245,7 @@ wx.app.component('my-component', {
 });
 ```
 
-The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a string of markup, e.g. fetched using require.js’s text plugin:
+The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a string of markup, e.g. fetched using require.js's text plugin:
 
 ```javascript
 wx.app.component('my-component', {
@@ -273,8 +273,8 @@ This does not take a strict dependency on require.js or any other particular mod
 AMD-style require API will do. 
 
 WebRx does not interpret the module name in any way - it merely passes it through to require(). So of course WebRx does not 
-know or care about where your module files are loaded from. That’s up to your AMD loader and how you’ve configured it.
-WebRx doesn’t know or care whether your AMD modules are anonymous or not. Typically we find it’s most convenient for 
+know or care about where your module files are loaded from. That's up to your AMD loader and how you've configured it.
+WebRx doesn't know or care whether your AMD modules are anonymous or not. Typically we find it's most convenient for 
 components to be defined as anonymous modules, but that concern is entirely separate from WebRx. AMD modules are loaded only on demand.
 
 WebRx does not call require([moduleName], ...) until your component is being instantiated. This is how components get loaded on demand, not up front.
@@ -340,3 +340,5 @@ You only need two files for the component - a viewmodel (*path/my-component.js*)
 which is a very natural arrangement during development. Since the dependency on the template is explicitly stated in the define call, 
 this automatically works with the r.js optimizer or similar bundling tools. The entire component - viewmodel plus template - 
 can therefore trivially be included in a bundle file during a build step.
+
+<a class="next-topic" href="/docs/component-binding.html#start">Next: The Component-Binding</a>

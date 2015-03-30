@@ -4,7 +4,7 @@ title: WebRx - Observable Properties
 ---
 # Observable Properties
 
-You’ve seen how to [create a basic view model](/docs/index.html#topic-mvvm-intro) and how to display one of its properties using a binding. But one of the key benefits of WebRx is that it updates your UI automatically when the view model changes. How can WebRx know when parts of your view model change? Answer: you need to declare your model properties as observable-properties, because these are special JavaScript objects that can notify subscribers about changes.
+You've seen how to [create a basic view model](/docs/index.html#topic-mvvm-intro) and how to display one of its properties using a binding. But one of the key benefits of WebRx is that it updates your UI automatically when the view model changes. How can WebRx know when parts of your view model change? Answer: you need to declare your model properties as observable-properties, because these are special JavaScript objects that can notify subscribers about changes.
 
 For example, rewrite the preceding view model object as follows:
 
@@ -15,17 +15,17 @@ var myViewModel = {
 };
 ```
 
-You don’t have to change the view at all - the same data-bind syntax will keep working. The difference is that it’s now capable of detecting changes, and when it does, it will update the view automatically.
+You don't have to change the view at all - the same data-bind syntax will keep working. The difference is that it's now capable of detecting changes, and when it does, it will update the view automatically.
 
 ## Reading and writing properties
 
-To read the property’s current value, just call the property with no parameters. In this example, myViewModel.personName() will return 'Bob', and myViewModel.personAge() will return 123.
+To read the property's current value, just call the property with no parameters. In this example, myViewModel.personName() will return 'Bob', and myViewModel.personAge() will return 123.
 
 To write a new value to the property, call the property and pass the new value as a parameter. For example, calling myViewModel.personName('Mary') will change the name value to 'Mary'.
 
-The whole point of observable properties is that they can be observed, i.e., other code can say that it wants to be notified of changes. That’s what many of WebRx’s built-in bindings do internally. So, when you wrote data-bind="text: personName", the text binding registered itself to be notified when personName changes (assuming it’s an observable property, which it is now).
+The whole point of observable properties is that they can be observed, i.e., other code can say that it wants to be notified of changes. That's what many of WebRx's built-in bindings do internally. So, when you wrote data-bind="text: personName", the text binding registered itself to be notified when personName changes (assuming it's an observable property, which it is now).
 
-When you change the name value to 'Mary' by calling myViewModel.personName('Mary'), the text binding will automatically update the text contents of the associated DOM element. That’s how changes to the view model automatically propagate to the view.
+When you change the name value to 'Mary' by calling myViewModel.personName('Mary'), the text binding will automatically update the text contents of the associated DOM element. That's how changes to the view model automatically propagate to the view.
 
 
 ## Observable Properties and Binding Expressions
@@ -93,7 +93,7 @@ The name is <input type="text" data-bind="textInput: @personName"></span>
 ```
 
 The [textInput-Binding](/docs/textinput-binding.html#start) links a text box or textarea with a viewmodel property, 
-providing two-way updates between the viewmodel property and the element’s value.
+providing two-way updates between the viewmodel property and the element's value.
 
 Without the *@* operator in the template above, the textInput binding would receive the current value of
 the *personName* property which would be *'Bob'*. Since *'Bob'* is not an observable property, the binding
@@ -124,3 +124,5 @@ var subscription = myViewModel.personName.changed.subscribe(function(newValue) {
 // ...then later...
 subscription.dispose(); // I no longer want notifications
 ```
+
+<a class="next-topic" href="/docs/output-properties.html#start">Next: Output-Properties</a>

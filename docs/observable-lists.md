@@ -5,7 +5,7 @@ title: WebRx - Observable Lists
 {% include sample-warning.html %}
 # Observable Lists
 
-If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.
+If you want to detect and respond to changes on one object, you'd use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you're displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.
 
 #### Example
 
@@ -85,7 +85,7 @@ This is important, because if you only subscribe to *itemsAdded* and *itemsRemov
 
 ## Delaying and/or suppressing change notifications
 
-Normally, an observable-list notifies its subscribers immediately, as soon as it’s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. 
+Normally, an observable-list notifies its subscribers immediately, as soon as it's changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. 
 
 This is accomplished calling the list's *suppressChangeNotifications* method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.
 
@@ -101,3 +101,5 @@ disp.dispose();								// list resumes sending change notifications
 ## Live Example
 
 <iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/z51a6bsg/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<a class="next-topic" href="/docs/commands.html#start">Next: Commands</a>

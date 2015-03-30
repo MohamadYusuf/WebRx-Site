@@ -1,8 +1,8 @@
 ---
 layout: docs
-title: WebRx - The textInput-Binding
+title: WebRx - The TextInput-Binding
 ---
-# The textInput-Binding
+# The TextInput-Binding
 
 The textInput binding links a text box (*input*) or *textarea* with a view-model property, providing two-way updates between 
 the view-model property and the element's value. Unlike the value binding, textInput provides instant updates from the DOM 
@@ -58,3 +58,5 @@ to provide consistent and immediate model updates even in response to unusual te
 
 Don't try to use the value and textInput bindings together on the same element, 
 as that won't achieve anything useful.
+
+<a class="next-topic" href="/docs/hasfocus-binding.html#start">Next: The HasFocus-Binding</a>

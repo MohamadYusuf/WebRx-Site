@@ -26,7 +26,7 @@ This is the view model object in the parent context, the one immeditely outside 
 
 This is an array representing all of the parent view models:
 
-$parents[0] is the view model from the parent context (i.e., it’s the same as $parent)
+$parents[0] is the view model from the parent context (i.e., it's the same as $parent)
 
 $parents[1] is the view model from the grandparent context
 
@@ -36,13 +36,13 @@ $parents[2] is the view model from the great-grandparent context
 
 ### $root
 
-This is the main view model object in the root context, i.e., the topmost parent context. It’s usually the object that was passed to wx.applyBindings. It is equivalent to $parents[$parents.length - 1].
+This is the main view model object in the root context, i.e., the topmost parent context. It's usually the object that was passed to wx.applyBindings. It is equivalent to $parents[$parents.length - 1].
 
 ### $component
 
-If you’re within the context of a particular component template, then $component refers to the viewmodel for that component. It’s the component-specific equivalent to $root. In the case of nested components, $component refers to the viewmodel for the closest component.
+If you're within the context of a particular component template, then $component refers to the viewmodel for that component. It's the component-specific equivalent to $root. In the case of nested components, $component refers to the viewmodel for the closest component.
 
-This is useful, for example, if a component’s template includes one or more foreach blocks in which you wish to refer to some property or function on the component viewmodel rather than on the current data item.
+This is useful, for example, if a component's template includes one or more foreach blocks in which you wish to refer to some property or function on the component viewmodel rather than on the current data item.
 
 ### $data
 
@@ -61,3 +61,5 @@ This is the zero-based index of the current array entry being rendered by a fore
 ## Controlling or modifying the binding context in custom bindings
 
 Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.
+
+<a class="next-topic" href="/docs/observable-properties.html#start">Next: Observable-Properties</a>

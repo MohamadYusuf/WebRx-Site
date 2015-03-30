@@ -4,7 +4,7 @@ title: WebRx - Binding Syntax
 ---
 # The data-bind syntax
 
-WebRx’s declarative binding system provides a concise and powerful way to link data to the UI. It’s generally easy and obvious to bind to simple data properties or to use a single binding. For more complex bindings, it helps to better understand the behavior and syntax of WebRx’s binding system.
+WebRx's declarative binding system provides a concise and powerful way to link data to the UI. It's generally easy and obvious to bind to simple data properties or to use a single binding. For more complex bindings, it helps to better understand the behavior and syntax of WebRx's binding system.
 
 ## Binding syntax
 
@@ -73,7 +73,7 @@ Apart from the ternary operator (a ? b : c), you cannot write a control flow sta
 
 You can't declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a view-model or in a dedicated filter where it can be tested properly. 
 
-## Expression Filters
+## <a id="topic-expression-filters"></a>Expression Filters
 
 A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at application- or module-level.
 
@@ -105,3 +105,5 @@ E.g. the markup **"1234 | number:2"** formats the number 1234 with 2 decimal poi
 
 - **currency**: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
 -->
+
+<a class="next-topic" href="/docs/binding-context.html#start">Next: The Binding-Context</a>

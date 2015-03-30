@@ -130,7 +130,7 @@ Pass the collection that you wish to iterate over. The binding will output a sec
 
 Alternatively, pass a JavaScript object literal with a property called data which is the collection you wish to iterate over. The object literal may also have other properties, such as afterAdd or includeDestroyed — see below for details of these extra options and examples of their use.
 
-If the collection you supply is an [observable list](/docs/observable-lists.html#start), the foreach binding will respond to any future changes in the lists’s contents by adding or removing corresponding sections of markup in the DOM.
+If the collection you supply is an [observable list](/docs/observable-lists.html#start), the foreach binding will respond to any future changes in the lists's contents by adding or removing corresponding sections of markup in the DOM.
 
 ## Referring to each array entry using $data
 
@@ -160,11 +160,11 @@ If you wanted, you could use $data as a prefix when referencing properties on ea
 <td data-bind="text: $data.firstName"></td>
 ```
 
-… but you don’t have to, because firstName will be evaluated within the context of $data by default anyway.
+… but you don't have to, because firstName will be evaluated within the context of $data by default anyway.
 
 ## Using $index, $parent, and other context properties
 
-As you can see from Example 2 above, it’s possible to use $index to refer to the zero-based index of the current array item. $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).
+As you can see from Example 2 above, it's possible to use $index to refer to the zero-based index of the current array item. $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).
 
 Similarly, you can use $parent to refer to data from outside the foreach, e.g.:
 
@@ -191,7 +191,7 @@ If you need to run some further custom logic on the generated DOM elements, you 
 
 **Note:** These callbacks are only intended for triggering animations related to changes in a list. If your goal is actually to attach other behaviors to new DOM elements when they have been added (e.g., event handlers, or to activate third-party UI controls), then your work will be much easier if you implement that new behavior as a custom binding instead, because then you can use that behavior anywhere, independently of the foreach binding.
 
-Here’s a trivial example that uses *afterAdd* to apply the classic “yellow fade” effect to newly-added items. It requires the jQuery Color plugin to enable animation of background colors.
+Here's a trivial example that uses *afterAdd* to apply the classic “yellow fade” effect to newly-added items. It requires the jQuery Color plugin to enable animation of background colors.
 
 ```html
 <ul data-bind="foreach: { data: myItems, afterAdd: yellowFadeIn }">
@@ -221,12 +221,12 @@ Here’s a trivial example that uses *afterAdd* to apply the classic “yellow f
 	- An array of the inserted DOM elements
 	- The data item against which they are being bound
 
-- **afterAdd** — is like afterRender, except it is invoked only when new entries are added to your array (and not when foreach first iterates over your array’s initial contents). A common use for afterAdd is to call a method such as jQuery’s $(domNode).fadeIn() so that you get animated transitions whenever items are added. The binding will supply the following parameters to your callback:
+- **afterAdd** — is like afterRender, except it is invoked only when new entries are added to your array (and not when foreach first iterates over your array's initial contents). A common use for afterAdd is to call a method such as jQuery's $(domNode).fadeIn() so that you get animated transitions whenever items are added. The binding will supply the following parameters to your callback:
 	- A DOM node being added to the document
 	- The index of the added array element
 	- The added array element
 
-- **beforeRemove** — is invoked when an array item has been removed, but before the corresponding DOM nodes have been removed. If you specify a beforeRemove callback, then it becomes your responsibility to remove the DOM nodes. The obvious use case here is calling something like jQuery’s $(domNode).fadeOut() to animate the removal of the corresponding DOM nodes — in this case, The binding cannot know how soon it is allowed to physically remove the DOM nodes (who knows how long your animation will take?), so it is up to you to remove them. The binding will supply the following parameters to your callback:
+- **beforeRemove** — is invoked when an array item has been removed, but before the corresponding DOM nodes have been removed. If you specify a beforeRemove callback, then it becomes your responsibility to remove the DOM nodes. The obvious use case here is calling something like jQuery's $(domNode).fadeOut() to animate the removal of the corresponding DOM nodes — in this case, The binding cannot know how soon it is allowed to physically remove the DOM nodes (who knows how long your animation will take?), so it is up to you to remove them. The binding will supply the following parameters to your callback:
 	- A DOM node that you should remove
 	- The index of the removed array element
 	- The removed array element
@@ -240,3 +240,6 @@ Here’s a trivial example that uses *afterAdd* to apply the classic “yellow f
 	- A DOM node that may have moved
 	- The index of the moved array element
 	- The moved array element
+
+
+<a class="next-topic" href="/docs/if-binding.html#start">Next: The If-Binding</a>

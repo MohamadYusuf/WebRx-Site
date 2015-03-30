@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/94efd15131e074429de9ca5fa19b99d7.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -130,8 +130,8 @@
 
 				<h3>Routing</h3>
 				<ul>
-				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
-				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/routing-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/routing-registration.html#start">Defining and registering routing states</a></li>
 				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
 				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
 				</ul>
@@ -154,7 +154,7 @@
 
 <p>The CSS-binding adds or removes one or more named CSS classes to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative.</p>
 
-<p>(Note: If you don’t want to apply a CSS class but instead want to assign a style attribute value directly, see the style binding.)</p>
+<p>(Note: If you don&#39;t want to apply a CSS class but instead want to assign a style attribute value directly, see the style binding.)</p>
 
 <h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { profitWarning: currentProfit &lt; 0 }&quot;</span><span class="nt">&gt;</span>
@@ -183,18 +183,20 @@
 </code></pre></div>
 <p>Non-boolean values are interpreted loosely as boolean. For example, 0 and null are treated as false, whereas 21 and non-null objects are treated as true.</p>
 
-<p>If your parameter references an observable value, the binding will add or remove the CSS class whenever the observable value changes. If the parameter doesn’t reference an observable value, it will only add or remove the class once and will not do so again later.</p>
+<p>If your parameter references an observable value, the binding will add or remove the CSS class whenever the observable value changes. If the parameter doesn&#39;t reference an observable value, it will only add or remove the class once and will not do so again later.</p>
 
 <p>As usual, you can use <a href="/docs/binding-syntax.html#topic-binding-expressions">arbitrary expressions</a> as parameter values. WebRx will evaluate them and use the resulting values to determine the appropriate CSS classes to add or remove.</p>
 
-<h3>Note: Applying CSS classes whose names aren’t legal JavaScript variable names</h3>
+<h3>Note: Applying CSS classes whose names aren&#39;t legal JavaScript variable names</h3>
 
-<p>If you want to apply the CSS class my-class, you can’t write this:</p>
+<p>If you want to apply the CSS class my-class, you can&#39;t write this:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { my-class: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
-<p>… because my-class isn’t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
+<p>… because my-class isn&#39;t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { &#39;my-class&#39;: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
+</code></pre></div>
+<p><a class="next-topic" href="/docs/style-binding.html#start">Next: The Style-Binding</a></p>
+</div>
 		</div>
 	</div>
 </div>

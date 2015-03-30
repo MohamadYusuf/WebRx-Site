@@ -89,7 +89,7 @@ component instance, and inject the newly-referenced component. Example:
 To supply parameters to the component, pass an object with the following properties:
 
 - **name** — the name of the component to inject. Again, this can be observable.
-- **params** — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component’s view-model constructor.
+- **params** — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component's view-model constructor.
 
 Example:
 
@@ -121,7 +121,7 @@ When a component binding injects a component,
 
 3. **The view-model is bound to the view**
 
-	Or, if the component has no view-model, then the view is bound to any params you’ve supplied to the component binding.
+	Or, if the component has no view-model, then the view is bound to any params you've supplied to the component binding.
 
 4. **The component is active**
 
@@ -133,16 +133,16 @@ When a component binding injects a component,
 
 5. **The component is torn down, and the view-model is disposed**
 
-	If the component binding’s name value changes observably, or if an enclosing control-flow binding causes the container 
+	If the component binding's name value changes observably, or if an enclosing control-flow binding causes the container 
 	element to be removed, then any dispose function on the view-model is called just before the container element is removed 
 	from the DOM. See also: disposal and memory management.
 
 
 ## Template-only components
 
-Components usually have view-models, but they don’t necessarily have to. A component can specify just a template.
+Components usually have view-models, but they don't necessarily have to. A component can specify just a template.
 
-In this case, the object to which the component’s view is bound is the params object that you passed to the component binding. Example:
+In this case, the object to which the component's view is bound is the params object that you passed to the component binding. Example:
 
 ```javascript
 wx.app.component('special-offer', {
@@ -167,7 +167,7 @@ wx.app.component('special-offer', {
 ## Disposal and memory management
 
 You **must** implement a *dispose* method on your view-model if your view-model holds references to any resources 
-that aren’t inherently garbage-collectable, or run the risk of producing memory-leaks:
+that aren't inherently garbage-collectable, or run the risk of producing memory-leaks:
 
 - *setInterval* callbacks will continue to fire until explicitly cleared.
 	Use *clearInterval(handle)* to stop them, otherwise your view-model might be held in memory.
@@ -175,7 +175,7 @@ that aren’t inherently garbage-collectable, or run the risk of producing memor
 - Subscriptions to Rx-Observables continue to fire until explicitly disposed.
 - Manually-created event handlers on external DOM elements (you shouldn't do that anyway to fit the MVVM pattern)
 
-**Note:** Of course, you don’t have to worry about releasing any event handlers created by standard WebRx bindings in your view, 
+**Note:** Of course, you don't have to worry about releasing any event handlers created by standard WebRx bindings in your view, 
 as WebRx automatically unregisters them when the elements are removed.
 
 ### Improving resource management
@@ -234,3 +234,5 @@ Now when our view-model is disposed it will stop both timers and stop listening 
 with the single invocation of its *cleanup* member's *dispose* method.
 
 WebRx's built-in bindings make extensive use of this approach.
+
+<a class="next-topic" href="/docs/module-overview.html#start">Next: What modules offer</a>

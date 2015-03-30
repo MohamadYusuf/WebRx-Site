@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e2baef43883dd9c51e1c65bf28be5fdc.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/94efd15131e074429de9ca5fa19b99d7.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -130,8 +130,8 @@
 
 				<h3>Routing</h3>
 				<ul>
-				    <li><a href="../docs/module-overview.html#start">Overview: Routing architecture</a></li>
-				    <li><a href="../docs/module-registration.html#start">Defining and registering routing states</a></li>
+				    <li><a href="../docs/routing-overview.html#start">Overview: Routing architecture</a></li>
+				    <li><a href="../docs/routing-registration.html#start">Defining and registering routing states</a></li>
 				    <li><a href="../docs/view-binding.html#start">The <code>view</code> binding</a></li>
 				    <li><a href="../docs/sref-binding.html#start">The <code>sref</code> binding</a></li>
 				</ul>
@@ -165,7 +165,7 @@
     <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
-<p>This will set the element’s href attribute to year-end.html and the element’s title attribute to Report including final year-end statistics.</p>
+<p>This will set the element&#39;s href attribute to year-end.html and the element&#39;s title attribute to Report including final year-end statistics.</p>
 
 <h2>Parameters</h2>
 
@@ -173,16 +173,18 @@
 
 <p>You should pass a JavaScript object in which the property names correspond to attribute names, and the values correspond to the attribute values you wish to apply.</p>
 
-<p>If your parameter references an observable value, the binding will update the attribute whenever the observable value changes. If the parameter doesn’t reference an observable value, it will only set the attribute once and will not update it later.</p>
+<p>If your parameter references an observable value, the binding will update the attribute whenever the observable value changes. If the parameter doesn&#39;t reference an observable value, it will only set the attribute once and will not update it later.</p>
 
-<h3>Note: Applying attributes whose names aren’t legal JavaScript variable names</h3>
+<h3>Note: Applying attributes whose names aren&#39;t legal JavaScript variable names</h3>
 
-<p>If you want to apply the attribute data-something, you can’t write this:</p>
+<p>If you want to apply the attribute data-something, you can&#39;t write this:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { data-something: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
-<p>… because data-something isn’t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
+<p>… because data-something isn&#39;t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { &#39;data-something&#39;: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
+</code></pre></div>
+<p><a class="next-topic" href="/docs/foreach-binding.html#start">Next: The Foreach-Binding</a></p>
+</div>
 		</div>
 	</div>
 </div>

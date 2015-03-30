@@ -76,3 +76,5 @@ function ViewModel() {
 If *fooCmd* would be triggered by a button-click and we hadn't passed *this* to *wx.command*,
 the alert would display "undefined", because *this* would point to the windows object instead
 our view-model.
+
+<a class="next-topic" href="/docs/visible-binding.html#start">Next: The Visible-Binding</a>
