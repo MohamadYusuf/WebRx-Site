@@ -19,7 +19,7 @@ clear organization and encapsulation, and helps to improve runtime performance b
 loading your application code and templates as needed.
 
 Custom elements are an optional but convenient syntax for consuming components. Instead of needing 
-placeholder <div>s into which components are injected with bindings, you can use more self-descriptive 
+placeholder &lt;div&gt;s into which components are injected with bindings, you can use more self-descriptive 
 markup with custom element names. 
 
 ## Example: A like/dislike widget
