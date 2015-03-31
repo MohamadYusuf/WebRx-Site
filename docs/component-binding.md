@@ -65,7 +65,7 @@ wx.applyBindings();
 **Note:** In more realistic cases, you would typically load component view-models and templates from external files, 
 instead of hardcoding them into the registration. See an example and registration documentation.
 
-## API
+## Parameters
 
 There are two ways to use the component binding:
 

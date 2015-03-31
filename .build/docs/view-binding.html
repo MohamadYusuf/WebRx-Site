@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Routing Overview</title>
+        <title>WebRx - The View-Binding</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Routing Overview" /> 
+        <meta property="og:title" content="WebRx - The View-Binding" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - Routing Overview</h1>
+        <h1 id="logoh1">WebRx - The View-Binding</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -153,87 +153,46 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>Routing Overview</h1>
+			<div class="body"><h1>The View-Binding</h1>
 
-<p>WebRx&#39;s Router allows you to organize the parts of your interface into a state machine. WebRx&#39;s Router is organized around states, which may optionally have routes, as well as other behavior, attached.</p>
+<p>One of the fundamental principles behind WebRx&#39;s <a href="/docs/routing-overview.html#start">routing engine</a> is that your application partitions
+your pages into regions by applying a view-binding to one or more
+elements of your page. A state can then define which <a href="/docs/component-overview.html#start">component</a>
+those regions will display when the state is active.</p>
 
-<p>States are bound to named, nested and parallel views, allowing you to powerfully manage your application&#39;s interface.</p>
+<p>Essentially view-bindings define placeholders on a page that get filled with components defined in the current state.</p>
 
-<h2>About states</h2>
-
-<ul>
-<li>A state corresponds to a &quot;place&quot; in the application in terms of the overall UI and navigation.</li>
-<li>A state describes (via the <em>views</em> and <em>params</em> properties) what the UI looks like and does at that place.</li>
-<li>States often have things in common, and the primary way of factoring out these commonalities in this model is via the state hierarchy, i.e. parent/child states aka nested states.</li>
-</ul>
-
-<h3>The simplest form of state</h3>
-
-<p>A state in its simplest form can be created like this:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>This declares a state named <em>&quot;contacts&quot;</em>, that causes the <em>&quot;main&quot;</em> view to display the <em>&quot;contact-list-component&quot;</em>
-when the state is activated (for simplicity, we assume that the component has been already registered).</p>
-
-<p>Right now, the <em>&#39;contacts&#39;</em> state won&#39;t ever be activated. So let&#39;s see how we can activate a state.</p>
-
-<h3>Activating a state</h3>
-
-<p>There are three main ways to activate a state:</p>
-
-<ul>
-<li>Calling <em>wx.router.go()</em></li>
-<li>Clicking a link which has been transformed by a <a href="/docs/sref-binding.html#start">sref-binding</a></li>
-<li>Navigating to the url associated with the state</li>
-</ul>
-
-<h2>State-Hierarchy</h2>
-
-<p>States can be nested within each other. The router will automatically infer the state-hierarchy from dots encountered in a state name. 
-Below, contacts.list becomes a child of contacts.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span>
-  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;contacts&#39;</span><span class="p">,</span> <span class="p">{})</span>
-  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;contacts.list&#39;</span><span class="p">,</span> <span class="p">{});</span>
-</code></pre></div>
-<p>When the application is in a particular state—when a state is &quot;active&quot;—all of its ancestor states are implicitly active as well. 
-Below, when the <em>&quot;contacts.details&quot;</em> state is active, the <em>&quot;contacts&quot;</em> state is implicitly active as well, because it&#39;s the parent 
-state to <em>&quot;contacts.details&quot;</em>.</p>
+<h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
     <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;details&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+</code></pre></div>
+<p>This example defines the views <em>main</em> and <em>details</em>. Now let&#39;s define a routing-state referencing these views:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
     <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
         <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;header-component&quot;</span><span class="p">,</span>
         <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
-<span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-details-component&quot;</span>
-    <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>This example defines the views <em>main</em> and <em>details</em>. Let&#39;s see what happens to the contents of both views when we activate
-states:</p>
+<p>Let&#39;s see what happens to the contents of both views when the <em>contacts</em> state is activated:</p>
 
 <ul>
-<li><p>When the <em>contacts</em> state is activated the <em>main</em> view will display the <em>header-component</em> and the <em>details</em> view will
-display the <em>contact-list-component</em>.</p></li>
-<li><p>As soon as the <em>contacts.details</em> state is activated the <em>details</em> view will switch to the <em>contact-details-component</em>
-while the <em>main</em> view will continue to display the <em>header-component</em> because it is inherited from parent state <em>contacts</em>.</p></li>
+<li>The <em>main</em> view will display the <em>header-component</em> </li>
+<li>The <em>details</em> view will display the <em>contact-list-component</em></li>
 </ul>
 
-<p><a class="next-topic" href="/docs/routing-registration.html#start">Next: Defining and registering routing states</a></p>
+<h2>Parameters</h2>
+
+<h3>Main parameter</h3>
+
+<p>You should pass a string that defines the name of the view.</p>
+
+<p><strong>Note:</strong> View-Names must be <strong>unique</strong> accross a page.</p>
+
+<p><a class="next-topic" href="/docs/sref-binding.html#start">Next: The SRef-Binding</a></p>
 </div>
 		</div>
 	</div>

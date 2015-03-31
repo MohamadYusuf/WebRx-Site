@@ -6,6 +6,55 @@ title: WebRx - Defining and registering routing states
 
 So far we've only briefly touched the subject of state-registration. That is about to change.
 
+## Views
+
+One of the fundamental principles behind WebRx's routing engine is that your application partitions
+your pages into regions by applying a [view-binding](/docs/view-binding.html#start) to one or more
+elements of your page. A state can then define which [component](/docs/component-overview.html#start)
+those regions will display when the state is active.
+
+Components will be resolved against the currently active [module](/docs/module-overview.html#start) or alternatively
+the application-module.
+
+```html
+<body>
+	<section data-bind="view: 'main'"></section>
+	<section data-bind="view: 'details'"></section>
+</body>
+```
+
+```javascript
+wx.router.state({
+    name: "contacts",
+    views: {
+        'main': "header-component",
+        'details': "contact-list-component"
+    }
+}).state({
+    name: "contacts.details",
+    views: {
+        'details': "contact-details-component"
+    }
+});
+```
+
+You can also pass parameters to your components which will be merged with any parameters defined at
+state-level plus extracted routing parameters:
+
+```javascript
+wx.router.state({
+    name: "contacts",
+    views: {
+        'main': { 
+			component: "contact-list-component",
+			params: {
+				mode: 'compact'
+			}
+		}
+    }
+});
+```
+
 ## State Params
 
 Routing-States can optionally configured to carry state-parameters that will be used to configure
@@ -68,7 +117,7 @@ Here's how you configure a state with a basic route:
 ```javascript
 wx.router.state({
     name: "contacts",
-	route: "contacts"
+	route: "contacts",
     views: {
         'main': "contact-list-component"
     }
@@ -114,7 +163,7 @@ A basic parameter looks like this:
 ```javascript
 wx.router.state({
     name: "contacts",
-	route: "contacts/:contactId"
+	route: "contacts/:contactId",
     views: {
         'main': "contact-list-component"
     }
@@ -131,6 +180,30 @@ The second path segment will be captured as the parameter 'id'.
 **Note:** Parameter names may contain only word characters (latin letters, digits, and underscore) and must be unique within the 
 pattern (across both path and search parameters).
 
+#### Custom validators for route parameters
+
+If you need more control about route-parameters you can also pass in an object that combines a route
+with a set of per-parameter custom validators. 
+
+```javascript
+wx.router.state({
+    name: "contacts",
+	route: wx.route("contacts/:contactId/:other", {
+		contactId: /^\d+$/,
+		other: function(value) { return value === "" || value === "foo"; }
+	}),
+    views: {
+        'main': "contact-list-component"
+    }
+});
+```
+
+Each validator can be:
+
+- a RegExp to test against 
+- a function that accepts a value and returns true or false
+- or a value to match against
+
 ### Defining routes as regular expression
 
 Alternatively you can pass in a RegExp for the route parameter:
@@ -138,7 +211,7 @@ Alternatively you can pass in a RegExp for the route parameter:
 ```javascript
 wx.router.state({
     name: "contacts",
-	route: /^(contacts?)(?:\/(\d+)(?:\.\.(\d+))?)?/
+	route: /^(contacts?)(?:\/(\d+)(?:\.\.(\d+))?)?/,
     views: {
         'main': "contact-list-component"
     }
@@ -148,7 +221,7 @@ wx.router.state({
 ### What happens to route parameters
 
 When a state is activated, any parameters captured from the current route will be merged with 
-state parameters specified during state registration. 
+state-parameters specified during registration. 
 
 Once again the state-params merging will follow the state-hierarchy, with route-parameters applied
 as the final step to allow for overriding state-params when navigating.

@@ -72,7 +72,7 @@ state to *"contacts.details"*.
 wx.router.state({
     name: "contacts",
     views: {
-        'main': "header-component"
+        'main': "header-component",
         'details': "contact-list-component"
     }
 }).state({
