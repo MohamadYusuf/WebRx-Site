@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Routing Overview</title>
+        <title>WebRx - The SActive-Binding</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Routing Overview" /> 
+        <meta property="og:title" content="WebRx - The SActive-Binding" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - Routing Overview</h1>
+        <h1 id="logoh1">WebRx - The SActive-Binding</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -154,91 +154,54 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>Routing Overview</h1>
+			<div class="body"><h1>The SActive-Binding</h1>
 
-<p>WebRx&#39;s Router allows you to organize the parts of your interface into a state machine. WebRx&#39;s Router is organized around states, which may optionally have routes, as well as other behavior, attached.</p>
+<p>The SActive-binding tests if the <a href="/docs/routing-overview.html#start">router&#39;s</a> current state matches its own configuration
+and add the Css-Class <em>active</em> to its target element if the test succeeds or remove it otherwise. </p>
 
-<p>States are bound to named, nested and parallel views, allowing you to powerfully manage your application&#39;s interface.</p>
+<p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the &quot;active&quot; state&#39;s menu 
+button appear different, distinguishing it from the inactive items.</p>
 
 <h2>Example</h2>
-
-<p><a target="_blank" class="example-link" href="/examples/router-demo/index.html">Live Demo</a></p>
-
-<h2>About states</h2>
-
-<ul>
-<li>A state corresponds to a &quot;place&quot; in the application in terms of the overall UI and navigation.</li>
-<li>A state describes (via the <em>views</em> and <em>params</em> properties) what the UI looks like and does at that place.</li>
-<li>States often have things in common, and the primary way of factoring out these commonalities in this model is via the state hierarchy, i.e. parent/child states aka nested states.</li>
-</ul>
-
-<h3>The simplest form of state</h3>
-
-<p>A state in its simplest form can be created like this:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">&quot;sref: &#39;contacts&#39;, sactive: &#39;contacts&#39;&quot;</span><span class="nt">&gt;</span>Contacts<span class="nt">&lt;/a&gt;</span>
 </code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
     <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>This declares a state named <em>&quot;contacts&quot;</em>, that causes the <em>&quot;main&quot;</em> view to display the <em>&quot;contact-list-component&quot;</em>
-when the state is activated (for simplicity, we assume that the component has been already registered).</p>
-
-<p>Right now, the <em>&#39;contacts&#39;</em> state won&#39;t ever be activated. So let&#39;s see how we can activate a state.</p>
-
-<h3>Activating a state</h3>
-
-<p>There are three main ways to activate a state:</p>
-
-<ul>
-<li>Calling <em>wx.router.go()</em></li>
-<li>Clicking a link which has been transformed by a <a href="/docs/sref-binding.html#start">sref-binding</a></li>
-<li>Navigating to the url associated with the state</li>
-</ul>
-
-<h2>State-Hierarchy</h2>
-
-<p>States can be nested within each other. The router will automatically infer the state-hierarchy from dots encountered in a state name. 
-Below, contacts.list becomes a child of contacts.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span>
-  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;contacts&#39;</span><span class="p">,</span> <span class="p">{})</span>
-  <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;contacts.list&#39;</span><span class="p">,</span> <span class="p">{});</span>
-</code></pre></div>
-<p>When the application is in a particular state—when a state is &quot;active&quot;—all of its ancestor states are implicitly active as well. 
-Below, when the <em>&quot;contacts.details&quot;</em> state is active, the <em>&quot;contacts&quot;</em> state is implicitly active as well, because it&#39;s the parent 
-state to <em>&quot;contacts.details&quot;</em>.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;details&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;header-component&quot;</span><span class="p">,</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span>
     <span class="p">}</span>
 <span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
     <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-details-component&quot;</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list&quot;</span>
     <span class="p">}</span>
-<span class="p">});</span>
+<span class="p">})</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">&quot;home&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>This example defines the views <em>main</em> and <em>details</em>. Let&#39;s see what happens to the contents of both views when we activate
-states:</p>
+<p>The anchor will not bear the <em>active</em> class because the state does not match.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">&quot;contacts&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Now, the anchor will bear the <em>active</em> class because the state matches.</p>
+
+<h2>Parameters</h2>
+
+<p>There are two ways to use the sactive-binding:</p>
+
+<h3>Shorthand syntax</h3>
+
+<p>If you pass just a string, it is interpreted as a state name. The state-name will be substring-matched against the Router&#39;s
+current state.</p>
+
+<h3>Full syntax</h3>
+
+<p>Alternatively, pass an object with the following properties:</p>
 
 <ul>
-<li><p>When the <em>contacts</em> state is activated the <em>main</em> view will display the <em>header-component</em> and the <em>details</em> view will
-display the <em>contact-list-component</em>.</p></li>
-<li><p>As soon as the <em>contacts.details</em> state is activated the <em>details</em> view will switch to the <em>contact-details-component</em>
-while the <em>main</em> view will continue to display the <em>header-component</em> because it is inherited from parent state <em>contacts</em>.</p></li>
+<li><strong>name</strong> — the name of a state</li>
+<li><strong>params</strong> — an object that will have each of its properties compared against the router&#39;s current state-params</li>
 </ul>
-
-<p><a class="next-topic" href="/docs/routing-registration.html#start">Next: Defining and registering routing states</a></p>
 </div>
 		</div>
 	</div>
