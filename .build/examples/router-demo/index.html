@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - Router-Demo</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - Router-Demo" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+
+
+        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+
+
+        <script type='text/javascript' src='/js/web.rx.js'></script>
+      </head>
+    <body>
+        <h1 id="logoh1">WebRx - Router-Demo</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs">Documentation</a></li>
+                    <!-- <li><a href="/examples">Examples</a></li> -->
+
+                    <li><a href="https://github.com/oliverw/WebRx"><img width="16" src="/images/GitHub-Mark-Light-32px.png"/>Source</a></li>
+                    <li><a href="http://twitter.com/intent/tweet?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript UIs with ReactiveX&via=oliverweichhold" target="_blank"><img width="16" src="/images/Twitter_logo_white.png"/>Tweet</a></li>
+                   </ul>
+                </div>
+              </div>
+            </nav>
+
+          <div id="router-demo" class="content-panel">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li role="presentation" data-bind="sactive: 'home'"><a data-bind="sref: 'home'">Home</a></li>
+                <li role="presentation" data-bind="sactive: 'contacts'"><a data-bind="sref: 'contacts'">Contacts</a></li>
+                <li role="presentation" data-bind="sactive: 'about'"><a data-bind="sref: 'about'">About</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 row">
+            <div class="col-md-6" data-bind="view: 'main'"></div>
+            <div class="col-md-3" data-bind="view: 'details'"></div>
+        </div>
+    </div>
+</div>
+
+<script id="home-template" type="text/html">
+    <h2>Welcome to the UI-Router Demo</h2>
+    <p>Use the menu above to navigate.</p>
+</script>
+
+<script id="contact-list-template" type="text/html">
+    <h2>All contacts</h2>
+
+    <div class="list-group" data-bind="foreach: contacts">
+        <a class="list-group-item" data-bind="text: name,
+           sref: { name: 'contacts.details', params: { id: id } },
+           sactive: { name: 'contacts.details', params: { id: id } }"></a>
+    </div>
+</script>
+
+<script id="contact-details-template" type="text/html">
+    <h2>&nbsp;</h2>
+
+    Id: <label data-bind="text: contact.id"></label><br />
+    Name: <label data-bind="text: contact.name"></label><br />
+    Email: <label data-bind="text: contact.email"></label>><br />
+</script>
+
+<script id="about-template" type="text/html">
+    <h2>Router Resources</h2>
+    <a href="">Source for this sample.</a>
+</script>
+
+<script>
+    function ViewModel() {
+        this.contacts = wx.list([
+            { id: 1, name: "Bob", email: "bob@acme.com" },
+            { id: 2, name: "Alice", email: "alice@acme.com" }
+        ]);
+    }
+
+    var vm = new ViewModel();
+
+    wx.app.component('home', {
+        template: {
+            element: 'home-template'
+        }
+    });    
+
+    wx.app.component('contact-list', {
+        template: {
+            element: 'contact-list-template'
+        }
+    });
+
+    wx.app.component('contact-details', {
+        template: {
+            element: 'contact-details-template'
+        },
+        viewModel: function (params) {
+            this.contact = vm.contacts.filter(function(x) {
+                return x.id == params.id;
+            })[0];
+        }
+    });
+
+    wx.app.component('about', {
+        template: {
+            element: 'about-template'
+        }
+    });
+
+    wx.router.state({
+        name: "home",
+        route: "/examples/router-demo/",
+        views: {
+            'main': "home"
+        }
+    }).state({
+        name: "contacts",
+        route: "/examples/router-demo/contacts",
+        views: {
+            'main': "contact-list"
+        }
+    }).state({
+        name: "about",
+        route: "/examples/router-demo/about",
+        views: {
+            'main': "about"
+        }
+    }).state({
+        name: "contacts.details",
+        route: "/examples/router-demo/contacts/:id",
+        views: {
+            'main': "contact-list",
+            'details': "contact-details"
+        }
+    });
+
+    wx.router.go("home", {}, { location: 2 });
+
+    wx.applyBindings(vm, document.getElementById("router-demo"));
+</script>
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-4">
+                    Copyright (c) 2015 WebRxJS.org
+                  </div>
+
+                  <div class="copyright col-md-4">
+                  </div>
+
+                  <div class="copyright col-md-4 text-right">
+                    <a id="impressum" href="/impressum.html">Impressum</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
+        <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

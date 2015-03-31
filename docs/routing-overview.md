@@ -8,6 +8,10 @@ WebRx's Router allows you to organize the parts of your interface into a state m
 
 States are bound to named, nested and parallel views, allowing you to powerfully manage your application's interface.
 
+## Example
+
+<a target="_blank" class="example-link" href="/examples/router-demo/index.html">Live Demo</a>
+
 ## About states
 
 - A state corresponds to a "place" in the application in terms of the overall UI and navigation.

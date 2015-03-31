@@ -1,0 +1,121 @@
+---
+layout: default
+title: WebRx - Router-Demo
+---
+<div id="router-demo" class="content-panel">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li role="presentation" data-bind="sactive: 'home'"><a data-bind="sref: 'home'">Home</a></li>
+                <li role="presentation" data-bind="sactive: 'contacts'"><a data-bind="sref: 'contacts'">Contacts</a></li>
+                <li role="presentation" data-bind="sactive: 'about'"><a data-bind="sref: 'about'">About</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 row">
+            <div class="col-md-6" data-bind="view: 'main'"></div>
+            <div class="col-md-3" data-bind="view: 'details'"></div>
+        </div>
+    </div>
+</div>
+
+<script id="home-template" type="text/html">
+    <h2>Welcome to the UI-Router Demo</h2>
+    <p>Use the menu above to navigate.</p>
+</script>
+
+<script id="contact-list-template" type="text/html">
+    <h2>All contacts</h2>
+
+    <div class="list-group" data-bind="foreach: contacts">
+        <a class="list-group-item" data-bind="text: name,
+           sref: { name: 'contacts.details', params: { id: id } },
+           sactive: { name: 'contacts.details', params: { id: id } }"></a>
+    </div>
+</script>
+
+<script id="contact-details-template" type="text/html">
+    <h2>&nbsp;</h2>
+
+    Id: <label data-bind="text: contact.id"></label><br />
+    Name: <label data-bind="text: contact.name"></label><br />
+    Email: <label data-bind="text: contact.email"></label>><br />
+</script>
+
+<script id="about-template" type="text/html">
+    <h2>Router Resources</h2>
+    <a href="">Source for this sample.</a>
+</script>
+
+<script>
+    function ViewModel() {
+        this.contacts = wx.list([
+            { id: 1, name: "Bob", email: "bob@acme.com" },
+            { id: 2, name: "Alice", email: "alice@acme.com" }
+        ]);
+    }
+
+    var vm = new ViewModel();
+
+    wx.app.component('home', {
+        template: {
+            element: 'home-template'
+        }
+    });    
+
+    wx.app.component('contact-list', {
+        template: {
+            element: 'contact-list-template'
+        }
+    });
+
+    wx.app.component('contact-details', {
+        template: {
+            element: 'contact-details-template'
+        },
+        viewModel: function (params) {
+            this.contact = vm.contacts.filter(function(x) {
+                return x.id == params.id;
+            })[0];
+        }
+    });
+
+    wx.app.component('about', {
+        template: {
+            element: 'about-template'
+        }
+    });
+
+    wx.router.state({
+        name: "home",
+        route: "/examples/router-demo/",
+        views: {
+            'main': "home"
+        }
+    }).state({
+        name: "contacts",
+        route: "/examples/router-demo/contacts",
+        views: {
+            'main': "contact-list"
+        }
+    }).state({
+        name: "about",
+        route: "/examples/router-demo/about",
+        views: {
+            'main': "about"
+        }
+    }).state({
+        name: "contacts.details",
+        route: "/examples/router-demo/contacts/:id",
+        views: {
+            'main': "contact-list",
+            'details': "contact-details"
+        }
+    });
+
+    wx.router.go("home", {}, { location: 2 });
+
+    wx.applyBindings(vm, document.getElementById("router-demo"));
+</script>

@@ -84,7 +84,12 @@ pre code {
     background-color: #f8f8f8;
 }
 
-.content-panel ul {
+.example-link {
+    font-size: 20px;
+}
+
+#content1 ul,
+#content2 ul {
     padding-left: 1em;
 }
 
