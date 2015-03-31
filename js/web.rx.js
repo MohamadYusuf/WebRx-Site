@@ -730,10 +730,10 @@ var wx;
         });
         App.prototype.createHistory = function () {
             var result = {
-                back: window.history.back,
-                forward: window.history.forward,
-                pushState: window.history.pushState,
-                replaceState: window.history.replaceState
+                back: window.history.back.bind(window.history),
+                forward: window.history.forward.bind(window.history),
+                pushState: window.history.pushState.bind(window.history),
+                replaceState: window.history.replaceState.bind(window.history)
             };
             Object.defineProperty(result, "length", {
                 get: function () {
@@ -1504,6 +1504,7 @@ var wx;
         };
         ComponentBinding.prototype.loadTemplate = function (template, params) {
             var syncResult;
+            var el;
             if (wx.isFunction(template)) {
                 syncResult = template(params);
                 if (typeof syncResult === "string") {
@@ -1533,11 +1534,23 @@ var wx;
                 }
                 else if (options.element) {
                     if (typeof options.element === "string") {
-                        syncResult = [document.querySelector(options.element)];
+                        el = document.getElementById(options.element) || document.querySelector(options.element);
+                        if (el != null) {
+                            syncResult = wx.app.templateEngine.parse(el.innerHTML);
+                        }
+                        else {
+                            syncResult = [];
+                        }
                         return Rx.Observable.return(syncResult);
                     }
                     else {
-                        syncResult = [options.element];
+                        el = options.element;
+                        if (el != null) {
+                            syncResult = wx.app.templateEngine.parse(el.innerHTML);
+                        }
+                        else {
+                            syncResult = [];
+                        }
                         return Rx.Observable.return(syncResult);
                     }
                 }
@@ -1580,6 +1593,7 @@ var wx;
             if (vm) {
                 state.model = vm;
                 ctx = this.domManager.getDataContext(el);
+                ctx.$component = vm;
             }
             if (vm && component.preBindingInit && vm.hasOwnProperty(component.preBindingInit)) {
                 vm[component.preBindingInit].call(vm, el);
@@ -4641,9 +4655,9 @@ var wx;
         function simpleGetterFn1(key0, fullExp) {
             ensureSafeMemberName(key0, fullExp);
             return function (scope, locals) {
+                scope = ((locals && locals.hasOwnProperty(key0)) ? locals : scope);
                 if (scope == null)
                     return undefined;
-                scope = ((locals && locals.hasOwnProperty(key0)) ? locals : scope);
                 var hooks = getRuntimeHooks(locals);
                 if (hooks && hooks.readFieldHook)
                     return hooks.readFieldHook(scope, key0);
@@ -4654,11 +4668,11 @@ var wx;
             ensureSafeMemberName(key0, fullExp);
             ensureSafeMemberName(key1, fullExp);
             return function (scope, locals) {
-                if (scope == null)
-                    return undefined;
                 var hooks = getRuntimeHooks(locals);
                 if (hooks && hooks.readFieldHook) {
                     scope = (locals && locals.hasOwnProperty(key0)) ? locals : scope;
+                    if (scope == null)
+                        return undefined;
                     scope = hooks.readFieldHook(scope, key0);
                     return scope == null ? undefined : hooks.readFieldHook(scope, key1);
                 }
@@ -4949,6 +4963,79 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
+    var StateActiveBinding = (function () {
+        function StateActiveBinding(domManager, router) {
+            this.priority = 5;
+            this.domManager = domManager;
+            this.router = router;
+        }
+        StateActiveBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
+            var _this = this;
+            if (node.nodeType !== 1)
+                internal.throwError("stateActive-binding only operates on elements!");
+            if (options == null)
+                internal.throwError("invalid binding-options!");
+            var el = node;
+            var compiled = this.domManager.compileBindingOptions(options, module);
+            var exp;
+            var observables = [];
+            var opt = compiled;
+            var paramsKeys = [];
+            var stateName;
+            var stateParams;
+            observables.push(wx.router.current.changed.startWith(wx.router.current()));
+            if (typeof compiled === "function") {
+                exp = compiled;
+                observables.push(this.domManager.expressionToObservable(exp, ctx));
+            }
+            else {
+                observables.push(this.domManager.expressionToObservable(opt.name, ctx));
+                if (opt.params) {
+                    Object.keys(opt.params).forEach(function (x) {
+                        paramsKeys.push(x);
+                        observables.push(_this.domManager.expressionToObservable(opt.params[x], ctx));
+                    });
+                }
+            }
+            state.cleanup.add(Rx.Observable.combineLatest(observables, function (_) { return wx.args2Array(arguments); }).subscribe(function (latest) {
+                var currentState = latest.shift();
+                stateName = wx.unwrapProperty(latest.shift());
+                stateParams = {};
+                var isActive = currentState.name.indexOf(stateName) === 0;
+                if (isActive) {
+                    for (var i = 0; i < paramsKeys.length; i++) {
+                        if (currentState.params[paramsKeys[i]] != wx.unwrapProperty(latest[i])) {
+                            isActive = false;
+                            break;
+                        }
+                    }
+                }
+                wx.toggleCssClass(el, isActive, "active");
+            }));
+            state.cleanup.add(Rx.Disposable.create(function () {
+                node = null;
+                options = null;
+                ctx = null;
+                state = null;
+                observables = null;
+                compiled = null;
+                stateName = null;
+                stateParams = null;
+                opt = null;
+                paramsKeys = null;
+            }));
+        };
+        StateActiveBinding.prototype.configure = function (options) {
+        };
+        return StateActiveBinding;
+    })();
+    var internal;
+    (function (internal) {
+        internal.stateActiveBindingConstructor = StateActiveBinding;
+    })(internal = wx.internal || (wx.internal = {}));
+})(wx || (wx = {}));
+var wx;
+(function (wx) {
     var StateRefBinding = (function () {
         function StateRefBinding(domManager, router) {
             this.priority = 5;
@@ -4991,8 +5078,8 @@ var wx;
                 el.href = _this.router.uri(stateName, stateParams);
             }));
             state.cleanup.add(Rx.Observable.fromEvent(el, "click").subscribe(function (e) {
-                _this.router.go(stateName, stateParams, { location: true });
                 e.preventDefault();
+                _this.router.go(stateName, stateParams, { location: true });
             }));
             state.cleanup.add(Rx.Disposable.create(function () {
                 node = null;
@@ -5058,6 +5145,13 @@ var wx;
                             _this.applyTemplate(componentName, componentParams, el, ctx);
                             currentComponentName = componentName;
                             currentComponentParams = componentParams;
+                        }
+                    }
+                    else {
+                        currentComponentName = null;
+                        while (el.firstChild) {
+                            _this.domManager.cleanNode(el.firstChild);
+                            el.removeChild(el.firstChild);
                         }
                     }
                 }
@@ -5356,6 +5450,13 @@ var wx;
             state.params = stateParams;
             var _current = this.current();
             if ((options && options.force) || _current == null || _current.name !== to || !wx.isEqual(_current.params, state.params)) {
+                if (_current != null && _current.views != null && state.views != null) {
+                    Object.keys(_current.views).forEach(function (x) {
+                        if (!state.views.hasOwnProperty(x)) {
+                            state.views[x] = null;
+                        }
+                    });
+                }
                 if (options && options.location) {
                     if (options.location === 2 /* replace */)
                         wx.app.history.replaceState(state.name, "", state.uri);
@@ -5387,9 +5488,9 @@ var wx;
 var wx;
 (function (wx) {
     wx.injector.register(wx.res.expressionCompiler, wx.internal.expressionCompilerConstructor).register(wx.res.htmlTemplateEngine, true, true, [wx.internal.htmlTemplateEngineConstructor]).register(wx.res.domManager, true, true, [wx.res.expressionCompiler, wx.internal.domManagerConstructor]).register(wx.res.router, true, true, [wx.res.domManager, wx.internal.routerConstructor]);
-    wx.injector.register("wx.bindings.module", true, true, [wx.res.domManager, wx.internal.moduleBindingConstructor]).register("wx.bindings.command", true, true, [wx.res.domManager, wx.internal.commandBindingConstructor]).register("wx.bindings.if", true, true, [wx.res.domManager, wx.internal.ifBindingConstructor]).register("wx.bindings.with", true, true, [wx.res.domManager, wx.internal.withBindingConstructor]).register("wx.bindings.notif", true, true, [wx.res.domManager, wx.internal.notifBindingConstructor]).register("wx.bindings.css", true, true, [wx.res.domManager, wx.internal.cssBindingConstructor]).register("wx.bindings.attr", true, true, [wx.res.domManager, wx.internal.attrBindingConstructor]).register("wx.bindings.style", true, true, [wx.res.domManager, wx.internal.styleBindingConstructor]).register("wx.bindings.text", true, true, [wx.res.domManager, wx.internal.textBindingConstructor]).register("wx.bindings.html", true, true, [wx.res.domManager, wx.internal.htmlBindingConstructor]).register("wx.bindings.visible", true, true, [wx.res.domManager, wx.internal.visibleBindingConstructor]).register("wx.bindings.hidden", true, true, [wx.res.domManager, wx.internal.hiddenBindingConstructor]).register("wx.bindings.enabled", true, true, [wx.res.domManager, wx.internal.enableBindingConstructor]).register("wx.bindings.disabled", true, true, [wx.res.domManager, wx.internal.disableBindingConstructor]).register("wx.bindings.foreach", true, true, [wx.res.domManager, wx.internal.forEachBindingConstructor]).register("wx.bindings.event", true, true, [wx.res.domManager, wx.internal.eventBindingConstructor]).register("wx.bindings.textInput", true, true, [wx.res.domManager, wx.internal.textInputBindingConstructor]).register("wx.bindings.checked", true, true, [wx.res.domManager, wx.internal.checkedBindingConstructor]).register("wx.bindings.selectedValue", true, true, [wx.res.domManager, wx.internal.selectedValueBindingConstructor]).register("wx.bindings.component", true, true, [wx.res.domManager, wx.internal.componentBindingConstructor]).register("wx.bindings.value", true, true, [wx.res.domManager, wx.internal.valueBindingConstructor]).register("wx.bindings.hasFocus", true, true, [wx.res.domManager, wx.internal.hasFocusBindingConstructor]).register("wx.bindings.view", true, true, [wx.res.domManager, wx.res.router, wx.internal.viewBindingConstructor]).register("wx.bindings.sref", true, true, [wx.res.domManager, wx.res.router, wx.internal.stateRefBindingConstructor]);
+    wx.injector.register("wx.bindings.module", true, true, [wx.res.domManager, wx.internal.moduleBindingConstructor]).register("wx.bindings.command", true, true, [wx.res.domManager, wx.internal.commandBindingConstructor]).register("wx.bindings.if", true, true, [wx.res.domManager, wx.internal.ifBindingConstructor]).register("wx.bindings.with", true, true, [wx.res.domManager, wx.internal.withBindingConstructor]).register("wx.bindings.notif", true, true, [wx.res.domManager, wx.internal.notifBindingConstructor]).register("wx.bindings.css", true, true, [wx.res.domManager, wx.internal.cssBindingConstructor]).register("wx.bindings.attr", true, true, [wx.res.domManager, wx.internal.attrBindingConstructor]).register("wx.bindings.style", true, true, [wx.res.domManager, wx.internal.styleBindingConstructor]).register("wx.bindings.text", true, true, [wx.res.domManager, wx.internal.textBindingConstructor]).register("wx.bindings.html", true, true, [wx.res.domManager, wx.internal.htmlBindingConstructor]).register("wx.bindings.visible", true, true, [wx.res.domManager, wx.internal.visibleBindingConstructor]).register("wx.bindings.hidden", true, true, [wx.res.domManager, wx.internal.hiddenBindingConstructor]).register("wx.bindings.enabled", true, true, [wx.res.domManager, wx.internal.enableBindingConstructor]).register("wx.bindings.disabled", true, true, [wx.res.domManager, wx.internal.disableBindingConstructor]).register("wx.bindings.foreach", true, true, [wx.res.domManager, wx.internal.forEachBindingConstructor]).register("wx.bindings.event", true, true, [wx.res.domManager, wx.internal.eventBindingConstructor]).register("wx.bindings.textInput", true, true, [wx.res.domManager, wx.internal.textInputBindingConstructor]).register("wx.bindings.checked", true, true, [wx.res.domManager, wx.internal.checkedBindingConstructor]).register("wx.bindings.selectedValue", true, true, [wx.res.domManager, wx.internal.selectedValueBindingConstructor]).register("wx.bindings.component", true, true, [wx.res.domManager, wx.internal.componentBindingConstructor]).register("wx.bindings.value", true, true, [wx.res.domManager, wx.internal.valueBindingConstructor]).register("wx.bindings.hasFocus", true, true, [wx.res.domManager, wx.internal.hasFocusBindingConstructor]).register("wx.bindings.view", true, true, [wx.res.domManager, wx.res.router, wx.internal.viewBindingConstructor]).register("wx.bindings.sref", true, true, [wx.res.domManager, wx.res.router, wx.internal.stateRefBindingConstructor]).register("wx.bindings.sactive", true, true, [wx.res.domManager, wx.res.router, wx.internal.stateActiveBindingConstructor]);
     wx.injector.register("wx.components.radiogroup", false, true, [wx.res.htmlTemplateEngine, wx.internal.radioGroupComponentConstructor]).register("wx.components.select", false, true, [wx.res.htmlTemplateEngine, wx.internal.selectComponentConstructor]);
-    wx.app.binding("module", "wx.bindings.module").binding("css", "wx.bindings.css").binding("attr", "wx.bindings.attr").binding("style", "wx.bindings.style").binding("command", "wx.bindings.command").binding("if", "wx.bindings.if").binding("with", "wx.bindings.with").binding("ifnot", "wx.bindings.notif").binding("text", "wx.bindings.text").binding("html", "wx.bindings.html").binding("visible", "wx.bindings.visible").binding("hidden", "wx.bindings.hidden").binding("disabled", "wx.bindings.disabled").binding("enabled", "wx.bindings.enabled").binding("foreach", "wx.bindings.foreach").binding("event", "wx.bindings.event").binding(["textInput", "textinput"], "wx.bindings.textInput").binding("checked", "wx.bindings.checked").binding("selectedValue", "wx.bindings.selectedValue").binding("component", "wx.bindings.component").binding("value", "wx.bindings.value").binding(["hasFocus", "hasfocus"], "wx.bindings.hasFocus").binding("view", "wx.bindings.view").binding("sref", "wx.bindings.sref");
+    wx.app.binding("module", "wx.bindings.module").binding("css", "wx.bindings.css").binding("attr", "wx.bindings.attr").binding("style", "wx.bindings.style").binding("command", "wx.bindings.command").binding("if", "wx.bindings.if").binding("with", "wx.bindings.with").binding("ifnot", "wx.bindings.notif").binding("text", "wx.bindings.text").binding("html", "wx.bindings.html").binding("visible", "wx.bindings.visible").binding("hidden", "wx.bindings.hidden").binding("disabled", "wx.bindings.disabled").binding("enabled", "wx.bindings.enabled").binding("foreach", "wx.bindings.foreach").binding("event", "wx.bindings.event").binding(["textInput", "textinput"], "wx.bindings.textInput").binding("checked", "wx.bindings.checked").binding("selectedValue", "wx.bindings.selectedValue").binding("component", "wx.bindings.component").binding("value", "wx.bindings.value").binding(["hasFocus", "hasfocus"], "wx.bindings.hasFocus").binding("view", "wx.bindings.view").binding("sref", "wx.bindings.sref").binding(["sactive", "state-active"], "wx.bindings.sactive");
     wx.app.component("wx-radiogroup", "wx.components.radiogroup").component("wx-select", "wx.components.select");
 })(wx || (wx = {}));
 var wx;
@@ -5443,6 +5544,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.36';
+    wx.version = '0.9.40';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map

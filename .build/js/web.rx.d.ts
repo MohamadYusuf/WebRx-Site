@@ -632,6 +632,15 @@ declare module wx {
     }
 }
 declare module wx {
+    interface IStateActiveBindingOptions {
+        name: string;
+        params?: Object;
+    }
+    module internal {
+        var stateActiveBindingConstructor: any;
+    }
+}
+declare module wx {
     interface IStateRefBindingOptions {
         name: string;
         params?: Object;
