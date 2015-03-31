@@ -1036,8 +1036,6 @@ var wx;
                     var binding = bindings[i];
                     var handler = binding.handler;
                     handler.applyBinding(el, binding.value, ctx, state, module);
-                    if (state.module !== module)
-                        module = state.module;
                 }
             }
             state.isBound = true;
@@ -1358,6 +1356,8 @@ var wx;
     var ModuleBinding = (function () {
         function ModuleBinding(domManager) {
             this.priority = 100;
+            this.name = "module";
+            this.controlsDescendants = true;
             this.domManager = domManager;
         }
         ModuleBinding.prototype.applyBinding = function (node, options, ctx, state, module) {
@@ -1365,12 +1365,15 @@ var wx;
                 internal.throwError("module-binding only operates on elements!");
             if (options == null)
                 internal.throwError("invalid binding-options!");
+            var el = node;
+            var self = this;
             var exp = this.domManager.compileBindingOptions(options, module);
             var obs = this.domManager.expressionToObservable(exp, ctx);
+            var initialApply = true;
+            var template = new Array();
             state.cleanup.add(obs.subscribe(function (x) {
-                if (typeof x === "string")
-                    x = wx.module(x);
-                state.module = x;
+                self.applyValue(el, x, template, ctx, state, initialApply);
+                initialApply = false;
             }));
             state.cleanup.add(Rx.Disposable.create(function () {
                 node = null;
@@ -1382,6 +1385,26 @@ var wx;
             }));
         };
         ModuleBinding.prototype.configure = function (options) {
+        };
+        ModuleBinding.prototype.applyValue = function (el, value, template, ctx, state, initialApply) {
+            var i;
+            if (initialApply) {
+                for (i = 0; i < el.childNodes.length; i++) {
+                    template.push(el.childNodes[i].cloneNode(true));
+                }
+            }
+            if (typeof value === "string")
+                value = wx.module(value);
+            state.module = value;
+            this.domManager.cleanDescendants(el);
+            while (el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
+            for (i = 0; i < template.length; i++) {
+                var node = template[i].cloneNode(true);
+                el.appendChild(node);
+            }
+            this.domManager.applyBindingsToDescendants(ctx, el);
         };
         return ModuleBinding;
     })();
@@ -5350,6 +5373,12 @@ var wx;
         };
         return Router;
     })();
+    wx.router;
+    Object.defineProperty(wx, "router", {
+        get: function () {
+            return wx.injector.resolve(wx.res.router);
+        }
+    });
     var internal;
     (function (internal) {
         internal.routerConstructor = Router;
@@ -5414,6 +5443,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.33';
+    wx.version = '0.9.35';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map

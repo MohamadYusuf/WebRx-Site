@@ -646,6 +646,7 @@ declare module wx {
     function route(route: any, rules?: any): IRoute;
 }
 declare module wx {
+    var router: IRouter;
     module internal {
         var routerConstructor: any;
     }

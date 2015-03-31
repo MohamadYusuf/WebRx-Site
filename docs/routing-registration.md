@@ -218,7 +218,7 @@ wx.router.state({
 });
 ```
 
-### What happens to route parameters
+### How route-parameters are handled
 
 When a state is activated, any parameters captured from the current route will be merged with 
 state-parameters specified during registration. 
