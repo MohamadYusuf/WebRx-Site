@@ -2,6 +2,7 @@
 layout: docs
 title: WebRx - Routing Overview
 ---
+{% include sample-warning.html %}
 # Routing Overview
 
 WebRx's Router allows you to organize the parts of your interface into a state machine. WebRx's Router is organized around states, which may optionally have routes, as well as other behavior, attached.
