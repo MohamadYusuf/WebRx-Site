@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The View-Binding</title>
+        <title>WebRx - Routing Overview</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The View-Binding" /> 
+        <meta property="og:title" content="WebRx - Routing Overview" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - The View-Binding</h1>
+        <h1 id="logoh1">WebRx - Routing Overview</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -160,46 +160,67 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>The View-Binding</h1>
+			<div class="body"><h1>Dependency Injection Overview</h1>
 
-<p>One of the fundamental principles behind WebRx&#39;s <a href="/docs/routing-overview.html#start">routing engine</a> is that your application partitions
-your pages into regions by applying a view-binding to one or more
-elements of your page. A state can then define which <a href="/docs/component-overview.html#start">component</a>
-those regions will display when the state is active.</p>
+<p>Dependency Injection (DI) is a software design pattern that deals with how components get hold of their dependencies.</p>
 
-<p>Essentially view-bindings define placeholders on a page that get filled with components defined in the current state.</p>
+<p>The WebRx injector subsystem is in charge of creating components, resolving their dependencies, and providing them 
+to other components as requested.</p>
 
-<h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;details&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-</code></pre></div>
-<p>This example defines the views <code>main</code> and <code>details</code>. Now let&#39;s define a routing-state referencing these views:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;header-component&quot;</span><span class="p">,</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Let&#39;s see what happens to the contents of both views when the <code>contacts</code> state is activated:</p>
+<h2>Why Dependency Injection?</h2>
+
+<p>This section motivates and explains WebRx&#39;s use of DI. For how to use DI, see above.</p>
+
+<p>For in-depth discussion about DI, see Dependency Injection at Wikipedia, Inversion of Control by Martin Fowler, 
+or read about DI in your favorite software design pattern book.</p>
+
+<p>There are only three ways a component (object or function) can get a hold of its dependencies:</p>
 
 <ul>
-<li>The <code>main</code> view will display the <code>header-component</code> </li>
-<li>The <code>details</code> view will display the <code>contact-list-component</code></li>
+<li>The component can create the dependency, typically using the new operator.</li>
+<li>The component can look up the dependency, by referring to a global variable.</li>
+<li>The component can have the dependency passed to it where it is needed.</li>
+<li>The first two options of creating or looking up dependencies are not optimal because they hard code the dependency to the component. This makes it difficult, if not impossible, to modify the dependencies. This is especially problematic in tests, where it is often desirable to provide mock dependencies for test isolation.</li>
 </ul>
 
-<h2>Parameters</h2>
+<p>The third option is the most viable, since it removes the responsibility of locating the dependency from the component. The dependency is simply handed to the component.</p>
 
-<h3>Main parameter</h3>
+<h3>Example</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">SomeClass</span><span class="p">(</span><span class="nx">greeter</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">greeter</span> <span class="o">=</span> <span class="nx">greeter</span><span class="p">;</span>
+<span class="p">}</span>
 
-<p>You should pass a string that defines the name of the view.</p>
+<span class="nx">SomeClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">greeter</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the above example <code>SomeClass</code> is not concerned with creating or locating the <code>greeter</code> dependency, it is simply handed the greeter when it is instantiated.</p>
 
-<p><strong>Note:</strong> View-Names must be <strong>unique</strong> accross a page.</p>
+<p>This is desirable, but it puts the responsibility of getting hold of the dependency on the code that constructs SomeClass. 
+To manage the responsibility of dependency creation, each WebRx application has an injector. The injector is a service 
+locator that is responsible for construction and lookup of dependencies.</p>
 
-<p><a class="next-topic" href="/docs/sref-binding.html#start">Next: The SRef-Binding</a></p>
+<h3>Example of using the injector</h3>
+
+<p>Here we teach the injector how to build a greeter. Notice that greeter is dependent on the <code>$window</code> service.
+The greeter service is an object that contains a <code>greet</code> method which relies on the window-service&#39;s <code>alert</code> method.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">injector</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;window-service&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">greet</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}]);</span>
+</code></pre></div>
+<p>Now we can request our <code>greeter</code> from the injector:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">greeter</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Asking for dependencies solves the issue of hard coding, but it also means that the injector needs to be passed 
+throughout the application. Passing the injector breaks the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">Law of Demeter</a>. </p>
+
+<p>To remedy this, WebRx&#39;s supports resolving injectables pretty much everywhere.</p>
+
+<!-- <a class="next-topic" href="/docs/dependency-registration.html#start">Next: Defining and registering dependencies</a> -->
 </div>
 		</div>
 	</div>

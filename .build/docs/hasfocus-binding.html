@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -213,8 +219,8 @@ wx.applyBindings(new ViewModel(), document.getElementById('hasfocus-example1'));
 
 <p>Because the hasFocus binding works in both directions (setting the associated value focuses or unfocuses the element;
 focusing or unfocusing the element sets the associated value), it&#39;s a convenient way to toggle an &quot;edit&quot; mode.
-In this example, the UI displays either a <em>span</em> or an <em>input</em> element depending on the model&#39;s editing property.
-Unfocusing the <em>input</em> element sets editing to false, so the UI switches out of &quot;edit&quot; mode.</p>
+In this example, the UI displays either a <code>span</code> or an <code>input</code> element depending on the model&#39;s editing property.
+Unfocusing the <code>input</code> element sets editing to false, so the UI switches out of &quot;edit&quot; mode.</p>
 
 <div class="panel panel-default" id="hasfocus-example2">
     <div class="panel-body">
@@ -272,7 +278,7 @@ wx.applyBindings(new PersonViewModel("Bart Simpson"), document.getElementById('h
 <p>Pass true (or some value that evaluates as true) to focus the associated element. 
 Otherwise, the associated element will be unfocused.</p>
 
-<p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the @-operator),
+<p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the <code>@</code>-operator),
 the binding will update the element&#39;s focus state whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element&#39;s focus state once and will not update it again later.</p>
 

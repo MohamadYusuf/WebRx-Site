@@ -85,7 +85,7 @@ Filters can be applied to expressions in templates using the following syntax:
 expression | filter
 ```
 
-E.g. the markup **"12 | currency"** formats the number 12 as a currency using the currency filter. The resulting value is $12.00.
+E.g. the markup <code>12 | currency</code> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.
 
 Filters can be applied to the result of another filter. This is called "chaining" and uses the following syntax:
 
@@ -99,11 +99,11 @@ Filters may have arguments. The syntax for this is
 expression | filter:argument1:argument2:...
 ```
 
-E.g. the markup **"1234 | number:2"** formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.
+E.g. the markup <code>1234 | number:2</code> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.
 
 <!-- ### Built-in filters
 
-- **currency**: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
+- <code>currency</code>: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
 -->
 
 <a class="next-topic" href="/docs/binding-context.html#start">Next: The Binding-Context</a>

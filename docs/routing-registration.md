@@ -72,8 +72,8 @@ wx.router.state({
 });
 ```
 
-In this example the [component-binding](/docs/component-binding.html#start) will receive following object as *params* argument when
-instantiating the *"contact-list-component"*:
+In this example the [component-binding](/docs/component-binding.html#start) will receive following object as <code>params</code> argument when
+instantiating the <code>contact-list-component</code>:
 
 ```javascript
 { 'contactId': 42 }
@@ -100,8 +100,8 @@ wx.router.state({
 });
 ```
 
-In this example the [component-binding](/docs/component-binding.html#start) will receive following object as *params* argument when
-instantiating the *"contact-list-component"*:
+In this example the [component-binding](/docs/component-binding.html#start) will receive following object as <code>params</code> argument when
+instantiating the <code>contact-list-component</code>:
 
 ```javascript
 { 'companyId': 3, 'contactId': 42 }
@@ -124,9 +124,9 @@ wx.router.state({
 });
 ```
 
-Now when the user accesses */contacts* then the *'contacts'* state would become active and the *main* view will be populated with 
-the *'contact-list-component'* component. Alternatively, if the user were to transition to the *'contacts'* state via 
-*wx.router.go('contacts')* then the browser's location would be updated to */contacts*.
+Now when the user accesses <code>/contacts</code> then the <code>contacts</code> state would become active and the <code>main</code> view will be populated with 
+the <code>contact-list-component</code> component. Alternatively, if the user were to transition to the <code>contacts</code> state via 
+<code>wx.router.go('contacts')</code> then the browser's location would be updated to <code>/contacts</code>.
 
 ### Implicit routes
 
@@ -139,7 +139,7 @@ wx.router.state({
 });
 ```
 
-The implicit route for state *foo.bar.baz* state will be */foo/bar/baz*.
+The implicit route for state <code>foo.bar.baz</code> state will be <code>/foo/bar/baz</code>.
 
 ### Relative- vs. Absolute-Routes
 
@@ -153,7 +153,7 @@ wx.router.state({
 });
 ```
 
-Now, the route for state *foo.bar.baz* will be */bar/foo*, completely ignoring the state-hierarchy.
+Now, the route for state <code>foo.bar.baz</code> will be <code>/bar/foo</code>, completely ignoring the state-hierarchy.
 
 ### Route Parameters
 
@@ -172,10 +172,10 @@ wx.router.state({
 
 #### Examples:
 
-- '/hello/' - Matches only if the path is exactly '/hello/'. There is no special treatment for trailing slashes, 
+- <code>/hello/</code> - Matches only if the path is exactly <code>/hello/</code>. There is no special treatment for trailing slashes, 
 and patterns have to match the entire path, not just a prefix.
-- '/user/:id' - Matches '/user/bob' or '/user/1234!!!' or even '/user/' but not '/user' or '/user/bob/details'. 
-The second path segment will be captured as the parameter 'id'.
+- <code>/user/:id</code> - Matches <code>/user/bob</code> or <code>/user/1234!!!</code> or even <code>/user/</code> but not <code>/user</code> or <code>/user/bob/details</code>. 
+The second path segment will be captured as the parameter <code>id</code>.
 
 **Note:** Parameter names may contain only word characters (latin letters, digits, and underscore) and must be unique within the 
 pattern (across both path and search parameters).
@@ -228,7 +228,7 @@ as the final step to allow for overriding state-params when navigating.
 
 The result of merging all parent states with their child-states and applying the route-parameters
 on top will be directly passed to all [components](/docs/component-overview.html#start) instantiated for the current state
-via the [component-binding's](/docs/component-binding.html#start) *params* property.
+via the [component-binding's](/docs/component-binding.html#start) <code>params</code> property.
 
 ## onEnter and onExit callbacks
 

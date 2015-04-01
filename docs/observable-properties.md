@@ -95,8 +95,8 @@ The name is <input type="text" data-bind="textInput: @personName"></span>
 The [textInput-Binding](/docs/textinput-binding.html#start) links a text box or textarea with a viewmodel property, 
 providing two-way updates between the viewmodel property and the element's value.
 
-Without the *@* operator in the template above, the textInput binding would receive the current value of
-the *personName* property which would be *'Bob'*. Since *'Bob'* is not an observable property, the binding
+Without the <code>@</code> operator in the template above, the textInput binding would receive the current value of
+the <code>personName</code> property which would be *'Bob'*. Since *'Bob'* is not an observable property, the binding
 would update the textbox's or textarea's value a single time, but would not be able to update the
 view-model when the user enters text. Effectively turning the textInput binding into a text-binding
 which is not really useful.
@@ -106,10 +106,10 @@ which is not really useful.
 
 If you want to register your own subscriptions to be notified of changes to properties, all observable-properties expose two [Rx-Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md):
 
-- *changing* notifies of changes of the property's value before the change
-- *changed* notifies of changes of the property's value after the change
+- <code>changing</code> notifies of changes of the property's value before the change
+- <code>changed</code> notifies of changes of the property's value after the change
 
-If for example you would want to monitor changes to the *personName* property, you would do it like this: 
+If for example you would want to monitor changes to the <code>personName</code> property, you would do it like this: 
 
 ```javascript
 myViewModel.personName.changed.subscribe(function(newValue) {

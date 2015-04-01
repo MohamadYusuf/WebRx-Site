@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -157,7 +163,7 @@
 			<div class="body"><h1>The SActive-Binding</h1>
 
 <p>The SActive-binding tests if the <a href="/docs/routing-overview.html#start">router&#39;s</a> current state matches its own configuration
-and add the Css-Class <em>active</em> to its target element if the test succeeds or remove it otherwise. </p>
+and add the Css-Class <code>active</code> to its target element if the test succeeds or remove it otherwise. </p>
 
 <p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the &quot;active&quot; state&#39;s menu 
 button appear different, distinguishing it from the inactive items.</p>
@@ -180,10 +186,10 @@ button appear different, distinguishing it from the inactive items.</p>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">&quot;home&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>The anchor will not bear the <em>active</em> class because the state does not match.</p>
+<p>The anchor will not bear the <code>active</code> class because the state does not match.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">&quot;contacts&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>Now, the anchor will bear the <em>active</em> class because the state matches.</p>
+<p>Now, the anchor will bear the <code>active</code> class because the state matches.</p>
 
 <h2>Parameters</h2>
 
@@ -199,9 +205,11 @@ current state.</p>
 <p>Alternatively, pass an object with the following properties:</p>
 
 <ul>
-<li><strong>name</strong> — the name of a state</li>
-<li><strong>params</strong> — an object that will have each of its properties compared against the router&#39;s current state-params</li>
+<li><code>name</code> — the name of a state</li>
+<li><code>params</code> — an object that will have each of its properties compared against the router&#39;s current state-params</li>
 </ul>
+
+<p><a class="next-topic" href="/docs/dependency-injection-overview.html#start">Next: Dependency Injection</a></p>
 </div>
 		</div>
 	</div>

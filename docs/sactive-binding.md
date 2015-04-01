@@ -5,7 +5,7 @@ title: WebRx - The SActive-Binding
 # The SActive-Binding
 
 The SActive-binding tests if the [router's](/docs/routing-overview.html#start) current state matches its own configuration
-and add the Css-Class *active* to its target element if the test succeeds or remove it otherwise. 
+and add the Css-Class <code>active</code> to its target element if the test succeeds or remove it otherwise. 
 
 The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the "active" state's menu 
 button appear different, distinguishing it from the inactive items.
@@ -34,13 +34,13 @@ wx.applyBindings();
 wx.router.go("home");
 ```
 
-The anchor will not bear the *active* class because the state does not match.
+The anchor will not bear the <code>active</code> class because the state does not match.
 
 ```javascript
 wx.router.go("contacts");
 ```
 
-Now, the anchor will bear the *active* class because the state matches.
+Now, the anchor will bear the <code>active</code> class because the state matches.
 
 
 ## Parameters
@@ -56,5 +56,7 @@ current state.
 
 Alternatively, pass an object with the following properties:
 
-- **name** — the name of a state
-- **params** — an object that will have each of its properties compared against the router's current state-params
+- <code>name</code> — the name of a state
+- <code>params</code> — an object that will have each of its properties compared against the router's current state-params
+
+<a class="next-topic" href="/docs/dependency-injection-overview.html#start">Next: Dependency Injection</a>

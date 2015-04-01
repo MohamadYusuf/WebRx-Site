@@ -59,7 +59,7 @@ binding to read and write the element's value, not the checked binding.
 
 The binding sets the element's checked state to match your parameter value. Any previous checked state will be overwritten. 
 
-If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
+If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the <code>@</code>-operator),
 the binding will update the element's checked-state whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element's value once and will not update it again later.
 

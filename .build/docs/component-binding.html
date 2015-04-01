@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -230,8 +236,8 @@ component instance, and inject the newly-referenced component. Example:</p>
 <p>To supply parameters to the component, pass an object with the following properties:</p>
 
 <ul>
-<li><strong>name</strong> — the name of the component to inject. Again, this can be observable.</li>
-<li><strong>params</strong> — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component&#39;s view-model constructor.</li>
+<li><code>name</code> — the name of the component to inject. Again, this can be observable.</li>
+<li><code>params</code> — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component&#39;s view-model constructor.</li>
 </ul>
 
 <p>Example:</p>
@@ -253,7 +259,7 @@ enclosing control-flow binding removed the entire element), the removed componen
 <p>Any existing content is removed and discarded.</p></li>
 <li><p><strong>If the component has a viewmodel, it is instantiated</strong></p>
 
-<p>If the view-model is given as a constructor function, this means WebRx calls <em>new YourViewModel(params)</em>.</p>
+<p>If the view-model is given as a constructor function, this means WebRx calls <code>new YourViewModel(params)</code>.</p>
 
 <p>This phase always completes synchronously (constructors and factory functions are not allowed to be asynchronous), 
 since it occurs every time a component is instantiated and performance would be unacceptable if it involved waiting 
@@ -295,12 +301,12 @@ from the DOM. See also: disposal and memory management.</p></li>
 </code></pre></div>
 <h2>Disposal and memory management</h2>
 
-<p>You <strong>must</strong> implement a <em>dispose</em> method on your view-model if your view-model holds references to any resources 
+<p>You <strong>must</strong> implement a <code>dispose</code> method on your view-model if your view-model holds references to any resources 
 that aren&#39;t inherently garbage-collectable, or run the risk of producing memory-leaks:</p>
 
 <ul>
-<li><em>setInterval</em> callbacks will continue to fire until explicitly cleared.
-Use <em>clearInterval(handle)</em> to stop them, otherwise your view-model might be held in memory.</li>
+<li><code>setInterval</code> callbacks will continue to fire until explicitly cleared.
+Use <code>clearInterval(handle)</code> to stop them, otherwise your view-model might be held in memory.</li>
 <li><a href="/docs/output-properties.html#start">output properties</a> continue to receive notifications from their dependencies until explicitly disposed.</li>
 <li>Subscriptions to Rx-Observables continue to fire until explicitly disposed.</li>
 <li>Manually-created event handlers on external DOM elements (you shouldn&#39;t do that anyway to fit the MVVM pattern)</li>
@@ -318,7 +324,7 @@ means to make it easier to follow the rules outlined above.</p>
 
 <p><a href="https://github.com/Reactive-Extensions/RxJS/tree/master/doc">ReactiveX for Javascript</a> includes the extremly useful
 <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/compositedisposable.md">CompositeDisposable</a> 
-class which can be utilized to implement your view-model&#39;s <em>dispose</em> method like this:</p>
+class which can be utilized to implement your view-model&#39;s <code>dispose</code> method like this:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">CompositeDisposable</span><span class="p">();</span>
 
@@ -330,8 +336,8 @@ class which can be utilized to implement your view-model&#39;s <em>dispose</em> 
 <p>Let&#39;s combine our view-model with some best-practices for consuming resources using ReactiveX:</p>
 
 <ul>
-<li><strong>Timers</strong>: Instead of Javascript&#39;s built-in <em>setInterval</em>/<em>clearInterval</em> functions use <em>Rx.Observable.interval</em> or <em>Rx.Observable.timer</em></li>
-<li><strong>Events</strong>: Instead of Javascript&#39;s built-in <em>addEventListener</em> function use <em>Rx.Observable.fromEvent</em></li>
+<li><strong>Timers</strong>: Instead of Javascript&#39;s built-in <code>setInterval</code>/<code>clearInterval</code> functions use <code>Rx.Observable.interval</code> or <code>Rx.Observable.timer</code></li>
+<li><strong>Events</strong>: Instead of Javascript&#39;s built-in <code>addEventListener</code> function use <code>Rx.Observable.fromEvent</code></li>
 </ul>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">CompositeDisposable</span><span class="p">();</span>
@@ -356,8 +362,8 @@ class which can be utilized to implement your view-model&#39;s <em>dispose</em> 
     <span class="k">this</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">someProp</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Now when our view-model is disposed it will stop both timers and stop listening to <em>&quot;change&quot;</em> events from element <em>&#39;foo&#39;</em>
-with the single invocation of its <em>cleanup</em> member&#39;s <em>dispose</em> method.</p>
+<p>Now when our view-model is disposed it will stop both timers and stop listening to <code>change</code> events from element <code>foo</code>
+with the single invocation of its <code>cleanup</code> member&#39;s <code>dispose</code> method.</p>
 
 <p>WebRx&#39;s built-in bindings make extensive use of this approach.</p>
 

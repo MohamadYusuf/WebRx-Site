@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -157,7 +163,7 @@
 			<div class="body"><h1>The SRef-Binding</h1>
 
 <p>The sref-binding binds an anchor element (&lt;a&gt; tag) to a state. The binding will automatically 
-generate and update the <em>href</em> attribute of the anchor to the route (URI) associated with the state. </p>
+generate and update the <code>href</code> attribute of the anchor to the route (URI) associated with the state. </p>
 
 <p>Clicking the link will trigger a state transition with optional parameters. </p>
 
@@ -177,7 +183,7 @@ generate and update the <em>href</em> attribute of the anchor to the route (URI)
 </code></pre></div>
 <h3>Passing options</h3>
 
-<p>You can also specify options to pass to <em>wx.router.go()</em>:</p>
+<p>You can also specify options to pass to <code>wx.router.go()</code>:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
     <span class="nx">route</span><span class="o">:</span> <span class="s2">&quot;details/:contactId&quot;</span>
@@ -200,15 +206,15 @@ generate and update the <em>href</em> attribute of the anchor to the route (URI)
 
 <p>If you pass just a string, it is interpreted as a state name.</p>
 
-<p>The shorthand value can also be observable. In this case, if it changes, the sref-binding will immediately update its anchor&#39;s <em>href</em> attribute.</p>
+<p>The shorthand value can also be observable. In this case, if it changes, the sref-binding will immediately update its anchor&#39;s <code>href</code> attribute.</p>
 
 <h3>Full syntax</h3>
 
-<p>To supply parameters to <em>wx.router.go()</em>, pass an object with the following properties:</p>
+<p>To supply parameters to <code>wx.router.go()</code>, pass an object with the following properties:</p>
 
 <ul>
-<li><strong>name</strong> — the name of a state</li>
-<li><strong>params</strong> — an object that will be passed on to <em>wx.router.go()</em> and get merged with state-parameters specified during registration.</li>
+<li><code>name</code> — the name of a state</li>
+<li><code>params</code> — an object that will be passed on to <code>wx.router.go()</code> and get merged with state-parameters specified during registration.</li>
 </ul>
 
 <p><a class="next-topic" href="/docs/sactive-binding.html#start">Next: The SActive-Binding</a></p>

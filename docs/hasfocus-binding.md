@@ -63,8 +63,8 @@ wx.applyBindings(new ViewModel());
 
 Because the hasFocus binding works in both directions (setting the associated value focuses or unfocuses the element;
 focusing or unfocusing the element sets the associated value), it's a convenient way to toggle an "edit" mode.
-In this example, the UI displays either a *span* or an *input* element depending on the model's editing property.
-Unfocusing the *input* element sets editing to false, so the UI switches out of "edit" mode.
+In this example, the UI displays either a <code>span</code> or an <code>input</code> element depending on the model's editing property.
+Unfocusing the <code>input</code> element sets editing to false, so the UI switches out of "edit" mode.
 
 <div class="panel panel-default" id="hasfocus-example2">
 	<div class="panel-body">
@@ -127,7 +127,7 @@ wx.applyBindings(new PersonViewModel("Bart Simpson"));
 Pass true (or some value that evaluates as true) to focus the associated element. 
 Otherwise, the associated element will be unfocused.
 
-If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
+If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the <code>@</code>-operator),
 the binding will update the element's focus state whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element's focus state once and will not update it again later.
 

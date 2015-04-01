@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -214,30 +220,30 @@
 <p>WebRx&#39;s observable-list provides several useful Observables that can be subscribed to in order to inform you about changes in the list, as well as providing you with notifications that happen before a list is about to change:</p>
 
 <ul>
-<li><strong>itemsAdded</strong> - signals when items are added</li>
-<li><strong>itemsRemoved</strong> - signals when items are removed</li>
-<li><strong>itemsMoved</strong> - signals when items are moved</li>
-<li><strong>beforeItemsAdded</strong> - signals when items are about to be added</li>
-<li><strong>beforeItemsRemoved</strong> - signals when items are about to be removed</li>
-<li><strong>beforeItemsMoved</strong> - signals when items are about to be moved</li>
-<li><strong>countChanged</strong> - signals when the number of items in the list changes for any reason</li>
-<li><strong>countChanging</strong> - signals when the number of items in the list is about to change for any reason</li>
-<li><strong>listChanged</strong> - signals all changes</li>
-<li><strong>listChanging</strong> - signals all changes before they happen.</li>
-<li><strong>shouldReset</strong> - signals that the observer should reread the entire list, as it has changed significantly</li>
+<li><code>itemsAdded</code> - signals when items are added</li>
+<li><code>itemsRemoved</code> - signals when items are removed</li>
+<li><code>itemsMoved</code> - signals when items are moved</li>
+<li><code>beforeItemsAdded</code> - signals when items are about to be added</li>
+<li><code>beforeItemsRemoved</code> - signals when items are about to be removed</li>
+<li><code>beforeItemsMoved</code> - signals when items are about to be moved</li>
+<li><code>countChanged</code> - signals when the number of items in the list changes for any reason</li>
+<li><code>countChanging</code> - signals when the number of items in the list is about to change for any reason</li>
+<li><code>listChanged</code> - signals all changes</li>
+<li><code>listChanging</code> - signals all changes before they happen.</li>
+<li><code>shouldReset</code> - signals that the observer should reread the entire list, as it has changed significantly</li>
 </ul>
 
 <h3>Semantics of Reset</h3>
 
-<p>One thing that is particularly important to understand is the meaning of the <em>shouldReset</em> Observable. The meaning of this event is, <em>&quot;This list has changed drastically, you should reread the contents&quot;</em>. Many people conflate <em>reset</em> and <em>clear</em>, thinking that this means the list is now empty.</p>
+<p>One thing that is particularly important to understand is the meaning of the <code>shouldReset</code> Observable. The meaning of this event is, <em>&quot;This list has changed drastically, you should reread the contents&quot;</em>. Many people conflate <code>reset</code> and <code>clear</code>, thinking that this means the list is now empty.</p>
 
-<p>This is important, because if you only subscribe to <em>itemsAdded</em> and <em>itemsRemoved</em>, you will not be correctly tracking every item in the list. Lists will detect this scenario and attempt to warn you about it.</p>
+<p>This is important, because if you only subscribe to <code>itemsAdded</code> and <code>itemsRemoved</code>, you will not be correctly tracking every item in the list. Lists will detect this scenario and attempt to warn you about it.</p>
 
 <h2>Delaying and/or suppressing change notifications</h2>
 
 <p>Normally, an observable-list notifies its subscribers immediately, as soon as it&#39;s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. </p>
 
-<p>This is accomplished calling the list&#39;s <em>suppressChangeNotifications</em> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
+<p>This is accomplished calling the list&#39;s <code>suppressChangeNotifications</code> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>                           <span class="c1">// Initially an empty array</span>
 <span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span>                        <span class="c1">// Adds the value and notifies observers</span>
 <span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">suppressChangeNotifications</span><span class="p">();</span>

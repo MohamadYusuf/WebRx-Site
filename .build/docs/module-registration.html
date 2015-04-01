@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -156,10 +162,10 @@
 		<div id="start" class="col-md-9">
 			<div class="body"><h1>Module Registration</h1>
 
-<p>The <em>wx.module</em> function is a global place for creating, registering and retrieving modules. All modules (core or 3rd party) that should be 
+<p>The <code>wx.module</code> function is a global place for creating, registering and retrieving modules. All modules (core or 3rd party) that should be 
 available to an application must be registered using this mechanism.</p>
 
-<p><em>wx.module</em> provides a fluent-API for registering and retrieving modules. When the function encounters a module-name for the first time
+<p><code>wx.module</code> provides a fluent-API for registering and retrieving modules. When the function encounters a module-name for the first time
 it will implicitely create the module as empty container.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Create a new module</span>
 <span class="kd">var</span> <span class="nx">myModule</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">);</span>

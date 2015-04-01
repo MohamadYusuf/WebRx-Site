@@ -11,7 +11,7 @@ depending on wether the command can currently execute or not.
 
 This binding is most commonly used with elements like button and anchors, but actually works with any visible DOM element.
 
-**Note**: When the command-binding is applied to an anchor (*a*) element, it will prevent the anchor's default action when clicked.
+**Note**: When the command-binding is applied to an anchor <code>a</code> element, it will prevent the anchor's default action when clicked.
 
 ## Example 1
 
@@ -141,8 +141,8 @@ Clicking on the element will execute the command.
 
 To supply parameters to the command, pass an object with the following properties:
 
-- **command**: The [command](/docs/commands.html#start) you want to bind to the element
-- **parameter**: An optional parameter that will be passed as first argument to the command's execute handler.
+- <code>command</code>: The [command](/docs/commands.html#start) you want to bind to the element
+- <code>parameter</code>: An optional parameter that will be passed as first argument to the command's <code>execute</code> handler.
 The parameter can also be an observable.
 
 <a class="next-topic" href="/docs/event-binding.html#start">Next: The Event-Binding</a>

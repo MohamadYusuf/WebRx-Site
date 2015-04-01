@@ -4,10 +4,10 @@ title: WebRx - Module Registration
 ---
 # Module Registration
 
-The *wx.module* function is a global place for creating, registering and retrieving modules. All modules (core or 3rd party) that should be 
+The <code>wx.module</code> function is a global place for creating, registering and retrieving modules. All modules (core or 3rd party) that should be 
 available to an application must be registered using this mechanism.
 
-*wx.module* provides a fluent-API for registering and retrieving modules. When the function encounters a module-name for the first time
+<code>wx.module</code> provides a fluent-API for registering and retrieving modules. When the function encounters a module-name for the first time
 it will implicitely create the module as empty container.
 
 ```javascript

@@ -65,29 +65,29 @@ WebRx's observable list exposes a familiar set of functions for modifying the co
 
 WebRx's observable-list provides several useful Observables that can be subscribed to in order to inform you about changes in the list, as well as providing you with notifications that happen before a list is about to change:
 
-- **itemsAdded** - signals when items are added
-- **itemsRemoved** - signals when items are removed
-- **itemsMoved** - signals when items are moved
-- **beforeItemsAdded** - signals when items are about to be added
-- **beforeItemsRemoved** - signals when items are about to be removed
-- **beforeItemsMoved** - signals when items are about to be moved
-- **countChanged** - signals when the number of items in the list changes for any reason
-- **countChanging** - signals when the number of items in the list is about to change for any reason
-- **listChanged** - signals all changes
-- **listChanging** - signals all changes before they happen.
-- **shouldReset** - signals that the observer should reread the entire list, as it has changed significantly
+- <code>itemsAdded</code> - signals when items are added
+- <code>itemsRemoved</code> - signals when items are removed
+- <code>itemsMoved</code> - signals when items are moved
+- <code>beforeItemsAdded</code> - signals when items are about to be added
+- <code>beforeItemsRemoved</code> - signals when items are about to be removed
+- <code>beforeItemsMoved</code> - signals when items are about to be moved
+- <code>countChanged</code> - signals when the number of items in the list changes for any reason
+- <code>countChanging</code> - signals when the number of items in the list is about to change for any reason
+- <code>listChanged</code> - signals all changes
+- <code>listChanging</code> - signals all changes before they happen.
+- <code>shouldReset</code> - signals that the observer should reread the entire list, as it has changed significantly
 
 ### Semantics of Reset
 
-One thing that is particularly important to understand is the meaning of the *shouldReset* Observable. The meaning of this event is, *"This list has changed drastically, you should reread the contents"*. Many people conflate *reset* and *clear*, thinking that this means the list is now empty.
+One thing that is particularly important to understand is the meaning of the <code>shouldReset</code> Observable. The meaning of this event is, *"This list has changed drastically, you should reread the contents"*. Many people conflate <code>reset</code> and <code>clear</code>, thinking that this means the list is now empty.
 
-This is important, because if you only subscribe to *itemsAdded* and *itemsRemoved*, you will not be correctly tracking every item in the list. Lists will detect this scenario and attempt to warn you about it.
+This is important, because if you only subscribe to <code>itemsAdded</code> and <code>itemsRemoved</code>, you will not be correctly tracking every item in the list. Lists will detect this scenario and attempt to warn you about it.
 
 ## Delaying and/or suppressing change notifications
 
 Normally, an observable-list notifies its subscribers immediately, as soon as it's changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. 
 
-This is accomplished calling the list's *suppressChangeNotifications* method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.
+This is accomplished calling the list's <code>suppressChangeNotifications</code> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.
 
 ```javascript
 var list = wx.list();    						// Initially an empty array

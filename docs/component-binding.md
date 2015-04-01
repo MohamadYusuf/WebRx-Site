@@ -88,8 +88,8 @@ component instance, and inject the newly-referenced component. Example:
 
 To supply parameters to the component, pass an object with the following properties:
 
-- **name** — the name of the component to inject. Again, this can be observable.
-- **params** — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component's view-model constructor.
+- <code>name</code> — the name of the component to inject. Again, this can be observable.
+- <code>params</code> — an object that will be passed on to the component. Typically this is a key-value object containing multiple parameters, and is typically received by the component's view-model constructor.
 
 Example:
 
@@ -113,7 +113,7 @@ When a component binding injects a component,
 
 2. **If the component has a viewmodel, it is instantiated**
 
-	If the view-model is given as a constructor function, this means WebRx calls *new YourViewModel(params)*.
+	If the view-model is given as a constructor function, this means WebRx calls <code>new YourViewModel(params)</code>.
 
 	This phase always completes synchronously (constructors and factory functions are not allowed to be asynchronous), 
 	since it occurs every time a component is instantiated and performance would be unacceptable if it involved waiting 
@@ -166,11 +166,11 @@ wx.app.component('special-offer', {
 
 ## Disposal and memory management
 
-You **must** implement a *dispose* method on your view-model if your view-model holds references to any resources 
+You **must** implement a <code>dispose</code> method on your view-model if your view-model holds references to any resources 
 that aren't inherently garbage-collectable, or run the risk of producing memory-leaks:
 
-- *setInterval* callbacks will continue to fire until explicitly cleared.
-	Use *clearInterval(handle)* to stop them, otherwise your view-model might be held in memory.
+- <code>setInterval</code> callbacks will continue to fire until explicitly cleared.
+	Use <code>clearInterval(handle)</code> to stop them, otherwise your view-model might be held in memory.
 - [output properties](/docs/output-properties.html#start) continue to receive notifications from their dependencies until explicitly disposed.
 - Subscriptions to Rx-Observables continue to fire until explicitly disposed.
 - Manually-created event handlers on external DOM elements (you shouldn't do that anyway to fit the MVVM pattern)
@@ -187,7 +187,7 @@ means to make it easier to follow the rules outlined above.
 
 [ReactiveX for Javascript](https://github.com/Reactive-Extensions/RxJS/tree/master/doc) includes the extremly useful
 [CompositeDisposable](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/compositedisposable.md) 
-class which can be utilized to implement your view-model's *dispose* method like this:
+class which can be utilized to implement your view-model's <code>dispose</code> method like this:
 
 ```javascript
 function ViewModel() {
@@ -201,8 +201,8 @@ function ViewModel() {
 
 Let's combine our view-model with some best-practices for consuming resources using ReactiveX:
 
-- **Timers**: Instead of Javascript's built-in *setInterval*/*clearInterval* functions use *Rx.Observable.interval* or *Rx.Observable.timer*
-- **Events**: Instead of Javascript's built-in *addEventListener* function use *Rx.Observable.fromEvent*
+- **Timers**: Instead of Javascript's built-in <code>setInterval</code>/<code>clearInterval</code> functions use <code>Rx.Observable.interval</code> or <code>Rx.Observable.timer</code>
+- **Events**: Instead of Javascript's built-in <code>addEventListener</code> function use <code>Rx.Observable.fromEvent</code>
 
 
 ```javascript
@@ -230,8 +230,8 @@ function ViewModel() {
 }
 ```
 
-Now when our view-model is disposed it will stop both timers and stop listening to *"change"* events from element *'foo'*
-with the single invocation of its *cleanup* member's *dispose* method.
+Now when our view-model is disposed it will stop both timers and stop listening to <code>change</code> events from element <code>foo</code>
+with the single invocation of its <code>cleanup</code> member's <code>dispose</code> method.
 
 WebRx's built-in bindings make extensive use of this approach.
 

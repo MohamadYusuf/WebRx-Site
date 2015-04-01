@@ -20,7 +20,7 @@ Essentially view-bindings define placeholders on a page that get filled with com
 </body>
 ```
 
-This example defines the views *main* and *details*. Now let's define a routing-state referencing these views:
+This example defines the views <code>main</code> and <code>details</code>. Now let's define a routing-state referencing these views:
 
 ```javascript
 wx.router.state({
@@ -32,10 +32,10 @@ wx.router.state({
 });
 ```
 
-Let's see what happens to the contents of both views when the *contacts* state is activated:
+Let's see what happens to the contents of both views when the <code>contacts</code> state is activated:
 
-- The *main* view will display the *header-component* 
-- The *details* view will display the *contact-list-component*
+- The <code>main</code> view will display the <code>header-component</code> 
+- The <code>details</code> view will display the <code>contact-list-component</code>
 
 ## Parameters
  

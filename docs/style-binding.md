@@ -45,9 +45,10 @@ As usual, you can use [arbitrary expressions](/docs/binding-syntax.html#topic-bi
 
 #### Note: Applying styles whose names aren't legal JavaScript variable names
 
-If you want to apply a font-weight or text-decoration style, or any other style whose name isn't a legal JavaScript identifier (e.g., because it contains a hyphen), you must use the JavaScript name for that style. For example,
+If you want to apply a font-weight or text-decoration style, or any other style whose name isn't a legal JavaScript identifier 
+(e.g., because it contains a hyphen), you must use the JavaScript name for that style. For example,
 
-Don't write { font-weight: someValue }; do write { fontWeight: someValue }
-Don't write { text-decoration: someValue }; do write { textDecoration: someValue }
+Don't write <code>{ font-weight: someValue };</code> do write <code>{ fontWeight: someValue }</code>
+Don't write <code>{ text-decoration: someValue };</code> do write <code>{ textDecoration: someValue }</code>
 
 <a class="next-topic" href="/docs/attr-binding.html#start">Next: The Attr-Binding</a>

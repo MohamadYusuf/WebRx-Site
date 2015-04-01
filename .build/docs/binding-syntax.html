@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -226,7 +232,7 @@
 <p>Filters can be applied to expressions in templates using the following syntax:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span>
 </code></pre></div>
-<p>E.g. the markup <strong>&quot;12 | currency&quot;</strong> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
+<p>E.g. the markup <code>12 | currency</code> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
 
 <p>Filters can be applied to the result of another filter. This is called &quot;chaining&quot; and uses the following syntax:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span>
@@ -234,11 +240,11 @@
 <p>Filters may have arguments. The syntax for this is</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span>
 </code></pre></div>
-<p>E.g. the markup <strong>&quot;1234 | number:2&quot;</strong> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
+<p>E.g. the markup <code>1234 | number:2</code> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
 
 <!-- ### Built-in filters
 
-- **currency**: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
+- <code>currency</code>: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
 -->
 
 <p><a class="next-topic" href="/docs/binding-context.html#start">Next: The Binding-Context</a></p>

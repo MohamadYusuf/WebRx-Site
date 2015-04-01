@@ -46,7 +46,7 @@ This is useful, for example, if a component's template includes one or more fore
 
 ### $data
 
-This is the view model object in the current context. In the root context, **$data** and **$root** are equivalent. Inside a nested binding context, this parameter will be set to the current data item (e.g., inside a with: person binding, $data will be set to person). **$data** is useful when you want to reference the viewmodel itself, rather than a property on the viewmodel. Example:
+This is the view model object in the current context. In the root context, <code>$data</code> and <code>$root</code> are equivalent. Inside a nested binding context, this parameter will be set to the current data item (e.g., inside a with: person binding, $data will be set to person). <code>$data</code> is useful when you want to reference the viewmodel itself, rather than a property on the viewmodel. Example:
 
 ```html
 <ul data-bind="foreach: ['cats', 'dogs', 'fish']">

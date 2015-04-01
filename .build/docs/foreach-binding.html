@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -324,7 +330,7 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 
 <p><strong>Note:</strong> These callbacks are only intended for triggering animations related to changes in a list. If your goal is actually to attach other behaviors to new DOM elements when they have been added (e.g., event handlers, or to activate third-party UI controls), then your work will be much easier if you implement that new behavior as a custom binding instead, because then you can use that behavior anywhere, independently of the foreach binding.</p>
 
-<p>Here&#39;s a trivial example that uses <em>afterAdd</em> to apply the classic “yellow fade” effect to newly-added items. It requires the jQuery Color plugin to enable animation of background colors.</p>
+<p>Here&#39;s a trivial example that uses <code>afterAdd</code> to apply the classic “yellow fade” effect to newly-added items. It requires the jQuery Color plugin to enable animation of background colors.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: { data: myItems, afterAdd: yellowFadeIn }&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
@@ -345,34 +351,46 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 <h3>Full details</h3>
 
 <ul>
-<li><p><strong>afterRender</strong> — is invoked each time the foreach block is duplicated and inserted into the document, both when foreach first initializes, and when new entries are added to the associated array later. The binding will supply the following parameters to your callback:</p>
+<li><p><code>afterRender</code> — is invoked each time the foreach block is duplicated and inserted into the document, both when foreach first initializes, 
+and when new entries are added to the associated array later. The binding will supply the following parameters to your callback:</p>
 
 <ul>
 <li>An array of the inserted DOM elements</li>
 <li>The data item against which they are being bound</li>
 </ul></li>
-<li><p><strong>afterAdd</strong> — is like afterRender, except it is invoked only when new entries are added to your array (and not when foreach first iterates over your array&#39;s initial contents). A common use for afterAdd is to call a method such as jQuery&#39;s $(domNode).fadeIn() so that you get animated transitions whenever items are added. The binding will supply the following parameters to your callback:</p>
+<li><p><code>afterAdd</code> — is like afterRender, except it is invoked only when new entries are added to your array (and not when foreach first 
+iterates over your array&#39;s initial contents). A common use for <code>afterAdd</code> is to call a method such as jQuery&#39;s <code>$(domNode).fadeIn()</code> 
+so that you get animated transitions whenever items are added. The binding will supply the following parameters to your callback:</p>
 
 <ul>
 <li>A DOM node being added to the document</li>
 <li>The index of the added array element</li>
 <li>The added array element</li>
 </ul></li>
-<li><p><strong>beforeRemove</strong> — is invoked when an array item has been removed, but before the corresponding DOM nodes have been removed. If you specify a beforeRemove callback, then it becomes your responsibility to remove the DOM nodes. The obvious use case here is calling something like jQuery&#39;s $(domNode).fadeOut() to animate the removal of the corresponding DOM nodes — in this case, The binding cannot know how soon it is allowed to physically remove the DOM nodes (who knows how long your animation will take?), so it is up to you to remove them. The binding will supply the following parameters to your callback:</p>
+<li><p><code>beforeRemove</code> — is invoked when an array item has been removed, but before the corresponding DOM nodes have been removed. 
+If you specify a <code>beforeRemove</code> callback, then it becomes your responsibility to remove the DOM nodes. The obvious use case here is 
+calling something like jQuery&#39;s <code>$(domNode).fadeOut()</code> to animate the removal of the corresponding DOM nodes — in this case, 
+The binding cannot know how soon it is allowed to physically remove the DOM nodes (who knows how long your animation will take?), 
+so it is up to you to remove them. The binding will supply the following parameters to your callback:</p>
 
 <ul>
 <li>A DOM node that you should remove</li>
 <li>The index of the removed array element</li>
 <li>The removed array element</li>
 </ul></li>
-<li><p><strong>beforeMove</strong> — is invoked when an array item has changed position in the array, but before the corresponding DOM nodes have been moved. Note that beforeMove applies to all array elements whose indexes have changed, so if you insert a new item at the beginning of an array, then the callback (if specified) will fire for all other elements, since their index position has increased by one. You could use beforeMove to store the original screen coordinates of the affected elements so that you can animate their movements in the afterMove callback. The binding will supply the following parameters to your callback:</p>
+<li><p><code>beforeMove</code> — is invoked when an array item has changed position in the array, but before the corresponding DOM nodes 
+have been moved. Note that <code>beforeMove</code> applies to all array elements whose indexes have changed, so if you insert a new 
+item at the beginning of an array, then the callback (if specified) will fire for all other elements, since their index position has 
+increased by one. You could use beforeMove to store the original screen coordinates of the affected elements so that you can animate 
+their movements in the <code>afterMove</code> callback. The binding will supply the following parameters to your callback:</p>
 
 <ul>
 <li>A DOM node that may be about to move</li>
 <li>The index of the moved array element</li>
 <li>The moved array element</li>
 </ul></li>
-<li><p><strong>afterMove</strong> — is invoked after an array item has changed position in the array, and after foreach has updated the DOM to match. Note that afterMove applies to all array elements whose indexes have changed, so if you insert a new item at the beginning of an array, then the callback (if specified) will fire for all other elements, since their index position has increased by one. The binding will supply the following parameters to your callback:</p>
+<li><p><code>afterMove</code> — is invoked after an array item has changed position in the array, and after foreach has updated the DOM to match.
+The binding will supply the following parameters to your callback:</p>
 
 <ul>
 <li>A DOM node that may have moved</li>

@@ -45,7 +45,7 @@ wx.applyBindings({
 
 ## Example 2
 
-In the following example, the *div* element will be empty for “Mercury”, but populated for “Earth”. That's because Earth has a non-null capital property, whereas “Mercury” has null for that property.
+In the following example, the <code>div</code> element will be empty for “Mercury”, but populated for “Earth”. That's because Earth has a non-null capital property, whereas “Mercury” has null for that property.
 
 ```html
 <ul data-bind="foreach: planets">

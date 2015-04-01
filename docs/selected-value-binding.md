@@ -5,10 +5,10 @@ title: WebRx - The selectedValue-Binding
 {% include sample-warning.html %}
 # The selectedValue-Binding
 
-The selectedValue binding links the value of the selected option of a *select* element, or the value of the checked 
-element of a group of radio-buttons (*input type=radio*) with a view-model property. 
+The selectedValue binding links the value of the selected option of a <code>select</code> element, or the value of the checked 
+element of a group of radio-buttons (<code>input type=radio</code>) with a view-model property. 
 
-It is a two-way binding, so if you set the view-model property, the associated element will be selected (when bound to a *select* element)
+It is a two-way binding, so if you set the view-model property, the associated element will be selected (when bound to a <code>select</code> element)
 or checked (when bound to a group of radio-buttons). If the user manually changes the selected option, the view-model property will be
 set to the selected option's value. Likewise, if the user manually checks an element of a radio-group, the view-model property
 will reflect the value of the checked radio-button.
@@ -104,7 +104,7 @@ wx.applyBindings({ items: items, selection: wx.property("bart") });
 
 Pass the value that should be selected.
 
-If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
+If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the <code>@</code>-operator),
 the binding will update the selection whenever the value changes and vice-versa.
 If the parameter something else, it will only set the selection once and will not update it again later.
 

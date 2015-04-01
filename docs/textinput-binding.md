@@ -4,7 +4,7 @@ title: WebRx - The TextInput-Binding
 ---
 # The TextInput-Binding
 
-The textInput binding links a text box (*input*) or *textarea* with a view-model property, providing two-way updates between 
+The textInput binding links a text box (<code>input</code>) or <code>textarea</code> with a view-model property, providing two-way updates between 
 the view-model property and the element's value. Unlike the value binding, textInput provides instant updates from the DOM 
 for all types of user input, including autocomplete, drag-and-drop, and clipboard events.
 
@@ -30,7 +30,7 @@ for all types of user input, including autocomplete, drag-and-drop, and clipboar
 
 The binding sets the element's text content to your parameter value. Any previous value will be overwritten.
 
-If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the @-operator),
+If this parameter is a [property reference](/docs/observable-properties.html#topic-propref) (denoted by the <code>@</code>-operator),
 the binding will update the element's value whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element's value once and will not update it again later.
 

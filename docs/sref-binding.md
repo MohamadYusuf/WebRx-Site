@@ -5,7 +5,7 @@ title: WebRx - The SRef-Binding
 # The SRef-Binding
 
 The sref-binding binds an anchor element (&lt;a&gt; tag) to a state. The binding will automatically 
-generate and update the *href* attribute of the anchor to the route (URI) associated with the state. 
+generate and update the <code>href</code> attribute of the anchor to the route (URI) associated with the state. 
 
 Clicking the link will trigger a state transition with optional parameters. 
 
@@ -34,7 +34,7 @@ will render to ...
 
 ### Passing options
 
-You can also specify options to pass to *wx.router.go()*:
+You can also specify options to pass to <code>wx.router.go()</code>:
 
 ```javascript
 wx.router.state({
@@ -66,13 +66,13 @@ There are two ways to use the sref-binding:
 
 If you pass just a string, it is interpreted as a state name.
 
-The shorthand value can also be observable. In this case, if it changes, the sref-binding will immediately update its anchor's *href* attribute.
+The shorthand value can also be observable. In this case, if it changes, the sref-binding will immediately update its anchor's <code>href</code> attribute.
 
 ### Full syntax
 
-To supply parameters to *wx.router.go()*, pass an object with the following properties:
+To supply parameters to <code>wx.router.go()</code>, pass an object with the following properties:
 
-- **name** — the name of a state
-- **params** — an object that will be passed on to *wx.router.go()* and get merged with state-parameters specified during registration.
+- <code>name</code> — the name of a state
+- <code>params</code> — an object that will be passed on to <code>wx.router.go()</code> and get merged with state-parameters specified during registration.
 
 <a class="next-topic" href="/docs/sactive-binding.html#start">Next: The SActive-Binding</a>

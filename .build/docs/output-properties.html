@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -162,7 +168,7 @@
 
 <p><em>Output properties</em> are observable properties that are backed by an Rx-Observable. Output properties are <strong>read-only</strong>, but will still fire change notifications.</p>
 
-<p>Output properties are created by calling the <strong><em>toProperty()</em></strong> operator on <strong>any Rx-Observable</strong> instance.</p>
+<p>Output properties are created by calling the <code>toProperty()</code> operator on <strong>any Rx-Observable</strong> instance.</p>
 
 <h2>Example</h2>
 
@@ -185,29 +191,29 @@
 <p>... now you could bind UI elements to it, e.g.:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: fullName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
-<p>… and they will be updated whenever <em>firstName</em> or <em>lastName</em> changes (your evaluator function will be called once each time any of its dependencies change, 
+<p>… and they will be updated whenever <code>firstName</code> or <code>lastName</code> changes (your evaluator function will be called once each time any of its dependencies change, 
 and whatever value you return will be passed on to the observers such as UI elements or other output properties).</p>
 
 <h2>How it works</h2>
 
 <p>So how did the example work?</p>
 
-<p>One of the core features of WebRx is to be able to convert properties to <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a>, via <em>whenAny</em>, and to convert <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a> into properties, via a method called <em>toProperty</em>. </p>
+<p>One of the core features of WebRx is to be able to convert properties to <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a>, via <code>whenAny</code>, and to convert <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a> into properties, via a method called <code>toProperty</code>. </p>
 
-<p>The <em>whenAny</em> function takes any number of observable properties as input, subscribes to their <em>changed</em> observables, 
+<p>The <code>whenAny</code> function takes any number of observable properties as input, subscribes to their <code>changed</code> observables, 
 and invokes a user supplied selector function when any (hence the name) of its inputs changes. 
 The selector function receives the latest value of all inputs as arguments. 
-The result of <em>whenAny</em> is an Rx-Observable providing the results of the selector.</p>
+The result of <code>whenAny</code> is an Rx-Observable providing the results of the selector.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">observable</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span> 
   <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> 
 <span class="p">});</span>
 </code></pre></div>
-<p>So, now that we&#39;ve got an observable representing <em>fullName</em> we can simply invoke the aforementioned <em>toProperty</em> function and voila, we&#39;ve turned the observable into a read-only property that can be bound to a view like any other property.</p>
+<p>So, now that we&#39;ve got an observable representing <code>fullName</code> we can simply invoke the aforementioned <code>toProperty</code> function and voila, we&#39;ve turned the observable into a read-only property that can be bound to a view like any other property.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">observable</span><span class="p">.</span><span class="nx">toProperty</span><span class="p">();</span>
 </code></pre></div>
 <h2>Digging deeper</h2>
 
-<p>Remember when we&#39;ve utilized <em>toProperty</em> to turn the result of <em>whenAny</em> into a property? An important detail about toProperty is that it is in no way limited to observables returned by whenAny. In fact <em>toProperty</em> is implemented as a custom Rx-Operator that extends all Rx-Observables. This fact opens up a whole array of possibilities because it enables you to leverage the full spectrum of <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/which-instance.md">Rx&#39;s operators</a> in your UI.</p>
+<p>Remember when we&#39;ve utilized <code>toProperty</code> to turn the result of <code>whenAny</code> into a property? An important detail about toProperty is that it is in no way limited to observables returned by whenAny. In fact <code>toProperty</code> is implemented as a custom Rx-Operator that extends all Rx-Observables. This fact opens up a whole array of possibilities because it enables you to leverage the full spectrum of <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/which-instance.md">Rx&#39;s operators</a> in your UI.</p>
 
 <h3>Example</h3>
 

@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -193,7 +199,7 @@ by either showing or hiding itself.</p>
 <p>You should pass a JavaScript object in which the property names correspond to event names, and 
 the values correspond to the function of your view-model that you want to bind to the event.</p>
 
-<p>When invoking an event-handler the binding will adjust <em>this</em> to point to your view-model and 
+<p>When invoking an event-handler the binding will adjust <code>this</code> to point to your view-model and 
 pass the event object as first argument.</p>
 
 <p><a class="next-topic" href="/docs/enabled-binding.html#start">Next: The Enabled-Binding</a></p>

@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -157,9 +163,9 @@
 			<div class="body"><h1>Component-Registration</h1>
 
 <p>Just like binding-handlers, and expresion-filters, components are <a href="/docs/module-overview.html#start">module-scoped-resources</a>
-that can either be registered with the global application-module (<em>wx.app</em>) or a custom-module.</p>
+that can either be registered with the global application-module <code>wx.app</code> or a custom-module.</p>
 
-<p>For WebRx to be able to load and instantiate your components, you must register them using <em>wx.app.component()</em>,
+<p>For WebRx to be able to load and instantiate your components, you must register them using <code>wx.app.component()</code>,
 providing a configuration as described here.</p>
 
 <p>You can register a component as follows:</p>
@@ -178,8 +184,8 @@ providing a configuration as described here.</p>
 lowercase dash-separated strings (such as your-component-name) so that the component name is 
 valid to use as a custom element.</p>
 
-<p>viewModel is optional, and can take any of the viewModel formats described below.
-template is required, and can take any of the template formats described below.
+<p><code>viewModel</code> is optional, and can take any of the viewModel formats described below.
+<code>template</code> is required, and can take any of the template formats described below.
 If no viewmodel is given, the component is treated as a simple block of HTML that will be bound 
 to any parameters passed to the component.</p>
 
@@ -202,10 +208,25 @@ to any parameters passed to the component.</p>
 <span class="p">});</span>
 </code></pre></div>
 <p>WebRx will invoke your constructor once for each instance of the component, producing a separate viewmodel object for each. 
-Properties on the resulting object or its prototype chain (e.g., someProperty and doSomething in the example above) 
+Properties on the resulting object or its prototype chain (e.g., <code>someProperty</code> and <code>doSomething</code> in the example above) 
 are available for binding in the component&#39;s view.</p>
 
 <p>If your constructor function return a value, the value will be used at the resulting view-model. </p>
+
+<h3>A promise</h3>
+
+<p>A view-model can also be resolved through a <a href="http://promises-aplus.github.com/promises-spec">Promises/A+</a> compliant or 
+<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6-compliant</a> Promise:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">promise</span><span class="o">:</span> <span class="nx">promiseInstance</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Compatible implementations can be found in any number of libraries such as Angular, jQuery, Dojo, WinJS, 
+and even libraries dedicated to them such as Q or when.js.</p>
+
+<p><strong>Note</strong>: It is necessary to specify <code>viewModel: { promise: object }</code>, and not just <code>viewModel: object</code>. 
+This differentiates from the other cases below.</p>
 
 <h3>A shared object instance</h3>
 
@@ -217,10 +238,17 @@ are available for binding in the component&#39;s view.</p>
     <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Note that it&#39;s necessary to specify viewModel: { instance: object }, and not just viewModel: object. 
-This differentiates from the other cases below.</p>
+<p><strong>Note</strong>: It is necessary to specify <code>viewModel: { instance: object }</code>, and not just <code>viewModel: object</code>. This differentiates from the other cases below.</p>
 
-<h3>An AMD module whose value describes a viewmodel</h3>
+<h3>An injectable</h3>
+
+<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx&#39;s <a href="/docs/dependency-injection-overview.html#start">injector</a>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">resolve</span><span class="o">:</span> <span class="s2">&quot;some-injectable-identifier&quot;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3>An AMD module</h3>
 
 <p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a viewmodel. 
 For more details about how this works, see how WebRx loads components via AMD below. Example:</p>
@@ -340,7 +368,31 @@ manually edit HTML as a JavaScript string literal.</p>
 <p>Since document fragments can have multiple top-level nodes, the entire document fragment (not just descendants of top-level nodes) 
 is treated as the component template.</p>
 
-<h3>An AMD module whose value describes a template</h3>
+<h3>A promise</h3>
+
+<p>A template can also be resolved through a <a href="http://promises-aplus.github.com/promises-spec">Promises/A+</a> compliant or 
+<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6-compliant</a> Promise:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">promise</span><span class="o">:</span> <span class="nx">promiseInstance</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Compatible implementations can be found in any number of libraries such as Angular, jQuery, Dojo, WinJS, 
+and even libraries dedicated to them such as Q or when.js.</p>
+
+<p><strong>Note</strong>: It is necessary to specify <code>template: { promise: object }</code>, and not just <code>template: object</code>.</p>
+
+<h3>An injectable</h3>
+
+<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx&#39;s <a href="/docs/dependency-injection-overview.html#start">injector</a>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">resolve</span><span class="o">:</span> <span class="s2">&quot;some-injectable-identifier&quot;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In this case it is assumed that the injectable-resolves to an array of Nodes.</p>
+
+<h3>An AMD module</h3>
 
 <p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a template. 
 For more details about how this works, see how WebRx loads components via AMD below. Example:</p>
@@ -365,18 +417,18 @@ For more details about how this works, see how WebRx loads components via AMD be
     <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!some-template.html&#39;</span> <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>all WebRx does is call require([&#39;some/module/name&#39;], callback) and require([&#39;text!some-template.html&#39;], callback), 
+<p>all WebRx does is call <code>require([&#39;some/module/name&#39;], callback)</code> and <code>require([&#39;text!some-template.html&#39;], callback)</code>, 
 and uses the asynchronously-returned objects as the viewmodel and template definitions. So,</p>
 
 <p>This does not take a strict dependency on require.js or any other particular module loader. Any module loader that provides an 
 AMD-style require API will do. </p>
 
-<p>WebRx does not interpret the module name in any way - it merely passes it through to require(). So of course WebRx does not 
+<p>WebRx does not interpret the module name in any way - it merely passes it through to <code>require()</code>. So of course WebRx does not 
 know or care about where your module files are loaded from. That&#39;s up to your AMD loader and how you&#39;ve configured it.
 WebRx doesn&#39;t know or care whether your AMD modules are anonymous or not. Typically we find it&#39;s most convenient for 
 components to be defined as anonymous modules, but that concern is entirely separate from WebRx. AMD modules are loaded only on demand.</p>
 
-<p>WebRx does not call require([moduleName], ...) until your component is being instantiated. This is how components get loaded on demand, not up front.</p>
+<p>WebRx does not call <code>require([moduleName], ...)</code> until your component is being instantiated. This is how components get loaded on demand, not up front.</p>
 
 <p>For example, if your component is inside some other element with an if binding (or another control flow binding), 
 then it will not cause the AMD module to be loaded until the if condition is true. Of course, if the AMD module was 
@@ -425,9 +477,9 @@ and explicitly take AMD dependencies on external template files.</p>
 </code></pre></div>
 <p>… and the template markup is in the file path/my-component.html, then you have these benefits:</p>
 
-<p>Applications can reference this trivially, i.e., <em>wx.app.component(&#39;my-component&#39;, { require: &#39;path/my-component&#39; });</em></p>
+<p>Applications can reference this trivially, i.e., <code>wx.app.component(&#39;my-component&#39;, { require: &#39;path/my-component&#39; });</code></p>
 
-<p>You only need two files for the component - a viewmodel (<em>path/my-component.js</em>) and a template (<em>path/my-component.html</em>) - 
+<p>You only need two files for the component - a viewmodel (<code>path/my-component.js</code>) and a template (<code>path/my-component.html</code>) - 
 which is a very natural arrangement during development. Since the dependency on the template is explicitly stated in the define call, 
 this automatically works with the r.js optimizer or similar bundling tools. The entire component - viewmodel plus template - 
 can therefore trivially be included in a bundle file during a build step.</p>

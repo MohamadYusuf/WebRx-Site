@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -183,7 +189,8 @@ This is useful with form elements like input, select, and textarea.</p>
 
 <p>A value that controls whether or not the associated DOM element should be enabled.</p>
 
-<p>Non-boolean values are interpreted loosely as boolean. For example, 0 and null are treated as false, whereas 21 and non-null objects are treated as true.</p>
+<p>Non-boolean values are interpreted loosely as boolean. For example, <code>0</code> and <code>null</code> are treated as <code>false</code>, 
+whereas <code>21</code> and non-null objects are treated as <code>true</code>.</p>
 
 <p>If your parameter references an observable value, the binding will update the enabled/disabled state whenever the observable property value changes.
 If the parameter doesn&#39;t reference an observable property, it will only set the state once and will not do so again later.</p>

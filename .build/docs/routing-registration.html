@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -212,8 +218,8 @@ components referenced by it:</p>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>In this example the <a href="/docs/component-binding.html#start">component-binding</a> will receive following object as <em>params</em> argument when
-instantiating the <em>&quot;contact-list-component&quot;</em>:</p>
+<p>In this example the <a href="/docs/component-binding.html#start">component-binding</a> will receive following object as <code>params</code> argument when
+instantiating the <code>contact-list-component</code>:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
 </code></pre></div>
 <h3>State-Params inheritance</h3>
@@ -234,8 +240,8 @@ instantiating the <em>&quot;contact-list-component&quot;</em>:</p>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>In this example the <a href="/docs/component-binding.html#start">component-binding</a> will receive following object as <em>params</em> argument when
-instantiating the <em>&quot;contact-list-component&quot;</em>:</p>
+<p>In this example the <a href="/docs/component-binding.html#start">component-binding</a> will receive following object as <code>params</code> argument when
+instantiating the <code>contact-list-component</code>:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;companyId&#39;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
 </code></pre></div>
 <h2>State Routes</h2>
@@ -252,9 +258,9 @@ to the state mechanics, but was figured into the design from the beginning (all 
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Now when the user accesses <em>/contacts</em> then the <em>&#39;contacts&#39;</em> state would become active and the <em>main</em> view will be populated with 
-the <em>&#39;contact-list-component&#39;</em> component. Alternatively, if the user were to transition to the <em>&#39;contacts&#39;</em> state via 
-<em>wx.router.go(&#39;contacts&#39;)</em> then the browser&#39;s location would be updated to <em>/contacts</em>.</p>
+<p>Now when the user accesses <code>/contacts</code> then the <code>contacts</code> state would become active and the <code>main</code> view will be populated with 
+the <code>contact-list-component</code> component. Alternatively, if the user were to transition to the <code>contacts</code> state via 
+<code>wx.router.go(&#39;contacts&#39;)</code> then the browser&#39;s location would be updated to <code>/contacts</code>.</p>
 
 <h3>Implicit routes</h3>
 
@@ -264,7 +270,7 @@ that mirrors the state hierarchy.</p>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo.bar.baz&quot;</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>The implicit route for state <em>foo.bar.baz</em> state will be <em>/foo/bar/baz</em>.</p>
+<p>The implicit route for state <code>foo.bar.baz</code> state will be <code>/foo/bar/baz</code>.</p>
 
 <h3>Relative- vs. Absolute-Routes</h3>
 
@@ -275,7 +281,7 @@ an absolute route.</p>
     <span class="nx">route</span><span class="o">:</span> <span class="s2">&quot;/bar/foo&quot;</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Now, the route for state <em>foo.bar.baz</em> will be <em>/bar/foo</em>, completely ignoring the state-hierarchy.</p>
+<p>Now, the route for state <code>foo.bar.baz</code> will be <code>/bar/foo</code>, completely ignoring the state-hierarchy.</p>
 
 <h3>Route Parameters</h3>
 
@@ -292,10 +298,10 @@ A basic parameter looks like this:</p>
 <h4>Examples:</h4>
 
 <ul>
-<li>&#39;/hello/&#39; - Matches only if the path is exactly &#39;/hello/&#39;. There is no special treatment for trailing slashes, 
+<li><code>/hello/</code> - Matches only if the path is exactly <code>/hello/</code>. There is no special treatment for trailing slashes, 
 and patterns have to match the entire path, not just a prefix.</li>
-<li>&#39;/user/:id&#39; - Matches &#39;/user/bob&#39; or &#39;/user/1234!!!&#39; or even &#39;/user/&#39; but not &#39;/user&#39; or &#39;/user/bob/details&#39;. 
-The second path segment will be captured as the parameter &#39;id&#39;.</li>
+<li><code>/user/:id</code> - Matches <code>/user/bob</code> or <code>/user/1234!!!</code> or even <code>/user/</code> but not <code>/user</code> or <code>/user/bob/details</code>. 
+The second path segment will be captured as the parameter <code>id</code>.</li>
 </ul>
 
 <p><strong>Note:</strong> Parameter names may contain only word characters (latin letters, digits, and underscore) and must be unique within the 
@@ -345,7 +351,7 @@ as the final step to allow for overriding state-params when navigating.</p>
 
 <p>The result of merging all parent states with their child-states and applying the route-parameters
 on top will be directly passed to all <a href="/docs/component-overview.html#start">components</a> instantiated for the current state
-via the <a href="/docs/component-binding.html#start">component-binding&#39;s</a> <em>params</em> property.</p>
+via the <a href="/docs/component-binding.html#start">component-binding&#39;s</a> <code>params</code> property.</p>
 
 <h2>onEnter and onExit callbacks</h2>
 

@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -220,8 +226,8 @@ wx.applyBindings(undefined, document.getElementById('module-example1'));
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
 </code></pre></div>
-<p>Here we register a component of the same name <em>hello</em> with two different modules. By applying a module-binding
-on the enclosing container element, we change how a reference to the <em>&lt;hello&gt;</em> component is handled.</p>
+<p>Here we register a component of the same name <code>hello</code> with two different modules. By applying a module-binding
+on the enclosing container element, we change how a reference to the <code>&lt;hello&gt;</code> component is handled.</p>
 
 <p><strong>Note:</strong> The primary purpose of the module-binding is of course not the possibility to override components
 defined by other modules, but to allow your team to work on different parts of your page or site

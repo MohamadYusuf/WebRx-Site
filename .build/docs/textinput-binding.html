@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -156,7 +162,7 @@
 		<div id="start" class="col-md-9">
 			<div class="body"><h1>The TextInput-Binding</h1>
 
-<p>The textInput binding links a text box (<em>input</em>) or <em>textarea</em> with a view-model property, providing two-way updates between 
+<p>The textInput binding links a text box (<code>input</code>) or <code>textarea</code> with a view-model property, providing two-way updates between 
 the view-model property and the element&#39;s value. Unlike the value binding, textInput provides instant updates from the DOM 
 for all types of user input, including autocomplete, drag-and-drop, and clipboard events.</p>
 
@@ -176,7 +182,7 @@ for all types of user input, including autocomplete, drag-and-drop, and clipboar
 
 <p>The binding sets the element&#39;s text content to your parameter value. Any previous value will be overwritten.</p>
 
-<p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the @-operator),
+<p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the <code>@</code>-operator),
 the binding will update the element&#39;s value whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element&#39;s value once and will not update it again later.</p>
 

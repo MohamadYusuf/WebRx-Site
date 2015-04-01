@@ -19,7 +19,7 @@ clear organization and encapsulation, and helps to improve runtime performance b
 loading your application code and templates as needed.
 
 Custom elements are an optional but convenient syntax for consuming components. Instead of needing 
-placeholder &lt;div&gt;s into which components are injected with bindings, you can use more self-descriptive 
+placeholder <code>&lt;div&gt;</code> into which components are injected with bindings, you can use more self-descriptive 
 markup with custom element names. 
 
 ## Example: A like/dislike widget
@@ -132,7 +132,7 @@ function MyViewModel() {
 wx.applyBindings(new MyViewModel());
 ```
 
-In this example, the component both displays and edits an property property called userRating on the Product view model class.
+In this example, the component both displays and edits an property property called <code>userRating</code> on the <code>Product</code> view model class.
 
 ## Example: Loading the like/dislike widget from external files, on demand
 
@@ -151,7 +151,7 @@ wx.app.component('like-or-dislike', {
 
 ### Requirements
 
-For this to work, the files files/component-like-widget.js and files/component-like-widget.html 
+For this to work, the files <code>files/component-like-widget.js</code> and <code>files/component-like-widget.html</code>
 need to exist. Check them out (and view source on the .html one) - as you'll see, this is 
 cleaner and more convenient that including the code inline in the definition.
 

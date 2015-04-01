@@ -74,8 +74,8 @@ wx.module("module2").component('hello', {
 wx.applyBindings();
 ```
 
-Here we register a component of the same name *hello* with two different modules. By applying a module-binding
-on the enclosing container element, we change how a reference to the *&lt;hello&gt;* component is handled.
+Here we register a component of the same name <code>hello</code> with two different modules. By applying a module-binding
+on the enclosing container element, we change how a reference to the <code>&lt;hello&gt;</code> component is handled.
 
 **Note:** The primary purpose of the module-binding is of course not the possibility to override components
 defined by other modules, but to allow your team to work on different parts of your page or site

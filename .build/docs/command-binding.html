@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/7295f8b6eded271b84efeab5bbfe0843.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -138,7 +138,13 @@
                     <li><a href="../docs/sactive-binding.html#start">The <i>sactive</i> binding</a></li>
 				</ul>
 
-                <!--
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
+                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                </ul>
+
+			    <!--
 				<h3>Further techniques</h3>
 				<ul>
 				    <li><a href="../docs/unobtrusive-event-handling.html#start">Unobtrusive event handling</a></li>
@@ -166,7 +172,7 @@ depending on wether the command can currently execute or not.</p>
 
 <p>This binding is most commonly used with elements like button and anchors, but actually works with any visible DOM element.</p>
 
-<p><strong>Note</strong>: When the command-binding is applied to an anchor (<em>a</em>) element, it will prevent the anchor&#39;s default action when clicked.</p>
+<p><strong>Note</strong>: When the command-binding is applied to an anchor <code>a</code> element, it will prevent the anchor&#39;s default action when clicked.</p>
 
 <h2>Example 1</h2>
 
@@ -276,7 +282,7 @@ wx.applyBindings(new ViewModel(), document.getElementById('command-example2'));
 and unlock again after the alert gets dismissed. This is because by default commands
 disable themselves while executing.</p>
 
-Parameters</h2>
+<h2>Parameters</h2>
 
 <h3>Main parameter</h3>
 
@@ -287,8 +293,8 @@ Clicking on the element will execute the command.</p>
 <p>To supply parameters to the command, pass an object with the following properties:</p>
 
 <ul>
-<li><strong>command</strong>: The <a href="/docs/commands.html#start">command</a> you want to bind to the element</li>
-<li><strong>parameter</strong>: An optional parameter that will be passed as first argument to the command&#39;s execute handler.
+<li><code>command</code>: The <a href="/docs/commands.html#start">command</a> you want to bind to the element</li>
+<li><code>parameter</code>: An optional parameter that will be passed as first argument to the command&#39;s <code>execute</code> handler.
 The parameter can also be an observable.</li>
 </ul>
 
