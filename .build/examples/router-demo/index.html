@@ -64,11 +64,16 @@
             <div class="col-md-3" data-bind="view: 'details'"></div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12" data-bind="component: 'state-visualizer'"></div>
+    </div>
 </div>
 
 <script id="home-template" type="text/html">
     <h2>Welcome to the UI-Router Demo</h2>
     <p>Use the menu above to navigate.</p>
+    <p>Pay attention to the state and state-params values below.</p>
 </script>
 
 <script id="contact-list-template" type="text/html">
@@ -92,6 +97,33 @@
 <script id="about-template" type="text/html">
     <h2>Router Resources</h2>
     <a target="_blank" href="https://github.com/oliverw/WebRx-Site/blob/master/examples/router-demo/index.html">Source for this sample.</a>
+</script>
+
+<script id="state-visualizer-template" type="text/html">
+    <br/>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Routing State</h3>
+        </div>
+        <div class="panel-body">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>State</td>
+                        <td data-bind="text: '\'' + name + '\''"></td>
+                    </tr>
+                    <tr>
+                        <td>Route</td>
+                        <td data-bind="text: route"></td>
+                    </tr>
+                    <tr>
+                        <td>Params</td>
+                        <td data-bind="text: params"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </script>
 
 <script>
@@ -130,6 +162,23 @@
     wx.app.component('about', {
         template: {
             element: 'about-template'
+        }
+    });
+
+    wx.app.component('state-visualizer', {
+        template: {
+            element: 'state-visualizer-template'
+        }, viewModel: function(params) {
+            this.name = wx.property();
+            this.route = wx.property();
+            this.params = wx.property();
+
+            var self = this;
+            wx.router.current.changed.startWith(wx.router.current()).subscribe(function(x) {
+                self.name(x.name);
+                self.route(x.route.stringify(x.params));
+                self.params(x.params ? JSON.stringify(x.params) : "");
+            });
         }
     });
 
