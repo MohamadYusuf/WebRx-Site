@@ -232,7 +232,7 @@ via the [component-binding's](/docs/component-binding.html#start) <code>params</
 
 ## onEnter and onExit callbacks
 
-There are also optional 'onEnter' and 'onExit' callbacks that get called when a state becomes active and inactive respectively.
+There are also optional <code>onEnter</code> and <code>onExit</code> callbacks that get called when a state becomes active and inactive respectively.
 
 ```javascript
 wx.router.state({

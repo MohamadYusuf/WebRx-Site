@@ -37,9 +37,10 @@ SomeClass.prototype.doSomething = function(name) {
 }
 ```
 
-In the above example <code>SomeClass</code> is not concerned with creating or locating the <code>greeter</code> dependency, it is simply handed the greeter when it is instantiated.
+In the above example <code>SomeClass</code> is not concerned with creating or locating the <code>greeter</code> dependency, 
+it is simply handed the greeter when it is instantiated.
 
-This is desirable, but it puts the responsibility of getting hold of the dependency on the code that constructs SomeClass. 
+This is desirable, but it puts the responsibility of getting hold of the dependency on the code that constructs <code>SomeClass</code>. 
 To manage the responsibility of dependency creation, each WebRx application has an injector. The injector is a service 
 locator that is responsible for construction and lookup of dependencies.
 
@@ -49,7 +50,7 @@ Here we teach the injector how to build a greeter. Notice that greeter is depend
 The greeter service is an object that contains a <code>greet</code> method which relies on the window-service's <code>alert</code> method.
 
 ```javascript
-injector.register('greeter', true, true, ["window-service", function($window) {
+wx.injector.register('greeter', ["window-service", function($window) {
   return {
     greet: function(text) {
       $window.alert(text);
@@ -61,7 +62,7 @@ injector.register('greeter', true, true, ["window-service", function($window) {
 Now we can request our <code>greeter</code> from the injector:
 
 ```javascript
-var greeter = injector.get('greeter');
+var greeter = wx.injector.get('greeter');
 ```
 
 Asking for dependencies solves the issue of hard coding, but it also means that the injector needs to be passed 

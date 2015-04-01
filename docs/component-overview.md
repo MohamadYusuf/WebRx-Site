@@ -57,7 +57,7 @@ component binding or using a custom element. Here's a live example that uses it 
 <div class="panel panel-default" id="component-example1">
 	<div class="panel-body">
 		<ul data-bind="foreach: products">
-			<li style="list-style: none" class="product">
+			<li class="product">
 				<strong data-bind="text: name"></strong>
 				<like-widget params="value: @userRating"></like-widget>
 			</li>

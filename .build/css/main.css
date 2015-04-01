@@ -164,6 +164,11 @@ pre code {
     color: #333333;
 }
 
+.docs .body .panel-body ul {
+    padding-left: 0;
+    list-style: none;
+}
+
 #install li {
   margin-bottom: 1.5em;
 }

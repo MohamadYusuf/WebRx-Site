@@ -8,7 +8,7 @@ A binding context is an object that holds data that you can reference from your 
 
 Bindings contexts offer the following special properties that you can reference in any binding:
 
-### $parent
+### <code>$parent</code>
 
 This is the view model object in the parent context, the one immeditely outside the current context. In the root context, this is undefined. Example:
 
@@ -22,7 +22,7 @@ This is the view model object in the parent context, the one immeditely outside 
 </div>
 ```
 
-### $parents
+### <code>$parents</code>
 
 This is an array representing all of the parent view models:
 
@@ -34,17 +34,11 @@ $parents[2] is the view model from the great-grandparent context
 
 … and so on.
 
-### $root
+### <code>$root</code>
 
 This is the main view model object in the root context, i.e., the topmost parent context. It's usually the object that was passed to wx.applyBindings. It is equivalent to $parents[$parents.length - 1].
 
-### $component
-
-If you're within the context of a particular component template, then $component refers to the viewmodel for that component. It's the component-specific equivalent to $root. In the case of nested components, $component refers to the viewmodel for the closest component.
-
-This is useful, for example, if a component's template includes one or more foreach blocks in which you wish to refer to some property or function on the component viewmodel rather than on the current data item.
-
-### $data
+### <code>$data</code>
 
 This is the view model object in the current context. In the root context, <code>$data</code> and <code>$root</code> are equivalent. Inside a nested binding context, this parameter will be set to the current data item (e.g., inside a with: person binding, $data will be set to person). <code>$data</code> is useful when you want to reference the viewmodel itself, rather than a property on the viewmodel. Example:
 
@@ -54,7 +48,7 @@ This is the view model object in the current context. In the root context, <code
 </ul>
 ```
 
-### $index (only available within foreach bindings)
+### <code>$index</code> (only available within foreach bindings)
 
 This is the zero-based index of the current array entry being rendered by a foreach binding. Unlike the other binding context properties, $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).
 

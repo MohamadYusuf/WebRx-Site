@@ -4,7 +4,7 @@ title: WebRx - The SRef-Binding
 ---
 # The SRef-Binding
 
-The sref-binding binds an anchor element (&lt;a&gt; tag) to a state. The binding will automatically 
+The sref-binding binds an anchor element (<code>&lt;a&gt;</code> tag) to a state. The binding will automatically 
 generate and update the <code>href</code> attribute of the anchor to the route (URI) associated with the state. 
 
 Clicking the link will trigger a state transition with optional parameters. 

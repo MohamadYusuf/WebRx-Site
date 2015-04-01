@@ -128,13 +128,15 @@ wx.applyBindings(new AppViewModel());
 
 Pass the collection that you wish to iterate over. The binding will output a section of markup for each entry.
 
-Alternatively, pass a JavaScript object literal with a property called data which is the collection you wish to iterate over. The object literal may also have other properties, such as afterAdd or includeDestroyed — see below for details of these extra options and examples of their use.
+Alternatively, pass a JavaScript object literal with a property called data which is the collection you wish to iterate over. 
+The object literal may also have other properties, such as <code>afterAdd</code> — see below for details of these extra options and examples of their use.
 
 If the collection you supply is an [observable list](/docs/observable-lists.html#start), the foreach binding will respond to any future changes in the lists's contents by adding or removing corresponding sections of markup in the DOM.
 
-## Referring to each array entry using $data
+## Referring to each array entry using <code>$data</code>
 
-As shown in the above examples, bindings within the foreach block can refer to properties on the array entries. For example, Example 1 referenced the firstName and lastName properties on each array entry.
+As shown in the above examples, bindings within the foreach block can refer to properties on the array entries. For example, 
+Example 1 referenced the <code>firstName</code> and <code>lastName</code> properties on each array entry.
 
 But what if you want to refer to the array entry itself (not just one of its properties)? In that case, you can use the special context property $data. Within a foreach block, it means “the current item”. For example,
 
@@ -154,19 +156,21 @@ But what if you want to refer to the array entry itself (not just one of its pro
 </script>
 ```
 
-If you wanted, you could use $data as a prefix when referencing properties on each entry. For example, you could rewrite part of Example 1 as follows:
+If you wanted, you could use <code>$data</code> as a prefix when referencing properties on each entry. 
+For example, you could rewrite part of Example 1 as follows:
 
 ```html
 <td data-bind="text: $data.firstName"></td>
 ```
 
-… but you don't have to, because firstName will be evaluated within the context of $data by default anyway.
+… but you don't have to, because <code>firstName</code> will be evaluated within the context of <code>$data</code> by default anyway.
 
-## Using $index, $parent, and other context properties
+## Using <code>$index</code>, <code>$parent</code>, and other context properties
 
-As you can see from Example 2 above, it's possible to use $index to refer to the zero-based index of the current array item. $index is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).
+As you can see from Example 2 above, it's possible to use <code>$index</code> to refer to the zero-based index of the current array item. 
+<code>$index</code> is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).
 
-Similarly, you can use $parent to refer to data from outside the foreach, e.g.:
+Similarly, you can use <code>$parent</code> to refer to data from outside the foreach, e.g.:
 
 ```html
 <h1 data-bind="text: blogPostTitle"></h1>
@@ -177,7 +181,8 @@ Similarly, you can use $parent to refer to data from outside the foreach, e.g.:
 </ul>
 ```
 
-For more information about $index and other context properties such as $parent, see documentation for binding context properties.
+For more information about <code>$index</code> and other context properties such as <code>$parent</code>, see documentation for 
+[binding context](/docs/binding-context.html#start) properties.
 
 ## How array changes are detected and handled
 
@@ -187,7 +192,8 @@ For more information about $index and other context properties such as $parent, 
 
 ## Post-processing or animating the generated DOM elements
 
-If you need to run some further custom logic on the generated DOM elements, you can use any of the afterRender/afterAdd/beforeRemove/beforeMove/afterMove callbacks described below.
+If you need to run some further custom logic on the generated DOM elements, you can use any of the 
+<code>afterRender</code> / <code>afterAdd</code> / <code>beforeRemove</code> / <code>beforeMove</code> / <code>afterMove</code> callbacks described below.
 
 **Note:** These callbacks are only intended for triggering animations related to changes in a list. If your goal is actually to attach other behaviors to new DOM elements when they have been added (e.g., event handlers, or to activate third-party UI controls), then your work will be much easier if you implement that new behavior as a custom binding instead, because then you can use that behavior anywhere, independently of the foreach binding.
 

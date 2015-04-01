@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/47372b68a62f9a77dba0240b6660dbb5.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/00a73463f4c0776e7e19128ea28317a5.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -194,9 +194,10 @@ or read about DI in your favorite software design pattern book.</p>
   <span class="k">this</span><span class="p">.</span><span class="nx">greeter</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In the above example <code>SomeClass</code> is not concerned with creating or locating the <code>greeter</code> dependency, it is simply handed the greeter when it is instantiated.</p>
+<p>In the above example <code>SomeClass</code> is not concerned with creating or locating the <code>greeter</code> dependency, 
+it is simply handed the greeter when it is instantiated.</p>
 
-<p>This is desirable, but it puts the responsibility of getting hold of the dependency on the code that constructs SomeClass. 
+<p>This is desirable, but it puts the responsibility of getting hold of the dependency on the code that constructs <code>SomeClass</code>. 
 To manage the responsibility of dependency creation, each WebRx application has an injector. The injector is a service 
 locator that is responsible for construction and lookup of dependencies.</p>
 
@@ -204,7 +205,7 @@ locator that is responsible for construction and lookup of dependencies.</p>
 
 <p>Here we teach the injector how to build a greeter. Notice that greeter is dependent on the <code>$window</code> service.
 The greeter service is an object that contains a <code>greet</code> method which relies on the window-service&#39;s <code>alert</code> method.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">injector</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;window-service&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$window</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;window-service&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$window</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
     <span class="nx">greet</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">$window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
@@ -213,7 +214,7 @@ The greeter service is an object that contains a <code>greet</code> method which
 <span class="p">}]);</span>
 </code></pre></div>
 <p>Now we can request our <code>greeter</code> from the injector:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">greeter</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">greeter</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p>Asking for dependencies solves the issue of hard coding, but it also means that the injector needs to be passed 
 throughout the application. Passing the injector breaks the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">Law of Demeter</a>. </p>
