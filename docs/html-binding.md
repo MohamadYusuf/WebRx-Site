@@ -39,7 +39,7 @@ will be equivalent to <code>yourParameter.toString()</code>
 
 ### Note: About HTML encoding
 
-Since this binding sets your element's content using innerHTML, you should be careful not to use it with untrusted model values, 
+Since this binding sets your element's content using <code>innerHTML</code>, you should be careful not to use it with untrusted model values, 
 because that might open the possibility of a script injection attack. If you cannot guarantee that the content is safe to display 
 (for example, if it is based on a different user's input that was stored in your database), then you can use the text binding, 
 which will set the element's text value using <code>innerText</code> or <code>textContent</code> instead.

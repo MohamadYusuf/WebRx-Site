@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/00a73463f4c0776e7e19128ea28317a5.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e89c60bd9e696490b95112f97a6b3d32.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -170,17 +170,25 @@
     <span class="nx">personAge</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>You don&#39;t have to change the view at all - the same data-bind syntax will keep working. The difference is that it&#39;s now capable of detecting changes, and when it does, it will update the view automatically.</p>
+<p>You don&#39;t have to change the view at all - the same data-bind syntax will keep working. The difference is that it&#39;s now capable of 
+detecting changes, and when it does, it will update the view automatically.</p>
 
 <h2>Reading and writing properties</h2>
 
-<p>To read the property&#39;s current value, just call the property with no parameters. In this example, myViewModel.personName() will return &#39;Bob&#39;, and myViewModel.personAge() will return 123.</p>
+<p>To read the property&#39;s current value, just call the property with no parameters. In this example, <code>myViewModel.personName()</code> 
+will return &#39;Bob&#39;, and <code>myViewModel.personAge()</code> will return 123.</p>
 
-<p>To write a new value to the property, call the property and pass the new value as a parameter. For example, calling myViewModel.personName(&#39;Mary&#39;) will change the name value to &#39;Mary&#39;.</p>
+<p>To write a new value to the property, call the property and pass the new value as a parameter. For example, 
+calling <code>myViewModel.personName(&#39;Mary&#39;)</code> will change the name value to &#39;Mary&#39;.</p>
 
-<p>The whole point of observable properties is that they can be observed, i.e., other code can say that it wants to be notified of changes. That&#39;s what many of WebRx&#39;s built-in bindings do internally. So, when you wrote data-bind=&quot;text: personName&quot;, the text binding registered itself to be notified when personName changes (assuming it&#39;s an observable property, which it is now).</p>
+<p>The whole point of observable properties is that they can be observed, i.e., other code can say that it wants to 
+be notified of changes. That&#39;s what many of WebRx&#39;s built-in bindings do internally. So, when you wrote 
+<code>data-bind=&quot;text: personName&quot;</code>, the text binding registered itself to be notified when personName 
+changes (assuming it&#39;s an observable property, which it is now).</p>
 
-<p>When you change the name value to &#39;Mary&#39; by calling myViewModel.personName(&#39;Mary&#39;), the text binding will automatically update the text contents of the associated DOM element. That&#39;s how changes to the view model automatically propagate to the view.</p>
+<p>When you change the name value to &#39;Mary&#39; by calling <code>myViewModel.personName(&#39;Mary&#39;)</code>, the text binding 
+will automatically update the text contents of the associated DOM element. That&#39;s how changes to the view model 
+automatically propagate to the view.</p>
 
 <h2>Observable Properties and Binding Expressions</h2>
 
@@ -229,7 +237,7 @@ the binding requires a reference to the property object itself instead of its cu
 providing two-way updates between the viewmodel property and the element&#39;s value.</p>
 
 <p>Without the <code>@</code> operator in the template above, the textInput binding would receive the current value of
-the <code>personName</code> property which would be <em>&#39;Bob&#39;</em>. Since <em>&#39;Bob&#39;</em> is not an observable property, the binding
+the <code>personName</code> property which would be <code>&#39;Bob&#39;</code>. Since <code>&#39;Bob&#39;</code> is not an observable property, the binding
 would update the textbox&#39;s or textarea&#39;s value a single time, but would not be able to update the
 view-model when the user enters text. Effectively turning the textInput binding into a text-binding
 which is not really useful.</p>

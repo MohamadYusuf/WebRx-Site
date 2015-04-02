@@ -11,7 +11,7 @@ When the user edits the value in the associated form control, it updates the val
 Likewise, when you update the value in your view model, this updates the value of the form control on screen.
 
 Note: If you're working with checkboxes or radio buttons, use the [checked binding](/docs/checked-binding.html#start) to read and 
-write your element's checked state, not the value binding.
+write your element's <code>checked</code> state, not the value binding.
 
 ## Example
 
@@ -52,6 +52,6 @@ use the the [textInput binding](/docs/textinput-binding.html#start).
 
 ## Working with drop-down lists (i.e., <code>select</code> elements)
 
-WebRx has special support for drop-down lists (i.e., <code>select</code> elements) in form of the [wx-select component](/docs/wx-select.html#start).
+WebRx has special support for drop-down lists (i.e., <code>select</code> elements) in form of the [selectedValue-binding](/docs/selected-value-binding.html#start).
 
 <a class="next-topic" href="/docs/textinput-binding.html#start">Next: The TextInput-Binding</a>

@@ -33,30 +33,30 @@ var anotherObservableList = wx.list([
 
 WebRx's observable list exposes a familiar set of functions for modifying the contents of the list and notifying listeners.
 
-- length
-- get(index)
-- set(index, item)
-- add(item)
-- clear()
-- contains(item)
-- remove(item)
-- indexOf(item)
-- insert(index, item)
-- removeAt(index)
-- isEmpty
-- addRange(collection)
-- insertRange(index, collection)
-- move(oldIndex, newIndex)
-- removeAll(items)
-- removeRange(index, count)
-- sort(comparison: (a, b) => number)
-- forEach(callbackfn: (value, index, array) => void, thisArg?)
-- map(callbackfn: (value, index, array) => U, thisArg?)
-- filter(callbackfn: (value, index, array) => boolean, thisArg?)
-- every(callbackfn: (value, index, array) => boolean, thisArg?)
-- some(callbackfn: (value, index, array) => boolean, thisArg?)
-- reset()
-- toArray()
+- <code>length</code>
+- <code>get(index)</code>
+- <code>set(index, item)</code>
+- <code>add(item)</code>
+- <code>clear()</code>
+- <code>contains(item)</code>
+- <code>remove(item)</code>
+- <code>indexOf(item)</code>
+- <code>insert(index, item)</code>
+- <code>removeAt(index)</code>
+- <code>isEmpty</code>
+- <code>addRange(collection)</code>
+- <code>insertRange(index, collection)</code>
+- <code>move(oldIndex, newIndex)</code>
+- <code>removeAll(items)</code>
+- <code>removeRange(index, count)</code>
+- <code>sort(comparison: (a, b) => number)</code>
+- <code>forEach(callbackfn: (value, index, array) => void, thisArg?)</code>
+- <code>map(callbackfn: (value, index, array) => U, thisArg?)</code>
+- <code>filter(callbackfn: (value, index, array) => boolean, thisArg?)</code>
+- <code>every(callbackfn: (value, index, array) => boolean, thisArg?)</code>
+- <code>some(callbackfn: (value, index, array) => boolean, thisArg?)</code>
+- <code>reset()</code>
+- <code>toArray()</code>
 
 
 ## Subscribing to Changes

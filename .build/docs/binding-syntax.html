@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/00a73463f4c0776e7e19128ea28317a5.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e89c60bd9e696490b95112f97a6b3d32.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -179,11 +179,11 @@
 <p>Binding expressions are JavaScript-like code snippets. For example, these are valid expressions in WebRx:</p>
 
 <ul>
-<li>1+2</li>
-<li>a+b</li>
-<li>user.name</li>
-<li>items[index]</li>
-<li>foo.@bar</li>
+<li><code>1+2</code></li>
+<li><code>a+b</code></li>
+<li><code>user.name</code></li>
+<li><code>items[index]</code></li>
+<li><code>foo.@bar</code></li>
 </ul>
 
 <h3>Binding Expressions vs. JavaScript Expressions</h3>
@@ -217,11 +217,13 @@
 </code></pre></div>
 <h3>No Control Flow Statements</h3>
 
-<p>Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in view-models, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
+<p>Apart from the ternary operator <code>(a ? b : c)</code>, you cannot write a control flow statement in an expression. 
+The reason behind this is core to the philosophy that application logic should be in view-models, not the views. </p>
 
 <h3>No function declarations or RegExp creation with literal notation</h3>
 
-<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a view-model or in a dedicated filter where it can be tested properly. </p>
+<p>You can&#39;t declare functions or create regular expressions from within expressions. This is to avoid complex model 
+transformation logic inside templates. Such logic is better placed in a view-model or in a dedicated filter where it can be tested properly. </p>
 
 <h2><a id="topic-expression-filters"></a>Expression Filters</h2>
 
@@ -240,7 +242,7 @@
 <p>Filters may have arguments. The syntax for this is</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span>
 </code></pre></div>
-<p>E.g. the markup <code>1234 | number:2</code> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
+<p>E.g. the markup <code>1234 | number:2</code> formats the number <code>1234</code> with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
 
 <!-- ### Built-in filters
 

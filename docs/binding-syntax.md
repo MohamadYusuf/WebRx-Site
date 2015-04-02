@@ -26,11 +26,11 @@ The binding name should generally match a registered binding handler (either bui
 
 Binding expressions are JavaScript-like code snippets. For example, these are valid expressions in WebRx:
 
-- 1+2
-- a+b
-- user.name
-- items[index]
-- foo.@bar
+- <code>1+2</code>
+- <code>a+b</code>
+- <code>user.name</code>
+- <code>items[index]</code>
+- <code>foo.@bar</code>
 
 ### Binding Expressions vs. JavaScript Expressions
 
@@ -67,11 +67,13 @@ a||{}).b||{}).c
 
 ### No Control Flow Statements
 
-Apart from the ternary operator (a ? b : c), you cannot write a control flow statement in an expression. The reason behind this is core to the philosophy that application logic should be in view-models, not the views. If you need a real conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.
+Apart from the ternary operator <code>(a ? b : c)</code>, you cannot write a control flow statement in an expression. 
+The reason behind this is core to the philosophy that application logic should be in view-models, not the views. 
 
 ### No function declarations or RegExp creation with literal notation
 
-You can't declare functions or create regular expressions from within expressions. This is to avoid complex model transformation logic inside templates. Such logic is better placed in a view-model or in a dedicated filter where it can be tested properly. 
+You can't declare functions or create regular expressions from within expressions. This is to avoid complex model 
+transformation logic inside templates. Such logic is better placed in a view-model or in a dedicated filter where it can be tested properly. 
 
 ## <a id="topic-expression-filters"></a>Expression Filters
 
@@ -99,7 +101,7 @@ Filters may have arguments. The syntax for this is
 expression | filter:argument1:argument2:...
 ```
 
-E.g. the markup <code>1234 | number:2</code> formats the number 1234 with 2 decimal points using the number filter. The resulting value is 1,234.00.
+E.g. the markup <code>1234 | number:2</code> formats the number <code>1234</code> with 2 decimal points using the number filter. The resulting value is 1,234.00.
 
 <!-- ### Built-in filters
 

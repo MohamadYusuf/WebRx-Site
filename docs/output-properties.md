@@ -11,7 +11,8 @@ Output properties are created by calling the <code>toProperty()</code> operator 
 
 ## Example
 
-What if you've got a property for firstName, and another for lastName, and you want to display the full name? That's where output properties come in. 
+What if you've got a property for <code>firstName</code>, and another for <code>lastName</code>, and you want to display the full name? 
+That's where output properties come in. 
 
 For example, given the following view model class ...
 

@@ -82,7 +82,7 @@ value="almond" was checked only when the view model's spamFlavor property was eq
 
 When the user changes which radio button is selected, the binding will set your model property to equal 
 the value of the selected radio button. In the preceding example, clicking on the radio button 
-with value="cherry" would set viewModel.spamFlavor to be *"cherry"*.
+with value="cherry" would set <code>viewModel.spamFlavor</code> to be *"cherry"*.
 
 Of course, this is most useful when you have multiple radio button elements bound to a single model property.
 To ensure that only one of those radio buttons can be checked at any one time, you should set all of 
