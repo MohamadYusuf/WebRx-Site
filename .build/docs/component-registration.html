@@ -47,7 +47,21 @@
               </div>
             </nav>
 
-          <div class="content-panel docs">
+          <style>
+  .navbar-brand img  {
+    height: 30px;
+  }
+
+  .content-panel {
+    padding: 15px;
+  }
+
+  #main-container > .navbar .navbar-nav {
+    padding-top: 0.75em;
+  }    
+</style>
+
+<div class="content-panel docs">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="index">
@@ -141,7 +155,12 @@
                 <h3>Dependency-Injection</h3>
                 <ul>
                     <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
-                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                    <li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>
+                </ul>
+
+                <h3>Messaging</h3>
+                <ul>
+                    <li><a href="../docs/message-bus.html#start">Overview: Messaging</a></li>
                 </ul>
 
 			    <!--
@@ -211,7 +230,35 @@ to any parameters passed to the component.</p>
 Properties on the resulting object or its prototype chain (e.g., <code>someProperty</code> and <code>doSomething</code> in the example above) 
 are available for binding in the component&#39;s view.</p>
 
-<p>If your constructor function return a value, the value will be used at the resulting view-model. </p>
+<h3>An inline-array-annotated constructor function</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s2">&quot;greeter&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">greet</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">...</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}]);</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;greeter&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greeter</span><span class="p">,</span> <span class="nx">componentParams</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">otherProperty</span> <span class="o">=</span> <span class="nx">greeter</span><span class="p">.</span><span class="nx">greet</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">someProperty</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">something</span><span class="p">;</span>
+    <span class="p">}],</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3>An injectable</h3>
+
+<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx&#39;s <a href="/docs/dependency-injection-overview.html#start">injector</a>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">resolve</span><span class="o">:</span> <span class="s2">&quot;some-injectable-identifier&quot;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In this case, the component-binding will pass the inline-annotated array to the <a href="/docs/dependency-injection-overview.html#start">Injector&#39;s</a> 
+<code>resolve</code> method to construct the view-model. Any dependencies listed in the annotated-array will be resolved and passed to your 
+constructor function. In the example above the view-model&#39;s constructor function will receive a <code>greeter</code> instance as first argument.
+The second argument will be the component arguments.</p>
 
 <h3>A promise</h3>
 
@@ -240,14 +287,6 @@ This differentiates from the other cases below.</p>
 </code></pre></div>
 <p><strong>Note</strong>: It is necessary to specify <code>viewModel: { instance: object }</code>, and not just <code>viewModel: object</code>. This differentiates from the other cases below.</p>
 
-<h3>An injectable</h3>
-
-<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx&#39;s <a href="/docs/dependency-injection-overview.html#start">injector</a>:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">resolve</span><span class="o">:</span> <span class="s2">&quot;some-injectable-identifier&quot;</span> <span class="p">},</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
-<span class="p">});</span>
-</code></pre></div>
 <h3>An AMD module</h3>
 
 <p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a viewmodel. 

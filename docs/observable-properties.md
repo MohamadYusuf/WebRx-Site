@@ -28,7 +28,7 @@ calling <code>myViewModel.personName('Mary')</code> will change the name value t
 
 The whole point of observable properties is that they can be observed, i.e., other code can say that it wants to 
 be notified of changes. That's what many of WebRx's built-in bindings do internally. So, when you wrote 
-<code>data-bind="text: personName"</code>, the text binding registered itself to be notified when personName 
+<code>data-bind="text: personName"</code>, the text binding registered itself to be notified when <code>personName</code>
 changes (assuming it's an observable property, which it is now).
 
 When you change the name value to 'Mary' by calling <code>myViewModel.personName('Mary')</code>, the text binding 

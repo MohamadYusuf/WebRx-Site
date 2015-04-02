@@ -47,7 +47,21 @@
               </div>
             </nav>
 
-          <div class="content-panel docs">
+          <style>
+  .navbar-brand img  {
+    height: 30px;
+  }
+
+  .content-panel {
+    padding: 15px;
+  }
+
+  #main-container > .navbar .navbar-nav {
+    padding-top: 0.75em;
+  }    
+</style>
+
+<div class="content-panel docs">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="index">
@@ -141,7 +155,12 @@
                 <h3>Dependency-Injection</h3>
                 <ul>
                     <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
-                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                    <li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>
+                </ul>
+
+                <h3>Messaging</h3>
+                <ul>
+                    <li><a href="../docs/message-bus.html#start">Overview: Messaging</a></li>
                 </ul>
 
 			    <!--
@@ -183,7 +202,7 @@ calling <code>myViewModel.personName(&#39;Mary&#39;)</code> will change the name
 
 <p>The whole point of observable properties is that they can be observed, i.e., other code can say that it wants to 
 be notified of changes. That&#39;s what many of WebRx&#39;s built-in bindings do internally. So, when you wrote 
-<code>data-bind=&quot;text: personName&quot;</code>, the text binding registered itself to be notified when personName 
+<code>data-bind=&quot;text: personName&quot;</code>, the text binding registered itself to be notified when <code>personName</code>
 changes (assuming it&#39;s an observable property, which it is now).</p>
 
 <p>When you change the name value to &#39;Mary&#39; by calling <code>myViewModel.personName(&#39;Mary&#39;)</code>, the text binding 

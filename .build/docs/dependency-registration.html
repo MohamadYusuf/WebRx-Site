@@ -47,7 +47,21 @@
               </div>
             </nav>
 
-          <div class="content-panel docs">
+          <style>
+  .navbar-brand img  {
+    height: 30px;
+  }
+
+  .content-panel {
+    padding: 15px;
+  }
+
+  #main-container > .navbar .navbar-nav {
+    padding-top: 0.75em;
+  }    
+</style>
+
+<div class="content-panel docs">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="index">
@@ -141,7 +155,12 @@
                 <h3>Dependency-Injection</h3>
                 <ul>
                     <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
-                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                    <li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>
+                </ul>
+
+                <h3>Messaging</h3>
+                <ul>
+                    <li><a href="../docs/message-bus.html#start">Overview: Messaging</a></li>
                 </ul>
 
 			    <!--
@@ -161,6 +180,34 @@
 
 		<div id="start" class="col-md-9">
 			<div class="body"><h1>Dependency-Registration</h1>
+
+<h2>Registering components with the injector</h2>
+
+<p>Here we pass an array whose elements consist of a list of strings representing the names of the dependencies, 
+followed by the constructor function. This is called <em>Inline Array Annotation</em>. 
+It is important to keep the annotation array in sync with the parameters of the constructor function.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;window-service&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">greet</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}]);</span>
+</code></pre></div>
+<p>We have taught the injector how to build a greeter. Notice that greeter is dependent on the <code>$window</code> service.
+The greeter service is an object that contains a <code>greet</code> method which relies on the window-service&#39;s <code>alert</code> method.</p>
+
+<h2>Resolving components through the injector</h2>
+
+<p>Now we can request our <code>greeter</code> from the injector:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">greeter</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;greeter&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Asking for dependencies solves the issue of hard coding, but it also means that the injector needs to be passed 
+throughout the application. Passing the injector breaks the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">Law of Demeter</a>. </p>
+
+<p>To remedy this, WebRx&#39;s supports resolving injectables pretty much everywhere.</p>
+
+<p><a class="next-topic" href="/docs/message-bus.html#start">Next: Messaging</a></p>
 </div>
 		</div>
 	</div>

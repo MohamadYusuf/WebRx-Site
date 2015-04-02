@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Built-in components</title>
+        <title>WebRx - The Message-Bus</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Built-in components" /> 
+        <meta property="og:title" content="WebRx - The Message-Bus" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -21,7 +21,7 @@
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">WebRx - Built-in components</h1>
+        <h1 id="logoh1">WebRx - The Message-Bus</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -179,7 +179,38 @@
 		</div>
 
 		<div id="start" class="col-md-9">
-			<div class="body"><h1>Built-in components</h1>
+			<div class="body"><h1>The Message-Bus</h1>
+
+<p>Like many other MVVM frameworks, ReactiveUI includes an implementation of the <em>Message-Bus</em> pattern. 
+This allows you to send and recieve messages between different parts of the code without them directly accessing each other.</p>
+
+<h2>Usage</h2>
+
+<p>WebRx&#39;s message-bus implementation supports sending and receiving messages on any number of arbitrarily named topics.</p>
+
+<p>Just like the rest of the framework, internally the message-bus relies on Rx-Observables for message publication and
+subscription, enabling developers to filter, throttle or otherwise pre-process messages using any of the <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/categories.md">operators 
+built into RxJs</a>.</p>
+
+<h3>Sending Messages</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">&quot;item-deleted&quot;</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+</code></pre></div>
+<p>Here we send a message to the <code>item-deleted</code> topic which will be received by anyone subscribed to the
+same topic.</p>
+
+<h3>Using observables as publishers</h3>
+
+<p>It is also possible to pipe any observable into the message-bus by associating at topic name with the
+observable and registering with the message-bus.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">registerMessageSource</span><span class="p">(</span><span class="s2">&quot;folks-another-five-seconds-have-passed&quot;</span><span class="p">,</span> <span class="nx">source</span><span class="p">);</span>
+</code></pre></div>
+<h3>Subscribing to topics</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="s2">&quot;item-deleted&quot;</span><span class="p">)</span>  
+    <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">});</span>
+</code></pre></div>
+<p>Here we subscribe to the <code>item-deleted</code> topic and log any received messages to the browser&#39;s console.</p>
 </div>
 		</div>
 	</div>

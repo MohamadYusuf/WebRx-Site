@@ -47,7 +47,21 @@
               </div>
             </nav>
 
-          <div class="content-panel docs">
+          <style>
+  .navbar-brand img  {
+    height: 30px;
+  }
+
+  .content-panel {
+    padding: 15px;
+  }
+
+  #main-container > .navbar .navbar-nav {
+    padding-top: 0.75em;
+  }    
+</style>
+
+<div class="content-panel docs">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="index">
@@ -141,7 +155,12 @@
                 <h3>Dependency-Injection</h3>
                 <ul>
                     <li><a href="../docs/dependency-injection-overview.html#start">Overview: Dependency Injection</a></li>
-                    <!--<li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>-->
+                    <li><a href="../docs/dependency-registration.html#start">Defining and registering dependencies</a></li>
+                </ul>
+
+                <h3>Messaging</h3>
+                <ul>
+                    <li><a href="../docs/message-bus.html#start">Overview: Messaging</a></li>
                 </ul>
 
 			    <!--

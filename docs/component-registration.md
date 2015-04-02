@@ -62,7 +62,42 @@ WebRx will invoke your constructor once for each instance of the component, prod
 Properties on the resulting object or its prototype chain (e.g., <code>someProperty</code> and <code>doSomething</code> in the example above) 
 are available for binding in the component's view.
 
-If your constructor function return a value, the value will be used at the resulting view-model. 
+### An inline-array-annotated constructor function
+
+```javascript
+
+wx.injector.register("greeter", [function() {
+  return {
+    greet: function(text) {
+      ...
+    }
+  };
+}]);
+
+wx.app.component('my-component', {
+    viewModel: ["greeter", function(greeter, componentParams) {
+		this.otherProperty = greeter.greet;
+	    this.someProperty = params.something;
+	}],
+    template: ...
+});
+```
+
+### An injectable
+
+Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html#start):
+
+```javascript
+wx.app.component('my-component', {
+    viewModel: { resolve: "some-injectable-identifier" },
+    template: ...
+});
+```
+
+In this case, the component-binding will pass the inline-annotated array to the [Injector's](/docs/dependency-injection-overview.html#start) 
+<code>resolve</code> method to construct the view-model. Any dependencies listed in the annotated-array will be resolved and passed to your 
+constructor function. In the example above the view-model's constructor function will receive a <code>greeter</code> instance as first argument.
+The second argument will be the component arguments.
 
 ### A promise
 
@@ -96,17 +131,6 @@ wx.app.component('my-component', {
 ```
 
 **Note**: It is necessary to specify <code>viewModel: { instance: object }</code>, and not just <code>viewModel: object</code>. This differentiates from the other cases below.
-
-### An injectable
-
-Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html#start):
-
-```javascript
-wx.app.component('my-component', {
-    viewModel: { resolve: "some-injectable-identifier" },
-    template: ...
-});
-```
 
 ### An AMD module
 
