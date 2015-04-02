@@ -255,6 +255,10 @@ pre code {
     background: linear-gradient(to bottom, #0082d8 1%,#0063a7 100%); /* W3C */
 }
 
+#header .col-md-12 p {
+    line-height: 26px;
+}
+
 #header #devices {
   width: 80%;
 }
