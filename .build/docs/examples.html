@@ -3,31 +3,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>{{ page.title }}</title>
+        <title>WebRx - Examples</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="{{ page.title }}" /> 
+        <meta property="og:title" content="WebRx - Examples" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
-        {% if page.meta_description %}<meta name="description" content="{{ page.meta_description }}">{% endif %}
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        {% bundle %}
-        - /css/bootstrap.min.css
-        - /css/syntax.css
-        - /css/font-awesome.min.css
-        - /css/main.css
-        {% endbundle %}
+        <link rel='stylesheet' type='text/css' href='/bundles/7bd4a7f80d31e83a217b5a4711bf2b53.css' />
 
-        {% bundle %}
-        - /js/rx.lite.min.js
-        - /js/rx.lite.extras.min.js
-        {% endbundle %}
+
+        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+
 
         <script type='text/javascript' src='/js/web.rx.js'></script>
       </head>
     <body>
-        <h1 id="logoh1">{{ page.title }}</h1>
+        <h1 id="logoh1">WebRx - Examples</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
@@ -54,7 +48,52 @@
               </div>
             </nav>
 
-          {{ content }}
+          <style>
+     .content-panel {
+         padding: 15px;
+     }
+</style>
+
+<div class="content-panel docs">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="body"><div class="alert alert-danger sample-warning" role="alert">
+<b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
+</div>
+
+<h1>Examples</h1>
+
+<h2>Hello World</h2>
+
+<p>In this example, the two text boxes are bound to observable properties on a view-model. The <code>full name</code> display is bound to 
+an <a href="/docs/output-properties.html#start">output property</a>, whose value is calculated in terms of the observables.</p>
+
+<p>Edit either text box to see the <code>full name</code> display update. See the HTML source code and notice there&#39;s no need to 
+catch <code>onchange</code> events. WebRx knows when to update the UI.</p>
+
+<iframe width="100%" height="200" src="//jsfiddle.net/oliverw/amogtocm/embedded/result,js,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h2>Output Properties</h2>
+
+<p><code>Output properties</code> are observable properties that are backed by an Rx-Observable. Output properties are read-only, but will still fire change notifications.
+This example displays a countdown-timer that counts down from 10 to 1 at a one second interval:</p>
+
+<iframe width="100%" height="100" src="http://jsfiddle.net/oliverw/1nwsased/embedded/result,js,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h2>Observable Lists</h2>
+
+<iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/z51a6bsg/embedded/result,js,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h2>Router</h2>
+
+<p>This example demonstrates some of the capabilities of WebRx&#39;s built-in <a href="/docs/routing-overview.html#start">client-side router</a>.</p>
+
+<iframe width="100%" height="600" src="//jsfiddle.net/oliverw/26j1bbnj/embedded/result,js,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+</div>
+		</div>
+	</div>
+</div>
+
 
             <div id="footer" class="content-panel">
                 <div class="row">
@@ -77,11 +116,8 @@
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        {% bundle %}
-        - /js/jquery.js
-        - /js/bootstrap.min.js
-        - /js/default.js
-        {% endbundle %}
+        <script type='text/javascript' src='/bundles/00130a6aa62cbbdf056682bd006294a8.js'></script>
+
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

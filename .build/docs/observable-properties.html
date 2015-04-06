@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/cc763b95ccebb6dc42e7728f564660e1.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/7bd4a7f80d31e83a217b5a4711bf2b53.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -37,6 +37,7 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs/examples.html">Examples</a></li>
                     <li><a href="/docs">Documentation</a></li>
                     <!-- <li><a href="/examples">Examples</a></li> -->
 
@@ -173,7 +174,10 @@
 		<div id="start" class="col-md-9">
 			<div class="body"><h1>Observable Properties</h1>
 
-<p>You&#39;ve seen how to <a href="/docs/index.html#topic-mvvm-intro">create a basic view model</a> and how to display one of its properties using a binding. But one of the key benefits of WebRx is that it updates your UI automatically when the view model changes. How can WebRx know when parts of your view model change? Answer: you need to declare your model properties as observable-properties, because these are special JavaScript objects that can notify subscribers about changes.</p>
+<p>You&#39;ve seen how to <a href="/docs/index.html#topic-mvvm-intro">create a basic view model</a> and how to display one of its properties using a binding. 
+But one of the key benefits of WebRx is that it updates your UI automatically when the view model changes. 
+How can WebRx know when parts of your view model change? Answer: you need to declare your model properties as 
+observable-properties, because these are special JavaScript objects that can notify subscribers about changes.</p>
 
 <p>For example, rewrite the preceding view model object as follows:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
