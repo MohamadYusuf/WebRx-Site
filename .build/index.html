@@ -12,7 +12,7 @@
         <meta name="description" content="WebRx - Dynamic JavaScript UIs with ReactiveX">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/b3df506b8829f967feb1cd1020db996d.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/238466c7d96d7d69eb33e9c32ceae39e.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="/"><img alt="Brand" src="/images/logo.png"></a>
+                  <a class="navbar-brand" href="/"><h3 class="logo"><span>WebR</span><span class="x">X</span></h3></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -49,41 +49,41 @@
 
           <div id="header" class="content-panel">
 	<div class="row">
-		<div class="col-md-12">
-			<a id="rx-link" href="http://reactivex.io/" alt="ReactiveX" title="ReactiveX" class="pull-right"><img src="/images/Rx_Logo_S.png"/></a>
-			<h2>Dynamic JavaScript UIs with <a href="http://reactivex.io/">ReactiveX</a></h2><p>WebRx is a Javascript MVC-Framework built on <a href="http://reactivex.io">ReactiveX for Javascript (RxJs)</a> that combines functional-reactive programming with Observable-driven declarative Data-Binding, Templating and Client-Side Routing.</p>
-
-		</div>
+	    <div class="col-md-12">
+	        <div id="main-logo-container">
+                <h1 id="main-logo" class="logo"><span>WebR</span><span class="x">X</span></h1>
+	            <h2>Dynamic JavaScript UIs with <a href="http://reactivex.io/">ReactiveX</a>
+	            </h2>
+	            <p id="mission-statement"><p>WebRx is a Javascript MVC-Framework built on <a href="http://reactivex.io">ReactiveX for Javascript (RxJs)</a> that combines functional-reactive programming with observable-powered declarative Data-Binding, Templating and client-side Routing.</p>
+</p>
+            </div>
+	    </div>
 	</div>
 </div>
 
 <div id="content1" class="content-panel">
 	<div class="row">
-		<div class="col-md-3">
+	    <div class="col-md-3">
 			<div>
-				<img width="32" src="/images/checkmark17.png"/>
-				<h3>Declarative Bindings</h3>
+				<h3><i class="fa fa-check-circle"></i> Declarative Bindings</h3>
 			</div>
 			Easily associate DOM elements with model data using a concise, readable syntax
 		</div>
 		<div class="col-md-3">
 			<div>
-				<img width="32" src="/images/checkmark17.png"/>
-				<h3>Automatic UI Refresh</h3>
+				<h3><i class="fa fa-check-circle"></i> Automatic UI Refresh</h3>
 			</div>
 			When your data model's state changes, your UI updates automatically
 		</div>
 		<div class="col-md-3">
 			<div>
-				<img width="32" src="/images/checkmark17.png"/>
-				<h3>Templating</h3>
+				<h3><i class="fa fa-check-circle"></i> Templating</h3>
 			</div>
 		Quickly generate sophisticated, nested UIs as a function of your model data
 		</div>
 		<div class="col-md-3">
 			<div>
-				<img width="32" src="/images/checkmark17.png"/>
-				<h3>Routing</h3>
+				<h3><i class="fa fa-check-circle"></i> Routing</h3>
 			</div>
 			 Organize the parts of your interface into a state machine using multiple optionally nested views
 		</div>
@@ -92,112 +92,126 @@
 
 <div id="content2" class="content-panel">
 	<div class="row">
-		<div class="col-md-6">
-			<h3 id="features">Features</h3>
-			<ul>
-				<li>Compatible with IE9+, Firefox 5+, Chrome 5+, Safari 5+</li>
-				<li>Comprehensive online documentation</li>
-				<li>Extensible data-binding with many built-in operators</li>
-				<li>Supports <i>modules</i> for partitioning larger projects into managable units</li>
-				<li>Supports <i>components</i> for organizing UI code into self-contained, reusable chunks</li>
-				<li>Integrated state-based routing engine inspired by <a href="https://github.com/angular-ui/ui-router">Angular's UI-Router</a></li>
-				<li>No dependencies besides <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/libraries/rx.lite.md">RxJS-Lite</a></li>
-				<li>Compact (~20Kb minified &amp; compressed)</li>
-				<li>First class <a href="http://www.typescriptlang.org/">TypeScript</a> support</li>
-			</ul>
-<br/>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-			    	<h3 class="panel-title"><b>Installation</b></h3>
-			  	</div>
-				<div class="panel-body">
-					<ul id="install">
-						<li>Installation via NuGet
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>
-						</li>
-                        <li>Installation via Bower
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install WebRx</code></pre></div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Features</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>Compatible with IE9+, Firefox 5+, Chrome 5+, Safari 5+</li>
+                        <li>Comprehensive online documentation</li>
+                        <li>Extensible data-binding with many built-in operators</li>
+                        <li>Supports <i>modules</i> for partitioning larger projects into managable units</li>
+                        <li>Supports <i>components</i> for organizing UI code into self-contained, reusable chunks</li>
+                        <li>Integrated state-based routing engine inspired by <a href="https://github.com/angular-ui/ui-router">Angular's UI-Router</a></li>
+                        <li>No dependencies besides <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/libraries/rx.lite.md">RxJS-Lite</a></li>
+                        <li>Compact (~20Kb minified &amp; compressed)</li>
+                        <li>First class <a href="http://www.typescriptlang.org/">TypeScript</a> support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Installation
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul id="install">
+                        <li>
+                            Installation via NuGet
+                            <div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>
                         </li>
-						<li>or download
-							<form id="download-form" method="get" action="/downloads/web.rx.zip">
-							<button type="submit" class="btn btn-primary">Latest version as zip</button>
-							</form>
-						</li>
-					</ul>
-					<p>Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.</p>
-			  	</div>
-		  	</div>
-		</div>
+                        <li>
+                            Installation via Bower
+                            <div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install WebRx</code></pre></div>
+                        </li>
+                        <li>
+                            or download
+                            <form id="download-form" method="get" action="/downloads/web.rx.zip">
+                                <button type="submit" class="btn btn-primary">Latest version as zip</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <p>
+                        Make sure to include script-references to <i>rx.lite.js</i> and <i>rx.lite.extras.js</i> <b>before</b> <i>web.rx.js</i> when integrating WebRx into your projects.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-			    	<h3 class="panel-title"><b>Live Example</b></h3>
-			  	</div>
-				<div class="panel-body" id="live-demo">
-				  <p>
-					  Choose a ticket class:
-					  <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
-					             
-					  <button data-bind="command: resetTicketCommand">Clear</button>
-				  </p>           
-				  
-				  <p data-bind="with: chosenTicket">
-					  You have chosen <b data-bind="text: name"></b> for $<span data-bind="text: price"></span>
-				  </p>
-				</div>
-			</div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Live Example</h3>
+                        </div>
+                        <div class="panel-body" id="live-demo">
+                            <p>
+                                Choose a ticket class:
+                                <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'"></wx-select>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-			    	<h3 class="panel-title"><b>HTML</b></h3>
-			  	</div>
-				<div class="panel-body">
-			<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;live-demo&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;p&gt;</span>Choose a ticket class:
-    <span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets, </span>
-<span class="s">      selectedValue: @chosenTicket, itemText: &#39;name&#39;&quot;</span><span class="nt">&gt;</span>
+                                <button data-bind="command: resetTicketCommand">Clear</button>
+                            </p>
+
+                            <p data-bind="with: chosenTicket">
+                                You have chosen <b data-bind="text: name"></b> for $<span data-bind="text: price"></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">HTML</h3>
+                        </div>
+                        <div class="panel-body">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;live-demo&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
+    Choose a ticket class:
+    <span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets,</span>
+<span class="s">selectedValue: @chosenTicket, itemText: &#39;name&#39;&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/wx-select&gt;</span>
-    
+
     <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: resetTicketCommand&quot;</span><span class="nt">&gt;</span>Clear<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/p&gt;</span>           
-  
+  <span class="nt">&lt;/p&gt;</span>
+
   <span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">&quot;with: chosenTicket&quot;</span><span class="nt">&gt;</span>
-    You have chosen <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/b&gt;</span> 
+    You have chosen <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/b&gt;</span>
     for $<span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: price&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
   <span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></div>  
-			</div>
-		</div>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+                        </div>
+                    </div>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-			    	<h3 class="panel-title"><b>Javascript</b></h3>
-			  	</div>
-				<div class="panel-body">
-			<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">TicketsViewModel</span><span class="p">()</span> <span class="p">{</span>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Javascript</h3>
+                        </div>
+                        <div class="panel-body">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">TicketsViewModel</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;live-demo&quot;</span><span class="p">);</span>
-  
+
   <span class="k">this</span><span class="p">.</span><span class="nx">tickets</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Economy&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">199.95</span> <span class="p">},</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Business&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">449.22</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;First Class&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">1199.99</span> <span class="p">}</span>
-  <span class="p">];</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;First Class&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">1199.99</span> <span class="p">}];</span>
 
   <span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">resetTicketCommand</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="k">this</span><span class="p">.</span><span class="nx">resetTicketCommand</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>            
     <span class="nx">self</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-    <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="k">return</span> <span class="nx">ticket</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">}));</span>
-  <span class="p">}</span>
+  <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">ticket</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> 
+  <span class="p">}));</span>
+<span class="p">}</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nx">node</span><span class="p">);</span></code></pre></div>  
-			</div>
-		</div>
-		</div>
-	</div>
-</div>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">TicketsViewModel</span><span class="p">(),</span> <span class="nx">node</span><span class="p">);</span></code></pre></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
             <div id="footer" class="content-panel">
