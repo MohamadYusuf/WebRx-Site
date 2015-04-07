@@ -5,7 +5,7 @@ title: WebRx - Examples
 {% include sample-warning.html %}
 # WebRx Examples
 
-This page provides some code-examples to get you started. Feel free to fork and tinker with any of the samples at CodePen.
+This page provides some code-examples to get you started. Feel free to fork any of the samples at CodePen and tinker with it to your heart's content.
 
 ## Hello World
 
@@ -34,8 +34,8 @@ If you want to detect and respond to changes on one object, you'd use observable
 
 This example demonstrates some of the capabilities of WebRx's built-in [client-side router](/docs/routing-overview.html#start).
 
-<p data-height="500" data-theme-id="0" data-slug-hash="OPYZOq" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/OPYZOq/'>OPYZOq</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+To observe <code>window.location</code> reflecting state-routes, click here <a target="_blank" href="/examples/router-demo/index.html">to launch this example in another tab</a>.
 
-<p>To observe <code>window.location</code> reflecting state-routes, click here <a target="_blank" href="/examples/router-demo/index.html">to launch this example in another tab</a>.</p>
+<p data-height="500" data-theme-id="0" data-slug-hash="OPYZOq" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/OPYZOq/'>OPYZOq</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
