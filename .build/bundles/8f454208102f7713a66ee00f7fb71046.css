@@ -305,9 +305,9 @@ pre code {
     line-height: 26px;
 }
 
-#header form {
-    display: inline-block;
-    margin-right: 0.5em;
+#header a.btn {
+    text-decoration: none;
+    text-shadow: none;
 }
 
 #header form button {
