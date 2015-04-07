@@ -38,4 +38,17 @@ To observe <code>window.location</code> reflecting state-routes, click here <a t
 
 <p data-height="500" data-theme-id="0" data-slug-hash="OPYZOq" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/OPYZOq/'>OPYZOq</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
+## DuckDuckGo Search
+
+Here we utilize [DuckDuckGo's](https://duckduckgo.com/) REST Api to carry out Web-Searches. This short but concise example ensures that the following conditions are met:
+
+- No search occurs until the query actually changes
+- User input can only trigger a search API request every 200 miliseconds 
+- Only the response from the most recent request will be considered
+- The result-list is limited to items that can be displayed using the chosen template
+- A maximum of ten items will be shown
+
+<p data-height="700" data-theme-id="0" data-slug-hash="ogRydr" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/ogRydr/'>WebRx - DuckDuckGo Search Example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
