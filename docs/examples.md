@@ -21,7 +21,7 @@ catch <code>onchange</code> events. WebRx knows when to update the UI.
 <code>Output properties</code> are observable properties that are backed by an Rx-Observable. Output properties are read-only, but will still fire change notifications.
 This example displays a countdown-timer that counts down from 10 to 1 at a one second interval:
 
-<iframe width="100%" height="100" src="http://jsfiddle.net/oliverw/1nwsased/embedded/result,js,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="200" src="http://jsfiddle.net/oliverw/1nwsased/embedded/result,js,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
 ## Observable Lists
@@ -32,4 +32,4 @@ This example displays a countdown-timer that counts down from 10 to 1 at a one s
 
 This example demonstrates some of the capabilities of WebRx's built-in [client-side router](/docs/routing-overview.html#start).
 
-<iframe width="100%" height="600" src="//jsfiddle.net/oliverw/26j1bbnj/embedded/result,js,html,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<a target="_blank" class="btn btn-success" href="/examples/router-demo/index.html">Launch</a>&nbsp;or&nbsp;<a target="_blank" class="btn btn-primary" href="https://jsfiddle.net/oliverw/26j1bbnj/">Play with the source</a>
