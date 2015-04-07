@@ -100,6 +100,7 @@ disp.dispose();								// list resumes sending change notifications
 
 ## Live Example
 
-<iframe class="hidden-xs" width="100%" height="300" src="http://jsfiddle.net/oliverw/z51a6bsg/embedded/result,js,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<p data-height="268" data-theme-id="0" data-slug-hash="KwLRWK" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/KwLRWK/'>KwLRWK</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 <a class="next-topic" href="/docs/commands.html#start">Next: Commands</a>
