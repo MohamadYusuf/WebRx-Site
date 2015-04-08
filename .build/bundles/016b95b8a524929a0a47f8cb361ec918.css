@@ -295,6 +295,15 @@ pre code {
   background-color: #f8f8f8 !important;
 }
 
+#content1 .panel-default,
+#content2 .panel-default {
+    border-color: rgb(22, 100, 151);
+}
+
+code {
+    background-color: transparent;
+}
+
 #logoh1 {
   display: none;
 }
@@ -412,15 +421,6 @@ pre code {
 
 .docs .body ul li {
   margin-bottom: 0.5em;
-}
-
-.docs .body pre {
-  margin: 0 0 20px;
-}
-
-.docs .body :not(.hightlight) code {
-    background-color: #e8e8e8;
-    color: #333333;
 }
 
 .docs .body .panel-body ul {
@@ -586,10 +586,6 @@ div.post .share {
   overflow: hidden;
 }
 
-pre {
-  background-color: #e8e8e8;
-}
-
 #logo span {
   padding-left: 0.3em;
   color: #f0f0f0;
@@ -615,13 +611,6 @@ pre {
   border-color: transparent;
 }
 
-.highlight pre {
-    border-radius: 0;
-    -ms-border-radius: 0;
-    border: 0;
-    border-left: 6px solid #428bca;
-}
-
 #live-demo select,
 #live-demo button {
   height: 1.8em;
@@ -630,19 +619,6 @@ pre {
 
 #live-demo select {
   width: 8em;
-}
-
-.panel-body .highlight pre {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-}
-
-.panel-default .panel-body,
-.panel-default .panel-body .highlight pre {
-  background-color: #white;
 }
 
 #features {
