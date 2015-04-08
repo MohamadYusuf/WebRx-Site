@@ -210,8 +210,8 @@
 
   <span class="k">this</span><span class="p">.</span><span class="nx">resetTicketCommand</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>            
     <span class="nx">self</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-  <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">ticket</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> 
+    <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">ticket</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">;</span> 
   <span class="p">}));</span>
 <span class="p">}</span>
 
