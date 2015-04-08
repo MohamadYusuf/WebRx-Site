@@ -203,9 +203,11 @@
   <span class="k">this</span><span class="p">.</span><span class="nx">tickets</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Economy&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">199.95</span> <span class="p">},</span>
     <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Business&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">449.22</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;First Class&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">1199.99</span> <span class="p">}];</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;First Class&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="o">:</span> <span class="mf">1199.99</span> <span class="p">}</span>
+  <span class="p">];</span>
 
   <span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
+
   <span class="k">this</span><span class="p">.</span><span class="nx">resetTicketCommand</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>            
     <span class="nx">self</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
   <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chosenTicket</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ticket</span><span class="p">)</span> <span class="p">{</span>
