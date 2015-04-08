@@ -176,8 +176,8 @@ function TicketsViewModel() {
 
   this.resetTicketCommand = wx.command(function() {            
     self.chosenTicket(null);
-  }, wx.whenAny(this.chosenTicket, function(ticket) {
-    return ticket != null; 
+    }, wx.whenAny(this.chosenTicket, function(ticket) {
+      return ticket != null; 
   }));
 }
 
