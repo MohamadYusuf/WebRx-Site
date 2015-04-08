@@ -78,7 +78,7 @@ meta_description: WebRx - Dynamic JavaScript User-Interfaces with ReactiveX
                         Installation
                     </h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body syntax-theme-grey">
                     <ul id="install">
                         <li>
                             Installation via NuGet
@@ -137,40 +137,36 @@ meta_description: WebRx - Dynamic JavaScript User-Interfaces with ReactiveX
                         </div>
                     </div>
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default syntax-theme-cobalt">
                         <div class="panel-heading">
                             <h3 class="panel-title">HTML</h3>
                         </div>
                         <div class="panel-body">
 {% highlight html %}
-<div id="live-demo">
-  <p>
-    Choose a ticket class:
-    <wx-select params="items: tickets,
-selectedValue: @chosenTicket, itemText: 'name'">
-    </wx-select>
+<p>
+  Choose a ticket class:
+  <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'">
+  </wx-select>
 
-    <button data-bind="command: resetTicketCommand">Clear</button>
-  </p>
+  <button data-bind="command: resetTicketCommand">Clear</button>
+</p>
 
-  <p data-bind="with: chosenTicket">
-    You have chosen <b data-bind="text: name"></b>
-    for $<span data-bind="text: price"></span>
-  </p>
-</div>
+<p data-bind="with: chosenTicket">
+  You have chosen <b data-bind="text: name"></b>
+  for $<span data-bind="text: price"></span>
+</p>
 {% endhighlight %}
                         </div>
                     </div>
 
-                    <div class="panel panel-default">
+                    <div class="panel panel-default syntax-theme-cobalt">
                         <div class="panel-heading">
                             <h3 class="panel-title">Javascript</h3>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body code">
 {% highlight javascript %}
 function TicketsViewModel() {
   var self = this;
-  var node = document.getElementById("live-demo");
 
   this.tickets = [
     { name: "Economy", price: 199.95 },
@@ -185,7 +181,7 @@ function TicketsViewModel() {
   }));
 }
 
-wx.applyBindings(new TicketsViewModel(), node);
+wx.applyBindings(new TicketsViewModel());
 {% endhighlight %}
                         </div>
                     </div>
