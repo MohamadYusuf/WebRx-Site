@@ -38,9 +38,11 @@ To observe <code>window.location</code> reflecting state-routes, click here <a t
 
 <p data-height="500" data-theme-id="0" data-slug-hash="OPYZOq" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/OPYZOq/'>OPYZOq</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
-## DuckDuckGo Search
+## Search Engine
 
-Here we utilize [DuckDuckGo's](https://duckduckgo.com/) REST Api to carry out Web-Searches. This short but concise example ensures that the following conditions are met:
+Here we utilize [DuckDuckGo's](https://duckduckgo.com/) REST Api to carry out Web-Searches.  
+
+### Implementation Details:
 
 - No search occurs until the query actually changes
 - User input can only trigger a search API request every 200 miliseconds 
