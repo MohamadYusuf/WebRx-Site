@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>INotifyListChanged | WebRx</title>
+	<title>IObservableReadOnlyList | WebRx</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -63,10 +63,10 @@
 					<a href="../modules/_interfaces_.wx.html">wx</a>
 				</li>
 				<li>
-					<a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>
+					<a href="_interfaces_.wx.iobservablereadonlylist.html">IObservableReadOnlyList</a>
 				</li>
 			</ul>
-			<h1>Interface INotifyListChanged&lt;T&gt;</h1>
+			<h1>Interface IObservableReadOnlyList&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -76,8 +76,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>INotifyListChanged of T provides notifications when the contents
-						of a list are changed (items are added/removed/moved).</p>
+						<p>Represents a collection of objects that can be individually accessed by index.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>interface</dt>
@@ -97,10 +96,18 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">INotifyListChanged</span>
+						<a href="_interfaces_.wx.inotifylistchanged.html" class="tsd-signature-type">INotifyListChanged</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>
+					</li>
+					<li>
+						<a href="_interfaces_.wx.inotifylistitemchanged.html" class="tsd-signature-type">INotifyListItemChanged</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="_interfaces_.wx.iobservablereadonlylist.html" class="tsd-signature-type">IObservableReadOnlyList</a>
+								<span class="target">IObservableReadOnlyList</span>
+								<ul class="tsd-hierarchy">
+									<li>
+										<a href="_interfaces_.wx.iobservablelist.html" class="tsd-signature-type">IObservableList</a>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</li>
@@ -113,26 +120,31 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#beforeitemreplaced" class="tsd-kind-icon">before<wbr>Item<wbr>Replaced</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsadded" class="tsd-kind-icon">before<wbr>Items<wbr>Added</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsmoved" class="tsd-kind-icon">before<wbr>Items<wbr>Moved</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsremoved" class="tsd-kind-icon">before<wbr>Items<wbr>Removed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#isemptychanged" class="tsd-kind-icon">is<wbr>Empty<wbr>Changed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#itemreplaced" class="tsd-kind-icon">item<wbr>Replaced</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#itemsadded" class="tsd-kind-icon">items<wbr>Added</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#itemsmoved" class="tsd-kind-icon">items<wbr>Moved</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#itemsremoved" class="tsd-kind-icon">items<wbr>Removed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#lengthchanged" class="tsd-kind-icon">length<wbr>Changed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#lengthchanging" class="tsd-kind-icon">length<wbr>Changing</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#listchanged" class="tsd-kind-icon">list<wbr>Changed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#listchanging" class="tsd-kind-icon">list<wbr>Changing</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#shouldreset" class="tsd-kind-icon">should<wbr>Reset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemreplaced" class="tsd-kind-icon">before<wbr>Item<wbr>Replaced</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemsadded" class="tsd-kind-icon">before<wbr>Items<wbr>Added</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemsmoved" class="tsd-kind-icon">before<wbr>Items<wbr>Moved</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemsremoved" class="tsd-kind-icon">before<wbr>Items<wbr>Removed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#changetrackingenabled" class="tsd-kind-icon">change<wbr>Tracking<wbr>Enabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#isemptychanged" class="tsd-kind-icon">is<wbr>Empty<wbr>Changed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#itemchanged" class="tsd-kind-icon">item<wbr>Changed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#itemchanging" class="tsd-kind-icon">item<wbr>Changing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#itemreplaced" class="tsd-kind-icon">item<wbr>Replaced</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#itemsadded" class="tsd-kind-icon">items<wbr>Added</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#itemsmoved" class="tsd-kind-icon">items<wbr>Moved</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#itemsremoved" class="tsd-kind-icon">items<wbr>Removed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.iobservablereadonlylist.html#length" class="tsd-kind-icon">length</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#lengthchanged" class="tsd-kind-icon">length<wbr>Changed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#lengthchanging" class="tsd-kind-icon">length<wbr>Changing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#listchanged" class="tsd-kind-icon">list<wbr>Changed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#listchanging" class="tsd-kind-icon">list<wbr>Changing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#shouldreset" class="tsd-kind-icon">should<wbr>Reset</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.inotifylistchanged.html#suppresschangenotifications" class="tsd-kind-icon">suppress<wbr>Change<wbr>Notifications</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.iobservablereadonlylist.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_.wx.iobservablereadonlylist.html#suppresschangenotifications" class="tsd-kind-icon">suppress<wbr>Change<wbr>Notifications</a></li>
 							</ul>
 						</section>
 					</div>
@@ -140,11 +152,12 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="beforeitemreplaced" class="tsd-anchor"></a>
 					<h3>before<wbr>Item<wbr>Replaced</h3>
 					<div class="tsd-signature tsd-kind-icon">before<wbr>Item<wbr>Replaced<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemreplaced">beforeItemReplaced</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:163</li>
 						</ul>
@@ -155,11 +168,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="beforeitemsadded" class="tsd-anchor"></a>
 					<h3>before<wbr>Items<wbr>Added</h3>
 					<div class="tsd-signature tsd-kind-icon">before<wbr>Items<wbr>Added<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsadded">beforeItemsAdded</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:132</li>
 						</ul>
@@ -170,11 +184,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="beforeitemsmoved" class="tsd-anchor"></a>
 					<h3>before<wbr>Items<wbr>Moved</h3>
 					<div class="tsd-signature tsd-kind-icon">before<wbr>Items<wbr>Moved<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsmoved">beforeItemsMoved</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:151</li>
 						</ul>
@@ -187,11 +202,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="beforeitemsremoved" class="tsd-anchor"></a>
 					<h3>before<wbr>Items<wbr>Removed</h3>
 					<div class="tsd-signature tsd-kind-icon">before<wbr>Items<wbr>Removed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsremoved">beforeItemsRemoved</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:144</li>
 						</ul>
@@ -203,11 +219,31 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="changetrackingenabled" class="tsd-anchor"></a>
+					<h3>change<wbr>Tracking<wbr>Enabled</h3>
+					<div class="tsd-signature tsd-kind-icon">change<wbr>Tracking<wbr>Enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistitemchanged.html">INotifyListItemChanged</a>.<a href="_interfaces_.wx.inotifylistitemchanged.html#changetrackingenabled">changeTrackingEnabled</a></p>
+						<ul>
+							<li>Defined in Interfaces.ts:102</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Enables the ItemChanging and ItemChanged properties; when this is
+								enabled, whenever a property on any object implementing
+								IReactiveNotifyPropertyChanged changes, the change will be
+							rebroadcast through ItemChanging/ItemChanged.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="isemptychanged" class="tsd-anchor"></a>
 					<h3>is<wbr>Empty<wbr>Changed</h3>
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Empty<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#isemptychanged">isEmptyChanged</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:183</li>
 						</ul>
@@ -218,11 +254,48 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="itemchanged" class="tsd-anchor"></a>
+					<h3>item<wbr>Changed</h3>
+					<div class="tsd-signature tsd-kind-icon">item<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ipropertychangedeventargs.html" class="tsd-signature-type">IPropertyChangedEventArgs</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistitemchanged.html">INotifyListItemChanged</a>.<a href="_interfaces_.wx.inotifylistitemchanged.html#itemchanged">itemChanged</a></p>
+						<ul>
+							<li>Defined in Interfaces.ts:94</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Provides Item Changed notifications for any item in collection that
+								implements IReactiveNotifyPropertyChanged. This is only enabled when
+							ChangeTrackingEnabled is set to True.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="itemchanging" class="tsd-anchor"></a>
+					<h3>item<wbr>Changing</h3>
+					<div class="tsd-signature tsd-kind-icon">item<wbr>Changing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ipropertychangedeventargs.html" class="tsd-signature-type">IPropertyChangedEventArgs</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistitemchanged.html">INotifyListItemChanged</a>.<a href="_interfaces_.wx.inotifylistitemchanged.html#itemchanging">itemChanging</a></p>
+						<ul>
+							<li>Defined in Interfaces.ts:87</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Provides Item Changing notifications for any item in collection that
+								implements IReactiveNotifyPropertyChanged. This is only enabled when
+							ChangeTrackingEnabled is set to True.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="itemreplaced" class="tsd-anchor"></a>
 					<h3>item<wbr>Replaced</h3>
 					<div class="tsd-signature tsd-kind-icon">item<wbr>Replaced<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#itemreplaced">itemReplaced</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:168</li>
 						</ul>
@@ -233,11 +306,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="itemsadded" class="tsd-anchor"></a>
 					<h3>items<wbr>Added</h3>
 					<div class="tsd-signature tsd-kind-icon">items<wbr>Added<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#itemsadded">itemsAdded</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:127</li>
 						</ul>
@@ -250,11 +324,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="itemsmoved" class="tsd-anchor"></a>
 					<h3>items<wbr>Moved</h3>
 					<div class="tsd-signature tsd-kind-icon">items<wbr>Moved<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#itemsmoved">itemsMoved</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:158</li>
 						</ul>
@@ -267,11 +342,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="itemsremoved" class="tsd-anchor"></a>
 					<h3>items<wbr>Removed</h3>
 					<div class="tsd-signature tsd-kind-icon">items<wbr>Removed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-signature-type">IListChangeInfo</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#itemsremoved">itemsRemoved</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:138</li>
 						</ul>
@@ -284,10 +360,21 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="length" class="tsd-anchor"></a>
+					<h3>length</h3>
+					<div class="tsd-signature tsd-kind-icon">length<span class="tsd-signature-symbol">:</span> <a href="_interfaces_.wx.iobservableproperty.html" class="tsd-signature-type">IObservableProperty</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in Interfaces.ts:206</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="lengthchanged" class="tsd-anchor"></a>
 					<h3>length<wbr>Changed</h3>
 					<div class="tsd-signature tsd-kind-icon">length<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#lengthchanged">lengthChanged</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:178</li>
 						</ul>
@@ -298,11 +385,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="lengthchanging" class="tsd-anchor"></a>
 					<h3>length<wbr>Changing</h3>
 					<div class="tsd-signature tsd-kind-icon">length<wbr>Changing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#lengthchanging">lengthChanging</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:173</li>
 						</ul>
@@ -313,11 +401,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="listchanged" class="tsd-anchor"></a>
 					<h3>list<wbr>Changed</h3>
 					<div class="tsd-signature tsd-kind-icon">list<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#listchanged">listChanged</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:120</li>
 						</ul>
@@ -328,11 +417,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="listchanging" class="tsd-anchor"></a>
 					<h3>list<wbr>Changing</h3>
 					<div class="tsd-signature tsd-kind-icon">list<wbr>Changing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#listchanging">listChanging</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:115</li>
 						</ul>
@@ -343,11 +433,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="shouldreset" class="tsd-anchor"></a>
 					<h3>should<wbr>Reset</h3>
 					<div class="tsd-signature tsd-kind-icon">should<wbr>Reset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#shouldreset">shouldReset</a></p>
 						<ul>
 							<li>Defined in Interfaces.ts:193</li>
 						</ul>
@@ -366,14 +457,38 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="get" class="tsd-anchor"></a>
+					<h3>get</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in Interfaces.ts:207</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="suppresschangenotifications" class="tsd-anchor"></a>
 					<h3>suppress<wbr>Change<wbr>Notifications</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">suppress<wbr>Change<wbr>Notifications<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IDisposable</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_interfaces_.wx.inotifylistchanged.html">INotifyListChanged</a>.<a href="_interfaces_.wx.inotifylistchanged.html#suppresschangenotifications">suppressChangeNotifications</a></p>
 								<ul>
 									<li>Defined in Interfaces.ts:198</li>
 								</ul>
@@ -479,60 +594,9 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_interfaces_.wx.inodestate.html" class="tsd-kind-icon">INode<wbr>State</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_interfaces_.wx.inotifylistchanged.html" class="tsd-kind-icon">INotify<wbr>List<wbr>Changed</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemreplaced" class="tsd-kind-icon">before<wbr>Item<wbr>Replaced</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsadded" class="tsd-kind-icon">before<wbr>Items<wbr>Added</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsmoved" class="tsd-kind-icon">before<wbr>Items<wbr>Moved</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#beforeitemsremoved" class="tsd-kind-icon">before<wbr>Items<wbr>Removed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#isemptychanged" class="tsd-kind-icon">is<wbr>Empty<wbr>Changed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#itemreplaced" class="tsd-kind-icon">item<wbr>Replaced</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#itemsadded" class="tsd-kind-icon">items<wbr>Added</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#itemsmoved" class="tsd-kind-icon">items<wbr>Moved</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#itemsremoved" class="tsd-kind-icon">items<wbr>Removed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#lengthchanged" class="tsd-kind-icon">length<wbr>Changed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#lengthchanging" class="tsd-kind-icon">length<wbr>Changing</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#listchanged" class="tsd-kind-icon">list<wbr>Changed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#listchanging" class="tsd-kind-icon">list<wbr>Changing</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#shouldreset" class="tsd-kind-icon">should<wbr>Reset</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.inotifylistchanged.html#suppresschangenotifications" class="tsd-kind-icon">suppress<wbr>Change<wbr>Notifications</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_interfaces_.wx.inotifylistitemchanged.html" class="tsd-kind-icon">INotify<wbr>List<wbr>Item<wbr>Changed</a>
 					</li>
@@ -545,9 +609,75 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_interfaces_.wx.iobservableproperty.html" class="tsd-kind-icon">IObservable<wbr>Property</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="_interfaces_.wx.iobservablereadonlylist.html" class="tsd-kind-icon">IObservable<wbr>Read<wbr>Only<wbr>List</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemreplaced" class="tsd-kind-icon">before<wbr>Item<wbr>Replaced</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemsadded" class="tsd-kind-icon">before<wbr>Items<wbr>Added</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemsmoved" class="tsd-kind-icon">before<wbr>Items<wbr>Moved</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#beforeitemsremoved" class="tsd-kind-icon">before<wbr>Items<wbr>Removed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#changetrackingenabled" class="tsd-kind-icon">change<wbr>Tracking<wbr>Enabled</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#isemptychanged" class="tsd-kind-icon">is<wbr>Empty<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#itemchanged" class="tsd-kind-icon">item<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#itemchanging" class="tsd-kind-icon">item<wbr>Changing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#itemreplaced" class="tsd-kind-icon">item<wbr>Replaced</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#itemsadded" class="tsd-kind-icon">items<wbr>Added</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#itemsmoved" class="tsd-kind-icon">items<wbr>Moved</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#itemsremoved" class="tsd-kind-icon">items<wbr>Removed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#length" class="tsd-kind-icon">length</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#lengthchanged" class="tsd-kind-icon">length<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#lengthchanging" class="tsd-kind-icon">length<wbr>Changing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#listchanged" class="tsd-kind-icon">list<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#listchanging" class="tsd-kind-icon">list<wbr>Changing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#shouldreset" class="tsd-kind-icon">should<wbr>Reset</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#get" class="tsd-kind-icon">get</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_.wx.iobservablereadonlylist.html#suppresschangenotifications" class="tsd-kind-icon">suppress<wbr>Change<wbr>Notifications</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="_interfaces_.wx.ipropertychangedeventargs.html" class="tsd-kind-icon">IProperty<wbr>Changed<wbr>Event<wbr>Args</a>
 					</li>
