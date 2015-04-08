@@ -172,6 +172,7 @@ function TicketsViewModel() {
     { name: "First Class", price: 1199.99 }];
 
   this.chosenTicket = wx.property();
+
   this.resetTicketCommand = wx.command(function() {            
     self.chosenTicket(null);
   }, wx.whenAny(this.chosenTicket, function(ticket) {
