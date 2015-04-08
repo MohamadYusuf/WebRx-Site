@@ -52,6 +52,11 @@ pre code {
   font-size: 110%;
 }
 
+code {
+  background-color: #e8e8e8;
+    color: black;
+}
+
 #rx-link {
   margin-left: 1em;
 }
@@ -71,10 +76,6 @@ pre code {
 #content1 .panel-default,
 #content2 .panel-default {
     border-color: rgb(22, 100, 151);
-}
-
-code {
-    background-color: transparent;
 }
 
 #logoh1 {
