@@ -179,13 +179,11 @@
                             <h3 class="panel-title">HTML</h3>
                         </div>
                         <div class="panel-body">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
-  Choose a ticket class:
-  <span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets, selectedValue: @chosenTicket, itemText: &#39;name&#39;&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/wx-select&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">Choose a ticket class:
+<span class="nt">&lt;wx-select</span> <span class="na">params=</span><span class="s">&quot;items: tickets, selectedValue: @chosenTicket, itemText: &#39;name&#39;&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/wx-select&gt;</span>
 
-  <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: resetTicketCommand&quot;</span><span class="nt">&gt;</span>Clear<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: resetTicketCommand&quot;</span><span class="nt">&gt;</span>Clear<span class="nt">&lt;/button&gt;</span>
 
 <span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">&quot;with: chosenTicket&quot;</span><span class="nt">&gt;</span>
   You have chosen <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/b&gt;</span>

@@ -143,13 +143,11 @@ meta_description: WebRx - Dynamic JavaScript User-Interfaces with ReactiveX
                         </div>
                         <div class="panel-body">
 {% highlight html %}
-<p>
-  Choose a ticket class:
-  <wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'">
-  </wx-select>
+Choose a ticket class:
+<wx-select params="items: tickets, selectedValue: @chosenTicket, itemText: 'name'">
+</wx-select>
 
-  <button data-bind="command: resetTicketCommand">Clear</button>
-</p>
+<button data-bind="command: resetTicketCommand">Clear</button>
 
 <p data-bind="with: chosenTicket">
   You have chosen <b data-bind="text: name"></b>
