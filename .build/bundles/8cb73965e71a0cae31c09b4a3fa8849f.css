@@ -249,7 +249,13 @@ body.wx-unsupported .sample-warning {
     background-color: rgb(22, 100, 151);
 }
 
-#content2 .syntax-theme-cobalt pre {
+.syntax-theme-monokai .panel-body,
+.syntax-theme-monokai pre {
+    background-color: #49483e;
+}
+
+#content2 .syntax-theme-cobalt pre,
+#content2 .syntax-theme-monokai pre {
     padding: 0;
     margin: 0;
     border: 0;

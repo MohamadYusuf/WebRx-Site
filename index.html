@@ -137,7 +137,7 @@ meta_description: WebRx - Dynamic JavaScript User-Interfaces with ReactiveX
                         </div>
                     </div>
 
-                    <div class="panel panel-default syntax-theme-cobalt">
+                    <div class="panel panel-default syntax-theme-monokai">
                         <div class="panel-heading">
                             <h3 class="panel-title">HTML</h3>
                         </div>
@@ -157,7 +157,7 @@ Choose a ticket class:
                         </div>
                     </div>
 
-                    <div class="panel panel-default syntax-theme-cobalt">
+                    <div class="panel panel-default syntax-theme-monokai">
                         <div class="panel-heading">
                             <h3 class="panel-title">Javascript</h3>
                         </div>
@@ -169,18 +169,17 @@ function TicketsViewModel() {
   this.tickets = [
     { name: "Economy", price: 199.95 },
     { name: "Business", price: 449.22 },
-    { name: "First Class", price: 1199.99 }
-  ];
+    { name: "First Class", price: 1199.99 }];
 
   this.chosenTicket = wx.property();
 
   this.resetTicketCommand = wx.command(function() {            
     self.chosenTicket(null);
-    }, wx.whenAny(this.chosenTicket, function(ticket) {
+  }, wx.whenAny(this.chosenTicket, 
+    function(ticket) {
       return ticket != null; 
   }));
 }
-
 wx.applyBindings(new TicketsViewModel());
 {% endhighlight %}
                         </div>
