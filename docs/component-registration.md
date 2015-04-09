@@ -373,13 +373,12 @@ For even better encapsulation, you can package a component into a single self-de
 ```javascript
 wx.app.component('my-component', { require: 'some/module' });
 ```
-
 Notice that no viewmodel/template pair is specified. The AMD module itself can provide a viewmodel/template pair, 
-using any of the definition formats listed above. For example, the file some/module.js could be declared as:
+using any of the definition formats listed above. For example, the file <code>some/module.js</code> could be declared as:
 
 ```javascript
 // AMD module 'some/module.js' encapsulating the configuration for a component
-define(['WebRx'], function(ko) {
+define(['webrx'], function(wx) {
     function MyComponentViewModel(params) {
         this.personName = wx.property(params.name);
     }
@@ -396,13 +395,13 @@ define(['WebRx'], function(ko) {
 What tends to be most useful in practice is creating AMD modules that have inline viewmodel classes, 
 and explicitly take AMD dependencies on external template files.
 
-For example, if the following is in a file at path/my-component.js,
+For example, if the following is in a file at <code>path/my-component.js</code>,
 
 ```javascript
 // Recommended AMD module pattern for a WebRx component that:
 //  - Can be referenced with just a single 'require' declaration
 //  - Can be included in a bundle using the r.js optimizer
-define(['WebRx', 'text!./my-component.html'], function(ko, htmlString) {
+define(['webrx', 'text!./my-component.html'], function(wx, htmlString) {
     function MyComponentViewModel(params) {
         // Set up properties, etc.
     }

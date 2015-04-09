@@ -476,9 +476,9 @@ so you can control what is preloaded and what is loaded on demand.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module&#39;</span> <span class="p">});</span>
 </code></pre></div>
 <p>Notice that no viewmodel/template pair is specified. The AMD module itself can provide a viewmodel/template pair, 
-using any of the definition formats listed above. For example, the file some/module.js could be declared as:</p>
+using any of the definition formats listed above. For example, the file <code>some/module.js</code> could be declared as:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module &#39;some/module.js&#39; encapsulating the configuration for a component</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">MyComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">personName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span>
@@ -494,11 +494,11 @@ using any of the definition formats listed above. For example, the file some/mod
 <p>What tends to be most useful in practice is creating AMD modules that have inline viewmodel classes, 
 and explicitly take AMD dependencies on external template files.</p>
 
-<p>For example, if the following is in a file at path/my-component.js,</p>
+<p>For example, if the following is in a file at <code>path/my-component.js</code>,</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Recommended AMD module pattern for a WebRx component that:</span>
 <span class="c1">//  - Can be referenced with just a single &#39;require&#39; declaration</span>
 <span class="c1">//  - Can be included in a bundle using the r.js optimizer</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;WebRx&#39;</span><span class="p">,</span> <span class="s1">&#39;text!./my-component.html&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ko</span><span class="p">,</span> <span class="nx">htmlString</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">,</span> <span class="s1">&#39;text!./my-component.html&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">,</span> <span class="nx">htmlString</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">MyComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Set up properties, etc.</span>
     <span class="p">}</span>
