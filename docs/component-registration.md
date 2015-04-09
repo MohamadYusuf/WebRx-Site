@@ -148,7 +148,7 @@ The returned AMD module object can be in any of the forms allowed for viewmodels
 
 ```javascript
 // AMD module whose value is a component viewmodel constructor
-define(['WebRx'], function(ko) {
+define(['webrx'], function(wx) {
     function MyViewModel() {
         // ...
     }
@@ -161,7 +161,7 @@ define(['WebRx'], function(ko) {
 
 ```javascript
 // AMD module whose value is a shared component viewmodel instance
-define(['WebRx'], function(ko) {
+define(['webrx'], function(wx) {
     function MyViewModel() {
         // ...
     }
@@ -174,7 +174,7 @@ define(['WebRx'], function(ko) {
 
 ```javascript
 // AMD module whose value is a 'createViewModel' function
-define(['WebRx'], function(ko) {
+define(['webrx'], function(wx) {
     function myViewModelFactory(params, componentInfo) {
         // return something
     }
@@ -188,7 +188,7 @@ define(['WebRx'], function(ko) {
 ```javascript
 // AMD module whose value is a reference to a different AMD module,
 // which in turn can be in any of these formats
-define(['WebRx'], function(ko) {
+define(['webrx'], function(wx) {
     return { module: 'some/other/module' };
 });
 ```
