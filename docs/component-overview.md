@@ -28,7 +28,7 @@ To get started, you can register a component using wx.components.register (techn
 but it's the easiest way to get started). A component definition specifies a view-model and template. For example:
 
 ```javascript
-wx.app.registerComponent('like-widget', {
+wx.app.component('like-widget', {
     viewModel: function(params) {
         // Data: value is either null, 'like', or 'dislike'
         this.chosenValue = params.value;
@@ -66,7 +66,7 @@ component binding or using a custom element. Here's a live example that uses it 
 </div>
   
 <script type="text/javascript">
-wx.app.registerComponent('like-widget', {
+wx.app.component('like-widget', {
     viewModel: function(params) {
         // Data: value is either null, 'like', or 'dislike'
         this.chosenValue = params.value;
@@ -143,7 +143,7 @@ can either be preloaded (possibly bundled/minified), or incrementally loaded as 
 Here's an example configuration:
 
 ```javascript
-wx.app.registerComponent('like-or-dislike', {
+wx.app.component('like-or-dislike', {
     viewModel: { require: 'files/component-like-widget' },
     template: { require: 'text!files/component-like-widget.html' }
 });

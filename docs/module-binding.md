@@ -25,15 +25,15 @@ the application-module will be consulted.
 </div>
   
 <script type="text/javascript">
-wx.app.registerComponent('app-hello', {
+wx.app.component('app-hello', {
     template: '<h3>Hello from Application Module</h3>'
 });
 
-wx.module("module1").registerComponent('hello', {
+wx.module("module1").component('hello', {
     template: '<h3>Hello from Module 1</h3>'
 });
 
-wx.module("module2").registerComponent('hello', {
+wx.module("module2").component('hello', {
     template: '<h3>Hello from Module 2</h3>'
 });
 
@@ -59,7 +59,7 @@ wx.applyBindings(undefined, document.getElementById('module-example1'));
 **Source code: View model**
 
 ```javascript
-wx.app.registerComponent('app-hello', {
+wx.app.component('app-hello', {
     template: '<h3>Hello from Application Module</h3>'
 });
 
