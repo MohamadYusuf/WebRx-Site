@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/8cb73965e71a0cae31c09b4a3fa8849f.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e530bf99ac7b48105ed9ae73dda5d839.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -201,7 +201,7 @@ markup with custom element names. </p>
 
 <p>To get started, you can register a component using wx.components.register (technically, registration is optional, 
 but it&#39;s the easiest way to get started). A component definition specifies a view-model and template. For example:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">viewModel</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Data: value is either null, &#39;like&#39;, or &#39;dislike&#39;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">chosenValue</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
@@ -238,7 +238,7 @@ component binding or using a custom element. Here&#39;s a live example that uses
   
 
 <script type="text/javascript">
-wx.app.component('like-widget', {
+wx.app.registerComponent('like-widget', {
     viewModel: function(params) {
         // Data: value is either null, 'like', or 'dislike'
         this.chosenValue = params.value;
@@ -306,7 +306,7 @@ If you configure WebRx to fetch them via an AMD module loader such as <a href="h
 can either be preloaded (possibly bundled/minified), or incrementally loaded as needed.</p>
 
 <p>Here&#39;s an example configuration:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-or-dislike&#39;</span><span class="p">,</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;like-or-dislike&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;files/component-like-widget&#39;</span> <span class="p">},</span>
     <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!files/component-like-widget.html&#39;</span> <span class="p">}</span>
 <span class="p">});</span>

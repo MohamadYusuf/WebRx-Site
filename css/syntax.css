@@ -66,11 +66,6 @@
 .syntax-theme-grey .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .syntax-theme-grey .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
 
-.syntax-theme-monokai pre {
-    background-color: #49483e;
-    border: 0;
-    color: white;
-}
 .syntax-theme-monokai .highlight .hll { background-color: #49483e }
 .syntax-theme-monokai .highlight .c { color: #75715e } /* Comment */
 .syntax-theme-monokai .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
@@ -136,13 +131,6 @@
 .syntax-theme-monokai .highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
 .syntax-theme-monokai .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 
-.syntax-theme-cobalt .panel-body,
-.syntax-theme-cobalt pre {
-    background-color: rgb(22, 100, 151);
-}
-.syntax-theme-cobalt pre {
-    color: white;
-}
 .syntax-theme-cobalt .highlight .hll { background-color: #49483e }
 .syntax-theme-cobalt .highlight .c { color: #a0a0a0 } /* Comment */
 .syntax-theme-cobalt .highlight .err { color: #960050; background-color: #1e0010 } /* Error */

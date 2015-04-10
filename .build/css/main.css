@@ -21,14 +21,16 @@ body.wx-unsupported .sample-warning {
     color: white;
 }
 
-.syntax-theme-cobalt .panel-body,
+.panel.code.syntax-theme-cobalt .panel-body,
 .syntax-theme-cobalt pre {
     background-color: rgb(22, 100, 151);
+    color: white;
 }
 
-.syntax-theme-monokai .panel-body,
+.panel.code.syntax-theme-monokai .panel-body,
 .syntax-theme-monokai pre {
     background-color: #49483e;
+    color: white;
 }
 
 #content2 .syntax-theme-cobalt pre,

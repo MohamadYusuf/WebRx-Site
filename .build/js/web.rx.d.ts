@@ -196,7 +196,7 @@ declare module wx {
         binding(name: string): IBindingHandler;
     }
     interface IComponentTemplateDescriptor {
-        (params: any): string | Node[];
+        (params?: any): string | Node[];
         require?: string;
         promise?: Rx.IPromise<Node[]>;
         resolve?: string;
@@ -210,15 +210,23 @@ declare module wx {
         instance?: any;
     }
     interface IComponent {
-        template: string | Node[] | IComponentTemplateDescriptor;
+        require?: string;
+        resolve?: string;
+        template?: string | Node[] | IComponentTemplateDescriptor;
         viewModel?: IComponentViewModelDescriptor;
         preBindingInit?: string;
         postBindingInit?: string;
     }
+    interface IComponentInstance {
+        template: Node[];
+        viewModel?: any;
+        preBindingInit?: string;
+        postBindingInit?: string;
+    }
     interface IComponentRegistry {
-        component(name: string, handler: IComponent): IComponentRegistry;
-        component(name: string, handler: string): IComponentRegistry;
-        component(name: string): IComponent;
+        registerComponent(name: string, descriptor: IComponent): IComponentRegistry;
+        hasComponent(name: string): boolean;
+        loadComponent(name: string, params?: Object): Rx.Observable<IComponentInstance>;
     }
     interface IExpressionFilterRegistry {
         filter(name: string, filter: IExpressionFilter): IExpressionFilterRegistry;
@@ -355,7 +363,7 @@ declare module wx {
     function nodeListToArray(nodes: NodeList): Node[];
     function nodeChildrenToArray<T>(node: Node): T[];
     function using<T extends Rx.Disposable>(disp: T, action: (disp?: T) => void): void;
-    function observableRequire(module: string): Rx.Observable<any>;
+    function observableRequire<T>(module: string): Rx.Observable<T>;
     function observeObject(target: any, onChanging?: boolean): Rx.Observable<IPropertyChangedEventArgs>;
     function whenAny<TRet, T1>(property1: IObservableProperty<T1>, selector: (T1) => TRet): Rx.Observable<TRet>;
     function whenAny<TRet, T1, T2>(property1: IObservableProperty<T1>, property2: IObservableProperty<T2>, selector: (T1, T2, T3, T4, T5) => TRet): Rx.Observable<TRet>;
@@ -367,6 +375,7 @@ declare module wx {
     function whenAny<TRet, T1, T2, T3, T4, T5, T6, T7, T8>(property1: IObservableProperty<T1>, property2: IObservableProperty<T2>, property3: IObservableProperty<T3>, property4: IObservableProperty<T4>, property5: IObservableProperty<T5>, property6: IObservableProperty<T6>, property7: IObservableProperty<T7>, property8: IObservableProperty<T8>, selector: (T1, T2, T3, T4, T5, T6, T7, T8) => TRet): Rx.Observable<TRet>;
     module internal {
         function throwError(fmt: string, ...args: any[]): void;
+        function emitError(fmt: string, ...args: any[]): void;
     }
 }
 declare module wx {

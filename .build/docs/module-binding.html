@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/8cb73965e71a0cae31c09b4a3fa8849f.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/e530bf99ac7b48105ed9ae73dda5d839.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -199,15 +199,15 @@ the application-module will be consulted.</p>
   
 
 <script type="text/javascript">
-wx.app.component('app-hello', {
+wx.app.registerComponent('app-hello', {
     template: '<h3>Hello from Application Module</h3>'
 });
 
-wx.module("module1").component('hello', {
+wx.module("module1").registerComponent('hello', {
     template: '<h3>Hello from Module 1</h3>'
 });
 
-wx.module("module2").component('hello', {
+wx.module("module2").registerComponent('hello', {
     template: '<h3>Hello from Module 2</h3>'
 });
 
@@ -227,7 +227,7 @@ wx.applyBindings(undefined, document.getElementById('module-example1'));
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p><strong>Source code: View model</strong></p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;app-hello&#39;</span><span class="p">,</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">&#39;app-hello&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Application Module&lt;/h3&gt;&#39;</span>
 <span class="p">});</span>
 

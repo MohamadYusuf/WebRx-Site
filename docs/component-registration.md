@@ -7,13 +7,13 @@ title: WebRx - Component-Registration
 Just like binding-handlers, and expresion-filters, components are [module-scoped-resources](/docs/module-overview.html#start)
 that can either be registered with the global application-module <code>wx.app</code> or a custom-module.
 
-For WebRx to be able to load and instantiate your components, you must register them using <code>wx.app.component()</code>,
+For WebRx to be able to load and instantiate your components, you must register them using <code>wx.app.registerComponent()</code>,
 providing a configuration as described here.
 
 You can register a component as follows:
 
 ```javascript
-wx.app.component('some-component-name', {
+wx.app.registerComponent('some-component-name', {
     viewModel: <see below>,
     template: <see below>
 });
@@ -22,7 +22,7 @@ wx.app.component('some-component-name', {
 or to register the component with a specific [module](/docs/module-overview.html#start):
 
 ```javascript
-wx.module("my-module").component('some-component-name', {
+wx.module("my-module").registerComponent('some-component-name', {
     viewModel: <see below>,
     template: <see below>
 });
@@ -52,7 +52,7 @@ function SomeComponentViewModel(params) {
  
 SomeComponentViewModel.prototype.doSomething = function() { ... };
  
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     viewModel: SomeComponentViewModel,
     template: ...
 });
@@ -74,7 +74,7 @@ wx.injector.register("greeter", [function() {
   };
 }]);
 
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     viewModel: ["greeter", function(greeter, componentParams) {
 		this.otherProperty = greeter.greet;
 	    this.someProperty = params.something;
@@ -88,7 +88,7 @@ wx.app.component('my-component', {
 Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html#start):
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     viewModel: { resolve: "some-injectable-identifier" },
     template: ...
 });
@@ -105,7 +105,7 @@ A view-model can also be resolved through a [Promises/A+](http://promises-aplus.
 [ES6-compliant](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) Promise:
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     viewModel: { promise: promiseInstance },
     template: ...
 });
@@ -124,7 +124,7 @@ If you want all instances of your component to share the same viewmodel object i
 ```javascript
 var sharedViewModelInstance = { ... };
  
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     viewModel: { instance: sharedViewModelInstance },
     template: ...
 });
@@ -138,7 +138,7 @@ If you have an AMD loader (such as require.js) already in your page, then you ca
 For more details about how this works, see how WebRx loads components via AMD below. Example:
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     viewModel: { require: 'some/module/name' },
     template: ...
 });
@@ -211,7 +211,7 @@ For example, the following element:
 … can be used as the template for a component by specifying its ID:
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: { element: 'my-component-template' },
     viewModel: ...
 });
@@ -230,7 +230,7 @@ If you have a reference to a DOM element in your code, you can use it as a conta
 ```javascript
 var elemInstance = document.getElementById('my-component-template');
  
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: { element: elemInstance },
     viewModel: ...
 });
@@ -241,7 +241,7 @@ Again, only the nodes inside the specified element will be cloned for use as the
 ### A string of markup
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: '<h1 data-bind="text: title"></h1>\
                <button data-bind="click: doSomething">Clickety</button>',
     viewModel: ...
@@ -263,7 +263,7 @@ var myNodes = [
     document.getElementById('third-node')
 ];
  
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: myNodes,
     viewModel: ...
 });
@@ -276,7 +276,7 @@ In this case, all the specified nodes (and their descendants) will be cloned and
 If you're building configurations programmatically and you have a DocumentFragment object, you can use it as a component template:
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: someDocumentFragmentInstance,
     viewModel: ...
 });
@@ -291,7 +291,7 @@ A template can also be resolved through a [Promises/A+](http://promises-aplus.gi
 [ES6-compliant](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) Promise:
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: { promise: promiseInstance },
     viewModel: ...
 });
@@ -307,7 +307,7 @@ and even libraries dedicated to them such as Q or when.js.
 Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html#start):
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: { resolve: "some-injectable-identifier" },
     viewModel: ...
 });
@@ -321,7 +321,7 @@ If you have an AMD loader (such as require.js) already in your page, then you ca
 For more details about how this works, see how WebRx loads components via AMD below. Example:
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: { require: 'some/template' },
     viewModel: ...
 });
@@ -330,7 +330,7 @@ wx.app.component('my-component', {
 The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a string of markup, e.g. fetched using require.js's text plugin:
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     template: { require: 'text!path/my-html-file.html' },
     viewModel: ...
 });
@@ -342,7 +342,7 @@ wx.app.component('my-component', {
 When you load a viewmodel or template via require declarations ...
 
 ```javascript
-wx.app.component('my-component', {
+wx.app.registerComponent('my-component', {
     viewModel: { require: 'some/module/name' },
     template: { require: 'text!some-template.html' }
 });
@@ -371,7 +371,7 @@ so you can control what is preloaded and what is loaded on demand.
 For even better encapsulation, you can package a component into a single self-describing AMD module. Then you can reference a component as simply as:
 
 ```javascript
-wx.app.component('my-component', { require: 'some/module' });
+wx.app.registerComponent('my-component', { require: 'some/module' });
 ```
 Notice that no viewmodel/template pair is specified. The AMD module itself can provide a viewmodel/template pair, 
 using any of the definition formats listed above. For example, the file <code>some/module.js</code> could be declared as:
@@ -415,7 +415,7 @@ define(['webrx', 'text!./my-component.html'], function(wx, htmlString) {
 ```
 … and the template markup is in the file path/my-component.html, then you have these benefits:
 
-Applications can reference this trivially, i.e., <code>wx.app.component('my-component', { require: 'path/my-component' });</code>
+Applications can reference this trivially, i.e., <code>wx.app.registerComponent('my-component', { require: 'path/my-component' });</code>
 
 You only need two files for the component - a viewmodel (<code>path/my-component.js</code>) and a template (<code>path/my-component.html</code>) - 
 which is a very natural arrangement during development. Since the dependency on the template is explicitly stated in the define call, 

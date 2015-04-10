@@ -23,7 +23,7 @@ The component binding injects a specified component into an element, and optiona
 </div>
   
 <script type="text/javascript">
-wx.app.component('message-editor', {
+wx.app.registerComponent('message-editor', {
     viewModel: function(params) {
         this.text = wx.property(params && params.initialText || '');
     },
@@ -51,7 +51,7 @@ wx.applyBindings(undefined, document.getElementById('component-binding-example1'
 **Source code: View model**
 
 ```javascript
-wx.app.component('message-editor', {
+wx.app.registerComponent('message-editor', {
     viewModel: function(params) {
         this.text = wx.property(params && params.initialText || '');
     },
@@ -145,7 +145,7 @@ Components usually have view-models, but they don't necessarily have to. A compo
 In this case, the object to which the component's view is bound is the params object that you passed to the component binding. Example:
 
 ```javascript
-wx.app.component('special-offer', {
+wx.app.registerComponent('special-offer', {
     template: '<div class="offer-box" data-bind="text: productName"></div>'
 });
 ```
