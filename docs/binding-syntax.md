@@ -77,7 +77,8 @@ transformation logic inside templates. Such logic is better placed in a view-mod
 
 ## <a id="topic-expression-filters"></a>Expression Filters
 
-A filter formats the value of an expression for display to the user. They can be used in every template and can be registered at application- or module-level.
+Expression-filters format the result of an expression for display to the user. They can be used in every template 
+and can be registered at [module](/docs/module-overview.html#start)-level.
 
 ### Using filters in templates
 
