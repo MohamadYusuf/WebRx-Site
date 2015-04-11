@@ -1603,7 +1603,8 @@ var wx;
                         moduleNames = value.split(" ").filter(function (x) { return x; });
                     }
                     if (moduleNames.length > 0) {
-                        disp = Rx.Observable.combineLatest(moduleNames.map(function (x) { return wx.loadModule(x); }), function (_) { return wx.args2Array(arguments); }).subscribe(function (modules) {
+                        var observables = moduleNames.map(function (x) { return wx.loadModule(x); });
+                        disp = Rx.Observable.combineLatest(observables, function (_) { return wx.args2Array(arguments); }).subscribe(function (modules) {
                             var moduleName = (module || wx.app).name + "+" + moduleNames.join("+");
                             var merged = new internal.moduleConstructor(moduleName);
                             merged.merge(module || wx.app);
@@ -1868,11 +1869,12 @@ var wx;
             }
             VirtualChildNodes.prototype.appendChilds = function (nodes, callbackData) {
                 var length = nodes.length;
+                var i;
                 if (nodes.length > 1)
                     Array.prototype.push.apply(this.childNodes, nodes);
                 else
                     this.childNodes.push(nodes[0]);
-                for (var i = 0; i < length; i++) {
+                for (i = 0; i < length; i++) {
                     this.targetNode.appendChild(nodes[i]);
                 }
                 if (this.insertCB) {
@@ -1888,8 +1890,9 @@ var wx;
                 else {
                     var refNode = this.childNodes[index];
                     var length = nodes.length;
+                    var i;
                     Array.prototype.splice.apply(this.childNodes, [index, 0].concat(nodes));
-                    for (var i = 0; i < length; i++) {
+                    for (i = 0; i < length; i++) {
                         this.targetNode.insertBefore(nodes[i], refNode);
                     }
                     if (this.insertCB) {
@@ -3626,8 +3629,8 @@ var wx;
             if (initialContents) {
                 Array.prototype.splice.apply(this.inner, [0, 0].concat(initialContents));
             }
-            this.length = this.lengthChanged.startWith(this.inner.length).toProperty();
-            this.isEmpty = this.lengthChanged.select(function (x) { return x === 0; }).startWith(this.inner.length === 0).toProperty();
+            this.length = this.lengthChanged.toProperty(this.inner.length);
+            this.isEmpty = this.lengthChanged.select(function (x) { return (x === 0); }).toProperty(this.inner.length === 0);
         };
         ObservableList.prototype.areChangeNotificationsEnabled = function () {
             return this.changeNotificationsSuppressed === 0;
@@ -5899,6 +5902,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.58';
+    wx.version = '0.9.59';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
