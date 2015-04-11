@@ -1869,11 +1869,12 @@ var wx;
             }
             VirtualChildNodes.prototype.appendChilds = function (nodes, callbackData) {
                 var length = nodes.length;
+                var i;
                 if (nodes.length > 1)
                     Array.prototype.push.apply(this.childNodes, nodes);
                 else
                     this.childNodes.push(nodes[0]);
-                for (var i = 0; i < length; i++) {
+                for (i = 0; i < length; i++) {
                     this.targetNode.appendChild(nodes[i]);
                 }
                 if (this.insertCB) {
@@ -1889,8 +1890,9 @@ var wx;
                 else {
                     var refNode = this.childNodes[index];
                     var length = nodes.length;
+                    var i;
                     Array.prototype.splice.apply(this.childNodes, [index, 0].concat(nodes));
-                    for (var i = 0; i < length; i++) {
+                    for (i = 0; i < length; i++) {
                         this.targetNode.insertBefore(nodes[i], refNode);
                     }
                     if (this.insertCB) {
