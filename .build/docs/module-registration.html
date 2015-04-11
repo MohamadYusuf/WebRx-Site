@@ -250,6 +250,26 @@ For more details about how this works, see how WebRx loads modules via AMD below
 <p>When the initializer is provided by an AMD module, the module-initializer function <strong>must</strong> be the AMD-module&#39;s 
 only export.</p>
 
+<h2>Registering resources with a module</h2>
+
+<p>In the previous examples we&#39;ve focused soley on registering component resources. As mentioned in the <a href="/docs/module-overview.html#start">module-overview</a>
+there are other types of module-scoped resources.</p>
+
+<h3>Registering components</h3>
+
+<p>The documentation contains an entire chapter dedicated to <a href="/docs/component-registration.html#start">registering components</a>. </p>
+
+<h3>Registering expression filters</h3>
+
+<p><a href="/docs/binding-syntax.html#topic-expression-filters">Expression-filters</a> format the result of an expression for display to the user.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">myModule</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;uppercase&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+<span class="p">})});</span>
+</code></pre></div>
+<p>The module in this example registers an <code>uppercase</code> filter that 
+converts the result of a binding-expression to an upper-case string.</p>
+
 <p><a class="next-topic" href="/docs/module-binding.html#start">Next: The Module-Binding</a></p>
 </div>
         </div>

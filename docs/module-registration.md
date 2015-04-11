@@ -87,4 +87,27 @@ define(["like-widget"], function(likeWidget) {
 When the initializer is provided by an AMD module, the module-initializer function **must** be the AMD-module's 
 only export.
 
+## Registering resources with a module
+
+In the previous examples we've focused soley on registering component resources. As mentioned in the [module-overview](/docs/module-overview.html#start)
+there are other types of module-scoped resources.
+
+### Registering components
+
+The documentation contains an entire chapter dedicated to [registering components](/docs/component-registration.html#start). 
+
+### Registering expression filters
+
+[Expression-filters](/docs/binding-syntax.html#topic-expression-filters) format the result of an expression for display to the user.
+
+```javascript
+wx.module('myModule', function(myModule) {
+  myModule.filter('uppercase', function(value) {
+	return value.toUpperCase();
+})});
+```
+
+The module in this example registers an <code>uppercase</code> filter that 
+converts the result of a binding-expression to an upper-case string.
+
 <a class="next-topic" href="/docs/module-binding.html#start">Next: The Module-Binding</a>
