@@ -214,7 +214,7 @@ code {
 }
 
 .docs .body ul li {
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
 }
 
 .docs .body .panel-body ul {

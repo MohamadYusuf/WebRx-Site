@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e530bf99ac7b48105ed9ae73dda5d839.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/d363e42f61ae42c0f82d34fad7358023.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -177,38 +177,79 @@
         <div id="start" class="col-md-9">
             <div class="body"><h1>Module Registration</h1>
 
-<p>The <code>wx.module</code> function is a global place for creating, registering and retrieving modules. All modules (core or 3rd party) that should be 
-available to an application must be registered using this mechanism.</p>
+<p>The <code>wx.module</code> function is a global place for registering modules. All modules (core or 3rd party) that should be 
+available to an application must be registered using this method. </p>
 
-<p><code>wx.module</code> provides a fluent-API for registering and retrieving modules. When the function encounters a module-name for the first time
-it will implicitely create the module as empty container.</p>
+<p><code>wx.module</code> expects two arguments:</p>
+
+<ul>
+<li><strong>A name</strong>: A descriptive name for your module that should be unique accross your application.</li>
+<li><p><strong>An initializer</strong>: The module initializer is a function that will be invoked the first time
+a module is referenced through a <a href="/docs/module-binding.html#start">module-binding</a>. </p>
+
+<p>No matter how the initializer function is defined, it will always receive a pristine module-object instance as
+<strong>last</strong> argument.</p>
+
+<p>The initializer is supposed to register all of the module&#39;s resources
+with the provided module-instance. After the initializer has finished executing, the module
+is fully initialized and available for use in your application.</p></li>
+</ul>
+
+<p><strong>Note:</strong> It is important to remember that WebRx considers a module to be <strong>immutable</strong> after its been loaded and initialized. 
+The application module is the only exception to this rule.</p>
+
+<h2>Specifying a module-initializer</h2>
+
+<p>Module-initializers can specified in any of the following forms:</p>
+
+<h3>A function</h3>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Create a new module</span>
-<span class="kd">var</span> <span class="nx">myModule</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">);</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Create a component</span>
+  <span class="kd">var</span> <span class="nx">component</span> <span class="o">=</span> <span class="nx">createLikeWidget</span><span class="p">();</span>
 
-<span class="c1">// Create a component</span>
-<span class="kd">var</span> <span class="nx">component</span> <span class="o">=</span> <span class="nx">createLikeWidget</span><span class="p">();</span>
-
-<span class="c1">// Register a component</span>
-<span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="p">);</span>
+  <span class="c1">// Register the component with the module</span>
+  <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div>
-<h2>The application module</h2>
+<p>This example shows one of the most basic forms for module initialization: a function.
+Using an initializer-function is fine for simple applications. Large projects though will most likely use 
+one of the techniques outlined below.</p>
 
-<p>Regardless of wether you are actively using modules or not, there will be always at least one module: the application module.</p>
+<h3>An inline-annotated-array</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;like-widget&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">likeWidget</span><span class="p">,</span> <span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">likeWidget</span><span class="p">);</span>
+<span class="p">}]);</span>
+</code></pre></div>
+<p>Here we provide an inline-annotated array as module-initializer. The array will be run through
+the <a href="/docs/dependency-injection-overview.html#start">Injector&#39;s</a> <code>resolve</code> method
+and receive an empty module-instance as final argument after all its declared dependencies.</p>
 
-<p>In WebRx, the application-module is a pre-registered module that hosts all built-in bindings, components and expression filters
-and can be accessed using ...</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span>
-</code></pre></div>
-<p>or ...</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>To register a component with the application-module, the first example on this page could be rewritten like this:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Create a component</span>
-<span class="kd">var</span> <span class="nx">component</span> <span class="o">=</span> <span class="nx">createLikeWidget</span><span class="p">();</span>
+<h3>An AMD module</h3>
 
-<span class="c1">// Register a component</span>
-<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="p">);</span>
+<p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a module. 
+For more details about how this works, see how WebRx loads modules via AMD below. Example:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">});</span>
 </code></pre></div>
+<p>AMD-Module <em>some/module/name</em>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s2">&quot;like-widget&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">likeWidget</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// register a component loaded as AMD-Module dependency</span>
+    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">likeWidget</span><span class="p">);</span>
+
+    <span class="c1">// register another component that will get loaded on-demand</span>
+    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+     <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/viewModel&#39;</span> <span class="p">},</span>
+     <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!/some/module/template.html&#39;</span> <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">init</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>When the initializer is provided by an AMD module, the module-initializer function <strong>must</strong> be the AMD-module&#39;s 
+only export.</p>
+
 <p><a class="next-topic" href="/docs/module-binding.html#start">Next: The Module-Binding</a></p>
 </div>
         </div>

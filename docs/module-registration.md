@@ -4,49 +4,87 @@ title: WebRx - Module Registration
 ---
 # Module Registration
 
-The <code>wx.module</code> function is a global place for creating, registering and retrieving modules. All modules (core or 3rd party) that should be 
-available to an application must be registered using this mechanism.
+The <code>wx.module</code> function is a global place for registering modules. All modules (core or 3rd party) that should be 
+available to an application must be registered using this method. 
 
-<code>wx.module</code> provides a fluent-API for registering and retrieving modules. When the function encounters a module-name for the first time
-it will implicitely create the module as empty container.
+<code>wx.module</code> expects two arguments:
+
+- **A name**: A descriptive name for your module that should be unique accross your application.
+- **An initializer**: The module initializer is a function that will be invoked the first time
+a module is referenced through a [module-binding](/docs/module-binding.html#start). 
+
+	No matter how the initializer function is defined, it will always receive a pristine module-object instance as
+	**last** argument.
+
+	The initializer is supposed to register all of the module's resources
+	with the provided module-instance. After the initializer has finished executing, the module
+	is fully initialized and available for use in your application.
+
+**Note:** It is important to remember that WebRx considers a module to be **immutable** after its been loaded and initialized. 
+The application module is the only exception to this rule.
+
+## Specifying a module-initializer
+
+Module-initializers can specified in any of the following forms:
+
+### A function
 
 ```javascript
 // Create a new module
-var myModule = wx.module('myModule');
+wx.module('myModule', function(myModule) {
+  // Create a component
+  var component = createLikeWidget();
 
-// Create a component
-var component = createLikeWidget();
-
-// Register a component
-myModule.component('like-widget', component);
+  // Register the component with the module
+  myModule.component('like-widget', component);
+});
 ```
 
+This example shows one of the most basic forms for module initialization: a function.
+Using an initializer-function is fine for simple applications. Large projects though will most likely use 
+one of the techniques outlined below.
 
-## The application module
-
-Regardless of wether you are actively using modules or not, there will be always at least one module: the application module.
-
-In WebRx, the application-module is a pre-registered module that hosts all built-in bindings, components and expression filters
-and can be accessed using ...
+### An inline-annotated-array
 
 ```javascript
-wx.app
+wx.module('myModule', ["like-widget", function(likeWidget, myModule) {
+  myModule.component('like-widget', likeWidget);
+}]);
 ```
 
-or ...
+Here we provide an inline-annotated array as module-initializer. The array will be run through
+the [Injector's](/docs/dependency-injection-overview.html#start) <code>resolve</code> method
+and receive an empty module-instance as final argument after all its declared dependencies.
+
+### An AMD module
+
+If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a module. 
+For more details about how this works, see how WebRx loads modules via AMD below. Example:
 
 ```javascript
-wx.module("app")
+wx.module('myModule', { require: 'some/module/name' });
 ```
 
-To register a component with the application-module, the first example on this page could be rewritten like this:
+AMD-Module *some/module/name*:
 
 ```javascript
-// Create a component
-var component = createLikeWidget();
+define(["like-widget"], function(likeWidget) {
+  function init(myModule) {
+	// register a component loaded as AMD-Module dependency
+    myModule.component('like-widget', likeWidget);
 
-// Register a component
-wx.app.component('like-widget', component);
+	// register another component that will get loaded on-demand
+    myModule.component('my-component', {
+     viewModel: { require: 'some/module/viewModel' },
+     template: { require: 'text!/some/module/template.html' }
+    });
+  }
+ 
+  return init;
+});
 ```
+
+When the initializer is provided by an AMD module, the module-initializer function **must** be the AMD-module's 
+only export.
 
 <a class="next-topic" href="/docs/module-binding.html#start">Next: The Module-Binding</a>

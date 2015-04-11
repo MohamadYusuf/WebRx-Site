@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e530bf99ac7b48105ed9ae73dda5d839.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/d363e42f61ae42c0f82d34fad7358023.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -177,13 +177,17 @@
         <div id="start" class="col-md-9">
             <div class="body"><h1>The Module-Binding</h1>
 
-<p>The purpose of the module-binding is to establish a module-scope over parts of a page or an entire page.</p>
+<p>The purpose of the module-binding is make the resources exported by one or more modules 
+available to parts of the page.</p>
 
-<p>After a module-scope has been established, all resources referenced by descendant elements of the element
-the module-binding has been applied to will default to the specified module. If the resource cannot be found, 
-the application-module will be consulted.</p>
+<p>When a module-binding gets applied to an element the binding will asynchronously load
+all of the specified modules. The binding will then merge the exported resources of the loaded
+modules into a composite module which will be made available to descendant elements. </p>
 
-<h2>Example</h2>
+<p>Module-Bindings can be nested. When module-bindings are nested, modules referenced in
+child-scope inherit all of the module-exports of their parent scope. </p>
+
+<h2>Example 1: Parallel module-scopes</h2>
 
 <div class="panel panel-default" id="module-example1">
     <div class="panel-body">
@@ -203,13 +207,14 @@ wx.app.component('app-hello', {
     template: '<h3>Hello from Application Module</h3>'
 });
 
-wx.module("module1").component('hello', {
+wx.module("module1", function(m) { m.component('hello', {
     template: '<h3>Hello from Module 1</h3>'
-});
+})});
 
-wx.module("module2").component('hello', {
+wx.module("module2", function(m) { m.component('hello', {
     template: '<h3>Hello from Module 2</h3>'
-});
+})});
+
 
 wx.applyBindings(undefined, document.getElementById('module-example1'));
 </script>
@@ -231,28 +236,79 @@ wx.applyBindings(undefined, document.getElementById('module-example1'));
     <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Application Module&lt;/h3&gt;&#39;</span>
 <span class="p">});</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module1&quot;</span><span class="p">).</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 1&lt;/h3&gt;&#39;</span>
-<span class="p">});</span>
+<span class="p">})});</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module2&quot;</span><span class="p">).</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 2&lt;/h3&gt;&#39;</span>
-<span class="p">});</span>
+<span class="p">})});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
 </code></pre></div>
 <p>Here we register a component of the same name <code>hello</code> with two different modules. By applying a module-binding
 on the enclosing container element, we change how a reference to the <code>&lt;hello&gt;</code> component is handled.</p>
 
-<p><strong>Note:</strong> The primary purpose of the module-binding is of course not the possibility to override components
-defined by other modules, but to allow your team to work on different parts of your page or site
-without having to qualify each and every access to a module-scoped-resource with a module name.</p>
+<h2>Example 2: Nested module-scopes</h2>
 
+<div class="panel panel-default" id="module-example2">
+    <div class="panel-body">
+        <div data-bind="module: 'module1'">
+            <div data-bind="module: 'module2'">
+                <hello1></hello1>
+                <hello2></hello2>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script type="text/javascript">
+wx.module("module1", function(m) { m.component('hello1', {
+    template: '<h3>Hello from Module 1</h3>'
+})});
+
+wx.module("module2", function(m) { m.component('hello2', {
+    template: '<h3>Hello from Module 2</h3>'
+})});
+
+wx.applyBindings(undefined, document.getElementById('module-example2'));
+</script>
+
+<p><strong>Source code: View</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module1&#39;&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module2&#39;&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;hello1&gt;&lt;/hello1&gt;</span>
+        <span class="nt">&lt;hello2&gt;&lt;/hello2&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<p><strong>Source code: View model</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello1&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 1&lt;/h3&gt;&#39;</span>
+<span class="p">})});</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module2&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello2&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 2&lt;/h3&gt;&#39;</span>
+<span class="p">})});</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
+</code></pre></div>
+<p>Even though component <code>hello1</code> has been defined in <code>module1</code> which is bound to 
+the outer <code>div</code> element, we can use the component inside the inner <code>div</code> because child-scopes inherit the exports of their parent-scope(s).</p>
+
+<p>Of course we could have achieved the same outcome by specifying multiple modules with the inner <code>div</code>&#39;s module-binding:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module1 module2&#39;&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;hello1&gt;&lt;/hello1&gt;</span>
+    <span class="nt">&lt;hello2&gt;&lt;/hello2&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
 <h2>Parameters</h2>
 
 <h3>Main parameter</h3>
 
-<p>The binding sets the element&#39;s module-scope the specified module. The value can be either a module name or a module-instance.</p>
+<p>The binding sets the element&#39;s and its descendants module-scope the specified module(s). The parameter must be string containing
+one or more module-names separated by a whitespace characters.</p>
 
 <p>If this parameter is an observable value, the binding will update the element&#39;s module-scope whenever the value changes. 
 If the parameter isn&#39;t observable, it will only set the element&#39;s module-scope once and will not update it again later.</p>

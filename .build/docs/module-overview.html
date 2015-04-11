@@ -12,7 +12,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/e530bf99ac7b48105ed9ae73dda5d839.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/d363e42f61ae42c0f82d34fad7358023.css' />
 
 
         <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
@@ -177,10 +177,12 @@
         <div id="start" class="col-md-9">
             <div class="body"><h1>Module Overview</h1>
 
-<p>Modules in WebRx allow for partitioning your projects into managable units. 
-You can think of a module as a container for the different parts of your app.</p>
+<p>When a project grows in size it is often beneficial to break it down into smaller units
+which can be developed and tested in isolation. WebRx&#39;s contains built-in support for this
+called: <em>Modules</em>.</p>
 
-<p>There are three types of module-scoped-resources in WebRx:</p>
+<p>You can think of a module as a container for resources utilized by different parts of your project. 
+There are three types of resources that can be registered with a module: </p>
 
 <ul>
 <li><a href="/docs/component-overview.html#start">Components</a></li>
@@ -188,21 +190,47 @@ You can think of a module as a container for the different parts of your app.</p
 <li><a href="/docs/binding-syntax.html#topic-expression-filters">Expression-filters</a></li>
 </ul>
 
-<p>Modules implement methods for registration and lookup of these types of resources.</p>
+<p>WebRx referres to these kinds of resources as <em>module-scoped-resources</em>.</p>
 
-<h2>Why modules?</h2>
-
-<p>Most applications have a main method that instantiates and wires together the different parts of the application.</p>
-
-<p>WebRx apps don&#39;t have a main method. Instead modules declaratively specify how an application should be bootstrapped. There are several advantages to this approach:</p>
+<h2>Advantages of using modules</h2>
 
 <ul>
-<li>The declarative process is easier to understand.</li>
-<li>You can package code as reusable modules.</li>
-<li>The modules can be loaded in any order (or even in parallel) because modules delay execution.</li>
-<li>Unit tests only have to load relevant modules, which keeps them fast.</li>
-<li>End-to-end tests can use modules to override configuration.</li>
+<li><strong>Performance:</strong> Since modules are loaded asynchronously on demand, initial page loading time
+may be drastically decreased.</li>
+<li><strong>Modularization</strong>: Modularising your applications explicitly outlines the dependencies of your application and 
+separates the responsibilities of different parts of your app. Code reuse and separation of concerns are 
+fundamental practices in writing maintainable code.</li>
 </ul>
+
+<h2>Livecycle of a Module</h2>
+
+<ol>
+<li><p><strong>Module is registered:</strong> WebRx-Modules are registered through the <code>wx.module</code> function (more
+on this in the following chapter). The only immediate effect of registering a module is to announce
+the module&#39;s existence to the module-loader. </p></li>
+<li><p><strong>Module is loaded</strong>: Referencing a module through a <a href="/docs/module-binding.html#start">module-binding</a> for
+the first time, triggers its loading process. Loading a module is an asynchronous operation with the goal 
+of obtaining the module&#39;s initializer-function which will be used in the next phase. For example: If the 
+module has been registered as an external AMD-Module, the module&#39;s script file will now be fetched from the server.</p></li>
+<li><p><strong>Module is initialized</strong>: Now that the module&#39;s initializer-function is available, a pristine
+module-object will created and handed to the initializer which is now tasked with registering the module&#39;s
+exported resources with the module-object.</p></li>
+<li><p><strong>Module is active</strong>: At this point all of the module&#39;s registered resources become available for use in the application.</p></li>
+</ol>
+
+<h2>The application module</h2>
+
+<p>Regardless of wether you&#39;ll be actively using modules or not, there will be always at least one active module: the application module.</p>
+
+<p>In WebRx, the application-module is a pre-registered module that hosts all built-in bindings, components and expression filters
+and can be accessed using ...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span>
+</code></pre></div>
+<p>or ...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Note:</strong> The application module is the only module that is immediately available and initialized when your app
+launches. All other modules are asynchronously resolved by the <a href="/docs/module-binding.html#start">module-binding</a>.</p>
 
 <p><a class="next-topic" href="/docs/module-registration.html#start">Next: Defining and registering modules</a></p>
 </div>
