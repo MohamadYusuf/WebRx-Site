@@ -1603,7 +1603,8 @@ var wx;
                         moduleNames = value.split(" ").filter(function (x) { return x; });
                     }
                     if (moduleNames.length > 0) {
-                        disp = Rx.Observable.combineLatest(moduleNames.map(function (x) { return wx.loadModule(x); }), function (_) { return wx.args2Array(arguments); }).subscribe(function (modules) {
+                        var observables = moduleNames.map(function (x) { return wx.loadModule(x); });
+                        disp = Rx.Observable.combineLatest(observables, function (_) { return wx.args2Array(arguments); }).subscribe(function (modules) {
                             var moduleName = (module || wx.app).name + "+" + moduleNames.join("+");
                             var merged = new internal.moduleConstructor(moduleName);
                             merged.merge(module || wx.app);
@@ -5899,6 +5900,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.58';
+    wx.version = '0.9.59';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
