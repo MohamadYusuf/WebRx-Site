@@ -5,8 +5,7 @@ title: WebRx - Module Overview
 # Module Overview
 
 When a project grows in size it is often beneficial to break it down into smaller units
-which can be developed and tested in isolation. WebRx's contains built-in support for this
-called: *Modules*.
+that can be developed and tested in isolation. WebRx's built-in solution for this are *Modules*.
 
 You can think of a module as a container for resources utilized by different parts of your project. 
 There are three types of resources that can be registered with a module: 
@@ -15,7 +14,7 @@ There are three types of resources that can be registered with a module:
 - Binding-handlers
 - [Expression-filters](/docs/binding-syntax.html#topic-expression-filters)
 
-WebRx referres to these kinds of resources as *module-scoped-resources*.
+WebRx refers to these kinds of resources as *module-scoped-resources*.
 
 ## Advantages of using modules
 
