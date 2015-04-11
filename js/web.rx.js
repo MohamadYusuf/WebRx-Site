@@ -3629,8 +3629,8 @@ var wx;
             if (initialContents) {
                 Array.prototype.splice.apply(this.inner, [0, 0].concat(initialContents));
             }
-            this.length = this.lengthChanged.startWith(this.inner.length).toProperty();
-            this.isEmpty = this.lengthChanged.select(function (x) { return x === 0; }).startWith(this.inner.length === 0).toProperty();
+            this.length = this.lengthChanged.toProperty(this.inner.length);
+            this.isEmpty = this.lengthChanged.select(function (x) { return (x === 0); }).toProperty(this.inner.length === 0);
         };
         ObservableList.prototype.areChangeNotificationsEnabled = function () {
             return this.changeNotificationsSuppressed === 0;
