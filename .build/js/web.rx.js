@@ -636,6 +636,63 @@ var wx;
         }
     })(env = wx.env || (wx.env = {}));
 })(wx || (wx = {}));
+var wx;
+(function (wx) {
+    "use strict";
+    var IID = (function () {
+        function IID() {
+        }
+        IID.IUnknown = "IUnknown";
+        IID.IDisposable = "IDisposable";
+        IID.IObservableProperty = "IObservableProperty";
+        IID.IReactiveNotifyPropertyChanged = "IReactiveNotifyPropertyChanged";
+        IID.IHandleObservableErrors = "IHandleObservableErrors";
+        IID.IObservableList = "IObservableList";
+        IID.IList = "IList";
+        IID.IReactiveNotifyCollectionChanged = "IReactiveNotifyCollectionChanged";
+        IID.IReactiveNotifyCollectionItemChanged = "IReactiveNotifyCollectionItemChanged";
+        IID.IReactiveDerivedList = "IReactiveDerivedList";
+        IID.IMoveInfo = "IMoveInfo";
+        IID.IObservedChange = "IObservedChange";
+        IID.ICommand = "ICommand";
+        IID.IReadOnlyList = "IReadOnlyList";
+        return IID;
+    })();
+    wx.IID = IID;
+})(wx || (wx = {}));
+var wx;
+(function (wx) {
+    "use strict";
+    function property(initialValue) {
+        var accessor = function (newVal) {
+            if (arguments.length > 0) {
+                if (newVal !== accessor.value) {
+                    accessor.changingSubject.onNext(newVal);
+                    accessor.value = newVal;
+                    accessor.changedSubject.onNext(newVal);
+                }
+            }
+            else {
+                return accessor.value;
+            }
+        };
+        accessor.queryInterface = function (iid) {
+            if (iid === wx.IID.IUnknown || iid === wx.IID.IObservableProperty || iid === wx.IID.IDisposable)
+                return true;
+            return false;
+        };
+        accessor.dispose = function () {
+        };
+        if (initialValue !== undefined)
+            accessor.value = initialValue;
+        accessor.changedSubject = new Rx.Subject();
+        accessor.changed = accessor.changedSubject.publish().refCount();
+        accessor.changingSubject = new Rx.Subject();
+        accessor.changing = accessor.changingSubject.publish().refCount();
+        return accessor;
+    }
+    wx.property = property;
+})(wx || (wx = {}));
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -854,6 +911,7 @@ var wx;
                     wx.log.error("An onError occurred on an object (usually a computedProperty) that would break a binding or command. To prevent this, subscribe to the thrownExceptions property of your objects: {0}", ex);
                 }
             });
+            this.title = wx.property("");
             if (!wx.isInUnitTest()) {
                 this.history = this.createHistory();
             }
@@ -2013,7 +2071,7 @@ var wx;
         };
         ForEachBinding.prototype.configure = function (options) {
         };
-        ForEachBinding.prototype.createIndexObservableForNode = function (proxy, child, startIndex, trigger, indexes, templateLength) {
+        ForEachBinding.prototype.createIndexPropertyForNode = function (proxy, child, startIndex, trigger, templateLength) {
             return Rx.Observable.defer(function () {
                 return Rx.Observable.create(function (obs) {
                     return trigger.subscribe(function (_) {
@@ -2022,18 +2080,26 @@ var wx;
                         obs.onNext(index);
                     });
                 });
-            }).startWith(startIndex).publish().refCount();
+            }).toProperty(startIndex);
         };
-        ForEachBinding.prototype.appendAllRows = function (proxy, list, ctx, template, hooks, indexes, indexTrigger, isInitial) {
+        ForEachBinding.prototype.appendAllRows = function (proxy, list, ctx, template, hooks, indexTrigger, isInitial) {
             var length = list.length();
             for (var i = 0; i < length; i++) {
-                this.appendRow(proxy, i, list.get(i), ctx, template, hooks, indexes, indexTrigger, isInitial);
+                this.appendRow(proxy, i, list.get(i), ctx, template, hooks, indexTrigger, isInitial);
             }
         };
-        ForEachBinding.prototype.appendRow = function (proxy, index, item, ctx, template, hooks, indexes, indexTrigger, isInitial) {
+        ForEachBinding.prototype.appendRow = function (proxy, index, item, ctx, template, hooks, indexTrigger, isInitial) {
             var nodes = wx.cloneNodeArray(template);
-            var _index = indexTrigger ? this.createIndexObservableForNode(proxy, nodes[0], index, indexTrigger, indexes, template.length) : index;
-            proxy.appendChilds(nodes, { index: _index, item: item });
+            var _index = index;
+            var cbData = {
+                item: item
+            };
+            if (indexTrigger) {
+                _index = this.createIndexPropertyForNode(proxy, nodes[0], index, indexTrigger, template.length);
+                cbData.indexDisp = new wx.RefCountDisposeWrapper(_index, 0);
+            }
+            cbData.index = _index;
+            proxy.appendChilds(nodes, cbData);
             if (hooks) {
                 if (hooks.afterRender)
                     hooks.afterRender(nodes, item);
@@ -2041,11 +2107,15 @@ var wx;
                     hooks.afterAdd(nodes, item, index);
             }
         };
-        ForEachBinding.prototype.insertRow = function (proxy, index, item, ctx, template, hooks, indexes, indexTrigger) {
+        ForEachBinding.prototype.insertRow = function (proxy, index, item, ctx, template, hooks, indexTrigger) {
             var templateLength = template.length;
             var nodes = wx.cloneNodeArray(template);
-            var _index = this.createIndexObservableForNode(proxy, nodes[0], index, indexTrigger, indexes, template.length);
-            proxy.insertChilds(index * templateLength, nodes, { index: _index, item: item });
+            var _index = this.createIndexPropertyForNode(proxy, nodes[0], index, indexTrigger, template.length);
+            proxy.insertChilds(index * templateLength, nodes, {
+                index: _index,
+                item: item,
+                indexDisp: new wx.RefCountDisposeWrapper(_index, 0)
+            });
             if (hooks) {
                 if (hooks.afterRender)
                     hooks.afterRender(nodes, item);
@@ -2066,7 +2136,7 @@ var wx;
                 }
             }
         };
-        ForEachBinding.prototype.moveRow = function (proxy, from, to, item, template, hooks, indexes, indexTrigger) {
+        ForEachBinding.prototype.moveRow = function (proxy, from, to, item, template, hooks, indexTrigger) {
             var templateLength = template.length;
             var el = proxy.targetNode;
             var nodes = proxy.removeChilds(from * templateLength, templateLength, true);
@@ -2077,44 +2147,48 @@ var wx;
                 el.removeChild(nodes[i]);
             }
             nodes = wx.cloneNodeArray(template);
-            var _index = this.createIndexObservableForNode(proxy, nodes[0], from, indexTrigger, indexes, template.length);
-            proxy.insertChilds(templateLength * to, nodes, { index: _index, item: item });
+            var _index = this.createIndexPropertyForNode(proxy, nodes[0], from, indexTrigger, template.length);
+            proxy.insertChilds(templateLength * to, nodes, {
+                index: _index,
+                item: item,
+                indexDisp: new wx.RefCountDisposeWrapper(_index, 0)
+            });
             if (hooks && hooks.afterMove) {
                 hooks.afterMove(nodes, item, from);
             }
         };
-        ForEachBinding.prototype.rebindRow = function (proxy, index, item, template, indexes) {
+        ForEachBinding.prototype.rebindRow = function (proxy, index, item, template, indexTrigger) {
             var templateLength = template.length;
-            var savedIndex;
+            var _index = this.createIndexPropertyForNode(proxy, proxy.childNodes[(index * templateLength)], index, indexTrigger, template.length);
+            var indexDisp = new wx.RefCountDisposeWrapper(_index, 0);
             for (var i = 0; i < template.length; i++) {
                 var node = proxy.childNodes[(index * templateLength) + i];
                 if (node.nodeType === 1) {
-                    var state = this.domManager.getNodeState(node);
-                    savedIndex = state != null ? state.index : undefined;
-                    this.domManager.cleanNode(node);
-                    state = this.domManager.createNodeState(item);
-                    state.index = savedIndex;
+                    var state = (this.domManager.getNodeState(item) || this.domManager.createNodeState(item));
+                    state.index = _index;
+                    indexDisp.addRef();
+                    state.cleanup.add(indexDisp);
                     this.domManager.setNodeState(node, state);
                     this.domManager.applyBindings(item, node);
                 }
             }
         };
-        ForEachBinding.prototype.observeList = function (proxy, ctx, template, cleanup, list, hooks, indexes, indexTrigger) {
+        ForEachBinding.prototype.observeList = function (proxy, ctx, template, cleanup, list, hooks, indexTrigger) {
             var _this = this;
             var i;
             var length;
             cleanup.add(indexTrigger);
-            this.appendAllRows(proxy, list, ctx, template, hooks, indexes, indexTrigger, true);
+            this.appendAllRows(proxy, list, ctx, template, hooks, indexTrigger, true);
             cleanup.add(list.itemsAdded.subscribe(function (e) {
                 length = e.items.length;
                 if (e.from === list.length()) {
                     for (i = 0; i < length; i++) {
-                        _this.appendRow(proxy, i + e.from, e.items[i], ctx, template, hooks, indexes, indexTrigger, false);
+                        _this.appendRow(proxy, i + e.from, e.items[i], ctx, template, hooks, indexTrigger, false);
                     }
                 }
                 else {
                     for (i = 0; i < e.items.length; i++) {
-                        _this.insertRow(proxy, i + e.from, e.items[i], ctx, template, hooks, indexes, indexTrigger);
+                        _this.insertRow(proxy, i + e.from, e.items[i], ctx, template, hooks, indexTrigger);
                     }
                 }
                 indexTrigger.onNext(true);
@@ -2127,16 +2201,16 @@ var wx;
                 indexTrigger.onNext(true);
             }));
             cleanup.add(list.itemsMoved.subscribe(function (e) {
-                _this.moveRow(proxy, e.from, e.to, e.items[0], template, hooks, indexes, indexTrigger);
+                _this.moveRow(proxy, e.from, e.to, e.items[0], template, hooks, indexTrigger);
                 indexTrigger.onNext(true);
             }));
             cleanup.add(list.itemReplaced.subscribe(function (e) {
-                _this.rebindRow(proxy, e.from, e.items[0], template, indexes);
+                _this.rebindRow(proxy, e.from, e.items[0], template, indexTrigger);
                 indexTrigger.onNext(true);
             }));
             cleanup.add(list.shouldReset.subscribe(function (e) {
                 proxy.clear();
-                _this.appendAllRows(proxy, list, ctx, template, hooks, indexes, indexTrigger, false);
+                _this.appendAllRows(proxy, list, ctx, template, hooks, indexTrigger, false);
                 indexTrigger.onNext(true);
             }));
         };
@@ -2154,47 +2228,45 @@ var wx;
             if (template.length === 0)
                 return;
             var proxy;
-            var indexes;
             var self = this;
             var recalcIndextrigger;
             function nodeInsertCB(node, callbackData) {
                 var item = callbackData.item;
                 var index = callbackData.index;
+                var indexDisp = callbackData.indexDisp;
                 if (node.nodeType === 1) {
-                    if (recalcIndextrigger) {
-                        indexes.set(node, index);
-                    }
-                    var state = self.domManager.createNodeState(item);
+                    var state = (self.domManager.getNodeState(item) || self.domManager.createNodeState(item));
                     state.index = index;
                     self.domManager.setNodeState(node, state);
+                    if (recalcIndextrigger != null && indexDisp != null) {
+                        indexDisp.addRef();
+                        state.cleanup.add(indexDisp);
+                    }
                     self.domManager.applyBindings(item, node);
                 }
             }
             function nodeRemoveCB(node) {
                 if (node.nodeType === 1) {
                     self.domManager.cleanNode(node);
-                    indexes.delete(node);
                 }
             }
             proxy = new internal.VirtualChildNodes(el, false, nodeInsertCB, nodeRemoveCB);
             if (setProxyFunc)
                 setProxyFunc(proxy);
             cleanup.add(Rx.Disposable.create(function () {
-                indexes = null;
                 proxy = null;
             }));
             if (Array.isArray(value)) {
                 var arr = value;
                 length = arr.length;
                 for (i = 0; i < length; i++) {
-                    this.appendRow(proxy, i, arr[i], ctx, template, hooks, undefined, undefined, true);
+                    this.appendRow(proxy, i, arr[i], ctx, template, hooks, undefined, true);
                 }
             }
             else if (wx.isList(value)) {
                 var list = value;
-                indexes = wx.createWeakMap();
                 recalcIndextrigger = new Rx.Subject();
-                this.observeList(proxy, ctx, template, cleanup, list, hooks, indexes, recalcIndextrigger);
+                this.observeList(proxy, ctx, template, cleanup, list, hooks, recalcIndextrigger);
             }
         };
         return ForEachBinding;
@@ -3067,30 +3139,6 @@ var wx;
 var wx;
 (function (wx) {
     "use strict";
-    var IID = (function () {
-        function IID() {
-        }
-        IID.IUnknown = "IUnknown";
-        IID.IDisposable = "IDisposable";
-        IID.IObservableProperty = "IObservableProperty";
-        IID.IReactiveNotifyPropertyChanged = "IReactiveNotifyPropertyChanged";
-        IID.IHandleObservableErrors = "IHandleObservableErrors";
-        IID.IObservableList = "IObservableList";
-        IID.IList = "IList";
-        IID.IReactiveNotifyCollectionChanged = "IReactiveNotifyCollectionChanged";
-        IID.IReactiveNotifyCollectionItemChanged = "IReactiveNotifyCollectionItemChanged";
-        IID.IReactiveDerivedList = "IReactiveDerivedList";
-        IID.IMoveInfo = "IMoveInfo";
-        IID.IObservedChange = "IObservedChange";
-        IID.ICommand = "ICommand";
-        IID.IReadOnlyList = "IReadOnlyList";
-        return IID;
-    })();
-    wx.IID = IID;
-})(wx || (wx = {}));
-var wx;
-(function (wx) {
-    "use strict";
     var Lazy = (function () {
         function Lazy(createValue) {
             this.createValue = createValue;
@@ -3114,9 +3162,10 @@ var wx;
 (function (wx) {
     "use strict";
     var RefCountDisposeWrapper = (function () {
-        function RefCountDisposeWrapper(inner) {
-            this.refCount = 1;
+        function RefCountDisposeWrapper(inner, initialRefCount) {
+            if (initialRefCount === void 0) { initialRefCount = 1; }
             this.inner = inner;
+            this.refCount = initialRefCount;
         }
         RefCountDisposeWrapper.prototype.addRef = function () {
             this.refCount++;
@@ -3127,6 +3176,9 @@ var wx;
                 this.inner = null;
             }
             return this.refCount;
+        };
+        RefCountDisposeWrapper.prototype.dispose = function () {
+            this.release();
         };
         return RefCountDisposeWrapper;
     })();
@@ -5303,39 +5355,6 @@ var wx;
 var wx;
 (function (wx) {
     "use strict";
-    function property(initialValue) {
-        var accessor = function (newVal) {
-            if (arguments.length > 0) {
-                if (newVal !== accessor.value) {
-                    accessor.changingSubject.onNext(newVal);
-                    accessor.value = newVal;
-                    accessor.changedSubject.onNext(newVal);
-                }
-            }
-            else {
-                return accessor.value;
-            }
-        };
-        accessor.queryInterface = function (iid) {
-            if (iid === wx.IID.IUnknown || iid === wx.IID.IObservableProperty || iid === wx.IID.IDisposable)
-                return true;
-            return false;
-        };
-        accessor.dispose = function () {
-        };
-        if (initialValue !== undefined)
-            accessor.value = initialValue;
-        accessor.changedSubject = new Rx.Subject();
-        accessor.changed = accessor.changedSubject.publish().refCount();
-        accessor.changingSubject = new Rx.Subject();
-        accessor.changing = accessor.changingSubject.publish().refCount();
-        return accessor;
-    }
-    wx.property = property;
-})(wx || (wx = {}));
-var wx;
-(function (wx) {
-    "use strict";
     var StateActiveBinding = (function () {
         function StateActiveBinding(domManager, router) {
             this.priority = 5;
@@ -5684,16 +5703,24 @@ var wx;
             this.parentPathDirective = "^";
             this.rootStateName = "$";
             this.validPathRegExp = /^[a-zA-Z]([\w-_]*$)/;
+            this.titlePropertyName = "__wx_app_title";
             this.domManager = domManager;
             this.reset();
             wx.app.history.onPopState.subscribe(function (e) {
-                var stateName = e.state;
+                var state = e.state;
+                var stateName = state.stateName;
                 if (stateName) {
                     var uri = wx.app.history.location.pathname + wx.app.history.location.search;
                     var route = _this.getAbsoluteRouteForState(stateName);
+                    if (state.title != null)
+                        wx.app.title(state.title);
                     var params = route.parse(uri);
                     _this.go(stateName, params, { location: false });
                 }
+            });
+            wx.app.title.changed.subscribe(function (x) {
+                document.title = x;
+                _this.replaceHistoryState(_this.current(), x);
             });
         }
         Router.prototype.state = function (config) {
@@ -5765,6 +5792,20 @@ var wx;
             if (state.name === this.rootStateName)
                 this.root = state;
             return state;
+        };
+        Router.prototype.pushHistoryState = function (state, title) {
+            var hs = { stateName: state.name };
+            if (hs) {
+                hs.title = title;
+            }
+            wx.app.history.pushState(hs, "", state.uri);
+        };
+        Router.prototype.replaceHistoryState = function (state, title) {
+            var hs = { stateName: state.name };
+            if (hs) {
+                hs.title = title;
+            }
+            wx.app.history.replaceState(hs, "", state.uri);
         };
         Router.prototype.mapPath = function (path) {
             if (path.indexOf(this.pathSeparator) === 0) {
@@ -5858,9 +5899,9 @@ var wx;
                 }
                 if (options && options.location) {
                     if (options.location === 2 /* replace */)
-                        wx.app.history.replaceState(state.name, "", state.uri);
+                        this.replaceHistoryState(state, wx.app.title());
                     else
-                        wx.app.history.pushState(state.name, "", state.uri);
+                        this.pushHistoryState(state, wx.app.title());
                 }
                 if (_current != null) {
                     if (_current.onLeave)
@@ -5895,6 +5936,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.60';
+    wx.version = '0.9.61';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
