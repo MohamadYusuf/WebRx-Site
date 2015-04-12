@@ -2167,9 +2167,7 @@ var wx;
                     var state = self.domManager.createNodeState(item);
                     state.index = index;
                     self.domManager.setNodeState(node, state);
-                    if (item) {
-                        self.domManager.applyBindings(item, node);
-                    }
+                    self.domManager.applyBindings(item, node);
                 }
             }
             function nodeRemoveCB(node) {
@@ -5902,6 +5900,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.59';
+    wx.version = '0.9.60';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
