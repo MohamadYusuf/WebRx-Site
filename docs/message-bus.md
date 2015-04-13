@@ -4,7 +4,7 @@ title: WebRx - The Message-Bus
 ---
 # The Message-Bus
 
-Like many other MVVM frameworks, ReactiveUI includes an implementation of the *Message-Bus* pattern. 
+Like many other MVVM frameworks, WebRx includes an implementation of the *Message-Bus* pattern. 
 This allows you to send and recieve messages between different parts of the code without them directly accessing each other.
 
 ## Usage
