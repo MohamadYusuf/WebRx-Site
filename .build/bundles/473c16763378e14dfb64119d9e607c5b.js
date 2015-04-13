@@ -54,6 +54,13 @@ if(document.location.pathname === '/') {
         }, wx.whenAny(this.chosenTicket, function(ticket) { return ticket != null; }));
     }
 
-	wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
+    wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
+
+    var stars = wx.property();
+    wx.applyBindings(stars, document.getElementById("gstars"));
+
+    $.getJSON("https://api.github.com/repos/oliverw/WebRx").then(function(x) {
+        stars(x["stargazers_count"]);
+    });
 }
 

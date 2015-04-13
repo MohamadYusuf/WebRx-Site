@@ -252,6 +252,11 @@ body.wx-unsupported .sample-warning {
     border-radius: 0;
 }
 
+#gstars {
+    width: 8em;
+    text-align: center;
+}
+
 a {
     -webkit-transition: all .1s ease-in-out;
     -moz-transition: all .1s ease-in-out;
