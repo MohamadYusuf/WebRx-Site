@@ -24,7 +24,16 @@ wx.messageBus.sendMessage("item-deleted", item);
 Here we send a message to the <code>item-deleted</code> topic which will be received by anyone subscribed to the
 same topic.
 
-### Using observables as publishers
+### Receiving messages
+
+```javascript
+wx.messageBus.listen("item-deleted")  
+    .subscribe(function(x) { console.log(x) });
+```
+
+Here we subscribe to the <code>item-deleted</code> topic and log any received messages to the browser's console.
+
+### Using observables as message publishers
 
 It is also possible to pipe any observable into the message-bus by associating at topic name with the
 observable and registering with the message-bus.
@@ -34,12 +43,3 @@ var source = Rx.Observable.interval(5000);
 
 wx.messageBus.registerMessageSource("folks-another-five-seconds-have-passed", source);
 ```
-
-### Subscribing to topics
-
-```javascript
-wx.messageBus.listen("item-deleted")  
-    .subscribe(function(x) { console.log(x) });
-```
-
-Here we subscribe to the <code>item-deleted</code> topic and log any received messages to the browser's console.
