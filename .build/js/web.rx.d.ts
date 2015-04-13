@@ -309,10 +309,12 @@ declare module wx {
     interface IRouter {
         state(config: IRouterStateConfig): IRouter;
         current: IObservableProperty<IRouterState>;
+        updateCurrentStateParams(withParamsAction: (params: any) => void): void;
         go(to: string, params?: Object, options?: IStateChangeOptions): void;
         uri(state: string, params?: {}): string;
         reload(): void;
         get(state: string): IRouterStateConfig;
+        is(state: string, params?: any, options?: any): any;
         includes(state: string, params?: any, options?: any): any;
         reset(): void;
     }

@@ -2164,7 +2164,8 @@ var wx;
             for (var i = 0; i < template.length; i++) {
                 var node = proxy.childNodes[(index * templateLength) + i];
                 if (node.nodeType === 1) {
-                    var state = (this.domManager.getNodeState(item) || this.domManager.createNodeState(item));
+                    this.domManager.cleanNode(node);
+                    var state = this.domManager.createNodeState(item);
                     state.index = _index;
                     indexDisp.addRef();
                     state.cleanup.add(indexDisp);
@@ -2235,7 +2236,8 @@ var wx;
                 var index = callbackData.index;
                 var indexDisp = callbackData.indexDisp;
                 if (node.nodeType === 1) {
-                    var state = (self.domManager.getNodeState(item) || self.domManager.createNodeState(item));
+                    var state = (self.domManager.getNodeState(node) || self.domManager.createNodeState());
+                    state.model = item;
                     state.index = index;
                     self.domManager.setNodeState(node, state);
                     if (recalcIndextrigger != null && indexDisp != null) {
@@ -5709,13 +5711,10 @@ var wx;
             wx.app.history.onPopState.subscribe(function (e) {
                 var state = e.state;
                 var stateName = state.stateName;
-                if (stateName) {
-                    var uri = wx.app.history.location.pathname + wx.app.history.location.search;
-                    var route = _this.getAbsoluteRouteForState(stateName);
+                if (stateName != null) {
                     if (state.title != null)
                         wx.app.title(state.title);
-                    var params = route.parse(uri);
-                    _this.go(stateName, params, { location: false });
+                    _this.go(stateName, state.params, { location: false });
                 }
             });
             wx.app.title.changed.subscribe(function (x) {
@@ -5727,6 +5726,11 @@ var wx;
             this.registerStateInternal(config);
             return this;
         };
+        Router.prototype.updateCurrentStateParams = function (withParamsAction) {
+            var _current = this.current();
+            withParamsAction(_current.params);
+            this.replaceHistoryState(_current, wx.app.title());
+        };
         Router.prototype.go = function (to, params, options) {
             to = this.mapPath(to);
             if (this.states[to] == null)
@@ -5736,11 +5740,30 @@ var wx;
         Router.prototype.get = function (state) {
             return this.states[state];
         };
+        Router.prototype.is = function (state, params, options) {
+            var _current = this.current();
+            var isActive = _current.name === state;
+            if (isActive && params != null) {
+                var currentParamsKeys = Object.keys(_current.params);
+                var paramsKeys = Object.keys(params);
+                if (currentParamsKeys.length === paramsKeys.length) {
+                    for (var i = 0; i < paramsKeys.length; i++) {
+                        if (_current.params[paramsKeys[i]] != params[paramsKeys[i]]) {
+                            isActive = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            return isActive;
+        };
         Router.prototype.includes = function (state, params, options) {
             var _current = this.current();
             var isActive = _current.name.indexOf(state) === 0;
             if (isActive && params != null) {
+                var currentParamsKeys = Object.keys(_current.params);
                 var paramsKeys = Object.keys(params);
+                paramsKeys = paramsKeys.length <= currentParamsKeys.length ? paramsKeys : currentParamsKeys;
                 for (var i = 0; i < paramsKeys.length; i++) {
                     if (_current.params[paramsKeys[i]] != params[paramsKeys[i]]) {
                         isActive = false;
@@ -5794,14 +5817,20 @@ var wx;
             return state;
         };
         Router.prototype.pushHistoryState = function (state, title) {
-            var hs = { stateName: state.name };
+            var hs = {
+                stateName: state.name,
+                params: state.params
+            };
             if (hs) {
                 hs.title = title;
             }
             wx.app.history.pushState(hs, "", state.uri);
         };
         Router.prototype.replaceHistoryState = function (state, title) {
-            var hs = { stateName: state.name };
+            var hs = {
+                stateName: state.name,
+                params: state.params
+            };
             if (hs) {
                 hs.title = title;
             }
