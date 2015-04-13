@@ -97,9 +97,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#go" class="tsd-kind-icon">go</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#includes" class="tsd-kind-icon">includes</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#is" class="tsd-kind-icon">is</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#reload" class="tsd-kind-icon">reload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#reset" class="tsd-kind-icon">reset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#updatecurrentstateparams" class="tsd-kind-icon">update<wbr>Current<wbr>State<wbr>Params</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#uri" class="tsd-kind-icon">uri</a></li>
 							</ul>
 						</section>
@@ -114,7 +116,7 @@
 					<div class="tsd-signature tsd-kind-icon">current<span class="tsd-signature-symbol">:</span> <a href="_interfaces_.wx.iobservableproperty.html" class="tsd-signature-type">IObservableProperty</a><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.irouterstate.html" class="tsd-signature-type">IRouterState</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Interfaces.ts:665</li>
+							<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L675">Interfaces.ts:675</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -136,7 +138,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Interfaces.ts:700</li>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L716">Interfaces.ts:716</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -167,7 +169,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Interfaces.ts:679</li>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L695">Interfaces.ts:695</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -216,7 +218,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Interfaces.ts:708</li>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L732">Interfaces.ts:732</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -224,6 +226,45 @@
 									<p>A method to determine if the current active state is equal to or is the child of the state stateName.
 										If any params are passed then they will be tested for a match as well. Not all the parameters need
 									to be passed, just the ones you&#39;d like to test for equality.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>state: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Absolute state path.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> params: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="is" class="tsd-anchor"></a>
+					<h3>is</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">is<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L724">Interfaces.ts:724</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Similar to IRouter.includes, but only checks for the full state name. If params is supplied then it will
+										be tested for strict equality against the current active params object, so all params must match with none
+									missing and no extras.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -255,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Interfaces.ts:694</li>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L710">Interfaces.ts:710</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,7 +319,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Interfaces.ts:713</li>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L737">Interfaces.ts:737</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -300,7 +341,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Interfaces.ts:660</li>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L670">Interfaces.ts:670</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -322,6 +363,53 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="updatecurrentstateparams" class="tsd-anchor"></a>
+					<h3>update<wbr>Current<wbr>State<wbr>Params</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Current<wbr>State<wbr>Params<span class="tsd-signature-symbol">(</span>withParamsAction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L681">Interfaces.ts:681</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Invoke this method to programatically alter or extend IRouter.current.params.
+									Failure to modify params through this method will result in those modifications getting lost after state transitions.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>withParamsAction: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>params: <span class="tsd-signature-type">any</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="uri" class="tsd-anchor"></a>
 					<h3>uri</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -331,7 +419,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in Interfaces.ts:688</li>
+									<li>Defined in <a href="https://github.com/oliverw/WebRx/blob/master/src/Interfaces.ts#L704">Interfaces.ts:704</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -385,102 +473,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_interfaces_.wx.routerlocationchangemode.html" class="tsd-kind-icon">Router<wbr>Location<wbr>Change<wbr>Mode</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.ibindinghandler.html" class="tsd-kind-icon">IBinding<wbr>Handler</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.ibindingregistry.html" class="tsd-kind-icon">IBinding<wbr>Registry</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.icommand.html" class="tsd-kind-icon">ICommand</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.icompiledexpression.html" class="tsd-kind-icon">ICompiled<wbr>Expression</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.icompiledexpressionruntimehooks.html" class="tsd-kind-icon">ICompiled<wbr>Expression<wbr>Runtime<wbr>Hooks</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.icomponent.html" class="tsd-kind-icon">IComponent</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.icomponentinstance.html" class="tsd-kind-icon">IComponent<wbr>Instance</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.icomponentregistry.html" class="tsd-kind-icon">IComponent<wbr>Registry</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.icomponenttemplatedescriptor.html" class="tsd-kind-icon">IComponent<wbr>Template<wbr>Descriptor</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.icomponentviewmodeldescriptor.html" class="tsd-kind-icon">IComponent<wbr>View<wbr>Model<wbr>Descriptor</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.idatacontext.html" class="tsd-kind-icon">IData<wbr>Context</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.idommanager.html" class="tsd-kind-icon">IDom<wbr>Manager</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iexpressioncompiler.html" class="tsd-kind-icon">IExpression<wbr>Compiler</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iexpressioncompileroptions.html" class="tsd-kind-icon">IExpression<wbr>Compiler<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iexpressionfilter.html" class="tsd-kind-icon">IExpression<wbr>Filter</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iexpressionfilterregistry.html" class="tsd-kind-icon">IExpression<wbr>Filter<wbr>Registry</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.ihandleobservableerrors.html" class="tsd-kind-icon">IHandle<wbr>Observable<wbr>Errors</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.ihistory.html" class="tsd-kind-icon">IHistory</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iinjector.html" class="tsd-kind-icon">IInjector</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.ilistchangeinfo.html" class="tsd-kind-icon">IList<wbr>Change<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.imessagebus.html" class="tsd-kind-icon">IMessage<wbr>Bus</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.imodule.html" class="tsd-kind-icon">IModule</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.inodestate.html" class="tsd-kind-icon">INode<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.inotifylistchanged.html" class="tsd-kind-icon">INotify<wbr>List<wbr>Changed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.inotifylistitemchanged.html" class="tsd-kind-icon">INotify<wbr>List<wbr>Item<wbr>Changed</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iobjectliteraltoken.html" class="tsd-kind-icon">IObject<wbr>Literal<wbr>Token</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.iobservablelist.html" class="tsd-kind-icon">IObservable<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.iobservableproperty.html" class="tsd-kind-icon">IObservable<wbr>Property</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.iobservablereadonlylist.html" class="tsd-kind-icon">IObservable<wbr>Read<wbr>Only<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.ipropertychangedeventargs.html" class="tsd-kind-icon">IProperty<wbr>Changed<wbr>Event<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iroute.html" class="tsd-kind-icon">IRoute</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
@@ -499,6 +491,9 @@
 								<a href="_interfaces_.wx.irouter.html#includes" class="tsd-kind-icon">includes</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.irouter.html#is" class="tsd-kind-icon">is</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_interfaces_.wx.irouter.html#reload" class="tsd-kind-icon">reload</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
@@ -508,33 +503,15 @@
 								<a href="_interfaces_.wx.irouter.html#state" class="tsd-kind-icon">state</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.irouter.html#updatecurrentstateparams" class="tsd-kind-icon">update<wbr>Current<wbr>State<wbr>Params</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_interfaces_.wx.irouter.html#uri" class="tsd-kind-icon">uri</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.irouterstate.html" class="tsd-kind-icon">IRouter<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.irouterstateconfig.html" class="tsd-kind-icon">IRouter<wbr>State<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.iset.html" class="tsd-kind-icon">ISet</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.istatechangeoptions.html" class="tsd-kind-icon">IState<wbr>Change<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.itemplateengine.html" class="tsd-kind-icon">ITemplate<wbr>Engine</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.iweakmap.html" class="tsd-kind-icon">IWeak<wbr>Map</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_interfaces_.wx.iwebrxapp.html" class="tsd-kind-icon">IWeb<wbr>RxApp</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
