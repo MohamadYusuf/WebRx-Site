@@ -34,6 +34,7 @@ title: WebRx - Router-Demo
     <h2>Welcome to the UI-Router Demo</h2>
     <p>Use the menu above to navigate.</p>
     <p>Pay attention to the state and state-params values below.</p>
+    <p>Note how document titles get automatically restored when navigating back and forth.</p>
 </script>
 
 <script id="contact-list-template" type="text/html">
@@ -89,14 +90,24 @@ title: WebRx - Router-Demo
 </script>
 
 <script>
-    function ViewModel() {
-        this.contacts = wx.list([
+    function ContactService() {
+        this.contacts = [
             { id: 1, name: "Bob", email: "bob@acme.com" },
             { id: 2, name: "Alice", email: "alice@acme.com" }
-        ]);
+        ];
+
+        this.getContacts = function() {
+            return this.contacts;
+        };
+
+        this.getContact = function(id) {
+            return this.contacts.filter(function(x) {
+                return x.id == id;
+            })[0];
+        };
     }
 
-    var vm = new ViewModel();
+    var contactService = new ContactService();
 
     wx.app.component('home', {
         template: {
@@ -107,6 +118,11 @@ title: WebRx - Router-Demo
     wx.app.component('contact-list', {
         template: {
             element: 'contact-list-template'
+        },
+        viewModel: function (params) {
+            this.contacts = wx.list(contactService.getContacts());
+
+            wx.app.title("Contacts");
         }
     });
 
@@ -115,15 +131,18 @@ title: WebRx - Router-Demo
             element: 'contact-details-template'
         },
         viewModel: function (params) {
-            this.contact = vm.contacts.filter(function(x) {
-                return x.id == params.id;
-            })[0];
+            this.contact = contactService.getContact(params.id);
+
+            wx.app.title("Contact Details: " + this.contact.name);
         }
     });
 
     wx.app.component('about', {
         template: {
             element: 'about-template'
+        },
+        viewModel: function (params) {
+            wx.app.title("About");
         }
     });
 
@@ -173,5 +192,5 @@ title: WebRx - Router-Demo
 
     wx.router.go("home", {}, { location: 2 });
 
-    wx.applyBindings(vm, document.getElementById("router-demo"));
+    wx.applyBindings(undefined, document.getElementById("router-demo"));
 </script>
