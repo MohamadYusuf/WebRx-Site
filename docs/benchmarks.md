@@ -10,5 +10,5 @@ participating frameworks.
 
 ## Collection Binding Performance
 
-- [Appending items to a collection](https://jsperf.com/collection-binding-webrx-vs-knockout)
-- [Inserting items in the middle of a collection](https://jsperf.com/webrx-collection-binding-performance-split-insert)
+- [Appending items to a collection](https://jsperf.com/collection-binding-webrx-vs-knockout/2)
+- [Inserting items in the middle of a collection](https://jsperf.com/webrx-collection-binding-performance-split-insert/2)
