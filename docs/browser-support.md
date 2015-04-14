@@ -6,10 +6,11 @@ title: WebRx - Browser Support
 
 WebRx is tested on the following browsers:
 
-- Mozilla Firefox: 5 - current
-- Google Chrome: 5 - current
-- Microsoft Internet Explorer: **9** - current
-- Apple Safari for Mac OS: 5 - current
-- Apple Safari for iOS: 6 - current
+- Firefox: 5 - current
+- Chrome: 5 - current
+- Internet Explorer: **9** - current
+- Safari OSX: 5 - current
+- Mobile Safari iOS: 5 - current
+- Android Browser: 4.0 - current
 - Opera: current
 
