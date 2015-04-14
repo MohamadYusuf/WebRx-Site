@@ -22,11 +22,4 @@ if(document.location.pathname === '/') {
     }
 
     wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
-
-    var stars = wx.property();
-    wx.applyBindings(stars, document.getElementById("gstars"));
-
-    $.getJSON("https://api.github.com/repos/oliverw/WebRx").then(function(x) {
-        stars(x["stargazers_count"]);
-    });
 }

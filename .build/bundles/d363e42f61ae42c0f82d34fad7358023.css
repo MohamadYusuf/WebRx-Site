@@ -252,16 +252,6 @@ body.wx-unsupported .sample-warning {
     border-radius: 0;
 }
 
-#gstars {
-    width: 8em;
-    text-align: center;
-}
-
-#gstars span {
-    background-color: #e8e8e8;
-    color: #5694ca;
-}
-
 a {
     -webkit-transition: all .1s ease-in-out;
     -moz-transition: all .1s ease-in-out;
