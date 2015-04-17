@@ -12,10 +12,14 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel='stylesheet' type='text/css' href='/bundles/d363e42f61ae42c0f82d34fad7358023.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.min.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+        <script type='text/javascript' src='/js/rx.lite.min.js'></script>
+<script type='text/javascript' src='/js/rx.lite.extras.min.js'></script>
 
 
         <script type='text/javascript' src='/js/web.rx.js'></script>
@@ -50,6 +54,22 @@
           <style>
     #main-container {
         background-color: white;
+    }
+
+    .fadein-prepare {
+        opacity: 0;
+    }
+    .fadein {
+        transition: opacity 0.4s;
+        opacity: 1;
+    }
+
+    .fadeout-prepare {
+        opacity: 1;
+    }
+    .fadeout {
+        transition: opacity 0.4s;
+        opacity: 0;
     }
 </style>
 <div id="router-demo" class="content-panel">
@@ -208,43 +228,42 @@
         }
     });
 
-    wx.app.animation('fadeIn', {
-        prepare: function(x) {
-            $(x).css('opacity','0');
-        },
-        run: function (x) {
-            return Rx.Observable.defer(function() {
-                return Rx.Observable.create(function(observer) {
-                    $(x).animate({ opacity: 1 }, function () {
-                        observer.onNext(undefined);
-                        observer.onCompleted();
-                    });
+    //wx.app.animation('fadeIn', wx.animation("fadein", "fadein-prepare"));
+    //wx.app.animation('fadeOut', wx.animation("fadeOut", "fadeOut-prepare"));
+
+    wx.app.animation('fadeIn', wx.animation(
+        function(x) {
+            return Rx.Observable.create(function (observer) {
+                $(x).animate({ opacity: 1 }, function () {
+                    observer.onNext(undefined);
+                    observer.onCompleted();
                 });
             });
+        }, 
+        function (x) {
+            $(x).css('opacity', '0');
         },
-        complete: function (x) {
+        function (x) {
             console.log("fadeIn complete " + x);
         }
-    });
+    ));
 
-    wx.app.animation('fadeOut', {
-        prepare: function (x) {
-            $(x).css('opacity', '1');
-        },
-        run: function (x) {
-            return Rx.Observable.defer(function () {
-                return Rx.Observable.create(function (observer) {
-                    $(x).animate({ opacity: 0 }, function () {
-                        observer.onNext(undefined);
-                        observer.onCompleted();
-                    });
+    wx.app.animation('fadeOut', wx.animation(
+        function (x) {
+            return Rx.Observable.create(function (observer) {
+                $(x).animate({ opacity: 0 }, function () {
+                    observer.onNext(undefined);
+                    observer.onCompleted();
                 });
             });
         },
-        complete: function (x) {
+        function (x) {
+            $(x).css('opacity', '1');
+        },
+        function (x) {
             console.log("fadeOut complete " + x);
         }
-    });
+    ));
 
     wx.router.state({
         name: "home",
@@ -273,7 +292,7 @@
                 component: "contact-details",
                 animations: {
                     enter: "fadeIn",
-                    leave: "fadeOut"
+//                    leave: "fadeOut"
                 }
             }
         }
@@ -306,7 +325,9 @@
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/ca0012129b1268365e88e9d80d2ee4ea.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

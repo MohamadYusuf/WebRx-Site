@@ -3302,12 +3302,16 @@ var wx;
         }, function (x) { return accessor.thrownExceptions.onNext(x); });
         return accessor;
     };
-    RxObsConstructor.startSync = function (action) {
-        return Rx.Observable.create(function (observer) {
-            action();
-            observer.onNext(undefined);
-            observer.onCompleted();
-            return Rx.Disposable.empty;
+    RxObsConstructor.startDeferred = function (action) {
+        return Rx.Observable.defer(function () {
+            return Rx.Observable.create(function (observer) {
+                var cancelled = false;
+                if (!cancelled)
+                    action();
+                observer.onNext(undefined);
+                observer.onCompleted();
+                return Rx.Disposable.create(function () { return cancelled = true; });
+            });
         });
     };
 })(wx || (wx = {}));
@@ -4020,8 +4024,10 @@ var wx;
             };
         }
         result.run = function (nodes, params) {
-            var elements = toElementList(nodes);
-            return Rx.Observable.combineLatest(elements.map(function (x) { return run(x, params); }), wx.noop);
+            return Rx.Observable.defer(function () {
+                var elements = toElementList(nodes);
+                return Rx.Observable.combineLatest(elements.map(function (x) { return run(x, params); }), wx.noop);
+            });
         };
         if (complete) {
             result.complete = function (nodes, params) {
@@ -4041,12 +4047,14 @@ var wx;
             };
         }
         result.run = function (nodes, params) {
-            var elements = toElementList(nodes);
-            return Rx.Observable.combineLatest(elements.map(function (x) {
-                var obs = Rx.Observable.fromEvent(x, transitionEndEventName);
+            return Rx.Observable.defer(function () {
+                var elements = toElementList(nodes);
+                var obs = Rx.Observable.combineLatest(elements.map(function (x) {
+                    return Rx.Observable.fromEvent(x, transitionEndEventName);
+                }), wx.noop);
                 elements.forEach(function (x) { return wx.toggleCssClass(x, true, run); });
                 return obs;
-            }), wx.noop);
+            });
         };
         result.complete = function (nodes, params) {
             var elements = toElementList(nodes);
@@ -5716,15 +5724,15 @@ var wx;
             else {
                 hideAnimation = Rx.Observable.return(undefined);
             }
-            function removeOldTemplate() {
+            var removeOldTemplate = Rx.Observable.startDeferred(function () {
                 if (hide)
                     hide.complete(oldTemplateInstance);
                 oldTemplateInstance.forEach(function (x) {
                     self.domManager.cleanNode(x);
                     el.removeChild(x);
                 });
-            }
-            function dataBind() {
+            });
+            var dataBind = Rx.Observable.startDeferred(function () {
                 if (componentName == null)
                     return;
                 ctx.$componentParams = componentParams;
@@ -5734,10 +5742,15 @@ var wx;
                 if (show != null && container.nodeType === 1)
                     show.prepare(container);
                 el.appendChild(container);
-                self.domManager.applyBindingsToDescendants(ctx, el);
-            }
+                self.domManager.applyBindings(ctx, container);
+            });
             var showAnimation = show != null && componentName != null ? show.run(el.childNodes) : Rx.Observable.return(undefined);
-            return Rx.Observable.combineLatest(hideAnimation.selectMany(function (_) { return Rx.Observable.startSync(removeOldTemplate); }), Rx.Observable.startSync(dataBind).selectMany(function (_) { return showAnimation; }), wx.noop).take(1);
+            var cleanupAnimation = Rx.Observable.startDeferred(function () {
+                if (show != null) {
+                    show.complete(el.childNodes);
+                }
+            });
+            return Rx.Observable.combineLatest(hideAnimation.selectMany(function (_) { return removeOldTemplate; }), dataBind.selectMany(function (_) { return showAnimation.selectMany(function (_) { return cleanupAnimation; }); }), wx.noop).take(1);
         };
         return ViewBinding;
     })();

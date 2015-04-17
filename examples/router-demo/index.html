@@ -6,6 +6,22 @@ title: WebRx - Router-Demo
     #main-container {
         background-color: white;
     }
+
+    .fadein-prepare {
+        opacity: 0;
+    }
+    .fadein {
+        transition: opacity 0.4s;
+        opacity: 1;
+    }
+
+    .fadeout-prepare {
+        opacity: 1;
+    }
+    .fadeout {
+        transition: opacity 0.4s;
+        opacity: 0;
+    }
 </style>
 <div id="router-demo" class="content-panel">
     <div class="row">
@@ -163,43 +179,42 @@ title: WebRx - Router-Demo
         }
     });
 
-    wx.app.animation('fadeIn', {
-        prepare: function(x) {
-            $(x).css('opacity','0');
-        },
-        run: function (x) {
-            return Rx.Observable.defer(function() {
-                return Rx.Observable.create(function(observer) {
-                    $(x).animate({ opacity: 1 }, function () {
-                        observer.onNext(undefined);
-                        observer.onCompleted();
-                    });
+    //wx.app.animation('fadeIn', wx.animation("fadein", "fadein-prepare"));
+    //wx.app.animation('fadeOut', wx.animation("fadeOut", "fadeOut-prepare"));
+
+    wx.app.animation('fadeIn', wx.animation(
+        function(x) {
+            return Rx.Observable.create(function (observer) {
+                $(x).animate({ opacity: 1 }, function () {
+                    observer.onNext(undefined);
+                    observer.onCompleted();
                 });
             });
+        }, 
+        function (x) {
+            $(x).css('opacity', '0');
         },
-        complete: function (x) {
+        function (x) {
             console.log("fadeIn complete " + x);
         }
-    });
+    ));
 
-    wx.app.animation('fadeOut', {
-        prepare: function (x) {
-            $(x).css('opacity', '1');
-        },
-        run: function (x) {
-            return Rx.Observable.defer(function () {
-                return Rx.Observable.create(function (observer) {
-                    $(x).animate({ opacity: 0 }, function () {
-                        observer.onNext(undefined);
-                        observer.onCompleted();
-                    });
+    wx.app.animation('fadeOut', wx.animation(
+        function (x) {
+            return Rx.Observable.create(function (observer) {
+                $(x).animate({ opacity: 0 }, function () {
+                    observer.onNext(undefined);
+                    observer.onCompleted();
                 });
             });
         },
-        complete: function (x) {
+        function (x) {
+            $(x).css('opacity', '1');
+        },
+        function (x) {
             console.log("fadeOut complete " + x);
         }
-    });
+    ));
 
     wx.router.state({
         name: "home",
@@ -228,7 +243,7 @@ title: WebRx - Router-Demo
                 component: "contact-details",
                 animations: {
                     enter: "fadeIn",
-                    leave: "fadeOut"
+//                    leave: "fadeOut"
                 }
             }
         }
