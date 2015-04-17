@@ -163,6 +163,44 @@ title: WebRx - Router-Demo
         }
     });
 
+    wx.app.animation('fadeIn', {
+        prepare: function(x) {
+            $(x).css('opacity','0');
+        },
+        run: function (x) {
+            return Rx.Observable.defer(function() {
+                return Rx.Observable.create(function(observer) {
+                    $(x).animate({ opacity: 1 }, function () {
+                        observer.onNext(undefined);
+                        observer.onCompleted();
+                    });
+                });
+            });
+        },
+        complete: function (x) {
+            console.log("fadeIn complete " + x);
+        }
+    });
+
+    wx.app.animation('fadeOut', {
+        prepare: function (x) {
+            $(x).css('opacity', '1');
+        },
+        run: function (x) {
+            return Rx.Observable.defer(function () {
+                return Rx.Observable.create(function (observer) {
+                    $(x).animate({ opacity: 0 }, function () {
+                        observer.onNext(undefined);
+                        observer.onCompleted();
+                    });
+                });
+            });
+        },
+        complete: function (x) {
+            console.log("fadeOut complete " + x);
+        }
+    });
+
     wx.router.state({
         name: "home",
         route: "/examples/router-demo/",
@@ -186,7 +224,13 @@ title: WebRx - Router-Demo
         route: "/examples/router-demo/contacts/:id",
         views: {
             'main': "contact-list",
-            'details': "contact-details"
+            'details': {
+                component: "contact-details",
+                animations: {
+                    enter: "fadeIn",
+                    leave: "fadeOut"
+                }
+            }
         }
     });
 
