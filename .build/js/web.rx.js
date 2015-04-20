@@ -5761,7 +5761,7 @@ var wx;
                         }
                     }
                     else {
-                        cleanup.add(_this.applyTemplate(null, null, currentConfig.animations, el, ctx, module || wx.app).subscribe());
+                        cleanup.add(_this.applyTemplate(null, null, currentConfig ? currentConfig.animations : {}, el, ctx, module || wx.app).subscribe());
                         currentConfig = {};
                     }
                 }
