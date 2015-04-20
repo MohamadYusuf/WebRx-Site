@@ -4149,6 +4149,9 @@ var wx;
                 elements.forEach(function (x) { return prepare(x, params); });
             };
         }
+        else {
+            result.prepare = wx.noop;
+        }
         result.run = function (nodes, params) {
             return Rx.Observable.defer(function () {
                 var elements = toElementList(nodes);
@@ -4160,6 +4163,9 @@ var wx;
                 var elements = toElementList(nodes);
                 elements.forEach(function (x) { return complete(x, params); });
             };
+        }
+        else {
+            result.complete = wx.noop;
         }
         return result;
     }
