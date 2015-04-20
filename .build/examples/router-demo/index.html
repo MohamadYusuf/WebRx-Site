@@ -56,21 +56,51 @@
         background-color: white;
     }
 
-    .fadein-prepare {
-        opacity: 0;
-    }
-    .fadein {
-        transition: opacity 0.4s;
-        opacity: 1;
+    .pt-perspective {
+        position: relative;
+        transform-style: preserve-3d;
+     }
+
+    .pt-perspective > div {
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
     }
 
-    .fadeout-prepare {
-        opacity: 1;
+    .enter {
+	    -animation: moveFromRight 600ms ease both;
+        -animation-play-state: paused;
+	    -webkit-animation: moveFromRight 600ms ease both;
+        -webkit-animation-play-state: paused;
+        position: absolute;
     }
-    .fadeout {
-        transition: opacity 0.4s;
-        opacity: 0;
+    .enter.start {
+        animation-play-state: running;
+        -webkit-animation-play-state: running;
     }
+
+    .leave {
+        -animation: moveToLeft 600ms ease both;
+        -animation-play-state: paused;
+        -webkit-animation: moveToLeft 600ms ease both;
+        -webkit-animation-play-state: paused;
+        position: absolute;
+    }
+    .leave.start {
+        animation-play-state: running;
+        -webkit-animation-play-state: running;
+    }
+    .leave.complete {
+        display: none;
+    }
+@-webkit-keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: rotateX(-180deg); }
+}
+
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: rotateX(180deg); }
+}
+
 </style>
 <div id="router-demo" class="content-panel">
     <div class="row">
@@ -85,8 +115,7 @@
 
     <div class="row">
         <div class="col-md-12 row">
-            <div class="col-md-6" data-bind="view: 'main'"></div>
-            <div class="col-md-3" data-bind="view: 'details'"></div>
+            <div class="col-md-12" data-bind="view: 'main'"></div>
         </div>
     </div>
 
@@ -103,18 +132,24 @@
 </script>
 
 <script id="contact-list-template" type="text/html">
-    <h2>All contacts</h2>
-
-    <div class="list-group" data-bind="foreach: contacts">
-        <a class="list-group-item" data-bind="text: name,
-           sref: { name: 'contacts.details', params: { id: id } },
-           sactive: { name: 'contacts.details', params: { id: id } }"></a>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>All contacts</h2>
+        </div>
+    </div>
+    <div class="row" style="overflow: hidden">
+        <div class="col-md-6">
+            <div class="list-group" data-bind="foreach: contacts">
+                <a class="list-group-item" data-bind="text: name,
+                   sref: { name: 'contacts.details', params: { id: id } },
+                   sactive: { name: 'contacts.details', params: { id: id } }"></a>
+            </div>
+        </div>
+        <div class="col-md-6 pt-perspective" data-bind="view: 'details'"></div>
     </div>
 </script>
 
 <script id="contact-details-template" type="text/html">
-    <h2>&nbsp;</h2>
-
     Id: <label data-bind="text: contact.id"></label><br />
     Name: <label data-bind="text: contact.name"></label><br />
     Email: <label data-bind="text: contact.email"></label>><br />
@@ -228,42 +263,8 @@
         }
     });
 
-    //wx.app.animation('fadeIn', wx.animation("fadein", "fadein-prepare"));
-    //wx.app.animation('fadeOut', wx.animation("fadeOut", "fadeOut-prepare"));
-
-    wx.app.animation('fadeIn', wx.animation(
-        function(x) {
-            return Rx.Observable.create(function (observer) {
-                $(x).animate({ opacity: 1 }, function () {
-                    observer.onNext(undefined);
-                    observer.onCompleted();
-                });
-            });
-        }, 
-        function (x) {
-            $(x).css('opacity', '0');
-        },
-        function (x) {
-            console.log("fadeIn complete " + x);
-        }
-    ));
-
-    wx.app.animation('fadeOut', wx.animation(
-        function (x) {
-            return Rx.Observable.create(function (observer) {
-                $(x).animate({ opacity: 0 }, function () {
-                    observer.onNext(undefined);
-                    observer.onCompleted();
-                });
-            });
-        },
-        function (x) {
-            $(x).css('opacity', '1');
-        },
-        function (x) {
-            console.log("fadeOut complete " + x);
-        }
-    ));
+    wx.app.animation('enter', wx.animation("enter", "start"));
+    wx.app.animation('leave', wx.animation("leave", "start", "complete"));
 
     wx.router.state({
         name: "home",
@@ -287,12 +288,11 @@
         name: "contacts.details",
         route: "/examples/router-demo/contacts/:id",
         views: {
-            'main': "contact-list",
-            'details': {
+             'details': {
                 component: "contact-details",
                 animations: {
-                    enter: "fadeIn",
-//                    leave: "fadeOut"
+                    enter: "enter",
+                    leave: "leave"
                 }
             }
         }
