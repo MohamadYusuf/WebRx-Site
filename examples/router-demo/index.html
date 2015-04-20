@@ -16,11 +16,11 @@ title: WebRx - Router-Demo
         backface-visibility: hidden;
         transform: translate3d(0, 0, 0);
     }
-
+/*
     .enter {
-	    -animation: moveFromRight 600ms ease both;
-        -animation-play-state: paused;
-	    -webkit-animation: moveFromRight 600ms ease both;
+	    animation: flipX 600ms ease both;
+        animation-play-state: paused;
+	    -webkit-animation: flipX 600ms ease both;
         -webkit-animation-play-state: paused;
         position: absolute;
     }
@@ -30,9 +30,9 @@ title: WebRx - Router-Demo
     }
 
     .leave {
-        -animation: moveToLeft 600ms ease both;
-        -animation-play-state: paused;
-        -webkit-animation: moveToLeft 600ms ease both;
+        animation: flipXInverted 600ms ease both;
+        animation-play-state: paused;
+        -webkit-animation: flipXInverted 600ms ease both;
         -webkit-animation-play-state: paused;
         position: absolute;
     }
@@ -43,15 +43,25 @@ title: WebRx - Router-Demo
     .leave.complete {
         display: none;
     }
-@-webkit-keyframes moveToLeft {
-	from { }
-	to { -webkit-transform: rotateX(-180deg); }
-}
 
-@-webkit-keyframes moveFromRight {
-	from { -webkit-transform: rotateX(180deg); }
-}
+    @-webkit-keyframes flipXInverted {
+	    from { }
+	    to { -webkit-transform: rotateX(-180deg); }
+    }
 
+    @keyframes flipXInverted {
+	    from { }
+	    to { -webkit-transform: rotateX(-180deg); }
+    }
+
+    @-webkit-keyframes flipX {
+	    from { -webkit-transform: rotateX(180deg); }
+    }
+
+    @keyframes flipX {
+    	from { -webkit-transform: rotateX(180deg); }
+    }
+*/
 </style>
 <div id="router-demo" class="content-panel">
     <div class="row">
