@@ -419,6 +419,27 @@ div.post .share {
   margin-top: 0;
 }
 
+/* SIMPLE TRANSITIONS */
+
+.fadein {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.fadein.run {
+    opacity: 1;
+}
+
+.fadeout {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.fadeout.run {
+    opacity: 0;
+}
+
+
 @media only screen and (max-width: 992px) {
   /* Add a margin between vertically stacked cells on mobile */
   #content1 .row > div  {

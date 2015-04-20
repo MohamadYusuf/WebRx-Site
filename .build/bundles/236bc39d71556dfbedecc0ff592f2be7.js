@@ -57,3 +57,7 @@ if(document.location.pathname === '/') {
     wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
 }
 
+// add a few globally available transition
+wx.app.animation("fadein", wx.animation("fadein", "run"));
+wx.app.animation("fadeout", wx.animation("fadeout", "run"));
+
