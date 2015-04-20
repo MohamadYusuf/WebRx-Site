@@ -5739,15 +5739,8 @@ var wx;
             var el = node;
             var compiled = this.domManager.compileBindingOptions(options, module);
             var viewName = this.domManager.evaluateExpression(compiled, ctx);
-            var stateParams;
-            var currentStateParams;
-            var componentName = null;
-            var componentParams;
-            var componentAnimations;
-            var currentComponentAnimations;
-            var currentComponentName = null;
+            var currentConfig;
             var cleanup;
-            var configuredParamNames;
             function doCleanup() {
                 if (cleanup) {
                     cleanup.dispose();
@@ -5760,42 +5753,16 @@ var wx;
                 try {
                     doCleanup();
                     cleanup = new Rx.CompositeDisposable();
-                    if (newState.views != null) {
-                        var component = newState.views[viewName];
-                        if (component != null) {
-                            if (typeof component === "object") {
-                                componentName = component.component;
-                                componentParams = component.params || {};
-                                componentAnimations = component.animations;
-                            }
-                            else {
-                                componentName = component;
-                                componentParams = {};
-                                componentAnimations = undefined;
-                            }
-                            configuredParamNames = _this.router.getConfiguredParameterNamesForView(viewName, componentName);
-                            stateParams = {};
-                            if (newState.params != null) {
-                                configuredParamNames.forEach(function (x) {
-                                    if (newState.params.hasOwnProperty(x)) {
-                                        stateParams[x] = newState.params[x];
-                                    }
-                                });
-                                componentParams = wx.extend(newState.params, wx.extend(componentParams, {}));
-                            }
-                            if (componentName !== currentComponentName || !wx.isEqual(stateParams, currentStateParams)) {
-                                cleanup.add(_this.applyTemplate(componentName, componentParams, componentAnimations, el, ctx, module || wx.app).subscribe());
-                                currentComponentName = componentName;
-                                currentStateParams = stateParams;
-                                currentComponentAnimations = componentAnimations;
-                            }
+                    var config = _this.router.getViewComponent(viewName);
+                    if (config != null) {
+                        if (!wx.isEqual(currentConfig, config)) {
+                            cleanup.add(_this.applyTemplate(config.component, config.params, config.animations, el, ctx, module || wx.app).subscribe());
+                            currentConfig = config;
                         }
-                        else {
-                            cleanup.add(_this.applyTemplate(null, null, currentComponentAnimations, el, ctx, module || wx.app).subscribe());
-                            currentComponentName = null;
-                            currentStateParams = {};
-                            currentComponentAnimations = undefined;
-                        }
+                    }
+                    else {
+                        cleanup.add(_this.applyTemplate(null, null, currentConfig.animations, el, ctx, module || wx.app).subscribe());
+                        currentConfig = {};
                     }
                 }
                 catch (e) {
@@ -6081,34 +6048,32 @@ var wx;
         Router.prototype.reload = function () {
             this.go(this.current().name, this.current().params, { force: true, location: false });
         };
-        Router.prototype.getConfiguredParameterNamesForView = function (view, component) {
-            var hierarchy = this.getStateHierarchy(this.current().name);
-            var stateParams = {};
-            var result = [];
-            var config;
-            var index = -1;
-            for (var i = hierarchy.length; i--; i >= 0) {
-                config = hierarchy[i];
-                if (config.views && config.views[view]) {
-                    var componentName = config.views[view];
-                    if (typeof componentName === "object") {
-                        componentName = componentName.component;
+        Router.prototype.getViewComponent = function (viewName) {
+            var _current = this.current();
+            var result = undefined;
+            if (_current.views != null) {
+                var component = _current.views[viewName];
+                var stateParams = {};
+                if (component != null) {
+                    result = {};
+                    if (typeof component === "object") {
+                        result.component = component.component;
+                        result.params = component.params || {};
+                        result.animations = component.animations;
                     }
-                    if (componentName === component) {
-                        index = i;
+                    else {
+                        result.component = component;
+                        result.params = {};
+                        result.animations = undefined;
                     }
+                    var parameterNames = this.getViewParameterNamesFromStateConfig(viewName, result.component);
+                    parameterNames.forEach(function (x) {
+                        if (_current.params.hasOwnProperty(x)) {
+                            stateParams[x] = _current.params[x];
+                        }
+                    });
+                    result.params = wx.extend(stateParams, result.params);
                 }
-            }
-            if (index !== -1) {
-                config = hierarchy[index];
-                hierarchy = hierarchy.slice(0, index + 1);
-                hierarchy.forEach(function (state) {
-                    if (state.params != null) {
-                        wx.extend(state.params, stateParams);
-                    }
-                });
-                result = Object.keys(stateParams);
-                result = result.concat(config.route.params);
             }
             return result;
         };
@@ -6257,6 +6222,37 @@ var wx;
                 if (state.onEnter)
                     state.onEnter(this.get(state.name), params);
             }
+        };
+        Router.prototype.getViewParameterNamesFromStateConfig = function (view, component) {
+            var hierarchy = this.getStateHierarchy(this.current().name);
+            var stateParams = {};
+            var result = [];
+            var config;
+            var index = -1;
+            for (var i = hierarchy.length; i--; i >= 0) {
+                config = hierarchy[i];
+                if (config.views && config.views[view]) {
+                    var other = config.views[view];
+                    if (typeof other === "object") {
+                        other = other.component;
+                    }
+                    if (other === component) {
+                        index = i;
+                    }
+                }
+            }
+            if (index !== -1) {
+                config = hierarchy[index];
+                hierarchy = hierarchy.slice(0, index + 1);
+                hierarchy.forEach(function (state) {
+                    if (state.params != null) {
+                        wx.extend(state.params, stateParams);
+                    }
+                });
+                result = Object.keys(stateParams);
+                result = result.concat(config.route.params);
+            }
+            return result;
         };
         return Router;
     })();

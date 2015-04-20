@@ -16,7 +16,7 @@ title: WebRx - Router-Demo
         backface-visibility: hidden;
         transform: translate3d(0, 0, 0);
     }
-/*
+
     .enter {
 	    animation: flipX 600ms ease both;
         animation-play-state: paused;
@@ -51,7 +51,7 @@ title: WebRx - Router-Demo
 
     @keyframes flipXInverted {
 	    from { }
-	    to { -webkit-transform: rotateX(-180deg); }
+	    to { transform: rotateX(-180deg); }
     }
 
     @-webkit-keyframes flipX {
@@ -59,9 +59,8 @@ title: WebRx - Router-Demo
     }
 
     @keyframes flipX {
-    	from { -webkit-transform: rotateX(180deg); }
+    	from { transform: rotateX(180deg); }
     }
-*/
 </style>
 <div id="router-demo" class="content-panel">
     <div class="row">

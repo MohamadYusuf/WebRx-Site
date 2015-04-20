@@ -161,6 +161,11 @@ declare module wx {
         setRuntimeHooks(locals: any, hooks: ICompiledExpressionRuntimeHooks): void;
         parseObjectLiteral(objectLiteralString: any): Array<IObjectLiteralToken>;
     }
+    interface IAnimation {
+        prepare(element: Node | Array<Node> | HTMLElement | Array<HTMLElement> | NodeList, params?: any): void;
+        run(element: Node | Array<Node> | HTMLElement | Array<HTMLElement> | NodeList, params?: any): Rx.Observable<any>;
+        complete(element: Node | Array<Node> | HTMLElement | Array<HTMLElement> | NodeList, params?: any): void;
+    }
     interface IDomManager {
         applyBindings(model: any, rootNode: Node): void;
         applyBindingsToDescendants(ctx: IDataContext, rootNode: Node): void;
@@ -235,6 +240,10 @@ declare module wx {
             [filterName: string]: IExpressionFilter;
         };
     }
+    interface IAnimationRegistry {
+        animation(name: string, filter: IAnimation): IAnimationRegistry;
+        animation(name: string): IAnimation;
+    }
     interface IModuleDescriptor {
         (module: IModule): void;
         require?: string;
@@ -242,7 +251,7 @@ declare module wx {
         resolve?: string;
         instance?: any;
     }
-    interface IModule extends IComponentRegistry, IBindingRegistry, IExpressionFilterRegistry {
+    interface IModule extends IComponentRegistry, IBindingRegistry, IExpressionFilterRegistry, IAnimationRegistry {
         name: string;
         merge(other: IModule): IModule;
     }
@@ -261,6 +270,11 @@ declare module wx {
         stringify(params?: Object): string;
         concat(route: IRoute): IRoute;
         isAbsolute: boolean;
+        params: Array<string>;
+    }
+    interface IViewAnimationDescriptor {
+        enter?: string | IAnimation;
+        leave?: string | IAnimation;
     }
     interface IRouterStateConfig {
         name: string;
@@ -269,6 +283,7 @@ declare module wx {
             [view: string]: string | {
                 component: string;
                 params?: any;
+                animations?: IViewAnimationDescriptor;
             };
         };
         params?: any;
@@ -283,10 +298,16 @@ declare module wx {
             [view: string]: string | {
                 component: string;
                 params?: any;
+                animations?: IViewAnimationDescriptor;
             };
         };
         onEnter?: (config: IRouterStateConfig, params?: any) => void;
         onLeave?: (config: IRouterStateConfig, params?: any) => void;
+    }
+    interface IViewConfig {
+        component: string;
+        params?: any;
+        animations?: IViewAnimationDescriptor;
     }
     const enum RouterLocationChangeMode {
         add = 1,
@@ -317,6 +338,7 @@ declare module wx {
         is(state: string, params?: any, options?: any): any;
         includes(state: string, params?: any, options?: any): any;
         reset(): void;
+        getViewComponent(viewName: string): IViewConfig;
     }
     interface IMessageBus {
         registerScheduler(scheduler: Rx.IScheduler, contract: string): void;
@@ -329,6 +351,12 @@ declare module wx {
 declare module Rx {
     interface Observable<T> extends IObservable<T> {
         toProperty(initialValue?: T): wx.IObservableProperty<T>;
+        continueWith(action: () => void): Observable<any>;
+        continueWith<TResult>(action: (T) => TResult): Observable<TResult>;
+        continueWith<TOther>(obs: Rx.Observable<TOther>): Observable<TOther>;
+    }
+    interface ObservableStatic {
+        startDeferred<T>(action: () => T): Rx.Observable<T>;
     }
 }
 declare module wx {
@@ -344,6 +372,7 @@ declare module wx.internal {
     }
 }
 declare module wx {
+    var noop: () => void;
     function isStrictMode(): boolean;
     function isPrimitive(target: any): boolean;
     function isProperty(target: any): boolean;
@@ -367,6 +396,7 @@ declare module wx {
     function getOwnPropertiesImplementingInterface<T>(target: any, iid: string): PropertyInfo<T>[];
     function getOid(o: any): string;
     function toggleCssClass(node: HTMLElement, shouldHaveClass: boolean, ...classNames: string[]): void;
+    function triggerReflow(el: HTMLElement): void;
     function isFunction(obj: any): boolean;
     function isDisposable(obj: any): boolean;
     function isEqual(a: any, b: any, aStack?: any, bStack?: any): boolean;
@@ -638,6 +668,15 @@ declare module wx {
     module internal {
         var selectComponentConstructor: any;
     }
+}
+declare module wx {
+    interface IAnimationCssClassInstruction {
+        css: string;
+        add: boolean;
+        remove: boolean;
+    }
+    function animation(prepareTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>, startTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>, completeTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>): IAnimation;
+    function animation(run: (element: HTMLElement, params?: any) => Rx.Observable<any>, prepare?: (element: HTMLElement, params?: any) => void, complete?: (element: HTMLElement, params?: any) => void): IAnimation;
 }
 declare module wx {
     module internal {
