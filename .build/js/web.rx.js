@@ -5889,12 +5889,12 @@ var wx;
                     var config = _this.router.getViewComponent(viewName);
                     if (config != null) {
                         if (!wx.isEqual(currentConfig, config)) {
-                            cleanup.add(_this.applyTemplate(config.component, config.params, config.animations, el, ctx, module || wx.app));
+                            cleanup.add(_this.applyTemplate(config.component, config.params, config.animations, el, ctx, module));
                             currentConfig = config;
                         }
                     }
                     else {
-                        cleanup.add(_this.applyTemplate(null, null, currentConfig ? currentConfig.animations : {}, el, ctx, module || wx.app));
+                        cleanup.add(_this.applyTemplate(null, null, currentConfig ? currentConfig.animations : {}, el, ctx, module));
                         currentConfig = {};
                     }
                 }
@@ -6417,6 +6417,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.63';
+    wx.version = '0.9.64';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
