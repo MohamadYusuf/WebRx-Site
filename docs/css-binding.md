@@ -55,6 +55,29 @@ If the parameter doesn't reference an observable value, it will only add or remo
 As usual, you can use [arbitrary expressions](/docs/binding-syntax.html#topic-binding-expressions) as parameter values. 
 WebRx will evaluate them and use the resulting values to determine the appropriate CSS classes to add or remove.
 
+#### Dynamic CSS class names
+
+If you want to use dynamic CSS class names, then you can pass a string that corresponds to the CSS class or classes that you want to add to the element.
+
+```html
+<div class="keep-me" data-bind="css: myClasses">
+   Profit Information
+</div>
+```
+ 
+```html
+<script type="text/javascript">
+    var viewModel = {
+        myClasses: wx.property("foo bar");	// apply the "foo" and "bar" classes to the element, retain class "keep-me"
+    };
+    viewModel.myClasses("foo baz"); // Retain the "foo" and "keep-me" classes on the element, remove class "bar" and add class "baz"
+</script>
+```
+
+If the parameter references an observable value, then the binding will remove any classes previously added by the binding and add the class or 
+classes corresponding to the observable’s new value. Either way, the binding will not interfere with css-classes
+added to the element by other means.
+
 ### Note: Applying CSS classes whose names aren't legal JavaScript variable names
 
 If you want to apply the CSS class my-class, you can't write this:

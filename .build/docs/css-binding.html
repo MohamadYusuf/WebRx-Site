@@ -217,6 +217,23 @@ If the parameter doesn&#39;t reference an observable value, it will only add or 
 <p>As usual, you can use <a href="/docs/binding-syntax.html#topic-binding-expressions">arbitrary expressions</a> as parameter values. 
 WebRx will evaluate them and use the resulting values to determine the appropriate CSS classes to add or remove.</p>
 
+<h4>Dynamic CSS class names</h4>
+
+<p>If you want to use dynamic CSS class names, then you can pass a string that corresponds to the CSS class or classes that you want to add to the element.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;keep-me&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;css: myClasses&quot;</span><span class="nt">&gt;</span>
+   Profit Information
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">myClasses</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;foo bar&quot;</span><span class="p">);</span>  <span class="c1">// apply the &quot;foo&quot; and &quot;bar&quot; classes to the element, retain class &quot;keep-me&quot;</span>
+    <span class="p">};</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myClasses</span><span class="p">(</span><span class="s2">&quot;foo baz&quot;</span><span class="p">);</span> <span class="c1">// Retain the &quot;foo&quot; and &quot;keep-me&quot; classes on the element, remove class &quot;bar&quot; and add class &quot;baz&quot;</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div>
+<p>If the parameter references an observable value, then the binding will remove any classes previously added by the binding and add the class or 
+classes corresponding to the observable’s new value. Either way, the binding will not interfere with css-classes
+added to the element by other means.</p>
+
 <h3>Note: Applying CSS classes whose names aren&#39;t legal JavaScript variable names</h3>
 
 <p>If you want to apply the CSS class my-class, you can&#39;t write this:</p>

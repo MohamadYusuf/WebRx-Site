@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - List-Demo</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - List-Demo" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel='stylesheet' type='text/css' href='/bundles/68bd893d9acd708c6f583ec4997442ad.css' />
+
+
+        <script type='text/javascript' src='/bundles/69e7d74f96f61e00f6a1b760a46d312e.js'></script>
+
+
+        <script type='text/javascript' src='/js/web.rx.js'></script>
+      </head>
+    <body>
+        <h1 id="logoh1">WebRx - List-Demo</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/"><h3 class="logo"><span>WebR</span><span class="x">X</span></h3></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/docs/examples.html">Examples</a></li>
+                    <li><a href="/docs">Documentation</a></li>
+
+                    <li><a href="https://github.com/WebRxJS/WebRx"><i class="fa fa-github"></i> Source</a></li>
+                    <li><a target="_blank" href="https://twitter.com/webrxjs"><i class="fa fa-twitter"></i> Follow</a></li>
+                </ul>
+                </div>
+              </div>
+            </nav>
+
+          <style>
+    body {font-family: arial;font-size: 14px; }
+    .liveExample {padding: 1em;background-color: white;  }
+    .liveExample .planets {max-width: 655px; }
+    .liveExample input { font-family: Arial; }
+    .liveExample b { font-weight: bold; }
+    .liveExample p {margin-top: 0.9em;margin-bottom: 0.9em; }
+    .liveExample select[multiple] {width: 100%;height: 8em; }
+    .liveExample h2 { margin-top: 0.4em; }
+
+    .planet {background-color: #AAEECC;padding: 0.25em;border: 1px solid silver;margin-bottom: 0.5em;font-size: 0.75em; }
+    .planet.rock { background-color: #EECCAA; }
+    .liveExample input { margin: 0 0.3em 0 1em; }
+
+    li {list-style-type: disc;margin-left: 20px; }
+
+    .enter {
+	    animation: slideIn 600ms ease both;
+        animation-play-state: paused;
+	    -webkit-animation: slideIn 600ms ease both;
+        -webkit-animation-play-state: paused;
+    }
+    .enter.start {
+        animation-play-state: running;
+        -webkit-animation-play-state: running;
+    }
+
+    .leave {
+        animation: slideOut 600ms ease both;
+        animation-play-state: paused;
+        -webkit-animation: slideOut 600ms ease both;
+        -webkit-animation-play-state: paused;
+    }
+
+    @-webkit-keyframes slideIn {
+	    from { -webkit-transform: scaleY(0); }
+	    to { -webkit-transform: scaleY(1); }
+    }
+
+    @keyframes slideIn {
+	    from { transform: scaleY(0); }
+	    to { transform: scaleY(1); }
+    }
+</style>
+
+<div class='liveExample col-md-12'>
+    <h2>Planets</h2>
+    <p>
+        <label>
+            <input class="checkbox checkbox-inline" type='checkbox' data-bind='checked: @displayAdvancedOptions'/>
+            Display advanced options
+        </label>
+    </p>
+
+    <p data-bind='visible: displayAdvancedOptions'>
+        Show:
+        <label><input class="radio radio-inline" type='radio' name="type" value='all' data-bind='selectedValue: @typeToShow'/>All</label>
+        <label><input class="radio radio-inline" type='radio' name="type" value='rock' data-bind='selectedValue: @typeToShow' />Rocky planets</label>
+        <label><input class="radio radio-inline" type='radio' name="type" value='gasgiant' data-bind='selectedValue: @typeToShow' />Gas giants</label>
+    </p>
+
+    <div class="planets" data-bind='foreach: { data: planetsToShow, itemEnter: "enter" }'>
+        <div data-bind='css: "planet " + type, text: name'> </div>
+    </div>
+
+    <p data-bind='visible: displayAdvancedOptions'>
+        <button class="btn btn-default" data-bind='command: { command: addPlanetCmd, parameter: "rock" }'>Add rocky planet</button>
+        <button class="btn btn-default" data-bind='command: { command: addPlanetCmd, parameter: "gasgiant" }'>Add gas giant</button>
+    </p>
+</div>
+
+<script>
+    wx.app.animation('enter', wx.animation("enter", "start"));
+
+    var PlanetsModel = function () {
+        this.planets = wx.list([
+            { name: "Mercury", type: "rock", o: 1 },
+            { name: "Venus", type: "rock", o: 2 },
+            { name: "Earth", type: "rock", o: 3 },
+            { name: "Mars", type: "rock", o: 4 },
+            { name: "Jupiter", type: "gasgiant", o: 5 },
+            { name: "Saturn", type: "gasgiant", o: 6 },
+            { name: "Uranus", type: "gasgiant", o: 7 },
+            { name: "Neptune", type: "gasgiant", o: 8 },
+        ]);
+
+        this.typeToShow = wx.property("all");
+        this.displayAdvancedOptions = wx.property(false);
+
+        this.addPlanetCmd = wx.command(function (type) {
+            this.planets.push({ name: "New planet", type: type });
+        }, this);
+
+        this.planetsToShow = this.planets.project(function(planet) {
+            var desiredType = this.typeToShow();
+            return desiredType === "all" || planet.type === desiredType;
+        }.bind(this), this.typeToShow.changed);
+    };
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        wx.applyBindings(new PlanetsModel());
+    });
+</script>
+
+
+            <div id="footer" class="content-panel">
+                <div class="row">
+                  <div class="copyright col-md-4">
+                    Copyright (c) 2015 WebRxJS.org
+                  </div>
+
+                  <div class="copyright col-md-4">
+                  </div>
+
+                  <div class="copyright col-md-4 text-right">
+                    <a id="impressum" href="/impressum.html">Impressum</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
+        <script type='text/javascript' src='/bundles/236bc39d71556dfbedecc0ff592f2be7.js'></script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

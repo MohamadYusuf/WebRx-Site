@@ -78,11 +78,16 @@ declare module wx {
     interface IObservableReadOnlyList<T> extends INotifyListChanged<T>, INotifyListItemChanged {
         length: IObservableProperty<number>;
         get(index: number): T;
+        isReadOnly: boolean;
+        toArray(): Array<T>;
+        project<TNew, TDontCare>(filter?: (item: T) => boolean, orderer?: (a: TNew, b: TNew) => number, selector?: (T) => TNew, refreshTrigger?: Rx.Observable<TDontCare>, scheduler?: Rx.IScheduler): IObservableReadOnlyList<TNew>;
+        project<TDontCare>(filter?: (item: T) => boolean, orderer?: (a: T, b: T) => number, refreshTrigger?: Rx.Observable<TDontCare>, scheduler?: Rx.IScheduler): IObservableReadOnlyList<T>;
+        project<TDontCare>(filter?: (item: T) => boolean, refreshTrigger?: Rx.Observable<TDontCare>, scheduler?: Rx.IScheduler): IObservableReadOnlyList<T>;
+        project<TDontCare>(refreshTrigger?: Rx.Observable<TDontCare>, scheduler?: Rx.IScheduler): IObservableReadOnlyList<T>;
     }
     interface IObservableList<T> extends IObservableReadOnlyList<T> {
         isEmpty: IObservableProperty<boolean>;
         set(index: number, item: T): any;
-        isReadOnly: boolean;
         add(item: T): void;
         push(item: T): void;
         clear(): void;
@@ -97,7 +102,6 @@ declare module wx {
         removeAll(items: Array<T>): void;
         removeRange(index: number, count: number): void;
         reset(): void;
-        toArray(): Array<T>;
         sort(comparison: (a: T, b: T) => number): void;
         forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
         map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
@@ -637,6 +641,11 @@ declare module wx.internal {
 }
 declare module wx {
 }
+declare module wx.log {
+    function critical(fmt: string, ...args: any[]): void;
+    function error(fmt: string, ...args: any[]): void;
+    function info(fmt: string, ...args: any[]): void;
+}
 declare module wx {
     module internal {
         var listConstructor: any;
@@ -710,11 +719,6 @@ declare module wx {
     module internal {
         var htmlTemplateEngineConstructor: any;
     }
-}
-declare module wx.log {
-    function critical(fmt: string, ...args: any[]): void;
-    function error(fmt: string, ...args: any[]): void;
-    function info(fmt: string, ...args: any[]): void;
 }
 declare module wx {
     var messageBus: IMessageBus;
