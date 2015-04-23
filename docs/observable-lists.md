@@ -97,10 +97,103 @@ list.push('Some other value');					// no notifications get send now
 disp.dispose();								// list resumes sending change notifications
 ```
 
+## Projections
 
-## Live Example
+A projected observable list is a read-only view of of a source observable list that is automatically kept in sync with its source. 
+What makes projections useful is that list-projections can apply filtering, re-ordering and mapping operations on the fly.
 
-<p data-height="268" data-theme-id="0" data-slug-hash="KwLRWK" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/KwLRWK/'>KwLRWK</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+#### Properties of a projection
+
+- A projection stays always in sync with the source list it was created from.
+- A projection can exclude items of its source by applying a filter function
+- A projection can be arbitrarily re-ordered
+- A projection can contain different item types than its source by applying a mapping function
+
+### Creating a filtered projection
+
+A projection of an observable list is created through the list's <code>project</code> instance method.
+
+```javascript
+var list = wx.list(["bart", "homer", "apu"]);
+
+var iLikeRs = list.project(function(x) {
+	return x.indexOf("r") !== -1;
+});
+```
+Here we've created a projection of <code>list</code> that only likes names containing an "r". Converting <code>iLikeRs</code> to an array yields:
+
+```javascript
+iLikeRs.toArray()
+["bart", "homer"]
+```
+Let's add another name to the source list and see what happens to the projection:
+
+```javascript
+list.push("marge");
+
+iLikeRs.toArray()
+["bart", "homer", "marge"]
+```
+As expected the projection has picked the new entry added to the source.
+
+### Creating a re-ordered projection 
+
+In addition to filtering its source, a projection can optionally be re-ordered:
+
+```javascript
+var list = wx.list([1, 2, 3]);
+
+var reverse = list.project(
+	null,	// no filter
+	function(a, b) {
+		return b - a;	// reverse ordering
+	}
+);
+
+projection.toArray()
+[3, 2, 1]
+```
+Now the order is reversed.
+
+### Creating a mapping projection
+
+Sometimes it might be desirable to work with a projection that contains list items
+that differ from the items found in the source list. This scenario is also supported:
+
+```javascript
+var list = wx.list(["bart", "homer", "marge"]);
+
+var iDontLikeRs = list.project(
+	null,	// no filter
+	null,	// no-orderer
+	function(x) {
+		return { 
+			name: x.replace("r", "") 
+		};
+	}
+);
+
+iDontLikeRs.toArray()
+[{ name: "bat" }, { name: "home" }, { name: "mage" }]
+```
+We've erased the "r" character from all names and have converted the result to an object.
+
+### Manually triggering a refresh
+
+Even though a projection tracks all changes to its source observable list, it is sometimes
+necessary to manually trigger a refresh on a projection. An example for this would be a filter function that behaves
+differently depending on another condition.
+
+For this reason, the <code>project</code> accepts a fourth argument that can be any Rx.Observable. Whenever
+that observable produces a value, the projection will be re-filtered, re-ordered and optionally re-transformed.
+
+### Live Example
+
+The <code>planetsToShow</code> projection used in this example filters the <code>planets</code> list to only include planets 
+of a user selected category.
+
+<p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/xGKmKo/'>WebRx - Animated collections example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 <a class="next-topic" href="/docs/commands.html#start">Next: Commands</a>
+
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>

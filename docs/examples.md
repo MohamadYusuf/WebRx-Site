@@ -32,10 +32,12 @@ If you want to detect and respond to changes on one object, you'd use observable
 
 ## Projected Observable Lists combined with animated transitions
 
-This is example demonstrates two of WebRx's features:
+This example utilizes WebRx's very useful observable-lists-projections. A projected observable list is a read-only view of of a source
+observable list that is automatically kept in sync with its source. What makes these projection so useful is that list-projections can
+apply filtering, re-ordering and mapping operations on the fly.
 
-- Projected observable lists
-- Animated transitions supported by the foreach-binding
+The <code>planetsToShow</code> projection used in this example filters the <code>planets</code> list to only include planets 
+of a user selected category.
 
 <p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/xGKmKo/'>WebRx - Animated collections example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 

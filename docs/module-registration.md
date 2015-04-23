@@ -96,6 +96,10 @@ there are other types of module-scoped resources.
 
 The documentation contains an entire chapter dedicated to [registering components](/docs/component-registration.html#start). 
 
+### Registering animations
+
+The documentation contains an entire chapter dedicated to [creating animations](/docs/animation-registration.html#start). 
+
 ### Registering expression filters
 
 [Expression-filters](/docs/binding-syntax.html#topic-expression-filters) format the result of an expression for display to the user.

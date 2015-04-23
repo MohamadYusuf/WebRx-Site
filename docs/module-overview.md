@@ -57,16 +57,17 @@ launches. All other modules are asynchronously resolved by the [module-binding](
 
 ## Module Resources
 
-There are three types of resources that can, or rather must be either registered with a custom-module or the application-module: 
+There are several types of resources that can, or rather must be either registered with a custom-module or the application-module: 
 
 - [Components](/docs/component-overview.html#start)
-- Binding-handlers
+- [Animations](/docs/animation-overview.html#start)
 - [Expression-filters](/docs/binding-syntax.html#topic-expression-filters)
+- Binding-handlers
 
 WebRx refers to these kinds of resources as *module-scoped-resources*.
 
 The reason for registering these kinds of resources is because they are utilized by WebRx's 
-data-binding system which needs to be aware of that a particular binding, filter or component exists.
+data-binding system which needs to be aware of that a particular component, animation, filter or binding exists.
 
 ### Services
 

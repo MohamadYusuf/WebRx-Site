@@ -267,13 +267,98 @@
 <span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some other value&#39;</span><span class="p">);</span>                  <span class="c1">// no notifications get send now</span>
 <span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>                             <span class="c1">// list resumes sending change notifications</span>
 </code></pre></div>
-<h2>Live Example</h2>
+<h2>Projections</h2>
 
-<p data-height="268" data-theme-id="0" data-slug-hash="KwLRWK" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/KwLRWK/'>KwLRWK</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p>A projected observable list is a read-only view of of a source observable list that is automatically kept in sync with its source. 
+What makes projections useful is that list-projections can apply filtering, re-ordering and mapping operations on the fly.</p>
 
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<h4>Properties of a projection</h4>
+
+<ul>
+<li>A projection stays always in sync with the source list it was created from.</li>
+<li>A projection can exclude items of its source by applying a filter function</li>
+<li>A projection can be arbitrarily re-ordered</li>
+<li>A projection can contain different item types than its source by applying a mapping function</li>
+</ul>
+
+<h3>Creating a filtered projection</h3>
+
+<p>A projection of an observable list is created through the list&#39;s <code>project</code> instance method.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;apu&quot;</span><span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">iLikeRs</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Here we&#39;ve created a projection of <code>list</code> that only likes names containing an &quot;r&quot;. Converting <code>iLikeRs</code> to an array yields:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">iLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
+<span class="p">[</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>Let&#39;s add another name to the source list and see what happens to the projection:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;marge&quot;</span><span class="p">);</span>
+
+<span class="nx">iLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
+<span class="p">[</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;marge&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>As expected the projection has picked the new entry added to the source.</p>
+
+<h3>Creating a re-ordered projection</h3>
+
+<p>In addition to filtering its source, a projection can optionally be re-ordered:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">reverse</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span>
+    <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no filter</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">b</span> <span class="o">-</span> <span class="nx">a</span><span class="p">;</span>   <span class="c1">// reverse ordering</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nx">projection</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+<p>Now the order is reversed.</p>
+
+<h3>Creating a mapping projection</h3>
+
+<p>Sometimes it might be desirable to work with a projection that contains list items
+that differ from the items found in the source list. This scenario is also supported:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;marge&quot;</span><span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">iDontLikeRs</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span>
+    <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no filter</span>
+    <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no-orderer</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> 
+            <span class="nx">name</span><span class="o">:</span> <span class="nx">x</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> 
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nx">iDontLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
+<span class="p">[{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;bat&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;mage&quot;</span> <span class="p">}]</span>
+</code></pre></div>
+<p>We&#39;ve erased the &quot;r&quot; character from all names and have converted the result to an object.</p>
+
+<h3>Manually triggering a refresh</h3>
+
+<p>Even though a projection tracks all changes to its source observable list, it is sometimes
+necessary to manually trigger a refresh on a projection. An example for this would be a filter function that behaves
+differently depending on another condition.</p>
+
+<p>For this reason, the <code>project</code> accepts a fourth argument that can be any Rx.Observable. Whenever
+that observable produces a value, the projection will be re-filtered, re-ordered and optionally re-transformed.</p>
+
+<h3>Live Example</h3>
+
+<p>The <code>planetsToShow</code> projection used in this example filters the <code>planets</code> list to only include planets 
+of a user selected category.</p>
+
+<p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/xGKmKo/'>WebRx - Animated collections example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 <p><a class="next-topic" href="/docs/commands.html#start">Next: Commands</a></p>
+
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 </div>
         </div>
     </div>
