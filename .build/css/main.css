@@ -18,7 +18,14 @@ body.wx-unsupported .sample-warning {
 
 .navbar-brand h3 {
     margin: 0;
+    margin-left: 8px;
+    display: inline-block;
     color: white;
+    vertical-align: middle;
+}
+
+.navbar-brand img {
+    vertical-align: middle;
 }
 
 .panel.code.syntax-theme-cobalt .panel-body,
