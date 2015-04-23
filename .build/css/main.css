@@ -75,6 +75,15 @@ a.next-topic {
     margin: 0;
 }
 
+#main-logo img {
+    vertical-align: middle;
+}
+
+#main-logo span {
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
 pre code {
   font-size: 110%;
 }
