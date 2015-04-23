@@ -30,6 +30,15 @@ If you want to detect and respond to changes on one object, you'd use observable
 
 <p data-height="268" data-theme-id="0" data-slug-hash="KwLRWK" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/KwLRWK/'>KwLRWK</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
+## Projected Observable Lists combined with animated transitions
+
+This is example demonstrates two of WebRx's features:
+
+- Projected observable lists
+- Animated transitions supported by the foreach-binding
+
+<p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/xGKmKo/'>WebRx - Animated collections example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
 ## Client-Side-Router Demo
 
 This example demonstrates some of the capabilities of WebRx's built-in [client-side router](/docs/routing-overview.html#start).
