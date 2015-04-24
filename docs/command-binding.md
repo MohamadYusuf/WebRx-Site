@@ -145,7 +145,7 @@ To supply parameters to the command, pass an object with the following propertie
 - <code>command</code>: The [command](/docs/commands.html#start) you want to bind to the element
 - <code>parameter</code>: An optional parameter that will be passed as first argument to the command's <code>execute</code> handler.
 The parameter can also be an observable.
-- <code>eventNames</code>: An optional parameter that specifies the event name to subscribe to. It is possible to
+- <code>events</code>: An optional parameter that specifies the event name to subscribe to. It is possible to
 specify multiple event names separated by whitespace.
 
 <a class="next-topic" href="/docs/event-binding.html#start">Next: The Event-Binding</a>
