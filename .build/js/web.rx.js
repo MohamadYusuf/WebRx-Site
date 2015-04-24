@@ -80,6 +80,30 @@ var wx;
 var wx;
 (function (wx) {
     "use strict";
+    var IID = (function () {
+        function IID() {
+        }
+        IID.IUnknown = "IUnknown";
+        IID.IDisposable = "IDisposable";
+        IID.IObservableProperty = "IObservableProperty";
+        IID.IReactiveNotifyPropertyChanged = "IReactiveNotifyPropertyChanged";
+        IID.IHandleObservableErrors = "IHandleObservableErrors";
+        IID.IObservableList = "IObservableList";
+        IID.IList = "IList";
+        IID.IReactiveNotifyCollectionChanged = "IReactiveNotifyCollectionChanged";
+        IID.IReactiveNotifyCollectionItemChanged = "IReactiveNotifyCollectionItemChanged";
+        IID.IReactiveDerivedList = "IReactiveDerivedList";
+        IID.IMoveInfo = "IMoveInfo";
+        IID.IObservedChange = "IObservedChange";
+        IID.ICommand = "ICommand";
+        IID.IReadOnlyList = "IReadOnlyList";
+        return IID;
+    })();
+    wx.IID = IID;
+})(wx || (wx = {}));
+var wx;
+(function (wx) {
+    "use strict";
     var cssClassNameRegex = /\S+/g;
     var RxObsConstructor = Rx.Observable;
     wx.noop = function () {
@@ -114,7 +138,7 @@ var wx;
     function isRxScheduler(target) {
         if (target == null)
             return false;
-        return Rx.helpers.isScheduler(target);
+        return Rx.Scheduler.isScheduler(target);
     }
     wx.isRxScheduler = isRxScheduler;
     function isRxObservable(target) {
@@ -158,10 +182,6 @@ var wx;
         });
     }
     wx.formatString = formatString;
-    function trimString(str) {
-        return str.replace(/[ \t]+$/g, "").replace(/^[ \t]+/g, "");
-    }
-    wx.trimString = trimString;
     function extend(src, dst, inherited) {
         var prop;
         if (!inherited) {
@@ -647,30 +667,6 @@ var wx;
 var wx;
 (function (wx) {
     "use strict";
-    var IID = (function () {
-        function IID() {
-        }
-        IID.IUnknown = "IUnknown";
-        IID.IDisposable = "IDisposable";
-        IID.IObservableProperty = "IObservableProperty";
-        IID.IReactiveNotifyPropertyChanged = "IReactiveNotifyPropertyChanged";
-        IID.IHandleObservableErrors = "IHandleObservableErrors";
-        IID.IObservableList = "IObservableList";
-        IID.IList = "IList";
-        IID.IReactiveNotifyCollectionChanged = "IReactiveNotifyCollectionChanged";
-        IID.IReactiveNotifyCollectionItemChanged = "IReactiveNotifyCollectionItemChanged";
-        IID.IReactiveDerivedList = "IReactiveDerivedList";
-        IID.IMoveInfo = "IMoveInfo";
-        IID.IObservedChange = "IObservedChange";
-        IID.ICommand = "ICommand";
-        IID.IReadOnlyList = "IReadOnlyList";
-        return IID;
-    })();
-    wx.IID = IID;
-})(wx || (wx = {}));
-var wx;
-(function (wx) {
-    "use strict";
     function property(initialValue) {
         var accessor = function (newVal) {
             if (arguments.length > 0) {
@@ -1114,14 +1110,14 @@ var wx;
             }
         };
         DomManager.prototype.getObjectLiteralTokens = function (value) {
-            value = wx.trimString(value);
+            value = value.trim();
             if (value !== '' && this.isObjectLiteralString(value)) {
                 return this.compiler.parseObjectLiteral(value);
             }
             return [];
         };
         DomManager.prototype.compileBindingOptions = function (value, module) {
-            value = wx.trimString(value);
+            value = value.trim();
             if (value === '') {
                 return null;
             }
@@ -1340,7 +1336,7 @@ var wx;
                 }
             }
             if (bindingText) {
-                bindingText = wx.trimString(bindingText);
+                bindingText = bindingText.trim();
             }
             if (bindingText)
                 return this.compiler.parseObjectLiteral(bindingText);
@@ -1584,6 +1580,7 @@ var wx;
             var paramObservable;
             var cleanup;
             var isAnchor = el.tagName.toLowerCase() === "a";
+            var eventNames = "click";
             function doCleanup() {
                 if (cleanup) {
                     cleanup.dispose();
@@ -1602,6 +1599,10 @@ var wx;
                     exp = opt.parameter;
                     paramObservable = this.domManager.expressionToObservable(exp, ctx);
                 }
+                if (opt.eventNames) {
+                    exp = opt.eventNames;
+                    eventNames = this.domManager.evaluateExpression(exp, ctx);
+                }
             }
             if (paramObservable == null) {
                 paramObservable = Rx.Observable.return(undefined);
@@ -1617,9 +1618,11 @@ var wx;
                         cleanup.add(x.cmd.canExecuteObservable.subscribe(function (canExecute) {
                             el.disabled = !canExecute;
                         }));
-                        cleanup.add(Rx.Observable.fromEvent(el, "click").subscribe(function (e) {
+                        var eventArray = eventNames.split(/\s+/).map(function (x) { return x.trim(); }).filter(function (x) { return x; });
+                        var eventObservables = eventArray.map(function (x) { return Rx.Observable.fromEvent(el, x); });
+                        cleanup.add(Rx.Observable.merge(eventObservables).subscribe(function (e) {
                             x.cmd.execute(x.param);
-                            if (isAnchor) {
+                            if (isAnchor && e.type === "click") {
                                 e.preventDefault();
                             }
                         }));
@@ -1682,7 +1685,7 @@ var wx;
                     var moduleNames;
                     var disp = undefined;
                     if (value) {
-                        value = wx.trimString(value);
+                        value = value.trim();
                         moduleNames = value.split(" ").filter(function (x) { return x; });
                     }
                     if (moduleNames.length > 0) {
@@ -2719,7 +2722,7 @@ var wx;
         CssBinding.prototype.applyValue = function (el, value, key) {
             var classes;
             if (key !== "") {
-                classes = key.split(/\s+/).map(function (x) { return wx.trimString(x); }).filter(function (x) { return x; });
+                classes = key.split(/\s+/).map(function (x) { return x.trim(); }).filter(function (x) { return x; });
                 if (classes.length) {
                     wx.toggleCssClass.apply(null, [el, !!value].concat(classes));
                 }
@@ -2731,7 +2734,7 @@ var wx;
                     state.cssBindingPreviousDynamicClasses = null;
                 }
                 if (value) {
-                    classes = value.split(/\s+/).map(function (x) { return wx.trimString(x); }).filter(function (x) { return x; });
+                    classes = value.split(/\s+/).map(function (x) { return x.trim(); }).filter(function (x) { return x; });
                     if (classes.length) {
                         wx.toggleCssClass.apply(null, [el, true].concat(classes));
                         state.cssBindingPreviousDynamicClasses = classes;
@@ -4685,7 +4688,7 @@ var wx;
         if (prepare) {
             var prepIns;
             if (typeof prepare === "string") {
-                prepare = prepare.split(/\s+/).map(function (x) { return wx.trimString(x); }).filter(function (x) { return x; });
+                prepare = prepare.split(/\s+/).map(function (x) { return x.trim(); }).filter(function (x) { return x; });
             }
             if (typeof prepare[0] === "string") {
                 prepIns = prepare.map(function (x) { return { css: x, add: true }; });
@@ -4705,7 +4708,7 @@ var wx;
         }
         var runIns;
         if (typeof run === "string") {
-            run = run.split(/\s+/).map(function (x) { return wx.trimString(x); }).filter(function (x) { return x; });
+            run = run.split(/\s+/).map(function (x) { return x.trim(); }).filter(function (x) { return x; });
         }
         if (typeof run[0] === "string") {
             runIns = run.map(function (x) { return { css: x, add: true }; });
@@ -4736,7 +4739,7 @@ var wx;
         var completeIns;
         if (complete) {
             if (typeof complete === "string") {
-                complete = complete.split(/\s+/).map(function (x) { return wx.trimString(x); }).filter(function (x) { return x; });
+                complete = complete.split(/\s+/).map(function (x) { return x.trim(); }).filter(function (x) { return x; });
             }
             if (typeof complete[0] === "string") {
                 completeIns = complete.map(function (x) { return { css: x, add: true }; });
@@ -4957,7 +4960,7 @@ var wx;
         var divisionLookBehind = /[\])"'A-Za-z0-9_$]+$/;
         var keywordRegexLookBehind = { 'in': 1, 'return': 1, 'typeof': 1 };
         function parseObjectLiteral(objectLiteralString) {
-            var str = wx.trimString(objectLiteralString);
+            var str = objectLiteralString.trim();
             if (str.charCodeAt(0) === 123)
                 str = str.slice(1, -1);
             var result = new Array(), toks = str.match(bindingToken), key, values, depth = 0;
@@ -6815,6 +6818,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.65';
+    wx.version = '0.9.73';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
