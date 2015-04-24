@@ -61,6 +61,23 @@ a.next-topic {
     margin-top: 1.5em;    
 }
 
+.popover-content {
+    color: #303030;
+    text-shadow: none;    
+}
+
+.share-link i {
+    color: rgb(22, 100, 151);
+    font-size: 40px;
+    -webkit-transition: all .1s ease-in-out;
+    -moz-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+.share-link i:hover {
+    color: #3a99d7;
+}
+
 #main-logo-container {
     line-height: 2em;
     text-align: center;

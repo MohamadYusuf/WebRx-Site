@@ -20,8 +20,7 @@ meta_description: WebRx - Dynamic JavaScript User-Interfaces with ReactiveX
 	            <a id="gstars" class="btn btn-primary" title="Source on Github" target="_blank"
 	               href="https://github.com/WebRxJS/WebRx"><i class="fa fa-github"></i> Source</a>
                 &nbsp;
-	            <a id="follow" class="btn btn-primary" title="Follow on Twitter" target="_blank"
-	               href="https://twitter.com/webrxjs"><i class="fa fa-twitter"></i> Follow</a>
+	            <button id="share" class="btn btn-primary"><i class="fa fa-share-square"></i> Share</button>
 	        </div>
 	    </div>
 	</div>
@@ -192,3 +191,10 @@ wx.applyBindings(new TicketsViewModel());
                 </div>
             </div>
         </div>
+
+<script id="share-content" type="text/html">
+    <a class="share-link" href="http://twitter.com/share?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript User-Interfaces with ReactiveX&hashtags=webrx" target="_blank"><i class="fa fa-twitter-square"></i></a>
+    <a class="share-link" href="http://reddit.com/submit?url=http://webrxjs.org&title=WebRx - Dynamic JavaScript User-Interfaces with ReactiveX" target="_blank"><i class="fa fa-reddit-square"></i></a>
+    <a class="share-link" href="http://www.linkedin.com/shareArticle?mini=true&url=http://webrxjs.org" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+    <a class="share-link" href="https://plus.google.com/share?url=http://webrxjs.org" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+</script>
