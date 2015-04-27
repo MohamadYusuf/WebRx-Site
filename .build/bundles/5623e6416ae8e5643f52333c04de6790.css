@@ -501,6 +501,10 @@ code {
     text-shadow: none;
 }
 
+#header .btn {
+    margin-right: 6px;
+}
+
 #header form button {
     text-shadow: none;
 }
@@ -717,5 +721,22 @@ div.post .share {
   .docs  {
     padding-top: 1em;
   }
+
+  #header .btn {
+      margin-bottom: 10px;
+  }
+
+    #main-logo {
+        font-size: 300%;
+        margin: 0;
+    }  
+
+    #main-logo img {
+        height: 42px;
+    }
+    
+    #main-logo-container h2 {
+        font-size: 24px;
+    }  
 }
 
