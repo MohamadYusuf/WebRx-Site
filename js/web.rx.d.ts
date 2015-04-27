@@ -493,7 +493,6 @@ declare module wx {
     interface ICommandBindingOptions {
         command: ICommand<any>;
         parameter?: any;
-        events?: any;
     }
     module internal {
         var commandBindingConstructor: any;
@@ -518,7 +517,10 @@ declare module wx {
 }
 declare module wx {
     interface IEventBindingOptions {
-        [eventName: string]: (ctx: IDataContext, event: Event) => any | Rx.Observer<Event>;
+        [eventName: string]: (ctx: IDataContext, event: Event) => any | Rx.Observer<Event> | {
+            command: ICommand<any>;
+            parameter: any;
+        };
     }
     module internal {
         var eventBindingConstructor: any;
@@ -568,6 +570,10 @@ declare module wx {
     }
 }
 declare module wx {
+    interface IHasFocusBindingOptions {
+        property: any;
+        delay: number;
+    }
     module internal {
         var hasFocusBindingConstructor: any;
     }
@@ -583,6 +589,17 @@ declare module wx {
     module internal {
         var ifBindingConstructor: any;
         var notifBindingConstructor: any;
+    }
+}
+declare module wx {
+    interface IKeyPressBindingOptions {
+        [key: string]: (ctx: IDataContext, event: Event) => any | ICommand<any> | {
+            command: ICommand<any>;
+            parameter: any;
+        };
+    }
+    module internal {
+        var keyPressBindingConstructor: any;
     }
 }
 declare module wx {
@@ -733,6 +750,7 @@ declare module wx {
     interface IStateActiveBindingOptions {
         name: string;
         params?: Object;
+        cssClass?: string;
     }
     module internal {
         var stateActiveBindingConstructor: any;
