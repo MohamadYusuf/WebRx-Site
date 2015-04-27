@@ -191,48 +191,23 @@
         <div id="start" class="col-md-9">
             <div class="body"><h1>Introduction</h1>
 
-<h2>The documentation</h2>
+<p>HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. WebRx 
+lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop.</p>
 
-<p>If you are familiar with <a href="http://knockoutjs.com">Knockout</a>, <a href="https://angularjs.org/">Angular</a> or <a href="http://reactiveui.net/">ReactiveUI</a> parts of WebRx&#39;s 
-documentation may sound familiar to you. We took the liberty to copy and adapt documentation from these projects instead of re-inventing the wheel.</p>
+<h2>Building Blocks</h2>
 
-<h2>Is WebRx intended to compete with jQuery or work with it?</h2>
-
-<p>Everyone loves jQuery! It&#39;s an outstanding replacement for the clunky, inconsistent DOM API we had to put up with in the past. 
-jQuery is an excellent low-level way to manipulate elements and event handlers in a web page. WebRx solves a different problem.</p>
-
-<p>As soon as your UI gets nontrivial and has a few overlapping behaviors, things can get tricky and expensive to maintain 
-if you only use jQuery. Consider an example: you&#39;re displaying a list of items, stating the number of items in that list, 
-and want to enable an ‘Add&#39; button only when there are fewer than 5 items. jQuery doesn&#39;t have a concept of an underlying 
-data model, so to get the number of items you have to infer it from the number of TRs in a table or the number of DIVs 
-with a certain CSS class. Maybe the number of items is displayed in some SPAN, and you have to remember to update that 
-SPAN&#39;s text when the user adds an item. You also must remember to disable the ‘Add&#39; button when the number of TRs is 5. 
-Later, you&#39;re asked also to implement a ‘Delete&#39; button and you have to figure out which DOM elements to change whenever it&#39;s clicked.</p>
-
-<h2>How is WebRx different?</h2>
-
-<p>It&#39;s much easier with WebRx. It lets you scale up in complexity without fear of introducing inconsistencies. 
-Just represent your items as a JavaScript array, and then use a foreach binding to transform this array into a 
-TABLE or set of DIVs. Whenever the array changes, the UI changes to match (you don&#39;t have to figure out how to 
-inject new TRs or where to inject them). The rest of the UI stays in sync. For example, you can declaratively 
-bind a SPAN to display the number of items as follows:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">There are <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myItems.length&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> items
-</code></pre></div>
-<p>That&#39;s it! You don&#39;t have to write code to update it; it updates on its own when the myItems array changes. 
-Similarly, to make the ‘Add&#39; button enable or disable depending on the number of items, just write:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;enable: myItems.length &lt; 5&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
-</code></pre></div>
-<h2><a id="topic-mvvm-intro"></a>MVVM and View Models</h2>
-
-<p>WebRx is built around three core features:</p>
+<p>WebRx is built around these core concepts:</p>
 
 <ul>
 <li>View-Models using <a href="/docs/observable-properties.html#start">Observable Properties</a> and <a href="/docs/commands.html#start">Commands</a></li>
-<li>Declarative bindings</li>
-<li>Templating</li>
+<li>Templates using <a href="/docs/binding-syntax.html#start">declarative bindings</a></li>
+<li><a href="/docs/component-overview.html#start">Components</a> that combine the aforementioned features into self-contained, reusable chunks</li>
+<li>Client-Side <a href="/docs/routing-overview.html#start">Routing</a></li>
 </ul>
 
-<p>Let&#39;s examine the MVVM pattern and the concept of a view model.</p>
+<h3><a id="topic-mvvm-intro"></a>MVVM and View-Models</h3>
+
+<p>Let&#39;s take a minute to examine the MVVM pattern and the concept of a view model.</p>
 
 <p>Model-View-View Model (MVVM) is a design pattern for building user interfaces. It describes how you can keep a 
 potentially sophisticated UI simple by splitting it into three parts:</p>
@@ -253,6 +228,8 @@ sophisticated behaviors without getting lost.</li>
 from the view model, sends commands to the view model (e.g., when the user clicks buttons), and updates 
 whenever the state of the view model changes.</li>
 </ul>
+
+<h3>MVVM in WebRx</h3>
 
 <p>When using WebRx, your view is simply your HTML document with declarative bindings to link it to the view model. 
 Alternatively, you can use templates that generate HTML using data from your view model.</p>
@@ -293,19 +270,6 @@ want to have multiple view models and associate each with a different region of 
 </ul>
 
 <p>Pretty simple, really.</p>
-
-<h2>WebRx vs Knockout</h2>
-
-<p>Even though WebRx shares many similarities with Knockout, the project is not meant to be a drop-in replacement.</p>
-
-<ul>
-<li>The most prominent difference is WebRx using <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md">Rx Observables</a> 
-for change tracking, whereas Knockout uses uses it&#39;s own <a href="http://knockoutjs.com/documentation/observables.html">custom observables</a>. </li>
-<li>Whan evaluating binding-expressions WebRx utilizes <a href="https://docs.angularjs.org/guide/expression">Angular expressions</a>, 
-Knockout in contrast uses Javascript&#39;s <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">eval()</a>. 
-As an additional detail, Knockout supports function invocations in <a href="http://knockoutjs.com/documentation/binding-syntax.html">binding expressions</a>, 
-WebRx does not.</li>
-</ul>
 
 <p><a class="next-topic" href="/docs/binding-syntax.html#start">Next: The Binding-Syntax</a></p>
 </div>
