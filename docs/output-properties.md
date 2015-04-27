@@ -97,4 +97,4 @@ Seconds until auto-logout: <span data-bind="text: countDown"></span>
 <p data-height="268" data-theme-id="0" data-slug-hash="LEombz" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/LEombz/'>LEombz</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-<a class="next-topic" href="/docs/observable-lists.html#start">Next: Observable-Lists</a>
+<a class="next-topic" href="/docs/observable-lists.html">Next: Observable-Lists</a>

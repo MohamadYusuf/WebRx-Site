@@ -11,7 +11,7 @@ available to an application must be registered using this method.
 
 - **A name**: A descriptive name for your module that should be unique accross your application.
 - **An initializer**: The module initializer is a function that will be invoked the first time
-a module is referenced through a [module-binding](/docs/module-binding.html#start). 
+a module is referenced through a [module-binding](/docs/module-binding.html). 
 
 	No matter how the initializer function is defined, it will always receive a pristine module-object instance as
 	**last** argument.
@@ -53,7 +53,7 @@ wx.module('myModule', ["like-widget", function(likeWidget, myModule) {
 ```
 
 Here we provide an inline-annotated array as module-initializer. The array will be run through
-the [Injector's](/docs/dependency-injection-overview.html#start) <code>resolve</code> method
+the [Injector's](/docs/dependency-injection-overview.html) <code>resolve</code> method
 and receive an empty module-instance as final argument after all its declared dependencies.
 
 ### An AMD module
@@ -89,16 +89,16 @@ only export.
 
 ## Registering resources with a module
 
-In the previous examples we've focused soley on registering component resources. As mentioned in the [module-overview](/docs/module-overview.html#start)
+In the previous examples we've focused soley on registering component resources. As mentioned in the [module-overview](/docs/module-overview.html)
 there are other types of module-scoped resources.
 
 ### Registering components
 
-The documentation contains an entire chapter dedicated to [registering components](/docs/component-registration.html#start). 
+The documentation contains an entire chapter dedicated to [registering components](/docs/component-registration.html). 
 
 ### Registering animations
 
-The documentation contains an entire chapter dedicated to [creating animations](/docs/animation-registration.html#start). 
+The documentation contains an entire chapter dedicated to [creating animations](/docs/animation-registration.html). 
 
 ### Registering expression filters
 
@@ -114,4 +114,4 @@ wx.module('myModule', function(myModule) {
 The module in this example registers an <code>uppercase</code> filter that 
 converts the result of a binding-expression to an upper-case string.
 
-<a class="next-topic" href="/docs/module-binding.html#start">Next: The Module-Binding</a>
+<a class="next-topic" href="/docs/module-binding.html">Next: The Module-Binding</a>

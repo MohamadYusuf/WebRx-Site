@@ -38,3 +38,10 @@ if(document.location.pathname === '/') {
 // add a few globally available transition
 wx.app.animation("fadein", wx.animation("fadein", "run"));
 wx.app.animation("fadeout", wx.animation("fadeout", "run"));
+
+if ($("#doc-index").length && $("#start").length &&
+    $("#start").offset().top - $("#doc-index").offset().top > 200) {
+    $('html, body').animate({
+        scrollTop: $("#start").offset().top - 15
+    }, 100);
+}

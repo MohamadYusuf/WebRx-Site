@@ -41,7 +41,7 @@ automatically propagate to the view.
 
 ## Observable Properties and Binding Expressions
 
-The syntax for referencing observable-property-values in [binding-expressions](/docs/binding-syntax.html#start) is identical to non observable-properties.
+The syntax for referencing observable-property-values in [binding-expressions](/docs/binding-syntax.html) is identical to non observable-properties.
 
 ```html
 The name is <span data-bind="text: personName"></span>
@@ -70,7 +70,7 @@ will **detect** that use-case and will conveniently **dereference the property's
 
 In fact you are not even allowed to explicitely dereference a property in a binding expression, 
 because this would involve a function invocation which is prohibited by WebRx's 
-[binding syntax](/docs/binding-syntax.html#start) specification. A rule that gets enforced by the expression compiler.
+[binding syntax](/docs/binding-syntax.html) specification. A rule that gets enforced by the expression compiler.
 
 #### Good
 
@@ -103,7 +103,7 @@ var myViewModel = {
 The name is <input type="text" data-bind="textInput: @personName"></span>
 ```
 
-The [textInput-Binding](/docs/textinput-binding.html#start) links a text box or textarea with a viewmodel property, 
+The [textInput-Binding](/docs/textinput-binding.html) links a text box or textarea with a viewmodel property, 
 providing two-way updates between the viewmodel property and the element's value.
 
 Without the <code>@</code> operator in the template above, the textInput binding would receive the current value of
@@ -136,4 +136,4 @@ var subscription = myViewModel.personName.changed.subscribe(function(newValue) {
 subscription.dispose(); // I no longer want notifications
 ```
 
-<a class="next-topic" href="/docs/output-properties.html#start">Next: Output-Properties</a>
+<a class="next-topic" href="/docs/output-properties.html">Next: Output-Properties</a>

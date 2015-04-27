@@ -171,7 +171,7 @@ that aren't inherently garbage-collectable, or run the risk of producing memory-
 
 - <code>setInterval</code> callbacks will continue to fire until explicitly cleared.
 	Use <code>clearInterval(handle)</code> to stop them, otherwise your view-model might be held in memory.
-- [output properties](/docs/output-properties.html#start) continue to receive notifications from their dependencies until explicitly disposed.
+- [output properties](/docs/output-properties.html) continue to receive notifications from their dependencies until explicitly disposed.
 - Subscriptions to Rx-Observables continue to fire until explicitly disposed.
 - Manually-created event handlers on external DOM elements (you shouldn't do that anyway to fit the MVVM pattern)
 
@@ -235,4 +235,4 @@ with the single invocation of its <code>cleanup</code> member's <code>dispose</c
 
 WebRx's built-in bindings make extensive use of this approach.
 
-<a class="next-topic" href="/docs/module-overview.html#start">Next: What modules offer</a>
+<a class="next-topic" href="/docs/module-overview.html">Next: What modules offer</a>

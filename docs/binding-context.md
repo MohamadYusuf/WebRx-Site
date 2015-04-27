@@ -60,4 +60,4 @@ This is the zero-based index of the current array entry being rendered by a fore
 Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, 
 or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.
 
-<a class="next-topic" href="/docs/observable-properties.html#start">Next: Observable-Properties</a>
+<a class="next-topic" href="/docs/observable-properties.html">Next: Observable-Properties</a>

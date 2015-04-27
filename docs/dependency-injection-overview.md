@@ -44,4 +44,4 @@ This is desirable, but it puts the responsibility of getting hold of the depende
 To manage the responsibility of dependency creation, each WebRx application has an injector. The injector is a service 
 locator that is responsible for construction and lookup of dependencies.
 
-<a class="next-topic" href="/docs/dependency-registration.html#start">Next: Defining and registering dependencies</a>
+<a class="next-topic" href="/docs/dependency-registration.html">Next: Defining and registering dependencies</a>

@@ -75,4 +75,4 @@ To supply parameters to <code>wx.router.go()</code>, pass an object with the fol
 - <code>name</code> — the name of a state
 - <code>params</code> — an object that will be passed on to <code>wx.router.go()</code> and get merged with state-parameters specified during registration.
 
-<a class="next-topic" href="/docs/sactive-binding.html#start">Next: The SActive-Binding</a>
+<a class="next-topic" href="/docs/sactive-binding.html">Next: The SActive-Binding</a>

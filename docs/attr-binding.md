@@ -48,4 +48,4 @@ If you want to apply the attribute data-something, you can't write this:
 <div data-bind="attr: { 'data-something': someValue }">...</div>
 ```
 
-<a class="next-topic" href="/docs/foreach-binding.html#start">Next: The Foreach-Binding</a>
+<a class="next-topic" href="/docs/foreach-binding.html">Next: The Foreach-Binding</a>

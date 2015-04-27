@@ -10,4 +10,4 @@ This is useful with form elements like input, select, and textarea.
 This is the mirror image of the enable binding. For more information, see documentation for the 
 enable binding, because disable works in exactly the same way except that it negates whatever parameter you pass to it.
 
-<a class="next-topic" href="/docs/value-binding.html#start">Next: The Value-Binding</a>
+<a class="next-topic" href="/docs/value-binding.html">Next: The Value-Binding</a>

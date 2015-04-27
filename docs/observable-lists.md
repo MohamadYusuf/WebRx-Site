@@ -61,7 +61,7 @@ WebRx's observable list exposes a familiar set of functions for modifying the co
 
 ## Subscribing to Changes
 
-**Note:** To display the contents of an observable-list in your UI you don't have to subscribe to any observables exposed by a list because the [forEach-Binding](/docs/forEach-binding.html#start) takes care of that for you. 
+**Note:** To display the contents of an observable-list in your UI you don't have to subscribe to any observables exposed by a list because the [forEach-Binding](/docs/forEach-binding.html) takes care of that for you. 
 
 WebRx's observable-list provides several useful Observables that can be subscribed to in order to inform you about changes in the list, as well as providing you with notifications that happen before a list is about to change:
 
@@ -194,6 +194,6 @@ of a user selected category.
 
 <p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/xGKmKo/'>WebRx - Animated collections example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
-<a class="next-topic" href="/docs/commands.html#start">Next: Commands</a>
+<a class="next-topic" href="/docs/commands.html">Next: Commands</a>
 
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>

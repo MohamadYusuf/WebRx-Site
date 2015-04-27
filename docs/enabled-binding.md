@@ -43,4 +43,4 @@ whereas <code>21</code> and non-null objects are treated as <code>true</code>.
 If your parameter references an observable value, the binding will update the enabled/disabled state whenever the observable property value changes.
 If the parameter doesn't reference an observable property, it will only set the state once and will not do so again later.
 
-<a class="next-topic" href="/docs/disabled-binding.html#start">Next: The Disabled-Binding</a>
+<a class="next-topic" href="/docs/disabled-binding.html">Next: The Disabled-Binding</a>

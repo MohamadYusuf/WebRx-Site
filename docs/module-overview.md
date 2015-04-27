@@ -23,7 +23,7 @@ fundamental practices in writing maintainable code.
 on this in the following chapter). The only immediate effect of registering a module is to announce
 the module's existence to the module-loader. 
 
-2. **Module is loaded**: Referencing a module through a [module-binding](/docs/module-binding.html#start) for
+2. **Module is loaded**: Referencing a module through a [module-binding](/docs/module-binding.html) for
 the first time, triggers its loading process. Loading a module is an asynchronous operation with the goal 
 of obtaining the module's initializer-function which will be used in the next phase. For example: If the 
 module has been registered as an external AMD-Module, the module's script file will now be fetched from the server.
@@ -53,14 +53,14 @@ wx.module("app")
 ```
 
 **Note:** The application module is the only module that is immediately available and initialized when your app
-launches. All other modules are asynchronously resolved by the [module-binding](/docs/module-binding.html#start).
+launches. All other modules are asynchronously resolved by the [module-binding](/docs/module-binding.html).
 
 ## Module Resources
 
 There are several types of resources that can, or rather must be either registered with a custom-module or the application-module: 
 
-- [Components](/docs/component-overview.html#start)
-- [Animations](/docs/animation-overview.html#start)
+- [Components](/docs/component-overview.html)
+- [Animations](/docs/animation-overview.html)
 - [Expression-filters](/docs/binding-syntax.html#topic-expression-filters)
 - Binding-handlers
 
@@ -81,7 +81,7 @@ In this scenario the app either registers all of its components with the applica
 a custom module. The registration happens at bootstrap time using script-resources loaded through 
 <code>script</code> tags on the page.
 
-Because all required resources are available locally, WebRx's [Injector](/docs/dependency-injection-overview.html#start) can be utilized to inject
+Because all required resources are available locally, WebRx's [Injector](/docs/dependency-injection-overview.html) can be utilized to inject
 all kinds of resources - including services into component view-models and the like.
 
 #### Custom-Modules with external AMD-Modules
@@ -125,4 +125,4 @@ define(["greetService"], function(greetService) {
 });
 ```
 
-<a class="next-topic" href="/docs/module-registration.html#start">Next: Defining and registering modules</a>
+<a class="next-topic" href="/docs/module-registration.html">Next: Defining and registering modules</a>

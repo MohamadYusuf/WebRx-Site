@@ -5,7 +5,7 @@ title: WebRx - The Command-Binding
 {% include sample-warning.html %}
 # The Command-Binding
 
-The command-binding adds an event handler so that a [command](/docs/commands.html#start) will be invoked when the <code>click</code> event 
+The command-binding adds an event handler so that a [command](/docs/commands.html) will be invoked when the <code>click</code> event 
 is raised by the associated DOM element. The binding also takes care of enabling and disabling the element depending on wether the command can currently execute or not.
 
 This binding is most commonly used with elements like button and anchors, but actually works with any visible DOM element.
@@ -134,14 +134,14 @@ disable themselves while executing.
 
 ### Main parameter
 
-The [command](/docs/commands.html#start) you want to bind to the element. 
+The [command](/docs/commands.html) you want to bind to the element. 
 Depending on wether the command can currently execute or not, the element will be enabled or disabled.
 Clicking on the element will execute the command.
 
 To supply parameters to the command, pass an object with the following properties:
 
-- <code>command</code>: The [command](/docs/commands.html#start) you want to bind to the element
+- <code>command</code>: The [command](/docs/commands.html) you want to bind to the element
 - <code>parameter</code>: An optional parameter that will be passed as first argument to the command's <code>execute</code> handler.
 The parameter can also be an observable.
 
-<a class="next-topic" href="/docs/event-binding.html#start">Next: The Event-Binding</a>
+<a class="next-topic" href="/docs/event-binding.html">Next: The Event-Binding</a>

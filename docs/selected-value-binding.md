@@ -108,4 +108,4 @@ If this parameter is a [property reference](/docs/observable-properties.html#top
 the binding will update the selection whenever the value changes and vice-versa.
 If the parameter something else, it will only set the selection once and will not update it again later.
 
-<a class="next-topic" href="/docs/component-overview.html#start">Next: What components and custom elements offer</a>
+<a class="next-topic" href="/docs/component-overview.html">Next: What components and custom elements offer</a>

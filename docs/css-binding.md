@@ -7,7 +7,7 @@ title: WebRx - The CSS-Binding
 
 The CSS-binding adds or removes one or more named CSS classes to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative.
 
-(Note: If you don't want to apply a CSS class but instead want to assign a style attribute value directly, see the [style binding](/docs/style-binding.html#start).)
+(Note: If you don't want to apply a CSS class but instead want to assign a style attribute value directly, see the [style binding](/docs/style-binding.html).)
 
 ## Example
 
@@ -92,4 +92,4 @@ If you want to apply the CSS class my-class, you can't write this:
 <div data-bind="css: { 'my-class': someValue }">...</div>
 ```
 
-<a class="next-topic" href="/docs/style-binding.html#start">Next: The Style-Binding</a>
+<a class="next-topic" href="/docs/style-binding.html">Next: The Style-Binding</a>

@@ -131,4 +131,4 @@ If this parameter is a [property reference](/docs/observable-properties.html#top
 the binding will update the element's focus state whenever the value changes and vice-versa.
 If the parameter something else, it will only set the element's focus state once and will not update it again later.
 
-<a class="next-topic" href="/docs/checked-binding.html#start">Next: The Checked-Binding</a>
+<a class="next-topic" href="/docs/checked-binding.html">Next: The Checked-Binding</a>

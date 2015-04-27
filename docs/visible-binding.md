@@ -42,4 +42,4 @@ work fine in conjunction with this binding).
 If this parameter is an observable value, the binding will update the element's visibility whenever the value changes. 
 If the parameter isn't observable, it will only set the element's visibility once and will not update it again later.
 
-<a class="next-topic" href="/docs/hidden-binding.html#start">Next: The Hidden-Binding</a>
+<a class="next-topic" href="/docs/hidden-binding.html">Next: The Hidden-Binding</a>

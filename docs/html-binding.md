@@ -44,4 +44,4 @@ because that might open the possibility of a script injection attack. If you can
 (for example, if it is based on a different user's input that was stored in your database), then you can use the text binding, 
 which will set the element's text value using <code>innerText</code> or <code>textContent</code> instead.
 
-<a class="next-topic" href="/docs/css-binding.html#start">Next: The CSS-Binding</a>
+<a class="next-topic" href="/docs/css-binding.html">Next: The CSS-Binding</a>

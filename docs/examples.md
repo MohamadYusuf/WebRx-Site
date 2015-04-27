@@ -10,7 +10,7 @@ This page provides some code-examples to get you started. Feel free to fork any 
 ## Hello World
 
 In this example, the two text boxes are bound to observable properties on a view-model. The <code>full name</code> display is bound to 
-an [output property](/docs/output-properties.html#start), whose value is calculated in terms of the observables.
+an [output property](/docs/output-properties.html), whose value is calculated in terms of the observables.
 
 Edit either text box to see the <code>full name</code> display update. See the HTML source code and notice there's no need to 
 catch <code>onchange</code> events. WebRx knows when to update the UI.
@@ -43,7 +43,7 @@ of a user selected category.
 
 ## Client-Side-Router Demo
 
-This example demonstrates some of the capabilities of WebRx's built-in [client-side router](/docs/routing-overview.html#start).
+This example demonstrates some of the capabilities of WebRx's built-in [client-side router](/docs/routing-overview.html).
 
 To observe <code>window.location</code> reflecting state-routes, click here <a target="_blank" href="/examples/router-demo/index.html">to launch this example in another tab</a>.
 

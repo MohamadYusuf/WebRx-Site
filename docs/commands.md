@@ -11,7 +11,7 @@ Many Commands are invoked directly by the user, but some operations are also use
 despite being primarily invoked progmatically. For example, many code paths involving periodically loading 
 or refreshing resources (i.e. "LoadTweets") can be modeled well using Commands.
 
-**Note:** For information on how to utilize commands in your views and bindings refer to the [command-binding](/docs/command-binding.html#start) documentation.
+**Note:** For information on how to utilize commands in your views and bindings refer to the [command-binding](/docs/command-binding.html) documentation.
 
 ## Creating commands
 
@@ -77,4 +77,4 @@ If <code>fooCmd</code> would be triggered by a button-click and we hadn't passed
 the alert would display "undefined", because <code>this</code> would point to the windows object instead
 our view-model.
 
-<a class="next-topic" href="/docs/visible-binding.html#start">Next: The Visible-Binding</a>
+<a class="next-topic" href="/docs/visible-binding.html">Next: The Visible-Binding</a>

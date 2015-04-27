@@ -4,7 +4,7 @@ title: WebRx - Component-Registration
 ---
 # Component-Registration
 
-Just like binding-handlers, and expresion-filters, components are [module-scoped-resources](/docs/module-overview.html#start)
+Just like binding-handlers, and expresion-filters, components are [module-scoped-resources](/docs/module-overview.html)
 that can either be registered with the global application-module <code>wx.app</code> or a custom-module.
 
 For WebRx to be able to load and instantiate your components, you must register them using <code>wx.app.component()</code>,
@@ -19,7 +19,7 @@ wx.app.component('some-component-name', {
 });
 ```
 
-or to register the component with a specific [module](/docs/module-overview.html#start):
+or to register the component with a specific [module](/docs/module-overview.html):
 
 ```javascript
 wx.module("my-module").component('some-component-name', {
@@ -85,7 +85,7 @@ wx.app.component('my-component', {
 
 ### An injectable
 
-Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html#start):
+Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html):
 
 ```javascript
 wx.app.component('my-component', {
@@ -94,7 +94,7 @@ wx.app.component('my-component', {
 });
 ```
 
-In this case, the component-binding will pass the inline-annotated array to the [Injector's](/docs/dependency-injection-overview.html#start) 
+In this case, the component-binding will pass the inline-annotated array to the [Injector's](/docs/dependency-injection-overview.html) 
 <code>resolve</code> method to construct the view-model. Any dependencies listed in the annotated-array will be resolved and passed to your 
 constructor function. In the example above the view-model's constructor function will receive a <code>greeter</code> instance as first argument.
 The second argument will be the component arguments.
@@ -304,7 +304,7 @@ and even libraries dedicated to them such as Q or when.js.
 
 ### An injectable
 
-Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html#start):
+Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx's [injector](/docs/dependency-injection-overview.html):
 
 ```javascript
 wx.app.component('my-component', {
@@ -422,4 +422,4 @@ which is a very natural arrangement during development. Since the dependency on 
 this automatically works with the r.js optimizer or similar bundling tools. The entire component - viewmodel plus template - 
 can therefore trivially be included in a bundle file during a build step.
 
-<a class="next-topic" href="/docs/component-binding.html#start">Next: The Component-Binding</a>
+<a class="next-topic" href="/docs/component-binding.html">Next: The Component-Binding</a>

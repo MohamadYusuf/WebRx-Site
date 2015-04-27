@@ -46,7 +46,7 @@ Right now, the <code>contacts</code> state won't ever be activated. So let's see
 There are three main ways to activate a state:
 
 - Calling <code>wx.router.go()</code>
-- Clicking a link which has been transformed by a [sref-binding](/docs/sref-binding.html#start)
+- Clicking a link which has been transformed by a [sref-binding](/docs/sref-binding.html)
 - Navigating to the url associated with the state
 
 ## State-Hierarchy
@@ -97,7 +97,7 @@ while the <code>main</code> view will continue to display the <code>header-compo
 
 ### How routing interacts with the browser's history
 
-Whenever the current routing state changes due to navigation via [sref](/docs/sref-binding.html#start)-links our invoking 
+Whenever the current routing state changes due to navigation via [sref](/docs/sref-binding.html)-links our invoking 
 the <code>wx.router.go()</code> method with options containing <code>{ location: true }</code>, the Router will reflect the change in the browser's
 history in order to provide the enduser with a seamless browsing-experience that includes <code>back</code>- and <code>forward</code> button support.
 
@@ -105,4 +105,4 @@ This feature relies on the standard [History-API](https://developer.mozilla.org/
 all current browsers. If you need to support very old browsers which do not yet implement this API, is is recommended to include 
 a Shim such as [history.js](https://github.com/browserstate/history.js/) with your project.
 
-<a class="next-topic" href="/docs/routing-registration.html#start">Next: Defining and registering routing states</a>
+<a class="next-topic" href="/docs/routing-registration.html">Next: Defining and registering routing states</a>

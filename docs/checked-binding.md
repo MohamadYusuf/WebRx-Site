@@ -89,4 +89,4 @@ To ensure that only one of those radio buttons can be checked at any one time, y
 their name attributes to an arbitrary common value (e.g., the value flavorGroup in the preceding example) - 
 doing this puts them into a group where only one can be selected.
 
-<a class="next-topic" href="/docs/selected-value-binding.html#start">Next: The SelectedValue-Binding</a>
+<a class="next-topic" href="/docs/selected-value-binding.html">Next: The SelectedValue-Binding</a>

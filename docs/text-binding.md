@@ -34,4 +34,4 @@ If the parameter isn't observable, it will only set the element's text once and 
 
 If you supply something other than a number or a string (e.g., you pass an object or an array), the displayed text will be equivalent to <code>yourParameter.toString()</code>
 
-<a class="next-topic" href="/docs/html-binding.html#start">Next: The Html-Binding</a>
+<a class="next-topic" href="/docs/html-binding.html">Next: The Html-Binding</a>

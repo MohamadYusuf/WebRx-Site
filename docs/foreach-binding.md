@@ -7,7 +7,7 @@ title: WebRx - The ForEach-Binding
 
 The foreach binding duplicates a section of markup for each entry in a collection, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.
 
-Assuming your collection is an [Observable List](/docs/observable-lists.html#start), whenever you later add, remove, or re-order array entries, the binding will efficiently update the UI to match - inserting or removing more copies of the markup, or re-ordering existing DOM elements, without affecting any other DOM elements. This is far faster than regenerating the entire foreach output after each array change.
+Assuming your collection is an [Observable List](/docs/observable-lists.html), whenever you later add, remove, or re-order array entries, the binding will efficiently update the UI to match - inserting or removing more copies of the markup, or re-ordering existing DOM elements, without affecting any other DOM elements. This is far faster than regenerating the entire foreach output after each array change.
 
 Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow bindings such as if and with.
 
@@ -131,7 +131,7 @@ Pass the collection that you wish to iterate over. The binding will output a sec
 Alternatively, pass a JavaScript object literal with a property called data which is the collection you wish to iterate over. 
 The object literal may also have other properties, such as <code>afterAdd</code> — see below for details of these extra options and examples of their use.
 
-If the collection you supply is an [observable list](/docs/observable-lists.html#start), the foreach binding will respond to any future changes in the lists's contents by adding or removing corresponding sections of markup in the DOM.
+If the collection you supply is an [observable list](/docs/observable-lists.html), the foreach binding will respond to any future changes in the lists's contents by adding or removing corresponding sections of markup in the DOM.
 
 ## Referring to each array entry using <code>$data</code>
 
@@ -182,7 +182,7 @@ Similarly, you can use <code>$parent</code> to refer to data from outside the fo
 ```
 
 For more information about <code>$index</code> and other context properties such as <code>$parent</code>, see documentation for 
-[binding context](/docs/binding-context.html#start) properties.
+[binding context](/docs/binding-context.html) properties.
 
 ## How array changes are detected and handled
 
@@ -260,4 +260,4 @@ The binding will supply the following parameters to your callback:
 	- The moved array element
 
 
-<a class="next-topic" href="/docs/if-binding.html#start">Next: The If-Binding</a>
+<a class="next-topic" href="/docs/if-binding.html">Next: The If-Binding</a>

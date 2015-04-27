@@ -1,12 +1,17 @@
 ---
 layout: docs
-title: WebRx - Binding Syntax
+title: WebRx - Declaring Data-Bindings
 ---
-# The data-bind syntax
+# Declaring Data-Bindings
 
-WebRx's declarative binding system provides a concise and powerful way to link data to the UI. It's generally easy and obvious to bind to simple data properties or to use a single binding. For more complex bindings, it helps to better understand the behavior and syntax of WebRx's binding system.
+WebRx's declarative binding system provides a concise and powerful way to link data to the UI. 
+It's generally easy and obvious to bind to simple data properties or to use a single binding. 
+For more complex bindings, it helps to better understand the behavior and syntax of WebRx's binding system.
 
-## Binding syntax
+## The <code>data-bind</code> attribute
+
+The <code>data-bind</code> attribute contains a collection of comma-separated options for how WebRx should bind view-model properties
+to an HTML element and optionally its children. 
 
 A binding consists of two items, the binding name and expression, separated by a colon. Here is an example of a single, simple binding:
 
@@ -78,7 +83,7 @@ transformation logic inside templates. Such logic is better placed in a view-mod
 ## <a id="topic-expression-filters"></a>Expression Filters
 
 Expression-filters format the result of an expression for display to the user. They can be used in every template 
-and can be registered at [module](/docs/module-overview.html#start)-level.
+and can be registered at [module](/docs/module-overview.html)-level.
 
 ### Using filters in templates
 
@@ -109,4 +114,4 @@ E.g. the markup <code>1234 | number:2</code> formats the number <code>1234</code
 - <code>currency</code>: Formats a number as a currency (ie $1,234.56). When no currency symbol is provided, default symbol for current locale is used.
 -->
 
-<a class="next-topic" href="/docs/binding-context.html#start">Next: The Binding-Context</a>
+<a class="next-topic" href="/docs/binding-context.html">Next: The Binding-Context</a>

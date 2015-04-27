@@ -10,7 +10,7 @@ This is typically useful with form elements such as <code>input</code>, <code>se
 When the user edits the value in the associated form control, it updates the value on your view model. 
 Likewise, when you update the value in your view model, this updates the value of the form control on screen.
 
-Note: If you're working with checkboxes or radio buttons, use the [checked binding](/docs/checked-binding.html#start) to read and 
+Note: If you're working with checkboxes or radio buttons, use the [checked binding](/docs/checked-binding.html) to read and 
 write your element's <code>checked</code> state, not the value binding.
 
 ## Example
@@ -48,10 +48,10 @@ modified and a user transfers focus to another DOM node.
 ## Getting value updates instantly from inputs
 
 If you are trying to bind an <code>input type="text"</code> or <code>textarea</code> to get instant updates to your viewmodel, 
-use the the [textInput binding](/docs/textinput-binding.html#start).
+use the the [textInput binding](/docs/textinput-binding.html).
 
 ## Working with drop-down lists (i.e., <code>select</code> elements)
 
-WebRx has special support for drop-down lists (i.e., <code>select</code> elements) in form of the [selectedValue-binding](/docs/selected-value-binding.html#start).
+WebRx has special support for drop-down lists (i.e., <code>select</code> elements) in form of the [selectedValue-binding](/docs/selected-value-binding.html).
 
-<a class="next-topic" href="/docs/textinput-binding.html#start">Next: The TextInput-Binding</a>
+<a class="next-topic" href="/docs/textinput-binding.html">Next: The TextInput-Binding</a>

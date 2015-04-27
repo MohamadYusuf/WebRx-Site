@@ -36,4 +36,4 @@ throughout the application. Passing the injector breaks the [Law of Demeter](htt
 
 To remedy this, WebRx's supports resolving injectables pretty much everywhere.
 
-<a class="next-topic" href="/docs/message-bus.html#start">Next: Messaging</a>
+<a class="next-topic" href="/docs/message-bus.html">Next: Messaging</a>

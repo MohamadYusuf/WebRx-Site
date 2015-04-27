@@ -155,4 +155,4 @@ one or more module-names separated by a whitespace characters.
 If this parameter is an observable value, the binding will update the element's module-scope whenever the value changes. 
 If the parameter isn't observable, it will only set the element's module-scope once and will not update it again later.
 
-<a class="next-topic" href="/docs/routing-overview.html#start">Next: Routing Architecture</a>
+<a class="next-topic" href="/docs/routing-overview.html">Next: Routing Architecture</a>

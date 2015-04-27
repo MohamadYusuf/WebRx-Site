@@ -59,4 +59,4 @@ to provide consistent and immediate model updates even in response to unusual te
 Don't try to use the value and textInput bindings together on the same element, 
 as that won't achieve anything useful.
 
-<a class="next-topic" href="/docs/hasfocus-binding.html#start">Next: The HasFocus-Binding</a>
+<a class="next-topic" href="/docs/hasfocus-binding.html">Next: The HasFocus-Binding</a>

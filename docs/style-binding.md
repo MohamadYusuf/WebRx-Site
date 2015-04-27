@@ -51,4 +51,4 @@ If you want to apply a font-weight or text-decoration style, or any other style 
 Don't write <code>{ font-weight: someValue };</code> do write <code>{ fontWeight: someValue }</code>
 Don't write <code>{ text-decoration: someValue };</code> do write <code>{ textDecoration: someValue }</code>
 
-<a class="next-topic" href="/docs/attr-binding.html#start">Next: The Attr-Binding</a>
+<a class="next-topic" href="/docs/attr-binding.html">Next: The Attr-Binding</a>

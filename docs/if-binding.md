@@ -79,4 +79,4 @@ The expression you wish to evaluate. If it evaluates to true (or a true-ish valu
 
 If your expression involves any observable values, the expression will be re-evaluated whenever any of them change. Correspondingly, the markup within your if block can be added or removed dynamically as the result of the expression changes. data-bind attributes will be applied to a new copy of the contained markup whenever it is re-added.
 
-<a class="next-topic" href="/docs/ifnot-binding.html#start">Next: The IfNot-Binding</a>
+<a class="next-topic" href="/docs/ifnot-binding.html">Next: The IfNot-Binding</a>

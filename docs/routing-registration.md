@@ -9,11 +9,11 @@ So far we've only briefly touched the subject of state-registration. That is abo
 ## Views
 
 One of the fundamental principles behind WebRx's routing engine is that your application partitions
-your pages into regions by applying a [view-binding](/docs/view-binding.html#start) to one or more
-elements of your page. A state can then define which [component](/docs/component-overview.html#start)
+your pages into regions by applying a [view-binding](/docs/view-binding.html) to one or more
+elements of your page. A state can then define which [component](/docs/component-overview.html)
 those regions will display when the state is active.
 
-Components will be resolved against the currently active [module](/docs/module-overview.html#start) or alternatively
+Components will be resolved against the currently active [module](/docs/module-overview.html) or alternatively
 the application-module.
 
 ```html
@@ -72,7 +72,7 @@ wx.router.state({
 });
 ```
 
-In this example the [component-binding](/docs/component-binding.html#start) will receive following object as <code>params</code> argument when
+In this example the [component-binding](/docs/component-binding.html) will receive following object as <code>params</code> argument when
 instantiating the <code>contact-list-component</code>:
 
 ```javascript
@@ -100,7 +100,7 @@ wx.router.state({
 });
 ```
 
-In this example the [component-binding](/docs/component-binding.html#start) will receive following object as <code>params</code> argument when
+In this example the [component-binding](/docs/component-binding.html) will receive following object as <code>params</code> argument when
 instantiating the <code>contact-list-component</code>:
 
 ```javascript
@@ -227,8 +227,8 @@ Once again the state-params merging will follow the state-hierarchy, with route-
 as the final step to allow for overriding state-params when navigating.
 
 The result of merging all parent states with their child-states and applying the route-parameters
-on top will be directly passed to all [components](/docs/component-overview.html#start) instantiated for the current state
-via the [component-binding's](/docs/component-binding.html#start) <code>params</code> property.
+on top will be directly passed to all [components](/docs/component-overview.html) instantiated for the current state
+via the [component-binding's](/docs/component-binding.html) <code>params</code> property.
 
 ## onEnter and onExit callbacks
 
@@ -245,4 +245,4 @@ wx.router.state({
 });
 ```
 
-<a class="next-topic" href="/docs/view-binding.html#start">Next: The View-Binding</a>
+<a class="next-topic" href="/docs/view-binding.html">Next: The View-Binding</a>

@@ -11,10 +11,10 @@ lets you extend HTML vocabulary for your application. The resulting environment 
 
 WebRx is built around these core concepts:
 
-- View-Models using [Observable Properties](/docs/observable-properties.html#start) and [Commands](/docs/commands.html#start)
-- Templates using [declarative bindings](/docs/binding-syntax.html#start)
-- [Components](/docs/component-overview.html#start) that combine the aforementioned features into self-contained, reusable chunks
-- Client-Side [Routing](/docs/routing-overview.html#start)
+- View-Models using [Observable Properties](/docs/observable-properties.html) and [Commands](/docs/commands.html)
+- Templates using [declarative bindings](/docs/binding-syntax.html)
+- [Components](/docs/component-overview.html) that combine the aforementioned features into self-contained, reusable chunks
+- Client-Side [Routing](/docs/routing-overview.html)
 
 ### <a id="topic-mvvm-intro"></a>MVVM and View-Models
 
@@ -90,4 +90,4 @@ want to have multiple view models and associate each with a different region of 
 
 Pretty simple, really.
 
-<a class="next-topic" href="/docs/binding-syntax.html#start">Next: The Binding-Syntax</a>
+<a class="next-topic" href="/docs/binding-syntax.html">Next: The Binding-Syntax</a>

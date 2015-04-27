@@ -72,3 +72,11 @@ if(document.location.pathname === '/') {
 wx.app.animation("fadein", wx.animation("fadein", "run"));
 wx.app.animation("fadeout", wx.animation("fadeout", "run"));
 
+// if documentation start lies below doc-index
+if ($("#doc-index").length && $("#start").length &&
+    $("#start").offset().top - $("#doc-index").offset().top > 200) {
+    $('html, body').animate({
+        scrollTop: $("#start").offset().top - 15
+    }, 100);
+}
+

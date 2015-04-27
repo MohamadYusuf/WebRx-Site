@@ -197,4 +197,4 @@ wx.applyBindings(new MyViewModel());
 If you open your browser developer tools' Network inspector before your first click on Add product, 
 you'll see that the component's .js/.html files are fetched on demand when first required, and thereafter retained for reuse.
 
-<a class="next-topic" href="/docs/component-registration.html#start">Next: Defining and registering components</a>
+<a class="next-topic" href="/docs/component-registration.html">Next: Defining and registering components</a>

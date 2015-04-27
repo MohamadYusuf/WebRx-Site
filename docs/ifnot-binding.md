@@ -4,7 +4,7 @@ title: WebRx - The IfNot-Binding
 ---
 # The IfNot-Binding
 
-The ifnot binding is exactly the same as the [if binding](/docs/if-binding.html#start), except that it inverts the result of whatever expression you pass to it. For more details, see documentation for the [if binding](/docs/if-binding.html#start).
+The ifnot binding is exactly the same as the [if binding](/docs/if-binding.html), except that it inverts the result of whatever expression you pass to it. For more details, see documentation for the [if binding](/docs/if-binding.html).
 
 The following markup:
 
@@ -22,4 +22,4 @@ The following markup:
 
 The only reason to use <code>ifnot</code> instead of a negated <code>if</code> is just as a matter of taste: many developers feel that it looks tidier.
 
-<a class="next-topic" href="/docs/with-binding.html#start">Next: The With-Binding</a>
+<a class="next-topic" href="/docs/with-binding.html">Next: The With-Binding</a>
