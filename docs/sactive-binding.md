@@ -5,7 +5,8 @@ title: WebRx - The SActive-Binding
 # The SActive-Binding
 
 The SActive-binding tests if the [router's](/docs/routing-overview.html) current state matches its own configuration
-and add the Css-Class <code>active</code> to its target element if the test succeeds or remove it otherwise. 
+and add a Css-Class to its target element if the test succeeds or remove it otherwise. By default the binding will use
+the class <code>active</code>.
 
 The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the "active" state's menu 
 button appear different, distinguishing it from the inactive items.
@@ -58,5 +59,6 @@ Alternatively, pass an object with the following properties:
 
 - <code>name</code> — the name of a state
 - <code>params</code> — an object that will have each of its properties compared against the router's current state-params
+- <code>cssClass</code> - the name of one or more whitespace separated css-classes to apply to the element when the current router-state matches the binding's own configuration
 
 <a class="next-topic" href="/docs/dependency-injection-overview.html">Next: Dependency Injection</a>

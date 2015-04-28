@@ -56,15 +56,10 @@ if(document.location.pathname === '/') {
 
     wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
 
-    $("#share").popover({ html: true, placement: 'top', content: function () { return $("#share-content").html(); } });
-
-    // hide stupid popovers when clicking outside    
-    $('html').on('mouseup', function (e) {
-        if (!$(e.target).closest('.popover').length) {
-            $('.popover').each(function () {
-                $(this.previousSibling).popover('hide');
-            });
-        }
+    $("#share").popover({ html: true, trigger: 'manual', placement: 'top', content: function() {
+         return $("#share-content").html();
+    }}).click(function (e) {
+        $(this).popover('toggle');
     });
 }
 

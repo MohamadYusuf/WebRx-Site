@@ -260,9 +260,9 @@ body.wx-unsupported .sample-warning {
 }
 
 a {
-    -webkit-transition: all .1s ease-in-out;
-    -moz-transition: all .1s ease-in-out;
-    transition: all .1s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 a.next-topic {
@@ -277,12 +277,20 @@ a.next-topic {
     text-shadow: none;    
 }
 
+.share-link {
+    margin-right: 8px;
+}
+
+.share-link:last-of-type {
+    margin-right: 0;
+}
+
 .share-link i {
     color: rgb(22, 100, 151);
-    font-size: 40px;
-    -webkit-transition: all .1s ease-in-out;
-    -moz-transition: all .1s ease-in-out;
-    transition: all .1s ease-in-out;
+    font-size: 45px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .share-link i:hover {
@@ -403,6 +411,11 @@ code {
     line-height: 1.8em;
 }
 
+.docs .index ul {
+    list-style: none;
+    padding-left: 0;
+}
+
 .docs .index ol {
     padding-left: 1.6em;
 }
@@ -413,6 +426,13 @@ code {
 
 .docs .index h3 {
     margin-top: 0;
+    font-size: 20px;
+}
+
+.docs .index code,
+.docs .index h3,
+.docs .index h4 {
+    color: #114c72;
 }
 
 .docs .index h3:not(:first-child) {

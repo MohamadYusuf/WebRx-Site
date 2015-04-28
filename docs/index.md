@@ -80,11 +80,11 @@ That does it! Now, your view will display as if you'd written the following HTML
 The name is <span>Bob</span>
 ```
 
-In case you're wondering what the parameters to wx.applyBindings do,
+In case you're wondering what the parameters to <code>wx.applyBindings</code> do,
 
 - The first parameter says what view model object you want to use with the declarative bindings it activates.
 - Optionally, you can pass a second parameter which defines which part of the document you want to search 
-for data-bind attributes. For example, wx.applyBindings(myViewModel, document.getElementById('someElementId')). 
+for data-bind attributes. For example, <code>wx.applyBindings(myViewModel, document.getElementById('someElementId'))</code>. 
 This restricts the activation to the element with ID someElementId and its descendants, which is useful if you 
 want to have multiple view models and associate each with a different region of the page.
 

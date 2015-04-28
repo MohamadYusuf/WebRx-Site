@@ -10,7 +10,10 @@ is raised by the associated DOM element. The binding also takes care of enabling
 
 This binding is most commonly used with elements like button and anchors, but actually works with any visible DOM element.
 
-**Note**: When the command-binding is applied to an anchor <code>a</code> element, it will prevent the anchor's default action when clicked.
+**Note 1**: When the command-binding is applied to an anchor <code>a</code> element, it will prevent the anchor's default action when clicked.
+
+**Note 2**: Even though the command-binding is the primary way to invoke commands in WebRx, it is not the only one. The [event](/docs/event-binding.html)- 
+and the [keypress](/docs/keypress-binding.html)-binding also support invoking commands. 
 
 ## Example 1
 
@@ -144,4 +147,4 @@ To supply parameters to the command, pass an object with the following propertie
 - <code>parameter</code>: An optional parameter that will be passed as first argument to the command's <code>execute</code> handler.
 The parameter can also be an observable.
 
-<a class="next-topic" href="/docs/event-binding.html">Next: The Event-Binding</a>
+<a class="next-topic" href="/docs/keypress-binding.html">Next: The Keypress-Binding</a>
