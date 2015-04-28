@@ -1,0 +1,264 @@
+---
+layout: default
+title: WebRx - Router-Demo
+---
+<style>
+    #main-container {
+        background-color: white;
+    }
+
+    .pt-perspective {
+        position: relative;
+        transform-style: preserve-3d;
+     }
+
+    .pt-perspective > div {
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .enter {
+	    animation: flipX 600ms ease both;
+        animation-play-state: paused;
+	    -webkit-animation: flipX 600ms ease both;
+        -webkit-animation-play-state: paused;
+        position: absolute;
+    }
+    .enter.start {
+        animation-play-state: running;
+        -webkit-animation-play-state: running;
+    }
+
+    .leave {
+        animation: flipXInverted 600ms ease both;
+        animation-play-state: paused;
+        -webkit-animation: flipXInverted 600ms ease both;
+        -webkit-animation-play-state: paused;
+        position: absolute;
+    }
+    .leave.start {
+        animation-play-state: running;
+        -webkit-animation-play-state: running;
+    }
+    .leave.complete {
+        display: none;
+    }
+
+    @-webkit-keyframes flipXInverted {
+	    from { }
+	    to { -webkit-transform: rotateX(-180deg); }
+    }
+
+    @keyframes flipXInverted {
+	    from { }
+	    to { transform: rotateX(-180deg); }
+    }
+
+    @-webkit-keyframes flipX {
+	    from { -webkit-transform: rotateX(180deg); }
+    }
+
+    @keyframes flipX {
+    	from { transform: rotateX(180deg); }
+    }
+</style>
+<div id="router-demo" class="content-panel">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li role="presentation" data-bind="sactive: 'home'"><a data-bind="sref: 'home'">Home</a></li>
+                <li role="presentation" data-bind="sactive: 'contacts'"><a data-bind="sref: 'contacts'">Contacts</a></li>
+                <li role="presentation" data-bind="sactive: 'about'"><a data-bind="sref: 'about'">About</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 row">
+            <div class="col-md-12" data-bind="view: 'main'"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12" data-bind="component: 'state-visualizer'"></div>
+    </div>
+</div>
+
+<script id="home-template" type="text/html">
+    <h2>Welcome to the UI-Router Demo</h2>
+    <p>Use the menu above to navigate.</p>
+    <p>Pay attention to the state and state-params values below.</p>
+    <p>Note how document titles get automatically restored when navigating back and forth.</p>
+</script>
+
+<script id="contact-list-template" type="text/html">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>All contacts</h2>
+        </div>
+    </div>
+    <div class="row" style="overflow: hidden">
+        <div class="col-md-6">
+            <div class="list-group" data-bind="foreach: contacts">
+                <a class="list-group-item" data-bind="text: name,
+                   sref: { name: 'contacts.details', params: { id: id } },
+                   sactive: { name: 'contacts.details', params: { id: id } }"></a>
+            </div>
+        </div>
+        <div class="col-md-6 pt-perspective" data-bind="view: 'details'"></div>
+    </div>
+</script>
+
+<script id="contact-details-template" type="text/html">
+    Id: <label data-bind="text: contact.id"></label><br />
+    Name: <label data-bind="text: contact.name"></label><br />
+    Email: <label data-bind="text: contact.email"></label>><br />
+</script>
+
+<script id="about-template" type="text/html">
+    <h2>Router Resources</h2>
+    <ul>
+        <li><a target="_blank" href="https://github.com/oliverw/WebRx-Site/blob/master/examples/router-demo/index.html">Source for this sample.</a></li>
+        <li><a href="/docs/routing-overview.html">WebRx Routing Documentation</a></li>    </ul>
+</script>
+
+<script id="state-visualizer-template" type="text/html">
+    <br/>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Routing State</h3>
+        </div>
+        <div class="panel-body">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>State</td>
+                        <td data-bind="text: '\'' + name + '\''"></td>
+                    </tr>
+                    <tr>
+                        <td>Route</td>
+                        <td data-bind="text: route"></td>
+                    </tr>
+                    <tr>
+                        <td>Params</td>
+                        <td data-bind="text: params"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script>
+    function ContactService() {
+        this.contacts = [
+            { id: 1, name: "Bob", email: "bob@acme.com" },
+            { id: 2, name: "Alice", email: "alice@acme.com" }
+        ];
+
+        this.getContacts = function() {
+            return this.contacts;
+        };
+
+        this.getContact = function(id) {
+            return this.contacts.filter(function(x) {
+                return x.id == id;
+            })[0];
+        };
+    }
+
+    var contactService = new ContactService();
+
+    wx.app.component('home', {
+        template: {
+            element: 'home-template'
+        }
+    });    
+
+    wx.app.component('contact-list', {
+        template: {
+            element: 'contact-list-template'
+        },
+        viewModel: function (params) {
+            this.contacts = wx.list(contactService.getContacts());
+
+            wx.app.title("Contacts");
+        }
+    });
+
+    wx.app.component('contact-details', {
+        template: {
+            element: 'contact-details-template'
+        },
+        viewModel: function (params) {
+            this.contact = contactService.getContact(params.id);
+
+            wx.app.title("Contact Details: " + this.contact.name);
+        }
+    });
+
+    wx.app.component('about', {
+        template: {
+            element: 'about-template'
+        },
+        viewModel: function (params) {
+            wx.app.title("About");
+        }
+    });
+
+    wx.app.component('state-visualizer', {
+        template: {
+            element: 'state-visualizer-template'
+        }, viewModel: function(params) {
+            this.name = wx.property();
+            this.route = wx.property();
+            this.params = wx.property();
+
+            var self = this;
+            wx.router.current.changed.startWith(wx.router.current()).subscribe(function(x) {
+                self.name(x.name);
+                self.route(x.route.stringify(x.params));
+                self.params(x.params ? JSON.stringify(x.params) : "");
+            });
+        }
+    });
+
+    wx.app.animation('enter', wx.animation("enter", "start"));
+    wx.app.animation('leave', wx.animation("leave", "start", "complete"));
+
+    wx.router.state({
+        name: "home",
+        route: "/examples/router-demo/",
+        views: {
+            'main': "home"
+        }
+    }).state({
+        name: "contacts",
+        route: "/examples/router-demo/contacts",
+        views: {
+            'main': "contact-list"
+        }
+    }).state({
+        name: "about",
+        route: "/examples/router-demo/about",
+        views: {
+            'main': "about"
+        }
+    }).state({
+        name: "contacts.details",
+        route: "/examples/router-demo/contacts/:id",
+        views: {
+             'details': {
+                component: "contact-details",
+                animations: {
+                    enter: "enter",
+                    leave: "leave"
+                }
+            }
+        }
+    });
+
+    wx.router.go("home", {}, { location: 2 });
+
+    wx.applyBindings(undefined, document.getElementById("router-demo"));
+</script>
