@@ -223,4 +223,17 @@ protected void Application_BeginRequest( Object sender, EventArgs e )
 }
 ```
 
+### Deep-Links
+
+Users of your application may bookmark pages deeply nested within your state hierarchy. 
+
+In the previous section we've ensured that server will return a page even when the browser requests an URL that is only available
+on the client side - as it is the case with deep-linking bookmarks.
+
+To support seamless transition from server- to client-side routing, the router provides the parameterless 
+method <code>sync</code>. This method infers the current routing-state from the browser's current location 
+(address bar) and transitions to that state. 
+
+**Note:** Calling the <code>sync</code> method is expensive and should only be done once after the application has registered all of its initial states.
+
 <a class="next-topic" href="/docs/routing-registration.html">Next: Defining and registering routing states</a>
