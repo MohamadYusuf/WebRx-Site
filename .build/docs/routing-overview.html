@@ -277,10 +277,10 @@ while the <code>main</code> view will continue to display the <code>header-compo
 
 <h3>The root state <code>$</code></h3>
 
-<p>After the router has been initialized it will automatically transition to root state. The root state sits above all other
-registered states in the state-hierarchy. </p>
+<p>The root-state is a special ambient state that is always present. It sits above all other registered states in the state-hierarchy
+and all states inherit it.</p>
 
-<p>By default, this state routes to <code>/</code> and can be accessed using the special name <code>$</code>.</p>
+<p>By default, root-state maps to the <code>/</code> route and can be accessed using the special name <code>$</code>.</p>
 
 <p>The fact that all states inherit from root-state and that the root state can be overriden by the developer makes it a perfect
 target for providing defaults to other states. For example:</p>
@@ -309,6 +309,85 @@ history in order to provide the enduser with a seamless browsing-experience that
 all current browsers. If you need to support very old browsers which do not yet implement this API, is is recommended to include 
 a Shim such as <a href="https://github.com/browserstate/history.js/">history.js</a> with your project.</p>
 
+<h2>Server side setup</h2>
+
+<p>Because WebRx&#39;s router relies on the browser history API to manage routes, the URLs displayed in the brower&#39;s
+address bar look much nicer but that also requires server side rewrites. Here are some examples:</p>
+
+<p><strong>Apache Rewrites</strong></p>
+<div class="highlight"><pre><code class="language-apache" data-lang="apache"><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> my-app
+
+    <span class="nb">DocumentRoot</span> <span class="sx">/path/to/app</span>
+
+    <span class="nt">&lt;Directory</span> <span class="s">/path/to/app</span><span class="nt">&gt;</span>
+        <span class="nb">RewriteEngine</span> <span class="k">on</span>
+
+        <span class="c"># Don&#39;t rewrite files or directories</span>
+        <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} -f [OR]
+        <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} -d
+        <span class="nb">RewriteRule</span> ^ - [L]
+
+        <span class="c"># Rewrite everything else to index.html to allow html5 state links</span>
+        <span class="nb">RewriteRule</span> ^ index.html [L]
+    <span class="nt">&lt;/Directory&gt;</span>
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</code></pre></div>
+<p><strong>Nginx Rewrites</strong></p>
+<div class="highlight"><pre><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">server_name</span> <span class="s">my-app</span><span class="p">;</span>
+
+    <span class="kn">root</span> <span class="s">/path/to/app</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="s">/index.html</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Azure IIS Rewrites</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;system.webServer&gt;</span>
+  <span class="nt">&lt;rewrite&gt;</span>
+    <span class="nt">&lt;rules&gt;</span> 
+      <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">&quot;Main Rule&quot;</span> <span class="na">stopProcessing=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">&quot;.*&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;conditions</span> <span class="na">logicalGrouping=</span><span class="s">&quot;MatchAll&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">&quot;{REQUEST_FILENAME}&quot;</span> <span class="na">matchType=</span><span class="s">&quot;IsFile&quot;</span> <span class="na">negate=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>                                 
+          <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">&quot;{REQUEST_FILENAME}&quot;</span> <span class="na">matchType=</span><span class="s">&quot;IsDirectory&quot;</span> <span class="na">negate=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/conditions&gt;</span>
+        <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">&quot;Rewrite&quot;</span> <span class="na">url=</span><span class="s">&quot;/&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/rule&gt;</span>
+    <span class="nt">&lt;/rules&gt;</span>
+  <span class="nt">&lt;/rewrite&gt;</span>
+<span class="nt">&lt;/system.webServer&gt;</span>
+</code></pre></div>
+<p><strong>Express Rewrites</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/js&#39;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/js&#39;</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/dist&#39;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/../dist&#39;</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/css&#39;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/css&#39;</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/partials&#39;</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/partials&#39;</span><span class="p">));</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="s1">&#39;/*&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Just send the index.html for other files to support HTML5Mode</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">root</span><span class="o">:</span> <span class="nx">__dirname</span> <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3006</span><span class="p">);</span> <span class="c1">//the port you want to use</span>
+</code></pre></div>
+<p><strong>ASP.Net C# Rewrites</strong></p>
+
+<p>In Global.asax</p>
+<div class="highlight"><pre><code class="language-C#" data-lang="C#"><span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">ROOT_DOCUMENT</span> <span class="p">=</span> <span class="s">&quot;/default.aspx&quot;</span><span class="p">;</span>
+
+<span class="k">protected</span> <span class="k">void</span> <span class="nf">Application_BeginRequest</span><span class="p">(</span> <span class="n">Object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span> <span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">string</span> <span class="n">url</span> <span class="p">=</span> <span class="n">Request</span><span class="p">.</span><span class="n">Url</span><span class="p">.</span><span class="n">LocalPath</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="p">!</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span> <span class="n">Context</span><span class="p">.</span><span class="n">Server</span><span class="p">.</span><span class="n">MapPath</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+        <span class="n">Context</span><span class="p">.</span><span class="n">RewritePath</span><span class="p">(</span> <span class="n">ROOT_DOCUMENT</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><a class="next-topic" href="/docs/routing-registration.html">Next: Defining and registering routing states</a></p>
 </div>
         </div>

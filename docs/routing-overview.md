@@ -97,10 +97,10 @@ while the <code>main</code> view will continue to display the <code>header-compo
 
 ### The root state <code>$</code>
 
-After the router has been initialized it will automatically transition to root state. The root state sits above all other
-registered states in the state-hierarchy. 
+The root-state is a special ambient state that is always present. It sits above all other registered states in the state-hierarchy
+and all states inherit it.
 
-By default, this state routes to <code>/</code> and can be accessed using the special name <code>$</code>.
+By default, root-state maps to the <code>/</code> route and can be accessed using the special name <code>$</code>.
 
 The fact that all states inherit from root-state and that the root state can be overriden by the developer makes it a perfect
 target for providing defaults to other states. For example:
@@ -128,5 +128,99 @@ history in order to provide the enduser with a seamless browsing-experience that
 This feature relies on the standard [History-API](https://developer.mozilla.org/en-US/docs/Web/API/History) implemented by
 all current browsers. If you need to support very old browsers which do not yet implement this API, is is recommended to include 
 a Shim such as [history.js](https://github.com/browserstate/history.js/) with your project.
+
+## Server side setup
+
+Because WebRx's router relies on the browser history API to manage routes, the URLs displayed in the brower's
+address bar look much nicer but that also requires server side rewrites. Here are some examples:
+
+**Apache Rewrites**
+
+```apache
+<VirtualHost *:80>
+    ServerName my-app
+
+    DocumentRoot /path/to/app
+
+    <Directory /path/to/app>
+        RewriteEngine on
+
+        # Don't rewrite files or directories
+        RewriteCond %{REQUEST_FILENAME} -f [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^ - [L]
+
+        # Rewrite everything else to index.html to allow html5 state links
+        RewriteRule ^ index.html [L]
+    </Directory>
+</VirtualHost>
+```
+
+**Nginx Rewrites**
+
+```nginx
+server {
+    server_name my-app;
+
+    root /path/to/app;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+**Azure IIS Rewrites**
+
+```html
+<system.webServer>
+  <rewrite>
+    <rules> 
+      <rule name="Main Rule" stopProcessing="true">
+        <match url=".*" />
+        <conditions logicalGrouping="MatchAll">
+          <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />                                 
+          <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+        </conditions>
+        <action type="Rewrite" url="/" />
+      </rule>
+    </rules>
+  </rewrite>
+</system.webServer>
+```
+
+**Express Rewrites**
+
+```javascript
+var express = require('express');
+var app = express();
+
+app.use('/js', express.static(__dirname + '/js'));
+app.use('/dist', express.static(__dirname + '/../dist'));
+app.use('/css', express.static(__dirname + '/css'));
+app.use('/partials', express.static(__dirname + '/partials'));
+
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: __dirname });
+});
+
+app.listen(3006); //the port you want to use
+```
+
+**ASP.Net C# Rewrites**
+
+In Global.asax
+
+```C#
+private const string ROOT_DOCUMENT = "/default.aspx";
+
+protected void Application_BeginRequest( Object sender, EventArgs e )
+{
+	string url = Request.Url.LocalPath;
+	if ( !System.IO.File.Exists( Context.Server.MapPath( url ) ) )
+		Context.RewritePath( ROOT_DOCUMENT );
+}
+```
 
 <a class="next-topic" href="/docs/routing-registration.html">Next: Defining and registering routing states</a>
