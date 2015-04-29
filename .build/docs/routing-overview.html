@@ -275,6 +275,30 @@ display the <code>contact-list-component</code>.</p></li>
 while the <code>main</code> view will continue to display the <code>header-component</code> because it is inherited from parent state <code>contacts</code>.</p></li>
 </ul>
 
+<h3>The root state <code>$</code></h3>
+
+<p>After the router has been initialized it will automatically transition to root state. The root state sits above all other
+registered states in the state-hierarchy. </p>
+
+<p>By default, this state routes to <code>/</code> and can be accessed using the special name <code>$</code>.</p>
+
+<p>The fact that all states inherit from root-state and that the root state can be overriden by the developer makes it a perfect
+target for providing defaults to other states. For example:</p>
+
+<ul>
+<li>To change the base uri for all states re-register root state with a custom route</li>
+<li>To provide default-parameters to other states re-register root state with additional parameters</li>
+</ul>
+
+<h4>Example</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;$&quot;</span><span class="p">,</span>
+    <span class="nx">route</span><span class="o">:</span> <span class="s2">&quot;/foo&quot;</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Here we&#39;ve overriden root-state for the application and by providing a custom route we effectively 
+prefixed alll relative-routes registered by other states with <code>/foo</code>.</p>
+
 <h3>How routing interacts with the browser&#39;s history</h3>
 
 <p>Whenever the current routing state changes due to navigation via <a href="/docs/sref-binding.html">sref</a>-links our invoking 

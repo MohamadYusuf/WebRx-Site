@@ -95,6 +95,30 @@ display the <code>contact-list-component</code>.
 - As soon as the <code>contacts.details</code> state is activated the <code>details</code> view will switch to the <code>contact-details-component</code>
 while the <code>main</code> view will continue to display the <code>header-component</code> because it is inherited from parent state <code>contacts</code>.
 
+### The root state <code>$</code>
+
+After the router has been initialized it will automatically transition to root state. The root state sits above all other
+registered states in the state-hierarchy. 
+
+By default, this state routes to <code>/</code> and can be accessed using the special name <code>$</code>.
+
+The fact that all states inherit from root-state and that the root state can be overriden by the developer makes it a perfect
+target for providing defaults to other states. For example:
+
+- To change the base uri for all states re-register root state with a custom route
+- To provide default-parameters to other states re-register root state with additional parameters
+
+#### Example
+
+```javascript
+wx.router.state({
+    name: "$",
+    route: "/foo"
+});
+```
+Here we've overriden root-state for the application and by providing a custom route we effectively 
+prefixed alll relative-routes registered by other states with <code>/foo</code>.
+
 ### How routing interacts with the browser's history
 
 Whenever the current routing state changes due to navigation via [sref](/docs/sref-binding.html)-links our invoking 
