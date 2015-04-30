@@ -103,6 +103,8 @@ a.next-topic {
 
 #main-logo img {
     vertical-align: middle;
+    margin-top: -7px;
+    height: 56px;
 }
 
 #main-logo span {
