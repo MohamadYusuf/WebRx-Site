@@ -7,21 +7,34 @@ if(navigator.language != 'de' && navigator.language.indexOf('de-') != 0) {
 }
 
 if(document.location.pathname === '/') {
-    function TicketsViewModel() {
-    	var self = this;
+    wx.app.animation('enter', wx.animation("enter", "start"));
 
-        this.tickets = [
-            { name: "Economy", price: 199.95 },
-            { name: "Business", price: 449.22 },
-            { name: "First Class", price: 1199.99 }
-        ];
-        this.chosenTicket = wx.property();
-        this.resetTicketCommand = wx.command(function() { 
-        	self.chosenTicket(null);
-        }, wx.whenAny(this.chosenTicket, function(ticket) { return ticket != null; }));
-    }
+    var PlanetsModel = function () {
+        this.planets = wx.list([
+            { name: "Mercury", type: "rock" },
+            { name: "Venus", type: "rock" },
+            { name: "Earth", type: "rock" },
+            { name: "Mars", type: "rock" },
+            { name: "Jupiter", type: "gasgiant" },
+            { name: "Saturn", type: "gasgiant" },
+            { name: "Uranus", type: "gasgiant" },
+            { name: "Neptune", type: "gasgiant" },
+        ]);
 
-    wx.applyBindings(new TicketsViewModel(), document.getElementById("live-demo"));
+        this.typeToShow = wx.property("all");
+        this.displayAdvancedOptions = wx.property(false);
+
+        this.addPlanetCmd = wx.command(function (type) {
+            this.planets.push({ name: "New planet", type: type });
+        }, this);
+
+        this.planetsToShow = this.planets.project(function (planet) {
+            var desiredType = this.typeToShow();
+            return desiredType === "all" || planet.type === desiredType;
+        }.bind(this), this.typeToShow.changed);
+    };
+
+    wx.applyBindings(new PlanetsModel(), document.getElementById("live-demo"));
 
     $("#share").popover({ html: true, trigger: 'manual', placement: 'top', content: function() {
          return $("#share-content").html();
@@ -29,6 +42,8 @@ if(document.location.pathname === '/') {
         $(this).popover('toggle');
     });
 }
+
+$.material.init();
 
 // add a few globally available transition
 wx.app.animation("fadein", wx.animation("fadein", "run"));

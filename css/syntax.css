@@ -1,11 +1,11 @@
 .syntax-theme-grey pre {
   margin: 0;
-  padding: 0;
   background-color: transparent;
   border: 0;
   border-radius: 0;
+    border-left: 5px solid #009688;
 }
-.syntax-theme-grey .highlight  { background: #ffffff; }
+.syntax-theme-grey .highlight  { background: #f0f0f0}
 .syntax-theme-grey .highlight .c { color: #999988; font-style: italic } /* Comment */
 .syntax-theme-grey .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .syntax-theme-grey .highlight .k { font-weight: bold } /* Keyword */
