@@ -79,13 +79,6 @@ body.wx-unsupported .sample-warning {
     color: white;
 }
 
-#content2 .panel.code pre {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    border-radius: 0;
-}
-
 a.next-topic {
     display: block;
     text-align: left;
@@ -152,10 +145,6 @@ code {
 
 .content-panel ul li {
     line-height: 1.8em;
-}
-
-#content2 .tab-pane {
-    margin-top: 1em;
 }
 
 .docs .index ul {
@@ -329,13 +318,17 @@ padding-left: 0;
   padding-top: 20px;
 }
 
+#content1,
+#content3 {
+ background-color: #f8f8f8;
+}
 
 #content1 {
     margin-top: 3em;
     margin-bottom: 1em;
     padding-bottom: 0;
-  background-color: #f8f8f8;
 }
+ 
 
 #footer {
     background-color: #fbfbfb;

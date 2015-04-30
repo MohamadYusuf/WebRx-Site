@@ -26,7 +26,7 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/1c36399a3812ce39857766dbe5748935.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/42d96688c17ff82a0b9f313ae25ddf8f.css' />
 
 
         <script type='text/javascript' src='/bundles/6e11d68a353867124309881496e54ecc.js'></script>
@@ -122,7 +122,7 @@
     </div>
 </div>
 
-<div class="row content-panel syntax-theme-grey">
+<div id="content2" class="row content-panel syntax-theme-grey">
     <div class="col-md-6">
         <h3>Getting started</h3>
         <ul id="install">
@@ -153,18 +153,51 @@
     <div class="col-md-6">
         <h3>Try it</h3>
         <style>
-            #live-demo { max-width: 655px; }
-            #live-demo input { font-family: Arial; }
-            #live-demo b { font-weight: bold; }
-            #live-demo p { margin-top: 0.9em; margin-bottom: 0.9em; }
-            #live-demo select[multiple] { width: 100%; height: 8em; }
-            #live-demo h2 { margin-top: 0.4em; }
+            #live-demo {
+                max-width: 655px;
+            }
 
-            .planet { background-color: #AAEECC; padding: 0.4em; margin-bottom: 0.5em; font-size: 0.75em; }
-            .planet.rock { background-color: #f0f0f0; }
-            #live-demo input { margin: 0 0.3em 0 1em; }
+                #live-demo input {
+                    font-family: Arial;
+                }
 
-            li { list-style-type: disc; margin-left: 20px; }
+                #live-demo b {
+                    font-weight: bold;
+                }
+
+                #live-demo p {
+                    margin-top: 0.9em;
+                    margin-bottom: 0.9em;
+                }
+
+                #live-demo select[multiple] {
+                    width: 100%;
+                    height: 8em;
+                }
+
+                #live-demo h2 {
+                    margin-top: 0.4em;
+                }
+
+            .planet {
+                background-color: #AAEECC;
+                padding: 0.4em;
+                margin-bottom: 0.5em;
+                font-size: 0.75em;
+            }
+
+                .planet.rock {
+                    background-color: #f0f0f0;
+                }
+
+            #live-demo input {
+                margin: 0 0.3em 0 1em;
+            }
+
+            li {
+                list-style-type: disc;
+                margin-left: 20px;
+            }
 
             .enter {
                 animation: slideIn 600ms ease both;
@@ -172,10 +205,11 @@
                 -webkit-animation: slideIn 600ms ease both;
                 -webkit-animation-play-state: paused;
             }
-            .enter.start {
-                animation-play-state: running;
-                -webkit-animation-play-state: running;
-            }
+
+                .enter.start {
+                    animation-play-state: running;
+                    -webkit-animation-play-state: running;
+                }
 
             .leave {
                 animation: slideOut 600ms ease both;
@@ -185,21 +219,31 @@
             }
 
             @-webkit-keyframes slideIn {
-                from { -webkit-transform: scaleY(0); }
-                to { -webkit-transform: scaleY(1); }
+                from {
+                    -webkit-transform: scaleY(0);
+                }
+
+                to {
+                    -webkit-transform: scaleY(1);
+                }
             }
 
             @keyframes slideIn {
-                from { transform: scaleY(0); }
-                to { transform: scaleY(1); }
+                from {
+                    transform: scaleY(0);
+                }
+
+                to {
+                    transform: scaleY(1);
+                }
             }
         </style>
         <div id='live-demo'>
             <p>
                 Show:
-                <label><input class="radio radio-inline" type='radio' name="type" value='all' data-bind='selectedValue: @typeToShow'/>All</label>
-                <label><input class="radio radio-inline" type='radio' name="type" value='rock' data-bind='selectedValue: @typeToShow'/>Rocky planets</label>
-                <label><input class="radio radio-inline" type='radio' name="type" value='gasgiant' data-bind='selectedValue: @typeToShow'/>Gas giants</label>
+                <label><input class="radio radio-inline" type='radio' name="type" value='all' data-bind='selectedValue: @typeToShow' />All</label>
+                <label><input class="radio radio-inline" type='radio' name="type" value='rock' data-bind='selectedValue: @typeToShow' />Rocky planets</label>
+                <label><input class="radio radio-inline" type='radio' name="type" value='gasgiant' data-bind='selectedValue: @typeToShow' />Gas giants</label>
             </p>
 
             <div class="planets" data-bind='foreach: { data: planetsToShow, itemEnter: "enter" }'>
@@ -215,7 +259,7 @@
 </div>
 
 
-<div class="row content-panel">
+<div id="content3" class="row content-panel">
     <div class="col-md-6">
         <h3>Features</h3>
         <ul id="features">
