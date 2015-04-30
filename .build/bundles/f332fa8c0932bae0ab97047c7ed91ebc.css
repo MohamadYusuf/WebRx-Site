@@ -518,6 +518,7 @@ padding-left: 0;
 
 #header p {
   font-size: 16px;
+    margin-top: 0;
 }
 
 #header h1 {
@@ -679,6 +680,11 @@ div.post .share {
 
   #content1 .row > div > div > h3 {
       height: auto;
+  }
+
+
+  #install {
+      margin-top: 2em;
   }
 }
 
