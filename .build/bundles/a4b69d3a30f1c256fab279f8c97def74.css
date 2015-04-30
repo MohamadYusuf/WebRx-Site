@@ -302,11 +302,8 @@ a.next-topic {
 #main-logo-container {
     margin-top: 1em;
     line-height: 2em;
-    background-image: url(/images/Rx_Logo-500x500_Fade.png);
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-size: 30%;
 }
+
 
 #main-logo-container h2 {
     margin: 0;
@@ -537,9 +534,10 @@ padding-left: 0;
 }
 
 #content1 {
-    margin-top: 3em;
+    margin-top: 1em;
     margin-bottom: 1em;
-    padding-bottom: 0;
+    padding-top: 3em;
+    padding-bottom: 1em;
 }
  
 
