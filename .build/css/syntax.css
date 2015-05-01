@@ -3,7 +3,7 @@
   background-color: transparent;
   border: 0;
   border-radius: 0;
-    border-left: 5px solid #009688;
+    border-left: 5px solid #0091ea;
 }
 .syntax-theme-grey .highlight  { background: #f0f0f0}
 .syntax-theme-grey .highlight .c { color: #999988; font-style: italic } /* Comment */
