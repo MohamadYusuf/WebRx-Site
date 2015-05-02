@@ -61,8 +61,8 @@
             </nav>
 
           <div id="header" class="content-panel">
-    <div class="row">
-        <div id="main-logo-container" class="col-md-8">
+    <div id="main-logo-container" class="row">
+        <div class="col-md-9">
             <div>
                 <h1 id="main-logo" class="logo">WebRx <img src="/images/Logo.png" /></h1>
                 <h2>Embrace the Observable</h2>
@@ -76,28 +76,6 @@
                 <a style="display: none;" href="https://twitter.com/share" class="twitter-share-button" data-via="oliverweichhold" data-size="large" data-related="webrxjs" data-hashtags="webrxjs">Tweet</a>
             </div>
         </div>
-
-        <div class="col-md-4 syntax-theme-grey">
-            <h3 class="mobile-offset">Getting started</h3>
-            <ul id="install">
-                <li>
-                    NuGet Installation
-                    <div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>
-                </li>
-                <li>
-                    Bower Installation
-                    <div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install WebRx</code></pre></div>
-                </li>
-                <li>
-                    NPM Installation
-                    <div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install webrx</code></pre></div>
-                </li>
-                <li><a href="/downloads/web.rx.zip">or Download binaries</a></li>
-
-                <!--<a class="btn btn-success" href="/docs/tutorial.html">Then proceed to the tutorial</a>-->
-            </ul>
-        </div>
-
     </div>
 </div>
 
@@ -146,21 +124,26 @@
 </div>
 
 <div id="content2" class="row content-panel syntax-theme-grey">
-    <div class="col-md-6">
-        <h3>Features</h3>
-        <ul id="features">
-            <li>Tested with IE9+, Firefox 5+, Chrome 5+, Safari 5+, Android Browser 4.0+, iOS Safari 5.0+</li>
-            <li><a href="/docs">Documentation</a></li>
-            <li>Declarative One-way and Two-way data-binding with many built-in operators</li>
-            <li>Supports self-contained, reusable <a href="docs/component-overview.html">Components</a> modelled after the upcoming Web-Components standard</li>
-            <li>Out-of-the box support for <a href="docs/module-overview.html">Modules</a> to facilitate code-reuse and separation of concerns</li>
-            <li>State-based routing engine inspired by <a href="https://github.com/angular-ui/ui-router">Angular's UI-Router</a></li>
-            <li>No dependencies besides <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/libraries/rx.complete.md">RxJS</a></li>
-            <li>Compact (~25Kb minified &amp; compressed)</li>
-            <li>First class <a href="http://www.typescriptlang.org/">TypeScript</a> support</li>
+    <div class="col-md-6 syntax-theme-grey">
+        <h3>Getting started</h3>
+        <ul id="install">
+            <li>
+                NuGet Installation
+                <div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>
+            </li>
+            <li>
+                Bower Installation
+                <div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install WebRx</code></pre></div>
+            </li>
+            <li>
+                NPM Installation
+                <div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install webrx</code></pre></div>
+            </li>
+            <li><a href="/downloads/web.rx.zip">or Download binaries</a></li>
+
+            <!--<a class="btn btn-success" href="/docs/tutorial.html">Then proceed to the tutorial</a>-->
         </ul>
     </div>
-
 
     <div class="col-md-6">
         <h3 class="mobile-offset">Try it</h3>
@@ -270,13 +253,30 @@
     </div>
 </div>
 
-
 <div id="content3" class="row content-panel">
     <div class="col-md-12">
-        <h3>Support</h3>
-        <p>Post your questions to <a href="https://stackoverflow.com/questions/tagged/webrx">Stackoverflow</a> tagged with <code>webrx</code>.
+        <h3>Features</h3>
+        <ul id="features">
+            <li>Tested with IE9+, Firefox 5+, Chrome 5+, Safari 5+, Android Browser 4.0+, iOS Safari 5.0+</li>
+            <li><a href="/docs">Documentation</a></li>
+            <li>Declarative One-way and Two-way data-binding with many built-in operators</li>
+            <li>Supports self-contained, reusable <a href="docs/component-overview.html">Components</a> modelled after the upcoming Web-Components standard</li>
+            <li>Out-of-the box support for <a href="docs/module-overview.html">Modules</a> to facilitate code-reuse and separation of concerns</li>
+            <li>State-based routing engine inspired by <a href="https://github.com/angular-ui/ui-router">Angular's UI-Router</a></li>
+            <li>No dependencies besides <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/libraries/rx.complete.md">RxJS</a></li>
+            <li>Compact (~25Kb minified &amp; compressed)</li>
+            <li>First class <a href="http://www.typescriptlang.org/">TypeScript</a> support</li>
+        </ul>
     </div>
 </div>
+
+
+    <div id="content4" class="row content-panel">
+        <div class="col-md-12">
+            <h3>Support</h3>
+            <p>Post your questions to <a href="https://stackoverflow.com/questions/tagged/webrx">Stackoverflow</a> tagged with <code>webrx</code>.
+        </div>
+    </div>
 
 
     <script id="share-content" type="text/html">
@@ -294,7 +294,7 @@
         </a>
     </script>
 
-<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
 
             <div id="footer" class="content-panel">
