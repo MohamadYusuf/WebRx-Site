@@ -189,6 +189,11 @@ code {
     padding-left: 0;
 }
 
+#twitter-widget-0 {
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
 #features li { padding-left: 0; }
 
 .logo .x {
@@ -393,6 +398,10 @@ div.post .share {
 
 
     .mobile-offset { margin-top: 2em; }
+
+    #twitter-widget-0 {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 768px) {
