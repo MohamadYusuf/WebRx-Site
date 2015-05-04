@@ -60,8 +60,10 @@ if(document.location.pathname === '/') {
             { name: "Uranus", type: "gasgiant" },
             { name: "Neptune", type: "gasgiant" },
         ]);
-
+        
+        
         this.typeToShow = wx.property("all");
+        this.filter = wx.property();
         this.displayAdvancedOptions = wx.property(false);
 
         this.addPlanetCmd = wx.command(function (type) {
@@ -70,8 +72,13 @@ if(document.location.pathname === '/') {
 
         this.planetsToShow = this.planets.project(function (planet) {
             var desiredType = this.typeToShow();
-            return desiredType === "all" || planet.type === desiredType;
-        }.bind(this), this.typeToShow.changed);
+            var result = desiredType === "all" || planet.type === desiredType;
+            
+            if(result && this.filter())
+                result = planet.name.toLowerCase().indexOf(this.filter().toLowerCase()) !== -1;
+            
+            return result;
+        }.bind(this), Rx.Observable.merge(this.typeToShow.changed, this.filter.changed));
     };
 
     wx.applyBindings(new PlanetsModel(), document.getElementById("live-demo"));
