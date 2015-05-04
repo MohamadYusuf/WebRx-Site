@@ -1,13 +1,19 @@
 ---
 layout: docs
-title: WebRx - The SRef-Binding
+title: WebRx - The stateRef-Binding
 ---
-# The SRef-Binding
+# The stateRef-Binding
 
-The sref-binding binds an anchor element (<code>&lt;a&gt;</code> tag) to a state. The binding will automatically 
-generate and update the <code>href</code> attribute of the anchor to the route (URI) associated with the state. 
+The purpose of the stateRef-Binding is to enable a HTML element to trigger routing-state-transitions.
+The binding is usually used with anchor elements (<code>&lt;a&gt;</code>) or buttons but supports any element type.
 
-Clicking the link will trigger a state transition with optional parameters. 
+After the binding has been applied to an element, clicking the element will trigger a transition to the state specified in the binding-options.
+
+When applied to an anchor element, the binding will automatically populate an anchor's <code>href</code> attribute with the route (URI) associated with the state.
+Because the binding infers the resulting URI from the State-Name and -Parameters, it eliminates the necessity to hard-code
+state URIs in markup.
+
+**Aliases:** <code>sref</code>, <code>stateRef</code> and <code>stateref</code>
 
 ## Example
 

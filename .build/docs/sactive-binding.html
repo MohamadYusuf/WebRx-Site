@@ -3,10 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - The SActive-Binding</title>
+        <title>WebRx - The stateActive-Binding</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - The SActive-Binding" /> 
+        <meta property="og:title" content="WebRx - The stateActive-Binding" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
         
@@ -26,14 +26,14 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/d27228f6212aa13c0ef1de0e31d9024c.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/bd464ca41c262561387401e5dfcabe42.css' />
 
 
         <script type='text/javascript' src='/bundles/6e11d68a353867124309881496e54ecc.js'></script>
 
       </head>
     <body>
-        <h1 id="logoh1">WebRx - The SActive-Binding</h1>
+        <h1 id="logoh1">WebRx - The stateActive-Binding</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-white">
                 <div class="container-fluid">
@@ -190,14 +190,16 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The SActive-Binding</h1>
+            <div class="body"><h1>The stateActive-Binding</h1>
 
-<p>The SActive-binding tests if the <a href="/docs/routing-overview.html">router&#39;s</a> current state matches its own configuration
-and add a Css-Class to its target element if the test succeeds or remove it otherwise. By default the binding will use
-the class <code>active</code>.</p>
+<p>The stateActive-binding (short form <code>sactive</code>) tests if the <a href="/docs/routing-overview.html">router&#39;s</a> current state matches its own configuration
+and add a CSS-Class to its target element if the test succeeds or otherwise remove the class. By default the binding will use
+the class name <code>active</code>.</p>
 
-<p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the &quot;active&quot; state&#39;s menu 
+<p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the active state&#39;s menu 
 button appear different, distinguishing it from the inactive items.</p>
+
+<p><strong>Aliases:</strong> <code>sactive</code>, <code>stateActive</code> and <code>stateactive</code></p>
 
 <h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">&quot;sref: &#39;contacts&#39;, sactive: &#39;contacts&#39;&quot;</span><span class="nt">&gt;</span>Contacts<span class="nt">&lt;/a&gt;</span>
