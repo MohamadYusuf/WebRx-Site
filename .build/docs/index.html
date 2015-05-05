@@ -200,11 +200,19 @@ lets you extend HTML vocabulary for your application. The resulting environment 
 <p>WebRx is built around these core concepts:</p>
 
 <ul>
-<li>View-Models using <a href="/docs/observable-properties.html">Observable Properties</a> and <a href="/docs/commands.html">Commands</a></li>
-<li>Templates using <a href="/docs/binding-syntax.html">declarative bindings</a></li>
-<li><a href="/docs/component-overview.html">Components</a> that combine the aforementioned features into self-contained, reusable chunks</li>
+<li>View-Models using <a href="/docs/observable-properties.html">Observable Properties</a> and <a href="/docs/commands.html">Commands</a> implemented on using <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/what.md">RxJS-Observables</a></li>
+<li>Templates with <a href="/docs/binding-syntax.html">declarative Two-Way Bindings</a></li>
+<li><a href="/docs/component-overview.html">Components</a> for composing View-Models and Templates into self-contained, reusable chunks</li>
 <li>Client-Side <a href="/docs/routing-overview.html">Routing</a></li>
 </ul>
+
+<h3>Observables &amp; Functional-Reactive-Programming</h3>
+
+<p>If your are not familiar with Functional-Reactive-Programming (FRP) you might ask yourself: <em>What is FRP and do I need a degree in it to use this framework?</em> </p>
+
+<p>The answer to the first question goes beyond the scope of this document. Fortunately <a href="https://twitter.com/andrestaltz">André Staltz</a> has written an excellent introduction to FRP which can be found <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">here</a>.</p>
+
+<p>The answer to the second question is <strong>no</strong>. Nonetheless, a basic understanding of the principles of reactive-programming is the key to unleashing the true power of the framework, instead of merely scratching the surface. </p>
 
 <h3><a id="topic-mvvm-intro"></a>MVVM and View-Models</h3>
 
