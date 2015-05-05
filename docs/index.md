@@ -11,7 +11,7 @@ lets you extend HTML vocabulary for your application. The resulting environment 
 
 WebRx is built around these core concepts:
 
-- View-Models using [Observable Properties](/docs/observable-properties.html) and [Commands](/docs/commands.html) implemented on using [RxJS-Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/what.md)
+- View-Models using [Observable Properties](/docs/observable-properties.html) and [Commands](/docs/commands.html) implemented using [RxJS-Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/what.md)
 - Templates with [declarative Two-Way Bindings](/docs/binding-syntax.html)
 - [Components](/docs/component-overview.html) for composing View-Models and Templates into self-contained, reusable chunks
 - Client-Side [Routing](/docs/routing-overview.html)
