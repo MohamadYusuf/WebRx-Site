@@ -148,16 +148,16 @@ To do that let's go back to the <code>app.js</code> script we've created in [Ste
 
 ```javascript
 wx.app.component('hello', {
-    viewModel: function() {
-	    this.firstName = 'Bart';
-	    this.lastName = 'Simpson';
-	},
+  viewModel: function() {
+    this.firstName = 'Bart';
+    this.lastName = 'Simpson';
+  },
   template: 'The name is <span data-bind="text: firstName + lastName"></span>'
 });
 
 wx.router.state({
-    name: "$",
-    views: { 'main': "hello" }
+  name: "$",
+  views: { 'main': "hello" }
 });
 
 wx.router.reload();
@@ -177,7 +177,15 @@ Even though we've now defined a component for our placeholder, it will be still 
 <code>hello</code> in the placeholder <code>main</code> whenever the application is in it's
 default state (<code>$</code>). 
 
-**Line 14**: Here we reload the router after configuring it in the previous step  
+**Line 14**: Here we reload the router after configuring it in the previous step
+
+## The result
+
+If you have implemented everything correctly, refreshing your browser windows should yield the following output:
+
+```javascript
+The name is Bart Simpson 
+```
 
 ## Conclusion
 
