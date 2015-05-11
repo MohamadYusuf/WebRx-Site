@@ -189,4 +189,5 @@ concepts. Throughout the tutorial we've learned:
 - How to define a basic component consisting of a view-model and a template
 - How to display a component using the Router 
 
-<a class="next-topic" href="/docs/binding-syntax.html">Next: The Binding-Syntax</a>
+
+<a class="next-topic" href="/docs/index.html">Next: Introduction</a>
