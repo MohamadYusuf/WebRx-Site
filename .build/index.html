@@ -3,13 +3,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Dynamic JavaScript User-Interfaces with ReactiveX</title>
+        <title>WebRx - The Browser-based MVVM-Framework for ReactiveX-powered Single Page Applications</title>
 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Dynamic JavaScript User-Interfaces with ReactiveX" /> 
+        <meta property="og:title" content="WebRx - The Browser-based MVVM-Framework for ReactiveX-powered Single Page Applications" /> 
         <meta property="og:site_name" content="WebRx"/>         
         
-        <meta name="description" content="WebRx - Dynamic JavaScript User-Interfaces with ReactiveX">
+        <meta name="description" content="WebRx - The Browser-based MVVM-Framework for ReactiveX-powered Single Page Applications">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
@@ -29,11 +29,11 @@
         <link rel='stylesheet' type='text/css' href='/bundles/bd464ca41c262561387401e5dfcabe42.css' />
 
 
-        <script type='text/javascript' src='/bundles/6e11d68a353867124309881496e54ecc.js'></script>
+        <script type='text/javascript' src='/bundles/a000be46ae4dd42b93dd96334c048774.js'></script>
 
       </head>
     <body>
-        <h1 id="logoh1">WebRx - Dynamic JavaScript User-Interfaces with ReactiveX</h1>
+        <h1 id="logoh1">WebRx - The Browser-based MVVM-Framework for ReactiveX-powered Single Page Applications</h1>
         <div id="main-container" class="container">
             <nav class="navbar navbar-white">
                 <div class="container-fluid">
@@ -62,14 +62,14 @@
 
           <div id="header" class="content-panel">
     <div id="main-logo-container" class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div>
                 <h1 id="main-logo" class="logo">WebRx <img src="/images/Logo.png" /></h1>
                 <h2>Embrace the Observable</h2>
-                <h1 id="mission-statement">WebRx is a Javascript MVVM-Framework that combines functional-reactive programming with declarative Data-Binding, Templating and Client-Side Routing.</h1>
-                <p>The framework is built on top of <a href='https://github.com/Reactive-Extensions/RxJS'>ReactiveX for Javascript (RxJs)</a> which is a powerful set of libraries for processing and querying asynchronous data-streams that can originate from diverse sources such as Http-Requests, Input-Events, Timers and much more.</p>
+                <h1 id="mission-statement">WebRx is a browser-based MVVM-Framework that combines functional-reactive programming with declarative Data-Binding, Templating and Client-Side Routing.</h1>
+                <p>The framework is written in <a href='http://www.typescriptlang.org/'>Typescript</a> and built on top of <a href='https://github.com/Reactive-Extensions/RxJS'>ReactiveX for Javascript (RxJs)</a> which is a powerful set of libraries for processing and querying asynchronous data-streams that can originate from diverse sources such as Http-Requests, Input-Events, Timers and much more.</p>
+                <a class="btn btn-info btn-sm" href="/docs/getting-started.html">Getting Started</a>
                 <a class="btn btn-info btn-sm" href="/docs/examples.html">Examples</a>
-                <a class="btn btn-info btn-sm" href="/docs">Docs</a>
                 <!--<a id="gstars" class="btn btn-info btn-sm" title="Source on Github" target="_blank"
                    href="https://github.com/WebRxJS/WebRx"><i class="fa fa-github"></i>&nbsp;Source</a>-->
                 <!--<button id="share" class="btn btn-primary"><i class="fa fa-share-square"></i> Share</button>-->
@@ -125,24 +125,21 @@
 
 <div id="content2" class="row content-panel syntax-theme-grey">
     <div class="col-md-6 syntax-theme-grey">
-        <h3>Getting started</h3>
-        <ul id="install">
-            <li>
-                NuGet Installation
-                <div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx</code></pre></div>
-            </li>
-            <li>
-                Bower Installation
-                <div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install WebRx</code></pre></div>
-            </li>
-            <li>
-                NPM Installation
-                <div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install webrx</code></pre></div>
-            </li>
-            <li><a href="/downloads/web.rx.zip">or Download binaries</a></li>
-
-            <!--<a class="btn btn-success" href="/docs/tutorial.html">Then proceed to the tutorial</a>-->
+        <h3>Features</h3>
+        <ul id="features">
+            <li>Tested with IE9+, Firefox 5+, Chrome 5+, Safari 5+, Android Browser 4.0+, iOS Safari 5.0+</li>
+            <li><a href="/docs">Documentation</a></li>
+            <li>Developed in <a href="http://www.typescriptlang.org/">TypeScript</a> (just like Angular 2.0)</li>
+            <li>Declarative One-way and Two-way data-binding with many built-in operators</li>
+            <li>Supports self-contained, reusable <a href="docs/component-overview.html">Components</a> modelled after the upcoming Web-Components standard</li>
+            <li>Out-of-the box support for <a href="docs/module-overview.html">Modules</a> to facilitate code-reuse and separation of concerns</li>
+            <li>State-based routing engine inspired by <a href="https://github.com/angular-ui/ui-router">Angular's UI-Router</a></li>
+            <li>No dependencies besides <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/libraries/rx.complete.md">RxJS</a></li>
+            <li>Compact (~25Kb minified &amp; compressed)</li>
         </ul>
+
+        <h3>Support</h3>
+        <p>Post your questions to <a href="https://stackoverflow.com/questions/tagged/webrx">Stack Overflow</a> tagged with <code>webrx</code>.
     </div>
 
     <div class="col-md-6">
@@ -220,32 +217,6 @@
         </div>
     </div>
 </div>
-
-<div id="content3" class="row content-panel">
-    <div class="col-md-12">
-        <h3>Features</h3>
-        <ul id="features">
-            <li>Tested with IE9+, Firefox 5+, Chrome 5+, Safari 5+, Android Browser 4.0+, iOS Safari 5.0+</li>
-            <li><a href="/docs">Documentation</a></li>
-            <li>Declarative One-way and Two-way data-binding with many built-in operators</li>
-            <li>Supports self-contained, reusable <a href="docs/component-overview.html">Components</a> modelled after the upcoming Web-Components standard</li>
-            <li>Out-of-the box support for <a href="docs/module-overview.html">Modules</a> to facilitate code-reuse and separation of concerns</li>
-            <li>State-based routing engine inspired by <a href="https://github.com/angular-ui/ui-router">Angular's UI-Router</a></li>
-            <li>No dependencies besides <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/libraries/rx.complete.md">RxJS</a></li>
-            <li>Compact (~25Kb minified &amp; compressed)</li>
-            <li>First class <a href="http://www.typescriptlang.org/">TypeScript</a> support</li>
-        </ul>
-    </div>
-</div>
-
-
-    <div id="content4" class="row content-panel">
-        <div class="col-md-12">
-            <h3>Support</h3>
-            <p>Post your questions to <a href="https://stackoverflow.com/questions/tagged/webrx">Stackoverflow</a> tagged with <code>webrx</code>.
-        </div>
-    </div>
-
 
     <script id="share-content" type="text/html">
         <a class="share-link" title="Tweet this" href="http://twitter.com/share?url=http://webrxjs.org&text=WebRx - Dynamic JavaScript User-Interfaces with ReactiveX&hashtags=webrx" target="_blank">

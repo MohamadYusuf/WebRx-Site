@@ -99,4 +99,4 @@ want to have multiple view models and associate each with a different region of 
 
 Pretty simple, really.
 
-<a class="next-topic" href="/docs/binding-syntax.html">Next: The Binding-Syntax</a>
+<a class="next-topic" href="/docs/getting-started.html">Next: Getting Started</a>
