@@ -126,7 +126,9 @@ Not very exciting. Let's fix this.
 
 ## Defining our first Component
 
-Let's return our focus on the <code>div</code> element at the very top of the body:
+In WebRx, user interface elements are composed of view and view-model pairs that are refered to as [Components](/docs/component-overview.html). The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. WebRx's powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This separation of concerns is great for developer/designer collaboration, maintainability, architectural flexibility and even source control.
+
+Let's now focus on the <code>div</code> element at the very top of the body:
 
 ```html
 <div data-bind="view: 'main'"></div>
@@ -176,33 +178,6 @@ Even though we've now defined a component for our placeholder, it will be still 
 default state (<code>$</code>). 
 
 **Line 14**: Here we reload the router after configuring it in the previous step  
-
-## The result (live-example)
-
-<div class="panel panel-default" id="live-example">
-	<div class="panel-body">
-    <div data-bind="view: 'main'"></div>
-
-		<script>
-      wx.app.component('hello', {
-          viewModel: function() {
-      	    this.firstName = 'Bart';
-      	    this.lastName = 'Simpson';
-           },
-          template: 'The name is <span data-bind="text: firstName + \' \' + lastName"></span>'
-      });
-      
-      wx.router.state({
-          name: "$",
-          views: { 'main': "hello" }
-      });
-      
-      wx.router.reload();
-      
-      wx.applyBindings(undefined, document.getElementById("live-example"));
-		</script>
-	</div>
-</div>
 
 ## Conclusion
 

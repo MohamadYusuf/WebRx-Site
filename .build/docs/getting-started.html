@@ -307,7 +307,9 @@ Not very exciting. Let&#39;s fix this.</p>
 
 <h2>Defining our first Component</h2>
 
-<p>Let&#39;s return our focus on the <code>div</code> element at the very top of the body:</p>
+<p>In WebRx, user interface elements are composed of view and view-model pairs that are refered to as <a href="/docs/component-overview.html">Components</a>. The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. WebRx&#39;s powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This separation of concerns is great for developer/designer collaboration, maintainability, architectural flexibility and even source control.</p>
+
+<p>Let&#39;s now focus on the <code>div</code> element at the very top of the body:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre></div>
 <p>When we&#39;ve invoked <code>wx.applyBindings()</code> in the previous step we basically turned
@@ -353,33 +355,6 @@ the component will display the resulting full-name.</p>
 default state (<code>$</code>). </p>
 
 <p><strong>Line 14</strong>: Here we reload the router after configuring it in the previous step  </p>
-
-<h2>The result (live-example)</h2>
-
-<div class="panel panel-default" id="live-example">
-    <div class="panel-body">
-    <div data-bind="view: 'main'"></div>
-
-        <script>
-      wx.app.component('hello', {
-          viewModel: function() {
-            this.firstName = 'Bart';
-            this.lastName = 'Simpson';
-           },
-          template: 'The name is <span data-bind="text: firstName + \' \' + lastName"></span>'
-      });
-      
-      wx.router.state({
-          name: "$",
-          views: { 'main': "hello" }
-      });
-      
-      wx.router.reload();
-      
-      wx.applyBindings(undefined, document.getElementById("live-example"));
-        </script>
-    </div>
-</div>
 
 <h2>Conclusion</h2>
 
