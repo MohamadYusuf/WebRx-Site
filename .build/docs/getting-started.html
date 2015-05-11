@@ -330,7 +330,7 @@ this element into a content placeholder. </p>
     <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">&#39;Bart&#39;</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s1">&#39;Simpson&#39;</span><span class="p">;</span>
   <span class="p">},</span>
-  <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;The name is &lt;span data-bind=&quot;text: firstName + lastName&quot;&gt;&lt;/span&gt;&#39;</span>
+  <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;The name is &lt;span data-bind=&quot;text: firstName + \&#39; \&#39; + lastName&quot;&gt;&lt;/span&gt;&#39;</span>
 <span class="p">});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>

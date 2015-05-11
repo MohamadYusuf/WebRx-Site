@@ -152,7 +152,7 @@ wx.app.component('hello', {
     this.firstName = 'Bart';
     this.lastName = 'Simpson';
   },
-  template: 'The name is <span data-bind="text: firstName + lastName"></span>'
+  template: 'The name is <span data-bind="text: firstName + \' \' + lastName"></span>'
 });
 
 wx.router.state({
