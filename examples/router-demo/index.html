@@ -228,7 +228,7 @@ title: WebRx - Router-Demo
     
     wx.router.state({
         name: "$",
-        route: '/examples/router-demo/',
+        url: '/examples/router-demo/',
         views: {
             'main': "home"
         }
@@ -244,7 +244,7 @@ title: WebRx - Router-Demo
         }
     }).state({
         name: "contacts.details",
-        route: "contacts/:id",
+        url: "contacts/:id",
         views: {
              'details': {
                 component: "contact-details",

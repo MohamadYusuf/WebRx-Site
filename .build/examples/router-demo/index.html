@@ -286,7 +286,7 @@
     
     wx.router.state({
         name: "$",
-        route: '/examples/router-demo/',
+        url: '/examples/router-demo/',
         views: {
             'main': "home"
         }
@@ -302,7 +302,7 @@
         }
     }).state({
         name: "contacts.details",
-        route: "contacts/:id",
+        url: "contacts/:id",
         views: {
              'details': {
                 component: "contact-details",
