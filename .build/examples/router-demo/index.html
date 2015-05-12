@@ -275,7 +275,7 @@
             var self = this;
             wx.router.current.changed.startWith(wx.router.current()).subscribe(function(x) {
                 self.name(x.name);
-                self.url(x.url.stringify(x.params));
+                self.url(typeof x.url === "string"? x.url : x.url.stringify(x.params));
                 self.params(x.params ? JSON.stringify(x.params) : "");
             });
         }
