@@ -226,27 +226,26 @@ title: WebRx - Router-Demo
     wx.app.animation('enter', wx.animation("enter", "start"));
     wx.app.animation('leave', wx.animation("leave", "start", "complete"));
 
+    wx.router.baseUrl = "/examples/router-demo/";
+    
     wx.router.state({
         name: "home",
-        route: "/examples/router-demo/",
         views: {
             'main': "home"
         }
     }).state({
         name: "contacts",
-        route: "/examples/router-demo/contacts",
         views: {
             'main': "contact-list"
         }
     }).state({
         name: "about",
-        route: "/examples/router-demo/about",
         views: {
             'main': "about"
         }
     }).state({
         name: "contacts.details",
-        route: "/examples/router-demo/contacts/:id",
+        route: "contacts/:id",
         views: {
              'details': {
                 component: "contact-details",
