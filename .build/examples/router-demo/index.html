@@ -269,13 +269,13 @@
             element: 'state-visualizer-template'
         }, viewModel: function(params) {
             this.name = wx.property();
-            this.route = wx.property();
+            this.url = wx.property();
             this.params = wx.property();
 
             var self = this;
             wx.router.current.changed.startWith(wx.router.current()).subscribe(function(x) {
                 self.name(x.name);
-                self.route(x.route.stringify(x.params));
+                self.url(x.url.stringify(x.params));
                 self.params(x.params ? JSON.stringify(x.params) : "");
             });
         }
