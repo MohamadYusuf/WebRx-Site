@@ -258,7 +258,7 @@ title: WebRx - Router-Demo
 
     var syncUrl = wx.getQueryParameter("rs");
 
-    if(syncUrl == null) {
+    if(!syncUrl) {
         wx.router.go("$", {}, { location: 2 });
     } else {
         wx.router.sync(wx.router.get("$").url.stringify() + syncUrl);
