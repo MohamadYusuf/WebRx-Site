@@ -106,7 +106,6 @@ var wx;
     "use strict";
     var regexCssClassName = /\S+/g;
     var RxObsConstructor = Rx.Observable;
-    var regexQueryParam = new RegExp("[\\?&]" + name + "=([^&#]*)");
     wx.noop = function () {
     };
     function isStrictMode() {
@@ -166,6 +165,7 @@ var wx;
     wx.isInUnitTest = isInUnitTest;
     function getQueryParameter(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regexQueryParam = new RegExp("[\\?&]" + name + "=([^&#]*)");
         var results = regexQueryParam.exec(wx.app.history.location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
