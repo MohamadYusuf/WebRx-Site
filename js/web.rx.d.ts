@@ -1,19 +1,6 @@
 /// <reference path="../node_modules/rx/ts/rx.all.d.ts" />
 /// <reference path="../test/typings/jquery.d.ts" />
 declare module wx {
-    function createWeakMap<TKey, T>(disableNativeSupport?: boolean): IWeakMap<TKey, T>;
-}
-declare module wx.res {
-    var injector: string;
-    var domManager: string;
-    var router: string;
-    var messageBus: string;
-    var expressionCompiler: string;
-    var htmlTemplateEngine: string;
-    var hasValueBindingValue: string;
-    var valueBindingValue: string;
-}
-declare module wx {
     interface IInjector {
         register(key: string, factory: Array<any>, singleton?: boolean): IInjector;
         register(key: string, factory: () => any, singleton?: boolean): IInjector;
@@ -34,6 +21,16 @@ declare module wx {
         delete(key: T): boolean;
         clear(): void;
         forEach(callback: (T) => void, thisArg?: any): void;
+        size: number;
+        isEmulated: boolean;
+    }
+    interface IMap<TKey extends Object, T> {
+        set(key: TKey, value: T): void;
+        get(key: TKey): T;
+        has(key: TKey): boolean;
+        delete(key: TKey): void;
+        clear(): void;
+        forEach(callback: (value: any, key: any, map: IMap<any, any>) => void, thisArg?: any): void;
         size: number;
         isEmulated: boolean;
     }
@@ -332,7 +329,6 @@ declare module wx {
         pushState(statedata: any, title: string, url?: string): void;
     }
     interface IRouter {
-        baseUrl: string;
         sync(): void;
         state(config: IRouterStateConfig): IRouter;
         current: IObservableProperty<IRouterState>;
@@ -367,6 +363,19 @@ declare module Rx {
     interface SchedulerStatic {
         isScheduler(o: any): boolean;
     }
+}
+declare module wx {
+    function createWeakMap<TKey, T>(disableNativeSupport?: boolean): IWeakMap<TKey, T>;
+}
+declare module wx.res {
+    var injector: string;
+    var domManager: string;
+    var router: string;
+    var messageBus: string;
+    var expressionCompiler: string;
+    var htmlTemplateEngine: string;
+    var hasValueBindingValue: string;
+    var valueBindingValue: string;
 }
 declare module wx {
     interface IUnknown {
@@ -673,6 +682,9 @@ declare module wx {
         var listConstructor: any;
     }
     function list<T>(initialContents?: Array<T>, resetChangeThreshold?: number, scheduler?: Rx.IScheduler): IObservableList<T>;
+}
+declare module wx {
+    function createMap<TKey, T>(disableNativeSupport?: boolean): IMap<TKey, T>;
 }
 declare module wx {
     interface IRadioGroupComponentParams {

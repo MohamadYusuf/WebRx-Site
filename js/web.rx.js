@@ -1,6 +1,10 @@
 var wx;
 (function (wx) {
     "use strict";
+})(wx || (wx = {}));
+var wx;
+(function (wx) {
+    "use strict";
     var WeakMapEmulated = (function () {
         function WeakMapEmulated() {
             this.inner = {};
@@ -53,10 +57,6 @@ var wx;
         res.hasValueBindingValue = "has.wx.bindings.value";
         res.valueBindingValue = "wx.bindings.value";
     })(res = wx.res || (wx.res = {}));
-})(wx || (wx = {}));
-var wx;
-(function (wx) {
-    "use strict";
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
@@ -4583,6 +4583,100 @@ var wx;
 var wx;
 (function (wx) {
     "use strict";
+    var MapEmulated = (function () {
+        function MapEmulated() {
+            this.cacheSentinel = {};
+            this.keys = [];
+            this.values = [];
+            this.cache = this.cacheSentinel;
+        }
+        Object.defineProperty(MapEmulated.prototype, "size", {
+            get: function () {
+                return this.keys.length;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MapEmulated.prototype.has = function (key) {
+            if (key === this.cache) {
+                return true;
+            }
+            if (this.find(key) >= 0) {
+                this.cache = key;
+                return true;
+            }
+            return false;
+        };
+        MapEmulated.prototype.get = function (key) {
+            var index = this.find(key);
+            if (index >= 0) {
+                this.cache = key;
+                return this.values[index];
+            }
+            return undefined;
+        };
+        MapEmulated.prototype.set = function (key, value) {
+            this.delete(key);
+            this.keys.push(key);
+            this.values.push(value);
+            this.cache = key;
+            return this;
+        };
+        MapEmulated.prototype.delete = function (key) {
+            var index = this.find(key);
+            if (index >= 0) {
+                this.keys.splice(index, 1);
+                this.values.splice(index, 1);
+                this.cache = this.cacheSentinel;
+                return true;
+            }
+            return false;
+        };
+        MapEmulated.prototype.clear = function () {
+            this.keys.length = 0;
+            this.values.length = 0;
+            this.cache = this.cacheSentinel;
+        };
+        MapEmulated.prototype.forEach = function (callback, thisArg) {
+            var size = this.size;
+            for (var i = 0; i < size; ++i) {
+                var key = this.keys[i];
+                var value = this.values[i];
+                this.cache = key;
+                callback.call(this, value, key, this);
+            }
+        };
+        Object.defineProperty(MapEmulated.prototype, "isEmulated", {
+            get: function () {
+                return true;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        MapEmulated.prototype.find = function (key) {
+            var keys = this.keys;
+            var size = keys.length;
+            for (var i = 0; i < size; ++i) {
+                if (keys[i] === key) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+        return MapEmulated;
+    })();
+    var hasNativeSupport = typeof Map === "function" && Map.prototype.hasOwnProperty("forEach") && Map.prototype.hasOwnProperty("add") && Map.prototype.hasOwnProperty("clear") && Map.prototype.hasOwnProperty("devare") && Map.prototype.hasOwnProperty("has");
+    function createMap(disableNativeSupport) {
+        if (disableNativeSupport || !hasNativeSupport) {
+            return new MapEmulated();
+        }
+        return new Map();
+    }
+    wx.createMap = createMap;
+})(wx || (wx = {}));
+var wx;
+(function (wx) {
+    "use strict";
     var groupId = 0;
     var templateCache = {};
     var RadioGroupComponent = (function () {
@@ -6642,7 +6736,6 @@ var wx;
     var Router = (function () {
         function Router(domManager) {
             var _this = this;
-            this.baseUrl = "/";
             this.current = wx.property();
             this.states = {};
             this.pathSeparator = ".";
@@ -6650,7 +6743,7 @@ var wx;
             this.rootStateName = "$";
             this.validPathRegExp = /^[a-zA-Z]([\w-_]*$)/;
             this.domManager = domManager;
-            this.reset();
+            this.reset(false);
             wx.app.history.onPopState.subscribe(function (e) {
                 var state = e.state;
                 var stateName = state.stateName;
@@ -6661,7 +6754,8 @@ var wx;
             });
             wx.app.title.changed.subscribe(function (x) {
                 document.title = x;
-                _this.replaceHistoryState(_this.current(), x);
+                if (_this.current() != null)
+                    _this.replaceHistoryState(_this.current(), x);
             });
         }
         Router.prototype.state = function (config) {
@@ -6727,13 +6821,15 @@ var wx;
                 return route.stringify(params);
             return null;
         };
-        Router.prototype.reset = function () {
+        Router.prototype.reset = function (enterRootState) {
+            if (enterRootState === void 0) { enterRootState = true; }
             this.states = {};
             this.root = this.registerStateInternal({
                 name: this.rootStateName,
-                route: wx.route(this.baseUrl)
+                route: wx.route("/")
             });
-            this.go(this.rootStateName, {}, { location: 2 /* replace */ });
+            if (enterRootState)
+                this.go(this.rootStateName, {}, { location: 2 /* replace */ });
         };
         Router.prototype.sync = function () {
             var uri = wx.app.history.location.pathname;
@@ -6803,7 +6899,7 @@ var wx;
                 if (state.name !== this.rootStateName)
                     state.route = wx.route(parts[parts.length - 1]);
                 else
-                    state.route = wx.route(this.baseUrl);
+                    state.route = wx.route("/");
             }
             if (state.name === this.rootStateName)
                 this.root = state;
