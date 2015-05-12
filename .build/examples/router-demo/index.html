@@ -316,7 +316,7 @@
         }
     });
 
-    wx.router.go("home", {}, { location: 2 });
+    wx.router.sync();
 
     wx.applyBindings(undefined, document.getElementById("router-demo"));
 </script>
