@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IWeakMap | WebRx</title>
+	<title>IMap | WebRx</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -63,10 +63,10 @@
 					<a href="../modules/_interfaces_.wx.html">wx</a>
 				</li>
 				<li>
-					<a href="_interfaces_.wx.iweakmap.html">IWeakMap</a>
+					<a href="_interfaces_.wx.imap.html">IMap</a>
 				</li>
 			</ul>
-			<h1>Interface IWeakMap&lt;TKey, T&gt;</h1>
+			<h1>Interface IMap&lt;TKey, T&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -76,7 +76,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The WeakMap object is a collection of key/value pairs in which the keys are objects and the values can be arbitrary values. The keys are held using weak references.</p>
+						<p>The Map object is a simple key/value map. Any value (both objects and primitive values) may be used as either a key or a value.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>interface</dt>
@@ -99,7 +99,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IWeakMap</span>
+						<span class="target">IMap</span>
 					</li>
 				</ul>
 			</section>
@@ -110,16 +110,19 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.iweakmap.html#isemulated" class="tsd-kind-icon">is<wbr>Emulated</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#isemulated" class="tsd-kind-icon">is<wbr>Emulated</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#size" class="tsd-kind-icon">size</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.iweakmap.html#delete" class="tsd-kind-icon">delete</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.iweakmap.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.iweakmap.html#has" class="tsd-kind-icon">has</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.iweakmap.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#clear" class="tsd-kind-icon">clear</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#foreach" class="tsd-kind-icon">for<wbr>Each</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#has" class="tsd-kind-icon">has</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.imap.html#set" class="tsd-kind-icon">set</a></li>
 							</ul>
 						</section>
 					</div>
@@ -133,13 +136,40 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Emulated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L28">Interfaces.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L57">Interfaces.ts:57</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="size" class="tsd-anchor"></a>
+					<h3>size</h3>
+					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L56">Interfaces.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="clear" class="tsd-anchor"></a>
+					<h3>clear</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L54">Interfaces.ts:54</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="delete" class="tsd-anchor"></a>
 					<h3>delete</h3>
@@ -150,13 +180,63 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L27">Interfaces.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L53">Interfaces.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>key: <span class="tsd-signature-type">TKey</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="foreach" class="tsd-anchor"></a>
+					<h3>for<wbr>Each</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Each<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, thisArg<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L55">Interfaces.ts:55</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, map<span class="tsd-signature-symbol">: </span><a href="_interfaces_.wx.imap.html" class="tsd-signature-type">IMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <span class="tsd-signature-type">any</span></h5>
+														</li>
+														<li>
+															<h5>key: <span class="tsd-signature-type">any</span></h5>
+														</li>
+														<li>
+															<h5>map: <a href="_interfaces_.wx.imap.html" class="tsd-signature-type">IMap</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> thisArg: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -173,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L25">Interfaces.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L51">Interfaces.ts:51</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -196,7 +276,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L26">Interfaces.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L52">Interfaces.ts:52</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -219,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L24">Interfaces.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L50">Interfaces.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -250,22 +330,31 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
-						<a href="_interfaces_.wx.iweakmap.html" class="tsd-kind-icon">IWeak<wbr>Map</a>
+						<a href="_interfaces_.wx.imap.html" class="tsd-kind-icon">IMap</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.iweakmap.html#isemulated" class="tsd-kind-icon">is<wbr>Emulated</a>
+								<a href="_interfaces_.wx.imap.html#isemulated" class="tsd-kind-icon">is<wbr>Emulated</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.imap.html#size" class="tsd-kind-icon">size</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.iweakmap.html#delete" class="tsd-kind-icon">delete</a>
+								<a href="_interfaces_.wx.imap.html#clear" class="tsd-kind-icon">clear</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.iweakmap.html#get" class="tsd-kind-icon">get</a>
+								<a href="_interfaces_.wx.imap.html#delete" class="tsd-kind-icon">delete</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.iweakmap.html#has" class="tsd-kind-icon">has</a>
+								<a href="_interfaces_.wx.imap.html#foreach" class="tsd-kind-icon">for<wbr>Each</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.iweakmap.html#set" class="tsd-kind-icon">set</a>
+								<a href="_interfaces_.wx.imap.html#get" class="tsd-kind-icon">get</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.imap.html#has" class="tsd-kind-icon">has</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.imap.html#set" class="tsd-kind-icon">set</a>
 							</li>
 						</ul>
 					</li>

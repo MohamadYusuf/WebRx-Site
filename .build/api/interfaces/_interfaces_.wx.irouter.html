@@ -88,6 +88,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#baseurl" class="tsd-kind-icon">base<wbr>Url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#current" class="tsd-kind-icon">current</a></li>
 							</ul>
 						</section>
@@ -102,8 +103,9 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#reload" class="tsd-kind-icon">reload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#reset" class="tsd-kind-icon">reset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#sync" class="tsd-kind-icon">sync</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#updatecurrentstateparams" class="tsd-kind-icon">update<wbr>Current<wbr>State<wbr>Params</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#uri" class="tsd-kind-icon">uri</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_interfaces_.wx.irouter.html#url" class="tsd-kind-icon">url</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,17 +114,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="baseurl" class="tsd-anchor"></a>
+					<h3>base<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">base<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L744">Interfaces.ts:744</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>An absolute path to which all registered routes will be relative to.
+								This property must initialized before registering any states.
+							Default: /</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="current" class="tsd-anchor"></a>
 					<h3>current</h3>
 					<div class="tsd-signature tsd-kind-icon">current<span class="tsd-signature-symbol">:</span> <a href="_interfaces_.wx.iobservableproperty.html" class="tsd-signature-type">IObservableProperty</a><span class="tsd-signature-symbol">&lt;</span><a href="_interfaces_.wx.irouterstate.html" class="tsd-signature-type">IRouterState</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L731">Interfaces.ts:731</a></li>
+							<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L761">Interfaces.ts:761</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Current state&#39;s configuration.</p>
+							<p>Represents the configuration object for the router&#39;s</p>
 						</div>
 					</div>
 				</section>
@@ -139,7 +158,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L772">Interfaces.ts:772</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L799">Interfaces.ts:799</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -170,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L798">Interfaces.ts:798</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L825">Interfaces.ts:825</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -198,15 +217,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L751">Interfaces.ts:751</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L778">Interfaces.ts:778</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Convenience method for transitioning to a new state. IRouter.go calls IRouter.transitionTo internally
-										but automatically sets options to { location: true, inherit: true, relative: IRouter.current, notify: true }.
-										This allows you to easily use an absolute or relative to path and specify only the parameters you&#39;d like
-									to update (while letting unspecified parameters inherit from the currently active ancestor states).</p>
+									<p>Method for transitioning to a new state.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -247,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L788">Interfaces.ts:788</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L815">Interfaces.ts:815</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -286,7 +302,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L780">Interfaces.ts:780</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L807">Interfaces.ts:807</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,7 +341,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L766">Interfaces.ts:766</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L793">Interfaces.ts:793</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -348,7 +364,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L793">Interfaces.ts:793</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L820">Interfaces.ts:820</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -370,7 +386,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L726">Interfaces.ts:726</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L756">Interfaces.ts:756</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -392,6 +408,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="sync" class="tsd-anchor"></a>
+					<h3>sync</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">sync<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L750">Interfaces.ts:750</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Transitions to the state inferred from the browser&#39;s current location
+									This method should be invoked once after registering application states.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="updatecurrentstateparams" class="tsd-anchor"></a>
 					<h3>update<wbr>Current<wbr>State<wbr>Params</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -401,7 +440,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L737">Interfaces.ts:737</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L767">Interfaces.ts:767</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -439,21 +478,21 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="uri" class="tsd-anchor"></a>
-					<h3>uri</h3>
+					<a name="url" class="tsd-anchor"></a>
+					<h3>url</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">uri<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/master/src/Interfaces.ts#L760">Interfaces.ts:760</a></li>
+									<li>Defined in <a href="https://github.com/WebRxJS/WebRx/blob/ts15/src/Interfaces.ts#L787">Interfaces.ts:787</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>An uri generation method that returns the uri for the given state populated with the given params.</p>
+									<p>An URL generation method that returns the URL for the given state populated with the given params.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -487,17 +526,6 @@
 					<li class="globals  ">
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_interfaces_.html">"<wbr>Interfaces"</a>
-						<ul>
-							<li class=" tsd-kind-module tsd-parent-kind-external-module tsd-is-not-exported">
-								<a href="../modules/_interfaces_.rx.html">Rx</a>
-							</li>
-							<li class="current tsd-kind-module tsd-parent-kind-external-module tsd-is-not-exported">
-								<a href="../modules/_interfaces_.wx.html">wx</a>
-							</li>
-						</ul>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
@@ -507,6 +535,9 @@
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
 						<a href="_interfaces_.wx.irouter.html" class="tsd-kind-icon">IRouter</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.irouter.html#baseurl" class="tsd-kind-icon">base<wbr>Url</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_interfaces_.wx.irouter.html#current" class="tsd-kind-icon">current</a>
 							</li>
@@ -535,10 +566,13 @@
 								<a href="_interfaces_.wx.irouter.html#state" class="tsd-kind-icon">state</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_interfaces_.wx.irouter.html#sync" class="tsd-kind-icon">sync</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_interfaces_.wx.irouter.html#updatecurrentstateparams" class="tsd-kind-icon">update<wbr>Current<wbr>State<wbr>Params</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_interfaces_.wx.irouter.html#uri" class="tsd-kind-icon">uri</a>
+								<a href="_interfaces_.wx.irouter.html#url" class="tsd-kind-icon">url</a>
 							</li>
 						</ul>
 					</li>
