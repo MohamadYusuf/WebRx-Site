@@ -104,8 +104,9 @@ var wx;
 var wx;
 (function (wx) {
     "use strict";
-    var cssClassNameRegex = /\S+/g;
+    var regexCssClassName = /\S+/g;
     var RxObsConstructor = Rx.Observable;
+    var regexQueryParam = new RegExp("[\\?&]" + name + "=([^&#]*)");
     wx.noop = function () {
     };
     function isStrictMode() {
@@ -163,6 +164,12 @@ var wx;
         return false;
     }
     wx.isInUnitTest = isInUnitTest;
+    function getQueryParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var results = regexQueryParam.exec(wx.app.history.location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    wx.getQueryParameter = getQueryParameter;
     function args2Array(args) {
         var result = [];
         for (var i = 0, len = args.length; i < len; i++) {
@@ -246,7 +253,7 @@ var wx;
             classNames[_i - 2] = arguments[_i];
         }
         if (classNames) {
-            var currentClassNames = node.className.match(cssClassNameRegex) || [];
+            var currentClassNames = node.className.match(regexCssClassName) || [];
             var index;
             var i;
             var className;
@@ -6826,20 +6833,21 @@ var wx;
             this.states = {};
             this.root = this.registerStateInternal({
                 name: this.rootStateName,
-                route: wx.route("/")
+                url: wx.route("/")
             });
             if (enterRootState)
                 this.go(this.rootStateName, {}, { location: 2 /* replace */ });
         };
-        Router.prototype.sync = function () {
-            var uri = wx.app.history.location.pathname;
+        Router.prototype.sync = function (url) {
+            if (url == null)
+                url = wx.app.history.location.pathname;
             var keys = Object.keys(this.states);
             var length = keys.length;
             var params;
             for (var i = 0; i < length; i++) {
                 var state = this.states[keys[i]];
                 var route = this.getAbsoluteRouteForState(state.name);
-                if ((params = route.parse(uri)) != null) {
+                if ((params = route.parse(url)) != null) {
                     this.go(state.name, params, { location: 2 /* replace */ });
                     break;
                 }
@@ -6890,16 +6898,16 @@ var wx;
             }
             state = wx.extend(state, {});
             this.states[state.name] = state;
-            if (state.route != null) {
-                if (typeof state.route === "string") {
-                    state.route = wx.route(state.route);
+            if (state.url != null) {
+                if (typeof state.url === "string") {
+                    state.url = wx.route(state.url);
                 }
             }
             else {
                 if (state.name !== this.rootStateName)
-                    state.route = wx.route(parts[parts.length - 1]);
+                    state.url = wx.route(parts[parts.length - 1]);
                 else
-                    state.route = wx.route("/");
+                    state.url = wx.route("/");
             }
             if (state.name === this.rootStateName)
                 this.root = state;
@@ -6958,7 +6966,7 @@ var wx;
                 if (state == null) {
                     state = {
                         name: stateName,
-                        route: wx.route(stateName)
+                        url: wx.route(stateName)
                     };
                 }
                 result.push(state);
@@ -6970,14 +6978,14 @@ var wx;
             var result = null;
             hierarchy.forEach(function (state) {
                 if (result != null) {
-                    var route = state.route;
+                    var route = state.url;
                     if (!route.isAbsolute)
-                        result = result.concat(state.route);
+                        result = result.concat(state.url);
                     else
                         result = route;
                 }
                 else {
-                    result = state.route;
+                    result = state.url;
                 }
             });
             return result;
@@ -7053,7 +7061,7 @@ var wx;
                     }
                 });
                 result = Object.keys(stateParams);
-                result = result.concat(config.route.params);
+                result = result.concat(config.url.params);
             }
             return result;
         };

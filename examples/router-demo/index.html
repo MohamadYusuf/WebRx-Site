@@ -256,7 +256,14 @@ title: WebRx - Router-Demo
         }
     });
 
-    wx.router.sync();
+    var syncUrl = wx.getQueryParameter("rs");
+    if(syncUrl) {
+        syncUrl = decodeURIComponent(syncUrl);
+        
+        wx.router.sync(wx.router.get("$").url.toString() + syncUrl);
+    } else {
+        wx.router.go("$", {}, { location: 2 });
+    }
 
     wx.applyBindings(undefined, document.getElementById("router-demo"));
 </script>

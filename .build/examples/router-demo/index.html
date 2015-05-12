@@ -29,7 +29,7 @@
         <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
 
 
-        <script type='text/javascript' src='/bundles/b9d3669514919280ecd6cf20a1218046.js'></script>
+        <script type='text/javascript' src='/bundles/f714de6365a949b4dbfdffa454898eed.js'></script>
 
       </head>
     <body>
@@ -314,7 +314,14 @@
         }
     });
 
-    wx.router.sync();
+    var syncUrl = wx.getQueryParameter("rs");
+    if(syncUrl) {
+        syncUrl = decodeURIComponent(syncUrl);
+        
+        wx.router.sync(wx.router.get("$").url.toString() + syncUrl);
+    } else {
+        wx.router.go("$", {}, { location: 2 });
+    }
 
     wx.applyBindings(undefined, document.getElementById("router-demo"));
 </script>

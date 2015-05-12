@@ -279,7 +279,7 @@ declare module wx {
     }
     interface IRouterStateConfig {
         name: string;
-        route?: string | IRoute;
+        url?: string | IRoute;
         views?: {
             [view: string]: string | {
                 component: string;
@@ -329,7 +329,7 @@ declare module wx {
         pushState(statedata: any, title: string, url?: string): void;
     }
     interface IRouter {
-        sync(): void;
+        sync(url?: string): void;
         state(config: IRouterStateConfig): IRouter;
         current: IObservableProperty<IRouterState>;
         updateCurrentStateParams(withParamsAction: (params: any) => void): void;
@@ -418,6 +418,7 @@ declare module wx {
     function isRxObservable(target: any): boolean;
     function unwrapProperty(prop: any): any;
     function isInUnitTest(): boolean;
+    function getQueryParameter(name: any): string;
     function args2Array(args: IArguments): Array<any>;
     function formatString(fmt: string, ...args: any[]): string;
     function extend(src: Object, dst: Object, inherited?: boolean): Object;
