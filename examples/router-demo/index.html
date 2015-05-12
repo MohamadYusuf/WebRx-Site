@@ -66,7 +66,7 @@ title: WebRx - Router-Demo
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-pills">
-                <li role="presentation" data-bind="sactive: 'home'"><a data-bind="sref: 'home'">Home</a></li>
+                <li role="presentation" data-bind="sactive: '$'"><a data-bind="sref: '$'">Home</a></li>
                 <li role="presentation" data-bind="sactive: 'contacts'"><a data-bind="sref: 'contacts'">Contacts</a></li>
                 <li role="presentation" data-bind="sactive: 'about'"><a data-bind="sref: 'about'">About</a></li>
             </ul>
@@ -228,9 +228,7 @@ title: WebRx - Router-Demo
     
     wx.router.state({
         name: "$",
-        route: '/examples/router-demo/'
-    }).state({
-        name: "home",
+        route: '/examples/router-demo/',
         views: {
             'main': "home"
         }
