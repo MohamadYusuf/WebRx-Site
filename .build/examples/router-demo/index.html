@@ -319,7 +319,7 @@
     if(syncUrl == null) {
         wx.router.go("$", {}, { location: 2 });
     } else {
-        wx.router.sync(wx.router.get("$").url.toString() + syncUrl);
+        wx.router.sync(wx.router.get("$").url + syncUrl);
     }
 
     wx.applyBindings(undefined, document.getElementById("router-demo"));
