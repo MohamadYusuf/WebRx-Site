@@ -6863,9 +6863,11 @@ var wx;
                 var route = this.getAbsoluteRouteForState(state.name);
                 if ((params = route.parse(url)) != null) {
                     this.go(state.name, params, { location: 2 /* replace */ });
-                    break;
+                    return;
                 }
             }
+            if (this.current() == null)
+                this.reload();
         };
         Router.prototype.reload = function () {
             var state;
