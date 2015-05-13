@@ -7115,6 +7115,6 @@ var wx;
 })(wx || (wx = {}));
 var wx;
 (function (wx) {
-    wx.version = '0.9.82';
+    wx.version = '0.9.83';
 })(wx || (wx = {}));
 //# sourceMappingURL=web.rx.js.map
