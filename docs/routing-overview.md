@@ -113,7 +113,7 @@ target for providing defaults to other states. For example:
 ```javascript
 wx.router.state({
     name: "$",
-    route: "/foo"
+    url: "/foo"
 });
 ```
 Here we've overriden root-state for the application and by providing a custom route we effectively 

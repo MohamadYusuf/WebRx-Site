@@ -109,15 +109,15 @@ instantiating the <code>contact-list-component</code>:
 
 ## State Routes
 
-Most states in your application will probably have a route associated with them. State-Routing was not an afterthought 
+Most states in your application will probably have a url associated with them. State-Routing was not an afterthought 
 to the state mechanics, but was figured into the design from the beginning (all while keeping states separate from url routing)
 
-Here's how you configure a state with a basic route:
+Here's how you configure a state with a basic url:
 
 ```javascript
 wx.router.state({
     name: "contacts",
-	route: "contacts",
+	url: "contacts",
     views: {
         'main': "contact-list-component"
     }
@@ -130,7 +130,7 @@ the <code>contact-list-component</code> component. Alternatively, if the user we
 
 ### Implicit routes
 
-Specifying a route when configuring a state is optional. If you omit the route, WebRx will will automatically assign it a route
+Specifying a url when configuring a state is optional. If you omit the url, WebRx will will automatically assign it one
 that mirrors the state hierarchy.
 
 ```javascript
@@ -139,21 +139,21 @@ wx.router.state({
 });
 ```
 
-The implicit route for state <code>foo.bar.baz</code> state will be <code>/foo/bar/baz</code>.
+The implicit url for state <code>foo.bar.baz</code> state will be <code>/foo/bar/baz</code>.
 
 ### Relative- vs. Absolute-Routes
 
-In all of the previous examples we've used relative routes. It is also possible to prepend a route with a '/' to turn it into
-an absolute route.
+In all of the previous examples we've used relative routes. It is also possible to prepend a url with a '/' to turn it into
+an absolute url.
 
 ```javascript
 wx.router.state({
     name: "foo.bar.baz",
-	route: "/bar/foo"
+	url: "/bar/foo"
 });
 ```
 
-Now, the route for state <code>foo.bar.baz</code> will be <code>/bar/foo</code>, completely ignoring the state-hierarchy.
+Now, the url for state <code>foo.bar.baz</code> will be <code>/bar/foo</code>, completely ignoring the state-hierarchy.
 
 ### Route Parameters
 
@@ -163,7 +163,7 @@ A basic parameter looks like this:
 ```javascript
 wx.router.state({
     name: "contacts",
-	route: "contacts/:contactId",
+	url: "contacts/:contactId",
     views: {
         'main': "contact-list-component"
     }
@@ -188,7 +188,7 @@ with a set of per-parameter custom validators.
 ```javascript
 wx.router.state({
     name: "contacts",
-	route: wx.route("contacts/:contactId/:other", {
+	url: wx.route("contacts/:contactId/:other", {
 		contactId: /^\d+$/,
 		other: function(value) { return value === "" || value === "foo"; }
 	}),
@@ -206,12 +206,12 @@ Each validator can be:
 
 ### Defining routes as regular expression
 
-Alternatively you can pass in a RegExp for the route parameter:
+Alternatively you can pass in a RegExp for the url parameter:
 
 ```javascript
 wx.router.state({
     name: "contacts",
-	route: /^(contacts?)(?:\/(\d+)(?:\.\.(\d+))?)?/,
+	url: /^(contacts?)(?:\/(\d+)(?:\.\.(\d+))?)?/,
     views: {
         'main': "contact-list-component"
     }
