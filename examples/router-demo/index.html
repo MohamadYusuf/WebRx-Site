@@ -6,6 +6,14 @@ title: WebRx - Router-Demo
     #main-container {
         background-color: white;
     }
+    
+    #state-visualizer {
+        margin-top: 1em;
+    }
+    
+    #state-visualizer table tr td:nth-child(1) {
+        padding-left: 1em;
+    }
 
     .pt-perspective {
         position: relative;
@@ -123,8 +131,7 @@ title: WebRx - Router-Demo
 </script>
 
 <script id="state-visualizer-template" type="text/html">
-    <br/>
-    <div class="panel panel-success">
+    <div id="state-visualizer" class="panel panel-success">
         <div class="panel-heading">
             <h3 class="panel-title">Routing State</h3>
         </div>
