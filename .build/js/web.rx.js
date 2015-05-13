@@ -170,7 +170,7 @@ var wx;
             var params = query.split("&");
             for (var i = 0; i < params.length; i++) {
                 var tmp = params[i].split("=");
-                result[tmp[0]] = tmp[1];
+                result[tmp[0]] = decodeURIComponent(tmp[1]);
             }
             return result;
         }
