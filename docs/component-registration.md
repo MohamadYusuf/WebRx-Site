@@ -157,6 +157,21 @@ define(['webrx'], function(wx) {
 });
 ```
 
+… or a Typescript class:
+
+```javascript
+class ViewModel {
+	constructor(params: any) {
+	}
+
+    public firstName = wx.property();
+    public lastName = wx.property();
+}
+
+export = ViewModel;
+```
+**Note:** You need to make sure that your ViewModel is the module's default export, as demonstrated in the last line of this example.
+
 … or a shared object instance, e.g.:
 
 ```javascript
@@ -167,29 +182,6 @@ define(['webrx'], function(wx) {
     }
  
     return { instance: new MyViewModel() };
-});
-```
-
-… or a createViewModel function, e.g.:
-
-```javascript
-// AMD module whose value is a 'createViewModel' function
-define(['webrx'], function(wx) {
-    function myViewModelFactory(params, componentInfo) {
-        // return something
-    }
-     
-    return { createViewModel: myViewModelFactory };
-});
-```
-
-… or even, though it's unlikely you'd want to do this, a reference to a different AMD module, e.g.:
-
-```javascript
-// AMD module whose value is a reference to a different AMD module,
-// which in turn can be in any of these formats
-define(['webrx'], function(wx) {
-    return { module: 'some/other/module' };
 });
 ```
 

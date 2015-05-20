@@ -318,6 +318,19 @@ For more details about how this works, see how WebRx loads components via AMD be
     <span class="k">return</span> <span class="nx">MyViewModel</span><span class="p">;</span>
 <span class="p">});</span>
 </code></pre></div>
+<p>… or a Typescript class:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">ViewModel</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">params</span><span class="o">:</span> <span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
+    <span class="kr">public</span> <span class="nx">lastName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="o">=</span> <span class="nx">ViewModel</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Note:</strong> You need to make sure that your ViewModel is the module&#39;s default export, as demonstrated in the last line of this example.</p>
+
 <p>… or a shared object instance, e.g.:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a shared component viewmodel instance</span>
 <span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
@@ -326,23 +339,6 @@ For more details about how this works, see how WebRx loads components via AMD be
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="p">{</span> <span class="nx">instance</span><span class="o">:</span> <span class="k">new</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">};</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>… or a createViewModel function, e.g.:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a &#39;createViewModel&#39; function</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">function</span> <span class="nx">myViewModelFactory</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">componentInfo</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// return something</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="p">{</span> <span class="nx">createViewModel</span><span class="o">:</span> <span class="nx">myViewModelFactory</span> <span class="p">};</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>… or even, though it&#39;s unlikely you&#39;d want to do this, a reference to a different AMD module, e.g.:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a reference to a different AMD module,</span>
-<span class="c1">// which in turn can be in any of these formats</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span> <span class="nx">module</span><span class="o">:</span> <span class="s1">&#39;some/other/module&#39;</span> <span class="p">};</span>
 <span class="p">});</span>
 </code></pre></div>
 <h2>Specifying a template</h2>
@@ -460,7 +456,8 @@ For more details about how this works, see how WebRx loads components via AMD be
 </code></pre></div>
 <p>… or any of the other forms described here, though it would be unusual for the others to be useful when fetching templates via AMD.</p>
 
-<h2>How WebRx loads components via AMD
+<h2>How WebRx loads components via AMD</h2>
+
 <p>When you load a viewmodel or template via require declarations ...</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">},</span>
