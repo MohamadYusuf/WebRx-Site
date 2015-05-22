@@ -3,7 +3,7 @@
 /// <reference path="typings/highlightjs.d.ts" />
 
 //this.baseUrl = "/";
-this.baseUrl = "/examples";
+this.baseUrl = "/examples/";
 
 requirejs.config({
     baseUrl: this.baseUrl,
