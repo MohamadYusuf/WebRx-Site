@@ -97,18 +97,18 @@ examples.forEach(function (x) {
     if (x.hasViewModel) {
         wx.app.component(x.folder, {
             viewModel: <wx.IComponentViewModelDescriptor> <any> { require: wx.formatString("js/components/{0}/ViewModel", x.folder) },
-            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
+            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!components/{0}/index.html", x.folder) }
         });
     }
     else {
         wx.app.component(x.folder, {
-            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
+            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!components/{0}/index.html", x.folder) }
         });
     }
 
     wx.app.component(x.folder + "-content", {
         viewModel: <wx.IComponentViewModelDescriptor> <any> { require: wx.formatString("js/components/{0}/example", x.folder) },
-        template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/example.html", x.folder) }
+        template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!components/{0}/example.html", x.folder) }
     });
 
     wx.router.state({
