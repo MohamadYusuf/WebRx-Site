@@ -2,8 +2,11 @@
 /// <reference path="typings/require.d.ts" />
 /// <reference path="typings/highlightjs.d.ts" />
 
+//this.baseUrl = "/";
+this.baseUrl = "/examples";
+
 requirejs.config({
-    baseUrl: "/",
+    baseUrl: this.baseUrl,
     paths: {
         'text': 'js/text'
     }
@@ -46,9 +49,6 @@ wx.app.component('header', {
 wx.app.component('welcome', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/welcome/index.html" }
 });
-
-//this.baseUrl = "/";
-this.baseUrl = "/examples";
 
 // setup root state
 wx.router.state({
