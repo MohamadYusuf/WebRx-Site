@@ -1,9 +1,8 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
 /// <reference path="typings/highlightjs.d.ts" />
-this.baseUrl = "/examples/";
 requirejs.config({
-    baseUrl: this.baseUrl,
+    baseUrl: "/",
     paths: {
         'text': 'js/text'
     }
@@ -35,6 +34,7 @@ wx.app.component('header', {
 wx.app.component('welcome', {
     template: { require: "text!components/welcome/index.html" }
 });
+this.baseUrl = "/examples";
 wx.router.state({
     name: "$",
     url: this.baseUrl,
@@ -70,17 +70,17 @@ examples.forEach(function (x) {
     if (x.hasViewModel) {
         wx.app.component(x.folder, {
             viewModel: { require: wx.formatString("js/components/{0}/ViewModel", x.folder) },
-            template: { require: wx.formatString("text!components/{0}/index.html", x.folder) }
+            template: { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
         });
     }
     else {
         wx.app.component(x.folder, {
-            template: { require: wx.formatString("text!components/{0}/index.html", x.folder) }
+            template: { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
         });
     }
     wx.app.component(x.folder + "-content", {
         viewModel: { require: wx.formatString("js/components/{0}/example", x.folder) },
-        template: { require: wx.formatString("text!components/{0}/example.html", x.folder) }
+        template: { require: wx.formatString("text!/components/{0}/example.html", x.folder) }
     });
     wx.router.state({
         name: x.folder,
