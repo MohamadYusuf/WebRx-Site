@@ -97,7 +97,7 @@ list.push('Some other value');					// no notifications get send now
 disp.dispose();								// list resumes sending change notifications
 ```
 
-## Projections
+## <a id="topic-list-projections"></a>Projections
 
 A projected observable list is a read-only view of of a source observable list that is automatically kept in sync with its source. 
 What makes projections useful is that list-projections can apply filtering, re-ordering and mapping operations on the fly.
