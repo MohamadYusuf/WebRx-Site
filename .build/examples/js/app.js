@@ -59,6 +59,7 @@ var examples = [
 ];
 var transitions = ["push-bottom-from-top", "scale-down-from-top"];
 var currentTransition = 0;
+var defaultTitle = wx.app.title();
 examples.forEach(function (x) {
     if (x.hasViewModel) {
         wx.app.component(x.folder, {
@@ -88,14 +89,13 @@ examples.forEach(function (x) {
             }
         },
         onEnter: function (config) {
-            wx.app.title(x.title);
+            wx.app.title(defaultTitle + " - " + x.title);
         }
     });
     currentTransition++;
     if (currentTransition > transitions.length - 1)
         currentTransition = 0;
 });
-var defaultTitle = wx.app.title();
 this.currentExampleViewSourceLink = wx.whenAny(wx.router.current, function (state) { return state ? wx.formatString("https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.html", state.name) : ""; })
     .toProperty();
 this.currentExampleViewModelSourceLink = wx.whenAny(wx.router.current, function (state) { return state ? wx.formatString("https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.ts", state.name) : ""; })
