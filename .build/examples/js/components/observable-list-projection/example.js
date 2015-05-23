@@ -2,6 +2,7 @@
 define(["require", "exports"], function (require, exports) {
     var ViewModel = (function () {
         function ViewModel() {
+            var _this = this;
             this.planets = wx.list([
                 { name: "Mercury", type: "rock" },
                 { name: "Venus", type: "rock" },
@@ -16,7 +17,7 @@ define(["require", "exports"], function (require, exports) {
             this.filter = wx.property();
             this.displayAdvancedOptions = wx.property(false);
             this.addPlanetCmd = wx.command(function (type) {
-                this.planets.push({ name: "New planet", type: type });
+                _this.planets.push({ name: "New planet", type: type });
             }, this);
             this.planetsToShow = this.planets.project(function (planet) {
                 var desiredType = this.typeToShow();
