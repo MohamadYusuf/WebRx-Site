@@ -18,9 +18,7 @@ define(["require", "exports"], function (require, exports) {
                 .throttle(200)
                 .select(function (x) { return search(x); })
                 .switch()
-                .select(function (x) {
-                return x.filter(function (y) { return y.Text && y.FirstURL; });
-            })
+                .select(function (x) { return x.filter(function (y) { return y.Text && y.FirstURL; }); })
                 .select(function (x) { return x.slice(0, 10); })
                 .toProperty();
         }

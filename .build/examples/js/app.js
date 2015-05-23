@@ -1,6 +1,5 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
-/// <reference path="typings/highlightjs.d.ts" />
 this.baseUrl = "/examples/";
 requirejs.config({
     baseUrl: this.baseUrl,
