@@ -5,6 +5,7 @@ define(["require", "exports"], function (require, exports) {
             this.firstName = wx.property(wx.router.current().params.firstName || 'Homer');
             this.lastName = wx.property(wx.router.current().params.lastName || 'Simpson');
             this.fullName = wx.whenAny(this.firstName, this.lastName, function (firstName, lastName) {
+                // save state
                 wx.router.updateCurrentStateParams(function (params) {
                     params.firstName = firstName;
                     params.lastName = lastName;

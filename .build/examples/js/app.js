@@ -1,5 +1,6 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
+//this.baseUrl = "/";
 this.baseUrl = "/examples/";
 requirejs.config({
     baseUrl: this.baseUrl,
@@ -7,6 +8,7 @@ requirejs.config({
         'text': 'js/text'
     }
 });
+// register animations
 wx.app.animation('move-to-right-unfold-left-enter', wx.animation("pt-page-rotateUnfoldRight stopped", "running"));
 wx.app.animation('move-to-right-unfold-left-leave', wx.animation("pt-page-moveToLeftFade stopped", "running"));
 wx.app.animation('push-bottom-from-top-enter', wx.animation("pt-page-moveFromTop stopped", "running"));
@@ -17,6 +19,7 @@ wx.app.animation('fadeIn', wx.animation("fadeIn stopped", "running"));
 wx.app.animation('fadeOut', wx.animation("fadeOut stopped", "running"));
 wx.app.animation('fadeInFast', wx.animation("fadeInFast stopped", "running"));
 wx.app.animation('fadeOutFast', wx.animation("fadeOutFast stopped", "running"));
+// register shared components
 wx.app.component('state-monitor', {
     viewModel: { require: "js/components/state-monitor/ViewModel" },
     template: { require: "text!components/state-monitor/index.html" }
@@ -27,6 +30,7 @@ wx.app.component('header', {
 wx.app.component('welcome', {
     template: { require: "text!components/welcome/index.html" }
 });
+// setup root state
 wx.router.state({
     name: "$",
     url: this.baseUrl,
@@ -96,13 +100,15 @@ examples.forEach(function (x) {
     if (currentTransition > transitions.length - 1)
         currentTransition = 0;
 });
+// helper observables for current source links
 this.currentExampleViewSourceLink = wx.whenAny(wx.router.current, function (state) { return state ? wx.formatString("https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.html", state.name) : ""; })
     .toProperty();
 this.currentExampleViewModelSourceLink = wx.whenAny(wx.router.current, function (state) { return state ? wx.formatString("https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.ts", state.name) : ""; })
     .toProperty();
+// go
 var syncUrl = wx.getSearchParameters()["rs"];
 if (!syncUrl) {
-    wx.router.go("$", {}, { location: 2 });
+    wx.router.go("$", {}, { location: 2 /* replace */ });
 }
 else {
     wx.router.sync(wx.router.get("$").url.stringify() + syncUrl);
