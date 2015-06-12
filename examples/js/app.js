@@ -1,7 +1,7 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
-this.baseUrl = "/";
-//this.baseUrl = "/examples/";
+//this.baseUrl = "/";
+this.baseUrl = "/examples/";
 requirejs.config({
     baseUrl: this.baseUrl,
     paths: {
