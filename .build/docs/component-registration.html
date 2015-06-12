@@ -29,7 +29,7 @@
         <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
 
 
-        <script type='text/javascript' src='/bundles/f618b20ac7deac5cfea31b62894bc094.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
       </head>
     <body>
@@ -355,7 +355,7 @@ For more details about how this works, see how WebRx loads components via AMD be
 </code></pre></div>
 <p>… can be used as the template for a component by specifying its ID:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;my-component-template&#39;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">select</span><span class="o">:</span> <span class="s1">&#39;my-component-template&#39;</span> <span class="p">},</span>
     <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -371,7 +371,7 @@ since they don&#39;t get rendered on their own. Any other element type works too
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">elemInstance</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;my-component-template&#39;</span><span class="p">);</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">element</span><span class="o">:</span> <span class="nx">elemInstance</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">[</span><span class="nx">elemInstance</span><span class="p">],</span>
     <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -482,7 +482,7 @@ then it will not cause the AMD module to be loaded until the if condition is tru
 already loaded (e.g., in a preloaded bundle) then the require call will not trigger any additional HTTP requests, 
 so you can control what is preloaded and what is loaded on demand.</p>
 
-<h2>Registering components as a single AMD module</h2>
+Registering components as a single AMD module</h2>
 
 <p>For even better encapsulation, you can package a component into a single self-describing AMD module. Then you can reference a component as simply as:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module&#39;</span> <span class="p">});</span>

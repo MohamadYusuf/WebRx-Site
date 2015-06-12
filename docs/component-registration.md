@@ -204,7 +204,7 @@ For example, the following element:
 
 ```javascript
 wx.app.component('my-component', {
-    template: { element: 'my-component-template' },
+    template: { select: 'my-component-template' },
     viewModel: ...
 });
 ```
@@ -223,7 +223,7 @@ If you have a reference to a DOM element in your code, you can use it as a conta
 var elemInstance = document.getElementById('my-component-template');
  
 wx.app.component('my-component', {
-    template: { element: elemInstance },
+    template: [elemInstance],
     viewModel: ...
 });
 ```
