@@ -1,7 +1,7 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
-//this.baseUrl = "/";
-this.baseUrl = "/examples/";
+this.baseUrl = "/";
+//this.baseUrl = "/examples/";
 requirejs.config({
     baseUrl: this.baseUrl,
     paths: {
@@ -106,7 +106,7 @@ this.currentExampleViewSourceLink = wx.whenAny(wx.router.current, function (stat
 this.currentExampleViewModelSourceLink = wx.whenAny(wx.router.current, function (state) { return state ? wx.formatString("https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.ts", state.name) : ""; })
     .toProperty();
 // go
-var syncUrl = wx.getSearchParameters()["rs"];
+var syncUrl = wx.app.history.getSearchParameters()["rs"];
 if (!syncUrl) {
     wx.router.go("$", {}, { location: 2 /* replace */ });
 }

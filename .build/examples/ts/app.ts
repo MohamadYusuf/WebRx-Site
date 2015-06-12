@@ -1,8 +1,8 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
 
-//this.baseUrl = "/";
-this.baseUrl = "/examples/";
+this.baseUrl = "/";
+//this.baseUrl = "/examples/";
 
 requirejs.config({
     baseUrl: this.baseUrl,
@@ -135,7 +135,7 @@ this.currentExampleViewModelSourceLink = wx.whenAny(wx.router.current, state=> s
     .toProperty();
 
 // go
-var syncUrl = wx.getSearchParameters()["rs"];
+var syncUrl = wx.app.history.getSearchParameters()["rs"];
 
 if (!syncUrl) {
     wx.router.go("$", {}, { location: wx.RouterLocationChangeMode.replace });
