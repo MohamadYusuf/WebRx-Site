@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -198,14 +205,14 @@
 <p>(Note: If you don&#39;t want to apply a CSS class but instead want to assign a style attribute value directly, see the <a href="/docs/style-binding.html">style binding</a>.)</p>
 
 <h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { profitWarning: currentProfit &lt; 0 }&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { profitWarning: currentProfit &lt; 0 }"</span><span class="nt">&gt;</span>
    Profit Information
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">currentProfit</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">150000</span><span class="p">)</span> <span class="c1">// Positive value, so initially we don&#39;t apply the &quot;profitWarning&quot; class</span>
+        <span class="na">currentProfit</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">150000</span><span class="p">)</span> <span class="c1">// Positive value, so initially we don't apply the "profitWarning" class</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">currentProfit</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// Causes the &quot;profitWarning&quot; class to be applied</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">currentProfit</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// Causes the "profitWarning" class to be applied</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
 <p>This will apply the CSS class <code>profitWarning</code> whenever the <code>currentProfit</code> value dips below zero, and remove that class whenever it goes above zero.</p>
@@ -217,10 +224,10 @@
 <p>You should pass a JavaScript object in which the property names are your CSS classes, and their values evaluate to true or false according to whether the class should currently be applied.</p>
 
 <p>You can set multiple CSS classes at once. For example, if your view model has a property called isSevere,</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { profitWarning: currentProfit &lt; 0, majorHighlight: isSevere }&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { profitWarning: currentProfit &lt; 0, majorHighlight: isSevere }"</span><span class="nt">&gt;</span>
 </code></pre></div>
 <p>You can even set multiple CSS classes based on the same condition by wrapping the names in quotes like:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { profitWarning: currentProfit &lt; 0, &#39;major highlight&#39;: isSevere }&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { profitWarning: currentProfit &lt; 0, 'major highlight': isSevere }"</span><span class="nt">&gt;</span>
 </code></pre></div>
 <p>Non-boolean values are interpreted loosely as boolean. For example, <code>0</code> and <code>null</code> are treated as <code>false</code>, 
 whereas <code>21</code> and non-null objects are treated as <code>true</code>.</p>
@@ -234,14 +241,14 @@ WebRx will evaluate them and use the resulting values to determine the appropria
 <h4>Dynamic CSS class names</h4>
 
 <p>If you want to use dynamic CSS class names, then you can pass a string that corresponds to the CSS class or classes that you want to add to the element.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;keep-me&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;css: myClasses&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"keep-me"</span> <span class="na">data-bind=</span><span class="s">"css: myClasses"</span><span class="nt">&gt;</span>
    Profit Information
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">myClasses</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;foo bar&quot;</span><span class="p">);</span>  <span class="c1">// apply the &quot;foo&quot; and &quot;bar&quot; classes to the element, retain class &quot;keep-me&quot;</span>
+        <span class="na">myClasses</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"foo bar"</span><span class="p">);</span>  <span class="c1">// apply the "foo" and "bar" classes to the element, retain class "keep-me"</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myClasses</span><span class="p">(</span><span class="s2">&quot;foo baz&quot;</span><span class="p">);</span> <span class="c1">// Retain the &quot;foo&quot; and &quot;keep-me&quot; classes on the element, remove class &quot;bar&quot; and add class &quot;baz&quot;</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myClasses</span><span class="p">(</span><span class="s2">"foo baz"</span><span class="p">);</span> <span class="c1">// Retain the "foo" and "keep-me" classes on the element, remove class "bar" and add class "baz"</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
 <p>If the parameter references an observable value, then the binding will remove any classes previously added by the binding and add the class or 
@@ -251,10 +258,10 @@ added to the element by other means.</p>
 <h3>Note: Applying CSS classes whose names aren&#39;t legal JavaScript variable names</h3>
 
 <p>If you want to apply the CSS class my-class, you can&#39;t write this:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { my-class: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { my-class: someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p>… because my-class isn&#39;t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { &#39;my-class&#39;: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { 'my-class': someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p><a class="next-topic" href="/docs/style-binding.html">Next: The Style-Binding</a></p>
 </div>
@@ -284,7 +291,11 @@ added to the element by other means.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

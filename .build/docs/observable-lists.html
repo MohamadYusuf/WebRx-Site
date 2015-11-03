@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -201,16 +208,16 @@
 
 <h4>Example</h4>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    <span class="c1">// Initially an empty array</span>
-<span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span>
+<span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'Some value'</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span>
 </code></pre></div>
 <h3>Prepopulating a list</h3>
 
 <p>If you want your list not to start empty, but to contain some initial items, pass those items as an array to the constructor. For example,</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// This observable list initially contains three objects</span>
 <span class="kd">var</span> <span class="nx">anotherObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Bungle&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Bear&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Hippo&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Zippy&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Unknown&quot;</span> <span class="p">}</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"Bungle"</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="s2">"Bear"</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"George"</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="s2">"Hippo"</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"Zippy"</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="s2">"Unknown"</span> <span class="p">}</span>
 <span class="p">]);</span>
 </code></pre></div>
 <h2>Manipulating an observable-list</h2>
@@ -276,9 +283,9 @@
 
 <p>This is accomplished calling the list&#39;s <code>suppressChangeNotifications</code> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>                           <span class="c1">// Initially an empty array</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span>                        <span class="c1">// Adds the value and notifies observers</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'Some value'</span><span class="p">);</span>                        <span class="c1">// Adds the value and notifies observers</span>
 <span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">suppressChangeNotifications</span><span class="p">();</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some other value&#39;</span><span class="p">);</span>                  <span class="c1">// no notifications get send now</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'Some other value'</span><span class="p">);</span>                  <span class="c1">// no notifications get send now</span>
 <span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>                             <span class="c1">// list resumes sending change notifications</span>
 </code></pre></div>
 <h2><a id="topic-list-projections"></a>Projections</h2>
@@ -298,21 +305,21 @@ What makes projections useful is that list-projections can apply filtering, re-o
 <h3>Creating a filtered projection</h3>
 
 <p>A projection of an observable list is created through the list&#39;s <code>project</code> instance method.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;apu&quot;</span><span class="p">]);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">,</span> <span class="s2">"apu"</span><span class="p">]);</span>
 
 <span class="kd">var</span> <span class="nx">iLikeRs</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">x</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"r"</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>Here we&#39;ve created a projection of <code>list</code> that only likes names containing an &quot;r&quot;. Converting <code>iLikeRs</code> to an array yields:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">iLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
-<span class="p">[</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">]</span>
 </code></pre></div>
 <p>Let&#39;s add another name to the source list and see what happens to the projection:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;marge&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">"marge"</span><span class="p">);</span>
 
 <span class="nx">iLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
-<span class="p">[</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;marge&quot;</span><span class="p">]</span>
+<span class="p">[</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">,</span> <span class="s2">"marge"</span><span class="p">]</span>
 </code></pre></div>
 <p>As expected the projection has picked the new entry added to the source.</p>
 
@@ -337,25 +344,24 @@ What makes projections useful is that list-projections can apply filtering, re-o
 
 <p>Sometimes it might be desirable to work with a projection that contains list items
 that differ from the items found in the source list. This scenario is also supported:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;marge&quot;</span><span class="p">]);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">,</span> <span class="s2">"marge"</span><span class="p">]);</span>
 
 <span class="kd">var</span> <span class="nx">iDontLikeRs</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span>
     <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no filter</span>
     <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no-orderer</span>
     <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">{</span> 
-            <span class="nx">name</span><span class="o">:</span> <span class="nx">x</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> 
+            <span class="na">name</span><span class="p">:</span> <span class="nx">x</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> 
         <span class="p">};</span>
     <span class="p">}</span>
 <span class="p">);</span>
 
 <span class="nx">iDontLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
-<span class="p">[{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;bat&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;mage&quot;</span> <span class="p">}]</span>
+<span class="p">[{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"bat"</span> <span class="p">},</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"home"</span> <span class="p">},</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"mage"</span> <span class="p">}]</span>
 </code></pre></div>
 <p>We&#39;ve erased the &quot;r&quot; character from all names and have converted the result to an object.</p>
 
-<h3>Manually triggering a refresh</h3>
-
+<h3>Manually triggering a refresh
 <p>Even though a projection tracks all changes to its source observable list, it is sometimes
 necessary to manually trigger a refresh on a projection. An example for this would be a filter function that behaves
 differently depending on another condition.</p>
@@ -400,7 +406,11 @@ of a user selected category.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

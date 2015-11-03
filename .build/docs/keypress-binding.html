@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -201,22 +208,22 @@ has the input focus, the keyPress-Binding will execute the specified handler.</p
 
 <h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;keyPress: { &#39;enter&#39;: method1, &#39;esc alt-q&#39;: command1 }&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"keyPress: { 'enter': method1, 'esc alt-q': command1 }"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;text&#39;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'text'</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
 <span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">method1</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">&quot;I&#39;m a method&quot;</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">"I'm a method"</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">command1</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">&quot;I&#39;m a command&quot;</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">"I'm a command"</span><span class="p">);</span>
     <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -327,7 +334,11 @@ as first argument</p></li>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

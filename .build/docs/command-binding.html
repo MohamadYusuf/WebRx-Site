@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -210,9 +217,9 @@ and the <a href="/docs/keypress-binding.html">keypress</a>-binding also support 
 <h2>Example 1</h2>
 
 <p>Each time you click the button, this will invoke incrementClickCounterCmd on the view model, which in turn changes the view model state, which causes the UI to update.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">You&#39;ve clicked <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: numberOfClicks&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> times
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: incrementClickCounterCmd&quot;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/button&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">You've clicked <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: numberOfClicks"</span><span class="nt">&gt;&lt;/span&gt;</span> times
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"command: incrementClickCounterCmd"</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/button&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
@@ -256,9 +263,9 @@ it could have been implemented using a simple click-event handler. Let&#39;s mak
 
 <p>In this example the second button will only unlock after the first button has been clicked
 at least three times.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">You&#39;ve clicked <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: numberOfClicks&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> times
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: incrementClickCounterCmd&quot;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: secretCmd, text: !secretCmdCanExecute ? &#39;Locked&#39; : &#39;Unlocked&#39;&quot;</span><span class="nt">&gt;&lt;/button&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">You've clicked <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: numberOfClicks"</span><span class="nt">&gt;&lt;/span&gt;</span> times
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"command: incrementClickCounterCmd"</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"command: secretCmd, text: !secretCmdCanExecute ? 'Locked' : 'Unlocked'"</span><span class="nt">&gt;&lt;/button&gt;</span>
 </code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
@@ -267,7 +274,7 @@ at least three times.</p>
     <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">secretCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You did it!&quot;</span><span class="p">);</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"You did it!"</span><span class="p">);</span>
         <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">numberOfClicks</span><span class="p">)</span> <span class="p">{</span> 
             <span class="k">return</span> <span class="nx">numberOfClicks</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
     <span class="p">}),</span> <span class="k">this</span><span class="p">);</span>
@@ -359,7 +366,11 @@ The parameter can also be an observable.</li>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

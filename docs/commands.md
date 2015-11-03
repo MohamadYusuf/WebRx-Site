@@ -50,11 +50,11 @@ function ViewModel() {
 In this example we have setup <code>fooCmd</code> to only be executable once the view-model's
 <code>numberOfClicks</code> property reaches a value of 3 or higher. 
 
-Once again we take advantage of WebRx's <code>whenAny</code> helper to implement this. <code>whenAny</code> takes 
-any number of observable properties as input, subscribes to their <code>changed</code> observables
-and returns an observable that can be directly passed as argument to <code>wx.command</code>.
+Once again we take advantage of WebRx's <code>whenAny</code> helper to implement this. The <code>whenAny</code> function takes  an **arbitrary combination** of either **observable properties** or **observables** as arguments, in case of observable-properties, subscribes to their <code>changed</code> observable, 
+and invokes a user supplied selector function when any (hence the name) of its inputs changes. 
 
-The command will monitor the observable and adjust the command's <code>canExecute</code> status
+The observable returned by <code>whenAny</code> can be directly passed to <code>wx.command</code>.
+The command will then monitor the observable and adjust the command's <code>canExecute</code> status
 depending on wether the latest value from the observable evaluates falsy or truthy.
 
 ## Commands and the <code>this</code> keyword

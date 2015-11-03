@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -200,20 +207,20 @@ by a DOM-Element. Whenever the specified event fires, the binding will execute t
 
 <h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;event: { mouseover: enableDetails, mouseout: disableDetails }&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"event: { mouseover: enableDetails, mouseout: disableDetails }"</span><span class="nt">&gt;</span>
         Mouse over me
     <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;visible: detailsEnabled&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"visible: detailsEnabled"</span><span class="nt">&gt;</span>
         Details
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">detailsEnabled</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span>
-        <span class="nx">enableDetails</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="na">detailsEnabled</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span>
+        <span class="na">enableDetails</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">detailsEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
         <span class="p">},</span>
-        <span class="nx">disableDetails</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="na">disableDetails</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">detailsEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">};</span>
@@ -304,7 +311,11 @@ as first argument and the event object as second argument.</p></li>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -196,13 +203,13 @@
 <p>The attr binding provides a generic way to set the value of any attribute for the associated DOM element. This is useful, for example, when you need to set the title attribute of an element, the src of an img tag, or the href of a link based on values in your view model, with the attribute value being updated automatically whenever the corresponding model property changes.</p>
 
 <h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { href: url, title: details }&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"attr: { href: url, title: details }"</span><span class="nt">&gt;</span>
     Report
 <span class="nt">&lt;/a&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">url</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;year-end.html&quot;</span><span class="p">),</span>
-        <span class="nx">details</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;Report including final year-end statistics&quot;</span><span class="p">)</span>
+        <span class="na">url</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"year-end.html"</span><span class="p">),</span>
+        <span class="na">details</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"Report including final year-end statistics"</span><span class="p">)</span>
     <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
@@ -219,10 +226,10 @@
 <h3>Note: Applying attributes whose names aren&#39;t legal JavaScript variable names</h3>
 
 <p>If you want to apply the attribute data-something, you can&#39;t write this:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { data-something: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"attr: { data-something: someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p>… because data-something isn&#39;t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;attr: { &#39;data-something&#39;: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"attr: { 'data-something': someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p><a class="next-topic" href="/docs/foreach-binding.html">Next: The Foreach-Binding</a></p>
 </div>
@@ -252,7 +259,11 @@
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

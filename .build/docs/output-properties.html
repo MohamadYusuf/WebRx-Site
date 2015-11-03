@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -208,8 +215,8 @@ That&#39;s where output properties come in. </p>
 
 <p>For example, given the following view model class ...</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Smith&#39;</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Smith'</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>… you could add an output property to return the full name:</p>
@@ -217,11 +224,11 @@ That&#39;s where output properties come in. </p>
     <span class="c1">// ... leave firstName and lastName unchanged ...</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">fullName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> <span class="p">}).</span><span class="nx">toProperty</span><span class="p">();</span>
+      <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> <span class="p">}).</span><span class="nx">toProperty</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>... now you could bind UI elements to it, e.g.:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: fullName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: fullName"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <p>… and they will be updated whenever <code>firstName</code> or <code>lastName</code> changes (your evaluator function will be called once each time any of its dependencies change, 
 and whatever value you return will be passed on to the observers such as UI elements or other output properties).</p>
@@ -232,12 +239,13 @@ and whatever value you return will be passed on to the observers such as UI elem
 
 <p>One of the core features of WebRx is to be able to convert properties to <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a>, via <code>whenAny</code>, and to convert <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a> into properties, via a method called <code>toProperty</code>. </p>
 
-<p>The <code>whenAny</code> function takes any number of observable properties as input, subscribes to their <code>changed</code> observables, 
+<p>The <code>whenAny</code> function takes  an <strong>arbitrary combination</strong> of either <strong>observable properties</strong> or <strong>observables</strong> as arguments, in case of observable-properties, subscribes to their <code>changed</code> observable, 
 and invokes a user supplied selector function when any (hence the name) of its inputs changes. 
-The selector function receives the latest value of all inputs as arguments. 
-The result of <code>whenAny</code> is an Rx-Observable providing the results of the selector.</p>
+The selector function receives the latest value of all inputs as arguments. </p>
+
+<p>The result of <code>whenAny</code> is an Rx-Observable representing the results of the selector function.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">observable</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span> 
-  <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> 
+  <span class="k">return</span> <span class="nx">firstName</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="nx">lastName</span><span class="p">;</span> 
 <span class="p">});</span>
 </code></pre></div>
 <p>So, now that we&#39;ve got an observable representing <code>fullName</code> we can simply invoke the aforementioned <code>toProperty</code> function and voila, we&#39;ve turned the observable into a read-only property that can be bound to a view like any other property.</p>
@@ -260,7 +268,7 @@ The result of <code>whenAny</code> is an Rx-Observable providing the results of 
 <span class="p">}</span>
 </code></pre></div>
 <p>View-Template:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">Seconds until auto-logout: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: countDown&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">Seconds until auto-logout: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: countDown"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <h2>Live Example</h2>
 
@@ -296,7 +304,11 @@ The result of <code>whenAny</code> is an Rx-Observable providing the results of 
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

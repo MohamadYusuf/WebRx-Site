@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -198,17 +205,17 @@ This is useful with form elements like input, select, and textarea.</p>
 
 <h2>Example</h2>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;checkbox&#39;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: hasCellphone&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'checkbox'</span> <span class="na">data-bind=</span><span class="s">"checked: hasCellphone"</span> <span class="nt">/&gt;</span>
     I have a cellphone
 <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p&gt;</span>
     Your cellphone number:
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;text&#39;</span> <span class="na">data-bind=</span><span class="s">&quot;value: cellphoneNumber, enable: hasCellphone&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'text'</span> <span class="na">data-bind=</span><span class="s">"value: cellphoneNumber, enable: hasCellphone"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">hasCellphone</span> <span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span>
-        <span class="nx">cellphoneNumber</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="na">hasCellphone</span> <span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span>
+        <span class="na">cellphoneNumber</span><span class="p">:</span> <span class="s2">""</span>
     <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
@@ -254,7 +261,11 @@ If the parameter doesn&#39;t reference an observable property, it will only set 
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

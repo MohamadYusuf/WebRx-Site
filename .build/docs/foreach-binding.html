@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -210,19 +217,19 @@
     <span class="nt">&lt;thead&gt;</span>
         <span class="nt">&lt;tr&gt;&lt;th&gt;</span>First name<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Last name<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
     <span class="nt">&lt;/thead&gt;</span>
-    <span class="nt">&lt;tbody</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: people&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tbody</span> <span class="na">data-bind=</span><span class="s">"foreach: people"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
-            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">&quot;text: firstName&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
-            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">&quot;text: lastName&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">"text: firstName"</span><span class="nt">&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">"text: lastName"</span><span class="nt">&gt;&lt;/td&gt;</span>
         <span class="nt">&lt;/tr&gt;</span>
     <span class="nt">&lt;/tbody&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="nx">people</span><span class="o">:</span> <span class="p">[</span>
-            <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Bert&#39;</span><span class="p">,</span> <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Bertington&#39;</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Charles&#39;</span><span class="p">,</span> <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Charlesforth&#39;</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Denise&#39;</span><span class="p">,</span> <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Dentiste&#39;</span> <span class="p">}</span>
+        <span class="na">people</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Bert'</span><span class="p">,</span> <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Bertington'</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Charles'</span><span class="p">,</span> <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Charlesforth'</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Denise'</span><span class="p">,</span> <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Dentiste'</span> <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
@@ -272,27 +279,27 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 
 <p><strong>Source code: View</strong></p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h4&gt;</span>People<span class="nt">&lt;/h4&gt;</span>
-<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: people&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: people"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        Name at position <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: $index&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>:
-        <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;command: { command: $parent.removePersonCmd, parameter: $data }&quot;</span><span class="nt">&gt;</span>Remove<span class="nt">&lt;/a&gt;</span>
+        Name at position <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: $index"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>:
+        <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-bind=</span><span class="s">"command: { command: $parent.removePersonCmd, parameter: $data }"</span><span class="nt">&gt;</span>Remove<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: addPersonCmd&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"command: addPersonCmd"</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
 </code></pre></div>
 <p><strong>Source code: View model</strong></p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
 
     <span class="nx">self</span><span class="p">.</span><span class="nx">people</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span>
-        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Bert&#39;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Charles&#39;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Denise&#39;</span> <span class="p">}</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Bert'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Charles'</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Denise'</span> <span class="p">}</span>
     <span class="p">]);</span>
 
     <span class="nx">self</span><span class="p">.</span><span class="nx">addPersonCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;New at &quot;</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="p">});</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"New at "</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="p">});</span>
     <span class="p">});</span>
 
     <span class="nx">self</span><span class="p">.</span><span class="nx">removePersonCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">parameter</span><span class="p">)</span> <span class="p">{</span>
@@ -319,20 +326,20 @@ The object literal may also have other properties, such as <code>afterAdd</code>
 Example 1 referenced the <code>firstName</code> and <code>lastName</code> properties on each array entry.</p>
 
 <p>But what if you want to refer to the array entry itself (not just one of its properties)? In that case, you can use the special context property $data. Within a foreach block, it means “the current item”. For example,</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: months&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: months"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        The current item is: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data&quot;</span><span class="nt">&gt;&lt;/b&gt;</span>
+        The current item is: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: $data"</span><span class="nt">&gt;&lt;/b&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="nx">months</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;etc&#39;</span> <span class="p">]</span>
+        <span class="na">months</span><span class="p">:</span> <span class="p">[</span> <span class="s1">'Jan'</span><span class="p">,</span> <span class="s1">'Feb'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="s1">'etc'</span> <span class="p">]</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
 <p>If you wanted, you could use <code>$data</code> as a prefix when referencing properties on each entry. 
 For example, you could rewrite part of Example 1 as follows:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data.firstName&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">"text: $data.firstName"</span><span class="nt">&gt;&lt;/td&gt;</span>
 </code></pre></div>
 <p>… but you don&#39;t have to, because <code>firstName</code> will be evaluated within the context of <code>$data</code> by default anyway.</p>
 
@@ -342,10 +349,10 @@ For example, you could rewrite part of Example 1 as follows:</p>
 <code>$index</code> is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).</p>
 
 <p>Similarly, you can use <code>$parent</code> to refer to data from outside the foreach, e.g.:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">&quot;text: blogPostTitle&quot;</span><span class="nt">&gt;&lt;/h1&gt;</span>
-<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: likes&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">"text: blogPostTitle"</span><span class="nt">&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: likes"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/b&gt;</span> likes the blog post <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: $parent.blogPostTitle&quot;</span><span class="nt">&gt;&lt;/b&gt;</span>
+        <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;&lt;/b&gt;</span> likes the blog post <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: $parent.blogPostTitle"</span><span class="nt">&gt;&lt;/b&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre></div>
@@ -368,20 +375,20 @@ For example, you could rewrite part of Example 1 as follows:</p>
 <p><strong>Note:</strong> These callbacks are only intended for triggering animations related to changes in a list. If your goal is actually to attach other behaviors to new DOM elements when they have been added (e.g., event handlers, or to activate third-party UI controls), then your work will be much easier if you implement that new behavior as a custom binding instead, because then you can use that behavior anywhere, independently of the foreach binding.</p>
 
 <p>Here&#39;s a trivial example that uses <code>afterAdd</code> to apply the classic “yellow fade” effect to newly-added items. It requires the jQuery Color plugin to enable animation of background colors.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: { data: myItems, afterAdd: yellowFadeIn }&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: { data: myItems, afterAdd: yellowFadeIn }"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">data-bind=</span><span class="s">"text: $data"</span><span class="nt">&gt;&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;click: addItem&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"click: addItem"</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="nx">myItems</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span> <span class="p">]),</span>
-        <span class="nx">yellowFadeIn</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">)</span>
-                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span> <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
-                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;white&#39;</span> <span class="p">},</span> <span class="mi">800</span><span class="p">);</span>
+        <span class="na">myItems</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span> <span class="p">]),</span>
+        <span class="na">yellowFadeIn</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s2">"li"</span><span class="p">)</span>
+                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="na">backgroundColor</span><span class="p">:</span> <span class="s1">'yellow'</span> <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
+                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="na">backgroundColor</span><span class="p">:</span> <span class="s1">'white'</span> <span class="p">},</span> <span class="mi">800</span><span class="p">);</span>
         <span class="p">},</span>
-        <span class="nx">addItem</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">myItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;New item&#39;</span><span class="p">);</span> <span class="p">}</span>
+        <span class="na">addItem</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">myItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'New item'</span><span class="p">);</span> <span class="p">}</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
@@ -464,7 +471,11 @@ The binding will supply the following parameters to your callback:</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

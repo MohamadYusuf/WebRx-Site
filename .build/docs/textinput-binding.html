@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -198,12 +205,12 @@ the view-model property and the element&#39;s value. Unlike the value binding, t
 for all types of user input, including autocomplete, drag-and-drop, and clipboard events.</p>
 
 <h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Login name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;textInput: @userName&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;p&gt;</span>Password: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;textInput: @userPassword&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Login name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">"textInput: @userName"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Password: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">data-bind=</span><span class="s">"textInput: @userPassword"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
 </code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="nx">userName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>        <span class="c1">// Initially blank</span>
-        <span class="nx">userPassword</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>  <span class="c1">// Prepopulate</span>
+        <span class="na">userName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">""</span><span class="p">),</span>        <span class="c1">// Initially blank</span>
+        <span class="na">userPassword</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">)</span>  <span class="c1">// Prepopulate</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
@@ -269,7 +276,11 @@ as that won&#39;t achieve anything useful.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

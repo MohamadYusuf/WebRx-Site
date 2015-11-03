@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -236,11 +243,11 @@ wx.applyBindings(undefined, document.getElementById('module-example1'));
 </script>
 
 <p><strong>Source code: View</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module1&#39;&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"module: 'module1'"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;hello&gt;&lt;/hello&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
-<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module2&#39;&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"module: 'module2'"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;hello&gt;&lt;/hello&gt;</span>
 
     <span class="c">&lt;!-- demonstrates fall-back to app-module --&gt;</span>
@@ -248,16 +255,16 @@ wx.applyBindings(undefined, document.getElementById('module-example1'));
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p><strong>Source code: View model</strong></p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;app-hello&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Application Module&lt;/h3&gt;&#39;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'app-hello'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;h3&gt;Hello from Application Module&lt;/h3&gt;'</span>
 <span class="p">});</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 1&lt;/h3&gt;&#39;</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"module1"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;h3&gt;Hello from Module 1&lt;/h3&gt;'</span>
 <span class="p">})});</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 2&lt;/h3&gt;&#39;</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"module1"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;h3&gt;Hello from Module 2&lt;/h3&gt;'</span>
 <span class="p">})});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
@@ -292,20 +299,20 @@ wx.applyBindings(undefined, document.getElementById('module-example2'));
 </script>
 
 <p><strong>Source code: View</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module1&#39;&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module2&#39;&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"module: 'module1'"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"module: 'module2'"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;hello1&gt;&lt;/hello1&gt;</span>
         <span class="nt">&lt;hello2&gt;&lt;/hello2&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p><strong>Source code: View model</strong></p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello1&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 1&lt;/h3&gt;&#39;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"module1"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'hello1'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;h3&gt;Hello from Module 1&lt;/h3&gt;'</span>
 <span class="p">})});</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;module2&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello2&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;Hello from Module 2&lt;/h3&gt;&#39;</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"module2"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="p">{</span> <span class="nx">m</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'hello2'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;h3&gt;Hello from Module 2&lt;/h3&gt;'</span>
 <span class="p">})});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
@@ -314,7 +321,7 @@ wx.applyBindings(undefined, document.getElementById('module-example2'));
 the outer <code>div</code> element, we can use the component inside the inner <code>div</code> because child-scopes inherit the exports of their parent-scope(s).</p>
 
 <p>Of course we could have achieved the same outcome by specifying multiple modules with the inner <code>div</code>&#39;s module-binding:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;module: &#39;module1 module2&#39;&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"module: 'module1 module2'"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;hello1&gt;&lt;/hello1&gt;</span>
     <span class="nt">&lt;hello2&gt;&lt;/hello2&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
@@ -357,7 +364,11 @@ If the parameter isn&#39;t observable, it will only set the element&#39;s module
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

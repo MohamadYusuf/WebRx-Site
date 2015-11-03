@@ -68,10 +68,6 @@ As outlined above, you invoke an observable property as a function with no argum
 This is **unnecessary** within binding-expressions, because behind the scenes, WebRx's expression compiler 
 will **detect** that use-case and will conveniently **dereference the property's value for you**. 
 
-In fact you are not even allowed to explicitely dereference a property in a binding expression, 
-because this would involve a function invocation which is prohibited by WebRx's 
-[binding syntax](/docs/binding-syntax.html) specification. A rule that gets enforced by the expression compiler.
-
 #### Good
 
 ```html

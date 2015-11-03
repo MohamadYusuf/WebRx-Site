@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -198,12 +205,12 @@
 <p>Typically this is useful with elements like <em>span</em> or <em>em</em> that traditionally display text, but technically you can use it with any element.</p>
 
 <h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html">Today&#39;s message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myMessage&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">Today's message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: myMessage"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">myMessage</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
+        <span class="na">myMessage</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myMessage</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span> <span class="c1">// Text appears</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myMessage</span><span class="p">(</span><span class="s2">"Hello, world!"</span><span class="p">);</span> <span class="c1">// Text appears</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div>
 <h2>Parameters</h2>
@@ -245,7 +252,11 @@ If the parameter isn&#39;t observable, it will only set the element&#39;s text o
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

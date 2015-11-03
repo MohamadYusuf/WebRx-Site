@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -196,10 +203,10 @@
 <p>The hidden binding is exactly the same as the <a href="/docs/visible-binding.html">visible binding</a>, except that it inverts the result of whatever expression you pass to it. For more details, see documentation for the <a href="/docs/visible-binding.html">visible binding</a>.</p>
 
 <p>The following markup:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;hidden: someProperty&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"hidden: someProperty"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p>… is equivalent to the following:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;visible: !someProperty()&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"visible: !someProperty()"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <p>… assuming that someProperty is observable and hence you need to invoke it as a function to obtain the current value.</p>
 
@@ -233,7 +240,11 @@
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

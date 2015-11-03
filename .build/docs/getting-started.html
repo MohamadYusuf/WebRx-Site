@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -226,7 +233,7 @@
 </ul>
 
 <h3>NuGet Installation</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">PM&gt; </span>Install-Package WebRx
 </code></pre></div>
 <p>WebRx and its dependencies will be installed to the following locations:</p>
 
@@ -261,11 +268,11 @@ alongside WebRx&#39;s main script files. </p>
     <span class="nt">&lt;title&gt;</span>WebRx<span class="nt">&lt;/title&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/div&gt;</span>
 
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_modules/rx/dist/rx.all.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_modules/webrx/dist/web.rx.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span> 
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bower_modules/rx/dist/rx.all.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bower_modules/webrx/dist/web.rx.js"</span><span class="nt">&gt;&lt;/script&gt;</span> 
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
@@ -310,7 +317,7 @@ Not very exciting. Let&#39;s fix this.</p>
 <p>In WebRx, user interface elements are composed of view and view-model pairs that are refered to as <a href="/docs/component-overview.html">Components</a>. The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. WebRx&#39;s powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This separation of concerns is great for developer/designer collaboration, maintainability, architectural flexibility and even source control.</p>
 
 <p>Let&#39;s now focus on the <code>div</code> element at the very top of the body:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre></div>
 <p>When we&#39;ve invoked <code>wx.applyBindings()</code> in the previous step we basically turned
 this element into a content placeholder. </p>
@@ -325,17 +332,17 @@ this element into a content placeholder. </p>
 <p>To do that let&#39;s go back to the <code>app.js</code> script we&#39;ve created in <a href="#topic-setting-up-js">Step 3</a>.</p>
 
 <h4>app.js</h4>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="nx">viewModel</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">&#39;Bart&#39;</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s1">&#39;Simpson&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">viewModel</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Bart'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s1">'Simpson'</span><span class="p">;</span>
   <span class="p">},</span>
-  <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;The name is &lt;span data-bind=&quot;text: firstName + \&#39; \&#39; + lastName&quot;&gt;&lt;/span&gt;&#39;</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s1">'The name is &lt;span data-bind="text: firstName + \' \' + lastName"&gt;&lt;/span&gt;'</span>
 <span class="p">});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;$&quot;</span><span class="p">,</span>
-  <span class="nx">views</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;hello&quot;</span> <span class="p">}</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s2">"$"</span><span class="p">,</span>
+  <span class="na">views</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"hello"</span> <span class="p">}</span>
 <span class="p">});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
@@ -401,7 +408,11 @@ concepts. Throughout the tutorial we&#39;ve learned:</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

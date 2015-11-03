@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -200,8 +207,8 @@ observable-properties, because these are special JavaScript objects that can not
 
 <p>For example, rewrite the preceding view model object as follows:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">),</span>
-    <span class="nx">personAge</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">),</span>
+    <span class="na">personAge</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="p">};</span>
 </code></pre></div>
 <p>You don&#39;t have to change the view at all - the same data-bind syntax will keep working. The difference is that it&#39;s now capable of 
@@ -227,14 +234,14 @@ automatically propagate to the view.</p>
 <h2>Observable Properties and Binding Expressions</h2>
 
 <p>The syntax for referencing observable-property-values in <a href="/docs/binding-syntax.html">binding-expressions</a> is identical to non observable-properties.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <p>This view template will work without modifications for both of these view-models ...</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="s1">&#39;Bob&#39;</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="s1">'Bob'</span>
 <span class="p">};</span>
 </code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
 <span class="p">};</span>
 </code></pre></div>
 <h3>Working with observable-property values</h3>
@@ -244,15 +251,11 @@ automatically propagate to the view.</p>
 <p>This is <strong>unnecessary</strong> within binding-expressions, because behind the scenes, WebRx&#39;s expression compiler 
 will <strong>detect</strong> that use-case and will conveniently <strong>dereference the property&#39;s value for you</strong>. </p>
 
-<p>In fact you are not even allowed to explicitely dereference a property in a binding expression, 
-because this would involve a function invocation which is prohibited by WebRx&#39;s 
-<a href="/docs/binding-syntax.html">binding syntax</a> specification. A rule that gets enforced by the expression compiler.</p>
-
 <h4>Good</h4>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName + &#39;foo&#39;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <h4>Bad</h4>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName() + &#39;foo&#39;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName() + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <h3><a id="topic-propref"></a>Property-Object-References or @proprefs</h3>
 
@@ -263,9 +266,9 @@ the binding requires a reference to the property object itself instead of its cu
 
 <h4>Example</h4>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
 <span class="p">};</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;textInput: @personName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">data-bind=</span><span class="s">"textInput: @personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <p>The <a href="/docs/textinput-binding.html">textInput-Binding</a> links a text box or textarea with a viewmodel property, 
 providing two-way updates between the viewmodel property and the element&#39;s value.</p>
@@ -287,7 +290,7 @@ which is not really useful.</p>
 
 <p>If for example you would want to monitor changes to the <code>personName</code> property, you would do it like this: </p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">myViewModel</span><span class="p">.</span><span class="nx">personName</span><span class="p">.</span><span class="nx">changed</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;The person&#39;s new name is &quot;</span> <span class="o">+</span> <span class="nx">newValue</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"The person's new name is "</span> <span class="o">+</span> <span class="nx">newValue</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>You can also terminate a subscription if you wish: first capture the return value as a variable, then you can call its dispose function, e.g.:</p>
@@ -323,7 +326,11 @@ which is not really useful.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

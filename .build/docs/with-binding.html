@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -200,17 +207,17 @@
 <h2>Example</h2>
 
 <p>Here is a very basic example of switching the binding context to a child object. Notice that in the data-bind attributes, it is not necessary to prefix latitude or longitude with coords., because the binding context is switched to coords.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">&quot;text: city&quot;</span><span class="nt">&gt;&lt;/h1&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">&quot;with: coords&quot;</span><span class="nt">&gt;</span>
-    Latitude: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: latitude&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>,
-    Longitude: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: longitude&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">"text: city"</span><span class="nt">&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">"with: coords"</span><span class="nt">&gt;</span>
+    Latitude: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: latitude"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>,
+    Longitude: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: longitude"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="nx">city</span><span class="o">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
-        <span class="nx">coords</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">latitude</span><span class="o">:</span>  <span class="mf">51.5001524</span><span class="p">,</span>
-            <span class="nx">longitude</span><span class="o">:</span> <span class="o">-</span><span class="mf">0.1262362</span>
+        <span class="na">city</span><span class="p">:</span> <span class="s2">"London"</span><span class="p">,</span>
+        <span class="na">coords</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">latitude</span><span class="p">:</span>  <span class="mf">51.5001524</span><span class="p">,</span>
+            <span class="na">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.1262362</span>
         <span class="p">}</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
@@ -253,7 +260,11 @@
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

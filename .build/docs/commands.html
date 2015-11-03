@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -206,7 +213,7 @@ or refreshing resources (i.e. &quot;LoadTweets&quot;) can be modeled well using 
 
 <p>The simplest form of a command is one that can always execute:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"Hello!"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>To manually execute a command, invoke its <code>execute</code> method:</p>
@@ -221,7 +228,7 @@ would require a non-empty clipboard.</p>
     <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">fooCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You did it!&quot;</span><span class="p">);</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"You did it!"</span><span class="p">);</span>
         <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">numberOfClicks</span><span class="p">)</span> <span class="p">{</span> 
             <span class="k">return</span> <span class="nx">numberOfClicks</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
     <span class="p">}),</span> <span class="k">this</span><span class="p">);</span>
@@ -230,11 +237,11 @@ would require a non-empty clipboard.</p>
 <p>In this example we have setup <code>fooCmd</code> to only be executable once the view-model&#39;s
 <code>numberOfClicks</code> property reaches a value of 3 or higher. </p>
 
-<p>Once again we take advantage of WebRx&#39;s <code>whenAny</code> helper to implement this. <code>whenAny</code> takes 
-any number of observable properties as input, subscribes to their <code>changed</code> observables
-and returns an observable that can be directly passed as argument to <code>wx.command</code>.</p>
+<p>Once again we take advantage of WebRx&#39;s <code>whenAny</code> helper to implement this. The <code>whenAny</code> function takes  an <strong>arbitrary combination</strong> of either <strong>observable properties</strong> or <strong>observables</strong> as arguments, in case of observable-properties, subscribes to their <code>changed</code> observable, 
+and invokes a user supplied selector function when any (hence the name) of its inputs changes. </p>
 
-<p>The command will monitor the observable and adjust the command&#39;s <code>canExecute</code> status
+<p>The observable returned by <code>whenAny</code> can be directly passed to <code>wx.command</code>.
+The command will then monitor the observable and adjust the command&#39;s <code>canExecute</code> status
 depending on wether the latest value from the observable evaluates falsy or truthy.</p>
 
 <h2>Commands and the <code>this</code> keyword</h2>
@@ -248,7 +255,7 @@ will always execute with <code>this</code> being set to the specified value.</p>
         <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">);</span>
     <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 
-    <span class="k">this</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="s2">"hello"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>If <code>fooCmd</code> would be triggered by a button-click and we hadn&#39;t passed <code>this</code> to <code>wx.command</code>,
@@ -283,7 +290,11 @@ our view-model.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>

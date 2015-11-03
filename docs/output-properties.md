@@ -49,10 +49,11 @@ So how did the example work?
 
 One of the core features of WebRx is to be able to convert properties to [Rx-Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md), via <code>whenAny</code>, and to convert [Rx-Observables](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md) into properties, via a method called <code>toProperty</code>. 
 
-The <code>whenAny</code> function takes any number of observable properties as input, subscribes to their <code>changed</code> observables, 
+The <code>whenAny</code> function takes  an **arbitrary combination** of either **observable properties** or **observables** as arguments, in case of observable-properties, subscribes to their <code>changed</code> observable, 
 and invokes a user supplied selector function when any (hence the name) of its inputs changes. 
 The selector function receives the latest value of all inputs as arguments. 
-The result of <code>whenAny</code> is an Rx-Observable providing the results of the selector.
+
+The result of <code>whenAny</code> is an Rx-Observable representing the results of the selector function.
 
 ```javascript
 var observable = wx.whenAny(this.firstName, this.lastName, function(firstName, lastName) { 

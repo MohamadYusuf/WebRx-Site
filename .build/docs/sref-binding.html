@@ -26,10 +26,17 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-        <link rel='stylesheet' type='text/css' href='/bundles/6a1a71f900a1987d1bc767fbff7eda10.css' />
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
+<link rel='stylesheet' type='text/css' href='/css/material.css' />
+<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
+<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
       </head>
     <body>
@@ -206,34 +213,34 @@ state URIs in markup.</p>
 
 <h2>Example</h2>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>and </p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">&quot;sref: &#39;contacts&#39;&quot;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"sref: 'contacts'"</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
 </code></pre></div>
 <p>will render to ...</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&#39;/contacts&#39;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">'/contacts'</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
 </code></pre></div>
 <h3>Passing options</h3>
 
 <p>You can also specify options to pass to <code>wx.router.go()</code>:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
-    <span class="nx">route</span><span class="o">:</span> <span class="s2">&quot;details/:contactId&quot;</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-details-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts.details"</span><span class="p">,</span>
+    <span class="na">route</span><span class="p">:</span> <span class="s2">"details/:contactId"</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-details-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>and </p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">&quot;sref: { name: &#39;contacts.details&#39;, params: { contactId: 3 } }&quot;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"sref: { name: 'contacts.details', params: { contactId: 3 } }"</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
 </code></pre></div>
 <p>will render to ...</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&#39;/contacts/details/3&#39;</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">'/contacts/details/3'</span><span class="nt">&gt;</span>Click me<span class="nt">&lt;/a&gt;</span>
 </code></pre></div>
 <h2>Parameters</h2>
 
@@ -282,7 +289,11 @@ state URIs in markup.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/bundles/af6c173bae09c23061effb2b5d9cccac.js'></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/ripples.min.js'></script>
+<script type='text/javascript' src='/js/material.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
         <script>
