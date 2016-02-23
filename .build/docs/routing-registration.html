@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,253 +192,210 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="defining-and-registering-routing-states">Defining and registering routing states</h1>
+            <div class="body"><h1>Defining and registering routing states</h1>
 
-<p>So far we’ve only briefly touched the subject of state-registration. That is about to change.</p>
+<p>So far we&#39;ve only briefly touched the subject of state-registration. That is about to change.</p>
 
-<h2 id="views">Views</h2>
+<h2>Views</h2>
 
-<p>One of the fundamental principles behind WebRx’s routing engine is that your application partitions
+<p>One of the fundamental principles behind WebRx&#39;s routing engine is that your application partitions
 your pages into regions by applying a <a href="/docs/view-binding.html">view-binding</a> to one or more
 elements of your page. A state can then define which <a href="/docs/component-overview.html">component</a>
 those regions will display when the state is active.</p>
 
 <p>Components will be resolved against the currently active <a href="/docs/module-overview.html">module</a> or alternatively
 the application-module.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/section&gt;</span>
-	<span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'details'"</span><span class="nt">&gt;&lt;/section&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;details&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"header-component"</span><span class="p">,</span>
-        <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;header-component&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts.details"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-details-component"</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-details-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>You can also pass parameters to your components which will be merged with any parameters defined at
 state-level plus extracted routing parameters:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="p">{</span> 
-			<span class="nl">component</span><span class="p">:</span> <span class="s2">"contact-list-component"</span><span class="p">,</span>
-			<span class="na">params</span><span class="p">:</span> <span class="p">{</span>
-				<span class="na">mode</span><span class="p">:</span> <span class="s1">'compact'</span>
-			<span class="p">}</span>
-		<span class="p">}</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="p">{</span> 
+            <span class="nx">component</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span><span class="p">,</span>
+            <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;compact&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<h2 id="state-params">State Params</h2>
+</code></pre></div>
+<h2>State Params</h2>
 
 <p>Routing-States can optionally configured to carry state-parameters that will be used to configure
 components referenced by it:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">params</span><span class="p">:</span> <span class="p">{</span>
-		<span class="s1">'contactId'</span><span class="p">:</span> <span class="mi">42</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span>
     <span class="p">},</span>
-	<span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>In this example the <a href="/docs/component-binding.html">component-binding</a> will receive following object as <code>params</code> argument when
 instantiating the <code>contact-list-component</code>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
+</code></pre></div>
+<h3>State-Params inheritance</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span> <span class="s1">'contactId'</span><span class="err">:</span> <span class="mi">42</span> <span class="p">}</span>
-</code></pre>
-</div>
-
-<h3 id="state-params-inheritance">State-Params inheritance</h3>
-
-<p>Just like the parent’s view configuration is inherited by child-states, so are state-params:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">params</span><span class="p">:</span> <span class="p">{</span>
-		<span class="s1">'companyId'</span><span class="p">:</span> <span class="mi">3</span>
+<p>Just like the parent&#39;s view configuration is inherited by child-states, so are state-params:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;companyId&#39;</span><span class="o">:</span> <span class="mi">3</span>
     <span class="p">}</span>
 <span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts.details"</span><span class="p">,</span>
-    <span class="na">params</span><span class="p">:</span> <span class="p">{</span>
-		<span class="s1">'contactId'</span><span class="p">:</span> <span class="mi">42</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
+    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span>
     <span class="p">},</span>
-	<span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>In this example the <a href="/docs/component-binding.html">component-binding</a> will receive following object as <code>params</code> argument when
 instantiating the <code>contact-list-component</code>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span> <span class="s1">'companyId'</span><span class="err">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'contactId'</span><span class="err">:</span> <span class="mi">42</span> <span class="p">}</span>
-</code></pre>
-</div>
-
-<h2 id="state-routes">State Routes</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;companyId&#39;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
+</code></pre></div>
+<h2>State Routes</h2>
 
 <p>Most states in your application will probably have a url associated with them. State-Routing was not an afterthought 
 to the state mechanics, but was figured into the design from the beginning (all while keeping states separate from url routing)</p>
 
-<p>Here’s how you configure a state with a basic url:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-	<span class="na">url</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+<p>Here&#39;s how you configure a state with a basic url:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Now when the user accesses <code>/contacts</code> then the <code>contacts</code> state would become active and the <code>main</code> view will be populated with 
 the <code>contact-list-component</code> component. Alternatively, if the user were to transition to the <code>contacts</code> state via 
-<code>wx.router.go('contacts')</code> then the browser’s location would be updated to <code>/contacts</code>.</p>
+<code>wx.router.go(&#39;contacts&#39;)</code> then the browser&#39;s location would be updated to <code>/contacts</code>.</p>
 
-<h3 id="implicit-routes">Implicit routes</h3>
+<h3>Implicit routes</h3>
 
 <p>Specifying a url when configuring a state is optional. If you omit the url, WebRx will will automatically assign it one
 that mirrors the state hierarchy.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"foo.bar.baz"</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo.bar.baz&quot;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>The implicit url for state <code>foo.bar.baz</code> state will be <code>/foo/bar/baz</code>.</p>
 
-<h3 id="relative--vs-absolute-routes">Relative- vs. Absolute-Routes</h3>
+<h3>Relative- vs. Absolute-Routes</h3>
 
-<p>In all of the previous examples we’ve used relative routes. It is also possible to prepend a url with a ‘/’ to turn it into
+<p>In all of the previous examples we&#39;ve used relative routes. It is also possible to prepend a url with a &#39;/&#39; to turn it into
 an absolute url.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"foo.bar.baz"</span><span class="p">,</span>
-	<span class="na">url</span><span class="p">:</span> <span class="s2">"/bar/foo"</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo.bar.baz&quot;</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/bar/foo&quot;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Now, the url for state <code>foo.bar.baz</code> will be <code>/bar/foo</code>, completely ignoring the state-hierarchy.</p>
 
-<h3 id="route-parameters">Route Parameters</h3>
+<h3>Route Parameters</h3>
 
 <p>Often, URLs have dynamic parts to them which are called parameters. There are several options for specifying parameters. 
 A basic parameter looks like this:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-	<span class="na">url</span><span class="p">:</span> <span class="s2">"contacts/:contactId"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;contacts/:contactId&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<h4 id="examples">Examples:</h4>
+</code></pre></div>
+<h4>Examples:</h4>
 
 <ul>
-  <li><code>/hello/</code> - Matches only if the path is exactly <code>/hello/</code>. There is no special treatment for trailing slashes, 
+<li><code>/hello/</code> - Matches only if the path is exactly <code>/hello/</code>. There is no special treatment for trailing slashes, 
 and patterns have to match the entire path, not just a prefix.</li>
-  <li><code>/user/:id</code> - Matches <code>/user/bob</code> or <code>/user/1234!!!</code> or even <code>/user/</code> but not <code>/user</code> or <code>/user/bob/details</code>. 
+<li><code>/user/:id</code> - Matches <code>/user/bob</code> or <code>/user/1234!!!</code> or even <code>/user/</code> but not <code>/user</code> or <code>/user/bob/details</code>. 
 The second path segment will be captured as the parameter <code>id</code>.</li>
 </ul>
 
 <p><strong>Note:</strong> Parameter names may contain only word characters (latin letters, digits, and underscore) and must be unique within the 
 pattern (across both path and search parameters).</p>
 
-<h4 id="custom-validators-for-route-parameters">Custom validators for route parameters</h4>
-
+<h4>Custom validators for route parameters
 <p>If you need more control about route-parameters you can also pass in an object that combines a route
-with a set of per-parameter custom validators.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-	<span class="na">url</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s2">"contacts/:contactId/:other"</span><span class="p">,</span> <span class="p">{</span>
-		<span class="na">contactId</span><span class="p">:</span> <span class="sr">/^</span><span class="se">\d</span><span class="sr">+$/</span><span class="p">,</span>
-		<span class="na">other</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">""</span> <span class="o">||</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">"foo"</span><span class="p">;</span> <span class="p">}</span>
-	<span class="p">}),</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+with a set of per-parameter custom validators. </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s2">&quot;contacts/:contactId/:other&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">contactId</span><span class="o">:</span> <span class="sr">/^\d+$/</span><span class="p">,</span>
+        <span class="nx">other</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">&quot;&quot;</span> <span class="o">||</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}),</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Each validator can be:</p>
 
 <ul>
-  <li>a RegExp to test against</li>
-  <li>a function that accepts a value and returns true or false</li>
-  <li>or a value to match against</li>
+<li>a RegExp to test against </li>
+<li>a function that accepts a value and returns true or false</li>
+<li>or a value to match against</li>
 </ul>
 
-<h3 id="defining-routes-as-regular-expression">Defining routes as regular expression</h3>
+<h3>Defining routes as regular expression</h3>
 
 <p>Alternatively you can pass in a RegExp for the url parameter:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-	<span class="na">url</span><span class="p">:</span> <span class="sr">/^</span><span class="se">(</span><span class="sr">contacts</span><span class="se">?)(?:\/(\d</span><span class="sr">+</span><span class="se">)(?:\.\.(\d</span><span class="sr">+</span><span class="se">))?)?</span><span class="sr">/</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="sr">/^(contacts?)(?:\/(\d+)(?:\.\.(\d+))?)?/</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<h3 id="how-route-parameters-are-handled">How route-parameters are handled</h3>
+</code></pre></div>
+<h3>How route-parameters are handled</h3>
 
 <p>When a state is activated, any parameters captured from the current route will be merged with 
-state-parameters specified during registration.</p>
+state-parameters specified during registration. </p>
 
 <p>Once again the state-params merging will follow the state-hierarchy, with route-parameters applied
 as the final step to allow for overriding state-params when navigating.</p>
 
 <p>The result of merging all parent states with their child-states and applying the route-parameters
 on top will be directly passed to all <a href="/docs/component-overview.html">components</a> instantiated for the current state
-via the <a href="/docs/component-binding.html">component-binding’s</a> <code>params</code> property.</p>
+via the <a href="/docs/component-binding.html">component-binding&#39;s</a> <code>params</code> property.</p>
 
-<h2 id="onenter-and-onexit-callbacks">onEnter and onExit callbacks</h2>
+<h2>onEnter and onExit callbacks</h2>
 
 <p>There are also optional <code>onEnter</code> and <code>onExit</code> callbacks that get called when a state becomes active and inactive respectively.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">},</span>
-    <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">},</span>
-    <span class="na">onLeave</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">},</span>
+    <span class="nx">onLeave</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p><a class="next-topic" href="/docs/view-binding.html">Next: The View-Binding</a></p>
 </div>
         </div>
@@ -466,9 +420,7 @@ via the <a href="/docs/component-binding.html">component-binding’s</a> <code>p
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

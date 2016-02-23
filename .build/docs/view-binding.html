@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,46 +192,40 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="the-view-binding">The View-Binding</h1>
+            <div class="body"><h1>The View-Binding</h1>
 
-<p>One of the fundamental principles behind WebRx’s <a href="/docs/routing-overview.html">routing engine</a> is that your application partitions
+<p>One of the fundamental principles behind WebRx&#39;s <a href="/docs/routing-overview.html">routing engine</a> is that your application partitions
 your pages into regions by applying a view-binding to one or more
 elements of your page. A state can then define which <a href="/docs/component-overview.html">component</a>
 those regions will display when the state is active.</p>
 
 <p>Essentially view-bindings define placeholders on a page that get filled with components defined in the current state.</p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/section&gt;</span>
-	<span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'details'"</span><span class="nt">&gt;&lt;/section&gt;</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;details&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
-
-<p>This example defines the views <code>main</code> and <code>details</code>. Now let’s define a routing-state referencing these views:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"header-component"</span><span class="p">,</span>
-        <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
+</code></pre></div>
+<p>This example defines the views <code>main</code> and <code>details</code>. Now let&#39;s define a routing-state referencing these views:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;header-component&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<p>Let’s see what happens to the contents of both views when the <code>contacts</code> state is activated:</p>
+</code></pre></div>
+<p>Let&#39;s see what happens to the contents of both views when the <code>contacts</code> state is activated:</p>
 
 <ul>
-  <li>The <code>main</code> view will display the <code>header-component</code></li>
-  <li>The <code>details</code> view will display the <code>contact-list-component</code></li>
+<li>The <code>main</code> view will display the <code>header-component</code> </li>
+<li>The <code>details</code> view will display the <code>contact-list-component</code></li>
 </ul>
 
-<h2 id="parameters">Parameters</h2>
+<h2>Parameters</h2>
 
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>You should pass a string that defines the name of the view.</p>
 
@@ -264,9 +255,7 @@ those regions will display when the state is active.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

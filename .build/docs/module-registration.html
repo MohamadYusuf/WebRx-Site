@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,119 +192,102 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="module-registration">Module Registration</h1>
+            <div class="body"><h1>Module Registration</h1>
 
 <p>The <code>wx.module</code> function is a global place for registering modules. All modules (core or 3rd party) that should be 
-available to an application must be registered using this method.</p>
+available to an application must be registered using this method. </p>
 
 <p><code>wx.module</code> expects two arguments:</p>
 
 <ul>
-  <li><strong>A name</strong>: A descriptive name for your module that should be unique accross your application.</li>
-  <li>
-    <p><strong>An initializer</strong>: The module initializer is a function that will be invoked the first time
-a module is referenced through a <a href="/docs/module-binding.html">module-binding</a>.</p>
+<li><strong>A name</strong>: A descriptive name for your module that should be unique accross your application.</li>
+<li><p><strong>An initializer</strong>: The module initializer is a function that will be invoked the first time
+a module is referenced through a <a href="/docs/module-binding.html">module-binding</a>. </p>
 
-    <p>No matter how the initializer function is defined, it will always receive a pristine module-object instance as
-  <strong>last</strong> argument.</p>
+<p>No matter how the initializer function is defined, it will always receive a pristine module-object instance as
+<strong>last</strong> argument.</p>
 
-    <p>The initializer is supposed to register all of the module’s resources
-  with the provided module-instance. After the initializer has finished executing, the module
-  is fully initialized and available for use in your application.</p>
-  </li>
+<p>The initializer is supposed to register all of the module&#39;s resources
+with the provided module-instance. After the initializer has finished executing, the module
+is fully initialized and available for use in your application.</p></li>
 </ul>
 
 <p><strong>Note:</strong> It is important to remember that WebRx considers a module to be <strong>immutable</strong> after its been loaded and initialized. 
 The application module is the only exception to this rule.</p>
 
-<h2 id="specifying-a-module-initializer">Specifying a module-initializer</h2>
+<h2>Specifying a module-initializer</h2>
 
 <p>Module-initializers can specified in any of the following forms:</p>
 
-<h3 id="a-function">A function</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Create a new module</span>
-<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
+<h3>A function</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Create a new module</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Create a component</span>
   <span class="kd">var</span> <span class="nx">component</span> <span class="o">=</span> <span class="nx">createLikeWidget</span><span class="p">();</span>
 
   <span class="c1">// Register the component with the module</span>
-  <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'like-widget'</span><span class="p">,</span> <span class="nx">component</span><span class="p">);</span>
+  <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">component</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>This example shows one of the most basic forms for module initialization: a function.
 Using an initializer-function is fine for simple applications. Large projects though will most likely use 
 one of the techniques outlined below.</p>
 
-<h3 id="an-inline-annotated-array">An inline-annotated-array</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="p">[</span><span class="s2">"like-widget"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">likeWidget</span><span class="p">,</span> <span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'like-widget'</span><span class="p">,</span> <span class="nx">likeWidget</span><span class="p">);</span>
+<h3>An inline-annotated-array</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;like-widget&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">likeWidget</span><span class="p">,</span> <span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">likeWidget</span><span class="p">);</span>
 <span class="p">}]);</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Here we provide an inline-annotated array as module-initializer. The array will be run through
-the <a href="/docs/dependency-injection-overview.html">Injector’s</a> <code>resolve</code> method
+the <a href="/docs/dependency-injection-overview.html">Injector&#39;s</a> <code>resolve</code> method
 and receive an empty module-instance as final argument after all its declared dependencies.</p>
 
-<h3 id="an-amd-module">An AMD module</h3>
+<h3>An AMD module</h3>
 
 <p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a module. 
 For more details about how this works, see how WebRx loads modules via AMD below. Example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/module/name'</span> <span class="p">});</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">});</span>
+</code></pre></div>
 <p>AMD-Module <em>some/module/name</em>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">define</span><span class="p">([</span><span class="s2">"like-widget"</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">likeWidget</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s2">&quot;like-widget&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">likeWidget</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// register a component loaded as AMD-Module dependency</span>
-    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'like-widget'</span><span class="p">,</span> <span class="nx">likeWidget</span><span class="p">);</span>
+    <span class="c1">// register a component loaded as AMD-Module dependency</span>
+    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;like-widget&#39;</span><span class="p">,</span> <span class="nx">likeWidget</span><span class="p">);</span>
 
-	<span class="c1">// register another component that will get loaded on-demand</span>
-    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-     <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/module/viewModel'</span> <span class="p">},</span>
-     <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'text!/some/module/template.html'</span> <span class="p">}</span>
+    <span class="c1">// register another component that will get loaded on-demand</span>
+    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+     <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/viewModel&#39;</span> <span class="p">},</span>
+     <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!/some/module/template.html&#39;</span> <span class="p">}</span>
     <span class="p">});</span>
   <span class="p">}</span>
- 
+
   <span class="k">return</span> <span class="nx">init</span><span class="p">;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<p>When the initializer is provided by an AMD module, the module-initializer function <strong>must</strong> be the AMD-module’s 
+</code></pre></div>
+<p>When the initializer is provided by an AMD module, the module-initializer function <strong>must</strong> be the AMD-module&#39;s 
 only export.</p>
 
-<h2 id="registering-resources-with-a-module">Registering resources with a module</h2>
+<h2>Registering resources with a module</h2>
 
-<p>In the previous examples we’ve focused soley on registering component resources. As mentioned in the <a href="/docs/module-overview.html">module-overview</a>
+<p>In the previous examples we&#39;ve focused soley on registering component resources. As mentioned in the <a href="/docs/module-overview.html">module-overview</a>
 there are other types of module-scoped resources.</p>
 
-<h3 id="registering-components">Registering components</h3>
+<h3>Registering components</h3>
 
-<p>The documentation contains an entire chapter dedicated to <a href="/docs/component-registration.html">registering components</a>.</p>
+<p>The documentation contains an entire chapter dedicated to <a href="/docs/component-registration.html">registering components</a>. </p>
 
-<h3 id="registering-animations">Registering animations</h3>
+<h3>Registering animations</h3>
 
-<p>The documentation contains an entire chapter dedicated to <a href="/docs/animation-registration.html">creating animations</a>.</p>
+<p>The documentation contains an entire chapter dedicated to <a href="/docs/animation-registration.html">creating animations</a>. </p>
 
-<h3 id="registering-expression-filters">Registering expression filters</h3>
+<h3>Registering expression filters</h3>
 
 <p><a href="/docs/binding-syntax.html#topic-expression-filters">Expression-filters</a> format the result of an expression for display to the user.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">myModule</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'uppercase'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">myModule</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;uppercase&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
 <span class="p">})});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>The module in this example registers an <code>uppercase</code> filter that 
 converts the result of a binding-expression to an upper-case string.</p>
 
@@ -335,9 +315,7 @@ converts the result of a binding-expression to an upper-case string.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

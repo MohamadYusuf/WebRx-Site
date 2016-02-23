@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,79 +192,68 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="commands">Commands</h1>
+            <div class="body"><h1>Commands</h1>
 
 <p>Commands represent discrete actions that are taken in the UI - <code>Copy</code>, <code>Open</code>, and <code>Ok</code> are good examples of Commands. 
 Usually these Commands are bound to an element that is built to handle Commands, like a Button or an Anchor.</p>
 
 <p>Many Commands are invoked directly by the user, but some operations are also useful to model via Commands 
 despite being primarily invoked progmatically. For example, many code paths involving periodically loading 
-or refreshing resources (i.e. “LoadTweets”) can be modeled well using Commands.</p>
+or refreshing resources (i.e. &quot;LoadTweets&quot;) can be modeled well using Commands.</p>
 
 <p><strong>Note:</strong> For information on how to utilize commands in your views and bindings refer to the <a href="/docs/command-binding.html">command-binding</a> documentation.</p>
 
-<h2 id="creating-commands">Creating commands</h2>
+<h2>Creating commands</h2>
 
 <p>The simplest form of a command is one that can always execute:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">alert</span><span class="p">(</span><span class="s2">"Hello!"</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>To manually execute a command, invoke its <code>execute</code> method:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">cmd</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
-</code></pre>
-</div>
-
-<h3 id="commands-that-can-only-execute-when-certain-conditions-are-met">Commands that can only execute when certain conditions are met</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">cmd</span><span class="p">.</span><span class="nx">execute</span><span class="p">();</span>
+</code></pre></div>
+<h3>Commands that can only execute when certain conditions are met</h3>
 
 <p>Except for very simple cases, commands should not be allowed to execute in all situtations.
 For example, an imaginary <code>copy</code> command would require an existing selection and a <code>paste</code> command
 would require a non-empty clipboard.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 
-	<span class="k">this</span><span class="p">.</span><span class="nx">fooCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">"You did it!"</span><span class="p">);</span>
-		<span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">numberOfClicks</span><span class="p">)</span> <span class="p">{</span> 
-			<span class="k">return</span> <span class="nx">numberOfClicks</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
-	<span class="p">}),</span> <span class="k">this</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">fooCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You did it!&quot;</span><span class="p">);</span>
+        <span class="p">},</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">whenAny</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfClicks</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">numberOfClicks</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="k">return</span> <span class="nx">numberOfClicks</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="p">}),</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
+<p>In this example we have setup <code>fooCmd</code> to only be executable once the view-model&#39;s
+<code>numberOfClicks</code> property reaches a value of 3 or higher. </p>
 
-<p>In this example we have setup <code>fooCmd</code> to only be executable once the view-model’s
-<code>numberOfClicks</code> property reaches a value of 3 or higher.</p>
-
-<p>Once again we take advantage of WebRx’s <code>whenAny</code> helper to implement this. The <code>whenAny</code> function takes  an <strong>arbitrary combination</strong> of either <strong>observable properties</strong> or <strong>observables</strong> as arguments, in case of observable-properties, subscribes to their <code>changed</code> observable, 
-and invokes a user supplied selector function when any (hence the name) of its inputs changes.</p>
+<p>Once again we take advantage of WebRx&#39;s <code>whenAny</code> helper to implement this. The <code>whenAny</code> function takes  an <strong>arbitrary combination</strong> of either <strong>observable properties</strong> or <strong>observables</strong> as arguments, in case of observable-properties, subscribes to their <code>changed</code> observable, 
+and invokes a user supplied selector function when any (hence the name) of its inputs changes. </p>
 
 <p>The observable returned by <code>whenAny</code> can be directly passed to <code>wx.command</code>.
-The command will then monitor the observable and adjust the command’s <code>canExecute</code> status
+The command will then monitor the observable and adjust the command&#39;s <code>canExecute</code> status
 depending on wether the latest value from the observable evaluates falsy or truthy.</p>
 
-<h2 id="commands-and-the-codethiscode-keyword">Commands and the <code>this</code> keyword</h2>
+<h2>Commands and the <code>this</code> keyword</h2>
 
 <p>Javascript developers often have to deal with the problem of <code>this</code> being redefined by event-handlers or Ajax-Request Callbacks.
 This becomes a problem when commands need to interact with or modify their enclosing view-model.
 To avoid this, you can pass an additional argument to <code>wx.command</code> that will ensure that the command
 will always execute with <code>this</code> being set to the specified value.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">fooCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bar</span><span class="p">);</span>
     <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 
-    <span class="k">this</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="s2">"hello"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">bar</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</div>
-<p>If <code>fooCmd</code> would be triggered by a button-click and we hadn’t passed <code>this</code> to <code>wx.command</code>,
-the alert would display “undefined”, because <code>this</code> would point to the windows object instead
+</code></pre></div>
+<p>If <code>fooCmd</code> would be triggered by a button-click and we hadn&#39;t passed <code>this</code> to <code>wx.command</code>,
+the alert would display &quot;undefined&quot;, because <code>this</code> would point to the windows object instead
 our view-model.</p>
 
 <p><a class="next-topic" href="/docs/visible-binding.html">Next: The Visible-Binding</a></p>
@@ -294,9 +280,7 @@ our view-model.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

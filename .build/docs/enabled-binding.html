@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,38 +192,32 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="the-enabled-binding">The Enabled-Binding</h1>
+            <div class="body"><h1>The Enabled-Binding</h1>
 
 <p>The enable binding causes the associated DOM element to be enabled only when the parameter value is true. 
 This is useful with form elements like input, select, and textarea.</p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'checkbox'</span> <span class="na">data-bind=</span><span class="s">"checked: hasCellphone"</span> <span class="nt">/&gt;</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;checkbox&#39;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: hasCellphone&quot;</span> <span class="nt">/&gt;</span>
     I have a cellphone
 <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p&gt;</span>
     Your cellphone number:
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'text'</span> <span class="na">data-bind=</span><span class="s">"value: cellphoneNumber, enable: hasCellphone"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;text&#39;</span> <span class="na">data-bind=</span><span class="s">&quot;value: cellphoneNumber, enable: hasCellphone&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">hasCellphone</span> <span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span>
-        <span class="na">cellphoneNumber</span><span class="p">:</span> <span class="s2">""</span>
+        <span class="nx">hasCellphone</span> <span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span>
+        <span class="nx">cellphoneNumber</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
     <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
+<p>In this example, the &quot;Your cellphone number&quot; text box will initially be disabled. It will be enabled only when the user checks the box labelled &quot;I have a cellphone&quot;.</p>
 
-<p>In this example, the “Your cellphone number” text box will initially be disabled. It will be enabled only when the user checks the box labelled “I have a cellphone”.</p>
+<h2>Parameters</h2>
 
-<h2 id="parameters">Parameters</h2>
-
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>A value that controls whether or not the associated DOM element should be enabled.</p>
 
@@ -234,7 +225,7 @@ This is useful with form elements like input, select, and textarea.</p>
 whereas <code>21</code> and non-null objects are treated as <code>true</code>.</p>
 
 <p>If your parameter references an observable value, the binding will update the enabled/disabled state whenever the observable property value changes.
-If the parameter doesn’t reference an observable property, it will only set the state once and will not do so again later.</p>
+If the parameter doesn&#39;t reference an observable property, it will only set the state once and will not do so again later.</p>
 
 <p><a class="next-topic" href="/docs/disabled-binding.html">Next: The Disabled-Binding</a></p>
 </div>
@@ -260,9 +251,7 @@ If the parameter doesn’t reference an observable property, it will only set th
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

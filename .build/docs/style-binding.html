@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,54 +192,45 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="the-style-binding">The Style-Binding</h1>
+            <div class="body"><h1>The Style-Binding</h1>
 
 <p>The style binding adds or removes one or more style values to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative, or to set the width of a bar to match a numerical value that changes.</p>
 
-<p><strong>Note</strong>: If you don’t want to apply an explicit style value but instead want to assign a CSS class, see the css binding.</p>
+<p><strong>Note</strong>: If you don&#39;t want to apply an explicit style value but instead want to assign a CSS class, see the css binding.</p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"style: { color: currentProfit &lt; 0 ? 'red' : 'black' }"</span><span class="nt">&gt;</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;style: { color: currentProfit &lt; 0 ? &#39;red&#39; : &#39;black&#39; }&quot;</span><span class="nt">&gt;</span>
    Profit Information
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">currentProfit</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">150000</span><span class="p">)</span> <span class="c1">// Positive value, so initially black</span>
+        <span class="nx">currentProfit</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">150000</span><span class="p">)</span> <span class="c1">// Positive value, so initially black</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">currentProfit</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// Causes the DIV's contents to go red</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">currentProfit</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// Causes the DIV&#39;s contents to go red</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
+<p>This will set the element&#39;s style.color property to red whenever the currentProfit value dips below zero, and to black whenever it goes above zero.</p>
 
-<p>This will set the element’s style.color property to red whenever the currentProfit value dips below zero, and to black whenever it goes above zero.</p>
+<h2>Parameters</h2>
 
-<h2 id="parameters">Parameters</h2>
-
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>You should pass a JavaScript object in which the property names correspond to style names, and the values correspond to the style values you wish to apply.</p>
 
 <p>You can set multiple style values at once. For example, if your view model has a property called isSevere,</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"style: { color: currentProfit &lt; 0 ? 'red' : 'black', fontWeight: isSevere ? 'bold' : '' }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<p>If your parameter references an observable value, the binding will update the styles whenever the observable value changes. If the parameter doesn’t reference an observable value, it will only set the styles once and will not update them later.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;style: { color: currentProfit &lt; 0 ? &#39;red&#39; : &#39;black&#39;, fontWeight: isSevere ? &#39;bold&#39; : &#39;&#39; }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<p>If your parameter references an observable value, the binding will update the styles whenever the observable value changes. If the parameter doesn&#39;t reference an observable value, it will only set the styles once and will not update them later.</p>
 
 <p>As usual, you can use <a href="/docs/binding-syntax.html#topic-binding-expressions">arbitrary expressions</a> as parameter values. WebRx will evaluate them and use the resulting values to determine style values to apply.</p>
 
-<h4 id="note-applying-styles-whose-names-arent-legal-javascript-variable-names">Note: Applying styles whose names aren’t legal JavaScript variable names</h4>
+<h4>Note: Applying styles whose names aren&#39;t legal JavaScript variable names</h4>
 
-<p>If you want to apply a font-weight or text-decoration style, or any other style whose name isn’t a legal JavaScript identifier 
+<p>If you want to apply a font-weight or text-decoration style, or any other style whose name isn&#39;t a legal JavaScript identifier 
 (e.g., because it contains a hyphen), you must use the JavaScript name for that style. For example,</p>
 
-<p>Don’t write <code>{ font-weight: someValue };</code> do write <code>{ fontWeight: someValue }</code>
-Don’t write <code>{ text-decoration: someValue };</code> do write <code>{ textDecoration: someValue }</code></p>
+<p>Don&#39;t write <code>{ font-weight: someValue };</code> do write <code>{ fontWeight: someValue }</code>
+Don&#39;t write <code>{ text-decoration: someValue };</code> do write <code>{ textDecoration: someValue }</code></p>
 
 <p><a class="next-topic" href="/docs/attr-binding.html">Next: The Attr-Binding</a></p>
 </div>
@@ -268,9 +256,7 @@ Don’t write <code>{ text-decoration: someValue };</code> do write <code>{ text
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

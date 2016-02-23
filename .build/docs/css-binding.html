@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,95 +192,71 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="the-css-binding">The CSS-Binding</h1>
+            <div class="body"><h1>The CSS-Binding</h1>
 
 <p>The CSS-binding adds or removes one or more named CSS classes to the associated DOM element. This is useful, for example, to highlight some value in red if it becomes negative.</p>
 
-<p>(Note: If you don’t want to apply a CSS class but instead want to assign a style attribute value directly, see the <a href="/docs/style-binding.html">style binding</a>.)</p>
+<p>(Note: If you don&#39;t want to apply a CSS class but instead want to assign a style attribute value directly, see the <a href="/docs/style-binding.html">style binding</a>.)</p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { profitWarning: currentProfit &lt; 0 }"</span><span class="nt">&gt;</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { profitWarning: currentProfit &lt; 0 }&quot;</span><span class="nt">&gt;</span>
    Profit Information
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">currentProfit</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">150000</span><span class="p">)</span> <span class="c1">// Positive value, so initially we don't apply the "profitWarning" class</span>
+        <span class="nx">currentProfit</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">150000</span><span class="p">)</span> <span class="c1">// Positive value, so initially we don&#39;t apply the &quot;profitWarning&quot; class</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">currentProfit</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// Causes the "profitWarning" class to be applied</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">currentProfit</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// Causes the &quot;profitWarning&quot; class to be applied</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>This will apply the CSS class <code>profitWarning</code> whenever the <code>currentProfit</code> value dips below zero, and remove that class whenever it goes above zero.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h2>Parameters</h2>
 
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>You should pass a JavaScript object in which the property names are your CSS classes, and their values evaluate to true or false according to whether the class should currently be applied.</p>
 
 <p>You can set multiple CSS classes at once. For example, if your view model has a property called isSevere,</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { profitWarning: currentProfit &lt; 0, majorHighlight: isSevere }"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { profitWarning: currentProfit &lt; 0, majorHighlight: isSevere }&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
 <p>You can even set multiple CSS classes based on the same condition by wrapping the names in quotes like:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { profitWarning: currentProfit &lt; 0, 'major highlight': isSevere }"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { profitWarning: currentProfit &lt; 0, &#39;major highlight&#39;: isSevere }&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
 <p>Non-boolean values are interpreted loosely as boolean. For example, <code>0</code> and <code>null</code> are treated as <code>false</code>, 
 whereas <code>21</code> and non-null objects are treated as <code>true</code>.</p>
 
 <p>If your parameter references an observable value, the binding will add or remove the CSS class whenever the observable value changes. 
-If the parameter doesn’t reference an observable value, it will only add or remove the class once and will not do so again later.</p>
+If the parameter doesn&#39;t reference an observable value, it will only add or remove the class once and will not do so again later.</p>
 
 <p>As usual, you can use <a href="/docs/binding-syntax.html#topic-binding-expressions">arbitrary expressions</a> as parameter values. 
 WebRx will evaluate them and use the resulting values to determine the appropriate CSS classes to add or remove.</p>
 
-<h4 id="dynamic-css-class-names">Dynamic CSS class names</h4>
+<h4>Dynamic CSS class names</h4>
 
 <p>If you want to use dynamic CSS class names, then you can pass a string that corresponds to the CSS class or classes that you want to add to the element.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"keep-me"</span> <span class="na">data-bind=</span><span class="s">"css: myClasses"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;keep-me&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;css: myClasses&quot;</span><span class="nt">&gt;</span>
    Profit Information
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">myClasses</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"foo bar"</span><span class="p">);</span>	<span class="c1">// apply the "foo" and "bar" classes to the element, retain class "keep-me"</span>
+        <span class="nx">myClasses</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;foo bar&quot;</span><span class="p">);</span>  <span class="c1">// apply the &quot;foo&quot; and &quot;bar&quot; classes to the element, retain class &quot;keep-me&quot;</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myClasses</span><span class="p">(</span><span class="s2">"foo baz"</span><span class="p">);</span> <span class="c1">// Retain the "foo" and "keep-me" classes on the element, remove class "bar" and add class "baz"</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myClasses</span><span class="p">(</span><span class="s2">&quot;foo baz&quot;</span><span class="p">);</span> <span class="c1">// Retain the &quot;foo&quot; and &quot;keep-me&quot; classes on the element, remove class &quot;bar&quot; and add class &quot;baz&quot;</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>If the parameter references an observable value, then the binding will remove any classes previously added by the binding and add the class or 
 classes corresponding to the observable’s new value. Either way, the binding will not interfere with css-classes
 added to the element by other means.</p>
 
-<h3 id="note-applying-css-classes-whose-names-arent-legal-javascript-variable-names">Note: Applying CSS classes whose names aren’t legal JavaScript variable names</h3>
+<h3>Note: Applying CSS classes whose names aren&#39;t legal JavaScript variable names</h3>
 
-<p>If you want to apply the CSS class my-class, you can’t write this:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { my-class: someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<p>… because my-class isn’t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"css: { 'my-class': someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
+<p>If you want to apply the CSS class my-class, you can&#39;t write this:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { my-class: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+<p>… because my-class isn&#39;t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;css: { &#39;my-class&#39;: someValue }&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
 <p><a class="next-topic" href="/docs/style-binding.html">Next: The Style-Binding</a></p>
 </div>
         </div>
@@ -308,9 +281,7 @@ added to the element by other means.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

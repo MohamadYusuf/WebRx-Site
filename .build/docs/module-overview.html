@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,140 +192,117 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="module-overview">Module Overview</h1>
+            <div class="body"><h1>Module Overview</h1>
 
 <p>When a project grows in size it is often beneficial to break it down into smaller units
-that can be developed and tested in isolation. WebRx’s built-in solution for this are <em>Modules</em>.</p>
+that can be developed and tested in isolation. WebRx&#39;s built-in solution for this are <em>Modules</em>.</p>
 
-<p>You can think of a module as a container for resources utilized by different parts of your project.</p>
+<p>You can think of a module as a container for resources utilized by different parts of your project. </p>
 
-<h2 id="advantages-of-using-modules">Advantages of using modules</h2>
+<h2>Advantages of using modules</h2>
 
 <ul>
-  <li><strong>Performance:</strong> Since modules are loaded asynchronously on demand, initial page loading time
+<li><strong>Performance:</strong> Since modules are loaded asynchronously on demand, initial page loading time
 may be decreased drastically.</li>
-  <li><strong>Modularization</strong>: Modularising your applications explicitly outlines the dependencies of your application and 
+<li><strong>Modularization</strong>: Modularising your applications explicitly outlines the dependencies of your application and 
 separates the responsibilities of different parts of your app. Code reuse and separation of concerns are 
 fundamental practices in writing maintainable code.</li>
 </ul>
 
-<h2 id="livecycle-of-a-module">Livecycle of a Module</h2>
+<h2>Livecycle of a Module</h2>
 
 <ol>
-  <li>
-    <p><strong>Module is registered:</strong> WebRx-Modules are registered through the <code>wx.module</code> function (more
+<li><p><strong>Module is registered:</strong> WebRx-Modules are registered through the <code>wx.module</code> function (more
 on this in the following chapter). The only immediate effect of registering a module is to announce
-the module’s existence to the module-loader.</p>
-  </li>
-  <li>
-    <p><strong>Module is loaded</strong>: Referencing a module through a <a href="/docs/module-binding.html">module-binding</a> for
+the module&#39;s existence to the module-loader. </p></li>
+<li><p><strong>Module is loaded</strong>: Referencing a module through a <a href="/docs/module-binding.html">module-binding</a> for
 the first time, triggers its loading process. Loading a module is an asynchronous operation with the goal 
-of obtaining the module’s initializer-function which will be used in the next phase. For example: If the 
-module has been registered as an external AMD-Module, the module’s script file will now be fetched from the server.</p>
-  </li>
-  <li>
-    <p><strong>Module is initialized</strong>: Now that the module’s initializer-function is available, a pristine
-module-object will created and handed to the initializer which is now tasked with registering the module’s
-exported resources with the module-object.</p>
-  </li>
-  <li>
-    <p><strong>Module is active</strong>: At this point all of the module’s registered resources become available for use in the application.</p>
-  </li>
+of obtaining the module&#39;s initializer-function which will be used in the next phase. For example: If the 
+module has been registered as an external AMD-Module, the module&#39;s script file will now be fetched from the server.</p></li>
+<li><p><strong>Module is initialized</strong>: Now that the module&#39;s initializer-function is available, a pristine
+module-object will created and handed to the initializer which is now tasked with registering the module&#39;s
+exported resources with the module-object.</p></li>
+<li><p><strong>Module is active</strong>: At this point all of the module&#39;s registered resources become available for use in the application.</p></li>
 </ol>
 
-<h2 id="the-application-module">The application module</h2>
+<h2>The application module</h2>
 
 <p>Regardless of wether your project is explicitely working with modules or not, there will be always at least one 
 module that is always present: <strong>the application module</strong>.</p>
 
 <p>In WebRx, the application-module is a pre-registered module that hosts all built-in bindings, components and expression filters
-and can be accessed using …</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span>
-</code></pre>
-</div>
-
-<p>or …</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"app"</span><span class="p">)</span>
-</code></pre>
-</div>
-
+and can be accessed using ...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span>
+</code></pre></div>
+<p>or ...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Note:</strong> The application module is the only module that is immediately available and initialized when your app
 launches. All other modules are asynchronously resolved by the <a href="/docs/module-binding.html">module-binding</a>.</p>
 
-<h2 id="module-resources">Module Resources</h2>
+<h2>Module Resources</h2>
 
-<p>There are several types of resources that can, or rather must be either registered with a custom-module or the application-module:</p>
+<p>There are several types of resources that can, or rather must be either registered with a custom-module or the application-module: </p>
 
 <ul>
-  <li><a href="/docs/component-overview.html">Components</a></li>
-  <li><a href="/docs/animation-overview.html">Animations</a></li>
-  <li><a href="/docs/binding-syntax.html#topic-expression-filters">Expression-filters</a></li>
-  <li>Binding-handlers</li>
+<li><a href="/docs/component-overview.html">Components</a></li>
+<li><a href="/docs/animation-overview.html">Animations</a></li>
+<li><a href="/docs/binding-syntax.html#topic-expression-filters">Expression-filters</a></li>
+<li>Binding-handlers</li>
 </ul>
 
 <p>WebRx refers to these kinds of resources as <em>module-scoped-resources</em>.</p>
 
-<p>The reason for registering these kinds of resources is because they are utilized by WebRx’s 
+<p>The reason for registering these kinds of resources is because they are utilized by WebRx&#39;s 
 data-binding system which needs to be aware of that a particular component, animation, filter or binding exists.</p>
 
-<h3 id="services">Services</h3>
+<h3>Services</h3>
 
 <p>Some readers - especially those coming from an Angular background - might wonder why services are not among the list above.</p>
 
-<p>To explain why let’s talk about the two most common ways to utilize modules in a WebRx app:</p>
+<p>To explain why let&#39;s talk about the two most common ways to utilize modules in a WebRx app:</p>
 
-<h4 id="application-module-or-pre-loaded-modules">Application-Module or pre-loaded modules</h4>
+<h4>Application-Module or pre-loaded modules</h4>
 
 <p>In this scenario the app either registers all of its components with the application module or 
 a custom module. The registration happens at bootstrap time using script-resources loaded through 
 <code>script</code> tags on the page.</p>
 
-<p>Because all required resources are available locally, WebRx’s <a href="/docs/dependency-injection-overview.html">Injector</a> can be utilized to inject
+<p>Because all required resources are available locally, WebRx&#39;s <a href="/docs/dependency-injection-overview.html">Injector</a> can be utilized to inject
 all kinds of resources - including services into component view-models and the like.</p>
 
-<h4 id="custom-modules-with-external-amd-modules">Custom-Modules with external AMD-Modules</h4>
+<h4>Custom-Modules with external AMD-Modules</h4>
 
-<p>This is the recommended approach for medium- to large applications.</p>
+<p>This is the recommended approach for medium- to large applications. </p>
 
 <p>Everything, down from the module itself to the resources it exports will be loaded asynchronously on-demand. 
 Since am AMD module loader such as <a href="http://requirejs.org">requirejs</a> will be involved, the natural solution for injecting services into modules and its
 components is to declare them as module dependencies:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/module/name'</span> <span class="p">});</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myModule&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">});</span>
+</code></pre></div>
 <p>AMD-Module <em>some/module/name</em>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">define</span><span class="p">([</span><span class="s2">""</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">myModule</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-     <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/module/viewModel'</span> <span class="p">},</span>
-     <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'text!/some/module/template.html'</span> <span class="p">}</span>
+    <span class="nx">myModule</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+     <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/viewModel&#39;</span> <span class="p">},</span>
+     <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!/some/module/template.html&#39;</span> <span class="p">}</span>
     <span class="p">});</span>
   <span class="p">}</span>
- 
+
   <span class="k">return</span> <span class="nx">init</span><span class="p">;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>AMD-Module <em>some/module/viewModel</em>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">define</span><span class="p">([</span><span class="s2">"greetService"</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greetService</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">define</span><span class="p">([</span><span class="s2">&quot;greetService&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greetService</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">function</span> <span class="nx">viewModel</span><span class="p">()</span> <span class="p">{</span>
-	<span class="k">this</span><span class="p">.</span><span class="nx">greet</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-	  <span class="nx">greetServices</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
-	<span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">greet</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">greetServices</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
   <span class="p">}</span>
- 
+
   <span class="k">return</span> <span class="nx">viewModel</span><span class="p">;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p><a class="next-topic" href="/docs/module-registration.html">Next: Defining and registering modules</a></p>
 </div>
         </div>
@@ -353,9 +327,7 @@ components is to declare them as module dependencies:</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -198,79 +195,76 @@
             <div class="body"><div class="alert alert-danger sample-warning" role="alert">
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
-<p># The HasFocus-Binding</p>
 
-<p>The hasFocus binding links a DOM element’s focus state with a viewmodel property.</p>
+<h1>The HasFocus-Binding</h1>
+
+<p>The hasFocus binding links a DOM element&#39;s focus state with a viewmodel property. </p>
 
 <p>It is a two-way binding, so if you set the viewmodel property to true or false, the associated element will become focused or unfocused.
 If the user manually focuses or unfocuses the associated element, the view-model property will be set to true or false accordingly.</p>
 
-<p>This is useful if you’re building sophisticated forms in which editable elements appear dynamically, 
+<p>This is useful if you&#39;re building sophisticated forms in which editable elements appear dynamically, 
 and you would like to control where the user should start typing, or respond to the location of the caret.</p>
 
-<h2 id="example-1-the-basics">Example 1: The basics</h2>
+<h2>Example 1: The basics</h2>
 
 <p>This example simply displays a message if the textbox currently has focus, and uses a button to show that you can trigger focus programmatically.</p>
 
 <div class="panel panel-default" id="hasfocus-example1">
-	<div class="panel-body">
-		<input data-bind="hasFocus: @isSelected" />
-		<button data-bind="command: setIsSelectedCmd">Focus programmatically</button>
-		<span data-bind="visible: isSelected">The textbox has focus</span>
-	</div>
+    <div class="panel-body">
+        <input data-bind="hasFocus: @isSelected" />
+        <button data-bind="command: setIsSelectedCmd">Focus programmatically</button>
+        <span data-bind="visible: isSelected">The textbox has focus</span>
+    </div>
 </div>
+  
 
 <script type="text/javascript">
 function ViewModel() {
     this.isSelected = wx.property(false);
 
     this.setIsSelectedCmd = wx.command(function() { 
-		this.isSelected(true);
-	}, this);
+        this.isSelected(true);
+    }, this);
 }
 
 wx.applyBindings(new ViewModel(), document.getElementById('hasfocus-example1'));
 </script>
 
 <p><strong>Source code: View</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">"hasFocus: @isSelected"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"click: setIsSelected"</span><span class="nt">&gt;</span>Focus programmatically<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"visible: isSelected"</span><span class="nt">&gt;</span>The textbox has focus<span class="nt">&lt;/span&gt;</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;hasFocus: @isSelected&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;click: setIsSelected&quot;</span><span class="nt">&gt;</span>Focus programmatically<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;visible: isSelected&quot;</span><span class="nt">&gt;</span>The textbox has focus<span class="nt">&lt;/span&gt;</span>
+</code></pre></div>
 <p><strong>Source code: View model</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">isSelected</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">setIsSelectedCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
-		<span class="k">this</span><span class="p">.</span><span class="nx">isSelected</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-	<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">isSelected</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">ViewModel</span><span class="p">());</span>
-</code></pre>
-</div>
-
-<h2 id="example-2-click-to-edit">Example 2: Click-to-edit</h2>
+</code></pre></div>
+<h2>Example 2: Click-to-edit</h2>
 
 <p>Because the hasFocus binding works in both directions (setting the associated value focuses or unfocuses the element;
-focusing or unfocusing the element sets the associated value), it’s a convenient way to toggle an “edit” mode.
-In this example, the UI displays either a <code>span</code> or an <code>input</code> element depending on the model’s editing property.
-Unfocusing the <code>input</code> element sets editing to false, so the UI switches out of “edit” mode.</p>
+focusing or unfocusing the element sets the associated value), it&#39;s a convenient way to toggle an &quot;edit&quot; mode.
+In this example, the UI displays either a <code>span</code> or an <code>input</code> element depending on the model&#39;s editing property.
+Unfocusing the <code>input</code> element sets editing to false, so the UI switches out of &quot;edit&quot; mode.</p>
 
 <div class="panel panel-default" id="hasfocus-example2">
-	<div class="panel-body">
-		<p>
-			Name: 
-			<b data-bind="visible: !editing, text: name, command: editCmd">&nbsp;</b>
-			<input data-bind="visible: editing, value: @name, hasFocus: @editing" style="display: none;" />
-		</p>
-		<p><em>Click the name to edit it; click elsewhere to apply changes.</em></p>
-	</div>
+    <div class="panel-body">
+        <p>
+            Name: 
+            <b data-bind="visible: !editing, text: name, command: editCmd">&nbsp;</b>
+            <input data-bind="visible: editing, value: @name, hasFocus: @editing" style="display: none;" />
+        </p>
+        <p><em>Click the name to edit it; click elsewhere to apply changes.</em></p>
+    </div>
 </div>
+  
 
 <script type="text/javascript">
 function PersonViewModel(name) {
@@ -280,51 +274,45 @@ function PersonViewModel(name) {
          
     // Behaviors
     this.editCmd = wx.command(function() { 
-		this.editing(true);
-	}, this);
+        this.editing(true);
+    }, this);
 }
  
 wx.applyBindings(new PersonViewModel("Bart Simpson"), document.getElementById('hasfocus-example2'));
 </script>
 
 <p><strong>Source code: View</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>
-	Name: 
-	<span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"visible: !editing, text: name, command: editCmd"</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/b&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">"visible: editing, value: @name, hasFocus: @editing"</span> <span class="na">style=</span><span class="s">"display: none;"</span> <span class="nt">/&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
+    Name: 
+    <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;visible: !editing, text: name, command: editCmd&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/b&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">&quot;visible: editing, value: @name, hasFocus: @editing&quot;</span> <span class="na">style=</span><span class="s">&quot;display: none;&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p&gt;&lt;em&gt;</span>Click the name to edit it; click elsewhere to apply changes.<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p><strong>Source code: View model</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Data</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">editing</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-         
+
     <span class="c1">// Behaviors</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">editCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
-		<span class="k">this</span><span class="p">.</span><span class="nx">editing</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-	<span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">editing</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
- 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="s2">"Bart Simpson"</span><span class="p">));</span>
-</code></pre>
-</div>
 
-<h2 id="parameters">Parameters</h2>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">PersonViewModel</span><span class="p">(</span><span class="s2">&quot;Bart Simpson&quot;</span><span class="p">));</span>
+</code></pre></div>
+<h2>Parameters</h2>
 
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>Pass true (or some value that evaluates as true) to focus the associated element. 
 Otherwise, the associated element will be unfocused.</p>
 
 <p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the <code>@</code>-operator),
-the binding will update the element’s focus state whenever the value changes and vice-versa.
-If the parameter something else, it will only set the element’s focus state once and will not update it again later.</p>
+the binding will update the element&#39;s focus state whenever the value changes and vice-versa.
+If the parameter something else, it will only set the element&#39;s focus state once and will not update it again later.</p>
 
 <p><a class="next-topic" href="/docs/checked-binding.html">Next: The Checked-Binding</a></p>
 </div>
@@ -350,9 +338,7 @@ If the parameter something else, it will only set the element’s focus state on
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

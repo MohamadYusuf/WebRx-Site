@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -198,185 +195,167 @@
             <div class="body"><div class="alert alert-danger sample-warning" role="alert">
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
-<p># Observable Lists</p>
 
-<p>If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
+<h1>Observable Lists</h1>
 
-<h4 id="example">Example</h4>
+<p>If you want to detect and respond to changes on one object, you&#39;d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you&#39;re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    <span class="c1">// Initially an empty array</span>
-<span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'Some value'</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span>
-</code></pre>
-</div>
-
-<h3 id="prepopulating-a-list">Prepopulating a list</h3>
+<h4>Example</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    <span class="c1">// Initially an empty array</span>
+<span class="nx">myObservableList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span> <span class="c1">// Adds the value and notifies observers</span>
+</code></pre></div>
+<h3>Prepopulating a list</h3>
 
 <p>If you want your list not to start empty, but to contain some initial items, pass those items as an array to the constructor. For example,</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// This observable list initially contains three objects</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// This observable list initially contains three objects</span>
 <span class="kd">var</span> <span class="nx">anotherObservableList</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span>
-    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"Bungle"</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="s2">"Bear"</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"George"</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="s2">"Hippo"</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"Zippy"</span><span class="p">,</span> <span class="na">type</span><span class="p">:</span> <span class="s2">"Unknown"</span> <span class="p">}</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Bungle&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Bear&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;George&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Hippo&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Zippy&quot;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;Unknown&quot;</span> <span class="p">}</span>
 <span class="p">]);</span>
-</code></pre>
-</div>
+</code></pre></div>
+<h2>Manipulating an observable-list</h2>
 
-<h2 id="manipulating-an-observable-list">Manipulating an observable-list</h2>
-
-<p>WebRx’s observable list exposes a familiar set of functions for modifying the contents of the list and notifying listeners.</p>
+<p>WebRx&#39;s observable list exposes a familiar set of functions for modifying the contents of the list and notifying listeners.</p>
 
 <ul>
-  <li><code>length</code></li>
-  <li><code>get(index)</code></li>
-  <li><code>set(index, item)</code></li>
-  <li><code>add(item)</code></li>
-  <li><code>clear()</code></li>
-  <li><code>contains(item)</code></li>
-  <li><code>remove(item)</code></li>
-  <li><code>indexOf(item)</code></li>
-  <li><code>insert(index, item)</code></li>
-  <li><code>removeAt(index)</code></li>
-  <li><code>isEmpty</code></li>
-  <li><code>addRange(collection)</code></li>
-  <li><code>insertRange(index, collection)</code></li>
-  <li><code>move(oldIndex, newIndex)</code></li>
-  <li><code>removeAll(items)</code></li>
-  <li><code>removeRange(index, count)</code></li>
-  <li><code>sort(comparison: (a, b) =&gt; number)</code></li>
-  <li><code>forEach(callbackfn: (value, index, array) =&gt; void, thisArg?)</code></li>
-  <li><code>map(callbackfn: (value, index, array) =&gt; U, thisArg?)</code></li>
-  <li><code>filter(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</code></li>
-  <li><code>every(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</code></li>
-  <li><code>some(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</code></li>
-  <li><code>reset()</code></li>
-  <li><code>toArray()</code></li>
+<li><code>length</code></li>
+<li><code>get(index)</code></li>
+<li><code>set(index, item)</code></li>
+<li><code>add(item)</code></li>
+<li><code>clear()</code></li>
+<li><code>contains(item)</code></li>
+<li><code>remove(item)</code></li>
+<li><code>indexOf(item)</code></li>
+<li><code>insert(index, item)</code></li>
+<li><code>removeAt(index)</code></li>
+<li><code>isEmpty</code></li>
+<li><code>addRange(collection)</code></li>
+<li><code>insertRange(index, collection)</code></li>
+<li><code>move(oldIndex, newIndex)</code></li>
+<li><code>removeAll(items)</code></li>
+<li><code>removeRange(index, count)</code></li>
+<li><code>sort(comparison: (a, b) =&gt; number)</code></li>
+<li><code>forEach(callbackfn: (value, index, array) =&gt; void, thisArg?)</code></li>
+<li><code>map(callbackfn: (value, index, array) =&gt; U, thisArg?)</code></li>
+<li><code>filter(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</code></li>
+<li><code>every(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</code></li>
+<li><code>some(callbackfn: (value, index, array) =&gt; boolean, thisArg?)</code></li>
+<li><code>reset()</code></li>
+<li><code>toArray()</code></li>
 </ul>
 
-<h2 id="subscribing-to-changes">Subscribing to Changes</h2>
+<h2>Subscribing to Changes</h2>
 
-<p><strong>Note:</strong> To display the contents of an observable-list in your UI you don’t have to subscribe to any observables exposed by a list because the <a href="/docs/forEach-binding.html">forEach-Binding</a> takes care of that for you.</p>
+<p><strong>Note:</strong> To display the contents of an observable-list in your UI you don&#39;t have to subscribe to any observables exposed by a list because the <a href="/docs/forEach-binding.html">forEach-Binding</a> takes care of that for you. </p>
 
-<p>WebRx’s observable-list provides several useful Observables that can be subscribed to in order to inform you about changes in the list, as well as providing you with notifications that happen before a list is about to change:</p>
+<p>WebRx&#39;s observable-list provides several useful Observables that can be subscribed to in order to inform you about changes in the list, as well as providing you with notifications that happen before a list is about to change:</p>
 
 <ul>
-  <li><code>itemsAdded</code> - signals when items are added</li>
-  <li><code>itemsRemoved</code> - signals when items are removed</li>
-  <li><code>itemsMoved</code> - signals when items are moved</li>
-  <li><code>beforeItemsAdded</code> - signals when items are about to be added</li>
-  <li><code>beforeItemsRemoved</code> - signals when items are about to be removed</li>
-  <li><code>beforeItemsMoved</code> - signals when items are about to be moved</li>
-  <li><code>countChanged</code> - signals when the number of items in the list changes for any reason</li>
-  <li><code>countChanging</code> - signals when the number of items in the list is about to change for any reason</li>
-  <li><code>listChanged</code> - signals all changes</li>
-  <li><code>listChanging</code> - signals all changes before they happen.</li>
-  <li><code>shouldReset</code> - signals that the observer should reread the entire list, as it has changed significantly</li>
+<li><code>itemsAdded</code> - signals when items are added</li>
+<li><code>itemsRemoved</code> - signals when items are removed</li>
+<li><code>itemsMoved</code> - signals when items are moved</li>
+<li><code>beforeItemsAdded</code> - signals when items are about to be added</li>
+<li><code>beforeItemsRemoved</code> - signals when items are about to be removed</li>
+<li><code>beforeItemsMoved</code> - signals when items are about to be moved</li>
+<li><code>countChanged</code> - signals when the number of items in the list changes for any reason</li>
+<li><code>countChanging</code> - signals when the number of items in the list is about to change for any reason</li>
+<li><code>listChanged</code> - signals all changes</li>
+<li><code>listChanging</code> - signals all changes before they happen.</li>
+<li><code>shouldReset</code> - signals that the observer should reread the entire list, as it has changed significantly</li>
 </ul>
 
-<h3 id="semantics-of-reset">Semantics of Reset</h3>
+<h3>Semantics of Reset</h3>
 
-<p>One thing that is particularly important to understand is the meaning of the <code>shouldReset</code> Observable. The meaning of this event is, <em>“This list has changed drastically, you should reread the contents”</em>. Many people conflate <code>reset</code> and <code>clear</code>, thinking that this means the list is now empty.</p>
+<p>One thing that is particularly important to understand is the meaning of the <code>shouldReset</code> Observable. The meaning of this event is, <em>&quot;This list has changed drastically, you should reread the contents&quot;</em>. Many people conflate <code>reset</code> and <code>clear</code>, thinking that this means the list is now empty.</p>
 
 <p>This is important, because if you only subscribe to <code>itemsAdded</code> and <code>itemsRemoved</code>, you will not be correctly tracking every item in the list. Lists will detect this scenario and attempt to warn you about it.</p>
 
-<h2 id="delaying-andor-suppressing-change-notifications">Delaying and/or suppressing change notifications</h2>
+<h2>Delaying and/or suppressing change notifications</h2>
 
-<p>Normally, an observable-list notifies its subscribers immediately, as soon as it’s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications.</p>
+<p>Normally, an observable-list notifies its subscribers immediately, as soon as it&#39;s changed. But if an list is changed repeatedly or triggers expensive updates, you may get better performance by limiting or delaying change notifications. </p>
 
-<p>This is accomplished calling the list’s <code>suppressChangeNotifications</code> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>    						<span class="c1">// Initially an empty array</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'Some value'</span><span class="p">);</span> 						<span class="c1">// Adds the value and notifies observers</span>
+<p>This is accomplished calling the list&#39;s <code>suppressChangeNotifications</code> method which returns a disposable. The list will resume sending change notifications, once the disposable is disposed.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>                           <span class="c1">// Initially an empty array</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some value&#39;</span><span class="p">);</span>                        <span class="c1">// Adds the value and notifies observers</span>
 <span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">suppressChangeNotifications</span><span class="p">();</span>
-<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'Some other value'</span><span class="p">);</span>					<span class="c1">// no notifications get send now</span>
-<span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>								<span class="c1">// list resumes sending change notifications</span>
-</code></pre>
-</div>
-
-<h2 id="a-idtopic-list-projectionsaprojections"><a id="topic-list-projections"></a>Projections</h2>
+<span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;Some other value&#39;</span><span class="p">);</span>                  <span class="c1">// no notifications get send now</span>
+<span class="nx">disp</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>                             <span class="c1">// list resumes sending change notifications</span>
+</code></pre></div>
+<h2><a id="topic-list-projections"></a>Projections</h2>
 
 <p>A projected observable list is a read-only view of of a source observable list that is automatically kept in sync with its source. 
 What makes projections useful is that list-projections can apply filtering, re-ordering and mapping operations on the fly.</p>
 
-<h4 id="properties-of-a-projection">Properties of a projection</h4>
+<h4>Properties of a projection</h4>
 
 <ul>
-  <li>A projection stays always in sync with the source list it was created from.</li>
-  <li>A projection can exclude items of its source by applying a filter function</li>
-  <li>A projection can be arbitrarily re-ordered</li>
-  <li>A projection can contain different item types than its source by applying a mapping function</li>
+<li>A projection stays always in sync with the source list it was created from.</li>
+<li>A projection can exclude items of its source by applying a filter function</li>
+<li>A projection can be arbitrarily re-ordered</li>
+<li>A projection can contain different item types than its source by applying a mapping function</li>
 </ul>
 
-<h3 id="creating-a-filtered-projection">Creating a filtered projection</h3>
+<h3>Creating a filtered projection</h3>
 
-<p>A projection of an observable list is created through the list’s <code>project</code> instance method.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">,</span> <span class="s2">"apu"</span><span class="p">]);</span>
+<p>A projection of an observable list is created through the list&#39;s <code>project</code> instance method.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;apu&quot;</span><span class="p">]);</span>
 
 <span class="kd">var</span> <span class="nx">iLikeRs</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">x</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"r"</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">x</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-<p>Here we’ve created a projection of <code>list</code> that only likes names containing an “r”. Converting <code>iLikeRs</code> to an array yields:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">iLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
-<span class="p">[</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">]</span>
-</code></pre>
-</div>
-<p>Let’s add another name to the source list and see what happens to the projection:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">"marge"</span><span class="p">);</span>
+</code></pre></div>
+<p>Here we&#39;ve created a projection of <code>list</code> that only likes names containing an &quot;r&quot;. Converting <code>iLikeRs</code> to an array yields:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">iLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
+<span class="p">[</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>Let&#39;s add another name to the source list and see what happens to the projection:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;marge&quot;</span><span class="p">);</span>
 
 <span class="nx">iLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
-<span class="p">[</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">,</span> <span class="s2">"marge"</span><span class="p">]</span>
-</code></pre>
-</div>
+<span class="p">[</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;marge&quot;</span><span class="p">]</span>
+</code></pre></div>
 <p>As expected the projection has picked the new entry added to the source.</p>
 
-<h3 id="creating-a-re-ordered-projection">Creating a re-ordered projection</h3>
+<h3>Creating a re-ordered projection</h3>
 
 <p>In addition to filtering its source, a projection can optionally be re-ordered:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 
 <span class="kd">var</span> <span class="nx">reverse</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span>
-	<span class="kc">null</span><span class="p">,</span>	<span class="c1">// no filter</span>
-	<span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nx">b</span> <span class="o">-</span> <span class="nx">a</span><span class="p">;</span>	<span class="c1">// reverse ordering</span>
-	<span class="p">}</span>
+    <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no filter</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">b</span> <span class="o">-</span> <span class="nx">a</span><span class="p">;</span>   <span class="c1">// reverse ordering</span>
+    <span class="p">}</span>
 <span class="p">);</span>
 
 <span class="nx">projection</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
 <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-</code></pre>
-</div>
+</code></pre></div>
 <p>Now the order is reversed.</p>
 
-<h3 id="creating-a-mapping-projection">Creating a mapping projection</h3>
+<h3>Creating a mapping projection</h3>
 
 <p>Sometimes it might be desirable to work with a projection that contains list items
 that differ from the items found in the source list. This scenario is also supported:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">"bart"</span><span class="p">,</span> <span class="s2">"homer"</span><span class="p">,</span> <span class="s2">"marge"</span><span class="p">]);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span><span class="s2">&quot;bart&quot;</span><span class="p">,</span> <span class="s2">&quot;homer&quot;</span><span class="p">,</span> <span class="s2">&quot;marge&quot;</span><span class="p">]);</span>
 
 <span class="kd">var</span> <span class="nx">iDontLikeRs</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span>
-	<span class="kc">null</span><span class="p">,</span>	<span class="c1">// no filter</span>
-	<span class="kc">null</span><span class="p">,</span>	<span class="c1">// no-orderer</span>
-	<span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="p">{</span> 
-			<span class="na">name</span><span class="p">:</span> <span class="nx">x</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> 
-		<span class="p">};</span>
-	<span class="p">}</span>
+    <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no filter</span>
+    <span class="kc">null</span><span class="p">,</span>   <span class="c1">// no-orderer</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> 
+            <span class="nx">name</span><span class="o">:</span> <span class="nx">x</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> 
+        <span class="p">};</span>
+    <span class="p">}</span>
 <span class="p">);</span>
 
 <span class="nx">iDontLikeRs</span><span class="p">.</span><span class="nx">toArray</span><span class="p">()</span>
-<span class="p">[{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"bat"</span> <span class="p">},</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"home"</span> <span class="p">},</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"mage"</span> <span class="p">}]</span>
-</code></pre>
-</div>
-<p>We’ve erased the “r” character from all names and have converted the result to an object.</p>
+<span class="p">[{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;bat&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;mage&quot;</span> <span class="p">}]</span>
+</code></pre></div>
+<p>We&#39;ve erased the &quot;r&quot; character from all names and have converted the result to an object.</p>
 
-<h3 id="manually-triggering-a-refresh">Manually triggering a refresh</h3>
+<h3>Manually triggering a refresh</h3>
 
 <p>Even though a projection tracks all changes to its source observable list, it is sometimes
 necessary to manually trigger a refresh on a projection. An example for this would be a filter function that behaves
@@ -385,17 +364,16 @@ differently depending on another condition.</p>
 <p>For this reason, the <code>project</code> accepts a fourth argument that can be any Rx.Observable. Whenever
 that observable produces a value, the projection will be re-filtered, re-ordered and optionally re-transformed.</p>
 
-<h3 id="live-example">Live Example</h3>
+<h3>Live Example</h3>
 
 <p>The <code>planetsToShow</code> projection used in this example filters the <code>planets</code> list to only include planets 
 of a user selected category.</p>
 
-<p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class="codepen">See the Pen <a href="http://codepen.io/oliverw/pen/xGKmKo/">WebRx - Animated collections example</a> by Oliver Weichhold (<a href="http://codepen.io/oliverw">@oliverw</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/xGKmKo/'>WebRx - Animated collections example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 <p><a class="next-topic" href="/docs/commands.html">Next: Commands</a></p>
 
-<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
-
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 </div>
         </div>
     </div>
@@ -419,9 +397,7 @@ of a user selected category.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

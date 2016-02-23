@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,66 +192,57 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="the-stateactive-binding">The stateActive-Binding</h1>
+            <div class="body"><h1>The stateActive-Binding</h1>
 
-<p>The stateActive-binding (short form <code>sactive</code>) tests if the <a href="/docs/routing-overview.html">router’s</a> current state matches its own configuration
+<p>The stateActive-binding (short form <code>sactive</code>) tests if the <a href="/docs/routing-overview.html">router&#39;s</a> current state matches its own configuration
 and add a CSS-Class to its target element if the test succeeds or otherwise remove the class. By default the binding will use
 the class name <code>active</code>.</p>
 
-<p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the active state’s menu 
+<p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the active state&#39;s menu 
 button appear different, distinguishing it from the inactive items.</p>
 
 <p><strong>Aliases:</strong> <code>sactive</code>, <code>stateActive</code> and <code>stateactive</code></p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"sref: 'contacts', sactive: 'contacts'"</span><span class="nt">&gt;</span>Contacts<span class="nt">&lt;/a&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"home"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"home"</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">&quot;sref: &#39;contacts&#39;, sactive: &#39;contacts&#39;&quot;</span><span class="nt">&gt;</span>Contacts<span class="nt">&lt;/a&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span>
     <span class="p">}</span>
 <span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
-    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list"</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
+    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list&quot;</span>
     <span class="p">}</span>
 <span class="p">})</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">"home"</span><span class="p">);</span>
-</code></pre>
-</div>
-
+<span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">&quot;home&quot;</span><span class="p">);</span>
+</code></pre></div>
 <p>The anchor will not bear the <code>active</code> class because the state does not match.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">"contacts"</span><span class="p">);</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">&quot;contacts&quot;</span><span class="p">);</span>
+</code></pre></div>
 <p>Now, the anchor will bear the <code>active</code> class because the state matches.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h2>Parameters</h2>
 
 <p>There are two ways to use the sactive-binding:</p>
 
-<h3 id="shorthand-syntax">Shorthand syntax</h3>
+<h3>Shorthand syntax</h3>
 
-<p>If you pass just a string, it is interpreted as a state name. The state-name will be substring-matched against the Router’s
+<p>If you pass just a string, it is interpreted as a state name. The state-name will be substring-matched against the Router&#39;s
 current state.</p>
 
-<h3 id="full-syntax">Full syntax</h3>
+<h3>Full syntax</h3>
 
 <p>Alternatively, pass an object with the following properties:</p>
 
 <ul>
-  <li><code>name</code> — the name of a state</li>
-  <li><code>params</code> — an object that will have each of its properties compared against the router’s current state-params</li>
-  <li><code>cssClass</code> - the name of one or more whitespace separated css-classes to apply to the element when the current router-state matches the binding’s own configuration</li>
+<li><code>name</code> — the name of a state</li>
+<li><code>params</code> — an object that will have each of its properties compared against the router&#39;s current state-params</li>
+<li><code>cssClass</code> - the name of one or more whitespace separated css-classes to apply to the element when the current router-state matches the binding&#39;s own configuration</li>
 </ul>
 
 <p><a class="next-topic" href="/docs/dependency-injection-overview.html">Next: Dependency Injection</a></p>
@@ -281,9 +269,7 @@ current state.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

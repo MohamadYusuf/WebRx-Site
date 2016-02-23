@@ -29,13 +29,10 @@
         <!-- Web Fonts -->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
 
-        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
 
 
-        <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -195,7 +192,7 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1 id="the-keypress-binding">The KeyPress-Binding</h1>
+            <div class="body"><h1>The KeyPress-Binding</h1>
 
 <p>The keyPress binding allows you to associate a handler function or a <a href="/docs/commands.html">command</a> with a single or multiple
 key combinations. Whenever the user presses any of the specified key-combinations while the target element or any of its descendants
@@ -203,57 +200,52 @@ has the input focus, the keyPress-Binding will execute the specified handler.</p
 
 <p>One of the many use-cases for the keyPress-Binding is to associate hotkeys with <a href="/docs/commands.html">commands</a>.</p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"keyPress: { 'enter': method1, 'esc alt-q': command1 }"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;div&gt;</span>
-			<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'text'</span><span class="nt">/&gt;</span>
-		<span class="nt">&lt;/div&gt;</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;keyPress: { &#39;enter&#39;: method1, &#39;esc alt-q&#39;: command1 }&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;text&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
 <span class="kd">function</span> <span class="nx">ViewModel</span><span class="p">()</span> <span class="p">{</span>
-	<span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">method1</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">"I'm a method"</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">&quot;I&#39;m a method&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">command1</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">"I'm a command"</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handlerType</span><span class="p">(</span><span class="s2">&quot;I&#39;m a command&quot;</span><span class="p">);</span>
     <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">ViewModel</span><span class="p">());</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
-
-<p>In this example the <kbd>Enter</kbd> key gets bound to the view-model’s <code>method1</code> function
+</code></pre></div>
+<p>In this example the <kbd>Enter</kbd> key gets bound to the view-model&#39;s <code>method1</code> function
 while either <kbd>Escape</kbd> or <kbd>Alt+Q</kbd> can be pressed to invoke <code>command1</code>.</p>
 
 <div class="panel panel-default" id="keypress-example1">
-	<div class="panel-heading">
-    	<h3 class="panel-title">Try it</h3>
-  	</div>
-	<div class="panel-body">
-		<div>
-			<div data-bind="keyPress: { 'enter': method1, 'esc alt-q': command1 }">
-				<div>
-					<input type="text" />&nbsp;&nbsp;<b data-bind="text: handlerType"></b>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="panel-heading">
+        <h3 class="panel-title">Try it</h3>
+    </div>
+    <div class="panel-body">
+        <div>
+            <div data-bind="keyPress: { 'enter': method1, 'esc alt-q': command1 }">
+                <div>
+                    <input type='text'/>&nbsp;&nbsp;<b data-bind="text: handlerType"></b>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+  
 
 <script type="text/javascript">
     function ViewModel() {
-		this.handlerType = wx.property();
+        this.handlerType = wx.property();
 
         this.method1 = function() {
             this.handlerType("I'm a method");
@@ -267,47 +259,45 @@ while either <kbd>Escape</kbd> or <kbd>Alt+Q</kbd> can be pressed to invoke <cod
     wx.applyBindings(new ViewModel(), document.getElementById('keypress-example1'));
 </script>
 
-<h2 id="parameters">Parameters</h2>
+<h2>Parameters</h2>
 
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
-<p>You should pass a JavaScript object in which the property names correspond to one or more key combination and the values correspond to a handler.</p>
+<p>You should pass a JavaScript object in which the property names correspond to one or more key combination and the values correspond to a handler. </p>
 
-<h4 id="key-combinations">Key combinations</h4>
+<h4>Key combinations</h4>
 
 <p>A key-combination consist of the following components which must be separated by a minus sign:</p>
 
 <ul>
-  <li>An optional qualifier such as <kbd>Alt</kbd>, <kbd>Shift</kbd> or <kbd>Meta</kbd> (ctrl)</li>
-  <li>A key identifier which can be:
-    <ul>
-      <li>A character such as <kbd>q</kbd> or <kbd>a</kbd></li>
-      <li>A numeric keycode such as <code>13</code></li>
-      <li>One of the following named keys: <code>backspace</code>, <code>tab</code>, <code>enter</code>, <code>esc</code>, 
-  <code>space</code>, <code>pageup</code>, <code>pagedown</code>, <code>end</code>, <code>home</code>, 
-  <code>left</code>, <code>up</code>, <code>right</code>, <code>down</code>, <code>insert</code>, <code>delete</code></li>
-    </ul>
-  </li>
+<li>An optional qualifier such as <kbd>Alt</kbd>, <kbd>Shift</kbd> or <kbd>Meta</kbd> (ctrl)</li>
+<li>A key identifier which can be:
+
+<ul>
+<li>A character such as <kbd>q</kbd> or <kbd>a</kbd></li>
+<li>A numeric keycode such as <code>13</code></li>
+<li>One of the following named keys: <code>backspace</code>, <code>tab</code>, <code>enter</code>, <code>esc</code>, 
+<code>space</code>, <code>pageup</code>, <code>pagedown</code>, <code>end</code>, <code>home</code>, 
+<code>left</code>, <code>up</code>, <code>right</code>, <code>down</code>, <code>insert</code>, <code>delete</code></li>
+</ul></li>
 </ul>
 
 <p>You may assign multiple key combinations to a handler by separating them with whitespace characters.</p>
 
-<h4 id="handlers">Handlers</h4>
+<h4>Handlers</h4>
 
 <ul>
-  <li>
-    <p>A function that will be invoked when the event fires.</p>
+<li><p>A function that will be invoked when the event fires. </p>
 
-    <p><strong>Note</strong>: When invoking the function, the binding will adjust <code>this</code> to point to your view-model and pass the current <a href="/docs/binding-context.html">binding-context</a> 
-as first argument</p>
-  </li>
-  <li>A <a href="/docs/commands.html">command</a> that will be executed when one of the specified key-combinations is pressed</li>
-  <li>An object with the following properties:
-    <ul>
-      <li><code>command</code>: <a href="/docs/commands.html">command</a> that will be executed when one of specified key-combinations is pressed.</li>
-      <li><code>parameter</code>: The parameter to pass to the command’s <code>execute</code> method</li>
-    </ul>
-  </li>
+<p><strong>Note</strong>: When invoking the function, the binding will adjust <code>this</code> to point to your view-model and pass the current <a href="/docs/binding-context.html">binding-context</a> 
+as first argument</p></li>
+<li><p>A <a href="/docs/commands.html">command</a> that will be executed when one of the specified key-combinations is pressed</p></li>
+<li><p>An object with the following properties:</p>
+
+<ul>
+<li><code>command</code>: <a href="/docs/commands.html">command</a> that will be executed when one of specified key-combinations is pressed.</li>
+<li><code>parameter</code>: The parameter to pass to the command&#39;s <code>execute</code> method</li>
+</ul></li>
 </ul>
 
 <p><a class="next-topic" href="/docs/event-binding.html">Next: The Event-Binding</a></p>
@@ -334,9 +324,7 @@ as first argument</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
         </script>
 
-        <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
         <script>

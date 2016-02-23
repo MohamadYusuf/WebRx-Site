@@ -1,5 +1,5 @@
 name: WebRx
-markdown: kramdown
+markdown: redcarpet
 highliter: rouge
 permalinks: pretty
 destination: .build
