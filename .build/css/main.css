@@ -5514,6 +5514,11 @@ code {
   padding-left: 0;
   list-style: none; }
 
+.docs .body .highlight {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #f0f0f0; }
+
 #features,
 #install {
   padding-left: 0; }
