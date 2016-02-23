@@ -26,18 +26,19 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
+        <!-- Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
+
         <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
 <link rel='stylesheet' type='text/css' href='/css/syntax.css' />
 <link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
-<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
-<link rel='stylesheet' type='text/css' href='/css/material.css' />
-<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
-<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
         <script type='text/javascript' src='/js/rx.all.min.js'></script>
 <script type='text/javascript' src='/js/web.rx.js'></script>
 
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
       </head>
     <body>
         <h1 id="logoh1">WebRx - The stateActive-Binding</h1>
@@ -89,7 +90,7 @@
                     <li><a href="../docs/binding-context.html">The binding context</a></li>
                 </ul>
 
-                <h3>Core Components</h3>
+                <h3>Building Blocks</h3>
                 <ul>
                     <li><a href="../docs/observable-properties.html">Observable Properties</a></li>
                     <li><a href="../docs/output-properties.html">Output Properties</a></li>
@@ -132,14 +133,10 @@
                     <li><a href="../docs/selected-value-binding.html">The <code>selectedValue</code> binding</a></li>
                 </ul>
 
-                <!--
-                <h3>Creating custom bindings</h3>
+                <h3>Custom bindings</h3>
                 <ul>
                     <li><a href="../docs/custom-bindings.html">Creating custom bindings</a></li>
-                    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html">Controlling descendant bindings</a></li>
-                    <li><a href="../docs/custom-bindings-disposal.html">Custom disposal logic</a></li>
                 </ul>
-                -->
 
                 <h3>Components</h3>
                 <ul>
@@ -198,20 +195,24 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The stateActive-Binding</h1>
+            <div class="body"><h1 id="the-stateactive-binding">The stateActive-Binding</h1>
 
-<p>The stateActive-binding (short form <code>sactive</code>) tests if the <a href="/docs/routing-overview.html">router&#39;s</a> current state matches its own configuration
+<p>The stateActive-binding (short form <code>sactive</code>) tests if the <a href="/docs/routing-overview.html">router’s</a> current state matches its own configuration
 and add a CSS-Class to its target element if the test succeeds or otherwise remove the class. By default the binding will use
 the class name <code>active</code>.</p>
 
-<p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the active state&#39;s menu 
+<p>The primary use-case is to simplify the special appearance of navigation menus relying on routing-state, by having the active state’s menu 
 button appear different, distinguishing it from the inactive items.</p>
 
 <p><strong>Aliases:</strong> <code>sactive</code>, <code>stateActive</code> and <code>stateactive</code></p>
 
-<h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"sref: 'contacts', sactive: 'contacts'"</span><span class="nt">&gt;</span>Contacts<span class="nt">&lt;/a&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+<h2 id="example">Example</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"sref: 'contacts', sactive: 'contacts'"</span><span class="nt">&gt;</span>Contacts<span class="nt">&lt;/a&gt;</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
     <span class="na">name</span><span class="p">:</span> <span class="s2">"home"</span><span class="p">,</span>
     <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"home"</span>
@@ -226,29 +227,34 @@ button appear different, distinguishing it from the inactive items.</p>
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">"home"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>The anchor will not bear the <code>active</code> class because the state does not match.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">"contacts"</span><span class="p">);</span>
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">"contacts"</span><span class="p">);</span>
+</code></pre>
+</div>
+
 <p>Now, the anchor will bear the <code>active</code> class because the state matches.</p>
 
-<h2>Parameters</h2>
+<h2 id="parameters">Parameters</h2>
 
 <p>There are two ways to use the sactive-binding:</p>
 
-<h3>Shorthand syntax</h3>
+<h3 id="shorthand-syntax">Shorthand syntax</h3>
 
-<p>If you pass just a string, it is interpreted as a state name. The state-name will be substring-matched against the Router&#39;s
+<p>If you pass just a string, it is interpreted as a state name. The state-name will be substring-matched against the Router’s
 current state.</p>
 
-<h3>Full syntax</h3>
+<h3 id="full-syntax">Full syntax</h3>
 
 <p>Alternatively, pass an object with the following properties:</p>
 
 <ul>
-<li><code>name</code> — the name of a state</li>
-<li><code>params</code> — an object that will have each of its properties compared against the router&#39;s current state-params</li>
-<li><code>cssClass</code> - the name of one or more whitespace separated css-classes to apply to the element when the current router-state matches the binding&#39;s own configuration</li>
+  <li><code>name</code> — the name of a state</li>
+  <li><code>params</code> — an object that will have each of its properties compared against the router’s current state-params</li>
+  <li><code>cssClass</code> - the name of one or more whitespace separated css-classes to apply to the element when the current router-state matches the binding’s own configuration</li>
 </ul>
 
 <p><a class="next-topic" href="/docs/dependency-injection-overview.html">Next: Dependency Injection</a></p>
@@ -258,20 +264,16 @@ current state.</p>
 </div>
 
 
-            <div id="footer" class="content-panel">
-                <div class="row">
-                  <div class="copyright col-md-4">
-                    Copyright (c) 2015 WebRxJS.org
-                  </div>
-
-                  <div class="copyright col-md-4">
-                  </div>
-
-                  <div class="copyright col-md-4 text-right">
-                    <a id="impressum" href="/impressum.html">Impressum</a>
-                  </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row upper-section">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            Copyright (c) 2015 WebRxJS.org
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </footer>
+
         </div>
 
         <script type='text/javascript'>
@@ -281,8 +283,6 @@ current state.</p>
 
         <script type='text/javascript' src='/js/jquery.js'></script>
 <script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/ripples.min.js'></script>
-<script type='text/javascript' src='/js/material.min.js'></script>
 <script type='text/javascript' src='/js/default.js'></script>
 
 

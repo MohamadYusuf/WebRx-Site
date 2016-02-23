@@ -26,18 +26,19 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
+        <!-- Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
+
         <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
 <link rel='stylesheet' type='text/css' href='/css/syntax.css' />
 <link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
-<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
-<link rel='stylesheet' type='text/css' href='/css/material.css' />
-<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
-<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
         <script type='text/javascript' src='/js/rx.all.min.js'></script>
 <script type='text/javascript' src='/js/web.rx.js'></script>
 
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
       </head>
     <body>
         <h1 id="logoh1">WebRx - Documentation</h1>
@@ -89,7 +90,7 @@
                     <li><a href="../docs/binding-context.html">The binding context</a></li>
                 </ul>
 
-                <h3>Core Components</h3>
+                <h3>Building Blocks</h3>
                 <ul>
                     <li><a href="../docs/observable-properties.html">Observable Properties</a></li>
                     <li><a href="../docs/output-properties.html">Output Properties</a></li>
@@ -132,14 +133,10 @@
                     <li><a href="../docs/selected-value-binding.html">The <code>selectedValue</code> binding</a></li>
                 </ul>
 
-                <!--
-                <h3>Creating custom bindings</h3>
+                <h3>Custom bindings</h3>
                 <ul>
                     <li><a href="../docs/custom-bindings.html">Creating custom bindings</a></li>
-                    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html">Controlling descendant bindings</a></li>
-                    <li><a href="../docs/custom-bindings-disposal.html">Custom disposal logic</a></li>
                 </ul>
-                -->
 
                 <h3>Components</h3>
                 <ul>
@@ -198,90 +195,102 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>Introduction</h1>
+            <div class="body"><h1 id="introduction">Introduction</h1>
 
 <p>HTML is great for declaring static documents, but it falters when we try to use it for declaring dynamic views in web-applications. WebRx 
 lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop.</p>
 
-<h2>Building Blocks</h2>
+<h2 id="building-blocks">Building Blocks</h2>
 
 <p>WebRx is built around these core concepts:</p>
 
 <ul>
-<li>View-Models using <a href="/docs/observable-properties.html">Observable Properties</a> and <a href="/docs/commands.html">Commands</a> implemented using <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/what.md">RxJS-Observables</a></li>
-<li>Templates with <a href="/docs/binding-syntax.html">declarative Two-Way Bindings</a></li>
-<li><a href="/docs/component-overview.html">Components</a> for composing View-Models and Templates into self-contained, reusable chunks</li>
-<li>Client-Side <a href="/docs/routing-overview.html">Routing</a></li>
+  <li>View-Models using <a href="/docs/observable-properties.html">Observable Properties</a> and <a href="/docs/commands.html">Commands</a> implemented using <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/what.md">RxJS-Observables</a></li>
+  <li>Templates with <a href="/docs/binding-syntax.html">declarative Two-Way Bindings</a></li>
+  <li><a href="/docs/component-overview.html">Components</a> for composing View-Models and Templates into self-contained, reusable chunks</li>
+  <li>Client-Side <a href="/docs/routing-overview.html">Routing</a></li>
 </ul>
 
-<h3>Observables &amp; Functional-Reactive-Programming</h3>
+<h3 id="observables--functional-reactive-programming">Observables &amp; Functional-Reactive-Programming</h3>
 
-<p>If your are not familiar with Functional-Reactive-Programming (FRP) you might ask yourself: <em>What is FRP and do I need a degree in it to use this framework?</em> </p>
+<p>If your are not familiar with Functional-Reactive-Programming (FRP) you might ask yourself: <em>What is FRP and do I need a degree in it to use this framework?</em></p>
 
 <p>The answer to the first question goes beyond the scope of this document. Fortunately <a href="https://twitter.com/andrestaltz">André Staltz</a> has written an excellent introduction to FRP which can be found <a href="https://gist.github.com/staltz/868e7e9bc2a7b8c1f754">here</a>.</p>
 
-<p>The answer to the second question is <strong>no</strong>. Nonetheless, a basic understanding of the principles of reactive-programming is the key to unleashing the true power of the framework, instead of merely scratching the surface. </p>
+<p>The answer to the second question is <strong>no</strong>. Nonetheless, a basic understanding of the principles of reactive-programming is the key to unleashing the true power of the framework, instead of merely scratching the surface.</p>
 
-<h3><a id="topic-mvvm-intro"></a>MVVM and View-Models</h3>
+<h3 id="a-idtopic-mvvm-introamvvm-and-view-models"><a id="topic-mvvm-intro"></a>MVVM and View-Models</h3>
 
-<p>Let&#39;s take a minute to examine the MVVM pattern and the concept of a view model.</p>
+<p>Let’s take a minute to examine the MVVM pattern and the concept of a view model.</p>
 
 <p>Model-View-View Model (MVVM) is a design pattern for building user interfaces. It describes how you can keep a 
 potentially sophisticated UI simple by splitting it into three parts:</p>
 
 <ul>
-<li><strong>A model:</strong> your application&#39;s stored data. This data represents objects and operations in your business domain 
+  <li><strong>A model:</strong> your application’s stored data. This data represents objects and operations in your business domain 
 (e.g., bank accounts that can perform money transfers) and is independent of any UI. When using WebRx, 
 you will usually make Ajax calls to some server-side code to read and write this stored model data.</li>
-<li><strong>A view model:</strong> a pure-code representation of the data and operations on a UI. For example, 
-if you&#39;re implementing a list editor, your view model would be an object holding a list of items, 
+  <li><strong>A view model:</strong> a pure-code representation of the data and operations on a UI. For example, 
+if you’re implementing a list editor, your view model would be an object holding a list of items, 
 and exposing methods to add and remove items.
-Note that this is not the UI itself: it doesn&#39;t have any concept of buttons or display styles. 
-It&#39;s not the persisted data model either - it holds the unsaved data the user is working with. 
+Note that this is not the UI itself: it doesn’t have any concept of buttons or display styles. 
+It’s not the persisted data model either - it holds the unsaved data the user is working with. 
 When using WebRx, your view models are pure JavaScript objects that hold no knowledge of HTML. 
 Keeping the view model abstract in this way lets it stay simple, so you can manage more 
 sophisticated behaviors without getting lost.</li>
-<li><strong>A view:</strong> a visible, interactive UI representing the state of the view model. It displays information 
+  <li><strong>A view:</strong> a visible, interactive UI representing the state of the view model. It displays information 
 from the view model, sends commands to the view model (e.g., when the user clicks buttons), and updates 
 whenever the state of the view model changes.</li>
 </ul>
 
-<h3>MVVM in WebRx</h3>
+<h3 id="mvvm-in-webrx">MVVM in WebRx</h3>
 
 <p>When using WebRx, your view is simply your HTML document with declarative bindings to link it to the view model. 
 Alternatively, you can use templates that generate HTML using data from your view model.</p>
 
 <p>To create a view model with WebRx, just declare any JavaScript object. For example,</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">personName</span><span class="p">:</span> <span class="s1">'Bob'</span><span class="p">,</span>
     <span class="na">personAge</span><span class="p">:</span> <span class="mi">123</span>
 <span class="p">};</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>You can then create a very simple view of this view model using a declarative binding. For example, 
 the following markup displays the personName value:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div>
-<h2>Activating WebRx</h2>
 
-<p>The data-bind attribute isn&#39;t native to HTML, though it is perfectly OK (it&#39;s strictly compliant in HTML 5, 
-and causes no problems with HTML 4 even though a validator will point out that it&#39;s an unrecognized attribute). 
-But since the browser doesn&#39;t know what it means, you need to activate WebRx to make it take effect.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="activating-webrx">Activating WebRx</h2>
+
+<p>The data-bind attribute isn’t native to HTML, though it is perfectly OK (it’s strictly compliant in HTML 5, 
+and causes no problems with HTML 4 even though a validator will point out that it’s an unrecognized attribute). 
+But since the browser doesn’t know what it means, you need to activate WebRx to make it take effect.</p>
 
 <p>To activate WebRx, add the following line to a script block:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="nx">myViewModel</span><span class="p">);</span>
-</code></pre></div>
-<p>You can either put the script block at the bottom of your HTML document, or you can put it at the top and wrap the 
-contents in a DOM-ready handler such as jQuery&#39;s $ function.</p>
 
-<p>That does it! Now, your view will display as if you&#39;d written the following HTML:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span&gt;</span>Bob<span class="nt">&lt;/span&gt;</span>
-</code></pre></div>
-<p>In case you&#39;re wondering what the parameters to <code>wx.applyBindings</code> do,</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="nx">myViewModel</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>You can either put the script block at the bottom of your HTML document, or you can put it at the top and wrap the 
+contents in a DOM-ready handler such as jQuery’s $ function.</p>
+
+<p>That does it! Now, your view will display as if you’d written the following HTML:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>The name is <span class="nt">&lt;span&gt;</span>Bob<span class="nt">&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<p>In case you’re wondering what the parameters to <code>wx.applyBindings</code> do,</p>
 
 <ul>
-<li>The first parameter says what view model object you want to use with the declarative bindings it activates.</li>
-<li>Optionally, you can pass a second parameter which defines which part of the document you want to search 
-for data-bind attributes. For example, <code>wx.applyBindings(myViewModel, document.getElementById(&#39;someElementId&#39;))</code>. 
+  <li>The first parameter says what view model object you want to use with the declarative bindings it activates.</li>
+  <li>Optionally, you can pass a second parameter which defines which part of the document you want to search 
+for data-bind attributes. For example, <code>wx.applyBindings(myViewModel, document.getElementById('someElementId'))</code>. 
 This restricts the activation to the element with ID someElementId and its descendants, which is useful if you 
 want to have multiple view models and associate each with a different region of the page.</li>
 </ul>
@@ -295,20 +304,16 @@ want to have multiple view models and associate each with a different region of 
 </div>
 
 
-            <div id="footer" class="content-panel">
-                <div class="row">
-                  <div class="copyright col-md-4">
-                    Copyright (c) 2015 WebRxJS.org
-                  </div>
-
-                  <div class="copyright col-md-4">
-                  </div>
-
-                  <div class="copyright col-md-4 text-right">
-                    <a id="impressum" href="/impressum.html">Impressum</a>
-                  </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row upper-section">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            Copyright (c) 2015 WebRxJS.org
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </footer>
+
         </div>
 
         <script type='text/javascript'>
@@ -318,8 +323,6 @@ want to have multiple view models and associate each with a different region of 
 
         <script type='text/javascript' src='/js/jquery.js'></script>
 <script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/ripples.min.js'></script>
-<script type='text/javascript' src='/js/material.min.js'></script>
 <script type='text/javascript' src='/js/default.js'></script>
 
 

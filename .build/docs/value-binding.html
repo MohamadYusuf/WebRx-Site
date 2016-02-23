@@ -26,18 +26,19 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
+        <!-- Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
+
         <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
 <link rel='stylesheet' type='text/css' href='/css/syntax.css' />
 <link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
-<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
-<link rel='stylesheet' type='text/css' href='/css/material.css' />
-<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
-<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
         <script type='text/javascript' src='/js/rx.all.min.js'></script>
 <script type='text/javascript' src='/js/web.rx.js'></script>
 
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
       </head>
     <body>
         <h1 id="logoh1">WebRx - The Value-Binding</h1>
@@ -89,7 +90,7 @@
                     <li><a href="../docs/binding-context.html">The binding context</a></li>
                 </ul>
 
-                <h3>Core Components</h3>
+                <h3>Building Blocks</h3>
                 <ul>
                     <li><a href="../docs/observable-properties.html">Observable Properties</a></li>
                     <li><a href="../docs/output-properties.html">Output Properties</a></li>
@@ -132,14 +133,10 @@
                     <li><a href="../docs/selected-value-binding.html">The <code>selectedValue</code> binding</a></li>
                 </ul>
 
-                <!--
-                <h3>Creating custom bindings</h3>
+                <h3>Custom bindings</h3>
                 <ul>
                     <li><a href="../docs/custom-bindings.html">Creating custom bindings</a></li>
-                    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html">Controlling descendant bindings</a></li>
-                    <li><a href="../docs/custom-bindings-disposal.html">Custom disposal logic</a></li>
                 </ul>
-                -->
 
                 <h3>Components</h3>
                 <ul>
@@ -198,52 +195,55 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The Value-Binding</h1>
+            <div class="body"><h1 id="the-value-binding">The Value-Binding</h1>
 
-<p>The value binding links the associated DOM element&#39;s value with a property on your view model. 
+<p>The value binding links the associated DOM element’s value with a property on your view model. 
 This is typically useful with form elements such as <code>input</code>, <code>select</code> and <code>textarea</code>.</p>
 
 <p>When the user edits the value in the associated form control, it updates the value on your view model. 
 Likewise, when you update the value in your view model, this updates the value of the form control on screen.</p>
 
-<p>Note: If you&#39;re working with checkboxes or radio buttons, use the <a href="/docs/checked-binding.html">checked binding</a> to read and 
-write your element&#39;s <code>checked</code> state, not the value binding.</p>
+<p>Note: If you’re working with checkboxes or radio buttons, use the <a href="/docs/checked-binding.html">checked binding</a> to read and 
+write your element’s <code>checked</code> state, not the value binding.</p>
 
-<h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Login name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">"value: @userName"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+<h2 id="example">Example</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>Login name: <span class="nt">&lt;input</span> <span class="na">data-bind=</span><span class="s">"value: @userName"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;p&gt;</span>Password: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">data-bind=</span><span class="s">"value: @userPassword"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
-
+ 
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
         <span class="na">userName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">""</span><span class="p">),</span>        <span class="c1">// Initially blank</span>
         <span class="na">userPassword</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">),</span> <span class="c1">// Prepopulate</span>
     <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
-<h2>Parameters</h2>
+</code></pre>
+</div>
 
-<h3>Main parameter</h3>
+<h2 id="parameters">Parameters</h2>
 
-<p>The binding sets the element&#39;s <code>value</code> property to your parameter value. Any previous value will be overwritten.</p>
+<h3 id="main-parameter">Main parameter</h3>
+
+<p>The binding sets the element’s <code>value</code> property to your parameter value. Any previous value will be overwritten.</p>
 
 <p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the <code>@</code>-operator),
-the binding will update the element&#39;s value whenever the value changes and vice-versa.
-If the parameter something else, it will only set the element&#39;s value once and will not update it again later.</p>
+the binding will update the element’s value whenever the value changes and vice-versa.
+If the parameter something else, it will only set the element’s value once and will not update it again later.</p>
 
 <p>If you supply something other than a number or a string (e.g., you pass an object or an array), 
-the displayed text will be equivalent to <code>yourParameter.toString()</code> (that&#39;s usually not very useful, 
-so it&#39;s best to supply string or numeric values).</p>
+the displayed text will be equivalent to <code>yourParameter.toString()</code> (that’s usually not very useful, 
+so it’s best to supply string or numeric values).</p>
 
 <p>Whenever the user edits the value in the associated form control, the binding will update the property 
 on your view model. The binding will always attempt to update your view model when the value has been 
 modified and a user transfers focus to another DOM node.</p>
 
-<h2>Getting value updates instantly from inputs</h2>
+<h2 id="getting-value-updates-instantly-from-inputs">Getting value updates instantly from inputs</h2>
 
-<p>If you are trying to bind an <code>input type=&quot;text&quot;</code> or <code>textarea</code> to get instant updates to your viewmodel, 
+<p>If you are trying to bind an <code>input type="text"</code> or <code>textarea</code> to get instant updates to your viewmodel, 
 use the the <a href="/docs/textinput-binding.html">textInput binding</a>.</p>
 
-<h2>Working with drop-down lists (i.e., <code>select</code> elements)</h2>
+<h2 id="working-with-drop-down-lists-ie-codeselectcode-elements">Working with drop-down lists (i.e., <code>select</code> elements)</h2>
 
 <p>WebRx has special support for drop-down lists (i.e., <code>select</code> elements) in form of the <a href="/docs/selected-value-binding.html">selectedValue-binding</a>.</p>
 
@@ -254,20 +254,16 @@ use the the <a href="/docs/textinput-binding.html">textInput binding</a>.</p>
 </div>
 
 
-            <div id="footer" class="content-panel">
-                <div class="row">
-                  <div class="copyright col-md-4">
-                    Copyright (c) 2015 WebRxJS.org
-                  </div>
-
-                  <div class="copyright col-md-4">
-                  </div>
-
-                  <div class="copyright col-md-4 text-right">
-                    <a id="impressum" href="/impressum.html">Impressum</a>
-                  </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row upper-section">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            Copyright (c) 2015 WebRxJS.org
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </footer>
+
         </div>
 
         <script type='text/javascript'>
@@ -277,8 +273,6 @@ use the the <a href="/docs/textinput-binding.html">textInput binding</a>.</p>
 
         <script type='text/javascript' src='/js/jquery.js'></script>
 <script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/ripples.min.js'></script>
-<script type='text/javascript' src='/js/material.min.js'></script>
 <script type='text/javascript' src='/js/default.js'></script>
 
 

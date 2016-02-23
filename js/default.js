@@ -50,8 +50,6 @@ if(document.location.pathname === '/') {
     });
 }
 
-$.material.init();
-
 // add a few globally available transition
 wx.app.animation("fadein", wx.animation("fadein", "run"));
 wx.app.animation("fadeout", wx.animation("fadeout", "run"));

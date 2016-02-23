@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>WebRx - Custom Bindings</title>
+
+        <meta property="og:type" content="website" /> 
+        <meta property="og:title" content="WebRx - Custom Bindings" /> 
+        <meta property="og:site_name" content="WebRx"/>         
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+        <!-- Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
+
+        <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+
+
+        <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
+
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
+      </head>
+    <body>
+        <h1 id="logoh1">WebRx - Custom Bindings</h1>
+        <div id="main-container" class="container">
+            <nav class="navbar navbar-white">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" title="WebRx" href="/"><img src="/images/Logo.png" height="28"/>
+                            <h3>WebRx</h3></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/examples">Examples</a></li>
+                            <li><a href="/docs/getting-started.html">Documentation</a></li>
+
+                            <li><a href="https://github.com/WebRxJS/WebRx"><i class="fa fa-github"></i> Source</a></li>
+                            <li id="news"><a target="_blank" href="https://twitter.com/webrxjs"><i class="fa fa-twitter"></i> News</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+          <style>
+     .content-panel {
+         padding: 15px;
+     }
+</style>
+
+<div class="content-panel docs syntax-theme-grey">
+    <div class="row">
+        <div class="col-md-3">
+            <div id="doc-index" class="index">
+                <h3>Getting started</h3>
+                <ul>
+                    <li><a href="../docs/getting-started.html">Getting Started</a></li>
+                    <li><a href="../docs/index.html">Introduction</a></li>
+                </ul>
+
+                <h3>Binding syntax</h3>
+                <ul>
+                    <li><a href="../docs/binding-syntax.html">The <code>data-bind</code> syntax</a></li>
+                    <li><a href="../docs/binding-context.html">The binding context</a></li>
+                </ul>
+
+                <h3>Building Blocks</h3>
+                <ul>
+                    <li><a href="../docs/observable-properties.html">Observable Properties</a></li>
+                    <li><a href="../docs/output-properties.html">Output Properties</a></li>
+                    <li><a href="../docs/observable-lists.html">Observable Lists</a></li>
+                    <li><a href="../docs/commands.html">Commands</a></li>
+                </ul>
+
+                <h3>Bindings</h3>
+
+                <h4>Controlling text and appearance</h4>
+                <ul>
+                    <li><a href="../docs/visible-binding.html">The <code>visible</code> binding</a></li>
+                    <li><a href="../docs/hidden-binding.html">The <code>hidden</code> binding</a></li>
+                    <li><a href="../docs/text-binding.html">The <code>text</code> binding</a></li>
+                    <li><a href="../docs/html-binding.html">The <code>html</code> binding</a></li>
+                    <li><a href="../docs/css-binding.html">The <code>css</code> binding</a></li>
+                    <li><a href="../docs/style-binding.html">The <code>style</code> binding</a></li>
+                    <li><a href="../docs/attr-binding.html">The <code>attr</code> binding</a></li>
+                </ul>
+
+                <h4>Control flow</h4>
+                <ul>
+                    <li><a href="../docs/foreach-binding.html">The <code>foreach</code> binding</a></li>
+                    <li><a href="../docs/if-binding.html">The <code>if</code> binding</a></li>
+                    <li><a href="../docs/ifnot-binding.html">The <code>ifnot</code> binding</a></li>
+                    <li><a href="../docs/with-binding.html">The <code>with</code> binding</a></li>
+                </ul>
+
+                <h4>Working with form fields</h4>
+                <ul>
+                    <li><a href="../docs/command-binding.html">The <code>command</code> binding</a></li>
+                    <li><a href="../docs/keyPress-binding.html">The <code>keyPress</code> binding</a></li>
+                    <li><a href="../docs/event-binding.html">The <code>event</code> binding</a></li>
+                    <li><a href="../docs/enabled-binding.html">The <code>enabled</code> binding</a></li>
+                    <li><a href="../docs/disabled-binding.html">The <code>disabled</code> binding</a></li>
+                    <li><a href="../docs/value-binding.html">The <code>value</code> binding</a></li>
+                    <li><a href="../docs/textinput-binding.html">The <code>textInput</code> binding</a></li>
+                    <li><a href="../docs/hasfocus-binding.html">The <code>hasFocus</code> binding</a></li>
+                    <li><a href="../docs/checked-binding.html">The <code>checked</code> binding</a></li>
+                    <li><a href="../docs/selected-value-binding.html">The <code>selectedValue</code> binding</a></li>
+                </ul>
+
+                <h3>Custom bindings</h3>
+                <ul>
+                    <li><a href="../docs/custom-bindings.html">Creating custom bindings</a></li>
+                </ul>
+
+                <h3>Components</h3>
+                <ul>
+                    <li><a href="../docs/component-overview.html">Overview: What components and custom elements offer</a></li>
+                    <li><a href="../docs/component-registration.html">Defining and registering components</a></li>
+                    <li><a href="../docs/component-binding.html">The <code>component</code> binding</a></li>
+                    <!-- <li><a href="../docs/component-custom-elements.html">Using custom elements</a></li>
+                    <li><a href="../docs/component-built-in.html">Built-in components</a></li> -->
+                </ul>
+
+                <h3>Modules</h3>
+                <ul>
+                    <li><a href="../docs/module-overview.html">Overview: What modules offer</a></li>
+                    <li><a href="../docs/module-registration.html">Defining and registering modules</a></li>
+                    <li><a href="../docs/module-binding.html">The <code>module</code> binding</a></li>
+                </ul>
+
+                <h3>Routing</h3>
+                <ul>
+                    <li><a href="../docs/routing-overview.html">Overview: Routing architecture</a></li>
+                    <li><a href="../docs/routing-registration.html">Defining and registering routing states</a></li>
+                    <li><a href="../docs/view-binding.html">The <code>view</code> binding</a></li>
+                    <li><a href="../docs/sref-binding.html">The <code>sref</code> binding</a></li>
+                    <li><a href="../docs/sactive-binding.html">The <code>sactive</code> binding</a></li>
+                </ul>
+
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html">Overview: Dependency Injection</a></li>
+                    <li><a href="../docs/dependency-registration.html">Defining and registering dependencies</a></li>
+                </ul>
+
+                <h3>Messaging</h3>
+                <ul>
+                    <li><a href="../docs/message-bus.html">Overview: Messaging</a></li>
+                </ul>
+
+                <!--
+                <h3>Further techniques</h3>
+                <ul>
+                    <li><a href="../docs/unobtrusive-event-handling.html">Unobtrusive event handling</a></li>
+                    <li><a href="../docs/binding-preprocessing.html">Extending Webrx's binding syntax</a></li>
+                </ul>
+                -->
+
+                <h3>API Docs</h3>
+                <ul>
+                    <li><a href="../api/modules/_interfaces_.wx.html">Module <code>wx</code></a></li>
+                </ul>
+
+                <h3>More information</h3>
+                <ul>
+                    <li><a href="../docs/browser-support.html">Browser support</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="start" class="col-md-9">
+            <div class="body"><h1 id="custom-bindings">Custom Bindings</h1>
+
+<p>You’re not limited to using the built-in bindings like click, value, and so on — you can create your own ones. This is how to control how observables interact with DOM elements, and gives you a lot of flexibility to encapsulate sophisticated behaviors in an easy-to-reuse way.</p>
+
+<p>For example, you can create interactive components like grids, tabsets, and so on, in the form of custom bindings.</p>
+
+<h2 id="registering-your-binding">Registering your binding</h2>
+
+<p>A binding is registered by invoking the <code>wx.app.binding</code> function:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">binding</span><span class="p">(</span><span class="s1">'your-binding-name'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">init</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">domManager</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">cleanup</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// This will be called when the binding is first applied to an element</span>
+        <span class="c1">// Set up any initial state, event handlers, etc. here</span>
+    <span class="p">},</span>
+
+    <span class="na">update</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">domManager</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">cleanup</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// This will be called once when the binding is first applied to an element,</span>
+        <span class="c1">// and again whenever any observables/computeds that are accessed change</span>
+        <span class="c1">// Update the DOM element based on the supplied values here.</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>… and then you can use it on any number of DOM elements:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"your-binding-name: someValue"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> you don’t actually have to provide both init and update functions — you can just provide one or the other if that’s all you need.</p>
+
+<h3 id="the-codeinitcode-function">The <code>init</code> function</h3>
+
+<p>WebRx will call your init function once for each DOM element that you use the binding on. There are two main uses for init:</p>
+
+<ul>
+  <li>To set any initial state for the DOM element</li>
+  <li>To register any event handlers so that, for example, when the user clicks on or modifies the DOM element, you can change the state of the associated observable</li>
+</ul>
+
+<p>The function will be called with the following parameters:</p>
+
+<ul>
+  <li><code>element</code>: The DOM element involved in this binding</li>
+  <li>
+    <p><code>value</code>: This parameter will reflect the most recent value of all parameters passed to your binding.</p>
+
+    <p><strong>Single Parameter</strong>: If you’ve declared your binding with a single parameter like this: <code>data-bind="your-binding-name: foo"</code> or 
+<code>data-bind="your-binding-name: 123"</code>, then <code>value</code> will be either a Javascript primitive such as <code>string</code>, 
+<code>number</code> or <code>boolean</code> or in case of a <a href="/docs/observable-properties.html#topic-propref">propref</a>, an accessor function. 
+To easily accept both observable and plain values, call <code>wx.unwrapProperty</code> on value.</p>
+
+    <p><strong>Object Literal</strong>: If you’ve declared your binding with multiple parameters contained in an object literal like this: 
+<code>data-bind="your-binding-name: { foo: bar, baz: 123 }"</code> then <code>value</code> will be a Javascript Object containing the same 
+keys as the binding parameter object. Each key’s corresponding value will be either a Javascript primitive such as <code>string</code>, <code>number</code> or <code>boolean</code> 
+or in case of a <a href="/docs/observable-properties.html#topic-propref">propref</a>, an accessor function. To easily accept both observable and plain values, 
+call <code>wx.unwrapProperty</code> on a key’s value.</p>
+  </li>
+  <li><code>ctx</code>: An object that holds the current <a href="/docs/binding-context.html">binding context</a> available to this element’s bindings.</li>
+  <li><code>domManager</code>: A reference to WebRx’s <code>DomManager</code> service.</li>
+  <li><code>state</code>: An initially empty object that you can use to associate state with your binding. The state object will be automatically discarded once the binding
+is removed from the DOM.</li>
+  <li><code>cleanup</code>: An <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/compositedisposable.md">RxJS Composite Disposable</a> 
+which will be automatically <code>disposed</code> once the binding is removed from the DOM. This is the recommended place to store any observable 
+subscriptions associated with your binding. Of course you are not limited to observable subscriptions. You can just as easily register custom cleanup logic
+by wrapping it using <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/disposable.md#rxdisposablecreateaction">Rx.Disposable.create</a>.</li>
+</ul>
+
+<h3 id="the-codeupdatecode-function">The <code>update</code> function</h3>
+
+<p>WebRx will call the <code>update</code> function initially when the binding is applied to an element and track any dependend observables that you access.
+When any of these dependencies change, the update function will be called once again.</p>
+
+<p>WebRx will pass exactly the same set of parameters that it passes to the <code>init</code> function.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>The custom-binding equivalent of WebRx’s built-in <a href="/docs/text-binding.html">text-Binding</a>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">binding</span><span class="p">(</span><span class="s1">'my-text-binding'</span><span class="p">,</span> <span class="p">{</span> 
+    <span class="na">update</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">domManager</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">cleanup</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">((</span><span class="nx">value</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">))</span>
+            <span class="nx">value</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="nx">value</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">unwrapProperty</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+
+        <span class="nx">el</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">}});</span>
+</code></pre>
+</div>
+
+<h3 id="two-way-binding">Two-Way Binding</h3>
+
+<p>Implementation of a simplified version of WebRx’s built-in <a href="/docs/textinput-binding.html">textInput-Binding</a> as a custom-binding:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">binding</span><span class="p">(</span><span class="s1">'my-text-input'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">init</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">domManager</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">cleanup</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="s1">'input'</span><span class="p">),</span>
+          <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromEvent</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="s1">'change'</span><span class="p">),</span>
+        <span class="p">];</span>
+
+        <span class="c1">// subscribe to input events</span>
+        <span class="kd">var</span> <span class="nx">disp</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">merge</span><span class="p">(</span><span class="nx">events</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// update the model-property</span>
+            <span class="nx">value</span><span class="p">(</span><span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nx">cleanup</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">disp</span><span class="p">);</span>
+    <span class="p">},</span> 
+    
+    <span class="na">update</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">compiled</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="nx">domManager</span><span class="p">,</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">cleanup</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// update the input element when model-property changes </span>
+        <span class="nx">el</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">unwrapProperty</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p><a class="next-topic" href="/docs/component-overview.html">Next: What components and custom elements offer</a></p>
+</div>
+        </div>
+    </div>
+</div>
+
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row upper-section">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            Copyright (c) 2015 WebRxJS.org
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+        </script>
+
+        <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
+
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

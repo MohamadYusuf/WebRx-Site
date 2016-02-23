@@ -26,18 +26,19 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
+        <!-- Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
+
         <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
 <link rel='stylesheet' type='text/css' href='/css/syntax.css' />
 <link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
-<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
-<link rel='stylesheet' type='text/css' href='/css/material.css' />
-<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
-<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
         <script type='text/javascript' src='/js/rx.all.min.js'></script>
 <script type='text/javascript' src='/js/web.rx.js'></script>
 
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
       </head>
     <body>
         <h1 id="logoh1">WebRx - The Attr-Binding</h1>
@@ -89,7 +90,7 @@
                     <li><a href="../docs/binding-context.html">The binding context</a></li>
                 </ul>
 
-                <h3>Core Components</h3>
+                <h3>Building Blocks</h3>
                 <ul>
                     <li><a href="../docs/observable-properties.html">Observable Properties</a></li>
                     <li><a href="../docs/output-properties.html">Output Properties</a></li>
@@ -132,14 +133,10 @@
                     <li><a href="../docs/selected-value-binding.html">The <code>selectedValue</code> binding</a></li>
                 </ul>
 
-                <!--
-                <h3>Creating custom bindings</h3>
+                <h3>Custom bindings</h3>
                 <ul>
                     <li><a href="../docs/custom-bindings.html">Creating custom bindings</a></li>
-                    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html">Controlling descendant bindings</a></li>
-                    <li><a href="../docs/custom-bindings-disposal.html">Custom disposal logic</a></li>
                 </ul>
-                -->
 
                 <h3>Components</h3>
                 <ul>
@@ -198,39 +195,51 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The Attr-Binding</h1>
+            <div class="body"><h1 id="the-attr-binding">The Attr-Binding</h1>
 
 <p>The attr binding provides a generic way to set the value of any attribute for the associated DOM element. This is useful, for example, when you need to set the title attribute of an element, the src of an img tag, or the href of a link based on values in your view model, with the attribute value being updated automatically whenever the corresponding model property changes.</p>
 
-<h2>Example</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"attr: { href: url, title: details }"</span><span class="nt">&gt;</span>
+<h2 id="example">Example</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">data-bind=</span><span class="s">"attr: { href: url, title: details }"</span><span class="nt">&gt;</span>
     Report
 <span class="nt">&lt;/a&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
         <span class="na">url</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"year-end.html"</span><span class="p">),</span>
         <span class="na">details</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"Report including final year-end statistics"</span><span class="p">)</span>
     <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
-<p>This will set the element&#39;s href attribute to year-end.html and the element&#39;s title attribute to Report including final year-end statistics.</p>
+</code></pre>
+</div>
 
-<h2>Parameters</h2>
+<p>This will set the element’s href attribute to year-end.html and the element’s title attribute to Report including final year-end statistics.</p>
 
-<h3>Main parameter</h3>
+<h2 id="parameters">Parameters</h2>
+
+<h3 id="main-parameter">Main parameter</h3>
 
 <p>You should pass a JavaScript object in which the property names correspond to attribute names, and the values correspond to the attribute values you wish to apply.</p>
 
-<p>If your parameter references an observable value, the binding will update the attribute whenever the observable value changes. If the parameter doesn&#39;t reference an observable value, it will only set the attribute once and will not update it later.</p>
+<p>If your parameter references an observable value, the binding will update the attribute whenever the observable value changes. If the parameter doesn’t reference an observable value, it will only set the attribute once and will not update it later.</p>
 
-<h3>Note: Applying attributes whose names aren&#39;t legal JavaScript variable names</h3>
+<h3 id="note-applying-attributes-whose-names-arent-legal-javascript-variable-names">Note: Applying attributes whose names aren’t legal JavaScript variable names</h3>
 
-<p>If you want to apply the attribute data-something, you can&#39;t write this:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"attr: { data-something: someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
-<p>… because data-something isn&#39;t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"attr: { 'data-something': someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
+<p>If you want to apply the attribute data-something, you can’t write this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"attr: { data-something: someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>… because data-something isn’t a legal identifier name at that point. The solution is simple: just wrap the identifier name in quotes so that it becomes a string literal, which is legal in a JavaScript object literal. For example,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"attr: { 'data-something': someValue }"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
 <p><a class="next-topic" href="/docs/foreach-binding.html">Next: The Foreach-Binding</a></p>
 </div>
         </div>
@@ -238,20 +247,16 @@
 </div>
 
 
-            <div id="footer" class="content-panel">
-                <div class="row">
-                  <div class="copyright col-md-4">
-                    Copyright (c) 2015 WebRxJS.org
-                  </div>
-
-                  <div class="copyright col-md-4">
-                  </div>
-
-                  <div class="copyright col-md-4 text-right">
-                    <a id="impressum" href="/impressum.html">Impressum</a>
-                  </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row upper-section">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            Copyright (c) 2015 WebRxJS.org
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </footer>
+
         </div>
 
         <script type='text/javascript'>
@@ -261,8 +266,6 @@
 
         <script type='text/javascript' src='/js/jquery.js'></script>
 <script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/ripples.min.js'></script>
-<script type='text/javascript' src='/js/material.min.js'></script>
 <script type='text/javascript' src='/js/default.js'></script>
 
 

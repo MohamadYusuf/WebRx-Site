@@ -26,18 +26,19 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
+        <!-- Web Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
+
         <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
 <link rel='stylesheet' type='text/css' href='/css/syntax.css' />
 <link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
-<link rel='stylesheet' type='text/css' href='/css/roboto.css' />
-<link rel='stylesheet' type='text/css' href='/css/material.css' />
-<link rel='stylesheet' type='text/css' href='/css/ripples.css' />
-<link rel='stylesheet' type='text/css' href='/css/main.css' />
 
 
         <script type='text/javascript' src='/js/rx.all.min.js'></script>
 <script type='text/javascript' src='/js/web.rx.js'></script>
 
+
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
       </head>
     <body>
         <h1 id="logoh1">WebRx - The Message-Bus</h1>
@@ -89,7 +90,7 @@
                     <li><a href="../docs/binding-context.html">The binding context</a></li>
                 </ul>
 
-                <h3>Core Components</h3>
+                <h3>Building Blocks</h3>
                 <ul>
                     <li><a href="../docs/observable-properties.html">Observable Properties</a></li>
                     <li><a href="../docs/output-properties.html">Output Properties</a></li>
@@ -132,14 +133,10 @@
                     <li><a href="../docs/selected-value-binding.html">The <code>selectedValue</code> binding</a></li>
                 </ul>
 
-                <!--
-                <h3>Creating custom bindings</h3>
+                <h3>Custom bindings</h3>
                 <ul>
                     <li><a href="../docs/custom-bindings.html">Creating custom bindings</a></li>
-                    <li><a href="../docs/custom-bindings-controlling-descendant-bindings.html">Controlling descendant bindings</a></li>
-                    <li><a href="../docs/custom-bindings-disposal.html">Custom disposal logic</a></li>
                 </ul>
-                -->
 
                 <h3>Components</h3>
                 <ul>
@@ -198,58 +195,63 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The Message-Bus</h1>
+            <div class="body"><h1 id="the-message-bus">The Message-Bus</h1>
 
 <p>Like many other MVVM frameworks, WebRx includes an implementation of the <em>Message-Bus</em> pattern. 
 This allows you to send and recieve messages between different parts of the code without them directly accessing each other.</p>
 
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 
-<p>WebRx&#39;s message-bus implementation supports sending and receiving messages on any number of arbitrarily named topics.</p>
+<p>WebRx’s message-bus implementation supports sending and receiving messages on any number of arbitrarily named topics.</p>
 
 <p>Just like the rest of the framework, internally the message-bus relies on Rx-Observables for message publication and
 subscription, enabling developers to filter, throttle or otherwise pre-process messages using any of the <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/categories.md">operators 
 built into RxJs</a>.</p>
 
-<h3>Sending Messages</h3>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">"item-deleted"</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
-</code></pre></div>
+<h3 id="sending-messages">Sending Messages</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s2">"item-deleted"</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+</code></pre>
+</div>
+
 <p>Here we send a message to the <code>item-deleted</code> topic which will be received by anyone subscribed to the
 same topic.</p>
 
-<h3>Receiving messages</h3>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="s2">"item-deleted"</span><span class="p">)</span>  
-    <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">});</span>
-</code></pre></div>
-<p>Here we subscribe to the <code>item-deleted</code> topic and log any received messages to the browser&#39;s console.</p>
+<h3 id="receiving-messages">Receiving messages</h3>
 
-<h3>Using observables as message publishers</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="s2">"item-deleted"</span><span class="p">)</span>  
+    <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Here we subscribe to the <code>item-deleted</code> topic and log any received messages to the browser’s console.</p>
+
+<h3 id="using-observables-as-message-publishers">Using observables as message publishers</h3>
 
 <p>It is also possible to pipe any observable into the message-bus by associating at topic name with the
 observable and registering with the message-bus.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">Rx</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">interval</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">messageBus</span><span class="p">.</span><span class="nx">registerMessageSource</span><span class="p">(</span><span class="s2">"folks-another-five-seconds-have-passed"</span><span class="p">,</span> <span class="nx">source</span><span class="p">);</span>
-</code></pre></div></div>
+</code></pre>
+</div>
+</div>
         </div>
     </div>
 </div>
 
 
-            <div id="footer" class="content-panel">
-                <div class="row">
-                  <div class="copyright col-md-4">
-                    Copyright (c) 2015 WebRxJS.org
-                  </div>
-
-                  <div class="copyright col-md-4">
-                  </div>
-
-                  <div class="copyright col-md-4 text-right">
-                    <a id="impressum" href="/impressum.html">Impressum</a>
-                  </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row upper-section">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            Copyright (c) 2015 WebRxJS.org
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </footer>
+
         </div>
 
         <script type='text/javascript'>
@@ -259,8 +261,6 @@ observable and registering with the message-bus.</p>
 
         <script type='text/javascript' src='/js/jquery.js'></script>
 <script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/ripples.min.js'></script>
-<script type='text/javascript' src='/js/material.min.js'></script>
 <script type='text/javascript' src='/js/default.js'></script>
 
 

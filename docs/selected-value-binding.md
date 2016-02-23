@@ -5,15 +5,15 @@ title: WebRx - The selectedValue-Binding
 {% include sample-warning.html %}
 # The selectedValue-Binding
 
-The selectedValue binding links the value of the selected option of a <code>select</code> element, or the value of the checked 
-element of a group of radio-buttons (<code>input type=radio</code>) with a view-model property. 
+The selectedValue binding links the value of the selected option of a <code>select</code> element, or the value of the checked
+element of a group of radio-buttons (<code>input type=radio</code>) with a view-model property.
 
 It is a two-way binding, so if you set the view-model property, the associated element will be selected (when bound to a <code>select</code> element)
 or checked (when bound to a group of radio-buttons). If the user manually changes the selected option, the view-model property will be
 set to the selected option's value. Likewise, if the user manually checks an element of a radio-group, the view-model property
 will reflect the value of the checked radio-button.
 
-## Using the selectedValue binding with a select element 
+## Using the selectedValue binding with a select element
 
 <div class="panel panel-default" id="selectedValue-example1">
 	<div class="panel-body">
@@ -24,7 +24,7 @@ will reflect the value of the checked radio-button.
 		<span>You have selected <b data-bind="text: selection"></b></span>
 	</div>
 </div>
-  
+
 <script type="text/javascript">
 var items = [{ key: "Homer Simpson", value: "homer" }, { key: "Bart Simpson", value: "bart" }, { key: "Apu Nahasapeemapetilon", value: "apu" }];
 var model = { items: items, selection: wx.property("bart") };
@@ -46,8 +46,8 @@ wx.applyBindings(model, document.getElementById('selectedValue-example1'));
 
 ```javascript
 var items = [
-	{ key: "Homer Simpson", value: "homer" }, 
-	{ key: "Bart Simpson", value: "bart" }, 
+	{ key: "Homer Simpson", value: "homer" },
+	{ key: "Bart Simpson", value: "bart" },
 	{ key: "Apu Nahasapeemapetilon", value: "apu" }];
 
 wx.applyBindings({ items: items, selection: wx.property("bart") });
@@ -58,7 +58,7 @@ wx.applyBindings({ items: items, selection: wx.property("bart") });
 <div class="panel panel-default" id="selectedValue-example2">
 	<div class="panel-body">
 		<div data-bind="foreach: items">
-			<input type="radio" name="radio-group-1" data-bind="value: value, selectedValue: $parent.@selection, 
+			<input type="radio" name="radio-group-1" data-bind="value: value, selectedValue: $parent.@selection,
 				attr: { id: 'radio-group-1 -' + $index }" />
 			<label data-bind="text: key, attr: { for: 'radio-group-1 -' + $index }"></label>
 			<br/>
@@ -67,7 +67,7 @@ wx.applyBindings({ items: items, selection: wx.property("bart") });
 		<span>You have selected <b data-bind="text: selection"></b></span>
 	</div>
 </div>
-  
+
 <script type="text/javascript">
 var items = [{ key: "Homer Simpson", value: "homer" }, { key: "Bart Simpson", value: "bart" }, { key: "Apu Nahasapeemapetilon", value: "apu" }];
 var model = { items: items, selection: wx.property("bart") };
@@ -79,7 +79,7 @@ wx.applyBindings(model, document.getElementById('selectedValue-example2'));
 
 ```html
 <div data-bind="foreach: items">
-	<input type="radio" name="radio-group-1" data-bind="value: value, selectedValue: $parent.@selection, 
+	<input type="radio" name="radio-group-1" data-bind="value: value, selectedValue: $parent.@selection,
 		attr: { id: 'radio-group-1 -' + $index }" />
 	<label data-bind="text: key, attr: { for: 'radio-group-1 -' + $index }"></label>
 </div>
@@ -91,8 +91,8 @@ wx.applyBindings(model, document.getElementById('selectedValue-example2'));
 
 ```javascript
 var items = [
-	{ key: "Homer Simpson", value: "homer" }, 
-	{ key: "Bart Simpson", value: "bart" }, 
+	{ key: "Homer Simpson", value: "homer" },
+	{ key: "Bart Simpson", value: "bart" },
 	{ key: "Apu Nahasapeemapetilon", value: "apu" }];
 
 wx.applyBindings({ items: items, selection: wx.property("bart") });
@@ -108,4 +108,4 @@ If this parameter is a [property reference](/docs/observable-properties.html#top
 the binding will update the selection whenever the value changes and vice-versa.
 If the parameter something else, it will only set the selection once and will not update it again later.
 
-<a class="next-topic" href="/docs/component-overview.html">Next: What components and custom elements offer</a>
+<a class="next-topic" href="/docs/custom-bindings.html">Next: Custom Bindings</a>

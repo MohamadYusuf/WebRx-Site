@@ -14,25 +14,31 @@ Components are a powerful, clean way of organizing your UI code into self-contai
 - …can easily be packaged for reuse across projects
 - …let you define your own conventions/logic for configuration and loading
 
-This pattern is beneficial for large applications, because it simplifies development through 
-clear organization and encapsulation, and helps to improve runtime performance by incrementally 
+This pattern is beneficial for large applications, because it simplifies development through
+clear organization and encapsulation, and helps to improve runtime performance by incrementally
 loading your application code and templates as needed.
 
-Custom elements are an optional but convenient syntax for consuming components. Instead of needing 
-placeholder <code>&lt;div&gt;</code> into which components are injected with bindings, you can use more self-descriptive 
-markup with custom element names. 
+Custom elements are an optional but convenient syntax for consuming components. Instead of needing
+placeholder <code>&lt;div&gt;</code> into which components are injected with bindings, you can use more self-descriptive
+markup with custom element names.
+
+## Component Registration
+
+A component is registered by invoking the <code>wx.app.component</code> function specifying either:
+
+- a combination of a view-model and a template
+- a standalone view-model
+- or a stand-alone template
+
 
 ## Example: A like/dislike widget
-
-To get started, you can register a component using wx.components.register (technically, registration is optional, 
-but it's the easiest way to get started). A component definition specifies a view-model and template. For example:
 
 ```javascript
 wx.app.component('like-widget', {
     viewModel: function(params) {
         // Data: value is either null, 'like', or 'dislike'
         this.chosenValue = params.value;
-         
+
         // Behaviors
         this.likeCmd = wx.command(function() { this.chosenValue('like'); }, this);
         this.dislikeCmd = wx.command(function() { this.chosenValue('dislike'); }, this);
@@ -51,7 +57,7 @@ wx.app.component('like-widget', {
 
 Normally, you'd load the view model and template from external files instead of declaring them inline like this. We'll get to that later.
 
-Now, to use this component, you can reference it from any other view in your application, either using the 
+Now, to use this component, you can reference it from any other view in your application, either using the
 component binding or using a custom element. Here's a live example that uses it as a custom element:
 
 <div class="panel panel-default" id="component-example1">
@@ -64,13 +70,13 @@ component binding or using a custom element. Here's a live example that uses it 
 		</ul>
 	</div>
 </div>
-  
+
 <script type="text/javascript">
 wx.app.component('like-widget', {
     viewModel: function(params) {
         // Data: value is either null, 'like', or 'dislike'
         this.chosenValue = params.value;
-         
+
         // Behaviors
         this.likeCmd = wx.command(function() { this.chosenValue('like'); }, this);
         this.dislikeCmd = wx.command(function() { this.chosenValue('dislike'); }, this);
@@ -89,7 +95,7 @@ function Product(name, rating) {
     this.name = name;
     this.userRating = wx.property(rating || null);
 }
- 
+
 function MyViewModel() {
     this.products = [
         new Product('Garlic bread'),
@@ -120,7 +126,7 @@ function Product(name, rating) {
     this.name = name;
     this.userRating = wx.property(rating || null);
 }
- 
+
 function MyViewModel() {
     this.products = [
         new Product('Garlic bread'),
@@ -128,7 +134,7 @@ function MyViewModel() {
         new Product('Seagull spaghetti', 'like') // This one was already 'liked'
     ];
 }
- 
+
 wx.applyBindings(new MyViewModel());
 ```
 
@@ -136,8 +142,8 @@ In this example, the component both displays and edits an property property call
 
 ## Example: Loading the like/dislike widget from external files, on demand
 
-In most applications, you'll want to keep component view models and templates in external files. 
-If you configure WebRx to fetch them via an AMD module loader such as [require.js](http://requirejs.org/), then they 
+In most applications, you'll want to keep component view models and templates in external files.
+If you configure WebRx to fetch them via an AMD module loader such as [require.js](http://requirejs.org/), then they
 can either be preloaded (possibly bundled/minified), or incrementally loaded as needed.
 
 Here's an example configuration:
@@ -152,10 +158,10 @@ wx.app.component('like-or-dislike', {
 ### Requirements
 
 For this to work, the files <code>files/component-like-widget.js</code> and <code>files/component-like-widget.html</code>
-need to exist. Check them out (and view source on the .html one) - as you'll see, this is 
+need to exist. Check them out (and view source on the .html one) - as you'll see, this is
 cleaner and more convenient that including the code inline in the definition.
 
-Also, you need to have referenced a suitable module loader library (such as require.js) or 
+Also, you need to have referenced a suitable module loader library (such as require.js) or
 implemented a custom component loader that knows how to grab your files.
 
 ### Using the component
@@ -181,20 +187,20 @@ function Product(name, rating) {
     this.name = name;
     this.userRating = wx.property(rating || null);
 }
- 
+
 function MyViewModel() {
     this.products = wx.list(); // Start empty
 }
- 
+
 MyViewModel.prototype.addProduct = function() {
     var name = 'Product ' + (this.products().length + 1);
     this.products.push(new Product(name));
 };
- 
+
 wx.applyBindings(new MyViewModel());
 ```
 
-If you open your browser developer tools' Network inspector before your first click on Add product, 
+If you open your browser developer tools' Network inspector before your first click on Add product,
 you'll see that the component's .js/.html files are fetched on demand when first required, and thereafter retained for reuse.
 
 <a class="next-topic" href="/docs/component-registration.html">Next: Defining and registering components</a>
