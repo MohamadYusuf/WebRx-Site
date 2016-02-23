@@ -45,7 +45,6 @@ WebRx expressions are like JavaScript expressions with the following differences
 - **Forgiving**: In JavaScript, trying to evaluate undefined properties generates ReferenceError or TypeError. In WebRx, expression evaluation is forgiving to undefined and null.
 - **No Control Flow Statements**: You cannot use the following in an expression: conditionals, loops, or exceptions.
 - **No Function Declarations**: You cannot declare functions in an expression.
-- **No Function Invocations**: You cannot invoke functions in an expression.
 - **No RegExp Creation With Literal Notation**: You cannot create regular expressions in an expression.
 - **No Comma And Void Operators**: You cannot use , or void in an expression.
 - **Filters**: You can use filters within expressions to format data before displaying it.
