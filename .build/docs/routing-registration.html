@@ -1,71 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Defining and registering routing states</title>
 
-        <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Defining and registering routing states" /> 
-        <meta property="og:site_name" content="WebRx"/>         
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>WebRx - Defining and registering routing states</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WebRx - Defining and registering routing states" />
+    <meta property="og:site_name" content="WebRx" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Web Fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-        <!-- Web Fonts -->
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
-
-        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+ 
+    
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
 
-
-        <link rel="stylesheet" type="text/css" href="/css/main.css" />
-      </head>
-    <body>
-        <h1 id="logoh1">WebRx - Defining and registering routing states</h1>
-        <div id="main-container" class="container">
-            <nav class="navbar navbar-white">
-                <div class="container-fluid">
+<body class="top-navigation skin-1">
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                    <a class="main-logo hvr-pop" style="color: #303030;" href="/"><span class="logo-icon"></span><span>WebRx</span></a>
+                        <button id="hamburger-menu" aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed"
+                        type="button">
+                            <span class="glyphicon glyphicon-menu-hamburger"></span>
                         </button>
-                        <a class="navbar-brand" title="WebRx" href="/"><img src="/images/Logo.png" height="28"/>
-                            <h3>WebRx</h3></a>
                     </div>
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
+                    <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+                        <ul class="nav navbar-nav">
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-top-links navbar-right">
                             <li><a href="/examples">Examples</a></li>
                             <li><a href="/docs/getting-started.html">Documentation</a></li>
 
                             <li><a href="https://github.com/WebRxJS/WebRx"><i class="fa fa-github"></i> Source</a></li>
                             <li id="news"><a target="_blank" href="https://twitter.com/webrxjs"><i class="fa fa-twitter"></i> News</a></li>
                         </ul>
-                    </div>
                 </div>
-            </nav>
+                </nav>
+            </div>
 
-          <style>
+            <div class="row body-wrapper border-bottom white-bg dashboard-header">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content">
+                        <style>
      .content-panel {
          padding: 15px;
      }
@@ -206,31 +209,31 @@ those regions will display when the state is active.</p>
 <p>Components will be resolved against the currently active <a href="/docs/module-overview.html">module</a> or alternatively
 the application-module.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;details&#39;&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/section&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'details'"</span><span class="nt">&gt;&lt;/section&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 </code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;header-component&quot;</span><span class="p">,</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"header-component"</span><span class="p">,</span>
+        <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;details&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-details-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts.details"</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-details-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>You can also pass parameters to your components which will be merged with any parameters defined at
 state-level plus extracted routing parameters:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="p">{</span> 
-            <span class="nx">component</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span><span class="p">,</span>
-            <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;compact&#39;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="p">{</span> 
+            <span class="nl">component</span><span class="p">:</span> <span class="s2">"contact-list-component"</span><span class="p">,</span>
+            <span class="na">params</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">mode</span><span class="p">:</span> <span class="s1">'compact'</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -241,40 +244,40 @@ state-level plus extracted routing parameters:</p>
 <p>Routing-States can optionally configured to carry state-parameters that will be used to configure
 components referenced by it:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">params</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'contactId'</span><span class="p">:</span> <span class="mi">42</span>
     <span class="p">},</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>In this example the <a href="/docs/component-binding.html">component-binding</a> will receive following object as <code>params</code> argument when
 instantiating the <code>contact-list-component</code>:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">'contactId'</span><span class="err">:</span> <span class="mi">42</span> <span class="p">}</span>
 </code></pre></div>
 <h3>State-Params inheritance</h3>
 
 <p>Just like the parent&#39;s view configuration is inherited by child-states, so are state-params:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;companyId&#39;</span><span class="o">:</span> <span class="mi">3</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">params</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'companyId'</span><span class="p">:</span> <span class="mi">3</span>
     <span class="p">}</span>
 <span class="p">}).</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts.details&quot;</span><span class="p">,</span>
-    <span class="nx">params</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts.details"</span><span class="p">,</span>
+    <span class="na">params</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'contactId'</span><span class="p">:</span> <span class="mi">42</span>
     <span class="p">},</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>In this example the <a href="/docs/component-binding.html">component-binding</a> will receive following object as <code>params</code> argument when
 instantiating the <code>contact-list-component</code>:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">&#39;companyId&#39;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;contactId&#39;</span><span class="o">:</span> <span class="mi">42</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s1">'companyId'</span><span class="err">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'contactId'</span><span class="err">:</span> <span class="mi">42</span> <span class="p">}</span>
 </code></pre></div>
 <h2>State Routes</h2>
 
@@ -283,10 +286,10 @@ to the state mechanics, but was figured into the design from the beginning (all 
 
 <p>Here&#39;s how you configure a state with a basic url:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -299,7 +302,7 @@ the <code>contact-list-component</code> component. Alternatively, if the user we
 <p>Specifying a url when configuring a state is optional. If you omit the url, WebRx will will automatically assign it one
 that mirrors the state hierarchy.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo.bar.baz&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"foo.bar.baz"</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>The implicit url for state <code>foo.bar.baz</code> state will be <code>/foo/bar/baz</code>.</p>
@@ -309,8 +312,8 @@ that mirrors the state hierarchy.</p>
 <p>In all of the previous examples we&#39;ve used relative routes. It is also possible to prepend a url with a &#39;/&#39; to turn it into
 an absolute url.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;foo.bar.baz&quot;</span><span class="p">,</span>
-    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;/bar/foo&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"foo.bar.baz"</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"/bar/foo"</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>Now, the url for state <code>foo.bar.baz</code> will be <code>/bar/foo</code>, completely ignoring the state-hierarchy.</p>
@@ -320,10 +323,10 @@ an absolute url.</p>
 <p>Often, URLs have dynamic parts to them which are called parameters. There are several options for specifying parameters. 
 A basic parameter looks like this:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;contacts/:contactId&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"contacts/:contactId"</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -339,17 +342,18 @@ The second path segment will be captured as the parameter <code>id</code>.</li>
 <p><strong>Note:</strong> Parameter names may contain only word characters (latin letters, digits, and underscore) and must be unique within the 
 pattern (across both path and search parameters).</p>
 
-<h4>Custom validators for route parameters
+<h4>Custom validators for route parameters</h4>
+
 <p>If you need more control about route-parameters you can also pass in an object that combines a route
 with a set of per-parameter custom validators. </p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">url</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s2">&quot;contacts/:contactId/:other&quot;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">contactId</span><span class="o">:</span> <span class="sr">/^\d+$/</span><span class="p">,</span>
-        <span class="nx">other</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">&quot;&quot;</span> <span class="o">||</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s2">"contacts/:contactId/:other"</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">contactId</span><span class="p">:</span> <span class="sr">/^</span><span class="se">\d</span><span class="sr">+$/</span><span class="p">,</span>
+        <span class="na">other</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">""</span> <span class="o">||</span> <span class="nx">value</span> <span class="o">===</span> <span class="s2">"foo"</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}),</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -365,10 +369,10 @@ with a set of per-parameter custom validators. </p>
 
 <p>Alternatively you can pass in a RegExp for the url parameter:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">url</span><span class="o">:</span> <span class="sr">/^(contacts?)(?:\/(\d+)(?:\.\.(\d+))?)?/</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="sr">/^</span><span class="se">(</span><span class="sr">contacts</span><span class="se">?)(?:\/(\d</span><span class="sr">+</span><span class="se">)(?:\.\.(\d</span><span class="sr">+</span><span class="se">))?)?</span><span class="sr">/</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -388,12 +392,12 @@ via the <a href="/docs/component-binding.html">component-binding&#39;s</a> <code
 
 <p>There are also optional <code>onEnter</code> and <code>onExit</code> callbacks that get called when a state becomes active and inactive respectively.</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;contacts&quot;</span><span class="p">,</span>
-    <span class="nx">views</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;contact-list-component&quot;</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
+    <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">},</span>
-    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">},</span>
-    <span class="nx">onLeave</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+    <span class="na">onEnter</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">},</span>
+    <span class="na">onLeave</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
 <p><a class="next-topic" href="/docs/view-binding.html">Next: The View-Binding</a></p>
@@ -402,35 +406,41 @@ via the <a href="/docs/component-binding.html">component-binding&#39;s</a> <code
     </div>
 </div>
 
-
-            <footer class="footer">
-                <div class="container">
-                    <div class="row upper-section">
-                        <div class="col-xs-12 col-sm-4 col-md-3">
-                            Copyright (c) 2015 WebRxJS.org
-                        </div>
                     </div>
                 </div>
-            </footer>
-
+            </div>
         </div>
+    </div>
 
-        <script type='text/javascript'>
+    <footer class="footer">
+        <div class="container">
+            <div class="row upper-section">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    Copyright (c) 2015 WebRxJS.org
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script type='text/javascript'>
         if(!wx.env.isSupported)
           wx.toggleCssClass(document.body, true, "wx-unsupported");
-        </script>
+    </script>
 
-        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
           ga('create', 'UA-60860613-1', 'auto');
           ga('send', 'pageview');
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>

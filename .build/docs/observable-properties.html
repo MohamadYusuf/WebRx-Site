@@ -1,71 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>WebRx - Observable Properties</title>
 
-        <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="WebRx - Observable Properties" /> 
-        <meta property="og:site_name" content="WebRx"/>         
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>WebRx - Observable Properties</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WebRx - Observable Properties" />
+    <meta property="og:site_name" content="WebRx" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Web Fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-        <!-- Web Fonts -->
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" />
-
-        <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+ 
+    
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
-        <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
 
-
-        <link rel="stylesheet" type="text/css" href="/css/main.css" />
-      </head>
-    <body>
-        <h1 id="logoh1">WebRx - Observable Properties</h1>
-        <div id="main-container" class="container">
-            <nav class="navbar navbar-white">
-                <div class="container-fluid">
+<body class="top-navigation skin-1">
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                    <a class="main-logo hvr-pop" style="color: #303030;" href="/"><span class="logo-icon"></span><span>WebRx</span></a>
+                        <button id="hamburger-menu" aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed"
+                        type="button">
+                            <span class="glyphicon glyphicon-menu-hamburger"></span>
                         </button>
-                        <a class="navbar-brand" title="WebRx" href="/"><img src="/images/Logo.png" height="28"/>
-                            <h3>WebRx</h3></a>
                     </div>
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
+                    <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+                        <ul class="nav navbar-nav">
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-top-links navbar-right">
                             <li><a href="/examples">Examples</a></li>
                             <li><a href="/docs/getting-started.html">Documentation</a></li>
 
                             <li><a href="https://github.com/WebRxJS/WebRx"><i class="fa fa-github"></i> Source</a></li>
                             <li id="news"><a target="_blank" href="https://twitter.com/webrxjs"><i class="fa fa-twitter"></i> News</a></li>
                         </ul>
-                    </div>
                 </div>
-            </nav>
+                </nav>
+            </div>
 
-          <style>
+            <div class="row body-wrapper border-bottom white-bg dashboard-header">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content">
+                        <style>
      .content-panel {
          padding: 15px;
      }
@@ -201,8 +204,8 @@ observable-properties, because these are special JavaScript objects that can not
 
 <p>For example, rewrite the preceding view model object as follows:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">),</span>
-    <span class="nx">personAge</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">),</span>
+    <span class="na">personAge</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="p">};</span>
 </code></pre></div>
 <p>You don&#39;t have to change the view at all - the same data-bind syntax will keep working. The difference is that it&#39;s now capable of 
@@ -228,14 +231,14 @@ automatically propagate to the view.</p>
 <h2>Observable Properties and Binding Expressions</h2>
 
 <p>The syntax for referencing observable-property-values in <a href="/docs/binding-syntax.html">binding-expressions</a> is identical to non observable-properties.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <p>This view template will work without modifications for both of these view-models ...</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="s1">&#39;Bob&#39;</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="s1">'Bob'</span>
 <span class="p">};</span>
 </code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
 <span class="p">};</span>
 </code></pre></div>
 <h3>Working with observable-property values</h3>
@@ -246,10 +249,10 @@ automatically propagate to the view.</p>
 will <strong>detect</strong> that use-case and will conveniently <strong>dereference the property&#39;s value for you</strong>. </p>
 
 <h4>Good</h4>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName + &#39;foo&#39;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <h4>Bad</h4>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: personName() + &#39;foo&#39;&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName() + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <h3><a id="topic-propref"></a>Property-Object-References or @proprefs</h3>
 
@@ -260,9 +263,9 @@ the binding requires a reference to the property object itself instead of its cu
 
 <h4>Example</h4>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">personName</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
 <span class="p">};</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;textInput: @personName&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">data-bind=</span><span class="s">"textInput: @personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
 </code></pre></div>
 <p>The <a href="/docs/textinput-binding.html">textInput-Binding</a> links a text box or textarea with a viewmodel property, 
 providing two-way updates between the viewmodel property and the element&#39;s value.</p>
@@ -284,7 +287,7 @@ which is not really useful.</p>
 
 <p>If for example you would want to monitor changes to the <code>personName</code> property, you would do it like this: </p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">myViewModel</span><span class="p">.</span><span class="nx">personName</span><span class="p">.</span><span class="nx">changed</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;The person&#39;s new name is &quot;</span> <span class="o">+</span> <span class="nx">newValue</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"The person's new name is "</span> <span class="o">+</span> <span class="nx">newValue</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>You can also terminate a subscription if you wish: first capture the return value as a variable, then you can call its dispose function, e.g.:</p>
@@ -298,35 +301,41 @@ which is not really useful.</p>
     </div>
 </div>
 
-
-            <footer class="footer">
-                <div class="container">
-                    <div class="row upper-section">
-                        <div class="col-xs-12 col-sm-4 col-md-3">
-                            Copyright (c) 2015 WebRxJS.org
-                        </div>
                     </div>
                 </div>
-            </footer>
-
+            </div>
         </div>
+    </div>
 
-        <script type='text/javascript'>
+    <footer class="footer">
+        <div class="container">
+            <div class="row upper-section">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    Copyright (c) 2015 WebRxJS.org
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script type='text/javascript'>
         if(!wx.env.isSupported)
           wx.toggleCssClass(document.body, true, "wx-unsupported");
-        </script>
+    </script>
 
-        <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
           ga('create', 'UA-60860613-1', 'auto');
           ga('send', 'pageview');
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
