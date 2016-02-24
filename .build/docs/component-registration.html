@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -209,7 +206,7 @@
                 <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/component-registration.html"><i class="fa fa-reddit-alien"></i></a>
             </div>
 
-            <div class="body"><h1 id="component-registration">Component-Registration</h1>
+            <div class="body"><h1>Component-Registration</h1>
 
 <p>Just like binding-handlers, and expresion-filters, components are <a href="/docs/module-overview.html">module-scoped-resources</a>
 that can either be registered with the global application-module <code>wx.app</code> or a custom-module.</p>
@@ -218,24 +215,18 @@ that can either be registered with the global application-module <code>wx.app</c
 providing a configuration as described here.</p>
 
 <p>You can register a component as follows:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'some-component-name'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="na">template</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;some-component-name&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>or to register the component with a specific <a href="/docs/module-overview.html">module</a>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">"my-module"</span><span class="p">).</span><span class="nx">component</span><span class="p">(</span><span class="s1">'some-component-name'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="na">template</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;my-module&quot;</span><span class="p">).</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;some-component-name&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">see</span> <span class="nx">below</span><span class="o">&gt;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<p>The component name can be any non-empty string. It’s recommended, but not mandatory, to use 
+</code></pre></div>
+<p>The component name can be any non-empty string. It&#39;s recommended, but not mandatory, to use 
 lowercase dash-separated strings (such as your-component-name) so that the component name is 
 valid to use as a custom element.</p>
 
@@ -244,318 +235,259 @@ valid to use as a custom element.</p>
 If no viewmodel is given, the component is treated as a simple block of HTML that will be bound 
 to any parameters passed to the component.</p>
 
-<h2 id="specifying-a-viewmodel">Specifying a viewmodel</h2>
+<h2>Specifying a viewmodel</h2>
 
 <p>Viewmodels can be specified in any of the following forms:</p>
 
-<h3 id="a-constructor-function">A constructor function</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">SomeComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// 'params' is an object whose key/value pairs are the parameters</span>
+<h3>A constructor function</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">SomeComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// &#39;params&#39; is an object whose key/value pairs are the parameters</span>
     <span class="c1">// passed from the component binding or custom element.</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">someProperty</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">something</span><span class="p">;</span>
 <span class="p">}</span>
- 
-<span class="nx">SomeComponentViewModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
- 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="nx">SomeComponentViewModel</span><span class="p">,</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">...</span>
-<span class="p">});</span>
-</code></pre>
-</div>
 
+<span class="nx">SomeComponentViewModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="nx">SomeComponentViewModel</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>WebRx will invoke your constructor once for each instance of the component, producing a separate viewmodel object for each. 
 Properties on the resulting object or its prototype chain (e.g., <code>someProperty</code> and <code>doSomething</code> in the example above) 
-are available for binding in the component’s view.</p>
+are available for binding in the component&#39;s view.</p>
 
-<h3 id="an-inline-array-annotated-constructor-function">An inline-array-annotated constructor function</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>
-<span class="nx">wx</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s2">"greeter"</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<h3>An inline-array-annotated constructor function</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s2">&quot;greeter&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
-    <span class="na">greet</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">greet</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
       <span class="p">...</span>
     <span class="p">}</span>
   <span class="p">};</span>
 <span class="p">}]);</span>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">[</span><span class="s2">"greeter"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greeter</span><span class="p">,</span> <span class="nx">componentParams</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">this</span><span class="p">.</span><span class="nx">otherProperty</span> <span class="o">=</span> <span class="nx">greeter</span><span class="p">.</span><span class="nx">greet</span><span class="p">;</span>
-	    <span class="k">this</span><span class="p">.</span><span class="nx">someProperty</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">something</span><span class="p">;</span>
-	<span class="p">}],</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">...</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;greeter&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greeter</span><span class="p">,</span> <span class="nx">componentParams</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">otherProperty</span> <span class="o">=</span> <span class="nx">greeter</span><span class="p">.</span><span class="nx">greet</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">someProperty</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">something</span><span class="p">;</span>
+    <span class="p">}],</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
+<h3>An injectable</h3>
 
-<h3 id="an-injectable">An injectable</h3>
-
-<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx’s <a href="/docs/dependency-injection-overview.html">injector</a>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span> <span class="na">resolve</span><span class="p">:</span> <span class="s2">"some-injectable-identifier"</span> <span class="p">},</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">...</span>
+<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx&#39;s <a href="/docs/dependency-injection-overview.html">injector</a>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">resolve</span><span class="o">:</span> <span class="s2">&quot;some-injectable-identifier&quot;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<p>In this case, the component-binding will pass the inline-annotated array to the <a href="/docs/dependency-injection-overview.html">Injector’s</a> 
+</code></pre></div>
+<p>In this case, the component-binding will pass the inline-annotated array to the <a href="/docs/dependency-injection-overview.html">Injector&#39;s</a> 
 <code>resolve</code> method to construct the view-model. Any dependencies listed in the annotated-array will be resolved and passed to your 
-constructor function. In the example above the view-model’s constructor function will receive a <code>greeter</code> instance as first argument.
+constructor function. In the example above the view-model&#39;s constructor function will receive a <code>greeter</code> instance as first argument.
 The second argument will be the component arguments.</p>
 
-<h3 id="a-promise">A promise</h3>
+<h3>A promise</h3>
 
 <p>A view-model can also be resolved through a <a href="http://promises-aplus.github.com/promises-spec">Promises/A+</a> compliant or 
 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6-compliant</a> Promise:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span> <span class="na">promise</span><span class="p">:</span> <span class="nx">promiseInstance</span> <span class="p">},</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">...</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">promise</span><span class="o">:</span> <span class="nx">promiseInstance</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Compatible implementations can be found in any number of libraries such as Angular, jQuery, Dojo, WinJS, 
 and even libraries dedicated to them such as Q or when.js.</p>
 
 <p><strong>Note</strong>: It is necessary to specify <code>viewModel: { promise: object }</code>, and not just <code>viewModel: object</code>. 
 This differentiates from the other cases below.</p>
 
-<h3 id="a-shared-object-instance">A shared object instance</h3>
+<h3>A shared object instance</h3>
 
 <p>If you want all instances of your component to share the same viewmodel object instance (which is not usually desirable):</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">sharedViewModelInstance</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">sharedViewModelInstance</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
- 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span> <span class="na">instance</span><span class="p">:</span> <span class="nx">sharedViewModelInstance</span> <span class="p">},</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">...</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">instance</span><span class="o">:</span> <span class="nx">sharedViewModelInstance</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p><strong>Note</strong>: It is necessary to specify <code>viewModel: { instance: object }</code>, and not just <code>viewModel: object</code>. This differentiates from the other cases below.</p>
 
-<h3 id="an-amd-module">An AMD module</h3>
+<h3>An AMD module</h3>
 
 <p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a viewmodel. 
 For more details about how this works, see how WebRx loads components via AMD below. Example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/module/name'</span> <span class="p">},</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">...</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a constructor function, e.g.:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// AMD module whose value is a component viewmodel constructor</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">'webrx'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a component viewmodel constructor</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// ...</span>
     <span class="p">}</span>
- 
+
     <span class="k">return</span> <span class="nx">MyViewModel</span><span class="p">;</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>… or a Typescript class:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ViewModel</span> <span class="p">{</span>
-	<span class="nx">constructor</span><span class="p">(</span><span class="nx">params</span><span class="err">:</span> <span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
-	<span class="p">}</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">ViewModel</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">params</span><span class="o">:</span> <span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
 
     <span class="kr">public</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
     <span class="kr">public</span> <span class="nx">lastName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="kr">export</span> <span class="o">=</span> <span class="nx">ViewModel</span><span class="p">;</span>
-</code></pre>
-</div>
-<p><strong>Note:</strong> You need to make sure that your ViewModel is the module’s default export, as demonstrated in the last line of this example.</p>
+</code></pre></div>
+<p><strong>Note:</strong> You need to make sure that your ViewModel is the module&#39;s default export, as demonstrated in the last line of this example.</p>
 
 <p>… or a shared object instance, e.g.:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// AMD module whose value is a shared component viewmodel instance</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">'webrx'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module whose value is a shared component viewmodel instance</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// ...</span>
     <span class="p">}</span>
- 
-    <span class="k">return</span> <span class="p">{</span> <span class="na">instance</span><span class="p">:</span> <span class="k">new</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">};</span>
-<span class="p">});</span>
-</code></pre>
-</div>
 
-<h2 id="specifying-a-template">Specifying a template</h2>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">instance</span><span class="o">:</span> <span class="k">new</span> <span class="nx">MyViewModel</span><span class="p">()</span> <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2>Specifying a template</h2>
 
 <p>Templates can be specified in any of the following forms. The most commonly useful are existing element IDs and AMD modules.</p>
 
-<h3 id="an-existing-element-id">An existing element ID</h3>
+<h3>An existing element ID</h3>
 
 <p>For example, the following element:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">'my-component-template'</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">'text: title'</span><span class="nt">&gt;&lt;/h1&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">'click: doSomething'</span><span class="nt">&gt;</span>Click me right now<span class="nt">&lt;/button&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">&#39;my-component-template&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">&#39;text: title&#39;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&#39;click: doSomething&#39;</span><span class="nt">&gt;</span>Click me right now<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/template&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>… can be used as the template for a component by specifying its ID:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">select</span><span class="p">:</span> <span class="s1">'my-component-template'</span> <span class="p">},</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">select</span><span class="o">:</span> <span class="s1">&#39;my-component-template&#39;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Note that only the nodes inside the specified element will be cloned into each instance of the component. 
 The container element will not be treated as part of the component template.</p>
 
-<p>You’re not limited to using template elements, but these are convenient (on browsers that support them) 
-since they don’t get rendered on their own. Any other element type works too.</p>
+<p>You&#39;re not limited to using template elements, but these are convenient (on browsers that support them) 
+since they don&#39;t get rendered on their own. Any other element type works too.</p>
 
-<h3 id="an-existing-element-instance">An existing element instance</h3>
+<h3>An existing element instance</h3>
 
 <p>If you have a reference to a DOM element in your code, you can use it as a container for template markup:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">elemInstance</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;my-component-template&#39;</span><span class="p">);</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">elemInstance</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'my-component-template'</span><span class="p">);</span>
- 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">[</span><span class="nx">elemInstance</span><span class="p">],</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">[</span><span class="nx">elemInstance</span><span class="p">],</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
+<p>Again, only the nodes inside the specified element will be cloned for use as the component&#39;s template.</p>
 
-<p>Again, only the nodes inside the specified element will be cloned for use as the component’s template.</p>
-
-<h3 id="a-string-of-markup">A string of markup</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;h1 data-bind="text: title"&gt;&lt;/h1&gt;\
-               &lt;button data-bind="click: doSomething"&gt;Clickety&lt;/button&gt;'</span><span class="p">,</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+<h3>A string of markup</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h1 data-bind=&quot;text: title&quot;&gt;&lt;/h1&gt;\</span>
+<span class="s1">               &lt;button data-bind=&quot;click: doSomething&quot;&gt;Clickety&lt;/button&gt;&#39;</span><span class="p">,</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<p>This is mainly useful when you’re fetching the markup from somewhere programmatically (e.g., AMD - see below), 
-or as a build system output that packages components for distribution, since it’s not very convenient to 
+</code></pre></div>
+<p>This is mainly useful when you&#39;re fetching the markup from somewhere programmatically (e.g., AMD - see below), 
+or as a build system output that packages components for distribution, since it&#39;s not very convenient to 
 manually edit HTML as a JavaScript string literal.</p>
 
-<h3 id="an-array-of-dom-nodes">An array of DOM nodes</h3>
+<h3>An array of DOM nodes</h3>
 
-<p>If you’re building configurations programmatically and you have an array of DOM nodes, you can use them as a component template:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myNodes</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'first-node'</span><span class="p">),</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'second-node'</span><span class="p">),</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'third-node'</span><span class="p">)</span>
+<p>If you&#39;re building configurations programmatically and you have an array of DOM nodes, you can use them as a component template:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myNodes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;first-node&#39;</span><span class="p">),</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;second-node&#39;</span><span class="p">),</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;third-node&#39;</span><span class="p">)</span>
 <span class="p">];</span>
- 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="nx">myNodes</span><span class="p">,</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
-<span class="p">});</span>
-</code></pre>
-</div>
 
+<span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="nx">myNodes</span><span class="p">,</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>In this case, all the specified nodes (and their descendants) will be cloned and concatenated into each copy of the component that gets instantiated.</p>
 
-<h3 id="a-document-fragment">A document fragment</h3>
+<h3>A document fragment</h3>
 
-<p>If you’re building configurations programmatically and you have a DocumentFragment object, you can use it as a component template:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="nx">someDocumentFragmentInstance</span><span class="p">,</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+<p>If you&#39;re building configurations programmatically and you have a DocumentFragment object, you can use it as a component template:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="nx">someDocumentFragmentInstance</span><span class="p">,</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Since document fragments can have multiple top-level nodes, the entire document fragment (not just descendants of top-level nodes) 
 is treated as the component template.</p>
 
-<h3 id="a-promise-1">A promise</h3>
+<h3>A promise</h3>
 
 <p>A template can also be resolved through a <a href="http://promises-aplus.github.com/promises-spec">Promises/A+</a> compliant or 
 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">ES6-compliant</a> Promise:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">promise</span><span class="p">:</span> <span class="nx">promiseInstance</span> <span class="p">},</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">promise</span><span class="o">:</span> <span class="nx">promiseInstance</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Compatible implementations can be found in any number of libraries such as Angular, jQuery, Dojo, WinJS, 
 and even libraries dedicated to them such as Q or when.js.</p>
 
 <p><strong>Note</strong>: It is necessary to specify <code>template: { promise: object }</code>, and not just <code>template: object</code>.</p>
 
-<h3 id="an-injectable-1">An injectable</h3>
+<h3>An injectable</h3>
 
-<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx’s <a href="/docs/dependency-injection-overview.html">injector</a>:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">resolve</span><span class="p">:</span> <span class="s2">"some-injectable-identifier"</span> <span class="p">},</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+<p>Alternatively, you can specifiy the identifier of an injectable which is to be resolved through WebRx&#39;s <a href="/docs/dependency-injection-overview.html">injector</a>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">resolve</span><span class="o">:</span> <span class="s2">&quot;some-injectable-identifier&quot;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>In this case it is assumed that the injectable-resolves to an array of Nodes.</p>
 
-<h3 id="an-amd-module-1">An AMD module</h3>
+<h3>An AMD module</h3>
 
 <p>If you have an AMD loader (such as require.js) already in your page, then you can use it to fetch a template. 
 For more details about how this works, see how WebRx loads components via AMD below. Example:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/template'</span> <span class="p">},</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/template&#39;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<p>The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a string of markup, e.g. fetched using require.js’s text plugin:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'text!path/my-html-file.html'</span> <span class="p">},</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">...</span>
+</code></pre></div>
+<p>The returned AMD module object can be in any of the forms allowed for viewmodels. So, it can be a string of markup, e.g. fetched using require.js&#39;s text plugin:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!path/my-html-file.html&#39;</span> <span class="p">},</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">...</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 <p>… or any of the other forms described here, though it would be unusual for the others to be useful when fetching templates via AMD.</p>
 
-<h2 id="how-webrx-loads-components-via-amd">How WebRx loads components via AMD</h2>
+<h2>How WebRx loads components via AMD</h2>
 
-<p>When you load a viewmodel or template via require declarations …</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">viewModel</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/module/name'</span> <span class="p">},</span>
-    <span class="na">template</span><span class="p">:</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'text!some-template.html'</span> <span class="p">}</span>
+<p>When you load a viewmodel or template via require declarations ...</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">viewModel</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module/name&#39;</span> <span class="p">},</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;text!some-template.html&#39;</span> <span class="p">}</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<p>all WebRx does is call <code>require(['some/module/name'], callback)</code> and <code>require(['text!some-template.html'], callback)</code>, 
+</code></pre></div>
+<p>all WebRx does is call <code>require([&#39;some/module/name&#39;], callback)</code> and <code>require([&#39;text!some-template.html&#39;], callback)</code>, 
 and uses the asynchronously-returned objects as the viewmodel and template definitions. So,</p>
 
 <p>This does not take a strict dependency on require.js or any other particular module loader. Any module loader that provides an 
-AMD-style require API will do.</p>
+AMD-style require API will do. </p>
 
 <p>WebRx does not interpret the module name in any way - it merely passes it through to <code>require()</code>. So of course WebRx does not 
-know or care about where your module files are loaded from. That’s up to your AMD loader and how you’ve configured it.
-WebRx doesn’t know or care whether your AMD modules are anonymous or not. Typically we find it’s most convenient for 
+know or care about where your module files are loaded from. That&#39;s up to your AMD loader and how you&#39;ve configured it.
+WebRx doesn&#39;t know or care whether your AMD modules are anonymous or not. Typically we find it&#39;s most convenient for 
 components to be defined as anonymous modules, but that concern is entirely separate from WebRx. AMD modules are loaded only on demand.</p>
 
 <p>WebRx does not call <code>require([moduleName], ...)</code> until your component is being instantiated. This is how components get loaded on demand, not up front.</p>
@@ -565,56 +497,49 @@ then it will not cause the AMD module to be loaded until the if condition is tru
 already loaded (e.g., in a preloaded bundle) then the require call will not trigger any additional HTTP requests, 
 so you can control what is preloaded and what is loaded on demand.</p>
 
-<h2 id="registering-components-as-a-single-amd-module">Registering components as a single AMD module</h2>
+Registering components as a single AMD module</h2>
 
 <p>For even better encapsulation, you can package a component into a single self-describing AMD module. Then you can reference a component as simply as:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'my-component'</span><span class="p">,</span> <span class="p">{</span> <span class="na">require</span><span class="p">:</span> <span class="s1">'some/module'</span> <span class="p">});</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;some/module&#39;</span> <span class="p">});</span>
+</code></pre></div>
 <p>Notice that no viewmodel/template pair is specified. The AMD module itself can provide a viewmodel/template pair, 
 using any of the definition formats listed above. For example, the file <code>some/module.js</code> could be declared as:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// AMD module 'some/module.js' encapsulating the configuration for a component</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">'webrx'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// AMD module &#39;some/module.js&#39; encapsulating the configuration for a component</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">MyComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">personName</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span>
- 
+
     <span class="k">return</span> <span class="p">{</span>
-        <span class="na">viewModel</span><span class="p">:</span> <span class="nx">MyComponentViewModel</span><span class="p">,</span>
-        <span class="na">template</span><span class="p">:</span> <span class="s1">'The name is &lt;strong data-bind="text: personName"&gt;&lt;/strong&gt;'</span>
+        <span class="nx">viewModel</span><span class="o">:</span> <span class="nx">MyComponentViewModel</span><span class="p">,</span>
+        <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;The name is &lt;strong data-bind=&quot;text: personName&quot;&gt;&lt;/strong&gt;&#39;</span>
     <span class="p">};</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
-<h2 id="a-recommended-amd-module-pattern">A recommended AMD module pattern</h2>
+</code></pre></div>
+<h2>A recommended AMD module pattern</h2>
 
 <p>What tends to be most useful in practice is creating AMD modules that have inline viewmodel classes, 
 and explicitly take AMD dependencies on external template files.</p>
 
 <p>For example, if the following is in a file at <code>path/my-component.js</code>,</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// Recommended AMD module pattern for a WebRx component that:</span>
-<span class="c1">//  - Can be referenced with just a single 'require' declaration</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Recommended AMD module pattern for a WebRx component that:</span>
+<span class="c1">//  - Can be referenced with just a single &#39;require&#39; declaration</span>
 <span class="c1">//  - Can be included in a bundle using the r.js optimizer</span>
-<span class="nx">define</span><span class="p">([</span><span class="s1">'webrx'</span><span class="p">,</span> <span class="s1">'text!./my-component.html'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">,</span> <span class="nx">htmlString</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;webrx&#39;</span><span class="p">,</span> <span class="s1">&#39;text!./my-component.html&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">wx</span><span class="p">,</span> <span class="nx">htmlString</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">MyComponentViewModel</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Set up properties, etc.</span>
     <span class="p">}</span>
- 
+
     <span class="c1">// Use prototype to declare any public methods</span>
     <span class="nx">MyComponentViewModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
- 
+
     <span class="c1">// Return component definition</span>
-    <span class="k">return</span> <span class="p">{</span> <span class="na">viewModel</span><span class="p">:</span> <span class="nx">MyComponentViewModel</span><span class="p">,</span> <span class="na">template</span><span class="p">:</span> <span class="nx">htmlString</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">viewModel</span><span class="o">:</span> <span class="nx">MyComponentViewModel</span><span class="p">,</span> <span class="nx">template</span><span class="o">:</span> <span class="nx">htmlString</span> <span class="p">};</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
 <p>… and the template markup is in the file path/my-component.html, then you have these benefits:</p>
 
-<p>Applications can reference this trivially, i.e., <code>wx.app.component('my-component', { require: 'path/my-component' });</code></p>
+<p>Applications can reference this trivially, i.e., <code>wx.app.component(&#39;my-component&#39;, { require: &#39;path/my-component&#39; });</code></p>
 
 <p>You only need two files for the component - a viewmodel (<code>path/my-component.js</code>) and a template (<code>path/my-component.html</code>) - 
 which is a very natural arrangement during development. Since the dependency on the template is explicitly stated in the define call, 
@@ -650,9 +575,7 @@ can therefore trivially be included in a bundle file during a build step.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -209,35 +206,29 @@
                 <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/text-binding.html"><i class="fa fa-reddit-alien"></i></a>
             </div>
 
-            <div class="body"><h1 id="the-text-binding">The Text-Binding</h1>
+            <div class="body"><h1>The Text-Binding</h1>
 
 <p>The text binding causes the associated DOM element to display the text value of your parameter.</p>
 
 <p>Typically this is useful with elements like <em>span</em> or <em>em</em> that traditionally display text, but technically you can use it with any element.</p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Today's message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: myMessage"</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html">Today&#39;s message is: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: myMessage&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">myMessage</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
+        <span class="nx">myMessage</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myMessage</span><span class="p">(</span><span class="s2">"Hello, world!"</span><span class="p">);</span> <span class="c1">// Text appears</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">myMessage</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span> <span class="c1">// Text appears</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
+<h2>Parameters</h2>
 
-<h2 id="parameters">Parameters</h2>
+<h3>Main parameter</h3>
 
-<h3 id="main-parameter">Main parameter</h3>
+<p>The binding sets the element&#39;s content to a text node with your parameter value. Any previous content will be overwritten.</p>
 
-<p>The binding sets the element’s content to a text node with your parameter value. Any previous content will be overwritten.</p>
-
-<p>If this parameter is an observable value, the binding will update the element’s text whenever the value changes. 
-If the parameter isn’t observable, it will only set the element’s text once and will not update it again later.</p>
+<p>If this parameter is an observable value, the binding will update the element&#39;s text whenever the value changes. 
+If the parameter isn&#39;t observable, it will only set the element&#39;s text once and will not update it again later.</p>
 
 <p>If you supply something other than a number or a string (e.g., you pass an object or an array), the displayed text will be equivalent to <code>yourParameter.toString()</code></p>
 
@@ -270,9 +261,7 @@ If the parameter isn’t observable, it will only set the element’s text once 
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

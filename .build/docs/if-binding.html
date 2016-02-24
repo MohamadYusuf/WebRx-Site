@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -212,77 +209,66 @@
             <div class="body"><div class="alert alert-danger sample-warning" role="alert">
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
-<p># The If-Binding</p>
+
+<h1>The If-Binding</h1>
 
 <p>The if binding causes a section of markup to appear in your document (and to have its data-bind attributes applied), only if a specified expression evaluates to true (or a true-ish value such as a non-null object or nonempty string).</p>
 
-<p>if plays a similar role to the visible binding. The difference is that, with visible, the contained markup always remains in the DOM and always has its data-bind attributes applied - the visible binding just uses CSS to toggle the container element’s visiblity. The if binding, however, physically adds or removes the contained markup in your DOM, and only applies bindings to descendants if the expression is true.</p>
+<p>if plays a similar role to the visible binding. The difference is that, with visible, the contained markup always remains in the DOM and always has its data-bind attributes applied - the visible binding just uses CSS to toggle the container element&#39;s visiblity. The if binding, however, physically adds or removes the contained markup in your DOM, and only applies bindings to descendants if the expression is true.</p>
 
-<h2 id="example-1">Example 1</h2>
+<h2>Example 1</h2>
 
 <p>This example shows that the if binding can dynamically add and remove sections of markup as observable values change.</p>
 
 <div class="panel panel-default" id="if-example">
-	<div class="panel-body">
-		<label><input type="checkbox" data-bind="checked: @displayMessage" /> Display message</label>
-	 
-		<div data-bind="if: displayMessage">Here is a message. Astonishing.</div>
+    <div class="panel-body">
+        <label><input type="checkbox" data-bind="checked: @displayMessage" /> Display message</label>
+     
+        <div data-bind="if: displayMessage">Here is a message. Astonishing.</div>
 
-		<script>
-			wx.applyBindings({
-			    displayMessage: wx.property(false)
-			}, document.getElementById("if-example"));
-		</script>
-	</div>
+        <script>
+            wx.applyBindings({
+                displayMessage: wx.property(false)
+            }, document.getElementById("if-example"));
+        </script>
+    </div>
 </div>
 
 <p><strong>Source code: View</strong></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;label&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;checked: @displayMessage&quot;</span> <span class="nt">/&gt;</span> Display message<span class="nt">&lt;/label&gt;</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;label&gt;&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">data-bind=</span><span class="s">"checked: @displayMessage"</span> <span class="nt">/&gt;</span> Display message<span class="nt">&lt;/label&gt;</span>
- 
-<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"if: displayMessage"</span><span class="nt">&gt;</span>Here is a message. Astonishing.<span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
-
+<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;if: displayMessage&quot;</span><span class="nt">&gt;</span>Here is a message. Astonishing.<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
 <p><strong>Source code: View model</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-    <span class="na">displayMessage</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
+    <span class="nx">displayMessage</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
+<h2>Example 2</h2>
 
-<h2 id="example-2">Example 2</h2>
-
-<p>In the following example, the <code>div</code> element will be empty for “Mercury”, but populated for “Earth”. That’s because Earth has a non-null capital property, whereas “Mercury” has null for that property.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: planets"</span><span class="nt">&gt;</span>
+<p>In the following example, the <code>div</code> element will be empty for “Mercury”, but populated for “Earth”. That&#39;s because Earth has a non-null capital property, whereas “Mercury” has null for that property.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: planets&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        Planet: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;</span> <span class="nt">&lt;/b&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"if: capital"</span><span class="nt">&gt;</span>
-            Capital: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: capital.cityName"</span><span class="nt">&gt;</span> <span class="nt">&lt;/b&gt;</span>
+        Planet: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/b&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;if: capital&quot;</span><span class="nt">&gt;</span>
+            Capital: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: capital.cityName&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/b&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="na">planets</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Mercury'</span><span class="p">,</span> <span class="na">capital</span><span class="p">:</span> <span class="kc">null</span> <span class="p">},</span> 
-            <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Earth'</span><span class="p">,</span> <span class="na">capital</span><span class="p">:</span> <span class="p">{</span> <span class="na">cityName</span><span class="p">:</span> <span class="s1">'Barnsley'</span> <span class="p">}</span> <span class="p">}</span>        
+        <span class="nx">planets</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Mercury&#39;</span><span class="p">,</span> <span class="nx">capital</span><span class="o">:</span> <span class="kc">null</span> <span class="p">},</span> 
+            <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Earth&#39;</span><span class="p">,</span> <span class="nx">capital</span><span class="o">:</span> <span class="p">{</span> <span class="nx">cityName</span><span class="o">:</span> <span class="s1">&#39;Barnsley&#39;</span> <span class="p">}</span> <span class="p">}</span>        
         <span class="p">]</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
+<p>It&#39;s important to understand that the if binding really is vital to make this code work properly. Without it, there would be an error when trying to evaluate capital.cityName in the context of “Mercury” where capital is null. In JavaScript, you&#39;re not allowed to evaluate subproperties of null or undefined values.</p>
 
-<p>It’s important to understand that the if binding really is vital to make this code work properly. Without it, there would be an error when trying to evaluate capital.cityName in the context of “Mercury” where capital is null. In JavaScript, you’re not allowed to evaluate subproperties of null or undefined values.</p>
+<h2>Parameters</h2>
 
-<h2 id="parameters">Parameters</h2>
-
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>The expression you wish to evaluate. If it evaluates to true (or a true-ish value), the contained markup will be present in the document, and any data-bind attributes on it will be applied. If your expression evaluates to false, the contained markup will be removed from your document without first applying any bindings to it.</p>
 
@@ -317,9 +303,7 @@
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

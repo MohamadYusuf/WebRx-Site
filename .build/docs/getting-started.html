@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -209,109 +206,97 @@
                 <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/getting-started.html"><i class="fa fa-reddit-alien"></i></a>
             </div>
 
-            <div class="body"><h1 id="getting-started">Getting Started</h1>
+            <div class="body"><h1>Getting Started</h1>
 
-<p>Welcome to WebRx! This tutorial will take you through creating a simple application and briefly explain its main concepts. We assume you are familiar with JavaScript, HTML, and CSS.</p>
+<p>Welcome to WebRx! This tutorial will take you through creating a simple application and briefly explain its main concepts. We assume you are familiar with JavaScript, HTML, and CSS. </p>
 
-<p>To get a quick overview, we recommend you skip down to the section titled <a href="#topic-setting-up-html">Setting Up The HTML Page</a> so you can see how to use WebRx straight away.</p>
+<p>To get a quick overview, we recommend you skip down to the section titled <a href="#topic-setting-up-html">Setting Up The HTML Page</a> so you can see how to use WebRx straight away. </p>
 
 <p>Then, when you are ready to actually build something, come back and read about <a href="#topic-setting-up">Setting Up a Project and installing WebRx</a>.</p>
 
-<h2 id="a-idtopic-setting-upasetting-up-a-project-and-installing-webrx"><a id="topic-setting-up"></a>Setting Up a Project and installing WebRx</h2>
+<h2><a id="topic-setting-up"></a>Setting Up a Project and installing WebRx</h2>
 
-<p>This tutorial assumes that you’ve already created a project skeleton in your favorite IDE or Code-Editor. Let’s continue with installing the WebRx Framework.</p>
+<p>This tutorial assumes that you&#39;ve already created a project skeleton in your favorite IDE or Code-Editor. Let&#39;s continue with installing the WebRx Framework. </p>
 
 <p>Depending on the type of project you are working on, there are multiple ways to install WebRx.</p>
 
-<h3 id="npm-installation">NPM Installation</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>npm install webrx
-</code></pre>
-</div>
-
+<h3>NPM Installation</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install webrx
+</code></pre></div>
 <p>WebRx and its dependencies will be installed to the following locations:</p>
 
 <ul>
-  <li>WebRx: <code>&lt;project-folder&gt;/node_modules/webrx/dist</code></li>
-  <li>RxJS: <code>&lt;project-folder&gt;/node_modules/rx/dist</code></li>
+<li>WebRx: <code>&lt;project-folder&gt;/node_modules/webrx/dist</code></li>
+<li>RxJS: <code>&lt;project-folder&gt;/node_modules/rx/dist</code> </li>
 </ul>
 
-<h3 id="bower-installation">Bower Installation</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>bower install WebRx
-</code></pre>
-</div>
-
+<h3>Bower Installation</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bower install WebRx
+</code></pre></div>
 <p>WebRx and its dependencies will be installed to the following locations:</p>
 
 <ul>
-  <li>WebRx: <code>&lt;project-folder&gt;/bower_modules/webrx/dist</code></li>
-  <li>RxJS: <code>&lt;project-folder&gt;/bower_modules/rx/dist</code></li>
+<li>WebRx: <code>&lt;project-folder&gt;/bower_modules/webrx/dist</code></li>
+<li>RxJS: <code>&lt;project-folder&gt;/bower_modules/rx/dist</code> </li>
 </ul>
 
-<h3 id="nuget-installation">NuGet Installation</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">PM&gt; </span>Install-Package WebRx
-</code></pre>
-</div>
-
+<h3>NuGet Installation</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">PM&gt; Install-Package WebRx
+</code></pre></div>
 <p>WebRx and its dependencies will be installed to the following locations:</p>
 
 <ul>
-  <li>WebRx: <code>&lt;project-folder&gt;\content\Scripts</code></li>
-  <li>RxJS: <code>&lt;project-folder&gt;\content\Scripts</code></li>
+<li>WebRx: <code>&lt;project-folder&gt;\content\Scripts</code></li>
+<li>RxJS: <code>&lt;project-folder&gt;\content\Scripts</code> </li>
 </ul>
 
 <p><strong>Note:</strong> This should be the prefered installation method for developers working with Microsoft Visual Studio.</p>
 
-<h3 id="manual-installation">Manual Installation</h3>
+<h3>Manual Installation</h3>
 
 <p>If you prefer to work without a package-mananger you can download the latest
 WebRx Distribution Archive from <a href="/downloads/web.rx.zip">here</a>.</p>
 
-<h3 id="typescript">Typescript</h3>
+<h3>Typescript</h3>
 
 <p>WebRx is written in <a href="http://typescriptlang.org">Typescript</a> and as such ships with a
 complete Typescript Definition File <code>web.rx.d.ts</code> which gets installed
-alongside WebRx’s main script files.</p>
+alongside WebRx&#39;s main script files. </p>
 
 <p>When WebRx is installed using NuGet, this file will will be located in <code>&lt;project-folder&gt;\content\Scripts\typings</code></p>
 
-<h2 id="a-idtopic-setting-up-htmlasetting-up-the-html-page"><a id="topic-setting-up-html"></a>Setting Up The HTML Page</h2>
+<h2><a id="topic-setting-up-html"></a>Setting Up The HTML Page</h2>
 
-<p>If you’ve followed along this far, you now have all the libraries, build configuration and tools you need to create amazing JavaScript apps with WebRx. The next thing to do is create the <code>index.html</code> file in the root of your project folder. This example file provides a good template for new WebRx-based apps.</p>
+<p>If you&#39;ve followed along this far, you now have all the libraries, build configuration and tools you need to create amazing JavaScript apps with WebRx. The next thing to do is create the <code>index.html</code> file in the root of your project folder. This example file provides a good template for new WebRx-based apps.</p>
 
-<h4 id="indexhtml">index.html</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<h4>index.html</h4>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;title&gt;</span>WebRx<span class="nt">&lt;/title&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/div&gt;</span>
-		
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bower_modules/rx/dist/rx.all.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bower_modules/webrx/dist/web.rx.js"</span><span class="nt">&gt;&lt;/script&gt;</span> 
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_modules/rx/dist/rx.all.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_modules/webrx/dist/web.rx.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span> 
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/app.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
+<p>Yes, that&#39;s it. This is the only HTML page in our application. The head of the document is pretty straight forward. 
+So let&#39;s ignore that and proceed to the body.</p>
 
-<p>Yes, that’s it. This is the only HTML page in our application. The head of the document is pretty straight forward. 
-So let’s ignore that and proceed to the body.</p>
-
-<p>The lonely <code>div</code> element at the very top of the body defines a view-slot for WebRx’s <a href="/docs/routing-overview.html">router</a>. 
+<p>The lonely <code>div</code> element at the very top of the body defines a view-slot for WebRx&#39;s <a href="/docs/routing-overview.html">router</a>. 
 The view-slot will spring to life when define our first component in one of the upcoming sections.</p>
 
-<p>Let’s now focus on the script tags:</p>
+<p>Let&#39;s now focus on the script tags:</p>
 
 <ul>
-  <li>First we have a reference to <code>rx.all.js</code> that loads the 
+<li>First we have a reference to <code>rx.all.js</code> that loads the 
 <a href="https://github.com/Reactive-Extensions/RxJS">RxJS-Library</a> which is a powerful set of libraries for processing and querying asynchronous data-streams.</li>
-  <li>The second script tag loads <code>web.rx.js</code> - the WebRx framework.</li>
-  <li>The third script tag loads <code>app.js</code> which we are about to create in the next section</li>
+<li>The second script tag loads <code>web.rx.js</code> - the WebRx framework.</li>
+<li>The third script tag loads <code>app.js</code> which we are about to create in the next section</li>
 </ul>
 
 <p><strong>Note:</strong> This example assumes that WebRx and its dependencies have been installed using <a href="http://bower.io/">Bower</a> and
@@ -319,100 +304,88 @@ therefore the scripts reside inside <code>&lt;project-folder&gt;/bower_modules/<
 one of the other installation methods outlined above you should have no problems correcting 
 the script-references accordingly.</p>
 
-<h2 id="a-idtopic-setting-up-jsabootstrapping-the-application"><a id="topic-setting-up-js"></a>Bootstrapping the application</h2>
+<h2><a id="topic-setting-up-js"></a>Bootstrapping the application</h2>
 
-<p>Now that’ve setup our html page it’s time to get things rolling.</p>
+<p>Now that&#39;ve setup our html page it&#39;s time to get things rolling. </p>
 
 <p>Inside your project create a folder <code>js</code> and inside that folder a file named <code>app.js</code> with the following contents:</p>
 
-<h4 id="appjs">app.js</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
-</code></pre>
-</div>
-
+<h4>app.js</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
+</code></pre></div>
 <p>The call to <code>wx.applyBindings</code> will tell WebRx that is now responsible for controlling the contents of our page
 via a concept called <a href="/docs/binding-syntax.html">declarative data-binding</a>. So far our page contains
 just a single binding, namely the <a href="/docs/view-binding.html">view</a> binding on the sole <code>div</code> element of the body.</p>
 
 <p>You could now navigate to <code>index.html&gt;</code> inside your browser and would see - well, a blank page.
-Not very exciting. Let’s fix this.</p>
+Not very exciting. Let&#39;s fix this.</p>
 
-<h2 id="defining-our-first-component">Defining our first Component</h2>
+<h2>Defining our first Component</h2>
 
-<p>In WebRx, user interface elements are composed of view and view-model pairs that are refered to as <a href="/docs/component-overview.html">Components</a>. The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. WebRx’s powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This separation of concerns is great for developer/designer collaboration, maintainability, architectural flexibility and even source control.</p>
+<p>In WebRx, user interface elements are composed of view and view-model pairs that are refered to as <a href="/docs/component-overview.html">Components</a>. The view is written with HTML and is rendered into the DOM. The view-model is written with JavaScript and provides data and behavior to the view. WebRx&#39;s powerful databinding links the two pieces together allowing changes in your data to be reflected in the view and vice versa. This separation of concerns is great for developer/designer collaboration, maintainability, architectural flexibility and even source control.</p>
 
-<p>Let’s now focus on the <code>div</code> element at the very top of the body:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<p>When we’ve invoked <code>wx.applyBindings()</code> in the previous step we basically turned
-this element into a content placeholder.</p>
+<p>Let&#39;s now focus on the <code>div</code> element at the very top of the body:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;view: &#39;main&#39;&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<p>When we&#39;ve invoked <code>wx.applyBindings()</code> in the previous step we basically turned
+this element into a content placeholder. </p>
 
 <p>In order to bring these placeholders to life we need to accomplish two things:</p>
 
 <ul>
-  <li>First we need to create a <a href="/docs/component-overview.html">Component</a> that will provide the content to for the placeholder</li>
-  <li>Next we need to map the component to a placeholder slot (WebRx supports unlimited optionally nested placeholders per page).</li>
+<li>First we need to create a <a href="/docs/component-overview.html">Component</a> that will provide the content to for the placeholder</li>
+<li>Next we need to map the component to a placeholder slot (WebRx supports unlimited optionally nested placeholders per page).</li>
 </ul>
 
-<p>To do that let’s go back to the <code>app.js</code> script we’ve created in <a href="#topic-setting-up-js">Step 3</a>.</p>
+<p>To do that let&#39;s go back to the <code>app.js</code> script we&#39;ve created in <a href="#topic-setting-up-js">Step 3</a>.</p>
 
-<h4 id="appjs-1">app.js</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">viewModel</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">'Bart'</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s1">'Simpson'</span><span class="p">;</span>
+<h4>app.js</h4>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">viewModel</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s1">&#39;Bart&#39;</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s1">&#39;Simpson&#39;</span><span class="p">;</span>
   <span class="p">},</span>
-  <span class="na">template</span><span class="p">:</span> <span class="s1">'The name is &lt;span data-bind="text: firstName + \' \' + lastName"&gt;&lt;/span&gt;'</span>
+  <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;The name is &lt;span data-bind=&quot;text: firstName + \&#39; \&#39; + lastName&quot;&gt;&lt;/span&gt;&#39;</span>
 <span class="p">});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
-  <span class="na">name</span><span class="p">:</span> <span class="s2">"$"</span><span class="p">,</span>
-  <span class="na">views</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"hello"</span> <span class="p">}</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;$&quot;</span><span class="p">,</span>
+  <span class="nx">views</span><span class="o">:</span> <span class="p">{</span> <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;hello&quot;</span> <span class="p">}</span>
 <span class="p">});</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
 
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">();</span>
-</code></pre>
-</div>
-
-<p>Let’s examine the final version of the script line by line:</p>
+</code></pre></div>
+<p>Let&#39;s examine the final version of the script line by line:</p>
 
 <p><strong>Line 1-7</strong>: Here we define a very simple component that goes by the moniker <code>hello</code>. Given a <code>firstName</code> and a <code>lastName</code> property
 the component will display the resulting full-name.</p>
 
-<p>Even though we’ve now defined a component for our placeholder, it will be still not visible on the page because we haven’t told the framework
-<em>where</em> to display it. In WebRx it is the <a href="/docs/routing-overview.html">Router’s</a> responsibility to map components to views. We just have to tell it.</p>
+<p>Even though we&#39;ve now defined a component for our placeholder, it will be still not visible on the page because we haven&#39;t told the framework
+<em>where</em> to display it. In WebRx it is the <a href="/docs/routing-overview.html">Router&#39;s</a> responsibility to map components to views. We just have to tell it.</p>
 
 <p><strong>Line 11</strong>: This line tells the <a href="/docs/routing-overview.html">Router</a> to display the component
-<code>hello</code> in the placeholder <code>main</code> whenever the application is in it’s
-default state (<code>$</code>).</p>
+<code>hello</code> in the placeholder <code>main</code> whenever the application is in it&#39;s
+default state (<code>$</code>). </p>
 
 <p><strong>Line 14</strong>: Here we reload the router after configuring it in the previous step</p>
 
-<h2 id="the-result">The result</h2>
+<h2>The result</h2>
 
 <p>If you have implemented everything correctly, refreshing your browser windows should yield the following output:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">The</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">Bart</span> <span class="nx">Simpson</span> 
+</code></pre></div>
+<h2>Conclusion</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">The</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">Bart</span> <span class="nx">Simpson</span> 
-</code></pre>
-</div>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>Even though this example like very basic on the surface, it has touched quite a lot of WebRx’s core
-concepts. Throughout the tutorial we’ve learned:</p>
+<p>Even though this example like very basic on the surface, it has touched quite a lot of WebRx&#39;s core
+concepts. Throughout the tutorial we&#39;ve learned:</p>
 
 <ul>
-  <li>How to setup a basic HTML page that hosts our application</li>
-  <li>How to bootstrap the application</li>
-  <li>How to define a basic component consisting of a view-model and a template</li>
-  <li>How to display a component using the Router</li>
+<li>How to setup a basic HTML page that hosts our application</li>
+<li>How to bootstrap the application</li>
+<li>How to define a basic component consisting of a view-model and a template</li>
+<li>How to display a component using the Router </li>
 </ul>
 
 <p><a class="next-topic" href="/docs/index.html">Next: Introduction</a></p>
@@ -444,9 +417,7 @@ concepts. Throughout the tutorial we’ve learned:</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -209,16 +206,16 @@
                 <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/dependency-injection-overview.html"><i class="fa fa-reddit-alien"></i></a>
             </div>
 
-            <div class="body"><h1 id="dependency-injection-overview">Dependency Injection Overview</h1>
+            <div class="body"><h1>Dependency Injection Overview</h1>
 
 <p>Dependency Injection (DI) is a software design pattern that deals with how components get hold of their dependencies.</p>
 
 <p>The WebRx injector subsystem is in charge of creating components, resolving their dependencies, and providing them 
 to other components as requested.</p>
 
-<h2 id="why-dependency-injection">Why Dependency Injection?</h2>
+<h2>Why Dependency Injection?</h2>
 
-<p>This section motivates and explains WebRx’s use of DI. For how to use DI, see above.</p>
+<p>This section motivates and explains WebRx&#39;s use of DI. For how to use DI, see above.</p>
 
 <p>For in-depth discussion about DI, see Dependency Injection at Wikipedia, Inversion of Control by Martin Fowler, 
 or read about DI in your favorite software design pattern book.</p>
@@ -226,26 +223,23 @@ or read about DI in your favorite software design pattern book.</p>
 <p>There are only three ways a component (object or function) can get a hold of its dependencies:</p>
 
 <ul>
-  <li>The component can create the dependency, typically using the new operator.</li>
-  <li>The component can look up the dependency, by referring to a global variable.</li>
-  <li>The component can have the dependency passed to it where it is needed.</li>
-  <li>The first two options of creating or looking up dependencies are not optimal because they hard code the dependency to the component. This makes it difficult, if not impossible, to modify the dependencies. This is especially problematic in tests, where it is often desirable to provide mock dependencies for test isolation.</li>
+<li>The component can create the dependency, typically using the new operator.</li>
+<li>The component can look up the dependency, by referring to a global variable.</li>
+<li>The component can have the dependency passed to it where it is needed.</li>
+<li>The first two options of creating or looking up dependencies are not optimal because they hard code the dependency to the component. This makes it difficult, if not impossible, to modify the dependencies. This is especially problematic in tests, where it is often desirable to provide mock dependencies for test isolation.</li>
 </ul>
 
 <p>The third option is the most viable, since it removes the responsibility of locating the dependency from the component. The dependency is simply handed to the component.</p>
 
-<h3 id="example">Example</h3>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">SomeClass</span><span class="p">(</span><span class="nx">greeter</span><span class="p">)</span> <span class="p">{</span>
+<h3>Example</h3>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">SomeClass</span><span class="p">(</span><span class="nx">greeter</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">greeter</span> <span class="o">=</span> <span class="nx">greeter</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">SomeClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">greeter</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>In the above example <code>SomeClass</code> is not concerned with creating or locating the <code>greeter</code> dependency, 
 it is simply handed the greeter when it is instantiated.</p>
 
@@ -282,9 +276,7 @@ locator that is responsible for construction and lookup of dependencies.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

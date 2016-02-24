@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -209,84 +206,63 @@
                 <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/expression-filters.html"><i class="fa fa-reddit-alien"></i></a>
             </div>
 
-            <div class="body"><h1 id="expression-filters">Expression Filters</h1>
+            <div class="body"><h1>Expression Filters</h1>
 
 <p>Expression-filters format or convert the result of an expression for display to the user. Once registered, they can be used in every template.</p>
 
 <p>The beauty of expression-filters is that they can often be utilized to augment the functionality if existing bindings without 
 having to resort to a <a href="/docs/custom-bindings.html">custom-binding</a>. As a rule of thumb, every time all you want to do is to convert
 the result of a binding expression to an alternative representation, an expression filter is most likely a better and much
-simpler solution than a custom-binding. Another advantage of filters is that they can be chained using the pipe (<code>|</code>) symbol.</p>
+simpler solution than a custom-binding. Another advantage of filters is that they can be chained using the pipe (<code>|</code>) symbol.   </p>
 
-<h2 id="using-filters-in-templates">Using filters in templates</h2>
+<h2>Using filters in templates</h2>
 
 <p>Filters can be applied to expressions in templates using the following syntax:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span>
+</code></pre></div>
 <p>E.g. the markup <code>12 | currency</code> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
 
-<p>Filters can be applied to the result of another filter. This is called “chaining” and uses the following syntax:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span>
-</code></pre>
-</div>
-
+<p>Filters can be applied to the result of another filter. This is called &quot;chaining&quot; and uses the following syntax:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span>
+</code></pre></div>
 <p>Filters may have arguments. The syntax for this is</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="err">:</span><span class="nx">argument1</span><span class="err">:</span><span class="nx">argument2</span><span class="err">:</span><span class="p">...</span>
-</code></pre>
-</div>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="o">:</span><span class="nx">argument1</span><span class="o">:</span><span class="nx">argument2</span><span class="o">:</span><span class="p">...</span>
+</code></pre></div>
 <p>E.g. the markup <code>1234 | number:2</code> formats the number <code>1234</code> with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
 
-<h2 id="registering-a-filter">Registering a filter</h2>
+<h2>Registering a filter</h2>
 
 <p>An expression filter is a function which is registered by invoking the <code>wx.app.filter</code> function:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'uppercase'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">expressionResult</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;uppercase&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">expressionResult</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// The function will be called with the first argument representing </span>
     <span class="c1">// the result of the expression the filter has been applied to</span>
     <span class="c1">// or the result of the previous filter in the chain</span>
     <span class="k">return</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>  
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div>
+<h3>Customizing filter behavior</h3>
 
-<h3 id="customizing-filter-behavior">Customizing filter behavior</h3>
+<p>Expression filters can even be configured for individual bindings by supplying additional arguments to it. </p>
 
-<p>Expression filters can even be configured for individual bindings by supplying additional arguments to it.</p>
-
-<p>Let’s change the <code>uppercase</code> filter into a generic case transformation filter:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'changecase'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">expressionResult</span><span class="p">,</span> <span class="nx">toUpper</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">toUpper</span> <span class="p">?</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="p">:</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+<p>Let&#39;s change the <code>uppercase</code> filter into a generic case transformation filter:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;changecase&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">expressionResult</span><span class="p">,</span> <span class="nx">toUpper</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">toUpper</span> <span class="o">?</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="o">:</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
 <span class="p">});</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>Using our filter in a binding would be as simple as:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: 'foo' | changecase:true"</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre>
-</div>
-
-<h3 id="consuming-a-filter-in-a-view-model">Consuming a filter in a view-model</h3>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: &#39;foo&#39; | changecase:true&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre></div>
+<h3>Consuming a filter in a view-model</h3>
 
 <p>In a perfect world your view-model never has to deal with presentation issues that are normally handled declaratively in 
-your view. Since we don’t live in such a world just yet, it is possible to retrieve and subsequently use, a registered 
+your view. Since we don&#39;t live in such a world just yet, it is possible to retrieve and subsequently use, a registered 
 filter function in your view-model in order to avoid duplicate code:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">personName</span><span class="p">:</span> <span class="s1">'Bob'</span><span class="p">,</span>
-    <span class="na">personAge</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-    <span class="na">caseFilter</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'changecase'</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">personName</span><span class="o">:</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span>
+    <span class="nx">personAge</span><span class="o">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="nx">caseFilter</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;changecase&#39;</span><span class="p">)</span>
 <span class="p">};</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p><a class="next-topic" href="/docs/custom-bindings.html">Next: Custom Bindings</a></p>
 </div>
         </div>
@@ -316,9 +292,7 @@ filter function in your view-model in order to avoid duplicate code:</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

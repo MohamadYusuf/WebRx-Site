@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -212,26 +209,27 @@
             <div class="body"><div class="alert alert-danger sample-warning" role="alert">
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
-<p># The selectedValue-Binding</p>
+
+<h1>The selectedValue-Binding</h1>
 
 <p>The selectedValue binding links the value of the selected option of a <code>select</code> element, or the value of the checked
 element of a group of radio-buttons (<code>input type=radio</code>) with a view-model property.</p>
 
 <p>It is a two-way binding, so if you set the view-model property, the associated element will be selected (when bound to a <code>select</code> element)
 or checked (when bound to a group of radio-buttons). If the user manually changes the selected option, the view-model property will be
-set to the selected option’s value. Likewise, if the user manually checks an element of a radio-group, the view-model property
+set to the selected option&#39;s value. Likewise, if the user manually checks an element of a radio-group, the view-model property
 will reflect the value of the checked radio-button.</p>
 
-<h2 id="using-the-selectedvalue-binding-with-a-select-element">Using the selectedValue binding with a select element</h2>
+<h2>Using the selectedValue binding with a select element</h2>
 
 <div class="panel panel-default" id="selectedValue-example1">
-	<div class="panel-body">
-		<select data-bind="foreach: items, selectedValue: @selection">
-			<option data-bind="value: value, text: key"></option>
-		</select>
-		&nbsp;
-		<span>You have selected <b data-bind="text: selection"></b></span>
-	</div>
+    <div class="panel-body">
+        <select data-bind="foreach: items, selectedValue: @selection">
+            <option data-bind="value: value, text: key"></option>
+        </select>
+        &nbsp;
+        <span>You have selected <b data-bind="text: selection"></b></span>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -242,39 +240,33 @@ wx.applyBindings(model, document.getElementById('selectedValue-example1'));
 </script>
 
 <p><strong>Source code: View</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;select</span> <span class="na">data-bind=</span><span class="s">"foreach: items, selectedValue: @selection"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;option</span> <span class="na">data-bind=</span><span class="s">"value: value, text: key"</span><span class="nt">&gt;&lt;/option&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;select</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: items, selectedValue: @selection&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">data-bind=</span><span class="s">&quot;value: value, text: key&quot;</span><span class="nt">&gt;&lt;/option&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
-<span class="nt">&lt;span&gt;</span>You have selected <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: selection"</span><span class="nt">&gt;&lt;/b&gt;&lt;/span&gt;</span>
-</code></pre>
-</div>
-
+<span class="nt">&lt;span&gt;</span>You have selected <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: selection&quot;</span><span class="nt">&gt;&lt;/b&gt;&lt;/span&gt;</span>
+</code></pre></div>
 <p><strong>Source code: View model</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;Homer Simpson&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;homer&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;Bart Simpson&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bart&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;Apu Nahasapeemapetilon&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;apu&quot;</span> <span class="p">}];</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="s2">"Homer Simpson"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="s2">"homer"</span> <span class="p">},</span>
-	<span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="s2">"Bart Simpson"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="s2">"bart"</span> <span class="p">},</span>
-	<span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="s2">"Apu Nahasapeemapetilon"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="s2">"apu"</span> <span class="p">}];</span>
-
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span> <span class="na">items</span><span class="p">:</span> <span class="nx">items</span><span class="p">,</span> <span class="na">selection</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"bart"</span><span class="p">)</span> <span class="p">});</span>
-</code></pre>
-</div>
-
-<h2 id="using-the-selectedvalue-binding-with-a-group-of-radio-buttons">Using the selectedValue binding with a group of radio-buttons</h2>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span> <span class="nx">items</span><span class="o">:</span> <span class="nx">items</span><span class="p">,</span> <span class="nx">selection</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;bart&quot;</span><span class="p">)</span> <span class="p">});</span>
+</code></pre></div>
+<h2>Using the selectedValue binding with a group of radio-buttons</h2>
 
 <div class="panel panel-default" id="selectedValue-example2">
-	<div class="panel-body">
-		<div data-bind="foreach: items">
-			<input type="radio" name="radio-group-1" data-bind="value: value, selectedValue: $parent.@selection,
-				attr: { id: 'radio-group-1 -' + $index }" />
-			<label data-bind="text: key, attr: { for: 'radio-group-1 -' + $index }"></label>
-			<br />
-		</div>
-		<br />
-		<span>You have selected <b data-bind="text: selection"></b></span>
-	</div>
+    <div class="panel-body">
+        <div data-bind="foreach: items">
+            <input type="radio" name="radio-group-1" data-bind="value: value, selectedValue: $parent.@selection,
+                attr: { id: 'radio-group-1 -' + $index }" />
+            <label data-bind="text: key, attr: { for: 'radio-group-1 -' + $index }"></label>
+            <br/>
+        </div>
+        <br/>
+        <span>You have selected <b data-bind="text: selection"></b></span>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -285,31 +277,25 @@ wx.applyBindings(model, document.getElementById('selectedValue-example2'));
 </script>
 
 <p><strong>Source code: View</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"foreach: items"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"radio-group-1"</span> <span class="na">data-bind=</span><span class="s">"value: value, selectedValue: $parent.@selection,
-		attr: { id: 'radio-group-1 -' + $index }"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;label</span> <span class="na">data-bind=</span><span class="s">"text: key, attr: { for: 'radio-group-1 -' + $index }"</span><span class="nt">&gt;&lt;/label&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: items&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;radio-group-1&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;value: value, selectedValue: $parent.@selection,</span>
+<span class="s">        attr: { id: &#39;radio-group-1 -&#39; + $index }&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">data-bind=</span><span class="s">&quot;text: key, attr: { for: &#39;radio-group-1 -&#39; + $index }&quot;</span><span class="nt">&gt;&lt;/label&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
-<span class="nt">&lt;span&gt;</span>You have selected <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: selection"</span><span class="nt">&gt;&lt;/b&gt;&lt;/span&gt;</span>
-</code></pre>
-</div>
-
+<span class="nt">&lt;span&gt;</span>You have selected <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: selection&quot;</span><span class="nt">&gt;&lt;/b&gt;&lt;/span&gt;</span>
+</code></pre></div>
 <p><strong>Source code: View model</strong></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;Homer Simpson&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;homer&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;Bart Simpson&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bart&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s2">&quot;Apu Nahasapeemapetilon&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;apu&quot;</span> <span class="p">}];</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="s2">"Homer Simpson"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="s2">"homer"</span> <span class="p">},</span>
-	<span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="s2">"Bart Simpson"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="s2">"bart"</span> <span class="p">},</span>
-	<span class="p">{</span> <span class="na">key</span><span class="p">:</span> <span class="s2">"Apu Nahasapeemapetilon"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="s2">"apu"</span> <span class="p">}];</span>
+<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span> <span class="nx">items</span><span class="o">:</span> <span class="nx">items</span><span class="p">,</span> <span class="nx">selection</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">&quot;bart&quot;</span><span class="p">)</span> <span class="p">});</span>
+</code></pre></div>
+<h2>Parameters</h2>
 
-<span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span> <span class="na">items</span><span class="p">:</span> <span class="nx">items</span><span class="p">,</span> <span class="na">selection</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"bart"</span><span class="p">)</span> <span class="p">});</span>
-</code></pre>
-</div>
-
-<h2 id="parameters">Parameters</h2>
-
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>Pass the value that should be selected.</p>
 
@@ -346,9 +332,7 @@ If the parameter something else, it will only set the selection once and will no
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

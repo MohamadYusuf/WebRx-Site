@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -209,46 +206,40 @@
                 <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/html-binding.html"><i class="fa fa-reddit-alien"></i></a>
             </div>
 
-            <div class="body"><h1 id="the-html-binding">The Html-Binding</h1>
+            <div class="body"><h1>The Html-Binding</h1>
 
 <p>The html binding causes the associated DOM element to display the HTML specified by your parameter.</p>
 
 <p>Typically this is useful when values in your view model are actually strings of HTML markup that you want to render.</p>
 
-<h2 id="example">Example</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"html: details"</span><span class="nt">&gt;&lt;/div&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">&quot;html: details&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">details</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
+        <span class="nx">details</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">()</span> <span class="c1">// Initially blank</span>
     <span class="p">};</span>
-    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="s2">"&lt;em&gt;For further details, view the report &lt;a href='report.html'&gt;here&lt;/a&gt;.&lt;/em&gt;"</span><span class="p">);</span> <span class="c1">// HTML content appears</span>
+    <span class="nx">viewModel</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="s2">&quot;&lt;em&gt;For further details, view the report &lt;a href=&#39;report.html&#39;&gt;here&lt;/a&gt;.&lt;/em&gt;&quot;</span><span class="p">);</span> <span class="c1">// HTML content appears</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
+<h2>Parameters</h2>
 
-<h2 id="parameters">Parameters</h2>
+<h3>Main parameter</h3>
 
-<h3 id="main-parameter">Main parameter</h3>
-
-<p>The binding clears the previous content and then sets the element’s content to your parameter value by parsing the string into HTML 
+<p>The binding clears the previous content and then sets the element&#39;s content to your parameter value by parsing the string into HTML 
 nodes and appending each node as a child of the element.</p>
 
-<p>If this parameter is an observable value, the binding will update the element’s content whenever the value changes. 
-If the parameter isn’t observable, it will only set the element’s content once and will not update it again later.</p>
+<p>If this parameter is an observable value, the binding will update the element&#39;s content whenever the value changes. 
+If the parameter isn&#39;t observable, it will only set the element&#39;s content once and will not update it again later.</p>
 
 <p>If you supply something other than a number or a string (e.g., you pass an object or an array), the <code>innerHTML</code> 
 will be equivalent to <code>yourParameter.toString()</code></p>
 
-<h3 id="note-about-html-encoding">Note: About HTML encoding</h3>
+<h3>Note: About HTML encoding</h3>
 
-<p>Since this binding sets your element’s content using <code>innerHTML</code>, you should be careful not to use it with untrusted model values, 
+<p>Since this binding sets your element&#39;s content using <code>innerHTML</code>, you should be careful not to use it with untrusted model values, 
 because that might open the possibility of a script injection attack. If you cannot guarantee that the content is safe to display 
-(for example, if it is based on a different user’s input that was stored in your database), then you can use the text binding, 
-which will set the element’s text value using <code>innerText</code> or <code>textContent</code> instead.</p>
+(for example, if it is based on a different user&#39;s input that was stored in your database), then you can use the text binding, 
+which will set the element&#39;s text value using <code>innerText</code> or <code>textContent</code> instead.</p>
 
 <p><a class="next-topic" href="/docs/css-binding.html">Next: The CSS-Binding</a></p>
 </div>
@@ -279,9 +270,7 @@ which will set the element’s text value using <code>innerText</code> or <code>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>

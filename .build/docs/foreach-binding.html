@@ -28,13 +28,10 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
-<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
-<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
  
     
-    <script type='text/javascript' src='/js/rx.all.min.js'></script>
-<script type='text/javascript' src='/js/web.rx.js'></script>
+    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -212,7 +209,8 @@
             <div class="body"><div class="alert alert-danger sample-warning" role="alert">
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
-<p># The Foreach-Binding</p>
+
+<h1>The Foreach-Binding</h1>
 
 <p>The foreach binding duplicates a section of markup for each entry in a collection, and binds each copy of that markup to the corresponding array item. This is especially useful for rendering lists or tables.</p>
 
@@ -220,55 +218,50 @@
 
 <p>Of course, you can arbitrarily nest any number of foreach bindings along with other control-flow bindings such as if and with.</p>
 
-<h2 id="example-1-iterating-over-an-array">Example 1: Iterating over an array</h2>
+<h2>Example 1: Iterating over an array</h2>
 
 <p>This example uses foreach to produce a read-only table with a row for each array entry.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;table&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
     <span class="nt">&lt;thead&gt;</span>
         <span class="nt">&lt;tr&gt;&lt;th&gt;</span>First name<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Last name<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
     <span class="nt">&lt;/thead&gt;</span>
-    <span class="nt">&lt;tbody</span> <span class="na">data-bind=</span><span class="s">"foreach: people"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tbody</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: people&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;tr&gt;</span>
-            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">"text: firstName"</span><span class="nt">&gt;&lt;/td&gt;</span>
-            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">"text: lastName"</span><span class="nt">&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">&quot;text: firstName&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">&quot;text: lastName&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
         <span class="nt">&lt;/tr&gt;</span>
     <span class="nt">&lt;/tbody&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="na">people</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span> <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Bert'</span><span class="p">,</span> <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Bertington'</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Charles'</span><span class="p">,</span> <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Charlesforth'</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Denise'</span><span class="p">,</span> <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Dentiste'</span> <span class="p">}</span>
+        <span class="nx">people</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Bert&#39;</span><span class="p">,</span> <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Bertington&#39;</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Charles&#39;</span><span class="p">,</span> <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Charlesforth&#39;</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="nx">firstName</span><span class="o">:</span> <span class="s1">&#39;Denise&#39;</span><span class="p">,</span> <span class="nx">lastName</span><span class="o">:</span> <span class="s1">&#39;Dentiste&#39;</span> <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
-
-<h2 id="example-2-live-example-with-addremove">Example 2: Live example with add/remove</h2>
+</code></pre></div>
+<h2>Example 2: Live example with add/remove</h2>
 
 <p>The following example shows that, if your array is observable, then the UI will be kept in sync with changes to that array.</p>
 
 <div class="panel panel-default" id="foreach-example">
-	<div class="panel-heading">
-    	<h3 class="panel-title">People</h3>
-  	</div>
-	<div class="panel-body">
-		<ul data-bind="foreach: people">
-		    <li>
-		        Name at position <span data-bind="text: $index"> </span>:
-		        <span data-bind="text: name"> </span>
-		        <a href="#" data-bind="command: { command: $parent.removePersonCmd, parameter: $data }">Remove</a>
-		    </li>
-		</ul>
-		<button data-bind="command: addPersonCmd">Add</button>
-	</div>
+    <div class="panel-heading">
+        <h3 class="panel-title">People</h3>
+    </div>
+    <div class="panel-body">
+        <ul data-bind="foreach: people">
+            <li>
+                Name at position <span data-bind="text: $index"> </span>:
+                <span data-bind="text: name"> </span>
+                <a href="#" data-bind="command: { command: $parent.removePersonCmd, parameter: $data }">Remove</a>
+            </li>
+        </ul>
+        <button data-bind="command: addPersonCmd">Add</button>
+    </div>
 </div>
+  
 
 <script type="text/javascript">
 function AppViewModel() {
@@ -293,193 +286,169 @@ wx.applyBindings(new AppViewModel(), document.getElementById('foreach-example'))
 </script>
 
 <p><strong>Source code: View</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h4&gt;</span>People<span class="nt">&lt;/h4&gt;</span>
-<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: people"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h4&gt;</span>People<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: people&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        Name at position <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: $index"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>:
-        <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-bind=</span><span class="s">"command: { command: $parent.removePersonCmd, parameter: $data }"</span><span class="nt">&gt;</span>Remove<span class="nt">&lt;/a&gt;</span>
+        Name at position <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: $index&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>:
+        <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">data-bind=</span><span class="s">&quot;command: { command: $parent.removePersonCmd, parameter: $data }&quot;</span><span class="nt">&gt;</span>Remove<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"command: addPersonCmd"</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
-
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;command: addPersonCmd&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
+</code></pre></div>
 <p><strong>Source code: View model</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">AppViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
- 
+
     <span class="nx">self</span><span class="p">.</span><span class="nx">people</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span>
-        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Bert'</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Charles'</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Denise'</span> <span class="p">}</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Bert&#39;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Charles&#39;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Denise&#39;</span> <span class="p">}</span>
     <span class="p">]);</span>
- 
+
     <span class="nx">self</span><span class="p">.</span><span class="nx">addPersonCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"New at "</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="p">});</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;New at &quot;</span> <span class="o">+</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span> <span class="p">});</span>
     <span class="p">});</span>
- 
+
     <span class="nx">self</span><span class="p">.</span><span class="nx">removePersonCmd</span> <span class="o">=</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">parameter</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">parameter</span><span class="p">);</span>
     <span class="p">});</span>
 <span class="p">}</span>
- 
+
 <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">(</span><span class="k">new</span> <span class="nx">AppViewModel</span><span class="p">());</span>
-</code></pre>
-</div>
+</code></pre></div>
+<h2>Parameters</h2>
 
-<h2 id="parameters">Parameters</h2>
-
-<h3 id="main-parameter">Main parameter</h3>
+<h3>Main parameter</h3>
 
 <p>Pass the collection that you wish to iterate over. The binding will output a section of markup for each entry.</p>
 
 <p>Alternatively, pass a JavaScript object literal with a property called data which is the collection you wish to iterate over. 
 The object literal may also have other properties, such as <code>afterAdd</code> — see below for details of these extra options and examples of their use.</p>
 
-<p>If the collection you supply is an <a href="/docs/observable-lists.html">observable list</a>, the foreach binding will respond to any future changes in the lists’s contents by adding or removing corresponding sections of markup in the DOM.</p>
+<p>If the collection you supply is an <a href="/docs/observable-lists.html">observable list</a>, the foreach binding will respond to any future changes in the lists&#39;s contents by adding or removing corresponding sections of markup in the DOM.</p>
 
-<h2 id="referring-to-each-array-entry-using-codedatacode">Referring to each array entry using <code>$data</code></h2>
+<h2>Referring to each array entry using <code>$data</code></h2>
 
 <p>As shown in the above examples, bindings within the foreach block can refer to properties on the array entries. For example, 
 Example 1 referenced the <code>firstName</code> and <code>lastName</code> properties on each array entry.</p>
 
 <p>But what if you want to refer to the array entry itself (not just one of its properties)? In that case, you can use the special context property $data. Within a foreach block, it means “the current item”. For example,</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: months"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: months&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        The current item is: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: $data"</span><span class="nt">&gt;&lt;/b&gt;</span>
+        The current item is: <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data&quot;</span><span class="nt">&gt;&lt;/b&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="na">months</span><span class="p">:</span> <span class="p">[</span> <span class="s1">'Jan'</span><span class="p">,</span> <span class="s1">'Feb'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="s1">'etc'</span> <span class="p">]</span>
+        <span class="nx">months</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;etc&#39;</span> <span class="p">]</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>If you wanted, you could use <code>$data</code> as a prefix when referencing properties on each entry. 
 For example, you could rewrite part of Example 1 as follows:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data.firstName&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+</code></pre></div>
+<p>… but you don&#39;t have to, because <code>firstName</code> will be evaluated within the context of <code>$data</code> by default anyway.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;td</span> <span class="na">data-bind=</span><span class="s">"text: $data.firstName"</span><span class="nt">&gt;&lt;/td&gt;</span>
-</code></pre>
-</div>
+<h2>Using <code>$index</code>, <code>$parent</code>, and other context properties</h2>
 
-<p>… but you don’t have to, because <code>firstName</code> will be evaluated within the context of <code>$data</code> by default anyway.</p>
-
-<h2 id="using-codeindexcode-codeparentcode-and-other-context-properties">Using <code>$index</code>, <code>$parent</code>, and other context properties</h2>
-
-<p>As you can see from Example 2 above, it’s possible to use <code>$index</code> to refer to the zero-based index of the current array item. 
+<p>As you can see from Example 2 above, it&#39;s possible to use <code>$index</code> to refer to the zero-based index of the current array item. 
 <code>$index</code> is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).</p>
 
 <p>Similarly, you can use <code>$parent</code> to refer to data from outside the foreach, e.g.:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">"text: blogPostTitle"</span><span class="nt">&gt;&lt;/h1&gt;</span>
-<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: likes"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">&quot;text: blogPostTitle&quot;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: likes&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>
-        <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;&lt;/b&gt;</span> likes the blog post <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">"text: $parent.blogPostTitle"</span><span class="nt">&gt;&lt;/b&gt;</span>
+        <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: name&quot;</span><span class="nt">&gt;&lt;/b&gt;</span> likes the blog post <span class="nt">&lt;b</span> <span class="na">data-bind=</span><span class="s">&quot;text: $parent.blogPostTitle&quot;</span><span class="nt">&gt;&lt;/b&gt;</span>
     <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 <p>For more information about <code>$index</code> and other context properties such as <code>$parent</code>, see documentation for 
 <a href="/docs/binding-context.html">binding context</a> properties.</p>
 
-<h2 id="how-array-changes-are-detected-and-handled">How array changes are detected and handled</h2>
+<h2>How array changes are detected and handled</h2>
 
 <ul>
-  <li>When you add array entries, foreach will render new copies of your template and insert them into the existing DOM</li>
-  <li>When you delete array entries, foreach will simply remove the corresponding DOM elements</li>
-  <li>When you reorder array entries (retaining the same object instances), foreach will just move the corresponding DOM elements into their new position</li>
+<li>When you add array entries, foreach will render new copies of your template and insert them into the existing DOM</li>
+<li>When you delete array entries, foreach will simply remove the corresponding DOM elements</li>
+<li>When you reorder array entries (retaining the same object instances), foreach will just move the corresponding DOM elements into their new position</li>
 </ul>
 
-<h2 id="post-processing-or-animating-the-generated-dom-elements">Post-processing or animating the generated DOM elements</h2>
+<h2>Post-processing or animating the generated DOM elements</h2>
 
 <p>If you need to run some further custom logic on the generated DOM elements, you can use any of the 
 <code>afterRender</code> / <code>afterAdd</code> / <code>beforeRemove</code> / <code>beforeMove</code> / <code>afterMove</code> callbacks described below.</p>
 
 <p><strong>Note:</strong> These callbacks are only intended for triggering animations related to changes in a list. If your goal is actually to attach other behaviors to new DOM elements when they have been added (e.g., event handlers, or to activate third-party UI controls), then your work will be much easier if you implement that new behavior as a custom binding instead, because then you can use that behavior anywhere, independently of the foreach binding.</p>
 
-<p>Here’s a trivial example that uses <code>afterAdd</code> to apply the classic “yellow fade” effect to newly-added items. It requires the jQuery Color plugin to enable animation of background colors.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: { data: myItems, afterAdd: yellowFadeIn }"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">data-bind=</span><span class="s">"text: $data"</span><span class="nt">&gt;&lt;/li&gt;</span>
+<p>Here&#39;s a trivial example that uses <code>afterAdd</code> to apply the classic “yellow fade” effect to newly-added items. It requires the jQuery Color plugin to enable animation of background colors.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">&quot;foreach: { data: myItems, afterAdd: yellowFadeIn }&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">data-bind=</span><span class="s">&quot;text: $data&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
- 
-<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">"click: addItem"</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
-</code></pre>
-</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">data-bind=</span><span class="s">&quot;click: addItem&quot;</span><span class="nt">&gt;</span>Add<span class="nt">&lt;/button&gt;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
-        <span class="na">myItems</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'C'</span> <span class="p">]),</span>
-        <span class="na">yellowFadeIn</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s2">"li"</span><span class="p">)</span>
-                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="na">backgroundColor</span><span class="p">:</span> <span class="s1">'yellow'</span> <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
-                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="na">backgroundColor</span><span class="p">:</span> <span class="s1">'white'</span> <span class="p">},</span> <span class="mi">800</span><span class="p">);</span>
+        <span class="nx">myItems</span><span class="o">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">list</span><span class="p">([</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span> <span class="p">]),</span>
+        <span class="nx">yellowFadeIn</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s2">&quot;li&quot;</span><span class="p">)</span>
+                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;yellow&#39;</span> <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
+                      <span class="p">.</span><span class="nx">animate</span><span class="p">({</span> <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">&#39;white&#39;</span> <span class="p">},</span> <span class="mi">800</span><span class="p">);</span>
         <span class="p">},</span>
-        <span class="na">addItem</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">myItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'New item'</span><span class="p">);</span> <span class="p">}</span>
+        <span class="nx">addItem</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">myItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;New item&#39;</span><span class="p">);</span> <span class="p">}</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
-
-<h3 id="full-details">Full details</h3>
+</code></pre></div>
+<h3>Full details</h3>
 
 <ul>
-  <li><code>afterRender</code> — is invoked each time the foreach block is duplicated and inserted into the document, both when foreach first initializes, 
-and when new entries are added to the associated array later. The binding will supply the following parameters to your callback:
-    <ul>
-      <li>An array of the inserted DOM elements</li>
-      <li>The data item against which they are being bound</li>
-    </ul>
-  </li>
-  <li><code>afterAdd</code> — is like afterRender, except it is invoked only when new entries are added to your array (and not when foreach first 
-iterates over your array’s initial contents). A common use for <code>afterAdd</code> is to call a method such as jQuery’s <code>$(domNode).fadeIn()</code> 
-so that you get animated transitions whenever items are added. The binding will supply the following parameters to your callback:
-    <ul>
-      <li>A DOM node being added to the document</li>
-      <li>The index of the added array element</li>
-      <li>The added array element</li>
-    </ul>
-  </li>
-  <li><code>beforeRemove</code> — is invoked when an array item has been removed, but before the corresponding DOM nodes have been removed. 
+<li><p><code>afterRender</code> — is invoked each time the foreach block is duplicated and inserted into the document, both when foreach first initializes, 
+and when new entries are added to the associated array later. The binding will supply the following parameters to your callback:</p>
+
+<ul>
+<li>An array of the inserted DOM elements</li>
+<li>The data item against which they are being bound</li>
+</ul></li>
+<li><p><code>afterAdd</code> — is like afterRender, except it is invoked only when new entries are added to your array (and not when foreach first 
+iterates over your array&#39;s initial contents). A common use for <code>afterAdd</code> is to call a method such as jQuery&#39;s <code>$(domNode).fadeIn()</code> 
+so that you get animated transitions whenever items are added. The binding will supply the following parameters to your callback:</p>
+
+<ul>
+<li>A DOM node being added to the document</li>
+<li>The index of the added array element</li>
+<li>The added array element</li>
+</ul></li>
+<li><p><code>beforeRemove</code> — is invoked when an array item has been removed, but before the corresponding DOM nodes have been removed. 
 If you specify a <code>beforeRemove</code> callback, then it becomes your responsibility to remove the DOM nodes. The obvious use case here is 
-calling something like jQuery’s <code>$(domNode).fadeOut()</code> to animate the removal of the corresponding DOM nodes — in this case, 
+calling something like jQuery&#39;s <code>$(domNode).fadeOut()</code> to animate the removal of the corresponding DOM nodes — in this case, 
 The binding cannot know how soon it is allowed to physically remove the DOM nodes (who knows how long your animation will take?), 
-so it is up to you to remove them. The binding will supply the following parameters to your callback:
-    <ul>
-      <li>A DOM node that you should remove</li>
-      <li>The index of the removed array element</li>
-      <li>The removed array element</li>
-    </ul>
-  </li>
-  <li><code>beforeMove</code> — is invoked when an array item has changed position in the array, but before the corresponding DOM nodes 
+so it is up to you to remove them. The binding will supply the following parameters to your callback:</p>
+
+<ul>
+<li>A DOM node that you should remove</li>
+<li>The index of the removed array element</li>
+<li>The removed array element</li>
+</ul></li>
+<li><p><code>beforeMove</code> — is invoked when an array item has changed position in the array, but before the corresponding DOM nodes 
 have been moved. Note that <code>beforeMove</code> applies to all array elements whose indexes have changed, so if you insert a new 
 item at the beginning of an array, then the callback (if specified) will fire for all other elements, since their index position has 
 increased by one. You could use beforeMove to store the original screen coordinates of the affected elements so that you can animate 
-their movements in the <code>afterMove</code> callback. The binding will supply the following parameters to your callback:
-    <ul>
-      <li>A DOM node that may be about to move</li>
-      <li>The index of the moved array element</li>
-      <li>The moved array element</li>
-    </ul>
-  </li>
-  <li><code>afterMove</code> — is invoked after an array item has changed position in the array, and after foreach has updated the DOM to match.
-The binding will supply the following parameters to your callback:
-    <ul>
-      <li>A DOM node that may have moved</li>
-      <li>The index of the moved array element</li>
-      <li>The moved array element</li>
-    </ul>
-  </li>
+their movements in the <code>afterMove</code> callback. The binding will supply the following parameters to your callback:</p>
+
+<ul>
+<li>A DOM node that may be about to move</li>
+<li>The index of the moved array element</li>
+<li>The moved array element</li>
+</ul></li>
+<li><p><code>afterMove</code> — is invoked after an array item has changed position in the array, and after foreach has updated the DOM to match.
+The binding will supply the following parameters to your callback:</p>
+
+<ul>
+<li>A DOM node that may have moved</li>
+<li>The index of the moved array element</li>
+<li>The moved array element</li>
+</ul></li>
 </ul>
 
 <p><a class="next-topic" href="/docs/if-binding.html">Next: The If-Binding</a></p>
@@ -511,9 +480,7 @@ The binding will supply the following parameters to your callback:
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/js/jquery.js'></script>
-<script type='text/javascript' src='/js/bootstrap.min.js'></script>
-<script type='text/javascript' src='/js/default.js'></script>
+    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
 
 
     <script>
