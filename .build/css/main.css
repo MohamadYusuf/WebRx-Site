@@ -5321,7 +5321,8 @@ body {
   font-size: 20px;
   line-height: 29px;
   font-family: Raleway, Helvetica, sans-serif;
-  color: #0091ea !important; }
+  color: #0091ea !important;
+  font-weight: 100; }
 
 #content1 .list-group .list-group-item.active:hover,
 #content1 .list-group .list-group-item.active:focus {
