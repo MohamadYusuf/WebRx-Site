@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>WebRx - Expression Filters</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WebRx - Expression Filters" />
+    <meta property="og:site_name" content="WebRx" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Web Fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
+        
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
+ 
+    
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+</head>
+
+<body class="top-navigation skin-1">
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <div class="navbar-header">
+                    <a class="main-logo hvr-pop" style="color: #303030;" href="/"><span class="logo-icon"></span><span>WebRx</span></a>
+                        <button id="hamburger-menu" aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed"
+                        type="button">
+                            <span class="glyphicon glyphicon-menu-hamburger"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+                        <ul class="nav navbar-nav">
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-top-links navbar-right">
+                            <li><a href="/examples">Examples</a></li>
+                            <li><a href="/docs/getting-started.html">Documentation</a></li>
+
+                            <li><a href="https://github.com/WebRxJS/WebRx"><i class="fa fa-github"></i> Source</a></li>
+                            <li id="news"><a target="_blank" href="https://twitter.com/webrxjs"><i class="fa fa-twitter"></i> News</a></li>
+                        </ul>
+                </div>
+                </nav>
+            </div>
+
+            <div class="row body-wrapper border-bottom white-bg dashboard-header">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content">
+                        <style>
+     .content-panel {
+         padding: 15px;
+     }
+</style>
+
+<div class="content-panel docs syntax-theme-grey">
+    <div class="row">
+        <div class="col-md-3">
+            <div id="doc-index" class="index">
+                <h3>Getting started</h3>
+                <ul>
+                    <li><a href="../docs/getting-started.html">Getting Started</a></li>
+                    <li><a href="../docs/index.html">Introduction</a></li>
+                </ul>
+
+                <h3>Binding syntax</h3>
+                <ul>
+                    <li><a href="../docs/binding-syntax.html">The data-bind syntax</a></li>
+                    <li><a href="../docs/binding-context.html">The binding context</a></li>
+                </ul>
+
+                <h3>Building Blocks</h3>
+                <ul>
+                    <li><a href="../docs/observable-properties.html">Observable Properties</a></li>
+                    <li><a href="../docs/output-properties.html">Output Properties</a></li>
+                    <li><a href="../docs/observable-lists.html">Observable Lists</a></li>
+                    <li><a href="../docs/commands.html">Commands</a></li>
+                </ul>
+
+                <h3>Bindings</h3>
+
+                <h4>Text and appearance</h4>
+                <ul>
+                    <li><a href="../docs/visible-binding.html">The visible binding</a></li>
+                    <li><a href="../docs/hidden-binding.html">The hidden binding</a></li>
+                    <li><a href="../docs/text-binding.html">The text binding</a></li>
+                    <li><a href="../docs/html-binding.html">The html binding</a></li>
+                    <li><a href="../docs/css-binding.html">The css binding</a></li>
+                    <li><a href="../docs/style-binding.html">The style binding</a></li>
+                    <li><a href="../docs/attr-binding.html">The attr binding</a></li>
+                </ul>
+
+                <h4>Control flow</h4>
+                <ul>
+                    <li><a href="../docs/foreach-binding.html">The foreach binding</a></li>
+                    <li><a href="../docs/if-binding.html">The if binding</a></li>
+                    <li><a href="../docs/ifnot-binding.html">The ifnot binding</a></li>
+                    <li><a href="../docs/with-binding.html">The with binding</a></li>
+                </ul>
+
+                <h4>Working with form fields</h4>
+                <ul>
+                    <li><a href="../docs/command-binding.html">The command binding</a></li>
+                    <li><a href="../docs/keyPress-binding.html">The keyPress binding</a></li>
+                    <li><a href="../docs/event-binding.html">The event binding</a></li>
+                    <li><a href="../docs/enabled-binding.html">The enabled binding</a></li>
+                    <li><a href="../docs/disabled-binding.html">The disabled binding</a></li>
+                    <li><a href="../docs/value-binding.html">The value binding</a></li>
+                    <li><a href="../docs/textinput-binding.html">The textInput binding</a></li>
+                    <li><a href="../docs/hasfocus-binding.html">The hasFocus binding</a></li>
+                    <li><a href="../docs/checked-binding.html">The checked binding</a></li>
+                    <li><a href="../docs/selected-value-binding.html">The selectedValue binding</a></li>
+                </ul>
+
+                <h3>Expression Filters</h3>
+                <ul>
+                    <li><a href="../docs/expression-filters.html">Creating expression filters</a></li>
+                </ul>
+
+                <h3>Custom bindings</h3>
+                <ul>
+                    <li><a href="../docs/custom-bindings.html">Creating custom bindings</a></li>
+                </ul>
+
+                <h3>Components</h3>
+                <ul>
+                    <li><a href="../docs/component-overview.html">Overview: What components and custom elements offer</a></li>
+                    <li><a href="../docs/component-registration.html">Defining and registering components</a></li>
+                    <li><a href="../docs/component-binding.html">The component binding</a></li>
+                    <!-- <li><a href="../docs/component-custom-elements.html">Using custom elements</a></li>
+                    <li><a href="../docs/component-built-in.html">Built-in components</a></li> -->
+                </ul>
+
+                <h3>Modules</h3>
+                <ul>
+                    <li><a href="../docs/module-overview.html">Overview: What modules offer</a></li>
+                    <li><a href="../docs/module-registration.html">Defining and registering modules</a></li>
+                    <li><a href="../docs/module-binding.html">The module binding</a></li>
+                </ul>
+
+                <h3>Routing</h3>
+                <ul>
+                    <li><a href="../docs/routing-overview.html">Overview: Routing architecture</a></li>
+                    <li><a href="../docs/routing-registration.html">Defining and registering routing states</a></li>
+                    <li><a href="../docs/view-binding.html">The view binding</a></li>
+                    <li><a href="../docs/sref-binding.html">The sref binding</a></li>
+                    <li><a href="../docs/sactive-binding.html">The sactive binding</a></li>
+                </ul>
+
+                <h3>Dependency-Injection</h3>
+                <ul>
+                    <li><a href="../docs/dependency-injection-overview.html">Overview: Dependency Injection</a></li>
+                    <li><a href="../docs/dependency-registration.html">Defining and registering dependencies</a></li>
+                </ul>
+
+                <h3>Messaging</h3>
+                <ul>
+                    <li><a href="../docs/message-bus.html">Overview: Messaging</a></li>
+                </ul>
+
+                <!--
+                <h3>Further techniques</h3>
+                <ul>
+                    <li><a href="../docs/unobtrusive-event-handling.html">Unobtrusive event handling</a></li>
+                    <li><a href="../docs/binding-preprocessing.html">Extending Webrx's binding syntax</a></li>
+                </ul>
+                -->
+
+                <h3>API Docs</h3>
+                <ul>
+                    <li><a href="../api/modules/_interfaces_.wx.html">Module wx</a></li>
+                </ul>
+
+                <h3>More information</h3>
+                <ul>
+                    <li><a href="../docs/browser-support.html">Browser support</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="start" class="col-md-9">
+            <div class="hidden-xs social-buttons pull-right">
+                <a class="social-button twitter" title="Twitter" target="_blank" href="http://twitter.com/share?url=http://webrxjs.org/docs/expression-filters.html&via=webrxjs"><i class="fa fa-twitter"></i></a>
+                <a class="social-button google-plus" title="Google+" target="_blank" href="https://plus.google.com/share?url=http://webrxjs.org/docs/expression-filters.html"><i class="fa fa-google-plus"></i></a>
+                <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/expression-filters.html"><i class="fa fa-reddit-alien"></i></a>
+            </div>
+
+            <div class="body"><h1 id="expression-filters">Expression Filters</h1>
+
+<p>Expression-filters format or convert the result of an expression for display to the user. Once registered, they can be used in every template.</p>
+
+<p>The beauty of expression-filters is that they can often be utilized to augment the functionality if existing bindings without 
+having to resort to a <a href="/docs/custom-bindings.html">custom-binding</a>. As a rule of thumb, every time all you want to do is to convert
+the result of a binding expression to an alternative representation, an expression filter is most likely a better and much
+simpler solution than a custom-binding. Another advantage of filters is that they can be chained using the pipe (<code>|</code>) symbol.</p>
+
+<h2 id="using-filters-in-templates">Using filters in templates</h2>
+
+<p>Filters can be applied to expressions in templates using the following syntax:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span>
+</code></pre>
+</div>
+
+<p>E.g. the markup <code>12 | currency</code> formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
+
+<p>Filters can be applied to the result of another filter. This is called “chaining” and uses the following syntax:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter1</span> <span class="o">|</span> <span class="nx">filter2</span> <span class="o">|</span> <span class="p">...</span>
+</code></pre>
+</div>
+
+<p>Filters may have arguments. The syntax for this is</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">expression</span> <span class="o">|</span> <span class="nx">filter</span><span class="err">:</span><span class="nx">argument1</span><span class="err">:</span><span class="nx">argument2</span><span class="err">:</span><span class="p">...</span>
+</code></pre>
+</div>
+
+<p>E.g. the markup <code>1234 | number:2</code> formats the number <code>1234</code> with 2 decimal points using the number filter. The resulting value is 1,234.00.</p>
+
+<h2 id="registering-a-filter">Registering a filter</h2>
+
+<p>An expression filter is a function which is registered by invoking the <code>wx.app.filter</code> function:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'uppercase'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">expressionResult</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// The function will be called with the first argument representing </span>
+    <span class="c1">// the result of the expression the filter has been applied to</span>
+    <span class="c1">// or the result of the previous filter in the chain</span>
+    <span class="k">return</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>  
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h3 id="customizing-filter-behavior">Customizing filter behavior</h3>
+
+<p>Expression filters can even be configured for individual bindings by supplying additional arguments to it.</p>
+
+<p>Let’s change the <code>uppercase</code> filter into a generic case transformation filter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'changecase'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">expressionResult</span><span class="p">,</span> <span class="nx">toUpper</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">toUpper</span> <span class="p">?</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="p">:</span> <span class="nx">expressionResult</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Using our filter in a binding would be as simple as:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: 'foo' | changecase:true"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="consuming-a-filter-in-a-view-model">Consuming a filter in a view-model</h3>
+
+<p>In a perfect world your view-model never has to deal with presentation issues that are normally handled declaratively in 
+your view. Since we don’t live in such a world just yet, it is possible to retrieve and subsequently use, a registered 
+filter function in your view-model in order to avoid duplicate code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">personName</span><span class="p">:</span> <span class="s1">'Bob'</span><span class="p">,</span>
+    <span class="na">personAge</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="na">caseFilter</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'changecase'</span><span class="p">)</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p><a class="next-topic" href="/docs/custom-bindings.html">Next: Custom Bindings</a></p>
+</div>
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row upper-section">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    Copyright (c) 2015 WebRxJS.org
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script type='text/javascript'>
+        if(!wx.env.isSupported)
+          wx.toggleCssClass(document.body, true, "wx-unsupported");
+    </script>
+
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-60860613-1', 'auto');
+          ga('send', 'pageview');
+    </script>
+</body>
+
+</html>

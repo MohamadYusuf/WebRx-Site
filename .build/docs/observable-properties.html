@@ -28,10 +28,13 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
  
     
-    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -100,7 +103,7 @@
 
                 <h3>Bindings</h3>
 
-                <h4>Controlling text and appearance</h4>
+                <h4>Text and appearance</h4>
                 <ul>
                     <li><a href="../docs/visible-binding.html">The visible binding</a></li>
                     <li><a href="../docs/hidden-binding.html">The hidden binding</a></li>
@@ -131,6 +134,11 @@
                     <li><a href="../docs/hasfocus-binding.html">The hasFocus binding</a></li>
                     <li><a href="../docs/checked-binding.html">The checked binding</a></li>
                     <li><a href="../docs/selected-value-binding.html">The selectedValue binding</a></li>
+                </ul>
+
+                <h3>Expression Filters</h3>
+                <ul>
+                    <li><a href="../docs/expression-filters.html">Creating expression filters</a></li>
                 </ul>
 
                 <h3>Custom bindings</h3>
@@ -195,106 +203,142 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>Observable Properties</h1>
+            <div class="hidden-xs social-buttons pull-right">
+                <a class="social-button twitter" title="Twitter" target="_blank" href="http://twitter.com/share?url=http://webrxjs.org/docs/observable-properties.html&via=webrxjs"><i class="fa fa-twitter"></i></a>
+                <a class="social-button google-plus" title="Google+" target="_blank" href="https://plus.google.com/share?url=http://webrxjs.org/docs/observable-properties.html"><i class="fa fa-google-plus"></i></a>
+                <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/observable-properties.html"><i class="fa fa-reddit-alien"></i></a>
+            </div>
 
-<p>You&#39;ve seen how to <a href="/docs/index.html#topic-mvvm-intro">create a basic view model</a> and how to display one of its properties using a binding. 
+            <div class="body"><h1 id="observable-properties">Observable Properties</h1>
+
+<p>You’ve seen how to <a href="/docs/index.html#topic-mvvm-intro">create a basic view model</a> and how to display one of its properties using a binding. 
 But one of the key benefits of WebRx is that it updates your UI automatically when the view model changes. 
 How can WebRx know when parts of your view model change? Answer: you need to declare your model properties as 
 observable-properties, because these are special JavaScript objects that can notify subscribers about changes.</p>
 
 <p>For example, rewrite the preceding view model object as follows:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">),</span>
     <span class="na">personAge</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="p">};</span>
-</code></pre></div>
-<p>You don&#39;t have to change the view at all - the same data-bind syntax will keep working. The difference is that it&#39;s now capable of 
+</code></pre>
+</div>
+
+<p>You don’t have to change the view at all - the same data-bind syntax will keep working. The difference is that it’s now capable of 
 detecting changes, and when it does, it will update the view automatically.</p>
 
-<h2>Reading and writing properties</h2>
+<h2 id="reading-and-writing-properties">Reading and writing properties</h2>
 
-<p>To read the property&#39;s current value, just call the property with no parameters. In this example, <code>myViewModel.personName()</code> 
-will return &#39;Bob&#39;, and <code>myViewModel.personAge()</code> will return 123.</p>
+<p>To read the property’s current value, just call the property with no parameters. In this example, <code>myViewModel.personName()</code> 
+will return ‘Bob’, and <code>myViewModel.personAge()</code> will return 123.</p>
 
 <p>To write a new value to the property, call the property and pass the new value as a parameter. For example, 
-calling <code>myViewModel.personName(&#39;Mary&#39;)</code> will change the name value to &#39;Mary&#39;.</p>
+calling <code>myViewModel.personName('Mary')</code> will change the name value to ‘Mary’.</p>
 
 <p>The whole point of observable properties is that they can be observed, i.e., other code can say that it wants to 
-be notified of changes. That&#39;s what many of WebRx&#39;s built-in bindings do internally. So, when you wrote 
-<code>data-bind=&quot;text: personName&quot;</code>, the text binding registered itself to be notified when <code>personName</code>
-changes (assuming it&#39;s an observable property, which it is now).</p>
+be notified of changes. That’s what many of WebRx’s built-in bindings do internally. So, when you wrote 
+<code>data-bind="text: personName"</code>, the text binding registered itself to be notified when <code>personName</code>
+changes (assuming it’s an observable property, which it is now).</p>
 
-<p>When you change the name value to &#39;Mary&#39; by calling <code>myViewModel.personName(&#39;Mary&#39;)</code>, the text binding 
-will automatically update the text contents of the associated DOM element. That&#39;s how changes to the view model 
+<p>When you change the name value to ‘Mary’ by calling <code>myViewModel.personName('Mary')</code>, the text binding 
+will automatically update the text contents of the associated DOM element. That’s how changes to the view model 
 automatically propagate to the view.</p>
 
-<h2>Observable Properties and Binding Expressions</h2>
+<h2 id="observable-properties-and-binding-expressions">Observable Properties and Binding Expressions</h2>
 
 <p>The syntax for referencing observable-property-values in <a href="/docs/binding-syntax.html">binding-expressions</a> is identical to non observable-properties.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div>
-<p>This view template will work without modifications for both of these view-models ...</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<p>This view template will work without modifications for both of these view-models …</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">personName</span><span class="p">:</span> <span class="s1">'Bob'</span>
 <span class="p">};</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
 <span class="p">};</span>
-</code></pre></div>
-<h3>Working with observable-property values</h3>
+</code></pre>
+</div>
 
-<p>As outlined above, you invoke an observable property as a function with no arguments to read its current value. </p>
+<h3 id="working-with-observable-property-values">Working with observable-property values</h3>
 
-<p>This is <strong>unnecessary</strong> within binding-expressions, because behind the scenes, WebRx&#39;s expression compiler 
-will <strong>detect</strong> that use-case and will conveniently <strong>dereference the property&#39;s value for you</strong>. </p>
+<p>As outlined above, you invoke an observable property as a function with no arguments to read its current value.</p>
 
-<h4>Good</h4>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div>
-<h4>Bad</h4>
-<div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName() + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div>
-<h3><a id="topic-propref"></a>Property-Object-References or @proprefs</h3>
+<p>This is <strong>unnecessary</strong> within binding-expressions, because behind the scenes, WebRx’s expression compiler 
+will <strong>detect</strong> that use-case and will conveniently <strong>dereference the property’s value for you</strong>.</p>
 
-<p>Sometimes when working with certain bindings you don&#39;t want the aforementioned automatic deferencing to happen, because 
-the binding requires a reference to the property object itself instead of its current value. </p>
+<h4 id="good">Good</h4>
 
-<p>This is the case with basically all two-way bindings which need to update the property&#39;s value when reacting to view-changes.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
 
-<h4>Example</h4>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
+<h4 id="bad">Bad</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>The name is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: personName() + 'foo'"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="a-idtopic-proprefaproperty-object-references-or-proprefs"><a id="topic-propref"></a>Property-Object-References or @proprefs</h3>
+
+<p>Sometimes when working with certain bindings you don’t want the aforementioned automatic deferencing to happen, because 
+the binding requires a reference to the property object itself instead of its current value.</p>
+
+<p>This is the case with basically all two-way bindings which need to update the property’s value when reacting to view-changes.</p>
+
+<h4 id="example">Example</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">myViewModel</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">personName</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s1">'Bob'</span><span class="p">)</span>
 <span class="p">};</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html">The name is <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">data-bind=</span><span class="s">"textInput: @personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
-</code></pre></div>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>The name is <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">data-bind=</span><span class="s">"textInput: @personName"</span><span class="nt">&gt;&lt;/span&gt;</span>
+</code></pre>
+</div>
+
 <p>The <a href="/docs/textinput-binding.html">textInput-Binding</a> links a text box or textarea with a viewmodel property, 
-providing two-way updates between the viewmodel property and the element&#39;s value.</p>
+providing two-way updates between the viewmodel property and the element’s value.</p>
 
 <p>Without the <code>@</code> operator in the template above, the textInput binding would receive the current value of
-the <code>personName</code> property which would be <code>&#39;Bob&#39;</code>. Since <code>&#39;Bob&#39;</code> is not an observable property, the binding
-would update the textbox&#39;s or textarea&#39;s value a single time, but would not be able to update the
+the <code>personName</code> property which would be <code>'Bob'</code>. Since <code>'Bob'</code> is not an observable property, the binding
+would update the textbox’s or textarea’s value a single time, but would not be able to update the
 view-model when the user enters text. Effectively turning the textInput binding into a text-binding
 which is not really useful.</p>
 
-<h2>Explicitly subscribing to observable-property changes</h2>
+<h2 id="explicitly-subscribing-to-observable-property-changes">Explicitly subscribing to observable-property changes</h2>
 
 <p>If you want to register your own subscriptions to be notified of changes to properties, all observable-properties expose two <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md">Rx-Observables</a>:</p>
 
 <ul>
-<li><code>changing</code> notifies of changes of the property&#39;s value before the change</li>
-<li><code>changed</code> notifies of changes of the property&#39;s value after the change</li>
+  <li><code>changing</code> notifies of changes of the property’s value before the change</li>
+  <li><code>changed</code> notifies of changes of the property’s value after the change</li>
 </ul>
 
-<p>If for example you would want to monitor changes to the <code>personName</code> property, you would do it like this: </p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">myViewModel</span><span class="p">.</span><span class="nx">personName</span><span class="p">.</span><span class="nx">changed</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span>
+<p>If for example you would want to monitor changes to the <code>personName</code> property, you would do it like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">myViewModel</span><span class="p">.</span><span class="nx">personName</span><span class="p">.</span><span class="nx">changed</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">alert</span><span class="p">(</span><span class="s2">"The person's new name is "</span> <span class="o">+</span> <span class="nx">newValue</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>You can also terminate a subscription if you wish: first capture the return value as a variable, then you can call its dispose function, e.g.:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">myViewModel</span><span class="p">.</span><span class="nx">personName</span><span class="p">.</span><span class="nx">changed</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* do stuff */</span> <span class="p">});</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">myViewModel</span><span class="p">.</span><span class="nx">personName</span><span class="p">.</span><span class="nx">changed</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* do stuff */</span> <span class="p">});</span>
 <span class="c1">// ...then later...</span>
 <span class="nx">subscription</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span> <span class="c1">// I no longer want notifications</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p><a class="next-topic" href="/docs/output-properties.html">Next: Output-Properties</a></p>
 </div>
         </div>
@@ -324,7 +368,9 @@ which is not really useful.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
     <script>

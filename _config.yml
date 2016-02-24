@@ -5,6 +5,7 @@ permalinks: pretty
 destination: .build
 keep_files: ['api']
 exclude: ['assets', 'vs']
+sass_dir: _sass
 encoding: utf-8
 excerpt_separator: <!--more-->
 asset_bundler:

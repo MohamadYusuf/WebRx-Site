@@ -28,10 +28,13 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
  
     
-    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -100,7 +103,7 @@
 
                 <h3>Bindings</h3>
 
-                <h4>Controlling text and appearance</h4>
+                <h4>Text and appearance</h4>
                 <ul>
                     <li><a href="../docs/visible-binding.html">The visible binding</a></li>
                     <li><a href="../docs/hidden-binding.html">The hidden binding</a></li>
@@ -131,6 +134,11 @@
                     <li><a href="../docs/hasfocus-binding.html">The hasFocus binding</a></li>
                     <li><a href="../docs/checked-binding.html">The checked binding</a></li>
                     <li><a href="../docs/selected-value-binding.html">The selectedValue binding</a></li>
+                </ul>
+
+                <h3>Expression Filters</h3>
+                <ul>
+                    <li><a href="../docs/expression-filters.html">Creating expression filters</a></li>
                 </ul>
 
                 <h3>Custom bindings</h3>
@@ -195,7 +203,13 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The Disabled-Binding</h1>
+            <div class="hidden-xs social-buttons pull-right">
+                <a class="social-button twitter" title="Twitter" target="_blank" href="http://twitter.com/share?url=http://webrxjs.org/docs/disabled-binding.html&via=webrxjs"><i class="fa fa-twitter"></i></a>
+                <a class="social-button google-plus" title="Google+" target="_blank" href="https://plus.google.com/share?url=http://webrxjs.org/docs/disabled-binding.html"><i class="fa fa-google-plus"></i></a>
+                <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/disabled-binding.html"><i class="fa fa-reddit-alien"></i></a>
+            </div>
+
+            <div class="body"><h1 id="the-disabled-binding">The Disabled-Binding</h1>
 
 <p>The disable binding causes the associated DOM element to be disabled only when the parameter value is true. 
 This is useful with form elements like input, select, and textarea.</p>
@@ -232,7 +246,9 @@ enable binding, because disable works in exactly the same way except that it neg
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
     <script>

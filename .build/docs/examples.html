@@ -28,10 +28,13 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
  
     
-    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -80,70 +83,70 @@
 			<div class="body"><div class="alert alert-danger sample-warning" role="alert">
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
+<p># WebRx Examples</p>
 
-<h1>WebRx Examples</h1>
+<p>This page provides some code-examples to get you started. Feel free to fork any of the samples at CodePen and tinker with it to your heart’s content.</p>
 
-<p>This page provides some code-examples to get you started. Feel free to fork any of the samples at CodePen and tinker with it to your heart&#39;s content.</p>
-
-<h2>Hello World</h2>
+<h2 id="hello-world">Hello World</h2>
 
 <p>In this example, the two text boxes are bound to observable properties on a view-model. The <code>full name</code> display is bound to 
 an <a href="/docs/output-properties.html">output property</a>, whose value is calculated in terms of the observables.</p>
 
-<p>Edit either text box to see the <code>full name</code> display update. See the HTML source code and notice there&#39;s no need to 
+<p>Edit either text box to see the <code>full name</code> display update. See the HTML source code and notice there’s no need to 
 catch <code>onchange</code> events. WebRx knows when to update the UI.</p>
 
-<p data-height="264" data-theme-id="0" data-slug-hash="GgadqB" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/GgadqB/'>GgadqB</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="264" data-theme-id="0" data-slug-hash="GgadqB" data-default-tab="result" data-user="oliverw" class="codepen">See the Pen <a href="http://codepen.io/oliverw/pen/GgadqB/">GgadqB</a> by Oliver Weichhold (<a href="http://codepen.io/oliverw">@oliverw</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
-<h2>Output Properties</h2>
+<h2 id="output-properties">Output Properties</h2>
 
 <p><code>Output properties</code> are observable properties that are backed by an Rx-Observable. Output properties are read-only, but will still fire change notifications.
 This example displays a countdown-timer that counts down from 10 to 1 at a one second interval:</p>
 
-<p data-height="268" data-theme-id="0" data-slug-hash="LEombz" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/LEombz/'>LEombz</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="268" data-theme-id="0" data-slug-hash="LEombz" data-default-tab="result" data-user="oliverw" class="codepen">See the Pen <a href="http://codepen.io/oliverw/pen/LEombz/">LEombz</a> by Oliver Weichhold (<a href="http://codepen.io/oliverw">@oliverw</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
-<h2>Observable Lists</h2>
+<h2 id="observable-lists">Observable Lists</h2>
 
-<p>If you want to detect and respond to changes on one object, you&#39;d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you&#39;re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
+<p>If you want to detect and respond to changes on one object, you’d use observable-properties. If you want to detect and respond to changes of a collection of things, use an observable-list. This is useful in many scenarios where you’re displaying or editing multiple values and need repeated sections of UI to appear and disappear as items are added and removed.</p>
 
-<p data-height="268" data-theme-id="0" data-slug-hash="KwLRWK" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/KwLRWK/'>KwLRWK</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="268" data-theme-id="0" data-slug-hash="KwLRWK" data-default-tab="result" data-user="oliverw" class="codepen">See the Pen <a href="http://codepen.io/oliverw/pen/KwLRWK/">KwLRWK</a> by Oliver Weichhold (<a href="http://codepen.io/oliverw">@oliverw</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
-<h2>Projected Observable Lists combined with animated transitions</h2>
+<h2 id="projected-observable-lists-combined-with-animated-transitions">Projected Observable Lists combined with animated transitions</h2>
 
-<p>This example utilizes WebRx&#39;s very useful observable-lists-projections. A projected observable list is a read-only view of of a source
+<p>This example utilizes WebRx’s very useful observable-lists-projections. A projected observable list is a read-only view of of a source
 observable list that is automatically kept in sync with its source. What makes these projection so useful is that list-projections can
 apply filtering, re-ordering and mapping operations on the fly.</p>
 
 <p>The <code>planetsToShow</code> projection used in this example filters the <code>planets</code> list to only include planets 
 of a user selected category.</p>
 
-<p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/xGKmKo/'>WebRx - Animated collections example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="500" data-theme-id="0" data-slug-hash="xGKmKo" data-default-tab="result" data-user="oliverw" class="codepen">See the Pen <a href="http://codepen.io/oliverw/pen/xGKmKo/">WebRx - Animated collections example</a> by Oliver Weichhold (<a href="http://codepen.io/oliverw">@oliverw</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
-<h2>Client-Side-Router Demo</h2>
+<h2 id="client-side-router-demo">Client-Side-Router Demo</h2>
 
-<p>This example demonstrates some of the capabilities of WebRx&#39;s built-in <a href="/docs/routing-overview.html">client-side router</a>.</p>
+<p>This example demonstrates some of the capabilities of WebRx’s built-in <a href="/docs/routing-overview.html">client-side router</a>.</p>
 
 <p>To observe <code>window.location</code> reflecting state-routes, click here <a target="_blank" href="/examples/router-demo/index.html">to launch this example in another tab</a>.</p>
 
-<p data-height="500" data-theme-id="0" data-slug-hash="OPYZOq" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/OPYZOq/'>OPYZOq</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="500" data-theme-id="0" data-slug-hash="OPYZOq" data-default-tab="result" data-user="oliverw" class="codepen">See the Pen <a href="http://codepen.io/oliverw/pen/OPYZOq/">OPYZOq</a> by Oliver Weichhold (<a href="http://codepen.io/oliverw">@oliverw</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
-<h2>Search Engine</h2>
+<h2 id="search-engine">Search Engine</h2>
 
-<p>Here we utilize <a href="https://duckduckgo.com/">DuckDuckGo&#39;s</a> REST Api to carry out Web-Searches.  </p>
+<p>Here we utilize <a href="https://duckduckgo.com/">DuckDuckGo’s</a> REST Api to carry out Web-Searches.</p>
 
 <p><strong>Implementation Details:</strong></p>
 
 <ul>
-<li>No search occurs unless the query has actually changed</li>
-<li>User input is throttled to 200ms to reduce server load</li>
-<li>Only results from the most recently issued request will be displayed</li>
-<li>Results are filtered to only include displayable items</li>
-<li>A maximum of ten items will be shown</li>
+  <li>No search occurs unless the query has actually changed</li>
+  <li>User input is throttled to 200ms to reduce server load</li>
+  <li>Only results from the most recently issued request will be displayed</li>
+  <li>Results are filtered to only include displayable items</li>
+  <li>A maximum of ten items will be shown</li>
 </ul>
 
-<p data-height="700" data-theme-id="0" data-slug-hash="ogRydr" data-default-tab="result" data-user="oliverw" class='codepen'>See the Pen <a href='http://codepen.io/oliverw/pen/ogRydr/'>WebRx - DuckDuckGo Search Example</a> by Oliver Weichhold (<a href='http://codepen.io/oliverw'>@oliverw</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="700" data-theme-id="0" data-slug-hash="ogRydr" data-default-tab="result" data-user="oliverw" class="codepen">See the Pen <a href="http://codepen.io/oliverw/pen/ogRydr/">WebRx - DuckDuckGo Search Example</a> by Oliver Weichhold (<a href="http://codepen.io/oliverw">@oliverw</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
+
 </div>
 		</div>
 	</div>
@@ -172,7 +175,9 @@ of a user selected category.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
     <script>

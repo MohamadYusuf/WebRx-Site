@@ -5421,8 +5421,8 @@ pre code {
   font-size: 110%; }
 
 code {
-  background-color: #f0f0f0;
-  color: #303030; }
+  background-color: #e8e8e8;
+  color: #0e9aef; }
 
 #rx-link {
   margin-left: 1em; }
@@ -5492,7 +5492,7 @@ code {
 
 .docs .body h3,
 .docs .body h4 {
-  margin-top: 1em;
+  margin-top: 1.5em;
   line-height: 1.3em; }
 
 .docs .body .panel-heading h3,
@@ -5508,7 +5508,7 @@ code {
   line-height: 1.6em; }
 
 .docs .body ul li {
-  margin-bottom: 0; }
+  margin-bottom: 0.25em; }
 
 .docs .body .panel-body ul {
   padding-left: 0;
@@ -5517,7 +5517,7 @@ code {
 .docs .body .highlight {
   margin-top: 1em;
   margin-bottom: 1em;
-  background-color: #f0f0f0; }
+  background-color: white; }
 
 #features,
 #install {

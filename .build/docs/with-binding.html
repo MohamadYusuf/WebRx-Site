@@ -28,10 +28,13 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
  
     
-    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -100,7 +103,7 @@
 
                 <h3>Bindings</h3>
 
-                <h4>Controlling text and appearance</h4>
+                <h4>Text and appearance</h4>
                 <ul>
                     <li><a href="../docs/visible-binding.html">The visible binding</a></li>
                     <li><a href="../docs/hidden-binding.html">The hidden binding</a></li>
@@ -131,6 +134,11 @@
                     <li><a href="../docs/hasfocus-binding.html">The hasFocus binding</a></li>
                     <li><a href="../docs/checked-binding.html">The checked binding</a></li>
                     <li><a href="../docs/selected-value-binding.html">The selectedValue binding</a></li>
+                </ul>
+
+                <h3>Expression Filters</h3>
+                <ul>
+                    <li><a href="../docs/expression-filters.html">Creating expression filters</a></li>
                 </ul>
 
                 <h3>Custom bindings</h3>
@@ -195,21 +203,31 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The With-Binding</h1>
+            <div class="hidden-xs social-buttons pull-right">
+                <a class="social-button twitter" title="Twitter" target="_blank" href="http://twitter.com/share?url=http://webrxjs.org/docs/with-binding.html&via=webrxjs"><i class="fa fa-twitter"></i></a>
+                <a class="social-button google-plus" title="Google+" target="_blank" href="https://plus.google.com/share?url=http://webrxjs.org/docs/with-binding.html"><i class="fa fa-google-plus"></i></a>
+                <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/with-binding.html"><i class="fa fa-reddit-alien"></i></a>
+            </div>
+
+            <div class="body"><h1 id="the-with-binding">The With-Binding</h1>
 
 <p>The with binding creates a new binding context, so that descendant elements are bound in the context of a specified object.</p>
 
 <p>Of course, you can arbitrarily nest with bindings along with the other control-flow bindings such as if and foreach.</p>
 
-<h2>Example</h2>
+<h2 id="example">Example</h2>
 
 <p>Here is a very basic example of switching the binding context to a child object. Notice that in the data-bind attributes, it is not necessary to prefix latitude or longitude with coords., because the binding context is switched to coords.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">"text: city"</span><span class="nt">&gt;&lt;/h1&gt;</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">"text: city"</span><span class="nt">&gt;&lt;/h1&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">data-bind=</span><span class="s">"with: coords"</span><span class="nt">&gt;</span>
     Latitude: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: latitude"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>,
     Longitude: <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: longitude"</span><span class="nt">&gt;</span> <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="nx">wx</span><span class="p">.</span><span class="nx">applyBindings</span><span class="p">({</span>
         <span class="na">city</span><span class="p">:</span> <span class="s2">"London"</span><span class="p">,</span>
         <span class="na">coords</span><span class="p">:</span> <span class="p">{</span>
@@ -218,10 +236,12 @@
         <span class="p">}</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
-<h2>Parameters</h2>
+</code></pre>
+</div>
 
-<h3>Main parameter</h3>
+<h2 id="parameters">Parameters</h2>
+
+<h3 id="main-parameter">Main parameter</h3>
 
 <p>The object that you want to use as the context for binding descendant elements.</p>
 
@@ -258,7 +278,9 @@
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
     <script>

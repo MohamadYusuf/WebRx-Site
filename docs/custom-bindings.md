@@ -44,8 +44,8 @@ WebRx will call your init function once for each DOM element that you use the bi
 
 The function will be called with the following parameters:
 
-- <code>element</code>: The DOM element involved in this binding
-- <code>value</code>: This parameter will reflect the most recent value of all parameters passed to your binding.  
+- **element**: The DOM element involved in this binding
+- **value**: This parameter will reflect the most recent value of all parameters passed to your binding.  
 
   **Single Parameter**: If you've declared your binding with a single parameter like this: <code>data-bind="your-binding-name: foo"</code> or 
   <code>data-bind="your-binding-name: 123"</code>, then <code>value</code> will be either a Javascript primitive such as <code>string</code>, 
@@ -58,11 +58,11 @@ The function will be called with the following parameters:
   or in case of a [propref](/docs/observable-properties.html#topic-propref), an accessor function. To easily accept both observable and plain values, 
   call <code>wx.unwrapProperty</code> on a key's value.
 
-- <code>ctx</code>: An object that holds the current [binding context](/docs/binding-context.html) available to this element's bindings.
-- <code>domManager</code>: A reference to WebRx's <code>DomManager</code> service.
-- <code>state</code>: An initially empty object that you can use to associate state with your binding. The state object will be automatically discarded once the binding
+- **ctx**: An object that holds the current [binding context](/docs/binding-context.html) available to this element's bindings.
+- **domManager**: A reference to WebRx's <code>DomManager</code> service.
+- **state**: An initially empty object that you can use to associate state with your binding. The state object will be automatically discarded once the binding
 is removed from the DOM.
-- <code>cleanup</code>: An [RxJS Composite Disposable](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/compositedisposable.md) 
+- **cleanup**: An [RxJS Composite Disposable](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/compositedisposable.md) 
 which will be automatically <code>disposed</code> once the binding is removed from the DOM. This is the recommended place to store any observable 
 subscriptions associated with your binding. Of course you are not limited to observable subscriptions. You can just as easily register custom cleanup logic
 by wrapping it using [Rx.Disposable.create](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/disposables/disposable.md#rxdisposablecreateaction).

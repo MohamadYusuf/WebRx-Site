@@ -8,9 +8,9 @@ WebRx's declarative binding system provides a concise and powerful way to link d
 It's generally easy and obvious to bind to simple data properties or to use a single binding. 
 For more complex bindings, it helps to better understand the behavior and syntax of WebRx's binding system.
 
-## The <code>data-bind</code> attribute
+## The data-bind attribute
 
-The <code>data-bind</code> attribute contains a collection of comma-separated options for how WebRx should bind view-model properties
+The data-bind attribute contains a collection of comma-separated options for how WebRx should bind view-model properties
 to an HTML element and optionally its children. 
 
 A binding consists of two items, the binding name and expression, separated by a colon. Here is an example of a single, simple binding:

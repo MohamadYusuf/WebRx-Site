@@ -28,10 +28,13 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
  
     
-    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -100,7 +103,7 @@
 
                 <h3>Bindings</h3>
 
-                <h4>Controlling text and appearance</h4>
+                <h4>Text and appearance</h4>
                 <ul>
                     <li><a href="../docs/visible-binding.html">The visible binding</a></li>
                     <li><a href="../docs/hidden-binding.html">The hidden binding</a></li>
@@ -131,6 +134,11 @@
                     <li><a href="../docs/hasfocus-binding.html">The hasFocus binding</a></li>
                     <li><a href="../docs/checked-binding.html">The checked binding</a></li>
                     <li><a href="../docs/selected-value-binding.html">The selectedValue binding</a></li>
+                </ul>
+
+                <h3>Expression Filters</h3>
+                <ul>
+                    <li><a href="../docs/expression-filters.html">Creating expression filters</a></li>
                 </ul>
 
                 <h3>Custom bindings</h3>
@@ -195,7 +203,13 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The Checked-Binding</h1>
+            <div class="hidden-xs social-buttons pull-right">
+                <a class="social-button twitter" title="Twitter" target="_blank" href="http://twitter.com/share?url=http://webrxjs.org/docs/checked-binding.html&via=webrxjs"><i class="fa fa-twitter"></i></a>
+                <a class="social-button google-plus" title="Google+" target="_blank" href="https://plus.google.com/share?url=http://webrxjs.org/docs/checked-binding.html"><i class="fa fa-google-plus"></i></a>
+                <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/checked-binding.html"><i class="fa fa-reddit-alien"></i></a>
+            </div>
+
+            <div class="body"><h1 id="the-checked-binding">The Checked-Binding</h1>
 
 <p>The checked binding links a checkable form control i.e., a checkbox or a radio button with a property on your view model.</p>
 
@@ -203,67 +217,79 @@
 Likewise, when you update the value in your view model, this checks or unchecks the form control on screen.</p>
 
 <p><strong>Note:</strong> For text boxes, drop-down lists, and all non-checkable form controls, use the value 
-binding to read and write the element&#39;s value, not the checked binding.</p>
+binding to read and write the element’s value, not the checked binding.</p>
 
-<h2>Example with checkbox</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Send me spam: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">data-bind=</span><span class="s">"checked: @wantsSpam"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<h2 id="example-with-checkbox">Example with checkbox</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>Send me spam: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">data-bind=</span><span class="s">"checked: @wantsSpam"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
         <span class="na">wantsSpam</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// Initially checked</span>
     <span class="p">};</span>
-
+ 
     <span class="c1">// ... then later ...</span>
     <span class="nx">viewModel</span><span class="p">.</span><span class="nx">wantsSpam</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// The checkbox becomes unchecked</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
-<h2>Example adding radio buttons</h2>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>Send me spam: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">data-bind=</span><span class="s">"checked: @wantsSpam"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="example-adding-radio-buttons">Example adding radio buttons</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>Send me spam: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">data-bind=</span><span class="s">"checked: @wantsSpam"</span> <span class="nt">/&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"visible: wantsSpam"</span><span class="nt">&gt;</span>
     Preferred flavor of spam:
     <span class="nt">&lt;div&gt;&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"flavorGroup"</span> <span class="na">value=</span><span class="s">"cherry"</span> <span class="na">data-bind=</span><span class="s">"checked: spamFlavor"</span> <span class="nt">/&gt;</span> Cherry<span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div&gt;&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"flavorGroup"</span> <span class="na">value=</span><span class="s">"almond"</span> <span class="na">data-bind=</span><span class="s">"checked: spamFlavor"</span> <span class="nt">/&gt;</span> Almond<span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div&gt;&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"flavorGroup"</span> <span class="na">value=</span><span class="s">"msg"</span> <span class="na">data-bind=</span><span class="s">"checked: spamFlavor"</span> <span class="nt">/&gt;</span> Monosodium Glutamate<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
     <span class="kd">var</span> <span class="nx">viewModel</span> <span class="o">=</span> <span class="p">{</span>
         <span class="na">wantsSpam</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span>
         <span class="na">spamFlavor</span><span class="p">:</span> <span class="nx">wx</span><span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"almond"</span><span class="p">)</span> <span class="c1">// Initially selects only the Almond radio button</span>
     <span class="p">};</span>
-
+ 
     <span class="c1">// ... then later ...</span>
     <span class="nx">viewModel</span><span class="p">.</span><span class="nx">spamFlavor</span><span class="p">(</span><span class="s2">"msg"</span><span class="p">);</span> <span class="c1">// Now only Monosodium Glutamate is checked</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre></div>
-<h2>Parameters</h2>
+</code></pre>
+</div>
 
-<h3>Main parameter</h3>
+<h2 id="parameters">Parameters</h2>
 
-<p>The binding sets the element&#39;s checked state to match your parameter value. Any previous checked state will be overwritten. </p>
+<h3 id="main-parameter">Main parameter</h3>
+
+<p>The binding sets the element’s checked state to match your parameter value. Any previous checked state will be overwritten.</p>
 
 <p>If this parameter is a <a href="/docs/observable-properties.html#topic-propref">property reference</a> (denoted by the <code>@</code>-operator),
-the binding will update the element&#39;s checked-state whenever the value changes and vice-versa.
-If the parameter something else, it will only set the element&#39;s value once and will not update it again later.</p>
+the binding will update the element’s checked-state whenever the value changes and vice-versa.
+If the parameter something else, it will only set the element’s value once and will not update it again later.</p>
 
-<p>The way your parameter is interpreted depends on what type of element you&#39;re binding to ...</p>
+<p>The way your parameter is interpreted depends on what type of element you’re binding to …</p>
 
-<h4>Checkboxes</h4>
+<h4 id="checkboxes">Checkboxes</h4>
 
 <p>For checkboxes, the binding will set the element to be checked when the parameter value is true, 
-and unchecked when it is false. If you give a value that isn&#39;t actually boolean, it will be interpreted loosely. 
+and unchecked when it is false. If you give a value that isn’t actually boolean, it will be interpreted loosely. 
 This means that nonzero numbers and non-null objects and non-empty strings will all be interpreted as true, 
 whereas zero, null, undefined, and empty strings will be interpreted as false.</p>
 
 <p>When the user checks or unchecks the checkbox, the binding will set your model property to true or false accordingly.</p>
 
-<h4>Radio-Buttons</h4>
+<h4 id="radio-buttons">Radio-Buttons</h4>
 
 <p>For radio buttons, the binding will set the element to be checked if and only if the parameter 
-value equals the radio button node&#39;s value attribute. In the previous example, the radio button with 
-value=&quot;almond&quot; was checked only when the view model&#39;s spamFlavor property was equal to <em>&quot;almond&quot;</em>.</p>
+value equals the radio button node’s value attribute. In the previous example, the radio button with 
+value=”almond” was checked only when the view model’s spamFlavor property was equal to <em>“almond”</em>.</p>
 
 <p>When the user changes which radio button is selected, the binding will set your model property to equal 
 the value of the selected radio button. In the preceding example, clicking on the radio button 
-with value=&quot;cherry&quot; would set <code>viewModel.spamFlavor</code> to be <em>&quot;cherry&quot;</em>.</p>
+with value=”cherry” would set <code>viewModel.spamFlavor</code> to be <em>“cherry”</em>.</p>
 
 <p>Of course, this is most useful when you have multiple radio button elements bound to a single model property.
 To ensure that only one of those radio buttons can be checked at any one time, you should set all of 
@@ -299,7 +325,9 @@ doing this puts them into a group where only one can be selected.</p>
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
     <script>

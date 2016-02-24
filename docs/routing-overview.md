@@ -9,7 +9,7 @@ WebRx's Router allows you to organize the parts of your interface into a state m
 
 States are bound to named, nested and parallel views, allowing you to powerfully manage your application's interface.
 
-<a target="_blank" class="btn btn-primary btn-xs example-link" href="/examples">Live Demo</a>
+<a target="_blank" class="btn btn-outline btn-primary btn-xs" href="/examples">Live Demo</a>
 
 ## About states
 

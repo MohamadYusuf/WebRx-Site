@@ -28,10 +28,13 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
  
     
-    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -100,7 +103,7 @@
 
                 <h3>Bindings</h3>
 
-                <h4>Controlling text and appearance</h4>
+                <h4>Text and appearance</h4>
                 <ul>
                     <li><a href="../docs/visible-binding.html">The visible binding</a></li>
                     <li><a href="../docs/hidden-binding.html">The hidden binding</a></li>
@@ -131,6 +134,11 @@
                     <li><a href="../docs/hasfocus-binding.html">The hasFocus binding</a></li>
                     <li><a href="../docs/checked-binding.html">The checked binding</a></li>
                     <li><a href="../docs/selected-value-binding.html">The selectedValue binding</a></li>
+                </ul>
+
+                <h3>Expression Filters</h3>
+                <ul>
+                    <li><a href="../docs/expression-filters.html">Creating expression filters</a></li>
                 </ul>
 
                 <h3>Custom bindings</h3>
@@ -195,70 +203,88 @@
         </div>
 
         <div id="start" class="col-md-9">
+            <div class="hidden-xs social-buttons pull-right">
+                <a class="social-button twitter" title="Twitter" target="_blank" href="http://twitter.com/share?url=http://webrxjs.org/docs/routing-overview.html&via=webrxjs"><i class="fa fa-twitter"></i></a>
+                <a class="social-button google-plus" title="Google+" target="_blank" href="https://plus.google.com/share?url=http://webrxjs.org/docs/routing-overview.html"><i class="fa fa-google-plus"></i></a>
+                <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/routing-overview.html"><i class="fa fa-reddit-alien"></i></a>
+            </div>
+
             <div class="body"><div class="alert alert-danger sample-warning" role="alert">
 <b>Note:</b> You are viewing this page using an <a href="/docs/browser-support.html#start">unsupported browser</a>. The interactive samples will most likely not work correctly. 
 </div>
+<p># Routing Overview</p>
 
-<h1>Routing Overview</h1>
+<p>WebRx’s Router allows you to organize the parts of your interface into a state machine. WebRx’s Router is organized around states, which may optionally have routes, as well as other behavior, attached.</p>
 
-<p>WebRx&#39;s Router allows you to organize the parts of your interface into a state machine. WebRx&#39;s Router is organized around states, which may optionally have routes, as well as other behavior, attached.</p>
+<p>States are bound to named, nested and parallel views, allowing you to powerfully manage your application’s interface.</p>
 
-<p>States are bound to named, nested and parallel views, allowing you to powerfully manage your application&#39;s interface.</p>
+<p><a target="_blank" class="btn btn-outline btn-primary btn-xs" href="/examples">Live Demo</a></p>
 
-<p><a target="_blank" class="btn btn-primary btn-xs example-link" href="/examples">Live Demo</a></p>
-
-<h2>About states</h2>
+<h2 id="about-states">About states</h2>
 
 <ul>
-<li>A state corresponds to a &quot;place&quot; in the application in terms of the overall UI and navigation.</li>
-<li>A state describes (via the <code>views</code> and <code>params</code> properties) what the UI looks like and does at that place.</li>
-<li>States often have things in common, and the primary way of factoring out these commonalities in this model is via the state hierarchy, i.e. parent/child states aka nested states.</li>
+  <li>A state corresponds to a “place” in the application in terms of the overall UI and navigation.</li>
+  <li>A state describes (via the <code>views</code> and <code>params</code> properties) what the UI looks like and does at that place.</li>
+  <li>States often have things in common, and the primary way of factoring out these commonalities in this model is via the state hierarchy, i.e. parent/child states aka nested states.</li>
 </ul>
 
-<h3>The simplest form of state</h3>
+<h3 id="the-simplest-form-of-state">The simplest form of state</h3>
 
 <p>A state in its simplest form can be created like this:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/section&gt;</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+	<span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/section&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
     <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
     <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"contact-list-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>This declares a state named <code>contacts</code>, that causes the <code>main</code> view to display the <code>contact-list-component</code>
 when the state is activated (for simplicity, we assume that the component has been already registered).</p>
 
-<p>Right now, the <code>contacts</code> state won&#39;t ever be activated. So let&#39;s see how we can activate a state.</p>
+<p>Right now, the <code>contacts</code> state won’t ever be activated. So let’s see how we can activate a state.</p>
 
-<h3>Activating a state</h3>
+<h3 id="activating-a-state">Activating a state</h3>
 
 <p>There are three main ways to activate a state:</p>
 
 <ul>
-<li>Calling <code>wx.router.go()</code></li>
-<li>Clicking a link which has been transformed by a <a href="/docs/sref-binding.html">sref-binding</a></li>
-<li>Navigating to the url associated with the state</li>
+  <li>Calling <code>wx.router.go()</code></li>
+  <li>Clicking a link which has been transformed by a <a href="/docs/sref-binding.html">sref-binding</a></li>
+  <li>Navigating to the url associated with the state</li>
 </ul>
 
-<h2>State-Hierarchy</h2>
+<h2 id="state-hierarchy">State-Hierarchy</h2>
 
 <p>States can be nested within each other. The router will automatically infer the state-hierarchy from dots encountered in a state name. 
 Below, contacts.list becomes a child of contacts.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span>
   <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'contacts'</span><span class="p">,</span> <span class="p">{})</span>
   <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">'contacts.list'</span><span class="p">,</span> <span class="p">{});</span>
-</code></pre></div>
-<p>When the application is in a particular state—when a state is &quot;active&quot;—all of its ancestor states are implicitly active as well. 
-Below, when the <code>contacts.details</code> state is active, the <code>contacts</code> state is implicitly active as well, because it&#39;s the parent 
+</code></pre>
+</div>
+
+<p>When the application is in a particular state—when a state is “active”—all of its ancestor states are implicitly active as well. 
+Below, when the <code>contacts.details</code> state is active, the <code>contacts</code> state is implicitly active as well, because it’s the parent 
 state to <code>contacts.details</code>.</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/section&gt;</span>
-    <span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'details'"</span><span class="nt">&gt;&lt;/section&gt;</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+	<span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'main'"</span><span class="nt">&gt;&lt;/section&gt;</span>
+	<span class="nt">&lt;section</span> <span class="na">data-bind=</span><span class="s">"view: 'details'"</span><span class="nt">&gt;&lt;/section&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
     <span class="na">name</span><span class="p">:</span> <span class="s2">"contacts"</span><span class="p">,</span>
     <span class="na">views</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">'main'</span><span class="p">:</span> <span class="s2">"header-component"</span><span class="p">,</span>
@@ -270,18 +296,24 @@ state to <code>contacts.details</code>.</p>
         <span class="s1">'details'</span><span class="p">:</span> <span class="s2">"contact-details-component"</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
-<p>This example defines the views <code>main</code> and <code>details</code>. Let&#39;s see what happens to the contents of both views when we activate
+</code></pre>
+</div>
+
+<p>This example defines the views <code>main</code> and <code>details</code>. Let’s see what happens to the contents of both views when we activate
 states:</p>
 
 <ul>
-<li><p>When the <code>contacts</code> state is activated the <code>main</code> view will display the <code>header-component</code> and the <code>details</code> view will
-display the <code>contact-list-component</code>.</p></li>
-<li><p>As soon as the <code>contacts.details</code> state is activated the <code>details</code> view will switch to the <code>contact-details-component</code>
-while the <code>main</code> view will continue to display the <code>header-component</code> because it is inherited from parent state <code>contacts</code>.</p></li>
+  <li>
+    <p>When the <code>contacts</code> state is activated the <code>main</code> view will display the <code>header-component</code> and the <code>details</code> view will
+display the <code>contact-list-component</code>.</p>
+  </li>
+  <li>
+    <p>As soon as the <code>contacts.details</code> state is activated the <code>details</code> view will switch to the <code>contact-details-component</code>
+while the <code>main</code> view will continue to display the <code>header-component</code> because it is inherited from parent state <code>contacts</code>.</p>
+  </li>
 </ul>
 
-<h3>The root state <code>$</code></h3>
+<h3 id="the-root-state-codecode">The root state <code>$</code></h3>
 
 <p>The root-state is a special ambient state that is always present. It sits above all other registered states in the state-hierarchy
 and all states inherit it.</p>
@@ -292,36 +324,39 @@ and all states inherit it.</p>
 target for providing defaults to other states. For example:</p>
 
 <ul>
-<li>To change the base uri for all states re-register root state with a custom route</li>
-<li>To provide default-parameters to other states re-register root state with additional parameters</li>
+  <li>To change the base uri for all states re-register root state with a custom route</li>
+  <li>To provide default-parameters to other states re-register root state with additional parameters</li>
 </ul>
 
-<h4>Example</h4>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
+<h4 id="example">Example</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">wx</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">state</span><span class="p">({</span>
     <span class="na">name</span><span class="p">:</span> <span class="s2">"$"</span><span class="p">,</span>
     <span class="na">url</span><span class="p">:</span> <span class="s2">"/foo"</span>
 <span class="p">});</span>
-</code></pre></div>
-<p>Here we&#39;ve overriden root-state for the application and by providing a custom route we effectively 
+</code></pre>
+</div>
+<p>Here we’ve overriden root-state for the application and by providing a custom route we effectively 
 prefixed alll relative-routes registered by other states with <code>/foo</code>.</p>
 
-<h3>How routing interacts with the browser&#39;s history</h3>
+<h3 id="how-routing-interacts-with-the-browsers-history">How routing interacts with the browser’s history</h3>
 
 <p>Whenever the current routing state changes due to navigation via <a href="/docs/sref-binding.html">sref</a>-links our invoking 
-the <code>wx.router.go()</code> method with options containing <code>{ location: true }</code>, the Router will reflect the change in the browser&#39;s
+the <code>wx.router.go()</code> method with options containing <code>{ location: true }</code>, the Router will reflect the change in the browser’s
 history in order to provide the enduser with a seamless browsing-experience that includes <code>back</code>- and <code>forward</code> button support.</p>
 
 <p>This feature relies on the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/History">History-API</a> implemented by
 all current browsers. If you need to support very old browsers which do not yet implement this API, is is recommended to include 
 a Shim such as <a href="https://github.com/browserstate/history.js/">history.js</a> with your project.</p>
 
-<h2>Server side setup</h2>
+<h2 id="server-side-setup">Server side setup</h2>
 
-<p>Because WebRx&#39;s router relies on the browser history API to manage routes, the URLs displayed in the brower&#39;s
+<p>Because WebRx’s router relies on the browser history API to manage routes, the URLs displayed in the brower’s
 address bar look much nicer but that also requires server side rewrites. Here are some examples:</p>
 
 <p><strong>Apache Rewrites</strong></p>
-<div class="highlight"><pre><code class="language-apache" data-lang="apache"><span class="p">&lt;</span><span class="nc">VirtualHost</span> <span class="sr">*:80</span><span class="p">&gt;
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">&lt;</span><span class="nc">VirtualHost</span> <span class="sr">*:80</span><span class="p">&gt;
 </span>    <span class="nl">ServerName</span> my-app
 
     <span class="nl">DocumentRoot</span> /path/to/app
@@ -338,9 +373,12 @@ address bar look much nicer but that also requires server side rewrites. Here ar
 </span>        <span class="nl">RewriteRule</span> ^ index.html [L]
     <span class="p">&lt;/</span><span class="nc">Directory</span><span class="p">&gt;
 &lt;/</span><span class="nc">VirtualHost</span><span class="p">&gt;
-</span></code></pre></div>
+</span></code></pre>
+</div>
+
 <p><strong>Nginx Rewrites</strong></p>
-<div class="highlight"><pre><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">server</span> <span class="p">{</span>
     <span class="kn">server_name</span> <span class="s">my-app</span><span class="p">;</span>
 
     <span class="kn">root</span> <span class="n">/path/to/app</span><span class="p">;</span>
@@ -349,9 +387,12 @@ address bar look much nicer but that also requires server side rewrites. Here ar
         <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri</span><span class="n">/</span> <span class="n">/index.html</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p><strong>Azure IIS Rewrites</strong></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;system</span><span class="err">.</span><span class="na">webServer</span><span class="nt">&gt;</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;system</span><span class="err">.</span><span class="na">webServer</span><span class="nt">&gt;</span>
   <span class="nt">&lt;rewrite&gt;</span>
     <span class="nt">&lt;rules&gt;</span> 
       <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">"Main Rule"</span> <span class="na">stopProcessing=</span><span class="s">"true"</span><span class="nt">&gt;</span>
@@ -365,9 +406,12 @@ address bar look much nicer but that also requires server side rewrites. Here ar
     <span class="nt">&lt;/rules&gt;</span>
   <span class="nt">&lt;/rewrite&gt;</span>
 <span class="err">&lt;</span>/system.webServer&gt;
-</code></pre></div>
+</code></pre>
+</div>
+
 <p><strong>Express Rewrites</strong></p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'/js'</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/js'</span><span class="p">));</span>
@@ -381,29 +425,34 @@ address bar look much nicer but that also requires server side rewrites. Here ar
 <span class="p">});</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3006</span><span class="p">);</span> <span class="c1">//the port you want to use</span>
-</code></pre></div>
+</code></pre>
+</div>
+
 <p><strong>ASP.Net C# Rewrites</strong></p>
 
 <p>In Global.asax</p>
-<div class="highlight"><pre><code class="language-C#" data-lang="C#">private const string ROOT_DOCUMENT = "/default.aspx";
 
-protected void Application_BeginRequest( Object sender, EventArgs e )
+<p>```C#
+private const string ROOT_DOCUMENT = “/default.aspx”;</p>
+
+<p>protected void Application_BeginRequest( Object sender, EventArgs e )
 {
-    string url = Request.Url.LocalPath;
-    if ( !System.IO.File.Exists( Context.Server.MapPath( url ) ) )
-        Context.RewritePath( ROOT_DOCUMENT );
+	string url = Request.Url.LocalPath;
+	if ( !System.IO.File.Exists( Context.Server.MapPath( url ) ) )
+		Context.RewritePath( ROOT_DOCUMENT );
 }
-</code></pre></div>
-<h3>Deep-Links</h3>
+```</p>
 
-<p>Users of your application may bookmark pages deeply nested within your state hierarchy. </p>
+<h3 id="deep-links">Deep-Links</h3>
 
-<p>In the previous section we&#39;ve ensured that server will return a page even when the browser requests an URL that is only available
+<p>Users of your application may bookmark pages deeply nested within your state hierarchy.</p>
+
+<p>In the previous section we’ve ensured that server will return a page even when the browser requests an URL that is only available
 on the client side - as it is the case with deep-linking bookmarks.</p>
 
 <p>To support seamless transition from server- to client-side routing, the router provides the parameterless 
-method <code>sync</code>. This method infers the current routing-state from the browser&#39;s current location 
-(address bar) and transitions to that state. </p>
+method <code>sync</code>. This method infers the current routing-state from the browser’s current location 
+(address bar) and transitions to that state.</p>
 
 <p><strong>Note:</strong> Calling the <code>sync</code> method is expensive and should only be done once after the application has registered all of its initial states.</p>
 
@@ -436,7 +485,9 @@ method <code>sync</code>. This method infers the current routing-state from the 
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
     <script>

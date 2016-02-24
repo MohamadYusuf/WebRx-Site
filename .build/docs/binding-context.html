@@ -28,10 +28,13 @@
     <!-- Web Fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Raleway" /> 
         
-    <link rel='stylesheet' type='text/css' href='/bundles/1e24c3a4de366c5bce533f98c62988ce.css' />
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.css' />
+<link rel='stylesheet' type='text/css' href='/css/syntax.css' />
+<link rel='stylesheet' type='text/css' href='/css/font-awesome.css' />
  
     
-    <script type='text/javascript' src='/bundles/8bd7095abad18365d4da3020203ccfb2.js'></script>
+    <script type='text/javascript' src='/js/rx.all.min.js'></script>
+<script type='text/javascript' src='/js/web.rx.js'></script>
 
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
@@ -100,7 +103,7 @@
 
                 <h3>Bindings</h3>
 
-                <h4>Controlling text and appearance</h4>
+                <h4>Text and appearance</h4>
                 <ul>
                     <li><a href="../docs/visible-binding.html">The visible binding</a></li>
                     <li><a href="../docs/hidden-binding.html">The hidden binding</a></li>
@@ -131,6 +134,11 @@
                     <li><a href="../docs/hasfocus-binding.html">The hasFocus binding</a></li>
                     <li><a href="../docs/checked-binding.html">The checked binding</a></li>
                     <li><a href="../docs/selected-value-binding.html">The selectedValue binding</a></li>
+                </ul>
+
+                <h3>Expression Filters</h3>
+                <ul>
+                    <li><a href="../docs/expression-filters.html">Creating expression filters</a></li>
                 </ul>
 
                 <h3>Custom bindings</h3>
@@ -195,56 +203,68 @@
         </div>
 
         <div id="start" class="col-md-9">
-            <div class="body"><h1>The Binding-Context</h1>
+            <div class="hidden-xs social-buttons pull-right">
+                <a class="social-button twitter" title="Twitter" target="_blank" href="http://twitter.com/share?url=http://webrxjs.org/docs/binding-context.html&via=webrxjs"><i class="fa fa-twitter"></i></a>
+                <a class="social-button google-plus" title="Google+" target="_blank" href="https://plus.google.com/share?url=http://webrxjs.org/docs/binding-context.html"><i class="fa fa-google-plus"></i></a>
+                <a class="social-button reddit" title="Reddit" target="_blank" href="http://www.reddit.com/submit?url=http://webrxjs.org/docs/binding-context.html"><i class="fa fa-reddit-alien"></i></a>
+            </div>
+
+            <div class="body"><h1 id="the-binding-context">The Binding-Context</h1>
 
 <p>A binding context is an object that holds data that you can reference from your bindings. While applying bindings, WebRx automatically creates and manages a hierarchy of binding contexts. The root level of the hierarchy refers to the viewModel parameter you supplied to wx.applyBindings(viewModel). Then, each time you use a control flow binding such as with or foreach, that creates a child binding context that refers to the nested view model data.</p>
 
 <p>Bindings contexts offer the following special properties that you can reference in any binding:</p>
 
-<h3><code>$parent</code></h3>
+<h3 id="codeparentcode"><code>$parent</code></h3>
 
 <p>This is the view model object in the parent context, the one immeditely outside the current context. In the root context, this is undefined. Example:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;&lt;/h1&gt;</span>
 
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;&lt;/h1&gt;</span>
+ 
 <span class="nt">&lt;div</span> <span class="na">data-bind=</span><span class="s">"with: manager"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Now we're inside a nested binding context --&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: name"</span><span class="nt">&gt;&lt;/span&gt;</span> is the
     manager of <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: $parent.name"</span><span class="nt">&gt;&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre></div>
-<h3><code>$parents</code></h3>
+</code></pre>
+</div>
+
+<h3 id="codeparentscode"><code>$parents</code></h3>
 
 <p>This is an array representing all of the parent view models:</p>
 
 <ul>
-<li><code>$parents[0]</code> is the view model from the parent context (i.e., it&#39;s the same as <code>$parent</code>)</li>
-<li><code>$parents[1]</code> is the view model from the grandparent context</li>
-<li><code>$parents[2]</code> is the view model from the great-grandparent context</li>
+  <li><code>$parents[0]</code> is the view model from the parent context (i.e., it’s the same as <code>$parent</code>)</li>
+  <li><code>$parents[1]</code> is the view model from the grandparent context</li>
+  <li><code>$parents[2]</code> is the view model from the great-grandparent context</li>
 </ul>
 
 <p>… and so on.</p>
 
-<h3><code>$root</code></h3>
+<h3 id="coderootcode"><code>$root</code></h3>
 
-<p>This is the main view model object in the root context, i.e., the topmost parent context. It&#39;s usually the object that was passed 
+<p>This is the main view model object in the root context, i.e., the topmost parent context. It’s usually the object that was passed 
 to <code>wx.applyBindings</code>. It is equivalent to <code>$parents[$parents.length - 1]</code>.</p>
 
-<h3><code>$data</code></h3>
+<h3 id="codedatacode"><code>$data</code></h3>
 
 <p>This is the view model object in the current context. In the root context, <code>$data</code> and <code>$root</code> are equivalent. 
 Inside a nested binding context, this parameter will be set to the current data item (e.g., inside a <code>with: person</code> binding, 
 <code>$data</code> will be set to <code>person</code>). <code>$data</code> is useful when you want to reference the viewmodel itself, 
 rather than a property on the viewmodel. Example:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: ['cats', 'dogs', 'fish']"</span><span class="nt">&gt;</span>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">data-bind=</span><span class="s">"foreach: ['cats', 'dogs', 'fish']"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;li&gt;</span>The value is <span class="nt">&lt;span</span> <span class="na">data-bind=</span><span class="s">"text: $data"</span><span class="nt">&gt;&lt;/span&gt;&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>
-<h3><code>$index</code> (only available within foreach bindings)</h3>
+</code></pre>
+</div>
+
+<h3 id="codeindexcode-only-available-within-foreach-bindings"><code>$index</code> (only available within foreach bindings)</h3>
 
 <p>This is the zero-based index of the current array entry being rendered by a foreach binding. Unlike the other binding context properties, 
 <code>$index</code> is an observable and is updated whenever the index of the item changes (e.g., if items are added to or removed from the array).</p>
 
-<h2>Controlling or modifying the binding context in custom bindings</h2>
+<h2 id="controlling-or-modifying-the-binding-context-in-custom-bindings">Controlling or modifying the binding context in custom bindings</h2>
 
 <p>Just like the built-in bindings with and foreach, custom bindings can change the binding context for their descendant elements, 
 or provide special properties by extending the binding context object. This is described in detail under creating custom bindings that control descendant bindings.</p>
@@ -278,7 +298,9 @@ or provide special properties by extending the binding context object. This is d
           wx.toggleCssClass(document.body, true, "wx-unsupported");
     </script>
 
-    <script type='text/javascript' src='/bundles/b90b1a7edb0dd2e1eeef510a60864172.js'></script>
+    <script type='text/javascript' src='/js/jquery.js'></script>
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/default.js'></script>
 
 
     <script>
